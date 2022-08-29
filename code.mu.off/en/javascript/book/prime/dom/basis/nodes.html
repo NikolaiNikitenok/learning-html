@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Working with nodes in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will look at working with DOM nodes, as well as the difference between a DOM element and a node.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Working with nodes in JavaScript</h1>
+				<div class="content">
+<p>
+	As you know, tags can contain other tags or, 
+	in JavaScript terms, DOM elements can contain 
+	other DOM elements. In addition, however, they 
+	may contain comments and plain text. Comments, 
+	texts and DOM elements are united by one name 
+	- <dfn>nodes</dfn>.
+</p>
+<p>
+	You already know the properties 
+	<a href="../../../../../../en/javascript/manual/dom/firstElementChild.html"><code class="code inline">firstElementChild</code></a>,
+	<a href="../../../../../../en/javascript/manual/dom/lastElementChild.html"><code class="code inline">lastElementChild</code></a>,
+	<a href="../../../../../../en/javascript/manual/dom/nextElementSibling.html"><code class="code inline">nextElementSibling</code></a>,
+	<a href="../../../../../../en/javascript/manual/dom/previousElementSibling.html"><code class="code inline">previousElementSibling</code></a>.
+	These properties only work with DOM elements, 
+	ignoring other nodes. As a rule, this is exactly 
+	what we need.
+</p>
+<p>
+	However, there are also properties <code class="code inline">firstChild</code>, 
+	<code class="code inline">lastChild</code>, <code class="code inline">nextSibling</code>, <code class="code inline">previousSibling</code>. 
+	These properties work in a similar way, however, 
+	considering all nodes. Let's see the difference 
+	between these properties with an example. Suppose 
+	we have a div containing three nodes:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem"&gt;&lt;!--сomm--&gt;text&lt;span&gt;tag&lt;/span&gt;&lt;/div&gt;</code>
+</div>
+<p>
+	Get a reference to this div into a variable:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');</code>
+</div>
+<p>
+	Now let's see what is contained in the 
+	properties <code class="code inline">firstChild</code> 
+	and <code class="code inline">firstElementChild</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log(elem.firstChild);        // comment
+console.log(elem.firstElementChild); // span tag</code>
+</div>
+<div class="task">
+	<p>
+		Write code that shows the difference 
+		between <code class="code inline">lastChild</code> and 
+		<code class="code inline">lastElementChild</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Write code that shows the difference 
+		between <code class="code inline">nextSibling</code> and 
+		<code class="code inline">nextElementSibling</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Write code that shows the difference 
+		between <code class="code inline">previousSibling</code> and 
+		<code class="code inline">previousElementSibling</code>. 
+	</p>
+</div>
+
+<h2>Loop iteration</h2>
+<p>
+	As you should already know, the property 
+	<a href="../../../../../../en/javascript/manual/dom/children.html"><code class="code inline">children</code></a> 
+	contains all DOM elements that are direct children 
+	of this element. There is a similar property 
+	<code class="code inline">childNodes</code> which contains all child 
+	nodes of an element.
+</p>
+<p>
+	Let's, for example, use this property to display 
+	various nodes from our element:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log(elem.childNodes[0]);
+console.log(elem.childNodes[1]);
+console.log(elem.childNodes[2]);</code>
+</div>
+<p>
+	And now let's iterate over the nodes of the 
+	element in a loop:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">for (let node of elem.childNodes) {
+	console.log(node);
+}</code>
+</div>
+<div class="task">
+	<p>
+		Given a div:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem"&gt;txt&lt;b&gt;tag&lt;/b&gt;&lt;!--com--&gt;txt&lt;b&gt;tag&lt;/b&gt;&lt;!--com--&gt;&lt;/div&gt;</code>
+	</div>
+	<p>
+		Loop through all the nodes of this div 
+		and print them to the console.
+	</p>
+</div>
+
+<h2>Node name</h2>
+<p>
+	All nodes have the property <code class="code inline">nodeName</code>. 
+	For a comment, it contains the value <code class="string inline">'comment'</code>, 
+	for a text node, the value <code class="string inline">'text'</code>, and for an 
+	element node, the tag name in uppercase. It turns out 
+	that nodeName for elements is similar to the property 
+	<a href="../../../../../../en/javascript/manual/dom/tagName.html"><code class="code inline">tagName</code></a>, 
+	but works for other types of nodes as well.
+</p>
+<div class="task">
+	<p>
+		Given a div:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem"&gt;txt&lt;b&gt;tag&lt;/b&gt;&lt;!--com--&gt;txt&lt;b&gt;tag&lt;/b&gt;&lt;!--com--&gt;&lt;/div&gt;</code>
+	</div>
+	<p>
+		Loop through all the nodes of this div and print 
+		their names to the console.
+	</p>
+</div>
+
+<h2>Node type</h2>
+<p>
+	All nodes have the property <code class="code inline">nodeType</code>. Its value 
+	is numeric: <code class="number inline">1</code> for elements, <code class="number inline">3</code> for text 
+	nodes, <code class="number inline">8</code> for comments. The remaining values are 
+	currently either little used or outdated.
+</p>
+<div class="task">
+	<p>
+		Given a div:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem"&gt;txt&lt;b&gt;tag&lt;/b&gt;&lt;!--com--&gt;txt&lt;b&gt;tag&lt;/b&gt;&lt;!--com--&gt;&lt;/div&gt;</code>
+	</div>
+	<p>
+		Loop through all the nodes of this div and output 
+		only the element nodes and text nodes to the console.
+	</p>
+</div>
+
+<h2>Node text</h2>
+<p>
+	Let's now figure out how to read or change the text 
+	of the nodes. For all nodes, the <code class="code inline">textContent</code> 
+	property works. For text nodes and comments, there 
+	are properties <code class="code inline">nodeValue</code> and <code class="code inline">data</code> 
+	(they are almost the same, the second one is shorter, 
+	it's better to use it). For elements there is a 
+	property <code class="code inline">innerHTML</code> that reads the text 
+	along with the tags.
+</p>
+<div class="task">
+	<p>
+		Given a div:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem"&gt;txt&lt;b&gt;tag&lt;/b&gt;&lt;!--com--&gt;txt&lt;b&gt;tag&lt;/b&gt;&lt;!--com--&gt;&lt;/div&gt;</code>
+	</div>
+	<p>
+		Loop through all the nodes of this div and 
+		output the texts of all nodes to the console.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given a div:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem"&gt;txt&lt;b&gt;tag&lt;/b&gt;&lt;!--com--&gt;txt&lt;b&gt;tag&lt;/b&gt;&lt;!--com--&gt;&lt;/div&gt;</code>
+	</div>
+	<p>
+		Loop through all nodes of this div and print 
+		to the console the texts of all comments 
+		and text nodes.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given a div:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem"&gt;txt&lt;b&gt;tag&lt;/b&gt;&lt;!--com--&gt;txt&lt;b&gt;tag&lt;/b&gt;&lt;!--com--&gt;&lt;/div&gt;</code>
+	</div>
+	<p>
+		Loop through all the nodes of this div and 
+		output to the console the texts of the text 
+		nodes and elements.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given a div:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem"&gt;txt&lt;b&gt;tag&lt;/b&gt;&lt;!--com--&gt;txt&lt;b&gt;tag&lt;/b&gt;&lt;!--com--&gt;&lt;/div&gt;</code>
+	</div>
+	<p>
+		Loop through all the nodes of this div and 
+		write down the type of each node to 
+		the its end.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="74" data-hash="jsPmDmNds" data-quantity="363" data-num="270"><a href="../../../../../../en/javascript/book/prime/dom/basis/data-attrubutes.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../en/javascript/book/prime/dom/basis/coding.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/basis/nodes.html" class="active">en</a><a href="../../../../../../ru/javascript/book/prime/dom/basis/nodes.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

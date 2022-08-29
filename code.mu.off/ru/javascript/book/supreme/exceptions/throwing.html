@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Выбрасывание исключительных ситуаций в JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами научимся выбрасывать исключительные ситуации в JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Выбрасывание исключительных ситуаций в JavaScript</h1>
+				<div class="content">
+<p>
+	В предыдущих уроках мы с вами изучили два
+	места, в которых JavaScript выбрасывает исключение
+	в случае каких-то проблем.
+</p>
+<p>
+	В вашем проекте, однако, могут быть и другие
+	ситуации, которые для вас являются исключительными,
+	а для JavaScript - нет. В таком случае мы
+	можете создавать и выбрасывать свои, пользовательские
+	исключения.
+</p>
+<p>
+	Давайте разберем синтаксис, необходимый для
+	этого. Для начала исключение нужно создать
+	с помощью команды <code class="code inline">new Error</code>, параметром
+	передав текст исключения:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">new Error('текст исключения');</code>
+</div>
+<p>
+	Затем это исключение нужно выбросить с помощью
+	команды <code class="code inline">throw</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">throw new Error('текст исключения');</code>
+</div>
+<p>
+	Выбрасывание исключение заставляет JavaScript
+	считать, что случилась исключительная ситуация.
+	Это значит, что такое исключение можно отловить
+	с помощью конструкции <code class="code inline">try-catch</code> и
+	обработать нужным образом.
+</p>
+<p>
+	Давайте посмотрим на примере, как этим пользоваться.
+	Пусть у нас есть функция, которая делит одно
+	число на другое:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function div(a, b) {
+	return a / b;
+}</code>
+</div>
+<p>
+	Давайте будем считать, что деление на ноль
+	запрещено и при попытке сделать это должна
+	возникать исключительная ситуация. Для этого
+	будем проверять в функции, нет ли попытки
+	делить на <code class="number inline">0</code>. Если нет - будем делить,
+	а если нет - будем бросать исключение:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function div(a, b) {
+	if (b !== 0) {
+		return a / b;
+	} else {
+		throw new Error('ошибка деления на ноль');
+	}
+}</code>
+</div>
+<p>
+	Давайте для начала просто попробуем поделить
+	на <code class="number inline">0</code>, не перехватывая исключение:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">alert( div(3, 0) );</code>
+</div>
+<p>
+	В этом случае выполнение скрипта прервется
+	и в консоли появится ошибка с текстом <code class="string inline">'ошибка
+	деления на ноль'</code> (проверьте). Давайте
+	теперь будем перехватывать нашу ошибку и
+	как-то ее обрабатывать:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">try {
+	alert( div(3, 0) );
+} catch (error) {
+	alert('вы пытаетесь делить на 0, что запрещено');
+}</code>
+</div>
+<div class="task">
+	<p>
+		В JavaScript попытка извлечь корень из отрицательного
+		числа не приводит к выбрасыванию исключения:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let result = Math.sqrt(-1);
+console.log(result); // выведет NaN</code>
+	</div>
+	<p>
+		Напишите свою функцию, которая будет извлекать
+		корень из числа и при этом выбрасывать исключение,
+		если корень извлекается из отрицательного числа.
+	</p>
+</div>
+
+<h2>Типы исключений</h2>
+<p>
+	Давайте выбросим свое исключение и посмотрим,
+	как будет вести себя объект с ошибкой в этом
+	случае:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">try {
+	throw new Error('текст исключения');
+} catch (error) {
+	console.log(error.name); // 'Error'
+	console.log(error.message); // 'текст исключения'
+}</code>
+</div>
+<p>
+	Как вы видите, тип нашего исключения - <code class="string inline">'Error'</code>.
+	Такой же тип будет у любых исключений, выброшенных
+	подобным образом. Это, однако, не всегда
+	будет удобно, так как, если у нас могут быть
+	несколько исключений, мы не сможем их отличить
+	друг от друга.
+</p>
+<p>
+	В JavaScript предусмотрено решение этой проблемы:
+	можно выбрасывать исключения не только типа
+	<code class="code inline">Error</code>, но и любого встроенного в JavaScript
+	типа ошибки, например, <code class="code inline">TypeError</code>,
+	<code class="code inline">SyntaxError</code>, <code class="code inline">RangeError</code>.
+</p>
+<p>
+	Давайте для примера выбросим исключение типа
+	<code class="code inline">SyntaxError</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">try {
+	throw new SyntaxError('текст исключения');
+} catch (error) {
+	console.log(error.name); // 'SyntaxError'
+	console.log(error.message); // 'текст исключения'
+}</code>
+</div>
+<div class="task">
+	<p>
+		Выбросите исключение с типом <code class="code inline">TypeError</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Выбросите исключение с типом <code class="code inline">SyntaxError</code>
+		и <code class="code inline">RangeError</code>. Поймайте эти исключения
+		с помощью одного блока try. В блоке catch
+		выведите разные сообщения об ошибке для исключений
+		разных типов.
+	</p>
+</div>
+
+<h2>Свои типы исключений</h2>
+<p>
+	Количество встроенных в JavaScript исключений
+	не такое большое и они чаще всего не могут
+	удовлетворить все наши потребности в разных
+	типах исключений. Поэтому в JavaScript встроена
+	возможность создавать исключения со своим типом.
+</p>
+<p>
+	Существуют разные способы сделать это. Самый
+	простой - в <code class="code inline">throw</code> передать объект
+	с ключами <code class="code inline">name</code> и <code class="code inline">message</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">try {
+	throw {name: 'MyError', message: 'текст исключения'};
+} catch (error) {
+	console.log(error.name); // 'MyError'
+	console.log(error.message); // 'текст исключения'
+}</code>
+</div>
+<div class="task">
+	<p>
+		Выше я мы сделали функцию, выбрасывающую
+		исключение при делении на ноль:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function div(a, b) {
+	if (b !== 0) {
+		return a / b;
+	} else {
+		throw new Error('ошибка деления на ноль');
+	}
+}</code>
+	</div>
+	<p>
+		Переделайте эту функцию так, чтобы она выбрасывала
+		исключение с каким-нибудь придуманными нами
+		типом, например, <code class="code inline">DivisionByZeroError</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Выше вы делали функцию, выбрасывающую исключение
+		при попытке извлечь корень из отрицательного
+		числа. Переделайте вашу функцию так, чтобы
+		она выбрасывала исключение с придуманным
+		вами типом. Хорошо подумайте над названием
+		исключения, чтобы это название было удачным.
+	</p>
+</div>
+
+<h2>Пример применения</h2>
+<p>
+	Пусть при загрузке страницы сервер создает
+	HTML код, в котором хранится название, цена
+	и количество купленного продукта:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="product" data-product="яблоко" data-price="1000" data-amount="5"&gt;&lt;/div&gt;</code>
+</div>
+<p>
+	Давайте сделаем функцию, которая будет принимать
+	ссылку на элемент с продуктом и находить
+	полную стоимость товара (цену умножать на
+	количество):
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function getCost(elem) {
+	return elem.dataset.price * elem.dataset.amount;
+}</code>
+</div>
+<p>
+	Найдем стоимость нашего продукта:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let product = document.querySelector('#product');
+let cost = getCost(product);
+
+alert(cost);</code>
+</div>
+<p>
+	Предположим теперь следующую ситуацию: из-за
+	какого-то сбоя на сервере он прислал нам
+	товар, в котором отсутствует цена или количество
+	(или оба сразу), например, вот так:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="product" data-product="яблоко" data-price="1000"&gt;&lt;/div&gt;</code>
+</div>
+<p>
+	Если теперь попробовать посчитать стоимость
+	товара, то результате на экран выведется
+	NaN. Согласитесь, не очень информативно.
+</p>
+<p>
+	Получается, нам нужно как-то обезопасится
+	от того, что будут отсутствовать нужные нам
+	атрибуты. Это можно сделать двумя путями.
+	Первый путь - это сказать, что это нормальное
+	поведение и просто поверять ифами наличие
+	нужных нам атрибутов:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function getCost(elem) {
+	if (elem.dataset.price !== undefined && elem.dataset.amount !== undefined) {
+		return elem.dataset.price * elem.dataset.amount;
+	} else {
+		return 0; // вернем что-нибудь, например, 0 или null или false
+	}
+}</code>
+</div>
+<p>
+	Второй вариант - это сказать, что отсутствие
+	атрибута <code class="code inline">data-price</code> или <code class="code inline">data-amount</code>
+	- исключительная ситуация. В этом случае
+	мы будем выбрасывать исключение:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function getCost(elem) {
+	if (elem.dataset.price !== undefined && elem.dataset.amount !== undefined) {
+		return elem.dataset.price * elem.dataset.amount;
+	} else {
+		throw {
+			name: 'ProductCostError',
+			message: 'отсутствует цена или количество у продукта'
+		};
+	}
+}</code>
+</div>
+<p>
+	Какой из двух вариантов здесь уместнее применить
+	- это выбор программиста. Он может считать
+	проблему нормальной работой скрипта или исключительной
+	ситуацией.
+</p>
+<p>
+	Пусть мы решили, что ситуация исключительная.
+	Тогда код получения стоимости товара будет
+	выглядеть вот так:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let product = document.querySelector('#product');
+
+try {
+	let cost = getCost(product);
+	alert(cost);
+} catch (error) {
+	// как-то реагируем на исключение
+}</code>
+</div>
+<div class="task">
+	<p>
+		Переделайте мой код так, чтобы функция <code class="code inline">getCost</code>
+		выбрасывала два типа исключений: если отсутствует
+		цена и если отсутствует количество. Хорошо
+		подумайте над названиями этих исключений.
+		В блоке catch выведите разные сообщения об
+		ошибке для исключений разных типов.
+	</p>
+</div>
+
+<h2>Еще пример применения</h2>
+<p>
+	Пусть к нам откуда-то из внешнего мира приходит
+	JSON с продуктом:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let json = '{"product": "яблоко", "price": 1000, "amount": 5}';
+let product = JSON.parse(json);
+alert(product.price * product.amount);</code>
+</div>
+<p>
+	Вы уже знаете, что метод JSON.parse будет
+	выбрасывать исключение, если JSON некорректный.
+	Давайте поймаем это исключение:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">try {
+	let json = '{"product": "яблоко", "price": 1000, "amount": 5}';
+	let product = JSON.parse(json);
+	alert(product.price * product.amount);
+} catch (error) {
+	// как-то реагируем на исключение
+}</code>
+</div>
+<p>
+	Однако, может быть такое, что сам по себе
+	JSON корректный, но не содержит нужных нам
+	полей, например, нет поля с ценой:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let json = '{"product": "яблоко", "amount": 5}'; // нет цены</code>
+</div>
+<p>
+	Давайте скажем, что это тоже исключительная
+	ситуация и будем в таком случае выбрасывать
+	свое пользовательское исключение:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">try {
+	let json = '{"product": "яблоко", "amount": 5}';
+	let product = JSON.parse(json);
+	
+	if (product.price !== undefined && product.amount !== undefined) {
+		alert(product.price * product.amount);
+	} else {
+		throw {
+			name: 'ProductCostError',
+			message: 'отсутствует цена или количество у продукта'
+		};
+	}
+} catch (error) {
+	// как-то реагируем на исключение
+}</code>
+</div>
+<p>
+	Теперь блок catch будет получать два типа
+	исключений: либо JSON вообще некорректен,
+	и тогда будет исключение типа <code class="code inline">SyntaxError</code>,
+	либо JSON корректен, но не содержит нужных
+	нам полей, и тогда будет исключение типа
+	<code class="code inline">ProductCostError</code>.
+</p>
+<p>
+	Давайте в блоке catch будем отлавливать эти
+	типы исключений:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">try {
+	let json = '{"product": "яблоко", "amount": 5}';
+	let product = JSON.parse(json);
+	
+	if (product.price !== undefined && product.amount !== undefined) {
+		alert(product.price * product.amount);
+	} else {
+		throw {
+			name: 'ProductCostError',
+			message: 'отсутствует цена или количество у продукта'
+		};
+	}
+} catch (error) {
+	if (error.name == 'SyntaxError') {
+		alert('Некорректный JSON продукта');
+	} else if (error.name == 'ProductCostError') {
+		alert('У продукта отсутствует цена или количество');
+	}
+}</code>
+</div>
+<div class="task">
+	<p>
+		Пусть к вам приходит JSON вот такого вида:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let json = `[
+	{
+		"name": "user1",
+		"age": 25,
+		"salary": 1000
+	},
+	{
+		"name": "user2",
+		"age": 26,
+		"salary": 2000
+	},
+	{
+		"name": "user3",
+		"age": 27,
+		"salary": 3000
+	}
+]`;</code>
+	</div>
+	<p>
+		Проверьте этот JSON на общую корректность
+		при разборе, а после разбора проверьте, что
+		в результате получается массив, а не что-то
+		другое. Если в результате получается не массив
+		- выбросите исключение.
+	</p>
+</div>
+
+<h2>Проброс исключений</h2>
+<p>
+	Рассмотрим блок catch задачи о JSON продукта:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">catch (error) {
+	if (error.name == 'SyntaxError') {
+		alert('Некорректный JSON продукта');
+	} else if (error.name == 'ProductCostError') {
+		alert('У продукта отсутствует цена или количество');
+	}
+}</code>
+</div>
+<p>
+	Как вы видите, мы ловим два запланированных
+	нами исключения и как-то реагируем на это.
+	Но что будет, если возникнет непредусмотренное
+	нами исключение другого типа? В этом случае
+	оно тоже попадет в блок <code class="code inline">catch</code>, но
+	никакой реакции на это не последует, так
+	как исключение с другим типом просто не попадет
+	ни в один из наших ифов.
+</p>
+<p>
+	Когда я говорю, что не будет никакой реакции,
+	то имею ввиду, что реально никакой: даже
+	не будет вываливания ошибки в консоль. Наш
+	код просто молча не будет работать.
+</p>
+<p>
+	Поэтому существует следующее правило: ваш
+	код должен ловить только те исключения, с
+	которыми знает, как справится. Если исключение
+	не известное, то его нужно <dfn>пробросить</dfn>
+	дальше с помощью <code class="code inline">throw</code>. В этом случае
+	его выше поймает кто-то более осведомленный
+	либо исключение вывалится ошибкой в консоль.
+</p>
+<p>
+	Давайте поправим наш код:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">catch (error) {
+	if (error.name == 'SyntaxError') {
+		alert('Некорректный JSON продукта');
+	} else if (error.name == 'ProductCostError') {
+		alert('У продукта отсутствует цена или количество');
+	} else {
+		throw error; // пробрасываем исключение далее
+	}
+}</code>
+</div>
+<div class="task">
+	<p>
+		Дан следующий код:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">try {
+	let arr = JSON.parse(json);
+
+	for (let i = 0; i &lt; arr.length; i++) {
+		localStorage.setItem(i, arr[i]);
+	}
+} catch (error) {
+	if (error.name == 'QuotaExceededError') {
+		alert('закончилось место в хранилище');
+	}
+	
+	if (error.name == 'SyntaxError') {
+		alert('некорректный JSON');
+	}
+}</code>
+	</div>
+	<p>
+		Что не так с этим кодом? Исправьте его на
+		более удачный.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/supreme/" data-persent="46" data-hash="jsSpExcThr" data-quantity="114" data-num="53"><a href="../../../../../ru/javascript/book/supreme/exceptions/error-object.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/javascript/book/supreme/tool/terminal.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

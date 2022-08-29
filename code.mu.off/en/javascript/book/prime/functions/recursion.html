@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Working with recursion in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will analyze the work with recursion in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Working with recursion in JavaScript</h1>
+				<div class="content">
+<p>
+	In programming, there is such a concept as 
+	<dfn>recursion</dfn> - this is when a function 
+	calls itself. Let's look at an example. 
+	Using recursion, we derive numbers from 
+	<code class="number inline">1</code> to <code class="number inline">10</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let i = 1;
+
+function func(){
+	console.log(i);
+	i++;
+	
+	if (i &lt;= 10){
+		func(); // here the function calls itself
+	}
+}
+func();</code>
+</div>
+<p>
+	Let's discuss how this code works.
+</p>
+<p>
+	We have the global variable <code class="code inline">i</code> and 
+	the function <code class="code inline">func</code>, inside which 
+	the contents of the variable <code class="code inline">i</code> 
+	are displayed to the console, and then 
+	<code class="code inline">++</code> is performed.
+</p>
+<p>
+	If our variable <code class="code inline">i</code> is less than or 
+	equal to <code class="number inline">10</code>, then the function is 
+	called again. Since the variable <code class="code inline">i</code> 
+	is global, then with each new call to the 
+	function it will contain the value of the 
+	variable <code class="code inline">i</code> specified 
+	in the previous call.
+</p>
+<p>
+	It turns out that the function will 
+	call itself until <code class="code inline">i</code> becomes 
+	greater than <code class="number inline">10</code>.
+</p>
+<p>
+	Please note that in our case it is 
+	impossible to run the function without 
+	<code class="code inline">if</code> - if you do this, you will 
+	get an endless functions call.
+</p>
+
+<h2>Example with a parameter</h2>
+<p>
+	Let's use recursion to sequentially display 
+	the elements of the array. Let the array 
+	be initially passed to the 
+	function parameters:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">func([1, 2, 3]);</code>
+</div>
+<p>
+	For now, without recursion, using the 
+	<a href="../../../../../en/javascript/manual/array/shift.html"><code class="code inline">shift</code></a> 
+	method, we will display all the elements 
+	of the array in turn:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(arr) {
+	console.log(arr.shift()); // shows 1
+	console.log(arr); // shows [2, 3] - array has shrunk
+	
+	console.log(arr.shift()); // shows 2
+	console.log(arr); // shows [3] - array has shrunk
+	
+	console.log(arr.shift()); // shows 3
+	console.log(arr); // shows [] - array is empty
+}
+
+func([1, 2, 3]);</code>
+</div>
+<p>
+	As you can see, the <code class="code inline">shift</code> method cuts 
+	and returns the first element of the array, 
+	while the array itself is reduced by that element.
+</p>
+<p>
+	Let's now use recursion:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(arr) {
+	console.log(arr.shift(), arr);
+	
+	if (arr.length != 0) {
+		func(arr);
+	}
+}
+
+func([1, 2, 3]);</code>
+</div>
+<p>
+	In fact, of course, the easiest way is to 
+	loop through the elements of an array. The 
+	examples given so far simply demonstrate 
+	the work of recursion on simple examples 
+	(not real ones). More useful examples of 
+	using recursion are just more complex, we 
+	will analyze them a little later.
+</p>
+<div class="task">
+	<p>
+		Given an array:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3, 4, 5];</code>
+	</div>
+	<p>
+		Print the elements of this array to 
+		the console using recursion.
+	</p>
+</div>
+
+<h2>Sum of array elements</h2>
+<p>
+	Let's now not display the array elements 
+	to the console, but find their sum:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function getSum(arr) {
+	let sum = arr.shift();
+	
+	if (arr.length !== 0) {
+		sum += getSum(arr);
+	}
+	
+	return sum;
+}
+
+console.log(getSum([1, 2, 3]));</code>
+</div>
+<div class="task">
+	<p>
+		Given an array:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3, 4, 5];</code>
+	</div>
+	<p>
+		Use recursion to find the sum of the 
+		squares of this array elements.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="54" data-hash="jsPmFARc" data-quantity="363" data-num="196"><a href="../../../../../en/javascript/book/prime/functions/arrow-functions.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/functions/recursion-structures.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/functions/recursion.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/functions/recursion.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

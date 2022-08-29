@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>align-content Работа с флексбоксами на CSS | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В уроке рассказывается о работе с флексбоксами на CSS.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>align-content Работа с флексбоксами на CSS</h1>
+				<div class="content">
+<p>
+	Как вы знаете, существует свойство <code class="code inline">justify-content</code>,
+	которое выравнивает элементы по главной оси.
+</p>
+<p>
+	Есть также свойство <code class="code inline">align-items</code>, которое
+	выравнивает элементы по поперечной оси. Давайте
+	немного поиграемся с ним.
+</p>
+<p>
+	Пусть у нас сейчас блоки выстроены в ряд,
+	то есть поперечная ось направлена вниз. С
+	помощью <code class="code inline">align-items</code> поставим эти блоки
+	по центру:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div class="parent"&gt;
+	&lt;div class="child"&gt;1&lt;/div&gt;
+	&lt;div class="child"&gt;2&lt;/div&gt;
+	&lt;div class="child"&gt;3&lt;/div&gt;
+&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">.parent	{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: 300px;
+	height: 300px;
+	border: 1px solid red;
+}
+.child {
+	box-sizing: border-box;
+	width: 100px;
+	height: 100px;
+	border: 1px solid green;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			.parent	{
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			width: 300px;
+			height: 300px;
+			border: 1px solid red;
+		}
+		.child {
+			box-sizing: border-box;
+			width: 100px;
+			height: 100px;
+			border: 1px solid green;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div class=&quot;parent&quot;>
+			<div class=&quot;child&quot;>1</div>
+			<div class=&quot;child&quot;>2</div>
+			<div class=&quot;child&quot;>3</div>
+		</div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+<p>
+	Давайте теперь добавим больше блоков, добавим
+	многострочность с помощью <code class="code inline">flex-wrap</code>,
+	увеличим высоту родителя с <code class="unit inline">300px</code> до
+	<code class="unit inline">500px</code> и посмотрим, как сработает <code class="code inline">align-items</code>
+	в этом многострочном случае:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div class="parent"&gt;
+	&lt;div class="child"&gt;1&lt;/div&gt;
+	&lt;div class="child"&gt;2&lt;/div&gt;
+	&lt;div class="child"&gt;3&lt;/div&gt;
+	&lt;div class="child"&gt;4&lt;/div&gt;
+	&lt;div class="child"&gt;5&lt;/div&gt;
+	&lt;div class="child"&gt;6&lt;/div&gt;
+	&lt;div class="child"&gt;7&lt;/div&gt;
+	&lt;div class="child"&gt;8&lt;/div&gt;
+	&lt;div class="child"&gt;9&lt;/div&gt;
+&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">.parent	{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	flex-wrap: wrap;
+	width: 300px;
+	height: 500px;
+	border: 1px solid red;
+}
+.child {
+	box-sizing: border-box;
+	width: 100px;
+	height: 100px;
+	border: 1px solid green;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			.parent	{
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			flex-wrap: wrap;
+			width: 300px;
+			height: 500px;
+			border: 1px solid red;
+		}
+		.child {
+			box-sizing: border-box;
+			width: 100px;
+			height: 100px;
+			border: 1px solid green;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div class=&quot;parent&quot;>
+			<div class=&quot;child&quot;>1</div>
+			<div class=&quot;child&quot;>2</div>
+			<div class=&quot;child&quot;>3</div>
+			<div class=&quot;child&quot;>4</div>
+			<div class=&quot;child&quot;>5</div>
+			<div class=&quot;child&quot;>6</div>
+			<div class=&quot;child&quot;>7</div>
+			<div class=&quot;child&quot;>8</div>
+			<div class=&quot;child&quot;>9</div>
+		</div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+<p>
+	Как мы видим, что-то как-то не очень центрируется.
+	Как будто бы каждый ряд центрируется сам
+	по себе в отведенном ему месте. Давайте сделаем
+	так, чтобы все ряды как единое целое стали
+	по центру родителя.
+</p>
+<p>
+	Для этого следует использовать свойство <code class="code inline">align-content</code>,
+	которое нужно для многострочного текста.
+	Перепишем наш код:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div class="parent"&gt;
+	&lt;div class="child"&gt;1&lt;/div&gt;
+	&lt;div class="child"&gt;2&lt;/div&gt;
+	&lt;div class="child"&gt;3&lt;/div&gt;
+	&lt;div class="child"&gt;4&lt;/div&gt;
+	&lt;div class="child"&gt;5&lt;/div&gt;
+	&lt;div class="child"&gt;6&lt;/div&gt;
+	&lt;div class="child"&gt;7&lt;/div&gt;
+	&lt;div class="child"&gt;8&lt;/div&gt;
+	&lt;div class="child"&gt;9&lt;/div&gt;
+&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">.parent	{
+	display: flex;
+	flex-direction: row;
+	align-content: center;
+	flex-wrap: wrap;
+	width: 300px;
+	height: 500px;
+	border: 1px solid red;
+}
+.child {
+	box-sizing: border-box;
+	width: 100px;
+	height: 100px;
+	border: 1px solid green;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			.parent	{
+			display: flex;
+			flex-direction: row;
+			align-content: center;
+			flex-wrap: wrap;
+			width: 300px;
+			height: 500px;
+			border: 1px solid red;
+		}
+		.child {
+			box-sizing: border-box;
+			width: 100px;
+			height: 100px;
+			border: 1px solid green;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div class=&quot;parent&quot;>
+			<div class=&quot;child&quot;>1</div>
+			<div class=&quot;child&quot;>2</div>
+			<div class=&quot;child&quot;>3</div>
+			<div class=&quot;child&quot;>4</div>
+			<div class=&quot;child&quot;>5</div>
+			<div class=&quot;child&quot;>6</div>
+			<div class=&quot;child&quot;>7</div>
+			<div class=&quot;child&quot;>8</div>
+			<div class=&quot;child&quot;>9</div>
+		</div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+<p>
+	Свойство <code class="code inline">align-content</code> принимает такие
+	же значения, как и <code class="code inline">align-items</code>.
+</p>
+
+<h2>Значение space-between</h2>
+<p>
+	Давайте для примера посмотрим на значение
+	<code class="value inline">space-between</code>. Установим родителю
+	высоту в <code class="unit inline">320px</code>. Так как у нас три
+	ряда, и соответственно два расстояния между
+	рядами, то эти расстояния будут равны каждое
+	по <code class="unit inline">10px</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div class="parent"&gt;
+	&lt;div class="child"&gt;1&lt;/div&gt;
+	&lt;div class="child"&gt;2&lt;/div&gt;
+	&lt;div class="child"&gt;3&lt;/div&gt;
+	&lt;div class="child"&gt;4&lt;/div&gt;
+	&lt;div class="child"&gt;5&lt;/div&gt;
+	&lt;div class="child"&gt;6&lt;/div&gt;
+	&lt;div class="child"&gt;7&lt;/div&gt;
+	&lt;div class="child"&gt;8&lt;/div&gt;
+	&lt;div class="child"&gt;9&lt;/div&gt;
+&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">.parent	{
+	display: flex;
+	flex-direction: row;
+	align-content: space-between;
+	flex-wrap: wrap;
+	width: 300px;
+	height: 320px;
+	border: 1px solid red;
+}
+.child {
+	box-sizing: border-box;
+	width: 100px;
+	height: 100px;
+	border: 1px solid green;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			.parent	{
+			display: flex;
+			flex-direction: row;
+			align-content: space-between;
+			flex-wrap: wrap;
+			width: 300px;
+			height: 320px;
+			border: 1px solid red;
+		}
+		.child {
+			box-sizing: border-box;
+			width: 100px;
+			height: 100px;
+			border: 1px solid green;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div class=&quot;parent&quot;>
+			<div class=&quot;child&quot;>1</div>
+			<div class=&quot;child&quot;>2</div>
+			<div class=&quot;child&quot;>3</div>
+			<div class=&quot;child&quot;>4</div>
+			<div class=&quot;child&quot;>5</div>
+			<div class=&quot;child&quot;>6</div>
+			<div class=&quot;child&quot;>7</div>
+			<div class=&quot;child&quot;>8</div>
+			<div class=&quot;child&quot;>9</div>
+		</div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Значение stretch</h2>
+<p>
+	Давайте попробуем значение <code class="code inline">stretch</code>.
+	Для этого уберем высоту потомкам, а родителю
+	высоту установим в <code class="unit inline">600px</code> для более
+	явного эффекта.
+</p>
+<p>
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div class="parent"&gt;
+	&lt;div class="child"&gt;1&lt;/div&gt;
+	&lt;div class="child"&gt;2&lt;/div&gt;
+	&lt;div class="child"&gt;3&lt;/div&gt;
+	&lt;div class="child"&gt;4&lt;/div&gt;
+	&lt;div class="child"&gt;5&lt;/div&gt;
+	&lt;div class="child"&gt;6&lt;/div&gt;
+	&lt;div class="child"&gt;7&lt;/div&gt;
+	&lt;div class="child"&gt;8&lt;/div&gt;
+	&lt;div class="child"&gt;9&lt;/div&gt;
+&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">.parent	{
+	display: flex;
+	flex-direction: row;
+	align-content: stretch;
+	flex-wrap: wrap;
+	width: 300px;
+	height: 600px;
+	border: 1px solid red;
+}
+.child {
+	box-sizing: border-box;
+	width: 100px;
+	border: 1px solid green;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			.parent	{
+			display: flex;
+			flex-direction: row;
+			align-content: stretch;
+			flex-wrap: wrap;
+			width: 300px;
+			height: 600px;
+			border: 1px solid red;
+		}
+		.child {
+			box-sizing: border-box;
+			width: 100px;
+			border: 1px solid green;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div class=&quot;parent&quot;>
+			<div class=&quot;child&quot;>1</div>
+			<div class=&quot;child&quot;>2</div>
+			<div class=&quot;child&quot;>3</div>
+			<div class=&quot;child&quot;>4</div>
+			<div class=&quot;child&quot;>5</div>
+			<div class=&quot;child&quot;>6</div>
+			<div class=&quot;child&quot;>7</div>
+			<div class=&quot;child&quot;>8</div>
+			<div class=&quot;child&quot;>9</div>
+		</div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+<p>
+	Значение stretch для align-content является
+	значением по умолчанию. Если мы уберем высоту
+	потомкам совсем, уберем свойство align-content,
+	но оставим высоту родителя и <code class="code inline">flex-wrap</code>
+	- все будет работать также:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div class="parent"&gt;
+	&lt;div class="child"&gt;1&lt;/div&gt;
+	&lt;div class="child"&gt;2&lt;/div&gt;
+	&lt;div class="child"&gt;3&lt;/div&gt;
+	&lt;div class="child"&gt;4&lt;/div&gt;
+	&lt;div class="child"&gt;5&lt;/div&gt;
+	&lt;div class="child"&gt;6&lt;/div&gt;
+	&lt;div class="child"&gt;7&lt;/div&gt;
+	&lt;div class="child"&gt;8&lt;/div&gt;
+	&lt;div class="child"&gt;9&lt;/div&gt;
+&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">.parent	{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 300px;
+	height: 600px;
+	border: 1px solid red;
+}
+.child {
+	box-sizing: border-box;
+	width: 100px;
+	border: 1px solid green;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			.parent	{
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			width: 300px;
+			height: 600px;
+			border: 1px solid red;
+		}
+		.child {
+			box-sizing: border-box;
+			width: 100px;
+			border: 1px solid green;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div class=&quot;parent&quot;>
+			<div class=&quot;child&quot;>1</div>
+			<div class=&quot;child&quot;>2</div>
+			<div class=&quot;child&quot;>3</div>
+			<div class=&quot;child&quot;>4</div>
+			<div class=&quot;child&quot;>5</div>
+			<div class=&quot;child&quot;>6</div>
+			<div class=&quot;child&quot;>7</div>
+			<div class=&quot;child&quot;>8</div>
+			<div class=&quot;child&quot;>9</div>
+		</div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+<p>
+	А вот если убрать еще и <code class="code inline">flex-wrap</code>
+	- все станет однострочным:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div class="parent"&gt;
+	&lt;div class="child"&gt;1&lt;/div&gt;
+	&lt;div class="child"&gt;2&lt;/div&gt;
+	&lt;div class="child"&gt;3&lt;/div&gt;
+	&lt;div class="child"&gt;4&lt;/div&gt;
+	&lt;div class="child"&gt;5&lt;/div&gt;
+	&lt;div class="child"&gt;6&lt;/div&gt;
+	&lt;div class="child"&gt;7&lt;/div&gt;
+	&lt;div class="child"&gt;8&lt;/div&gt;
+	&lt;div class="child"&gt;9&lt;/div&gt;
+&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">.parent	{
+	display: flex;
+	flex-direction: row;
+	width: 300px;
+	height: 600px;
+	border: 1px solid red;
+}
+.child {
+	box-sizing: border-box;
+	width: 100px;
+	border: 1px solid green;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			.parent	{
+			display: flex;
+			flex-direction: row;
+			width: 300px;
+			height: 600px;
+			border: 1px solid red;
+		}
+		.child {
+			box-sizing: border-box;
+			width: 100px;
+			border: 1px solid green;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div class=&quot;parent&quot;>
+			<div class=&quot;child&quot;>1</div>
+			<div class=&quot;child&quot;>2</div>
+			<div class=&quot;child&quot;>3</div>
+			<div class=&quot;child&quot;>4</div>
+			<div class=&quot;child&quot;>5</div>
+			<div class=&quot;child&quot;>6</div>
+			<div class=&quot;child&quot;>7</div>
+			<div class=&quot;child&quot;>8</div>
+			<div class=&quot;child&quot;>9</div>
+		</div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Перевернем ось</h2>
+<p>
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div class="parent"&gt;
+	&lt;div class="child"&gt;1&lt;/div&gt;
+	&lt;div class="child"&gt;2&lt;/div&gt;
+	&lt;div class="child"&gt;3&lt;/div&gt;
+	&lt;div class="child"&gt;4&lt;/div&gt;
+	&lt;div class="child"&gt;5&lt;/div&gt;
+	&lt;div class="child"&gt;6&lt;/div&gt;
+	&lt;div class="child"&gt;7&lt;/div&gt;
+	&lt;div class="child"&gt;8&lt;/div&gt;
+	&lt;div class="child"&gt;9&lt;/div&gt;
+&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">.parent	{
+	display: flex;
+	flex-direction: column;
+	width: 300px;
+	height: 500px;
+	border: 1px solid red;
+}
+.child {
+	box-sizing: border-box;
+	width: 100px;
+	height: 100px;
+	border: 1px solid green;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			.parent	{
+			display: flex;
+			flex-direction: column;
+			width: 300px;
+			height: 500px;
+			border: 1px solid red;
+		}
+		.child {
+			box-sizing: border-box;
+			width: 100px;
+			height: 100px;
+			border: 1px solid green;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div class=&quot;parent&quot;>
+			<div class=&quot;child&quot;>1</div>
+			<div class=&quot;child&quot;>2</div>
+			<div class=&quot;child&quot;>3</div>
+			<div class=&quot;child&quot;>4</div>
+			<div class=&quot;child&quot;>5</div>
+			<div class=&quot;child&quot;>6</div>
+			<div class=&quot;child&quot;>7</div>
+			<div class=&quot;child&quot;>8</div>
+			<div class=&quot;child&quot;>9</div>
+		</div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+<p>
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div class="parent"&gt;
+	&lt;div class="child"&gt;1&lt;/div&gt;
+	&lt;div class="child"&gt;2&lt;/div&gt;
+	&lt;div class="child"&gt;3&lt;/div&gt;
+	&lt;div class="child"&gt;4&lt;/div&gt;
+	&lt;div class="child"&gt;5&lt;/div&gt;
+	&lt;div class="child"&gt;6&lt;/div&gt;
+	&lt;div class="child"&gt;7&lt;/div&gt;
+	&lt;div class="child"&gt;8&lt;/div&gt;
+	&lt;div class="child"&gt;9&lt;/div&gt;
+&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">.parent	{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	width: 300px;
+	height: 500px;
+	border: 1px solid red;
+}
+.child {
+	box-sizing: border-box;
+	width: 100px;
+	height: 100px;
+	border: 1px solid green;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			.parent	{
+			display: flex;
+			flex-direction: column;
+			flex-wrap: wrap;
+			width: 300px;
+			height: 500px;
+			border: 1px solid red;
+		}
+		.child {
+			box-sizing: border-box;
+			width: 100px;
+			height: 100px;
+			border: 1px solid green;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div class=&quot;parent&quot;>
+			<div class=&quot;child&quot;>1</div>
+			<div class=&quot;child&quot;>2</div>
+			<div class=&quot;child&quot;>3</div>
+			<div class=&quot;child&quot;>4</div>
+			<div class=&quot;child&quot;>5</div>
+			<div class=&quot;child&quot;>6</div>
+			<div class=&quot;child&quot;>7</div>
+			<div class=&quot;child&quot;>8</div>
+			<div class=&quot;child&quot;>9</div>
+		</div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+<p>
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div class="parent"&gt;
+	&lt;div class="child"&gt;1&lt;/div&gt;
+	&lt;div class="child"&gt;2&lt;/div&gt;
+	&lt;div class="child"&gt;3&lt;/div&gt;
+	&lt;div class="child"&gt;4&lt;/div&gt;
+	&lt;div class="child"&gt;5&lt;/div&gt;
+	&lt;div class="child"&gt;6&lt;/div&gt;
+	&lt;div class="child"&gt;7&lt;/div&gt;
+	&lt;div class="child"&gt;8&lt;/div&gt;
+	&lt;div class="child"&gt;9&lt;/div&gt;
+&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">.parent	{
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	flex-wrap: wrap;
+	width: 300px;
+	height: 500px;
+	border: 1px solid red;
+}
+.child {
+	box-sizing: border-box;
+	width: 100px;
+	height: 100px;
+	border: 1px solid green;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			.parent	{
+			display: flex;
+			flex-direction: column;
+			align-content: center;
+			flex-wrap: wrap;
+			width: 300px;
+			height: 500px;
+			border: 1px solid red;
+		}
+		.child {
+			box-sizing: border-box;
+			width: 100px;
+			height: 100px;
+			border: 1px solid green;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div class=&quot;parent&quot;>
+			<div class=&quot;child&quot;>1</div>
+			<div class=&quot;child&quot;>2</div>
+			<div class=&quot;child&quot;>3</div>
+			<div class=&quot;child&quot;>4</div>
+			<div class=&quot;child&quot;>5</div>
+			<div class=&quot;child&quot;>6</div>
+			<div class=&quot;child&quot;>7</div>
+			<div class=&quot;child&quot;>8</div>
+			<div class=&quot;child&quot;>9</div>
+		</div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Особые условия</h2>
+<p>
+	без flex-wrap: wrap ничего не работает пусть
+	у нас одна линия
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div class="parent"&gt;
+	&lt;div class="child"&gt;1&lt;/div&gt;
+	&lt;div class="child"&gt;2&lt;/div&gt;
+	&lt;div class="child"&gt;3&lt;/div&gt;
+&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">.parent	{
+	display: flex;
+	flex-direction: row;
+	align-content: center;
+	flex-wrap: wrap;
+	width: 300px;
+	height: 320px;
+	border: 1px solid red;
+}
+.child {
+	box-sizing: border-box;
+	width: 100px;
+	height: 100px;
+	border: 1px solid green;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			.parent	{
+			display: flex;
+			flex-direction: row;
+			align-content: center;
+			flex-wrap: wrap;
+			width: 300px;
+			height: 320px;
+			border: 1px solid red;
+		}
+		.child {
+			box-sizing: border-box;
+			width: 100px;
+			height: 100px;
+			border: 1px solid green;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div class=&quot;parent&quot;>
+			<div class=&quot;child&quot;>1</div>
+			<div class=&quot;child&quot;>2</div>
+			<div class=&quot;child&quot;>3</div>
+		</div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+<p>
+	уберем flex-wrap: wrap - align-content: center
+	перестанет работать
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div class="parent"&gt;
+	&lt;div class="child"&gt;1&lt;/div&gt;
+	&lt;div class="child"&gt;2&lt;/div&gt;
+	&lt;div class="child"&gt;3&lt;/div&gt;
+&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">.parent	{
+	display: flex;
+	flex-direction: row;
+	align-content: center;
+	width: 300px;
+	height: 320px;
+	border: 1px solid red;
+}
+.child {
+	box-sizing: border-box;
+	width: 100px;
+	height: 100px;
+	border: 1px solid green;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			.parent	{
+			display: flex;
+			flex-direction: row;
+			align-content: center;
+			width: 300px;
+			height: 320px;
+			border: 1px solid red;
+		}
+		.child {
+			box-sizing: border-box;
+			width: 100px;
+			height: 100px;
+			border: 1px solid green;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div class=&quot;parent&quot;>
+			<div class=&quot;child&quot;>1</div>
+			<div class=&quot;child&quot;>2</div>
+			<div class=&quot;child&quot;>3</div>
+		</div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+</div>			</main>
+			<div class="bottom">
+	</div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

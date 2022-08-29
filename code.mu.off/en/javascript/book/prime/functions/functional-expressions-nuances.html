@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Nuances of Function Expressions in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will analyze some of the nuances of function expressions in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Nuances of Function Expressions in JavaScript</h1>
+				<div class="content">
+<p>
+	The name Function Expression is given 
+	for a reason. What it really means is 
+	that such functions are part of an 
+	expression.
+</p>
+<p>
+	For example, we can add some string 
+	and an anonymous function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = 'str' + function() {return 2;};
+console.log(str); // выведет 'strfunction() {return 2;}'</code>
+</div>
+<p>
+	Why do we see such a strange result and 
+	not the number 3? Because the second 
+	term is not the result of the function, 
+	but its source code (after all, we did 
+	not invoke this function, but simply 
+	wrote it).
+</p>
+<p>
+	That is, the name <i>function expression</i> 
+	means that such a function takes part in 
+	some expression.
+</p>
+<p>
+	Assignment to a variable is 
+	also an expression:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let func = function() {
+	console.log('!');
+};</code>
+</div>
+<p>
+	You can also, for example, pass a function 
+	as an alert parameter and it will print its 
+	source code to the console - this will also 
+	be considered as an expression:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log(function() {return 2;});</code>
+</div>
+<p>
+	Why this is important: because the difference 
+	between Function Declaration and Function 
+	Expression is not at all that the first 
+	function is created with a name, and the 
+	second one initially has no name. 
+	This is not true.
+</p>
+<p>
+	An example. Here we have a function without 
+	a name, but it does not participate in any 
+	expression (that is, no actions are performed 
+	with it, speaking in a simple way):
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">/*
+	This function will be a Function Declaration, 
+	but with a syntax error:
+*/
+function() {
+	console.log('!');
+}</code>
+</div>
+<p>
+	This code will give an error! Why: since 
+	the function does not participate in any 
+	expression, the browser considers it as a 
+	Function Declaration, but does not find 
+	its name and generates an error.
+</p>
+<p>
+	To make the error disappear, you need to 
+	force the function to become part of some 
+	expression. For example, let's write the 
+	operation <code class="code inline">+</code> before it:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">+function() { // this code is correct
+	console.log('!');
+};</code>
+</div>
+<p>
+	How it works: by itself, the operation 
+	<code class="code inline">+</code> does nothing, it's the same as 
+	writing instead of the number <code class="number inline">3</code> 
+	the number <code class="code inline">+3</code> - valid, but 
+	nothing does not change.
+</p>
+<p>
+	But in the case of a function, it changes. 
+	Now our function is not just written, but 
+	participates in the expression. Therefore, 
+	there will be no error now. There will also 
+	be no result of the function execution, 
+	because we just wrote it, but 
+	did not call it.
+</p>
+<p>
+	Instead of <code class="code inline">+</code>, you can write whatever 
+	you want. For example:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">-function() { // this code is correct
+	console.log('!');
+};
+
+!function() { // this code is correct
+	console.log('!');
+};</code>
+</div>
+<p>
+	You can also put our function in parentheses, 
+	in this case it will also become a 
+	function expression:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">(function() { // this code is correct
+	console.log('!');
+});</code>
+</div>
+<div class="task">
+	<p>
+		Determine if the presented function is 
+		a Function Declaration or a Function 
+		Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	console.log('!');
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine if the presented function is 
+		a Function Declaration or a Function 
+		Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let func = function() {
+	console.log('!');
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine if the presented function is 
+		a Function Declaration or a Function 
+		Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">+function() {
+	console.log('!');
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine if the presented function is 
+		a Function Declaration or a Function 
+		Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">!function func() {
+	console.log('!');
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine if the presented function is 
+		a Function Declaration or a Function 
+		Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">-function func() {
+	console.log('!');
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine if the presented function is 
+		a Function Declaration or a Function 
+		Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">1 + function func() {
+	console.log('!');
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine if the presented function is 
+		a Function Declaration or a Function 
+		Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">(function func() {
+	console.log('!');
+})</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine if the presented function is 
+		a Function Declaration or a Function 
+		Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">console.log(
+	function() {
+		console.log('!');
+	}
+);</code>
+	</div>
+</div>
+
+<h2>Function has name, but is Function Expression</h2>
+<p>
+	Let's now make a function that will have a 
+	name, but it will be a Function Expression, 
+	because it participates in the expression:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">+function func() {
+	console.log('!');
+}</code>
+</div>
+<p>
+	It is interesting that by the name <code class="code inline">func</code> 
+	we will not be able to refer to our function, 
+	this will lead to an error:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">+function func() {
+	console.log('!');
+}
+
+func(); //!! throws an error</code>
+</div>
+<p>
+	To be able to call our function, we need to 
+	assign it to some variable:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let test = function func() {
+	console.log('!');
+};
+
+test(); // shows '!'</code>
+</div>
+<p>
+	Once again: a function that is a function 
+	expression cannot be called by its name. 
+	Such a function can only be called using 
+	the variable in which this function was 
+	written.
+</p>
+<p>
+	But nevertheless, a function expression can 
+	have a function name, it will be syntactically 
+	correct. Why this is necessary, we will 
+	understand in the next lessons.
+</p>
+
+<h2>Summary</h2>
+<p>
+	To summarize: functions are Function 
+	Declaration or Function Expression not 
+	because they have a name or not, but 
+	because they are members of 
+	expressions or not.
+</p>
+<p>
+	As you saw above, a function without a name 
+	can be treated as a Function Declaration, 
+	and a function with a name can be a 
+	Function Expression.
+</p>
+
+<h2>How to check the type of a function</h2>
+<p>
+	In the tasks below, you will need to define 
+	a function defined as a Function Declaration 
+	or Function Expression.
+</p>
+<p>
+	In simple cases, this is not difficult to do 
+	visually. But how do you check that you did 
+	it right? Use the difference between Function 
+	Declaration and Function Expression: the former 
+	can be called above their definition, 
+	while the latter cannot.
+</p>
+<p>
+	Let's say we have such a function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let test = function() {
+	console.log('!');
+}</code>
+</div>
+<p>
+	Let's invoke this function before it's defined:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">test(); // throws an error to the console, that means it is Function Expression
+
+let test = function() {
+	console.log('!');
+}</code>
+</div>
+<p>
+	Here is another example:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">func(); // shows '!', it is Function Declaration
+
+function func() {
+	console.log('!');
+}</code>
+</div>
+<p>
+	Let's put a plus sign in 
+	front of our function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">func(); // throws an error to the console, it is Function Expression
+
++function func() {
+	console.log('!');
+}</code>
+</div>
+<div class="notice">
+	<p>
+		Since the function above is a Function 
+		Expression and it is not assigned to any 
+		variable, there is no way to call it, 
+		because it will not be available by 
+		the name func.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Determine if the presented function is 
+		a Function Declaration or a Function 
+		Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test = function func() {
+	console.log('!');
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine if the presented function is 
+		a Function Declaration and a Function 
+		Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">console.log(
+	function func() {
+		console.log('!');
+	}
+);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine if the presented function is 
+		a Function Declaration and a Function 
+		Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">+function func() {
+	console.log('!');
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine if the presented function is 
+		a Function Declaration and a Function 
+		Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	console.log('!');
+}</code>
+	</div>
+</div>
+
+<h2>More complicated nuances</h2>
+<p>
+	Let's consider the following code:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">+function func() {
+	console.log('!');
+}</code>
+</div>
+<p>
+	As you already know, this function is a 
+	function expression, regardless of the 
+	fact that it has a name (we already found 
+	out that the presence of a name is not a 
+	criterion at all). Remove this plus - 
+	and get Function Declaration:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	console.log('!');
+}</code>
+</div>
+<p>
+	Let's put <code class="code inline">+</code> on the line above before 
+	the function - it will again become a 
+	Function Expression:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">+
+function func() {
+	console.log('!');
+}</code>
+</div>
+<p>
+	And now after the plus we put the number 
+	<code class="number inline">1</code> and a semicolon - our function 
+	will become a Function Declaration:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">+1;
+function func() {
+	console.log('!');
+}</code>
+</div>
+<p>
+	Why so: because on the first line one complete 
+	command is written, closed with a semicolon. 
+	Therefore, this command does not affect our 
+	function in any way.
+</p>
+<p>
+	In fact, the semicolon can be removed, because 
+	in JavaScript it is not required - the function 
+	will still remain a Function Declaration:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">+1
+function func() {
+	console.log('!');
+}</code>
+</div>
+<p>
+	But if after <code class="number inline">1</code> you put one more plus, 
+	then the function will become a Function 
+	Expression:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">+1+
+function func() {
+	console.log('!');
+}</code>
+</div>
+<p>
+	Why so: because on the first line there is 
+	an unfinished expression - there is a plus 
+	and nothing after it. Therefore, the JavaScript 
+	interpreter thinks that this plus refers to 
+	the line below, that is, to our function.
+</p>
+<p>
+	If there is a complete expression on the first 
+	line, then JavaScript automatically puts a 
+	semicolon on it and this expression does not 
+	affect our function in any way.
+</p>
+<div class="task">
+	<p>
+		Determine if the presented function is a 
+		Function Declaration or a Function 
+		Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">-
+function func() {
+	console.log('!');
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine if the presented function is a 
+		Function Declaration or a Function 
+		Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">-1;
+function func() {
+	console.log('!');
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine if the presented function is a 
+		Function Declaration or a Function 
+		Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">-1
+function func() {
+	console.log('!');
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine if the presented function is a 
+		Function Declaration or a Function 
+		Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">1
+function func() {
+	console.log('!');
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine if the presented function is a 
+		Function Declaration or a Function 
+		Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">-1-
+function func() {
+	console.log('!');
+}</code>
+	</div>
+</div>
+
+<h2>Expression to the right</h2>
+<p>
+	Note that the expression in which the function 
+	is involved must be to the left of it. If we 
+	try to do something to the right of a function, 
+	it won't make it a function expression. 
+	An example:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func() { // this is Function Declaration
+	console.log('!');
+} + 1;</code>
+</div>
+<p>
+	Why so: because in this case this +1 is just 
+	a new command written after the function. 
+	If you write this command from a new line, 
+	everything becomes clearer:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	console.log('!');
+}
++1; // just a command</code>
+</div>
+<p>
+	Let's make a Function Expression out of our 
+	function. For example, put <code class="code inline">+</code> in front 
+	of the function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">+function func() { // this is Function Expression
+	console.log('!');
+} + 1;</code>
+</div>
+<p>
+	Or let's do the assignment:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let test = function func() { // this is Function Expression
+	console.log('!');
+} + 1;</code>
+</div>
+<p>
+	Or pass as a parameter to alert:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log(function func() { // this is Function Expression
+	console.log('!');
+} + 1);</code>
+</div>
+<div class="task">
+	<p>
+		Determine if the presented function is a 
+		Function Declaration or a Function 
+		Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	console.log('!');
+}
++1;</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine if the presented function is a 
+		Function Declaration or a Function 
+		Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	console.log('!');
+} + 1;</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine if the presented function is a 
+		Function Declaration or a Function 
+		Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">+function func() {
+	console.log('!');
+} + 1;</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine if the presented function is a 
+		Function Declaration or a Function 
+		Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">+
+function func() {
+	console.log('!');
+} + 1;</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine if the presented function is a 
+		Function Declaration or a Function 
+		Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">+ 1
+function func() {
+	console.log('!');
+} + 1;</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine if the presented function is a 
+		Function Declaration or a Function 
+		Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	console.log('!');
+} + console.log('!');</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="50" data-hash="jsPmFAFEN" data-quantity="363" data-num="182"><a href="../../../../../en/javascript/book/prime/functions/function-declaration-expression.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/functions/functions-array.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/functions/functional-expressions-nuances.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/functions/functional-expressions-nuances.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

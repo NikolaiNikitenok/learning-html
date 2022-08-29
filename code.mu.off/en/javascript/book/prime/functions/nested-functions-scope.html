@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Scope of nested functions in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will analyze the scope of variables when working with nested functions in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Scope of nested functions in JavaScript</h1>
+				<div class="content">
+<p>
+	If the function contains another function 
+	inside - the variables of the outer 
+	function are visible in the inner one:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test() {
+	let num = 1; // the external function variable
+	
+	function func() {
+		console.log(num); // shows 1
+	}
+	
+	func(); // calls the inner function
+}
+
+test(); // calls the external function</code>
+</div>
+<p>
+	Also, variables defined outside the outer 
+	function will be visible in the 
+	inner function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 1; // the global variable
+
+function test() {
+	function func() {
+		console.log(num); // shows 1
+	}
+	
+	func(); // calls the inner function
+};
+
+test(); // calls the outer function</code>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function test() {
+	let num = 1;
+	
+	function func() {
+		console.log(num);
+	}
+	
+	func();
+}
+
+test();</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function test() {
+	let num = 1;
+	
+	function func() {
+		console.log(num);
+	}
+}
+
+test();</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function test() {
+	let num = 1;
+	
+	function func() {
+		console.log(num);
+	}
+	
+	func();
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function test() {
+	let num;
+	
+	function func() {
+		console.log(num);
+	}
+	
+	num = 1
+	func();
+	
+	num = 2
+	func();
+}
+
+test();</code>
+	</div>
+</div>
+
+<h2>Parameters</h2>
+<p>
+	The parameters of the outer function will 
+	also be available in the inner one:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test(num) {
+	function func() {
+		console.log(num); // shows 1
+	}
+	
+	func(); // calls the inner function
+};
+
+test(1); // passes a number as a parameter</code>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function test(num1, num2) {
+	function func() {
+		console.log(num1 + num2);
+	}
+	
+	func();
+}
+
+test(1, 2);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function test(num1, num2) {
+	function func() {
+		console.log(num1 + num2);
+	}
+	
+	num1 = 2;
+	func();
+}
+
+test(1, 2);</code>
+	</div>
+</div>
+
+<h2>Parameters</h2>
+<p>
+	Let's make both the outer function and the 
+	inner function accept parameters:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test(num) {
+	function func(localNum) {
+		console.log(localNum);
+	}
+}</code>
+</div>
+<p>
+	Let's pass the parameter of the external 
+	function to the call of the internal 
+	function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test(num) {
+	function func(localNum) {
+		console.log(localNum); // shows 1
+	}
+	
+	func(num); //!! passes the parameter
+}
+
+test(1); // passes a number as a parameter</code>
+</div>
+<p>
+	It turns out that the variable <code class="code inline">num</code> 
+	will be available in the inner function as 
+	an external variable from the parent function 
+	and the variable <code class="code inline">localNum</code>, which 
+	is a local variable of the inner function.
+</p>
+<p>
+	Both of these variables will have the same value:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test(num) {
+	function func(localNum) {
+		console.log(num); // shows 1
+		console.log(localNum); // shows 1
+	}
+	
+	func(num);
+}
+
+test(1);</code>
+</div>
+<p>
+	The difference between them will be as 
+	follows: if you change the variable 
+	<code class="code inline">num</code> in the inner function, it 
+	will also change in the outer function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test(num) {
+	function func(localNum) {
+		num = 2; // changes the variable num
+	}
+	
+	func(num);   // passes the parameter
+	console.log(num);  // shows 2
+}
+
+test(1); // passes a number as a parameter</code>
+</div>
+<p>
+	And the variable <code class="code inline">localNum</code> will be 
+	local. Its changes will not lead to any 
+	changes in the external function. And the 
+	variable <code class="code inline">localNum</code> itself will not 
+	be visible outside the inner function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test(num) {
+	function func(localNum) {
+		localNum = 2; // changes the num variable
+	}
+	
+	func(num); // passes the parameter
+}
+
+test(1); // passes a number as a parameter</code>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function test(num) {
+	function func(localNum) {
+		console.log(localNum);
+	}
+	
+	func(num);
+}
+
+test(1);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function test(num) {
+	function func(localNum) {
+		console.log(localNum);
+	}
+	
+	func(num + 1);
+}
+
+test(1);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function test(num) {
+	function func(localNum) {
+		console.log(num);
+	}
+	
+	func(num + 1);
+}
+
+test(1);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function test(num) {
+	function func(localNum) {
+		localNum = 2;
+	}
+	
+	func(num);
+	console.log(num);
+}
+
+test(1);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function test(num) {
+	function func(localNum) {
+		localNum = 2;
+	}
+	
+	func(num);
+	console.log(localNum);
+}
+
+test(1);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function test(num) {
+	function func(localNum) {
+		num = 2;
+	}
+	
+	func(num);
+	console.log(num);
+}
+
+test(1);</code>
+	</div>
+</div>
+
+<h2>Same name parameters</h2>
+<p>
+	Now let the outer and inner functions 
+	have the same name parameters:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test(num) {
+	function func(num) {
+		console.log(num); // shows 1
+	}
+	
+	func(num);
+};
+
+test(1);</code>
+</div>
+<p>
+	In this case, the inner function will have 
+	the local variable <code class="code inline">num</code>. Its change 
+	in the inner function will not affect the 
+	outer variable <code class="code inline">num</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test(num) {
+	function func(num) {
+		num = 2; // changes the local variable num
+	}
+	
+	func(num);
+	console.log(num); // shows 1 - nothing has changed
+}
+
+test(1);</code>
+</div>
+<p>
+	It turns out that the inner function will 
+	not be able to access the outer variable 
+	<code class="code inline">num</code> in order to change it:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test(num) {
+	function func(num) {
+		// here you can not access to the external variable num
+	}
+	
+	func(num);
+}
+test(1);</code>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function test(num) {
+	function func(num) {
+		console.log(num);
+	}
+	
+	func(num);
+}
+
+test(1);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function test(num) {
+	function func(num) {
+		num = 2;
+	}
+	
+	func(num);
+	console.log(num);
+}
+
+test(1);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function test(num) {
+	function func(num) {
+		console.log(num);
+	}
+	
+	num = 2;
+	func(num);
+}
+
+test(1);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function test(num) {
+	function func(num) {
+		console.log(num);
+	}
+	
+	func(num);
+	num = 2;
+}
+
+test(1);</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="52" data-hash="jsPmFANFS" data-quantity="363" data-num="188"><a href="../../../../../en/javascript/book/prime/functions/nested-functions.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/functions/function-returning-function.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/functions/nested-functions-scope.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/functions/nested-functions-scope.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

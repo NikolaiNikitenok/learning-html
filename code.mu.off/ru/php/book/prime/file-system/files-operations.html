@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Операции над файлами в PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы изучим различные операции над файлами в PHP: переименование, перемещение, удаление и другие.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Операции над файлами в PHP</h1>
+				<div class="content">
+<h2>Переименовывание</h2>
+<p>
+	Функция <code class="code inline">rename</code> позволяет переименовывать
+	файлы. Первым параметром указываем старое
+	имя файла, вторым - новое имя файла:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	rename('test.txt', 'new.txt');
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Пусть в корне вашего сайта лежит файл <code class="path inline">old.txt</code>.
+		Переименуйте его на <code class="path inline">new.txt</code>.
+	</p>
+</div>
+
+<h2>Перемещение</h2>
+<p>
+	Функция <code class="code inline">rename</code> позволяет также перемещать
+	файлы. Для этого вторым параметром функции
+	нужно указать новый путь к файлу. Давайте
+	для примера перенесем наш файл в папку <code class="path inline">dir</code>,
+	одновременно переименовав его на <code class="path inline">new.txt</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	rename('test.txt', 'dir/new.txt');
+?&gt;</code>
+</div>
+<p>
+	Можно сделать только перемещение, а сам файл
+	не переименовывать:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	rename('test.txt', 'dir/test.txt');
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Пусть в корне вашего сайта лежит файл <code class="path inline">file.txt</code>.
+		Пусть также в корне вашего сайта лежит папка
+		<code class="path inline">dir</code>. Переместите файл в эту папку.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Пусть в корне вашего сайта лежит папка <code class="path inline">dir1</code>,
+		а в ней файл <code class="path inline">file.txt</code>. Пусть также
+		в корне вашего сайта лежит папка <code class="path inline">dir2</code>.
+		Переместите файл в эту папку.
+	</p>
+</div>
+
+<h2>Копирование</h2>
+<p>
+	Функция <code class="code inline">copy</code> позволяет копировать
+	файл. Первым параметром она принимает путь
+	к файлу, который хотим копировать, вторым
+	- новый путь файла, куда хотим положить копию.
+	Мы можем сделать копию и положить ее рядом,
+	или положить ее в другую папку. Сделаем просто
+	копию:
+</p>
+<p>
+	Давайте для примера сделаем копию файла,
+	разместив ее в папке с исходным файлом:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	copy('test.txt', 'copy.txt');
+?&gt;</code>
+</div>
+<p>
+	А теперь давайте поместим нашу копию в папку
+	<code class="path inline">dir</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">copy('test.txt', 'dir/copy.txt');</code>
+</div>
+<div class="task">
+	<p>
+		Пусть в корне вашего сайта лежит файл. С
+		помощью цикла положите в папку <code class="path inline">copy</code>
+		пять копий этого файла. Именем файлов копий
+		пусть будут их порядковые номера.
+	</p>
+</div>
+
+<h2>Удаление</h2>
+<p>
+	Для удаления файлов используется функция
+	<code class="code inline">unlink</code>. Параметром она принимает путь
+	к удаляемому файлу:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	unlink('test.txt');
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Пусть в корне вашего сайта лежат файлы <code class="path inline">1.txt</code>,
+		<code class="path inline">2.txt</code> и <code class="path inline">3.txt</code>. Вручную сделайте
+		массив с именами этих файлов. Переберите
+		его циклом и удалите все эти файлы.
+	</p>
+</div>
+
+<h2>Размер файла</h2>
+<p>
+	Функция <code class="code inline">filesize</code> позволяет находить
+	размеры файла в байтах. Пример:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	echo filesize('test.txt');
+?&gt;</code>
+</div>
+<p>
+	Размер в байтах легко можно перевести в килобайты:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	echo filesize('test.txt') / 1024;
+?&gt;</code>
+</div>
+<p>
+	А теперь давайте переведем в мегабайты:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	echo filesize('test.txt') / (1024 * 1024);
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Пусть в корне вашего сайта лежит файл. Узнайте
+		его размер, выведите на экран.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Модифицируйте предыдущую задачу так, чтобы
+		размер файла выводился в килобайтах.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Положите в корень вашего сайта какую-нибудь
+		картинку размером более мегабайта. Узнайте
+		размер этого файла и переведите его в мегабайты.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Положите в корень вашего сайта какой-нибудь
+		фильм размером более гигабайта. Узнайте размер
+		этого файла и переведите его в гигабайты.
+	</p>
+</div>
+
+<h2>Проверка существования</h2>
+<p>
+	Функция <code class="code inline">file_exists</code> проверяет существует
+	ли файл, путь к которому передан параметром.
+	Пример:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">var_dump(file_exists('test.txt')); // true или false</code>
+</div>
+<p>
+	Как правило, эта функция используется для
+	того, чтобы проверить наличие файла перед
+	выполнением операции над ним. Например, так:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	if (file_exists('test.txt')) {
+		echo filesize('test.txt');
+	} else {
+		echo 'файла не существует';
+	}
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Проверьте, лежит ли в корне вашего сайта
+		файл <code class="code inline">file.txt</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Проверьте, лежит ли в корне вашего сайта
+		файл <code class="code inline">file.txt</code>. Если нет - создайте
+		его и запишите в него текст <code class="string inline">'!'</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Проверьте, лежит ли в корне вашего сайта
+		файл <code class="code inline">message.txt</code>. Если такой файл
+		есть - выведите текст этого файла на экран.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/prime/" data-persent="70" data-hash="ppPmFSFO" data-quantity="223" data-num="158"><a href="../../../../../ru/php/book/prime/file-system/absolute-paths.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/php/book/prime/file-system/dirs-operations.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

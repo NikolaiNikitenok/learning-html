@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>JavaScript variables | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will look at work with variables in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>JavaScript variables</h1>
+				<div class="content">
+<p>
+	The basic concept of any programming language 
+	is <dfn>variable</dfn>. A variable is a container 
+	in which we can store any data, for example, 
+	strings or numbers.
+</p>
+<p>
+	Each variable must have a name, the latter 
+	can consist of Latin letters, numbers, 
+	symbols <code class="code inline">$</code> and underscores. The first 
+	character of the variable name must not be a digit. 
+	Variable names examples: <code class="code inline">str</code>, <code class="code inline">my_str</code>,
+	<code class="code inline">myStr</code>, <code class="code inline">a1</code>, <code class="code inline">$</code>,
+	<code class="code inline">$a</code>, <code class="code inline">$$a</code>.
+</p>
+
+<h2>Using of variables</h2>
+<p>
+	In order to use a variable, you should first 
+	<dfn>declare</dfn> it: put the keyword <code class="code inline">let</code> 
+	before its name. Let's declare, for example, 
+	the variable named <code class="code inline">a</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a;</code>
+</div>
+<p>
+	After the variable declaration, you can 
+	write to it	(they say to <dfn>assign</dfn> to it) 
+	some value, such as some number or string.
+</p>
+<p>
+	Writing data to a variable is done using 
+	the assignment operation <code class="code inline">=</code>.
+	Let's, for example, write the number <code class="number inline">3</code> 
+	into the variable <code class="code inline">a</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = 3;</code>
+</div>
+<p>
+	And now let's display the contents of this 
+	variable on the screen using the <code class="code inline">alert</code> function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = 3; // declaring a variable and assigning a value to it
+alert(a);  // shows 3</code>
+</div>
+<p>
+	It is not necessary to write the value 
+	into the variable immediately after the 
+	declaration. You can first declare a variable 
+	and then assign a value to it:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a;    // declaring a variable
+a = 3;    // assigning value to it  
+alert(a); // displays the value of the variable on the screen</code>
+</div>
+<p>
+	As you see, <code class="code inline">let</code> is written only 
+	once before a variable name - when you declare 
+	this variable. To use a variable further, 
+	you need only write the name of this variable.
+</p>
+<div class="task">
+	<p>
+		Create the variable <code class="code inline">num</code> and 
+		assign the value <code class="number inline">123</code> to it. 
+		Display the value of this variable to 
+		the screen using the <code class="code inline">alert</code> function.
+	</p>
+</div>
+
+<h2>Declaring of multiple variables</h2>
+<p>
+	Let's declare several variables:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = 1;
+let b = 2;
+let c = 3;</code>
+</div>
+<p>
+	We can simplify the code above if we 
+	write <code class="code inline">let</code> one time and listing 
+	then the required variables with their 
+	values after it, in such a way:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = 1, b = 2, c = 3;</code>
+</div>
+<p>
+	You can first declare all variables, 
+	and then assign values to them:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a, b, c; // declare all 3 variables
+
+// Assigning values to variables:
+a = 1;
+b = 2;
+c = 3;</code>
+</div>
+<div class="task">
+	<p>
+		Try all the described ways of 
+		declaring variables by yourself.
+	</p>
+</div>
+
+<h2>Variable value changes</h2>
+<p>
+	Suppose we have a variable to which we 
+	have assigned some value. We can apply 
+	again the assignment operation then and 
+	assign an another value to this variable:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a;    // declare a variable
+
+a = 1;    // assign the value 1 to it 
+alert(a); // shows 1
+
+a = 2;    // now assign the value 2, overwriting the value 1
+alert(a); // shows 2</code>
+</div>
+<p>
+	That is, the value of a variable is not 
+	something rigidly attached to it. We can 
+	freely write some data to a variable, read it, 
+	then write something else - and so on.
+</p>
+<div class="task">
+	<p>
+		Create the variable <code class="code inline">a</code>. Assign the 
+		value <code class="number inline">10</code> to it, display it on the screen.
+		Then write the value <code class="number inline">20</code> into it, 
+		display it on the screen.
+	</p>
+</div>
+
+<h2>Multiple let for single variable</h2>
+<p>
+	The same variable cannot be declared 
+	multiple times with <code class="code inline">let</code>. For example, 
+	the following code will result in an error:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = 1;
+alert(a);
+
+let a = 2;
+alert(a);</code>
+</div>
+<p>
+	Here are two solutions to the problem.
+	You can just enter two different variables:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = 1;
+alert(a);
+
+let b = 2;
+alert(b);</code>
+</div>
+<p>
+	But you can also declare the variable <code class="code inline">a</code> 
+	first and then operate on it:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a;
+
+a = 1;
+alert(a);
+
+a = 2;
+alert(a);</code>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="1" data-hash="jsPmBsVr" data-quantity="363" data-num="6"><a href="../../../../../en/javascript/book/prime/basis/comments.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/basis/math-operations-numbers.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/basis/variables.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/basis/variables.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

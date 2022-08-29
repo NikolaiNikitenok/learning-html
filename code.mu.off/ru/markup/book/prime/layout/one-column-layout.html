@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Простые одноколоночные макеты сайтов | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы научимся создавать одноколоночные макеты сайтов на CSS.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Простые одноколоночные макеты сайтов</h1>
+				<div class="content">
+<p>
+	В данном уроке мы будем практиковаться создавать
+	простые одноколоночные макеты сайтов. Давайте,
+	например, сделаем вот такой макет:
+</p>
+<div class="block"><a href="" data-module="opener" data-type="page"><span data-x="open-window"></span><div srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			#wrapper {
+			width: 800px;
+			margin: 50px auto;
+			border: 1px solid black;
+		}
+		
+		#menu {
+			display: flex;
+			justify-content: center;
+			margin-bottom: 20px;
+			background-color: #484848;
+		}
+		#menu a {
+			margin: 0 5px;
+			padding: 15px 25px;
+			text-decoration: none;
+			color: #fff;
+			font: bold 14px Arial;
+		}
+		#menu a:hover, #menu a.active {
+			color: #484848;
+			background-color: #fff;
+		}
+		
+		#content {
+			padding: 0 30px 20px;
+		}
+		#content h1 {
+			text-align: center;
+			margin-top: 0;
+			margin-bottom: 10px;
+		}
+		#content p {
+			padding: 0 10px;
+			margin-bottom: 5px;
+			font: 18px/1.3 Arial;
+			text-align: justify;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;wrapper&quot;>
+			<div id=&quot;menu&quot;>
+				<a href=&quot;#&quot;>link text 1</a>
+				<a href=&quot;#&quot; class=&quot;active&quot;>link text 2</a>
+				<a href=&quot;#&quot;>link text 3</a>
+				<a href=&quot;#&quot;>link text 4</a>
+				<a href=&quot;#&quot;>link text 5</a>
+			</div>
+			<div id=&quot;content&quot;>
+				<h1>Proin tristique lorem</h1>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sollicitudin ultrices dictum. Nullam non diam vestibulum, interdum nibh quis, sollicitudin sem. Vivamus sit amet sagittis massa. Cras aliquet lacus at interdum blandit. Quisque quis tellus nunc. Cras at nisi laoreet, suscipit nibh quis, pellentesque diam.
+				</p>
+				<p>
+					Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam a bibendum orci. Sed fermentum consequat mauris adipiscing condimentum. Phasellus id convallis nunc. Nullam vel mollis purus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras nec neque vel risus accumsan sollicitudin quis ut velit. Fusce et libero hendrerit, accumsan enim non, dictum eros. Proin sem justo, porta id magna quis, consequat scelerisque urna.
+				</p>
+			</div>
+		</div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></div></a></div>
+<p>
+	Приступим к реализации. Каждый макет как
+	правило начинается с общего дива с названием
+	<code class="code inline">wrapper</code>, содержащего весь остальной сайт:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="wrapper"&gt;
+	
+&lt;/div&gt;</code>
+</div>
+<p>
+	В нашем случае враппер будет выровнен по
+	центу экрана:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="css">#wrapper {
+	width: 800px;
+	margin: 50px auto;
+}</code>
+</div>
+<p>
+	Также он будет иметь границу:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="css">#wrapper {
+	width: 800px;
+	margin: 50px auto;
+	border: 1px solid black;
+}</code>
+</div>
+<p>
+	Давайте теперь сделаем основную структуру
+	страницы. Она будет состоять из меню и основного
+	содержимого - контента:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="wrapper"&gt;
+	&lt;div id="menu"&gt;
+		
+	&lt;/div&gt;
+	&lt;div id="content"&gt;
+		
+	&lt;/div&gt;
+&lt;/div&gt;</code>
+</div>
+<p>
+	Добавим содержимое наших блоков:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="wrapper"&gt;
+	&lt;div id="menu"&gt;
+		&lt;a href="#"&gt;link text 1&lt;/a&gt;
+		&lt;a href="#" class="active"&gt;link text 2&lt;/a&gt;
+		&lt;a href="#"&gt;link text 3&lt;/a&gt;
+		&lt;a href="#"&gt;link text 4&lt;/a&gt;
+		&lt;a href="#"&gt;link text 5&lt;/a&gt;
+	&lt;/div&gt;
+	&lt;div id="content"&gt;
+		&lt;h1&gt;Proin tristique lorem&lt;/h1&gt;
+		&lt;p&gt;
+			...
+		&lt;/p&gt;
+		&lt;p&gt;
+			...
+		&lt;/p&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code>
+</div>
+<p>
+	Теперь можно добавить стили нашим блокам.
+	Давайте добавим стиль менюшке:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="css">#menu {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 20px;
+	background-color: #484848;
+}
+#menu a {
+	margin: 0 5px;
+	padding: 15px 25px;
+	text-decoration: none;
+	color: #fff;
+	font: bold 14px Arial;
+}
+#menu a:hover, #menu a.active {
+	color: #484848;
+	background-color: #fff;
+}</code>
+</div>
+<p>
+	А теперь добавим стили элементам контента:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="css">#content {
+	padding: 0 30px 20px;
+}
+#content h1 {
+	text-align: center;
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+#content p {
+	padding: 0 10px;
+	margin-bottom: 5px;
+	font: 18px/1.3 Arial;
+	text-align: justify;
+}</code>
+</div>
+<p>
+	Можем теперь собрать весь код вместе:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="wrapper"&gt;
+	&lt;div id="menu"&gt;
+		&lt;a href="#"&gt;link text 1&lt;/a&gt;
+		&lt;a href="#" class="active"&gt;link text 2&lt;/a&gt;
+		&lt;a href="#"&gt;link text 3&lt;/a&gt;
+		&lt;a href="#"&gt;link text 4&lt;/a&gt;
+		&lt;a href="#"&gt;link text 5&lt;/a&gt;
+	&lt;/div&gt;
+	&lt;div id="content"&gt;
+		&lt;h1&gt;Proin tristique lorem&lt;/h1&gt;
+		&lt;p&gt;
+			...
+		&lt;/p&gt;
+		&lt;p&gt;
+			...
+		&lt;/p&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">#wrapper {
+	width: 800px;
+	margin: 50px auto;
+	border: 1px solid black;
+}
+
+#menu {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 20px;
+	background-color: #484848;
+}
+#menu a {
+	margin: 0 5px;
+	padding: 15px 25px;
+	text-decoration: none;
+	color: #fff;
+	font: bold 14px Arial;
+}
+#menu a:hover, #menu a.active {
+	color: #484848;
+	background-color: #fff;
+}
+
+#content {
+	padding: 0 30px 20px;
+}
+#content h1 {
+	text-align: center;
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+#content p {
+	padding: 0 10px;
+	margin-bottom: 5px;
+	font: 18px/1.3 Arial;
+	text-align: justify;
+}</code>
+</div>
+
+<h2>Совет 1</h2>
+<p>
+	Удобнее всего давать отступы сверху вниз.
+	К примеру, у нас есть менюшка и контент,
+	а между ними - пустое пространство. Очевидно,
+	что это пространство может быть сделано нижним
+	отступом менюшки, верхним отступом контента,
+	или их одновременным влиянием. В этом случае
+	лучше задать нижний отступ менюшке, а контенту
+	убрать верхний пэддинг и марджин по умолчанию
+	для <code class="code inline">h1</code>.
+</p>
+
+<h2>Совет 2</h2>
+<p>
+	Потомки не должны формировать отступ между
+	родителями. Например, у нас есть менюшка.
+	Нижний отступ этой менюшки можно сформировать
+	либо марджином дива с меню, либо марджином
+	ссылок. Лучше выбрать первый вариант, так
+	как ссылки не должны действовать через голову
+	родителя.
+</p>
+
+<h2>Совет 3</h2>
+<p>
+	Пусть между двумя элементами есть отступ
+	и в данном случае визуально нет разницы,
+	что выбрать для отступа - марджин или пэддинг.
+	В этом случае выбирайте марджин, так как
+	именно он должен создавать отступы между
+	элементами.
+</p>
+
+<h2>Практические задания</h2>
+<div class="task">
+	<div class="block"><a href="" data-module="opener" data-type="page"><span data-x="open-window"></span><div srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			#wrapper {
+				width: 700px;
+				margin: 50px auto;
+				text-align: justify;
+				border: 1px solid black;
+			}
+			
+			#content h1 {
+				text-align: center;
+				margin-bottom: 10px;
+			}
+			#content p {
+				padding: 0 10px;
+				margin-bottom: 5px;
+				font: 17px/20px &quot;Times New Roman&quot;;
+			}
+			
+			#content a {
+				color: blue; 
+				text-decoration: none;
+				font-weight: bold;
+			}
+			#content a:hover {
+				color: green;
+				text-decoration: underline;
+			}
+			
+			#menu {
+				display: flex;
+				margin-bottom: 20px;
+				background-color: #484848;
+			}
+			#menu a {
+				padding: 10px 25px;
+				text-decoration: none;
+				color: #fff;
+				font: bold 14px Arial;
+			}
+			#menu a:hover, #menu a.active {
+				color: #484848;
+				background-color: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;wrapper&quot;>
+				<div id=&quot;menu&quot;>
+					<a href=&quot;#&quot;>home</a>
+					<a href=&quot;#&quot; class=&quot;active&quot;>blog</a>
+					<a href=&quot;#&quot;>photos</a>
+					<a href=&quot;#&quot;>about us</a>
+					<a href=&quot;#&quot;>contacts</a>
+				</div>
+				<div id=&quot;content&quot;>
+					<h1>Proin tristique lorem</h1>
+					<p>
+						Lorem ipsum dolor <a href=&quot;&quot;>sit amet</a>, consectetur adipiscing elit. Nulla pharetra risus erat, eu imperdiet felis suscipit at. Vivamus rhoncus vel neque non eleifend. Donec adipiscing eros quis molestie sodales. Proin vitae nulla ut sem lobortis scelerisque. Aliquam ultricies porta sem quis fringilla. Quisque pretium enim ut elit fringilla, in adipiscing ligula placerat. Integer id tortor tristique, facilisis lorem sit amet, porta ante. Nulla eget diam in erat hendrerit gravida.
+					</p>
+					<p>
+						Cras ut nunc metus. Nullam id faucibus ante. <a href=&quot;&quot;>Proin tristique lorem</a> tristique dolor porttitor, eget adipiscing leo gravida. Proin erat erat, laoreet sit amet tincidunt ac, iaculis nec libero. In placerat odio ac dapibus faucibus. Praesent ut est in ligula facilisis congue eget ac ante. Phasellus at felis vitae est molestie ultricies.
+					</p>
+				</div>
+			</div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></div></a></div>
+</div>
+<div class="task">
+	<div class="block"><a href="" data-module="opener" data-type="page"><span data-x="open-window"></span><div srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			body {
+				margin: 0;
+			}
+			
+			#wrapper {
+				width: 900px;
+				margin: 0 auto 50px;
+			}
+			#containter {
+				margin-bottom: 20px;
+				border-left: 1px ridge #FC9D00;
+				border-right: 1px ridge #FC9D00;
+				border-bottom: 1px ridge #FC9D00;
+			}
+			
+			#menu {
+				display: flex;
+				background-color: #FC9D00;
+				margin-bottom: 20px;
+			}
+			#menu a {
+				padding: 15px 25px;
+				text-decoration: none;
+				color: #fff;
+				font: bold 15px Arial;
+			}
+			#menu a:hover, #menu a.active {
+				color: #FC9D00;
+				background-color: #fff;
+			}
+			
+			#content h1, #content h2 {
+				text-align: center;
+				margin-bottom: 10px;
+				color: #9B6100;
+			}
+			#content h1 {
+				font: 30px &quot;Times New Roman&quot;;
+			}
+			#content h2 {
+				font: 25px &quot;Times New Roman&quot;;
+			}
+			#content p {
+				margin-bottom: 5px;
+				padding: 0 10px;
+				font: 17px/33px &quot;Times New Roman&quot;;
+				text-align: justify;
+				text-indent: 50px;
+				color: #CC8000;
+			}
+			#content a {
+				color: #CC8000;
+				text-decoration: underline;
+				font-weight: bold;
+			}
+			#content a:hover{
+				color: black; 
+				text-decoration: none;
+			}
+			
+			#footer {
+				display: flex;
+				justify-content: center;
+				font: 13px Arial;
+			}
+			#footer a {
+				margin: 0 10px;
+				text-decoration: none;
+				color: #9B6100;
+				font: bold 13px Arial;
+			}
+			#footer a:hover, #footer a.active {
+				text-decoration: underline;
+				color: black;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;wrapper&quot;>
+				<div id=&quot;containter&quot;>
+					<div id=&quot;menu&quot;>
+						<a href=&quot;#&quot;>home</a>
+						<a href=&quot;#&quot; class=&quot;active&quot;>blog</a>
+						<a href=&quot;#&quot;>photos</a>
+						<a href=&quot;#&quot;>about us</a>
+						<a href=&quot;#&quot;>contacts</a>
+					</div>
+					<div id=&quot;content&quot;>
+						<h1>Vestibulum ante ipsum</h1>
+						<p>
+							Vestibulum ante ipsum primis <a href=&quot;&quot;>in faucibus orci luctus</a> et ultrices posuere cubilia Curae; Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin eu fermentum diam, vitae faucibus ligula. Nam nec risus sed nisi porttitor ullamcorper iaculis ac nulla. Sed condimentum nisi in tincidunt adipiscing. Mauris vehicula mollis consequat. Vivamus non accumsan tortor. Aliquam dictum justo et augue viverra, vel interdum lorem pharetra.
+						</p>
+						<p>
+							Nullam id faucibus ante. <a href=&quot;&quot;>Proin tristique lorem</a> tristique dolor porttitor, eget adipiscing leo gravida. Proin erat erat, laoreet sit amet tincidunt ac, iaculis nec libero. In placerat odio ac dapibus faucibus. Praesent ut est in ligula facilisis congue eget ac ante. Phasellus at felis vitae est molestie ultricies.
+						</p>
+						<h2>Vestibulum ante</h2>
+						<p>
+							Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; <a href=&quot;&quot;>Pellentesque</a> habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin eu fermentum diam, vitae faucibus ligula. Nam nec risus sed nisi porttitor ullamcorper iaculis ac nulla. Sed condimentum nisi in tincidunt adipiscing. Mauris vehicula mollis consequat. Vivamus non accumsan tortor. Aliquam dictum justo et augue viverra, vel interdum lorem pharetra.
+						</p>
+						<p>
+							Duis vel dapibus nulla. <a href=&quot;&quot;>Sed scelerisque</a> porttitor rhoncus. Nunc eleifend eget nulla sed malesuada. Vestibulum vestibulum ullamcorper lacus, ut ullamcorper tortor convallis quis. Mauris id eleifend nisi. Vivamus at dolor magna. Nulla eleifend odio sit amet nisl semper, id suscipit ligula semper. Nunc leo risus, ullamcorper quis ullamcorper nec, adipiscing et nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec vestibulum nibh vel magna iaculis, et porttitor massa egestas. Aliquam sodales tincidunt mi ac semper. Nam dignissim lectus elit, nec pharetra ligula suscipit quis.
+						</p>
+					</div>
+				</div>
+				<div id=&quot;footer&quot;>
+					<a href=&quot;&quot;>Scelerisque</a>
+					<a href=&quot;&quot;>Rhoncus</a>
+					<a href=&quot;&quot;>Proin</a>
+					<a href=&quot;&quot;>Tristique</a>
+					<a href=&quot;&quot;>Faucibus</a>
+				</div>
+			</div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></div></a></div>
+</div>
+<div class="task">
+	<div class="block"><a href="" data-module="opener" data-type="page"><span data-x="open-window"></span><div srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			#wrapper {
+				width: 700px;
+				margin: 0 auto;
+			}
+			#wrapper h1 {
+				font: 30px &quot;Times New Roman&quot;;
+				text-align: center;
+			}
+			#wrapper a {
+				color: blue;
+				text-decoration: none;
+			}
+			#wrapper a:hover {
+				text-decoration: underline;
+			}
+			
+			#wrapper div {
+				margin-bottom: 20px;
+				border: 1px solid #707070;
+				padding: 20px;
+			}
+			#wrapper p {
+				margin: 10px 0;
+				text-align: justify;
+			}
+			#wrapper p.more {
+				text-align: right;
+				padding-right: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;wrapper&quot;>
+				<h1>Vestibulum ante ipsum</h1>
+				<div>
+					<h2><a href=&quot;&quot;>News</a></h2>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sollicitudin ultrices dictum. Nullam non diam vestibulum, interdum nibh quis, sollicitudin sem. Vivamus sit amet sagittis massa. Cras aliquet lacus at interdum blandit. Quisque quis tellus nunc. Cras at nisi laoreet, suscipit nibh quis, pellentesque diam.
+					</p>
+					<p>
+						Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam a bibendum orci. Sed fermentum consequat mauris adipiscing condimentum. Phasellus id convallis nunc. Nullam vel mollis purus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras nec neque vel risus accumsan sollicitudin quis ut velit. Fusce et libero hendrerit, accumsan enim non, dictum eros. Proin sem justo, porta id magna quis, consequat scelerisque urna.
+					</p>
+					<p class=&quot;more&quot;>
+						<a href=&quot;&quot;>more...</a>
+					</p>
+				</div>
+				<div>
+					<h2><a href=&quot;&quot;>About company</a></h2>
+					<p>
+						Sed non ante vitae nunc lacinia tristique nec quis nisl. Integer a fringilla elit, vitae accumsan massa. Fusce ac tempor est. In ultricies mi sit amet nunc posuere eleifend. Cras vulputate hendrerit sodales. Mauris lectus magna, feugiat vitae sagittis id, suscipit ac dui. Sed a orci a ipsum iaculis gravida. Integer nec fringilla turpis. Sed dapibus turpis rutrum lacus mattis egestas. Aliquam viverra libero vitae mi pellentesque lobortis. Donec varius elit in aliquam consectetur.
+					</p>
+					<p>
+						Sed fermentum consequat mauris adipiscing condimentum. Phasellus id convallis nunc. Nullam vel mollis purus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras nec neque vel risus accumsan sollicitudin quis ut velit. Fusce et libero hendrerit, accumsan enim non, dictum eros. Proin sem justo, porta id magna quis, consequat scelerisque urna.
+					</p>
+					<p class=&quot;more&quot;>
+						<a href=&quot;&quot;>more...</a>
+					</p>
+				</div>
+				<div>
+					<h2><a href=&quot;&quot;>Interesting</a></h2>
+					<p>
+						Mauris et metus vitae lectus interdum auctor non sit amet odio. Morbi laoreet feugiat dapibus. Nulla ultricies sollicitudin est id blandit. Fusce justo nisl, tristique id fringilla ut, consectetur eu purus. Curabitur facilisis ipsum augue, vel varius turpis malesuada eget. Pellentesque et ante vestibulum, semper lorem quis, bibendum urna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean hendrerit tortor a cursus fermentum. Nunc suscipit sem laoreet interdum ullamcorper. Fusce volutpat orci ut ante aliquam, vitae cursus nulla dignissim. Fusce dignissim suscipit suscipit.
+					</p>
+					<p>
+						Etiam a bibendum orci. Sed fermentum consequat mauris adipiscing condimentum. Phasellus id convallis nunc. Nullam vel mollis purus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras nec neque vel risus accumsan sollicitudin quis ut velit. Fusce et libero hendrerit, accumsan enim non, dictum eros. Proin sem justo, porta id magna quis, consequat scelerisque urna.
+					</p>
+					<p class=&quot;more&quot;>
+						<a href=&quot;&quot;>more...</a>
+					</p>
+				</div>
+			</div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></div></a></div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/markup/book/prime/" data-persent="94" data-hash="mkPmLtOCL" data-quantity="115" data-num="109"><a href="../../../../../ru/markup/book/prime/layout/menu.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/markup/book/prime/layout/multi-wrappers.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

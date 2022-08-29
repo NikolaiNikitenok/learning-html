@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Text slider with arrows in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will implement a text slider with arrows in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Text slider with arrows in JavaScript</h1>
+				<div class="content">
+<p>
+	Let's now make a text slider with arrows. This 
+	means that the text will change not by the timer, 
+	but by clicking on the arrow. Let's add arrows 
+	to our HTML code:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;a href="" id="left"&gt;&larr;&lt;/a&gt;
+&lt;a href="" id="right"&gt;&rarr;&lt;/a&gt;
+&lt;div id="slider"&gt;&lt;/div&gt;</code>
+</div>
+<p>
+	The main solution subtlety of this slider is that 
+	the text counter variable should be common for 
+	the click handlers of our arrows:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let i = 0; // the external variable
+
+left.addEventListener('click', function() {
+	// decrease i by 1
+	// and display text with number i
+});
+right.addEventListener('click', function() {
+	// increase i by 1
+	// and display text with number i
+});</code>
+</div>
+<p>
+	And the second subtlety is that both with decreasing 
+	<code class="code inline">i</code>, and with increasing, you can't reach numbers 
+	less than zero and greater than the last element 
+	of the array.
+</p>
+<div class="task">
+	<p>
+		Implement the described slider. Make the 
+		texts go in circles.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Modify the previous task so that the texts don't 
+		go in circles, but simply don't scroll further 
+		when they reach the extreme right or left position.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/practice/" data-persent="56" data-hash="jsPrSlTWA" data-quantity="75" data-num="43"><a href="../../../../../en/javascript/book/practice/slider/text.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/practice/slider/image-via-array.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/practice/slider/text-with-arrows.html" class="active">en</a><a href="../../../../../ru/javascript/book/practice/slider/text-with-arrows.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

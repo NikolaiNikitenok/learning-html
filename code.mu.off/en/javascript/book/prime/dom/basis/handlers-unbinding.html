@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Unbinding events in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to unbind events from elements using the removeEventListener method in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Unbinding events in JavaScript</h1>
+				<div class="content">
+<p>
+	In this lesson, we will learn how to unbind 
+	event handlers that we previously attached 
+	to elements. Let the following button be 
+	given as an example:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;input id="button" type="submit"&gt;</code>
+</div>
+<p>
+	Bind the function <code class="code inline">func</code> to this button:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let button = document.querySelector('#button');
+button.addEventListener('click', func);
+
+function func() {
+	console.log('!!!');
+}</code>
+</div>
+<p>
+	Let's now make the event handler fire on the 
+	first click, and then unbind from the button. 
+	There is a special method <code class="code inline">removeEventListener</code> 
+	for this. This method takes the type of the 
+	event as the first parameter, and the reference 
+	to the function to be unbindable as the 
+	second parameter.
+</p>
+<p>
+	Typically, this means that the event handler 
+	is unbound the same way it was bound. That is, 
+	if we bind it like this: <code class="code inline">addEventListener('click', func)</code>, 
+	then we will unbind it with the same parameters, 
+	like this: <code class="code inline">removeEventListener('click', func)⁅/ c⁆.
+</p>
+<p>
+	So let's solve our problem:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let button = document.querySelector('#button');
+button.addEventListener('click', func);
+
+function func() {
+	console.log('!!!');
+	this.removeEventListener('click', func);
+}</code>
+</div>
+<div class="task">
+	<p>
+		A link is given. When this link is clicked, 
+		append the contents of its <code class="code inline">href</code> 
+		attribute in parentheses to the end of its 
+		text. Make it so that this addition occurs 
+		only on the first click.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given a button whose value is the number 
+		<code class="number inline">1</code>. Make it so that when you click 
+		on this button, its value increases by one 
+		each time. After the button's value reaches 
+		<code class="number inline">10</code> - unbind the event handler so that 
+		the button no longer responds to pressing.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="71" data-hash="jsPmDmHU" data-quantity="363" data-num="259"><a href="../../../../../../en/javascript/book/prime/dom/basis/loop-anonymous-handlers.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../en/javascript/book/prime/dom/basis/loop-handlers-unbinding.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/basis/handlers-unbinding.html" class="active">en</a><a href="../../../../../../ru/javascript/book/prime/dom/basis/handlers-unbinding.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

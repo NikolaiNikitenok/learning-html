@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Tag attributes as properties in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to work with HTML attributes using JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Tag attributes as properties in JavaScript</h1>
+				<div class="content">
+<p>
+	Let's now learn how to get tag attributes. 
+	Here the following rule applies: <i>each 
+	attribute of the tag corresponds to the 
+	DOM element's property of the same name</i>.
+</p>
+<p>
+	Let's look at an example. Let's 
+	say we have this tag:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;input id="elem" type="text"&gt;</code>
+</div>
+<p>
+	Get a reference to our element 
+	into a variable:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');</code>
+</div>
+<p>
+	Derive the values of the attributes we need:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log(elem.id);   // shows 'elem'
+console.log(elem.type); // shows 'text'</code>
+</div>
+<p>
+	And now let's change the value 
+	of the attribute:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">elem.type = 'submit';</code>
+</div>
+<div class="task">
+	<p>
+		Given the following input:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;input id="elem" type="email"&gt;</code>
+	</div>
+	<p>
+		There is also a button. On clicking 
+		the button, display the contents of 
+		the attribute <code class="code inline">type</code> of the 
+		above input.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given the following input:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;input id="elem" type="email"&gt;</code>
+	</div>
+	<p>
+		There is also a button. When the 
+		button is clicked, write the value 
+		<code class="code inline">submit</code> to the <code class="code inline">type</code> 
+		attribute.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Suppose you have a link in the form of a tag 
+		<a href="../../../../../../en/markup/manual/html/tag/a.html"><code class="code inline">a</code></a>, 
+		a button and a paragraph. On clicking the 
+		button, output the contents of the link 
+		attribute <code class="code inline">href</code> into the paragraph.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Suppose you have a link and a button. On 
+		clicking the button, add the contents of 
+		its attribute <code class="code inline">href</code> to the end of 
+		the link text in parentheses.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Let's say you have a picture. Place 
+		it on the page using the tag 
+		<a href="../../../../../../en/markup/manual/html/tag/img.html"><code class="code inline">img</code></a>. 
+		Let a button and a paragraph be given as well. 
+		Make it so that when you click on the button, 
+		the path to the image from its attribute 
+		<code class="code inline">src</code> is written to the paragraph.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given a picture in the <code class="code inline">img</code> tag and 
+		a button. By pressing the button write down 
+		the value <code class="number inline">300</code> in the attribute 
+		<a href="../../../../../../en/markup/manual/html/attr/width.html"><code class="code inline">width</code></a>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given a picture in the <code class="code inline">img</code> tag and 
+		a button. Let the attribute <code class="code inline">width</code> 
+		be set to some width. Make a button, upon 
+		clicking on which the width of the image 
+		will increase by <code class="number inline">2</code> times.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Let's say you have two pictures. Make an 
+		<code class="code inline">img</code> tag and two buttons on the page. 
+		On pressing the first button, write the 
+		path to the first picture in the <code class="code inline">src</code> 
+		attribute, and on pressing the second 
+		button, write the path to the second 
+		picture.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="68" data-hash="jsPmDmAVP" data-quantity="363" data-num="249"><a href="../../../../../../en/javascript/book/prime/dom/basis/element-html.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../en/javascript/book/prime/dom/basis/text-fields.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/basis/attributes-via-properties.html" class="active">en</a><a href="../../../../../../ru/javascript/book/prime/dom/basis/attributes-via-properties.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

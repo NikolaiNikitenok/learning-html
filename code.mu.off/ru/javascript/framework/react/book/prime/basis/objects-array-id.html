@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Обсуждение id для массива объектов в React | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы обсудим откуда берутся id для массива объектов в React и как сгенерировать их самостоятельно.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Обсуждение id для массива объектов в React</h1>
+				<div class="content">
+<p>
+	Как вы уже знаете, в массиве объектов должны
+	присутствовать уникальные <code class="string inline">id</code>. Давайте
+	разберемся, откуда они берутся.
+</p>
+<p>
+	Массивы объектов могут иметь два происхождения:
+	либо они присланы нам сервером, либо сгенерированы
+	на клиенте (то есть в браузере).
+</p>
+<p>
+	Данные, присланные нам сервером, как правило
+	хранились там в базе данных. Базы данных
+	(БД) бывают вида SQL (например, mySQL, PostgreSQL)
+	или NoSQL (например, MongoDB).
+</p>
+<p>
+	SQL базы данных, как правило имеют числовые
+	<code class="string inline">id</code>, автоматически расставляемые базой
+	данных по возрастанию.
+</p>
+<p>
+	NoSQL базы данных, как правило, имеют <code class="string inline">id</code>,
+	представляющие собой случайные уникальные
+	строки. Предполагается, что эти строки не
+	имеют совпадений (<dfn>коллизий</dfn>) у двух
+	элементов массива.
+</p>
+<p>
+	Уникальность <code class="string inline">id</code> достигается за счет
+	достаточно большой длины случайных строк
+	- настолько больших, что вероятность совпадения
+	двух строк будет близка в нулю.
+</p>
+<p>
+	При этом, чем больше данных в БД, тем больше
+	вероятность коллизии. Задача программиста
+	состоит в том, чтобы заранее прикинуть объем
+	данных и определить оптимальную длину случайных
+	строк, чтобы вероятность коллизий была минимальна
+	(достаточно мала, чтобы считаться приемлемой).
+</p>
+
+<h2>Проблемы с добавлением данных</h2>
+<p>
+	Пусть из SQL базы данных нам пришел следующий
+	массив объектов:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">const prods = [
+	{id: 1, name: 'product1', cost: 100},
+	{id: 2, name: 'product2', cost: 200},
+	{id: 3, name: 'product3', cost: 300},
+];</code>
+</div>
+<p>
+	Как вы видите, <code class="string inline">id</code> нумеруются по порядку.
+	Однако, нам следует учитывать, что числа
+	могут иметь пропуски, к примеру, после <code class="number inline">3</code>-го
+	может сразу идти <code class="number inline">5</code>-тый или <code class="number inline">6</code>-той.
+	Из-за этого наш клиентский скрипт не может
+	знать, какой будет следующий <code class="string inline">id</code> (в
+	нашем случае это не обязательно 4).
+</p>
+<p>
+	Новые <code class="string inline">id</code> создаются базой данных сервера.
+	Это может вызвать некоторые проблемы при
+	работе на клиенте. Суть в следующем: представим,
+	что с помощью формы мы добавили новый элемент
+	в наш массив. Однако, мы не можем просто
+	взять и добавить данные из формы - ведь мы
+	не знаем какой <code class="string inline">id</code> будет у нового элемента!
+</p>
+<p>
+	Нам нужно будет отправить запрос на сервер,
+	чтобы он дал нам следующий по порядку <code class="string inline">id</code>,
+	и только затем добавить элемент в наш массив
+	объектов. Это вызовет задержку с отображением
+	данных на экране: пока данные придут на сервер,
+	пока сервер пришлет нам их обратно - пройдет
+	некоторое время.
+</p>
+
+<h2>Id в виде строк и добавление</h2>
+<p>
+	Пусть теперь массив объектов имеет следующий вид:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">const prods = [
+	{id: 'GYi9G_uC4gBF1e2SixDvu', name: 'product1', cost: 100},
+	{id: 'IWSpfBPSV3SXgRF87uO74', name: 'product2', cost: 200},
+	{id: 'JAmjRlfQT8rLTm5tG2m1L', name: 'product3', cost: 300},
+];</code>
+</div>
+<p>
+	Как вы видите, теперь наши <code class="string inline">id</code> представляют
+	собой случайные уникальные строки. Такой
+	массив мог быть получен с NoSQL базы данных,
+	либо просто сгенерирован на клиенте.
+</p>
+<p>
+	Опять представим себе ситуацию с добавлением
+	в этот массив данных формы. В этом случае
+	задержки не возникнет - при добавлении данных
+	мы просто сгенерируем случайную строку, которая
+	и будет новым <code class="string inline">id</code>.
+</p>
+
+<h2>Генерация id</h2>
+<p>
+	К счастью, нам не нужно самостоятельно придумывать
+	код, генерирующий случайные <code class="string inline">id</code>. К
+	нашим услугам есть готовые библиотеки. Например,
+	библиотека <a href="https://github.com/ai/nanoid"><code class="code inline">nanoid</code></a>,
+	генерирующая случайные строки, либо библиотека
+	<a href="https://www.npmjs.com/package/react-uuid"><code class="code inline">react-uuid</code></a>,
+	генерирующая <a href="https://ru.wikipedia.org/wiki/UUID"><code class="code inline">UUID</code></a>.
+</p>
+<div class="task">
+	<p>
+		Установите и изучите обе библиотеки. Сгенерируйте
+		с их помощью случайные строки.
+	</p>
+</div>
+
+<h2>Функция для генерации id</h2>
+<p>
+	Так как используемая библиотека для генерации
+	<code class="string inline">id</code> может быть разная, далее в уроках
+	я буду использовать следующую функцию-оболочку:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function id() {
+	// тут генерация id
+}</code>
+</div>
+<p>
+	Предполагается, что эта функция генерирует
+	<code class="string inline">id</code> удобным вам способом.
+</p>
+<div class="task">
+	<p>
+		Реализуйте функцию <code class="code inline">id()</code> с помощью
+		библиотеки nanoid.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Реализуйте функцию <code class="code inline">id()</code> с помощью
+		библиотеки <code class="code inline">react-uuid</code>.
+	</p>
+</div>
+
+<h2>Использование функции id()</h2>
+<p>
+	Мы можем использовать нашу функцию следующим
+	образом при объявлении массива объектов:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">const prods = [
+	{id: id(), name: 'product1', cost: 100},
+	{id: id(), name: 'product2', cost: 200},
+	{id: id(), name: 'product3', cost: 300},
+];</code>
+</div>
+<div class="task">
+	<p>
+		Сделайте массив объектов с юзерами, сгенерировав
+		им id с помощью нашей функции.
+	</p>
+</div>
+
+<h2>Неправильное использование функции id()</h2>
+<p>
+	Неправильно генерировать <code class="string inline">id</code> прямо
+	в атрибуте, вот так:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">const res = prods.map(function(prod) {
+	return &lt;p key={id()}&gt;
+		&lt;span&gt;{prod.name}&lt;/span&gt;
+		&lt;span&gt;{prod.cost}&lt;/span&gt;
+	&lt;/p&gt;;
+});</code>
+</div>
+<p>
+	Причины этого будут вам понятны в следующих
+	уроках. Пока просто имейте ввиду, что так
+	делать неправильно и никогда так не делайте.
+</p>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/framework/react/book/prime/" data-persent="29" data-hash="jsrtPmBsOAI" data-quantity="51" data-num="16"><a href="../../../../../../../ru/javascript/framework/react/book/prime/basis/objects-array-table.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../../ru/javascript/framework/react/book/prime/states/intro.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

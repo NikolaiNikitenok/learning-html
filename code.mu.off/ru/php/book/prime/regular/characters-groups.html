@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Группы символов \d, \D, \w, \W, \s, \S в регулярках PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами изучим работу с группами символов \d, \D, \w, \W, \s, \S в регулярках PHP.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Группы символов в регулярных выражениях PHP</h1>
+				<div class="content">
+<p>
+	Существуют специальные команды, которые позволяют
+	выбрать сразу целые группы символов. Команда
+	<code class="code inline">\d</code> означает цифру от <code class="number inline">0</code> до <code class="number inline">9</code>.
+	Команда <code class="code inline">\w</code> обозначает цифру, латинскую
+	букву или знак подчеркивания. Команда <code class="code inline">\s</code>
+	обозначает пробел или пробельный символ:
+	пробел, перевод строки, табуляцию. Можно
+	инвертировать значение команды, написав большую
+	букву: например, если <code class="code inline">\d</code> - цифра,
+	то <code class="code inline">\D</code> - не цифра.
+</p>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Давайте найдем все цифры:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = '1 12 123';
+	$res = preg_replace('#\d#', '!', $str);
+?&gt;</code>
+</div>
+<p>
+	В результате в переменную запишется следующее:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">'! !! !!!'</code>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Операторы повторения считают команды-группы
+	одним целым, то есть группирующие скобки
+	не нужны. В следующем примере шаблон поиска
+	выглядит так: <i>цифра от <code class="number inline">0</code> до <code class="number inline">9</code>
+	один или более раз</i>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = '1 12 123 abc @@@';
+	$res = preg_replace('#\d+#', '!', $str);
+?&gt;</code>
+</div>
+<p>
+	В результате в переменную запишется следующее:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">'! ! ! abc @@@'</code>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	В следующем примере шаблон поиска выглядит
+	так: <i>все что угодно один или более раз,
+	но не цифра от <code class="number inline">0</code> до 9</i>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = '123abc3@@';
+	$res = preg_replace('#\D+#', '!', $str);
+?&gt;</code>
+</div>
+<p>
+	В результате в переменную запишется следующее:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">'123!3!'</code>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	В данном примере шаблон поиска выглядит так:
+	<i>пробельный символ один раз</i>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = '1 12 123 abc @@@';
+	$res = preg_replace('#\s#', '!', $str);
+?&gt;</code>
+</div>
+<p>
+	В результате в переменную запишется следующее:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">'1!12!123!abc!@@@'</code>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	В данном примере шаблон поиска выглядит так:
+	<i>НЕ пробельный символ один или более раз</i>.
+	Все подстроки, разделенные пробелами, заменятся
+	на <code class="string inline">'!'</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = '1 12 123 abc @@@';
+	$res = preg_replace('#\S+#', '!', $str);
+?&gt;</code>
+</div>
+<p>
+	В результате в переменную запишется следующее:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">'! ! ! ! !'</code>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	В данном примере шаблон поиска выглядит так:
+	<i>цифра или буква один или более раз</i>.
+	Все подстроки, состоящие из цифр и букв,
+	заменятся на <code class="string inline">'!'</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = '1 12 123a Abc @@@';
+	$res = preg_replace('#\w+#', '!', $str);
+?&gt;</code>
+</div>
+<p>
+	В результате в переменную запишется следующее:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">'! ! ! ! @@@'</code>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	В данном примере шаблон поиска выглядит так:
+	<i>НЕ цифра и НЕ буква один или более раз</i>.
+	Под данное определение в нашем случае попадает
+	<code class="string inline">'@@@'</code> и все пробелы (они ведь тоже
+	не цифры и не буквы). Обратите внимание на
+	то, что в конце один <code class="string inline">'!'</code> - в него
+	преобразовалась строка <code class="string inline">' @@@'</code> - с
+	пробелом впереди:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">$str = '1 12 123 Abc @@@';
+$res = str_replace(#\W+#, '!');</code>
+</div>
+<p>
+	В результате в переменную запишется следующее:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">'1!12!123!Abc!'</code>
+</div>
+
+<h2>Практические задачи</h2>
+<div class="task">
+	<p>
+		Дана строка:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = 'a1a a2a a3a a4a a5a aba aca';
+?&gt;</code>
+	</div>
+	<p>
+		Напишите регулярку, которая найдет строки,
+		в которых <i>по краям стоят буквы <code class="string inline">'a'</code>,
+		а между ними одна цифра</i>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = 'a1a a22a a333a a4444a a55555a aba aca';
+?&gt;</code>
+	</div>
+	<p>
+		Напишите регулярку, которая найдет строки,
+		в которых <i>по краям стоят буквы <code class="string inline">'a'</code>,
+		а между ними любое количество цифр</i>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = 'aa a1a a22a a333a a4444a a55555a aba aca';
+?&gt;</code>
+	</div>
+	<p>
+		Напишите регулярку, которая найдет строки,
+		в которых <i>по краям стоят буквы <code class="string inline">'a'</code>,
+		а между ними любое количество цифр (в том
+		числе и ноль цифр, то есть строка <code class="string inline">'aa'</code>)</i>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = 'avb a1b a2b a3b a4b a5b abb acb';
+?&gt;</code>
+	</div>
+	<p>
+		Напишите регулярку, которая найдет строки
+		следующего вида: <i>по краям стоят буквы
+		<code class="string inline">'a'</code> и <code class="string inline">'b'</code>, а между ними - не
+		число</i>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = 'ave a#b a2b a$b a4b a5b a-b acb';
+?&gt;</code>
+	</div>
+	<p>
+		Напишите регулярку, которая найдет строки
+		следующего вида: <i>по краям стоят буквы
+		<code class="string inline">'a'</code> и <code class="string inline">'b'</code>, а между ними - не
+		буква и не цифра</i>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = 'ave a#a a2a a$a a4a a5a a-a aca';
+?&gt;</code>
+	</div>
+	<p>
+		Напишите регулярку, которая заменит все пробелы
+		на <code class="string inline">'!'</code>.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/prime/" data-persent="43" data-hash="ppPmRgChG" data-quantity="223" data-num="97"><a href="../../../../../ru/php/book/prime/regular/greediness-limitation.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/php/book/prime/regular/characters-sets.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

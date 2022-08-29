@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Синхронный и асинхронный код в JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы изучим разницу между синхронным и асинхронным кодом в JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Синхронный и асинхронный код в JavaScript</h1>
+				<div class="content">
+<p>
+	Рассмотрим следующий код:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log('1');
+console.log('2');</code>
+</div>
+<p>
+	Очевидно, что сначала сработает первый вывод
+	в консоль, а потом - второй. То есть команды
+	нашего кода выполняются по очереди - в порядке
+	их следования в коде. Такой код называется
+	<dfn>синхронным</dfn>.
+</p>
+<p>
+	Рассмотрим теперь следующий код:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">setTimeout(function() {
+	console.log('1');
+}, 3000);
+
+console.log('2');</code>
+</div>
+<p>
+	В данном случае команды не выполняются в
+	порядке следования в коде: первый вывод в
+	консоль выполнится, когда приходит его время,
+	но остальной код не ожидает этого момента,
+	а продолжает выполнятся. Такой код называется
+	<dfn>асинхронным</dfn>.
+</p>
+<p>
+	Асинхронный код возникает в JavaScript достаточно
+	часто, просто вы пока сталкивались только
+	с одним очевидным его проявлением: с таймерами.
+	Менее очевидно то, что событийная модель
+	JavaScript - тоже асинхронна.
+</p>
+
+<h2>Событийная модель асинхронна</h2>
+<p>
+	Вы знаете, что с помощью метода <code class="code inline">addEventListener</code>
+	можно <dfn>подписаться</dfn> на различные события,
+	возникающие в элементах страницы. К примеру,
+	подпишемся на клик по некоторому элементу,
+	ссылка на который хранится в переменной <code class="code inline">elem</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">elem.addEventListener('click', function() {
+	console.log('1');
+});
+
+console.log('2');</code>
+</div>
+<p>
+	В приведенном коде сначала выполнится второй
+	вывод в консоль. Когда же выполнится первый?
+	Когда-то: выполнение этого кода ожидает случившегося
+	события - клика на элемент. Как только это
+	произойдет, так наш код и выполнится.
+</p>
+
+<h2>Загрузка картинок асинхронна</h2>
+<p>
+	Рассмотрим следующий код:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let image = document.createElement('img');
+image.src = 'img.png';
+document.body.appendChild(image);</code>
+</div>
+<p>
+	Как вы видите, здесь мы создаем тег <code class="code inline">img</code>,
+	записываем в его <code class="code inline">src</code> путь к картинке
+	и размещаем эту картинку в <code class="code inline">body</code>. Картинка,
+	однако, появится на странице не сразу. Дело
+	в том, что когда мы записали в <code class="code inline">src</code>
+	путь к картинке - браузер начинает скачивать
+	эту картинку с сайта. Как только картинка
+	будет скачана, только тогда браузер сможет
+	ее показать.
+</p>
+<p>
+	Если картинка достаточно большая, а скорость
+	интернета достаточно маленькая, то пользователь
+	сайта некоторое время сможет "полюбоваться"
+	на пустую картинку - пока она не подгрузится.
+</p>
+<p>
+	На самом деле у тега <code class="code inline">img</code> существует
+	событие <code class="code inline">load</code>, которое срабатывает
+	при окончании загрузки картинки:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let image = document.createElement('img');
+image.src = 'img.png';
+
+image.addEventListener('load', function() {
+	// сработает по загрузке картинки
+});</code>
+</div>
+<p>
+	Мы можем использовать это, чтобы разместить
+	картинку на странице, только когда эта картинка
+	будет загружена:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let image = document.createElement('img');
+image.src = 'img.png';
+
+image.addEventListener('load', function() {
+	document.body.appendChild(image); // размещаем по загрузке
+});</code>
+</div>
+<p>
+	Картинка не обязательно загрузится: может
+	быть такое, что путь к картинке неверный,
+	либо произойдет обрыв интернета, поломка
+	сервера с сайтом или что-то подобное. Говоря
+	другими словами - <dfn>исключительная ситуация</dfn>.
+	В этом случае сработает не событие <code class="code inline">load</code>,
+	а событие <code class="code inline">error</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let image = document.createElement('img');
+image.src = 'img.png';
+
+image.addEventListener('load', function() {
+	document.body.appendChild(image);
+});
+image.addEventListener('error', function() {
+	// ошибка загрузки картинки
+});</code>
+</div>
+<p>
+	Нам нужно будет как-то эту исключительную
+	ситуацию обработать: выдать сообщение об
+	ошибке, попробовать еще раз загрузить картинку
+	через некоторое время, либо сделать что-то
+	еще - это вы решаете сами, как разработчик.
+</p>
+
+<h2>Где еще будет асинхронность?</h2>
+<p>
+	Итак, таймеры, события, загрузка картинок
+	- это те места, где вы пока могли столкнутся
+	с асинхронным поведением кода. Где же еще
+	вас ждет асинхронность?
+</p>
+<p>
+	Во-первых, и самое важное - это AJAX запросы,
+	позволяющие обращаться к серверу без перезагрузки
+	страницы. Во-вторых, это NodeJS, в котором
+	практически весь код - асинхронный.
+</p>
+<p>
+	AJAX и NodeJS - это очень важно. Поэтому
+	перед их изучением вам необходимо разобраться
+	с асинхронностью. Делать мы это будем на
+	простых примерах с таймерами, которые в нашем
+	случае будут имитировать асинхронный код,
+	с которым вам придется столкнутся при изучении
+	более сложных вещей.
+</p>
+<p>
+	С помощью таких имитаторов вы сможете понять
+	поведение асинхронного кода, чтобы затем
+	применить полученные знания при изучении
+	NodeJS, AJAX, и других вещей, где требуется
+	асинхронность.
+</p>
+
+<h2>Наши заглушки-имитаторы</h2>
+<p>
+	Пусть у нас есть некоторая функция <code class="code inline">make</code>,
+	внутри которой выполняется асинхронный код:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function make() {
+	// асинхронный код
+}</code>
+</div>
+<p>
+	Это может быть все, что угодно: таймер, загрузка
+	картинки, AJAX запрос к серверу, чтение или
+	запись файла через NodeJS и так далее.
+</p>
+<p>
+	Понятно, что из всего перечисленного вы умеете
+	работать только с первыми двумя пунктами.
+	Поэтому в качестве асинхронного кода мы используем
+	таймер, имитирующий какой угодно асинхронный код:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function make() {
+	setTimeout(function() {
+		console.log('1');
+	}, 3000);
+}</code>
+</div>
+<p>
+	Давайте теперь воспользуемся нашей функцией
+	в коде:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">make();
+console.log('2');</code>
+</div>
+<p>
+	Посмотрите внимательно на этот код: по его
+	внешнему виду, не глядя в код функции <code class="code inline">make</code>
+	теперь невозможно определить синхронный он
+	или асинхронный! Все зависит от того, что
+	же там внутри нашей функции. Однако, запуск
+	кода сразу проявит картину: сначала выполнится
+	второй вывод в консоль, и только потом - первый.
+</p>
+
+<h2>Основная задача в асинхронности</h2>
+<p>
+	Посмотрим еще раз на наш код:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">make();
+console.log('2');</code>
+</div>
+<p>
+	В нашем случае код, написанный после вызова
+	функции make, выполнится после срабатывания
+	асинхронного кода внутри функции.
+</p>
+<p>
+	Иногда это то, что нам нужно, но чаще всего
+	- нет. Чаще всего мы хотим сделать так, чтобы
+	некоторый код выполнился после асинхронной
+	операции.
+</p>
+<p>
+	Например: мы хотим показать картинку на экране
+	<i>после</i> ее загрузки, мы хотим что-то
+	сделать с текстом прочитанного файла <i>после</i>
+	его загрузки, мы хотим что-то сделать с результатом
+	AJAX запроса <i>после</i> его выполнения и тп.
+</p>
+<p>
+	Можно утверждать, что это является основной
+	возникающей задачей при работе с асинхронностью.
+	Для ее решения могут быть использованы подходы,
+	которые мы будем изучать в следующих уроках:
+	коллбэки, подписки и промисы.
+</p>
+
+<h2>Исключительные ситуации</h2>
+<p>
+	Второй частой задачей при работе с асинхронным
+	кодом является обработка исключительных ситуаций.
+	Дело в том, что исключение, возникшее внутри
+	асинхронного кода, не может быть поймано
+	через <code class="code inline">try-catch</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">try {
+	setTimeout(function() {
+		throw(new Error); // исключение не будет поймано
+	}, 3000);
+} catch(error) {
+	console.log(error);
+}</code>
+</div>
+<p>
+	Из-за такого поведения мы легко можем попасть
+	в неожиданную ловушку, например, вот так:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">try {
+	elem.addEventListener('click', function() {
+		throw(new Error); // исключение не будет поймано
+	});
+} catch(error) {
+	console.log(error);
+}</code>
+</div>
+<p>
+	Изучать способы обработки исключений в асинхронном
+	коде мы будем в следующих уроках.
+</p>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/supreme/" data-persent="81" data-hash="jsSpAsnCd" data-quantity="114" data-num="93"><a href="../../../../../ru/javascript/book/supreme/form/URL.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/javascript/book/supreme/asynchrony/callbacks.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

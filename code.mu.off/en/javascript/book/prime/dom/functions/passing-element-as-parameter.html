@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Passing a DOM element as a function parameter in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to pass DOM elements as function parameters in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Passing a DOM element as a function parameter</h1>
+				<div class="content">
+<p>
+	In previous lessons, we passed element selectors 
+	to our functions, and our functions themselves 
+	obtained references to these elements within their 
+	code. There is another approach: you can pass earlier 
+	obtained references to elements into functions.
+</p>
+<p>
+	Let's look at an example. Let's say we have 
+	the following code:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;p id="elem1"&gt;&lt;/p&gt;
+&lt;p id="elem2"&gt;&lt;/p&gt;</code>
+</div>
+<p>
+	Let's make a function <code class="code inline">setText</code>, which will 
+	take a reference to the DOM element as the first 
+	parameter, and the element's text as the second:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function setText(elem, text){
+	elem.textContent = text;
+}</code>
+</div>
+<p>
+	Using the function we created to set 
+	the text of our paragraphs:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem1 = document.getElementById('elem1');
+setText(elem1, 'text1');
+
+let elem2 = document.getElementById('elem2');
+setText(elem2, 'text2');</code>
+</div>
+<div class="task">
+	<p>
+		Make the function <code class="code inline">appendText</code> that takes a 
+		DOM element as the first parameter and text as the 
+		second. Make this function add text to the end of 
+		this element.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given paragraphs. Get them, loop through and add 
+		<code class="string inline">'!'</code> to the end of each using the <code class="code inline">appendText</code> 
+		function made in the previous task.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Make the function <code class="code inline">setValue</code>, which will take a 
+		reference to the input as the first parameter, and 
+		the text as the second. Make this function set the 
+		passed text to <code class="code inline">value</code> of the input.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="97" data-hash="jsPmFDPEAP" data-quantity="363" data-num="352"><a href="../../../../../../en/javascript/book/prime/dom/functions/callback-sequence-number-passing.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../en/javascript/book/prime/dom/functions/passing-group-as-parameter.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/functions/passing-element-as-parameter.html" class="active">en</a><a href="../../../../../../ru/javascript/book/prime/dom/functions/passing-element-as-parameter.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

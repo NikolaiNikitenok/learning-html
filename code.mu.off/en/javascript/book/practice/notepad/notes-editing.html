@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Editing notes in a notepad in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will implement editing notes in a notepad in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Editing notes in a notepad in JavaScript</h1>
+				<div class="content">
+<p>
+	In the previous lesson, we made it so that you 
+	can view already created notes. Let's now make 
+	that the note you are viewing can be edited.
+</p>
+<p>
+	Of course, even now you can edit our entry in 
+	textarea, but these changes will not be saved 
+	in the notes object. That is, the next time 
+	you view the note, it will still have the 
+	outdated text.
+</p>
+<p>
+	What will we have now if we press the save 
+	button while viewing the note? A new entry 
+	will simply be created with this text.
+</p>
+<p>
+	So, let's change the situation so that you can 
+	both save new entries and edit already created ones.
+</p>
+
+<h2>Solution algorithm</h2>
+<p>
+	Let's make it so that clicking on the button 
+	in the view mode edits the note, and clicking 
+	on the button in the creation mode creates a 
+	new note.
+</p>
+<p>
+	Let the mode be set by the <code class="code inline">data-mode</code> 
+	attribute for our button. Let if this attribute 
+	has the value <code class="value inline">'create'</code> - the button 
+	saves a new note:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="text"&gt;
+	&lt;textarea&gt;&lt;/textarea&gt;
+	&lt;button data-mode="create"&gt;save&lt;/button&gt;
+&lt;/div&gt;</code>
+</div>
+<p>
+	And if this attribute has the value <code class="value inline">'update'</code> - let 
+	the button edit the opened note. In this case, the number 
+	of the opened note will be stored in the <code class="code inline">data-key</code> 
+	attribute:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="text"&gt;
+	&lt;textarea&gt;&lt;/textarea&gt;
+	&lt;button data-mode="update" data-key="3"&gt;save&lt;/button&gt;
+&lt;/div&gt;</code>
+</div>
+<p>
+	I will present your JavaScript code for 
+	the button click handler:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">button.addEventListener('click', function() {
+	let mode = this.dataset.mode;
+	
+	if (mode == 'create') {
+		// your code to create a new note
+	}
+	
+	if (mode == 'update') {
+		let key = this.dataset.key;
+		
+		// your code to edit the note with number 'key'
+	}
+});</code>
+</div>
+
+<h2>Change of modes</h2>
+<p>
+	Obviously, there will be no saved notes upon entering 
+	the page. This means that initially the button must 
+	be in <code class="code inline">creation</code> mode.
+</p>
+<p>
+	Then, when you click to view any note, the button mode 
+	should change to <code class="code inline">update</code> and the number of the 
+	opened note should be written to <code class="code inline">data-key</code>.
+</p>
+<p>
+	How will the mode change from editing back to creating? 
+	I would suggest that clicking on the button during edit 
+	mode should update the note and change to creation mode.
+</p>
+<p>
+	This, however, is not enough. After all, we can simply 
+	want view the note without editing it. And then we may 
+	want to return to creation. In this case, we need 
+	another button that will return us to creation mode.
+</p>
+<p>
+	Let's insert this button into our layout:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="wrapper"&gt;
+	&lt;div id="menu"&gt;
+		&lt;div id="notes"&gt;
+			&lt;ul id="notes"&gt;
+				&lt;li data-key="1"&gt;note 1&lt;/li&gt;
+				&lt;li data-key="2"&gt;note 2&lt;/li&gt;
+				&lt;li data-key="3"&gt;note 3&lt;/li&gt;
+			&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;div id="create"&gt;
+			&lt;button&gt;new note&lt;/button&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div id="text"&gt;
+		&lt;textarea&gt;&lt;/textarea&gt;
+		&lt;button&gt;save&lt;/button&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code>
+</div>
+
+<h2>Implementation</h2>
+<div class="task">
+	<p>
+		Implement described editing the note.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Make the screen display the 
+		mode we are currently in.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/practice/" data-persent="35" data-hash="jsPrNbNE" data-quantity="75" data-num="27"><a href="../../../../../en/javascript/book/practice/notepad/notes-showing.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/practice/notepad/notes-removing.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/practice/notepad/notes-editing.html" class="active">en</a><a href="../../../../../ru/javascript/book/practice/notepad/notes-editing.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

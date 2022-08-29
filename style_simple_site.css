@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+}
+
+.wrapper {
+    border: 1px #191919 solid;
+    margin: 60px auto;
+    border-radius: 7px 0 0 0;
+    width: 700px;
+}
+
+.menu {
+    display: flex;
+    background-color: rgb(70, 69, 69);
+
+    border-radius: 6px 0 0 5px;
+}
+
+.menu a {
+    text-decoration: none;
+    background-color: rgb(70, 69, 69);
+    color: white;
+    padding: 10px 20px;
+
+    font: bold 14px Arial;
+    
+}
+
+.menu a:hover , a.active {
+    color:rgb(70, 69, 69);
+    background-color: white;
+}
+
+.menu a.home {
+    border: 2px black solid;
+    border-radius: 5px 0 0 5px;
+}
+
+.content h1 {
+    text-align: center;
+}
+
+.content p {
+    margin: 0 10px;
+    text-align: justify;
+    font-size: 17px;
+}
+
+.content p.first {
+    margin-bottom: 20px;
+}
+
+.content a {
+    text-decoration: none;
+    font-weight: bold;
+}

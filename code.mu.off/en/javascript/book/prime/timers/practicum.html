@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Practice on timers and working with the DOM in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to change DOM elements while the timer is running in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Practice on timers and working with the DOM in JavaScript</h1>
+				<div class="content">
+<div class="task">
+	<p>
+		Given a button. Given a paragraph whose text is a number. By clicking on the button, start a timer that every second will increase the text of the paragraph by <code class="number inline">1</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given a button. Given a paragraph whose text is a number, for example, <code class="number inline">10</code>. By pressing the button, start the timer, which every second will decrease the text of the paragraph by <code class="number inline">1</code>. As soon as the value of the paragraph becomes zero - stop the timer.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given an input with a number. Make it so that every second the square of the number that is written in it appears in it.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given an input. A number is entered into it. When focus is lost, set the paragraph below to start counting down from the number entered. When the countdown reaches zero, it must end.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given an input, a button, and a paragraph. A number is entered into the input. By pressing the button, write the entered number into the text of the paragraph and start the countdown in the paragraph: let the number in the paragraph decrease by one every second until it reaches zero.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given a paragraph and two buttons. Make it so that when you click on the first button in the paragraph, the timer starts ticking from <code class="number inline">1</code> to infinity, and when you click on the second button, the timer stops.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given a paragraph. Make it so that every second it changes its color from red to green and vice versa.
+	</p>
+</div>
+<div class="task">
+	<p>
+		If you display the current moment of time on the screen every second, you can make a ticking clock. Implement the same clock as shown in the sample below:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			#clock {
+				height: 16px;
+			}
+		</style>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;clock&quot;></div>
+		
+		<script>
+			
+			let clock = document.querySelector('#clock');
+			
+			setInterval(function() {
+				let date = new Date();
+				
+				let h = addZero(date.getHours());
+				let m = addZero(date.getMinutes());
+				let s = addZero(date.getSeconds())
+				
+				clock.innerHTML = h + ':' + m + ':' + s;
+			}, 1000);
+			
+			function addZero(num) {
+				if (num <= 9) {
+					return '0' + num;
+				} else {
+					return num;
+				}
+			}
+		</script>
+	</body>
+</html>"></iframe></div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="87" data-hash="jsPmTmrPr" data-quantity="363" data-num="316"><a href="../../../../../en/javascript/book/prime/timers/passing-context-by-parameter.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/timers/delay-before-execution.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/timers/practicum.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/timers/practicum.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Event bubbling in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn about events bubbling in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Event bubbling in JavaScript</h1>
+				<div class="content">
+<p>
+	Imagine that you have several nested blocks:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem1"&gt;
+	&lt;div id="elem2"&gt;
+		&lt;div id="elem3"&gt;&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code>
+</div>
+<p>
+	Get references to our divs into variables:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem1 = document.querySelector('#elem1');
+let elem2 = document.querySelector('#elem2');
+let elem3 = document.querySelector('#elem3');</code>
+</div>
+<p>
+	And now we will hang click handlers on them:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">elem1.addEventListener('click', function() {
+	console.log('green');
+});
+elem2.addEventListener('click', function() {
+	console.log('blue');
+});
+elem3.addEventListener('click', function() {
+	console.log('red');
+});</code>
+</div>
+<p>
+	Let's display our blocks on the screen 
+	by adding some CSS to them:
+</p>
+<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			#elem1 {
+			width: 200px;
+			height: 200px;
+			margin: 0 auto;
+			padding: 1px;
+			background: #97FF97;
+		}
+		#elem2 {
+			width: 140px;
+			height: 140px;
+			margin: 30px;
+			padding: 1px;
+			background: #7777FF;
+		}
+		#elem3 {
+			width: 80px;
+			height: 80px;
+			margin: 30px;
+			padding: 1px;
+			background: #FF7D7D;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;elem1&quot;>
+			<div id=&quot;elem2&quot;>
+				<div id=&quot;elem3&quot;></div>
+			</div>
+		</div>
+		
+		<script>
+			
+			let elem1 = document.querySelector('#elem1');
+		let elem2 = document.querySelector('#elem2');
+		let elem3 = document.querySelector('#elem3');
+		
+		elem1.addEventListener('click', function() {
+			console.log('green');
+		});
+		elem2.addEventListener('click', function() {
+			console.log('blue');
+		});
+		elem3.addEventListener('click', function() {
+			console.log('red');
+		});
+		</script>
+	</body>
+</html>"></iframe></div>
+<p>
+	Click now on the innermost red block and you will 
+	see how the event fires first in the red block, 
+	then in the blue one, then in the green one. And 
+	this is logical, because by clicking on the inner 
+	block, you simultaneously click on all the outer 
+	ones.
+</p>
+<p>
+	That is, it turns out that when you click on the 
+	innermost block, the click event fires first in 
+	it, then fires in its parent, in the parent of 
+	its parent, and so on, until it reaches the 
+	very top.
+</p>
+<p>
+	This behavior is called <dfn>bubbling</dfn> by analogy 
+	with the rising of an air bubble from the bottom. 
+	Just like the bubble, our event seems to float up, 
+	each time triggering on higher blocks.
+</p>
+<div class="task">
+	<p>
+		By your own, write the code that will demonstrate 
+		the bubbling of events. Check it for bubbling 
+		different types of events.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Not all events may bubble up. Experimentally 
+		find at least one event that will 
+		not bubble up.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="81" data-hash="jsPmOEEB" data-quantity="363" data-num="295"><a href="../../../../../../en/javascript/book/prime/dom/object-Event/cancel-default-action.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../en/javascript/book/prime/dom/object-Event/bubbling-target-element.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/object-Event/events-bubbling.html" class="active">en</a><a href="../../../../../../ru/javascript/book/prime/dom/object-Event/events-bubbling.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

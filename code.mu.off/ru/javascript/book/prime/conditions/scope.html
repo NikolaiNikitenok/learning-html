@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Область видимости переменных в if-else в JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами рассмотрим область видимости переменных в конструкциях if-else в JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Область видимости переменных в if-else в JavaScript</h1>
+				<div class="content">
+<p>
+	Пусть для простоты у нас есть всегда выполняющееся
+	условие:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">if (true) {
+	
+}</code>
+</div>
+<p>
+	Давайте рассмотрим следующий код:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">if (true) {
+	let res = '!';
+}
+
+console.log(res);</code>
+</div>
+<p>
+	Как вы видите, в переменную <code class="code inline">res</code>
+	должно записаться значение <code class="string inline">'!'</code>. Однако,
+	если запустить этот код, то в консоль выведется
+	ошибка!
+</p>
+<p>
+	Дело в том, что переменные, <i>объявленные
+	внутри фигурных скобок, видны только внутри
+	этих скобок, и не видны снаружи</i>. По-научному
+	здесь идет речь об <dfn>области видимости переменных</dfn>.
+</p>
+<p>
+	Можно говорить о том, что областью видимости
+	переменных, объявленных внутри фигурных скобок,
+	являются только эти фигурные скобки. Однако,
+	если переменная объявлена снаружи фигурных
+	скобок, то видна и внутри них, и снаружи:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let res; // переменная объявлена снаружи
+
+if (true) {
+	res = '!';
+}
+
+console.log(res); // выведет '!'</code>
+</div>
+
+<h2>Пример</h2>
+<p>
+	В следующем примере в переменную <code class="code inline">res</code>
+	в зависимости от условия записывается либо
+	значение <code class="number inline">1</code>, либо значение <code class="number inline">2</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 5;
+
+if (num &gt;= 0) {
+	let res = 1;
+} else {
+	let res = 2;
+}
+
+console.log(res);</code>
+</div>
+<p>
+	Однако, если запустить этот код, то в консоль
+	выведется ошибка. Как вы теперь уже понимаете,
+	все дело в видимости переменных. Для решения
+	проблемы объявим переменную снаружи условия:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let test = true;
+let res; // объявим переменную снаружи условия
+
+if (test) {
+	res = 1;
+} else {
+	res = 2;
+}
+
+console.log(res); // выведет 1</code>
+</div>
+<div class="task">
+	<p>
+		Автор приведенного ниже кода хотел выполнить
+		проверку возраста на достижение <code class="number inline">18</code>
+		лет. Код, однако, не работает. Исправьте
+		ошибку автора кода. Вот проблемный код:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let age = 17;
+
+if (age &gt;= 18) {
+	let adult = true;
+} else {
+	let adult = false;
+}
+
+console.log(adult);</code>
+	</div>
+</div>
+
+<h2>Нюансы</h2>
+<p>
+	Область видимости переменных обладает некоторым
+	нюансом. Давайте рассмотрим его на примере.
+	Давайте объявим снаружи нашего условия переменную
+	<code class="code inline">res</code> с одним значением, а внутри
+	условия поменяем это значение на другое:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let res = 1;
+
+if (true) {
+	res = 2;
+}
+
+console.log(res); // выведет 2</code>
+</div>
+<p>
+	Как вы видите, переменная <code class="code inline">res</code> поменялась
+	внутри условия. Все, однако, поменяется,
+	если внутри условия также объявить переменную
+	<code class="code inline">res</code> через <code class="code inline">let</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let res = 1;
+
+if (true) {
+	let res = 2; // объявим переменную через let
+}
+
+console.log(res); // выведет 1, а не 2!</code>
+</div>
+<p>
+	Здесь все дело в том, что объявление переменой
+	через <code class="code inline">let</code> внутри условия создало локальную
+	переменную <code class="code inline">res</code>.
+</p>
+<p>
+	То есть внутри условия существует одна переменная
+	<code class="code inline">res</code>, а снаружи условия - другая.
+	Убедится в этом можно, выведя значение переменной
+	в консоль внутри условия:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let res = 1;
+
+if (true) {
+	let res = 2;
+	console.log(res); // выведет 2
+}
+
+console.log(res); // выведет 1</code>
+</div>
+<div class="task">
+	<p>
+		Автор приведенного ниже кода хотел выполнить
+		проверку возраста на достижение <code class="number inline">18</code>
+		лет. Код, однако, при любом значение возраста
+		выводит в консоль значение <code class="code inline">undefined</code>.
+		Исправьте ошибку автора кода. Вот проблемный код:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let age = 17;
+let adult;
+
+if (age &gt;= 18) {
+	let adult = true;
+} else {
+	let adult = false;
+}
+
+console.log(adult);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Автор приведенного ниже кода хотел выполнить
+		проверку возраста на достижение <code class="number inline">18</code>
+		лет. После проверки кода оказалось, что если
+		возраст равен или больше <code class="number inline">18</code> лет, то
+		в переменную <code class="code inline">adult</code> записывается true,
+		как и должно быть, однако, если возраст меньше
+		<code class="number inline">18</code>, то переменная <code class="code inline">adult</code> имеет
+		значение <code class="code inline">undefined</code>. Исправьте ошибку
+		автора кода.
+	</p>
+	<p>
+		Вот проблемный код:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let age = 17;
+let adult;
+
+if (age &gt;= 18) {
+	adult = true;
+} else {
+	let adult = false;
+}
+
+console.log(adult);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Автор приведенного ниже кода хотел выполнить
+		проверку возраста. Код, однако, при любом
+		значение возраста выводит в консоль значение
+		<code class="code inline">undefined</code>. Исправьте ошибку автора кода.
+	</p>
+	<p>
+		Вот проблемный код:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let age = 17;
+let res;
+
+if (age &gt;= 18) {
+	if (age &lt;= 23) {
+		let res = 'от 18 до 23';
+	} else {
+		let res = 'больше 23';
+	}
+} else {
+	let res = 'меньше 18';
+}
+
+console.log(res);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Автор приведенного ниже кода хотел выполнить
+		проверку возраста. Код, однако, при значение
+		возраста большим <code class="number inline">18</code> лет выводит в
+		консоль значение <code class="code inline">undefined</code>. Исправьте
+		ошибку автора кода.
+	</p>
+	<p>
+		Вот проблемный код:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let age = 19;
+let res;
+
+if (age &gt;= 18) {
+	let res;
+	
+	if (age &lt;= 23) {
+		res = 'от 18 до 23';
+	} else {
+		res = 'больше 23';
+	}
+} else {
+	res = 'меньше 18';
+}
+
+console.log(res);</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/prime/" data-persent="28" data-hash="jsPmCdScp" data-quantity="363" data-num="101"><a href="../../../../../ru/javascript/book/prime/conditions/confirm.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/javascript/book/prime/conditions/scope-nuances.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/conditions/scope.html">en</a><a href="../../../../../ru/javascript/book/prime/conditions/scope.html" class="active">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Отработка циклов JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы отработаем циклы JavaScript на практике.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Отработка циклов JavaScript</h1>
+				<div class="content">
+<div class="task">
+	<p>
+		Выведите с помощью цикла столбец чисел от
+		<code class="number inline">1</code> до <code class="number inline">100</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Выведите с помощью цикла столбец чисел от
+		<code class="number inline">100</code> до <code class="number inline">1</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Выведите с помощью цикла столбец четных чисел
+		от <code class="number inline">1</code> до <code class="number inline">100</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Заполните массив <code class="number inline">10</code>-ю иксами с помощью
+		цикла.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Заполните массив числами от <code class="number inline">1</code> до <code class="number inline">10</code>
+		с помощью цикла.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан массив с числами. С помощью цикла выведите
+		только те элементы массива, которые больше
+		нуля и меньше <code class="number inline">10</code>-ти.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан массив с числами. С помощью цикла проверьте,
+		что в нем есть элемент со значением <code class="number inline">5</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан массив с числами. С помощью цикла найдите
+		сумму элементов этого массива.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан массив с числами. С помощью цикла найдите
+		сумму квадратов элементов этого массива.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан массив  с числами. Найдите среднее
+		арифметическое его элементов.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Напишите скрипт, который будет находить факториал
+		числа. Факториал - это произведение всех целых
+		чисел от единицы до заданного числа.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Заполните массив числами от <code class="number inline">10</code> до <code class="number inline">1</code>
+		с помощью цикла.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан массив с числами. Числа могут быть положительными
+		и отрицательными. Найдите сумму положительных
+		элементов массива.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан массив числами, например:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [10, 20, 30, 50, 235, 3000];</code>
+	</div>
+	<p>
+		Выведите на экран только те числа из массива,
+		которые начинаются на цифру <code class="number inline">1</code>, <code class="number inline">2</code>
+		или <code class="number inline">5</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан массив с числами. Выведите элементы этого
+		массива в обратном порядке.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан массив с числами. С помощью цикла выведите
+		на экран все элементы, значение которых совпадает
+		с их порядковым номером в массиве.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан массив с числами. С помощью цикла <code class="code inline">for</code>
+		и функции <code class="code inline">document.write</code> выведите
+		каждый элемент массива с новой строки. Используйте
+		для этого тег <code class="code inline">br</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан массив с числами. С помощью цикла <code class="code inline">for</code>
+		и функции <code class="code inline">document.write</code> выведите
+		каждый элемент массива в отдельном абзаце.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Составьте массив дней недели. С помощью цикла
+		<code class="code inline">for</code> выведите все дни недели, а выходные
+		дни выведите жирным.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Составьте массив <code class="code inline">дней недели</code>. С помощью
+		цикла <code class="code inline">for</code> выведите все дни недели,
+		а текущий день выведите <i>курсивом</i>.
+		Номер текущего дня должен храниться в переменной
+		<code class="code inline">day</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан следующий объект с работниками и их зарплатами:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let obj = {
+	employee1: 100,
+	employee2: 200,
+	employee3: 300,
+	employee4: 400,
+	employee5: 500,
+	employee6: 600,
+	employee7: 700,
+};</code>
+	</div>
+	<p>
+		Увеличьте зарплату каждого работника на <code class="unit inline">10%</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Модифицируйте предыдущую задачу так, чтобы
+		зарплата увеличивалась только тем работникам,
+		у которых она меньше или равна <code class="number inline">400</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Даны следующие массивы:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let arr1 = [1, 2, 3, 4, 5];
+let arr2 = [6, 7, 8, 9, 10];</code>
+	</div>
+	<p>
+		С помощью этих массивов создайте новый объект,
+		сделав его ключами элементы первого массива,
+		а значениями - элементы второго.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан следующий объект:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let obj = {1: 6, 2: 7, 3: 8, 4: 9, 5: 10};</code>
+	</div>
+	<p>
+		Найдите сумму ключей этого объекта и поделите
+		ее на сумму значений.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан следующий объект:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let obj = {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5};</code>
+	</div>
+	<p>
+		Запишите ключи этого объекта в один массив,
+		а значения - в другой.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан следующий объект:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let obj = {
+	1: 125,
+	2: 225,
+	3: 128,
+	4: 356,
+	5: 145,
+	6: 281,
+	7: 452,
+};</code>
+	</div>
+	<p>
+		Запишите в новый массив элементы, значение
+		которых начинается с цифры <code class="number inline">1</code> или цифры
+		<code class="number inline">2</code>. То есть у вас в результате получится
+		вот такой массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [
+	125,
+	225,
+	128,
+	145,
+	281,
+];</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Дан следующий массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let arr = ['a', 'b', 'c', 'd', 'e'];</code>
+	</div>
+	<p>
+		Создайте из этого массива следующий объект:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let arr = {1: 'a', 2: 'b', 3: 'c', 4: 'd', 5: 'e'};</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Дан следующий массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let arr = ['a', 'b', 'c', 'd', 'e'];</code>
+	</div>
+	<p>
+		Создайте из этого массива следующий объект:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let arr = {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5};</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/prime/" data-persent="37" data-hash="jsPmLpPrm" data-quantity="363" data-num="137"><a href="../../../../../ru/javascript/book/prime/loops/mistakes.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/javascript/book/prime/multi/arrays.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/loops/practicum.html">en</a><a href="../../../../../ru/javascript/book/prime/loops/practicum.html" class="active">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Modules using closures in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will analyze the creation of a module using a in-place function call in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Modules using closures in JavaScript</h1>
+				<div class="content">
+<p>
+	The problem described above is typical for any programming 
+	language. The so-called <dfn>modules</dfn> are used as a solution.
+</p>
+<p>
+	A module is a kind of construction, made in such a way 
+	that the variables and functions of this construction 
+	are visible only inside it and don't interfere with 
+	anyone outside.
+</p>
+<p>
+	There are several types of modules in JavaScript. The 
+	simplest - <dfn>modules via closures</dfn> are created by 
+	in-place function call, like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">;(function() {
+	// here is a module code
+})();</code>
+</div>
+<p>
+	Variables and functions created in such a module will 
+	not be visible outside of that module:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">;(function() {
+	let str = 'a module variable';
+	
+	function func() {
+		alert('a module function');
+	}
+})();
+
+// Here the variables and functions of the 
+module are not available:
+alert(str);
+alert(func);</code>
+</div>
+
+<h2>Practical usage</h2>
+<p>
+	Let we have two divs with numbers:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="div1"&gt;10&lt;/div&gt;
+&lt;div id="div2"&gt;10&lt;/div&gt;</code>
+</div>
+<p>
+	Let's make it so that on click on the first div, its 
+	value is squared, and on click on the second div, 
+	its value is cubed.
+</p>
+<p>
+	Let's organize our code in the form of two modules:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">;(function() {
+	let elem = document.querySelector('#div1'); // the first div
+	
+	function func(num) {
+		return num * num; // let's square
+	}
+	
+	elem.addEventListener('click', function() {
+		this.textContent = func(elem.textContent);
+	});
+})();
+
+;(function() {
+	let elem = document.querySelector('#div2'); // the second div
+	
+	function func(num) {
+		return num * num * num; // let's cube
+	}
+	
+	elem.addEventListener('click', function() {
+		this.textContent = func(elem.textContent);
+	});
+})();</code>
+</div>
+<p>
+	Now in each of the modules we can use any variables 
+	and functions without fear that they will conflict 
+	with other variables and functions of our script.
+</p>
+<p>
+	For example, we store both elements in the variable 
+	<code class="code inline">elem</code> - each in its own variable of its module. 
+	If modules were not here, we would have to introduce 
+	different variables to store our elements. And with 
+	modules, we can safely use our variable without fear 
+	that someone will also want to use this variable.
+</p>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="98" data-hash="jsPmMClMC" data-quantity="363" data-num="358"><a href="../../../../../en/javascript/book/prime/modules/variables-conflicts.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/modules/passing-parameters.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/modules/modules-clousures.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/modules/modules-clousures.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

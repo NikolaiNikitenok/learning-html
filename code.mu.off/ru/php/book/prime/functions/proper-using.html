@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Правильное использование функций PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами рассмотрим правильное использование вспомогательных функций в PHP.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Правильное использование функций PHP</h1>
+				<div class="content">
+<p>
+	Пусть у нас дан вот такой массив с четырехзначными
+	числами:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = ['1524', '1321', '4563', '7144', '2879'];
+?&gt;</code>
+</div>
+<p>
+	Давайте запишем в новый массив только те
+	элементы, сумма первых двух цифр в которых
+	равна сумме вторых двух цифр.
+</p>
+<p>
+	Очевидно, что для решения задачи необходимо
+	перебирать циклом наш массив и проверять
+	каждый элемент. Давайте вынесем проверку
+	в отдельную функцию, назвав ее <code class="code inline">checkDigitsPairsSum</code>
+	(<i>проверить суммы пар цифр</i>). Пусть
+	эта функция параметром принимает четырехзначное
+	число и проверяет суммы пар цифр. Если суммы
+	равны, пусть функция возвращает <code class="code inline">true</code>,
+	а если не равны - <code class="code inline">false</code>.
+</p>
+<p>
+	Не будем пока реализовывать описанную функцию,
+	а будем писать дальнейший код так, как будто
+	у нас уже есть эта функция, а затем ее реализуем.
+	Итак, если бы у нас была описанная функция,
+	мы бы легко решили поставленную задачу вот так:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$result = [];
+	$arr = ['1524', '1321', '4563', '7144', '2879'];
+	
+	foreach ($arr as $elem) {
+		if (checkDigitsPairsSum($elem)) { // используем нашу функцию
+			$result[] = $elem;
+		}
+	}
+	
+	var_dump($result);
+?&gt;</code>
+</div>
+<p>
+	Напишем теперь реализацию нашей функции:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function checkDigitsPairsSum($num) {
+		$sum1 = $num[0] + $num[1];
+		$sum2 = $num[2] + $num[3];
+		
+		if ($sum1 === $sum2) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Упростим код функции, используя вместо конструкции
+	<code class="code inline">if</code> сокращенную логическую операцию:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function checkDigitsPairsSum($num) {
+		$sum1 = $num[0] + $num[1];
+		$sum2 = $num[2] + $num[3];
+		
+		return $sum1 === $sum2;
+	}
+?&gt;</code>
+</div>
+<p>
+	Упростим еще больше:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function checkDigitsPairsSum($num) {
+		return $num[0] + $num[1] === $num[2] + $num[3];
+	}
+?&gt;</code>
+</div>
+<p>
+	Окончательный код будет выглядеть так:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$result = [];
+	$arr = ['1524', '1321', '4563', '7144', '2879'];
+	
+	foreach ($arr as $elem) {
+		if (checkDigitsPairsSum($elem)) {
+			$result[] = $elem;
+		}
+	}
+	
+	var_dump($result);
+	
+	function checkDigitsPairsSum($num) {
+		return $num[0] + $num[1] === $num[2] + $num[3];
+	}
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Дана функция, которая параметром принимает
+		целое число и возвращает сумму его цифр:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function getDigitsSum($num) {
+		return array_sum(str_split($num, ''));
+	}
+?&gt;</code>
+	</div>
+	<p>
+		С помощью приведенной функции найдите все
+		года от <code class="number inline">1</code> до <code class="number inline">2030</code>, сумма цифр
+		которых равна <code class="number inline">13</code>.
+	</p>
+</div>
+
+<h2>Преимущества</h2>
+<p>
+	Вынесение проверки в отдельную функцию сделало
+	наш код более понятным и очевидным. Для того,
+	чтобы понять, что имеется ввиду, посмотрите
+	на следующий цикл:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	foreach ($arr as $elem) {
+		if (checkDigitsPairsSum($elem)) {
+			$result[] = $elem;
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	При чтении кода сразу становится более-менее
+	понятно, что именно проверяется в условии
+	- находится и проверяется какая-то сумма
+	пар чисел.
+</p>
+<p>
+	Очевидность нашего кода достигается удачно
+	подобранным названием функции. Представьте
+	себе, что мы бы назвали нашу функцию просто
+	<code class="code inline">func</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	foreach ($arr as $elem) {
+		if (func($elem)) {
+			$result[] = $elem;
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Как вы видите, код теперь далеко не такой
+	очевидный! Понадобится детально изучить код
+	функции <code class="code inline">func</code>, чтобы понять, что же
+	она такое делает.
+</p>
+
+<!--
+<h2>Практические задачи</h2>
+<div class="task">
+	<p>
+		Дана функция, проверяющая числа на простоту:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function isPrime($num) {
+		for ($i = 2; $i &lt; $num; $i++) {
+			if ($num % $i === 0) {
+				return false;
+			}
+		}
+		
+		return true;
+	}
+?&gt;</code>
+	</div>
+	<p>
+		С помощью приведенной функции найдите все
+		простые числа в интервале от <code class="number inline">1</code> до
+		<code class="number inline">100</code>.
+	</p>
+</div>
+
+<div class="task">
+	<p>
+		Дана функция, которая параметром принимает
+		целое число и возвращает массив его собственных
+		делителей (за исключением самого числа):
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function getOwnDivisors($num) {
+		$result = [];
+		
+		for ($i = 1; $i &lt; $num; $i++) {
+			if ($num % $i === 0) {
+				$result[] = $num;
+			}
+		}
+		
+		return $result;
+	}
+?&gt;</code>
+	</div>
+	<p>
+		Дан массив с числами:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$nums = [12, 24, 35, 14];
+?&gt;</code>
+	</div>
+	<p>
+		Переберите этот массив и для каждого числа
+		найдите сумму его собственных делителей.
+	</p>
+</div>
+-->
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/prime/" data-persent="38" data-hash="ppPmUFPU" data-quantity="223" data-num="85"><a href="../../../../../ru/php/book/prime/functions/logical-operators.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/php/book/prime/functions/auxiliary-functions-combination.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Global variables in JavaScript functions | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will study the scope of global variables in JavaScript functions.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Global variables in JavaScript functions</h1>
+				<div class="content">
+<p>
+	In JavaScript (most often not in other languages), 
+	variables defined outside of a function will be 
+	visible inside that function. Such variables are 
+	called <dfn>global</dfn>. Let's look at an example:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 1; // variable outside the function
+
+function func() {
+	console.log(num); // the num variable is visible inside the function
+}
+
+func(); // shows 1</code>
+</div>
+<p>
+	In fact, the variable need to be defined not 
+	before the definition of the function, but 
+	before calling it:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	console.log(num);
+}
+
+let num = 1; // variable outside the function
+func();      // shows 1</code>
+</div>
+<p>
+	If you change the value of the variable and 
+	then call the function each time, the alert 
+	will give different results each time:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	console.log(num);
+}
+
+let num; // declare a variable
+
+num = 1; // set the value 1
+func();  // shows 1
+
+num = 2; // set the value 2
+func();  // shows 2</code>
+</div>
+<p>
+	If we have several functions, then the global 
+	variable will be available in each of these 
+	functions:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func1() {
+	console.log(num);
+}
+
+function func2() {
+	console.log(num);
+}
+
+let num = 1;
+
+func1(); // shows 1
+func2(); // shows 1</code>
+</div>
+<p>
+	If changes occur with a global variable in 
+	one function, then this variable will change 
+	in all functions using this variable:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func1() {
+	console.log(num);
+	num++; // change global variable
+}
+
+function func2() {
+	console.log(num);
+}
+
+let num = 1;
+
+func1(); // shows 1
+func2(); // shows 2</code>
+</div>
+<p>
+	Since any of the functions can easily change 
+	the global variable, their use is a breeding 
+	ground for subtle errors. For this reason, 
+	the use of global variables in a script should 
+	be kept to a minimum. It is desirable that 
+	they do not exist at all or that there is a 
+	minimal amount.
+</p>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let num = 1;
+		
+function func() {
+	console.log(num);
+}
+
+func();</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let num = 1;
+		
+function func() {
+	console.log(num);
+}
+
+num = 2;
+func();</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	console.log(num);
+}
+
+let num;
+
+num = 1;
+func();
+
+num = 2;
+func();</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="47" data-hash="jsPmFAGV" data-quantity="363" data-num="172"><a href="../../../../../en/javascript/book/prime/functions/practicum.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/functions/local-variables.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/functions/global-variables.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/functions/global-variables.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

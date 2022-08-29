@@ -1,0 +1,81 @@
+body {
+    margin: 0;
+}
+
+.wrapper {
+    border-left: 1px orange solid;
+    border-bottom: 1px orange solid;
+    border-right: 1px orange solid;
+
+    width: 900px;
+    margin: 0 auto;
+}
+
+/*Menu*/
+
+.menu {
+    background-color: orange;
+    display: flex;
+}
+
+.menu a {
+    text-decoration: none;
+    color: white;
+    padding: 15px;
+    font: bold 14px Arial;
+}
+
+.menu a.active, .menu a:hover {
+    color: orange;
+    background-color: white;
+}
+
+/*Content*/
+
+.content h1, .content h2 {
+    font-weight: normal;
+
+    text-align: center;
+    color: rgb(151, 99, 1);
+}
+
+.content a {
+    color: rgb(176, 115, 0);
+    font-weight: bold;
+}
+
+.content a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.content p {
+    font-size: 17px;
+    color: rgb(197, 130, 5);
+    text-indent: 40px;
+    line-height: 34px;
+}
+
+/*Links*/
+
+.links {
+    display: flex;
+    justify-content: center;
+
+}
+
+.links a {
+    margin: 20px 10px 50px;
+
+    text-decoration: none;
+    color:rgb(151, 99, 1);
+
+    font-weight: bold;
+    font-size: 13px;
+    font-family: Arial
+}
+
+.links a:hover {
+    color: black;
+    text-decoration: underline;
+}

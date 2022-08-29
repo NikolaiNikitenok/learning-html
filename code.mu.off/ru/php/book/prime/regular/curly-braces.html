@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Фигурные скобки в регулярных выражения PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами изучим работу с командой {} в регулярных выражения PHP.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Фигурные скобки в регулярных выражения PHP</h1>
+				<div class="content">
+<p>
+	Операторы <code class="code inline">+</code>, <code class="code inline">*</code>, <code class="code inline">?</code> хороши,
+	однако, с их помощью нельзя указать конкретное
+	число повторений. В этом случае вам на помощь
+	придет оператор <code class="code inline">{}</code>.
+</p>
+<p>
+	Работает он следующим образом: <code class="code inline">{5}</code>
+	- пять повторений, <code class="code inline">{2,5}</code> - повторяется
+	от двух до пяти (оба включительно), <code class="code inline">{2,}</code>
+	- повторяется два и более раз.
+</p>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	В данном примере шаблон поиска выглядит так:
+	<i>буква <code class="string inline">'x'</code>, буква <code class="string inline">'a'</code> один
+	или два раза, буква <code class="string inline">'x'</code></i>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = 'xx xax xaax xaaax';
+	$res = preg_replace('#xa{1,2}x#', '!', $str);
+?&gt;</code>
+</div>
+<p>
+	В результате в переменную запишется следующее:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">'xx ! ! xaaax'</code>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	В данном примере шаблон поиска выглядит так:
+	<i>буква <code class="string inline">'x'</code>, буква <code class="string inline">'a'</code> два
+	раза и более, буква <code class="string inline">'x'</code></i>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = 'xx xax xaax xaaax';
+	$res = preg_replace('#xa{2,}x#', '!', $str);
+?&gt;</code>
+</div>
+<p>
+	В результате в переменную запишется следующее:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">'xx xax ! !'</code>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	В данном примере шаблон поиска выглядит так:
+	<i>буква <code class="string inline">'x'</code>, буква <code class="string inline">'a'</code> три
+	раза, буква <code class="string inline">'x'</code></i>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = 'xx xax xaax xaaax';
+	$res = preg_replace('#xa{3}x#', '!', $str);
+?&gt;</code>
+</div>
+<p>
+	В результате в переменную запишется следующее:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">'xx xax xaax !'</code>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	В данном примере шаблон поиска выглядит так:
+	<i>буква <code class="string inline">'a'</code> десять раз</i>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = 'aaa aaaaaaaaaa aaa';
+	$res = preg_replace('#a{10}#', '!', $str);
+?&gt;</code>
+</div>
+<p>
+	В результате в переменную запишется следующее:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">'aaa ! aaa'</code>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	В данном примере автор кода хотел такой шаблон:
+	<i>буква <code class="string inline">'x'</code>, буква <code class="string inline">'a'</code> три
+	раза раза и меньше, буква <code class="string inline">'x'</code></i>,
+	но, к сожалению, такое - <code class="code inline">{,3}</code> - не
+	работает. Нужно указать явно:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = 'xx xax xaax xaaax';
+	$res = preg_replace('#xa{1,3}x#', '!', $str);
+?&gt;</code>
+</div>
+<p>
+	В результате в переменную запишется следующее:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">'xx ! ! !'</code>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Ноль тоже допустим:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = 'xx xax xaax xaaax';
+	$res = preg_replace('#xa{0,3}x#', '!', $str);
+?&gt;</code>
+</div>
+<p>
+	В результате в переменную запишется следующее:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">'! ! ! !'</code>
+</div>
+
+<h2>Практические задачи</h2>
+<div class="task">
+	<p>
+		Дана строка:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = 'aa aba abba abbba abbbba abbbbba';
+?&gt;</code>
+	</div>
+	<p>
+		Напишите регулярку, которая найдет строки
+		<code class="string inline">'abba'</code>, <code class="string inline">'abbba'</code>, <code class="string inline">'abbbba'</code>
+		и только их.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = 'aa aba abba abbba abbbba abbbbba';
+?&gt;</code>
+	</div>
+	<p>
+		Напишите регулярку, которая найдет строки
+		вида <code class="string inline">'aba'</code>, в которых <code class="string inline">'b'</code> встречается
+		менее трех раз (включительно).
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = 'aa aba abba abbba abbbba abbbbba';
+?&gt;</code>
+	</div>
+	<p>
+		Напишите регулярку, которая найдет строки
+		вида <code class="string inline">'aba'</code>, в которых <code class="string inline">'b'</code> встречается
+		более четырех раз (включительно).
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/prime/" data-persent="42" data-hash="ppPmRgCB" data-quantity="223" data-num="95"><a href="../../../../../ru/php/book/prime/regular/escaping-special-characters.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/php/book/prime/regular/greediness-limitation.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

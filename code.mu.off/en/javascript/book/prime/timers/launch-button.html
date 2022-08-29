@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Button for starting a timer in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to make a button that starts a timer in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Button for starting a timer in JavaScript</h1>
+				<div class="content">
+<p>
+	In the previous lessons, our timer started its work 
+	as soon as the page loaded. Let's now make a button, 
+	by clicking on which our timer will start:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;button id="start"&gt;start&lt;/button&gt;</code>
+</div>
+<p>
+	Let's write the appropriate JavaScript:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let start = document.querySelector('#start');
+
+start.addEventListener('click', function() {
+	let i = 0;
+	
+	setInterval(function() {
+		console.log(++i);
+	}, 1000);
+});</code>
+</div>
+<div class="task">
+	<p>
+		Make a button, by clicking on which a countdown 
+		will be displayed in the console, 
+		starting from <code class="number inline">100</code>.
+	</p>
+</div>
+
+<h2>Multiple pressing of the button</h2>
+<p>
+	The code I provided above actually has some problem. 
+	This problem manifests itself if our button is 
+	clicked several times. In this case, <i>each click 
+	will start a new timer</i>.
+</p>
+<p>
+	That is, for example, three clicks on the button will 
+	cause three timers to be launched, and each of these 
+	timers will output the value of the counter to the 
+	console. This means that the values will change 
+	three times faster!
+</p>
+<p>
+	To solve the described problem, you just need to make 
+	sure that pressing the button again does not lead to 
+	a new start of the timer. For example, after the start 
+	of the timer, you can unbind the attached click 
+	handler from the button:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let start = document.querySelector('#start');
+
+start.addEventListener('click', function func() {
+	let i = 0;
+	
+	setInterval(function() {
+		console.log(++i);
+	}, 1000);
+	
+	this.removeEventListener('click', func); // unbinds the handler
+});</code>
+</div>
+<div class="task">
+	<p>
+		Take your solution to the previous problem. 
+		Check that pressing the button repeatedly 
+		speeds up the countdown. Fix this issue.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="85" data-hash="jsPmTmrLB" data-quantity="363" data-num="311"><a href="../../../../../en/javascript/book/prime/timers/timer-stopping.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/timers/stop-button.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/timers/launch-button.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/timers/launch-button.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

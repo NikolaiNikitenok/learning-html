@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Binding a context via the call method in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to bind a context using the call method in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Binding a context via the call method in JavaScript</h1>
+				<div class="content">
+<p>
+	So we've covered how <code class="code inline">this</code> actually works. 
+	Let's now look at methods that allow you to force 
+	the context in which the function is called (that 
+	is, force it to say what <code class="code inline">this</code> is equal to).
+</p>
+<p>
+	The first method we'll cover is called <code class="code inline">call</code>. 
+	Let's see how it works with an example. Let us 
+	have an input:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;input id="elem" value="text"&gt;</code>
+</div>
+<p>
+	Let's get a reference to this input and write it 
+	to the variable <code class="code inline">elem</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');</code>
+</div>
+<p>
+	Let's now make a function <code class="code inline">func</code>, inside which 
+	we will display <code class="code inline">this.value</code> to the console:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	console.log(this.value);
+}</code>
+</div>
+<p>
+	So far, our function doesn't know what <code class="code inline">this</code> 
+	refers to. Now, if we attached it through 
+	<code class="code inline">addEventListener</code>, then yes. But we won't do 
+	that. Instead, we simply call our function, telling 
+	it that <code class="code inline">this</code> should be equal to elem.
+</p>
+<p>
+	This is done like this: <code class="code inline">func.call(elem)</code>. This 
+	code is equivalent to simply calling the function 
+	<code class="code inline">func</code> like this: <code class="code inline">func()</code>, only with the 
+	condition that this is equal to elem.
+</p>
+<p>
+	So, the syntax of the call method is: <code class="code inline">function.call(object 
+	to write to this)</code>. Let's put it all together:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+
+function func() {
+	console.log(this.value); // shows the input value
+}
+func.call(elem);</code>
+</div>
+<div class="task">
+	<p>
+		Given a function:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	console.log(this.value);
+}</code>
+	</div>
+	<p>
+		Given three inputs:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;input id="elem1" value="text1"&gt;
+&lt;input id="elem2" value="text2"&gt;
+&lt;input id="elem3" value="text3"&gt;</code>
+	</div>
+	<p>
+		Using the <code class="code inline">call</code> method and the <code class="code inline">func</code> 
+		function, display the <code class="code inline">value</code> of each of 
+		the inputs.
+	</p>
+</div>
+
+<h2>call method with parameters</h2>
+<p>
+	Now let the function <code class="code inline">func</code> take some parameters, 
+	let's call them <code class="code inline">param1</code> and <code class="code inline">param2</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(param1, param2) {
+	console.log(this.value + param1 + param2);
+}</code>
+</div>
+<p>
+	When calling a function via <code class="code inline">call</code>, you can pass 
+	these parameters like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">func.call(elem, param1, param2);</code>
+</div>
+<div class="task">
+	<p>
+		Let the following code be given:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;input id="elem" value="hello"&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+
+function func(surname, name) {
+	console.log(this.value + ', ' + name + ' ' + surname);
+}
+
+func(); // should output here 'hello, John Smit'</code>
+	</div>
+	<p>
+		Add the <code class="code inline">call</code> method to the last line so that 
+		<code class="string inline">'hello, John Smit'</code> is displayed. The word 
+		<code class="string inline">'hello'</code> must come from the input value, 
+		<code class="string inline">'John'</code> and <code class="string inline">'Smit'</code> must be function 
+		parameters.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="84" data-hash="jsPmCtxCM" data-quantity="363" data-num="305"><a href="../../../../../en/javascript/book/prime/context/solving-context-problem.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/context/apply-method.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/context/call-method.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/context/call-method.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

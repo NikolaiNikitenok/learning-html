@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Solving the context problem in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will study solutions to the problem with the context in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Solving the context problem in JavaScript</h1>
+				<div class="content">
+<p>
+	In the previous lesson, you saw how the context 
+	is lost in the inner function. Let's solve this 
+	problem. There are several solutions. Let's take 
+	a look at them.
+</p>
+
+<h2>First solution to the problem</h2>
+<p>
+	The solution is as follows: in the outer function, 
+	write <code class="code inline">this</code> to any variable and this variable 
+	will be available in the inner function, like all 
+	variables (usually this variable is called <code class="code inline">self</code>). 
+	Thus, we will pass <code class="code inline">this</code> from the outer function 
+	to the inner one:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">"use strict";
+
+let elem = document.querySelector('#elem');
+elem.addEventListener('blur', parent);
+
+function parent() {
+	console.log(this.value); // shows 'text'
+	
+	let self = this; // write this to any variable, for example, to self
+	
+	function child() {
+		console.log(self.value); // shows 'text'
+	}
+	child();
+}</code>
+</div>
+<div class="task">
+	<p>
+		Let this code be given:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;input id="elem" value="3"&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">"use strict";
+
+let elem = document.querySelector('#elem');
+elem.addEventListener('blur', func);
+
+function func() {
+	alert( square() );
+	
+	function square() {
+		return this.value * this.value;
+	}
+}</code>
+	</div>
+	<p>
+		The author of the code wanted the square of the 
+		number from input <code class="code inline">value</code> to be displayed 
+		on the screen when focus was lost. However, for 
+		some reason, when focus is lost, an error is 
+		generated in the console. Please fix the code 
+		author's mistake. Write a text in which you will 
+		explain to the author of the code why this 
+		error occurred.
+	</p>
+</div>
+
+<h2>Second solution to the problem</h2>
+<p>
+	There is another solution to the problem. Let's 
+	make the function <code class="code inline">child</code> take a parameter:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function child(param) {
+	// here will be a code
+}</code>
+</div>
+<p>
+	And when calling this function, we will 
+	pass <code class="code inline">this</code> into it:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function parent() {
+	child(this); // pass the this as parameter
+	
+	function child(param) {
+		// the param variable contains the passed content of this
+	}
+}</code>
+</div>
+<p>
+	Since the call to <code class="code inline">child</code> is carried out in the 
+	parent function, the passed <code class="code inline">this</code> points out 
+	what we needed. Then the <code class="code inline">this</code> gets into the 
+	<code class="code inline">param</code> parameter and will be available inside 
+	the function in this form.
+</p>
+<p>
+	Here is the final code:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+elem.addEventListener('blur', parent);
+
+function parent() {
+	child(this); // passes the this as parameter
+	
+	function child(param) {
+		console.log(param.value); // prints the value of the input
+	}
+}</code>
+</div>
+<div class="task">
+	<p>
+		Take the code from the previous task and fix the 
+		code problem using the second method you learned.
+	</p>
+</div>
+
+<h2>Third solution to the problem</h2>
+<p>
+	The third solution to the problem is to use 
+	<a href="../../../../../en/javascript/book/prime/functions/arrow-functions.html">arrow 
+	functions</a>, which appeared in JavaScript not so long 
+	ago. Such functions, among other things, do not have their 
+	own context, but retain the context of the parent. Let's 
+	fix our problem with an arrow function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+elem.addEventListener('blur', parent);
+
+function parent() {
+	console.log(this.value); // shows 'text'
+	
+	let child = () =&gt; {
+		console.log(this.value); // shows 'text'
+	}
+	child();
+}</code>
+</div>
+<div class="task">
+	<p>
+		Take the code from the previous task and fix the 
+		code problem using the third method you learned.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="83" data-hash="jsPmCtxSCP" data-quantity="363" data-num="304"><a href="../../../../../en/javascript/book/prime/context/context-losing.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/context/call-method.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/context/solving-context-problem.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/context/solving-context-problem.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Передача данных в представление Handlebars | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы научимся передавать данные в представление Handlebars в Express.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Передача данных в представление Handlebars</h1>
+				<div class="content">
+<p>
+	Из маршрута в представление можно передавать
+	данные. Для этого вторым параметром метода
+	<code class="code inline">render</code> нужно передать объект с данными:
+</p>
+<div class="block" data-file="index.js">
+	<code class="highlight" data-module="highlight" data-lang="javascript">app.get('/page/', function(req, res) {
+	res.render('page', {text1: 'aaa', text2: 'bbb'});
+});</code>
+</div>
+<p>
+	Как вы видите, в моем объекте два ключа:
+	<code class="code inline">text1</code> и <code class="code inline">text2</code>. Это значит,
+	что в файле представления (как в контенте,
+	так и в макете) появятся две переменные с
+	таким именем. Вывести значения этих переменных
+	можно написав их имя в двойных фигурных скобках.
+</p>
+<p>
+	Давайте попробуем. Пусть у нас есть следующий
+	файл контента:
+</p>
+<div class="block" data-file="views/page.hbs">
+	<code class="highlight" data-module="highlight" data-lang="hbs">&lt;div&gt;
+	content
+&lt;/div&gt;</code>
+</div>
+<p>
+	Выведем в этом файле наши переменные:
+</p>
+<div class="block" data-file="views/page.hbs">
+	<code class="highlight" data-module="highlight" data-lang="hbs">&lt;div&gt;
+	content
+	{{text1}} {{text2}}
+&lt;/div&gt;</code>
+</div>
+<p>
+	Можно вывести их в каких-то тегах:
+</p>
+<div class="block" data-file="views/page.hbs">
+	<code class="highlight" data-module="highlight" data-lang="hbs">&lt;div&gt;
+	content
+	&lt;span&gt;{{text1}}&lt;/span&gt;
+	&lt;span&gt;{{text2}}&lt;/span&gt;
+&lt;/div&gt;</code>
+</div>
+<p>
+	Можно вывести их и в атрибутах тегов:
+</p>
+<div class="block" data-file="views/page.hbs">
+	<code class="highlight" data-module="highlight" data-lang="hbs">&lt;div&gt;
+	content
+	&lt;input value="{{text1}}"&gt;
+	&lt;img src="{{text2}}"&gt;
+&lt;/div&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Передайте в контент пять переменных. Выведите
+		каждую переменную в своем абзаце.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Передайте в контент переменную с путем к
+		картинке. Выведите на экран соответствующее
+		изображение.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Передайте в контент переменные с текстом
+		и хрефом ссылки. Выведите в на экран ссылку,
+		созданную с помощью этих переменных.
+	</p>
+</div>
+
+<h2>Экранировка тегов</h2>
+<p>
+	Для вывода переменных можно использовать
+	как две фигурные скобки, так и три. В первом
+	случае в целях безопасности будет происходить
+	экранировка тегов, а во втором случае теги
+	будут преобразованы в команды для браузера.
+</p>
+<p>
+	Давайте посмотрим на примере. Пусть у нас
+	передается некоторая переменная, содержащая
+	внутри себя теги:
+</p>
+<div class="block" data-file="index.js">
+	<code class="highlight" data-module="highlight" data-lang="javascript">app.get('/page/', function(req, res) {
+	res.render('page', {text: '&lt;b&gt;aaa&lt;/b&gt;'});
+});</code>
+</div>
+<p>
+	Давайте выведем содержимое переменной с помощью
+	обоих команд:
+</p>
+<div class="block" data-file="views/page.hbs">
+	<code class="highlight" data-module="highlight" data-lang="hbs">&lt;div&gt;
+	{{text}}
+&lt;/div&gt;
+&lt;div&gt;
+	{{{text}}}
+&lt;/div&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Запустите приведенный код у себя в браузере
+		и посмотрите на разницу приведенных команд.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/nodejs/book/express/" data-persent="30" data-hash="ndExHbDt" data-quantity="56" data-num="18"><a href="../../../../../../ru/javascript/nodejs/book/express/handlebars/layout.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../ru/javascript/nodejs/book/express/handlebars/title.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

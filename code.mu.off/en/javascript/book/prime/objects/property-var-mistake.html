@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Error accessing object property in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will consider the problems when accessing the properties of objects through variables in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Error accessing object property in JavaScript</h1>
+				<div class="content">
+<p>
+	When accessing an object property, 
+	the name of that property cannot be 
+	stored in a variable. Let's see why. 
+	Suppose we have such an object:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let obj = {a: 1, b: 2, c: 3};</code>
+</div>
+<p>
+	Let the variable store the name 
+	of the property whose value 
+	we want to get:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let key = 'a';</code>
+</div>
+<p>
+	Let's try to access the object 
+	property using this variable:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log(obj.key); // undefined</code>
+</div>
+<p>
+	The above code will not work because 
+	we are actually looking for the property 
+	named <code class="string inline">'key'</code>, not the property 
+	whose name is stored in the variable 
+	<code class="code inline">key</code>. That is, in fact, our code 
+	is equivalent to the following:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log(obj['key']);</code>
+</div>
+<p>
+	The only way to access an element by 
+	key from a variable is to write this 
+	variable in square brackets:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log(obj[key]);</code>
+</div>
+<div class="task">
+	<p>
+		Fix the error in the following code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let obj = {x: 1, y: 2, z: 3};
+
+let prop = 'x';
+console.log(obj.prop);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Fix the error in the following code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let obj = {x: 1, y: 2, z: 3};
+
+let prop = 'x';
+console.log(obj['prop']);</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="16" data-hash="jsPmObPVM" data-quantity="363" data-num="60"><a href="../../../../../en/javascript/book/prime/objects/element-var-mistake.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/objects/computed-properties.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/objects/property-var-mistake.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/objects/property-var-mistake.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

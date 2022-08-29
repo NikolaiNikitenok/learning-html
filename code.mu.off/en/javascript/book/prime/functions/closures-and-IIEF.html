@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Closures and IIFE in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will analyze closures and immediately invoked function call in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Closures and IIFE in JavaScript</h1>
+				<div class="content">
+<p>
+	As you already know, you can call an anonymous 
+	function in-place and assign the result of 
+	the work to some variable:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let result = function() {
+	return '!';
+}();
+
+console.log(result); // shows '!'</code>
+</div>
+<p>
+	Often the immediately invoked function is then 
+	enclosed in parentheses, although this is not 
+	necessary. This is done so that it is immediately 
+	clear that the function is called in-place:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let result = (function() {
+	return '!';
+})();
+
+console.log(result); // shows '!'</code>
+</div>
+<p>
+	Let now the result of the function called 
+	in-place be an anonymous function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let func = (function() {
+	return function() {
+		console.log('!');
+	}
+})();
+
+func(); // shows '!'</code>
+</div>
+<p>
+	Let's make the returned function store the 
+	variable <code class="code inline">num</code> in the closure:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let func = (function() {
+	let num = 1;
+	
+	return function() {
+		console.log(num);
+	}
+})();</code>
+</div>
+<p>
+	If you add <code class="code inline">num++</code>, then the function 
+	<code class="code inline">func</code> will become a ready-made counter:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let func = (function() {
+	let num = 1;
+	
+	return function() {
+		console.log(num);
+		num++;
+	}
+})();
+
+func(); //shows 1
+func(); //shows 2
+func(); //shows 3
+func(); //shows 4
+func(); //shows 5</code>
+</div>
+<div class="task">
+	<p>
+		Without looking into my code, implement 
+		the same counter on your own.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Modify the operation of the counter so 
+		that it counts up to <code class="number inline">5</code>, and then 
+		starts counting again.
+	</p>
+</div>
+
+<h2>Comparison with the previous method</h2>
+<p>
+	Let's compare our counter with the counter 
+	using closure we did earlier:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test() {
+	let num = 1;
+	
+	return function() {
+		console.log(num);
+		num++;
+	}
+}
+
+let func = test();
+
+func(); //shows 1
+func(); //shows 2
+func(); //shows 3
+func(); //shows 4
+func(); //shows 5</code>
+</div>
+<p>
+	As you can see, our new method is simpler: 
+	the ready-made counter immediately gets into 
+	the variable, unlike the old method, in 
+	which we have an additional function 
+	<code class="code inline">test</code>. In addition, in the old way, 
+	you can create several counters:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test() {
+	let num = 1;
+	
+	return function() {
+		console.log(num);
+		num++;
+	};
+};
+
+let func1 = test(); // the first counter
+func1();  //shows 1
+func1();  //shows 2
+
+let func2 = test(); // the second counter
+func2();  //shows 1
+func2();  //shows 2</code>
+</div>
+<p>
+	In the new method, only one unique counter 
+	will be obtained. If you really only need 
+	one counter, then it's convenient to use 
+	the new method: this way you will protect 
+	yourself from accidentally creating 
+	multiple counters.
+</p>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="53" data-hash="jsPmFACIIFE" data-quantity="363" data-num="193"><a href="../../../../../en/javascript/book/prime/functions/immediately-invoked-function-expression.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/functions/callbacks.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/functions/closures-and-IIEF.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/functions/closures-and-IIEF.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

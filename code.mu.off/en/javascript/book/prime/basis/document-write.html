@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Writing text to a document in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to display text in the browser window in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Writing text to a document in JavaScript</h1>
+				<div class="content">
+<p>
+	Using JavaScript, you can manage the HTML 
+	page tags, for example, display text in them. 
+	We will learn this later when we go through 
+	the section on working with the DOM.
+</p>
+<p>
+	Sometimes, however, for debugging purposes, 
+	you want to display some text in the browser 
+	window. This is done with the <code class="code inline">document.write</code> 
+	command. Let's see how it works with examples.
+</p>
+
+<h2>Example <span class="-page-"></span></h2>
+<p>
+	Output a numeric value:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">document.write(123);</code>
+</div>
+
+<h2>Example <span class="-page-"></span></h2>
+<p>
+	Let's output some text:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">document.write('text');</code>
+</div>
+
+<h2>Example <span class="-page-"></span></h2>
+<p>
+	Display text enclosed in tags:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">document.write('&lt;b&gt;text&lt;/b&gt;');</code>
+</div>
+
+<h2>Example <span class="-page-"></span></h2>
+<p>
+	Let's output the text contained in the variable:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = 'text';
+document.write(str);</code>
+</div>
+
+<h2>Example <span class="-page-"></span></h2>
+<p>
+	Enclose the text from the variable in tags:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = 'text';
+document.write('&lt;b&gt;' + str + '&lt;/b&gt;');</code>
+</div>
+
+<h2>Example <span class="-page-"></span></h2>
+<p>
+	Display text in two rows:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">document.write('text &lt;br&gt; text');</code>
+</div>
+
+<h2>Example <span class="-page-"></span></h2>
+<p>
+	Let's display a lot of texts in a column:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">document.write('text1&lt;br&gt;');
+document.write('text2&lt;br&gt;');
+document.write('text3&lt;br&gt;');</code>
+</div>
+
+<h2>Example <span class="-page-"></span></h2>
+<p>
+	It's also possible like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">document.write('text');
+document.write('&lt;br&gt;');
+document.write('text');</code>
+</div>
+
+<h2>Practical tasks</h2>
+<div class="task">
+	<p>
+		Display some text in the browser window.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Display some text in the browser window, 
+		making it italic.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given a variable:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let str = 'text';</code>
+	</div>
+	<p>
+		Display the text from the variable in the 
+		browser window so that it is italic.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Display a column of numbers from <code class="number inline">1</code> 
+		to <code class="number inline">5</code> in the browser window.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="9" data-hash="jsPmBsDW" data-quantity="363" data-num="34"><a href="../../../../../en/javascript/book/prime/basis/prompt.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/basis/mistakes.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/basis/document-write.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/basis/document-write.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

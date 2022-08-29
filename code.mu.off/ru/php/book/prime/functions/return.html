@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Инструкция return в PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами работу с инструкцией return в PHP.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Инструкция return в PHP</h1>
+				<div class="content">
+<p>
+	Пусть у нас есть функция, которая выводит
+	на экран квадрат переданного числа:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function func($num) {
+		echo $num * $num;
+	}
+	
+	func(3); // выведет 9
+?&gt;</code>
+</div>
+<p>
+	Пусть мы хотим не выводить значение на экран,
+	а записать в какую-нибудь переменную, вот так:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$result = func(3); // в переменной $result теперь 9
+?&gt;</code>
+</div>
+<p>
+	Для этого в PHP существует специальная инструкция
+	<code class="code inline">return</code>, которая позволяет указать
+	значение, которое возвращает функция. Под
+	словом <i>возвращает</i> понимают то значение,
+	которое запишется в переменную, если ей присвоить
+	вызванную функцию.
+</p>
+<p>
+	Итак, давайте перепишем нашу функцию так,
+	чтобы она не выводила результат на экран,
+	а возвращала его в переменную:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function func($num) {
+		return $num * $num;
+	}
+	
+	$result = func(3); // в переменной $result теперь 9
+?&gt;</code>
+</div>
+<p>
+	После того, как данные записаны в переменную,
+	их можно, например, вывести на экран:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function func($num) {
+		return $num * $num;
+	}
+	
+	$result = func(3);
+	echo $result; // выведет 9
+?&gt;</code>
+</div>
+<p>
+	А можно сначала как-то изменить эти данные,
+	а затем вывести их на экран:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function func($num) {
+		return $num * $num;
+	}
+	
+	$result = func(3);
+	$result = $result + 1;
+	echo $result; // выведет 10
+?&gt;</code>
+</div>
+<p>
+	Можно сразу выполнять какие-то действия с
+	результатом работы функции перед записью
+	в переменную:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function func($num) {
+		return $num * $num;
+	}
+	
+	$result = func(3) + 1;
+	echo $result; // выведет 10
+?&gt;</code>
+</div>
+<p>
+	А можно не записывать результат в переменную,
+	а сразу вывести его на экран:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function func($num) {
+		return $num * $num;
+	}
+	
+	echo func(3); // выведет 9
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Сделайте функцию, которая параметром принимает
+		число, а возвращает куб этого числа. С помощью
+		этой функции найдите куб числа <code class="number inline">3</code> и
+		запишите его в переменную <code class="code inline">$result</code>.
+	</p>
+</div>
+
+<h2>Использование функций в выражении</h2>
+<p>
+	В следующем примере с помощью функции <code class="code inline">func</code>
+	мы сначала найдем квадрат числа <code class="number inline">2</code>,
+	а затем - квадрат числа <code class="number inline">3</code>, сложим
+	эти значения и запишем в переменную:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function func($num) {
+		return $num * $num;
+	}
+	
+	$result = func(2) + func(3);
+	echo $result; // выведет 13
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Сделайте функцию, которая параметром принимает
+		число, а возвращает квадратный корень из
+		этого числа. С помощью этой функции найдите
+		корень числа <code class="number inline">3</code>, затем найдите корень
+		числа <code class="number inline">4</code>. Просуммируйте полученные
+		результаты и выведите их на экран.
+	</p>
+</div>
+
+<h2>Функции в функциях</h2>
+<p>
+	Можно также результат работы одной функции
+	передать параметром в другую, например, вот
+	так мы сначала найдем квадрат числа <code class="number inline">2</code>,
+	а затем квадрат результата:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function func($num) {
+		return $num * $num;
+	}
+	
+	$result = func(func(2));
+	echo $result; // выведет 16
+?&gt;</code>
+</div>
+<p>
+	Функции, конечно же, не обязательно должны
+	быть одинаковыми.
+</p>
+<p>
+	Пусть, например, у нас есть функция, возвращающая
+	квадрат числа, и функция, возвращающая куб числа:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function square($num) {
+		return $num * $num;
+	}
+	
+	function cube($num) {
+		return $num * $num * $num;
+	}
+?&gt;</code>
+</div>
+<p>
+	Давайте с помощью этих функций возведем число
+	<code class="number inline">2</code> в квадрат, а затем результат этой
+	операции возведем в куб:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$result = cube(square(2));
+	echo $result;
+?&gt;</code>
+</div>
+<p>
+	Пусть теперь у нас есть функция, возвращающая
+	квадрат числа, и функция, находящая сумму
+	двух чисел:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function square($num) {
+		return $num * $num;
+	}
+	
+	function sum($num1, $num2) {
+		return $num1 + $num2;
+	}
+?&gt;</code>
+</div>
+<p>
+	Найдем с помощью этих функций сумму квадрата
+	числа <code class="number inline">2</code> и сумму квадрата числа <code class="number inline">3</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$result = sum(square(2), square(3));
+	echo $result;
+?&gt;</code>
+</div>
+<!--
+<div class="task">
+	<p>
+		Пусть у вас есть функция, возвращающая квадратный
+		корень из числа, и функция, округляющая дробь
+		до трех знаков в дробной части:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function sqrt(num) {
+	return Math.sqrt(num);
+}
+
+function round(num) {
+	return num.toFixed(3);
+}</code>
+	</div>
+	<p>
+		С помощью этих функций найдите квадратный
+		корень из числа <code class="number inline">2</code> и округлите его
+		до трех знаков в дробной части.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Пусть у вас есть функция, возвращающая квадратный
+		корень из числа, и функция, возвращающая
+		сумму трех чисел:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function sqrt(num) {
+	return Math.sqrt(num);
+}
+
+function sum(num1, num2, num3) {
+	return num1 + num2 + num3;
+}</code>
+	</div>
+	<p>
+		С помощью этих функций найдите сумму корней
+		чисел <code class="number inline">2</code>, <code class="number inline">3</code> и <code class="number inline">4</code> и запишите
+		ее в переменную <code class="code inline">result</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Пусть у вас есть функция, округляющая дробь
+		до трех знаков в дробной части:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function round(num) {
+	return num.toFixed(3);
+}</code>
+	</div>
+	<p>
+		С помощью этой функции модифицируйте предыдущую
+		задачу так, чтобы в переменную <code class="code inline">result</code>
+		записывалась дробь, округленная до <code class="number inline">3</code>-х
+		знаков в дробной части.
+	</p>
+</div>
+-->
+
+<h2>Тонкое место return</h2>
+<p>
+	После того, как выполнится инструкция <code class="code inline">return</code>
+	- функция закончит свою работу. То есть:
+	<i>после выполнения return больше никакой
+	код не выполнится.</i>
+</p>
+<p>
+	Смотрите пример:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function func($num) {
+		return $num * $num;
+		
+		echo '!'; // этот код никогда не выполнится
+	}
+	
+	$result = func(3);
+?&gt;</code>
+</div>
+<p>
+	Это не значит, что в функции должен быть
+	один <code class="code inline">return</code>. Но выполнится только
+	один из них.
+</p>
+<p>
+	В следующем примере в зависимости от значения
+	параметра выполнится либо первый, либо второй
+	<code class="code inline">return</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function func($num) {
+		if ($num &gt;= 0) {
+			return '+';
+		} else {
+			return '-';
+		}
+	}
+	
+	echo func( 3); // выведет '+'
+	echo func(-3); // выведет '-'
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Что выведется на экран в результате выполнения
+		следующего кода:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function func($num) {
+		return $num;
+		
+		$result = $num * $num;
+		return $result;
+	}
+	
+	echo func(3);
+?&gt;</code>
+	</div>
+	<p>
+		Объясните почему.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Что выведет каждый из <code class="code inline">echo</code> в результате
+		выполнения следующего кода:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function func($num) {
+		if ($num &lt;= 0) {
+			return abs($num);
+		} else {
+			return $num * $num;
+		}
+	}
+	
+	echo func(10);
+	echo func(-5);
+?&gt;</code>
+	</div>
+	<p>
+		Объясните почему.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Что выведет каждый из <code class="code inline">echo</code> в результате
+		выполнения следующего кода:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function func($num) {
+		if ($num &lt;= 0) {
+			return abs($num);
+		}
+		
+		return $num * $num;
+	}
+	
+	echo func(10);
+	echo func(-5);
+?&gt;</code>
+	</div>
+	<p>
+		Объясните почему.
+	</p>
+</div>
+
+<h2>Цикл и return</h2>
+<p>
+	Пусть у нас есть функция, возвращающая сумму
+	чисел от <code class="number inline">1</code> до <code class="number inline">5</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function func() {
+		$sum = 0;
+		
+		for ($i = 1; $i &lt;= 5; $i++) {
+			$sum += $i;
+		}
+		
+		return $sum;
+	}
+	
+	$result = func();
+	echo $result; // выведет 15
+?&gt;</code>
+</div>
+<p>
+	Пусть теперь мы расположим <code class="code inline">return</code>
+	внутри цикла, вот так:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function func() {
+		$sum = 0;
+		
+		for ($i = 1; $i &lt;= 5; $i++) {
+			$sum += $i;
+			return $sum;
+		}
+	}
+	
+	$result = func();
+	echo $result;
+?&gt;</code>
+</div>
+<p>
+	В этом случае цикл прокрутится лишь одну
+	итерацию и произойдет автоматический выход
+	из функции (ну и заодно из цикла). А за одну
+	итерацию цикла в переменной <code class="code inline">$sum</code> окажется
+	лишь число <code class="number inline">1</code>, а не вся нужная сумма.
+</p>
+<div class="task">
+	<p>
+		Что выведется на экран в результате выполнения
+		следующего кода:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function func($num) {
+		$sum = 0;
+		
+		for ($i = 1; $i &lt;= $num; $i++) {
+			$sum += $i;
+			return $sum;
+		}
+	}
+	
+	echo func(5);
+?&gt;</code>
+	</div>
+	<p>
+		Объясните почему.
+	</p>
+	<p>
+		Что хотел сделать автор данного кода? Исправьте
+		ошибку автора.
+	</p>
+</div>
+
+<h2>Применение return в цикле</h2>
+<p>
+	То, что <code class="code inline">return</code> расположен внутри цикла,
+	не всегда может быть ошибкой.
+</p>
+<p>
+	В следующем примере сделана функция, которая
+	определяет, сколько первых элементов массива
+	нужно сложить, чтобы сумма стала больше или
+	равна <code class="number inline">10</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function func($arr) {
+		$length = count($arr);
+		$sum = 0;
+		
+		for ($i = 0; $i &lt; $length; $i++) {
+			$sum += $arr[$i];
+			
+			// Если сумма больше или равна 10:
+			if ($sum &gt;= 10) {
+				return $i + 1; // выходим из цикла и из функции
+			}
+		}
+	}
+	
+	$result = func([1, 2, 3, 4, 5]);
+	echo $result;
+?&gt;</code>
+</div>
+<p>
+	А в следующем примере сделана функция, которая
+	вычисляет, сколько целых чисел, начиная с
+	<code class="number inline">1</code>, нужно сложить, чтобы результат
+	был больше <code class="number inline">100</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function func() {
+		$sum = 0;
+		$i = 1;
+		
+		while (true) { // бесконечный цикл
+			$sum += $i;
+			
+			if ($sum &gt;= 100) {
+				return $i; // цикл крутится пока не выйдет тут
+			}
+			
+			$i++;
+		}
+	}
+	
+	echo  func( );
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Напишите функцию, которая параметром будет
+		принимать число и делить его на <code class="number inline">2</code>
+		столько раз, пока результат не станет меньше
+		<code class="number inline">10</code>. Пусть функция возвращает количество
+		итераций, которое потребовалось для достижения
+		результата.
+	</p>
+</div>
+
+<h2>Приемы работы с return</h2>
+<p>
+	Существуют некоторые приемы работы с <code class="code inline">return</code>,
+	упрощающие код.
+</p>
+<p>
+	Рассмотрим, к примеру, следующий код:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function func($num) {
+		if ($num &gt;= 0) {
+			$result = sqrt($num);
+		} else {
+			$result = 0;
+		}
+		
+		return $result;
+	}
+	
+	echo func(3);
+?&gt;</code>
+</div>
+<p>
+	Как вы видите, в данном коде в зависимости
+	от условия в переменную <code class="code inline">$result</code> будет
+	попадать либо одно, либо другое значение.
+	А последней строкой функции содержимое этой
+	переменной возвращается через <code class="code inline">return</code>.
+</p>
+<p>
+	Давайте перепишем этот код в более сокращенной
+	форме, избавившись от ненужной здесь переменной
+	<code class="code inline">$result</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function func($num) {
+		if ($num &gt;= 0) {
+			return sqrt($num);
+		} else {
+			return 0;
+		}
+	}
+	
+	echo func(3);
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Дана следующая функция:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function func($num1, $num2) {
+		if ($num1 &gt; 0 and $num2 &gt; 0) {
+			$result = $num1 * $num2;
+		} else {
+			$result = $num1 - $num2;
+		}
+		
+		return $result;
+	}
+	
+	echo func(3, 4);
+?&gt;</code>
+	</div>
+	<p>
+		Перепишите ее в сокращенной форме согласно
+		изученной теории.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/prime/" data-persent="36" data-hash="ppPmUFRt" data-quantity="223" data-num="81"><a href="../../../../../ru/php/book/prime/functions/parameters.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/php/book/prime/functions/examples.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

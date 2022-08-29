@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Магический метод __set в ООП на PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами разберем магический метод __set в ООП на PHP.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Магический метод set</h1>
+				<div class="content">
+<p>
+	Магический метод <code class="code inline">__set</code> вызывается
+	при попытке изменить значение несуществующего
+	или скрытого свойства. В качестве параметров
+	он принимает имя свойства и значение, которое
+	ему пытаются присвоить.
+</p>
+<p>
+	Давайте посмотрим на практическом примере.
+	Пусть у нас дан вот такой класс <code class="code inline">Test</code>:
+</p>
+<div class="block" data-file="Test.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Test
+	{
+		private $prop1;
+		private $prop2;
+	}
+?&gt;</code>
+</div>
+<p>
+	Давайте сделаем в этом классе магический
+	метод <code class="code inline">__set</code>, который с помощью функции
+	<code class="code inline">var_dump</code> будет выводить имя свойства,
+	к которому произошло обращение, и значение,
+	которое этому свойству пытаются установить:
+</p>
+<div class="block" data-file="Test.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Test
+	{
+		private $prop1;
+		private $prop2;
+		
+		public function __set($property, $value)
+		{
+			var_dump($property . ' ' .$value);
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Проверим работу нашего класса:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$test = new Test;
+	$test-&gt;prop = 'value'; // var_dump метода __set выведет 'prop value'
+?&gt;</code>
+</div>
+<p>
+	Давайте теперь будем устанавливать значение
+	свойству, имя которого хранится в переменной
+	<code class="code inline">$property</code>:
+</p>
+<div class="block" data-file="Test.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Test
+	{
+		private $prop1;
+		private $prop2;
+		
+		public function __set($property, $value)
+		{
+			$this-&gt;$property = $value; // устанавливаем значение
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Теперь мы сможем записывать в приватные свойства
+	снаружи класса:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$test = new Test;
+	
+	$test-&gt;prop1 = 1; // запишем 1
+	$test-&gt;prop2 = 2; // запишем 2
+?&gt;</code>
+</div>
+<p>
+	Записывать мы можем, однако, проверить, записалось
+	ли туда что-то - нет, так как свойства приватные.
+</p>
+<p>
+	Можно сделать геттер для этих свойств или
+	просто воспользоваться магическим методом
+	<code class="code inline">__get</code>. Воспользуемся вторым вариантом:
+</p>
+<div class="block" data-file="Test.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Test
+	{
+		private $prop1;
+		private $prop2;
+		
+		public function __set($property, $value)
+		{
+			$this-&gt;$property = $value;
+		}
+		
+		// Магический геттер свойств:
+		public function __get($property)
+		{
+			return $this-&gt;$property;
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Вот теперь мы можем проверить работу нашего
+	класса. Проверим:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$test = new Test;
+	
+	$test-&gt;prop1 = 1; // запишем 1
+	$test-&gt;prop2 = 2; // запишем 2
+	
+	echo $test-&gt;prop1; // выведет 1
+	echo $test-&gt;prop2; // выведет 2
+?&gt;</code>
+</div>
+<p>
+	На самом деле, конечно же, не стоит разрешать
+	всем подряд записывать в приватные свойства,
+	иначе пропадает суть этих приватных свойств
+	(проще сделать их публичными и все).
+</p>
+<p>
+	Поэтому данный метод следует применять только
+	тогда, когда в этом действительно есть необходимость.
+	Ниже мы еще рассмотрим примеры удачного применения.
+</p>
+
+<h2>Несуществующее свойство</h2>
+<p>
+	Давайте попробуем записать данные в несуществующее
+	свойство - это будет работать:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$test = new Test;
+	
+	$test-&gt;prop3 = 3; // запишем 3
+	echo $test-&gt;prop3; // выведет 3
+?&gt;</code>
+</div>
+<p>
+	Пусть мы не хотим разрешать записывать в
+	несуществующие свойства. И, вообще, хотим
+	разрешить запись только в свойства <code class="code inline">prop1</code>
+	и <code class="code inline">prop2</code>.
+</p>
+<p>
+	Это легко сделать - достаточно в методе <code class="code inline">__set</code>
+	добавить соответствующее условие:
+</p>
+<div class="block" data-file="Test.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Test
+	{
+		private $prop1;
+		private $prop2;
+		
+		public function __set($property, $value)
+		{
+			// Напишем условие:
+			if ($property == 'prop1' or $property == 'prop2') {
+				$this-&gt;$property = $value;
+			}
+		}
+		
+		public function __get($property)
+		{
+			return $this-&gt;$property;
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Если таких свойств будет много, то не очень
+	удобно перечислять их все в условии.
+</p>
+<p>
+	Давайте запишем разрешенные для записи свойства
+	в массив и будем проверять наличие свойства
+	в этом массиве с помощью функции <code class="code inline">in_array</code>:
+</p>
+<div class="block" data-file="Test.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Test
+	{
+		private $prop1;
+		private $prop2;
+		
+		public function __set($property, $value)
+		{
+			$properties = ['prop1', 'prop2']; // разрешенные свойства
+			
+			if (in_array($property, $properties)) {
+				$this-&gt;$property = $value;
+			}
+		}
+		
+		public function __get($property)
+		{
+			return $this-&gt;$property;
+		}
+	}
+?&gt;</code>
+</div>
+
+<h2>Проверка при записи</h2>
+<p>
+	Давайте будем проверять значения свойств
+	на соответствие определенному условию:
+</p>
+<div class="block" data-file="Test.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Test
+	{
+		private $prop1;
+		private $prop2;
+		
+		public function __set($property, $value)
+		{
+			switch($property) {
+				case 'prop1':
+					// Если prop1 от 0 до 10:
+					if ($value &gt; 0 and $value &lt; 10) {
+						$this-&gt;$property = $value;
+					}
+				break;
+				case 'prop2':
+					// Если prop2 от 10 до 20:
+					if ($value &gt; 10 and $value &lt; 20) {
+						$this-&gt;$property = $value;
+					}
+				break;
+				default:
+					// Такого свойства нет
+				break;
+			}
+		}
+		
+		public function __get($property)
+		{
+			return $this-&gt;$property;
+		}
+	}
+?&gt;</code>
+</div>
+
+<h2>Применение</h2>
+<p>
+	Практическое применение метода <code class="code inline">__set</code>
+	вы изучите самостоятельно, решив вот такую задачу:
+</p>
+<div class="task">
+	<p>
+		Пусть дан вот такой класс <code class="code inline">User</code> с геттерами
+		и сеттерами свойств:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class User
+	{
+		private $name;
+		private $age;
+		
+		public function getName()
+		{
+			return $this-&gt;name;
+		}
+		
+		public function setName($name)
+		{
+			if ($name != '') { // проверяем имя на непустоту
+				$this-&gt;name = $name;
+			}
+		}
+		
+		public function getAge()
+		{
+			return $this-&gt;age;
+		}
+		
+		public function setAge($age)
+		{
+			if ($age &gt;= 0 and $age &lt;= 70) { // проверяем возраст
+				$this-&gt;age = $age;
+			}
+		}
+	}
+?&gt;</code>
+	</div>
+	<p>
+		Переделайте код этого класса так, чтобы вместо
+		геттеров и сеттеров использовались магический
+		методы <code class="code inline">__get</code> и <code class="code inline">__set</code>.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/oop/" data-persent="50" data-hash="ppOpMgSt" data-quantity="107" data-num="55"><a href="../../../../../ru/php/book/oop/magic/get.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/php/book/oop/class/Date.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

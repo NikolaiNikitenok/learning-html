@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Определение принадлежности объекта к классу в ООП на PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../js/location.js?v=3"></script>
+		<script src="../../../../js/locale.js?v=5"></script>
+		<script src="../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами разберем определение принадлежности объекта к классу с помощью оператора instanceof в ООП на PHP.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Определение принадлежности объекта к классу</h1>
+				<div class="content">
+<p>
+	Сейчас мы с вами изучим оператор <code class="code inline">instanceof</code>.
+	Данный оператор используется для определения
+	того, является ли текущий объект экземпляром
+	указанного класса.
+</p>
+<p>
+	Давайте посмотрим на примере. Пусть у нас
+	даны какие-то два класса:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	// Первый класс:
+	class Class1
+	{
+		
+	}
+	
+	// Второй класс:
+	class Class2
+	{
+		
+	}
+?&gt;</code>
+</div>
+<p>
+	Создадим объект первого класса:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$obj = new Class1;
+?&gt;</code>
+</div>
+<p>
+	Проверим принадлежность объекта из переменной
+	<code class="code inline">$obj</code> первому классу и второму:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	// Выведет true, тк объект принадлежит классу Class1:
+	var_dump($obj instanceof Class1);
+	
+	// Выведет false, тк объект НЕ принадлежит классу Class2:
+	var_dump($obj instanceof Class2);
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Сделайте класс <code class="code inline">Employee</code> с публичными
+		свойствами <code class="code inline">name</code> (имя) и <code class="code inline">salary</code>
+		(зарплата).
+	</p>
+</div>
+<div class="task">
+	<p>
+		Сделайте класс <code class="code inline">Student</code> с публичными
+		свойствами <code class="code inline">name</code> (имя) и <code class="code inline">scholarship</code>
+		(стипендия).
+	</p>
+</div>
+<div class="task">
+	<p>
+		Создайте по <code class="number inline">3</code> объекта каждого класса
+		и в произвольном порядке запишите их в массив
+		<code class="code inline">$arr</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Переберите циклом массив <code class="code inline">$arr</code> и выведите
+		на экран столбец имен всех работников.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Аналогичным образом выведите на экран столбец
+		имен всех студентов.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Переберите циклом массив <code class="code inline">$arr</code> и с
+		его помощью найдите сумму зарплат работников
+		и сумму стипендий студентов. После цикла
+		выведите эти два числа на экран.
+	</p>
+</div>
+
+<h2>Оператор instanceof и наследование</h2>
+<p>
+	Пусть теперь у нас есть родительский класс
+	и дочерний:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	// Родительский класс:
+	class ParentClass
+	{
+		
+	}
+	
+	// Дочерний класс:
+	class ChildClass extends ParentClass
+	{
+		
+	}
+?&gt;</code>
+</div>
+<p>
+	Создадим объект дочернего класса:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$obj = new ChildClass;
+?&gt;</code>
+</div>
+<p>
+	Проверим теперь с помощью <code class="code inline">instanceof</code>,
+	принадлежит ли наш объект классу <code class="code inline">ParentClass</code>
+	и классу <code class="code inline">ChildClass</code>:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	var_dump($obj instanceof ChildClass);  // выведет true
+	var_dump($obj instanceof ParentClass); // тоже выведет true
+?&gt;</code>
+</div>
+<p>
+	Как вы видите из примера - оператор <code class="code inline">instanceof</code>
+	не делает различия при проверки между родительскими
+	и дочерними классами.
+</p>
+<p>
+	Не путайтесь - если объект будет действительно
+	родительского класса то, конечно же, проверка
+	на принадлежность к дочернему классу вернет
+	<code class="code inline">false</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$obj = new ParentClass; // объект родительского класса
+	
+	var_dump($obj instanceof ParentClass); // выведет true
+	var_dump($obj instanceof ChildClass); // выведет false
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Сделайте класс <code class="code inline">User</code> с публичным свойствами
+		<code class="code inline">name</code> и <code class="code inline">surname</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Сделайте класс <code class="code inline">Employee</code>, который будет
+		наследовать от класса <code class="code inline">User</code> и добавлять
+		свойство <code class="code inline">salary</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Сделайте класс <code class="code inline">City</code> с публичными свойствами
+		<code class="code inline">name</code> и <code class="code inline">population</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Создайте <code class="number inline">3</code> объекта класса <code class="code inline">User</code>,
+		<code class="number inline">3</code> объекта класса <code class="code inline">Employee</code>,
+		<code class="number inline">3</code> объекта класса <code class="code inline">City</code>, и в
+		произвольном порядке запишите их в массив
+		<code class="code inline">$arr</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Переберите циклом массив <code class="code inline">$arr</code> и выведите
+		на экран столбец свойств <code class="code inline">name</code> тех
+		объектов, которые принадлежат классу <code class="code inline">User</code>
+		или потомку этого класса.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Переберите циклом массив <code class="code inline">$arr</code> и выведите
+		на экран столбец свойств <code class="code inline">name</code> тех
+		объектов, которые не принадлежат классу <code class="code inline">User</code>
+		или потомку этого класса.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Переберите циклом массив <code class="code inline">$arr</code> и выведите
+		на экран столбец свойств <code class="code inline">name</code> тех
+		объектов, которые принадлежат именно классу
+		<code class="code inline">User</code>, то есть не классу <code class="code inline">City</code>
+		и не классу <code class="code inline">Employee</code>.
+	</p>
+</div>
+
+<h2>Применение</h2>
+<p>
+	Давайте рассмотрим применение оператора <code class="code inline">instanceof</code>
+	на достаточно сложном примере. Пусть у нас
+	есть вот такой класс для работников:
+</p>
+<div class="block" data-file="Employee.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Employee
+	{
+		private $name;
+		private $salary;
+		
+		public function __construct($name, $salary)
+		{
+			$this-&gt;name = $name;
+			$this-&gt;salary = $salary;
+		}
+		
+		public function getName()
+		{
+			return $this-&gt;name;
+		}
+		
+		public function getSalary()
+		{
+			return $this-&gt;salary;
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Пусть также есть такой класс для студентов:
+</p>
+<div class="block" data-file="Student.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Student
+	{
+		private $name;
+		private $scholarship; // стипендия
+		
+		public function __construct($name, $scholarship)
+		{
+			$this-&gt;name = $name;
+			$this-&gt;scholarship = $scholarship;
+		}
+		
+		public function getName()
+		{
+			return $this-&gt;name;
+		}
+		
+		public function getScholarship()
+		{
+			return $this-&gt;scholarship;
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Как вы видите, и работник, и студент имеют
+	имя и какой-то доход: у работника это зарплата,
+	а у студента - стипендия.
+</p>
+<p>
+	Пусть теперь мы хотим сделать класс <code class="code inline">UsersCollection</code>,
+	предназначенный для хранения работников и
+	студентов. Работников мы будем хранить в
+	свойстве <code class="code inline">employees</code>, а студентов -
+	в свойстве <code class="code inline">students</code>:
+</p>
+<div class="block" data-file="UsersCollection.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class UsersCollection
+	{
+		private $employees = []; // массив работников
+		private $students = []; // массив студентов
+	}
+?&gt;</code>
+</div>
+<p>
+	Давайте теперь реализуем единый метод <code class="code inline">add</code>
+	для добавления и работников, и студентов.
+	Этот метод параметром будет принимать объект
+	и, если это работник - добавлять его в массив
+	работников, а если студент - в массив студентов.
+	Пример того, как мы будем пользоваться методом
+	нашим методом после его реализации:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$usersCollection = new UsersCollection;
+	
+	$usersCollection-&gt;add(new Employee('john', 200)); // попадет к работникам
+	$usersCollection-&gt;add(new Student('eric', 100));  // попадет к студентам
+?&gt;</code>
+</div>
+<p>
+	Итак, давайте реализуем описанный метод <code class="code inline">add</code>.
+	Здесь нам и поможет изученный нами оператор
+	<code class="code inline">instanceof</code>:
+</p>
+<div class="block" data-file="UsersCollection.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class UsersCollection
+	{
+		private $employees = []; // массив работников
+		private $students = [];  // массив студентов
+		
+		// Добавление в массивы:
+		public function add($user)
+		{
+			// Если передан объект класса Employee:
+			if ($user instanceof Employee) {
+				$this-&gt;employees[] = $user; // добавляем к работникам
+			}
+			
+			// Если передан объект класса Student:
+			if ($user instanceof Student) {
+				$this-&gt;students[] = $user; // добавляем к студентам
+			}
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Давайте также реализуем методы для нахождения
+	суммарной зарплаты и суммарной стипендии:
+</p>
+<div class="block" data-file="UsersCollection.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class UsersCollection
+	{
+		private $employees = [];
+		private $students = [];
+		
+		public function add($user)
+		{
+			if ($user instanceof Employee) {
+				$this-&gt;employees[] = $user;
+			}
+			
+			if ($user instanceof Student) {
+				$this-&gt;students[] = $user;
+			}
+		}
+		
+		// Получаем суммарную зарплату:
+		public function getTotalSalary()
+		{
+			$sum = 0;
+			
+			foreach ($this-&gt;employees as $employee) {
+				$sum += $employee-&gt;getSalary();
+			}
+			
+			return $sum;
+		}
+		
+		// Получаем суммарную стипендию:
+		public function getTotalScholarship()
+		{
+			$sum = 0;
+			
+			foreach ($this-&gt;students as $student) {
+				$sum += $student-&gt;getScholarship();
+			}
+			
+			return $sum;
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Реализуем также метод, который будет находить
+	общую сумму платежей и работникам, и студентам:
+</p>
+<div class="block" data-file="UsersCollection.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class UsersCollection
+	{
+		private $employees = [];
+		private $students = [];
+		
+		public function add($user)
+		{
+			if ($user instanceof Employee) {
+				$this-&gt;employees[] = $user;
+			}
+			
+			if ($user instanceof Student) {
+				$this-&gt;students[] = $user;
+			}
+		}
+		
+		public function getTotalSalary()
+		{
+			$sum = 0;
+			
+			foreach ($this-&gt;employees as $employee) {
+				$sum += $employee-&gt;getSalary();
+			}
+			
+			return $sum;
+		}
+		
+		public function getTotalScholarship()
+		{
+			$sum = 0;
+			
+			foreach ($this-&gt;students as $student) {
+				$sum += $student-&gt;getScholarship();
+			}
+			
+			return $sum;
+		}
+		
+		// Получаем общую сумму платежей и работникам, и студентам:
+		public function getTotalPayment()
+		{
+			return $this-&gt;getTotalScholarship() + $this-&gt;getTotalSalary();
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Проверим работу нашего класса:
+</p>
+<div class="block" data-file="UsersCollection.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$usersCollection = new UsersCollection;
+	
+	$usersCollection-&gt;add(new Student('kyle', 100));
+	$usersCollection-&gt;add(new Student('luis', 200));
+	
+	$usersCollection-&gt;add(new Employee('john', 300));
+	$usersCollection-&gt;add(new Employee('eric', 400));
+	
+	// Получим полную сумму стипендий:
+	echo $usersCollection-&gt;getTotalScholarship();
+	
+	// Получим полную сумму зарплат:
+	echo $usersCollection-&gt;getTotalSalary();
+	
+	// Получим полную сумму платежей:
+	echo $usersCollection-&gt;getTotalPayment();
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Скопируйте мой код классов <code class="code inline">Employee</code>
+		и <code class="code inline">Student</code> и самостоятельно не подсматривая
+		в мой код реализуйте такой же класс <code class="code inline">UsersCollection</code>.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/oop/" data-persent="24" data-hash="ppOpBsOI" data-quantity="107" data-num="27"><a href="../../../../ru/php/book/oop/objects-comparison.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../ru/php/book/oop/types-control.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../js/metrika.js?v=1"></script>	</body>
+</html>

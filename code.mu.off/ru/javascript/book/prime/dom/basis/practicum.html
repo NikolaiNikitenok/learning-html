@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Отработка изученного материала на работу с DOM | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами отработаем изученную работу с DOM на практических задачах JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Отработка изученного материала на работу с DOM</h1>
+				<div class="content">
+<div class="task">
+	<p>
+		Дан инпут и абзац. По потери фокуса в инпуте
+		запишите значение инпута в конец текста абзаца.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дано несколько инпутов, абзац и кнопка. По
+		нажатию на кнопку получите числа, стоящие
+		в этих инпутах и запишите их сумму в абзац.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан инпут. В него вводится число. По потери
+		фокуса найдите сумму цифр этого числа.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан инпут. В него вводятся числа через запятую.
+		По потери фокуса найдите среднее арифметическое
+		этих чисел (сумма делить на количество).
+	</p>
+</div>
+<div class="task">
+	<p>
+		Даны <code class="number inline">4</code> инпута. В первый инпут вводится
+		ФИО через пробел. По потери фокуса запишите
+		фамилию, имя и отчество в остальные <code class="number inline">3</code>
+		инпута.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан инпут. В него вводится ФИО через пробел.
+		ФИО вводится с маленькой буквы. Сделайте
+		так, чтобы по потери фокуса инпутом, введенные
+		фамилия, имя и отчество автоматически стали
+		записанными с большой буквы (в этом же инпуте).
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан инпут. В него вводится текст. По потери
+		фокуса узнайте количество слов в этом тексте.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан инпут. В него вводится дата в формате
+		<span class="format">31.12.2016</span>. По потери фокуса в этом
+		же инпуте поставьте эту дату в формате <span class="format">2016-12-31</span>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан инпут. В него вводится слово. По нажатию
+		на кнопку проверьте то, что это слово читается
+		с начала и с конца одинаково (например, мадам).
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан инпут. В него вводится число. Проверьте
+		по потери фокуса, что это число содержит
+		внутри себя цифру <code class="number inline">3</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Даны несколько абзацев и кнопка. По нажатию
+		на кнопку запишите в конец каждого абзаца
+		его порядковый номер.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Даны ссылки. Добавьте в конец каждой ссылки
+		ее <code class="code inline">href</code> в круглых скобках.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Даны ссылки. Если ссылка начинается с <code class="path inline">http://</code>,
+		то добавьте ей в конец стрелку &rarr; (делается
+		так: <code class="code inline">&amp;rarr;</code>).
+	</p>
+</div>
+<div class="task">
+	<p>
+		Даны несколько абзацев с числами. По нажатию
+		на любой абзац запишите в него квадрат числа,
+		которое в нем находится.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан инпут. В него вводится дата в формате
+		<span class="format">31.12.2016</span>. По потери фокуса узнайте
+		день недели (словом), который приходится
+		на эту дату.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан инпут. Реализуйте кнопочки <code class="number inline">+1</code>, <code class="number inline">-1</code>,
+		которые будут увеличивать или уменьшать на
+		<code class="number inline">1</code> значение инпута. Сделайте так, чтобы
+		это значение не могло стать меньше нуля.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан инпут. Даны абзацы. Пусть в этот инпут
+		записывается суммарное количество нажатий
+		по этим абзацам.
+	</p>
+</div>
+<div class="task">
+	<p>
+		На странице есть дивы. В них есть текст.
+		Обойдите все дивы и обрежьте тот текст, который
+		в них стоит так, чтобы он стал длиной <code class="number inline">10</code>
+		символов. И добавьте троеточие в конец обрезанного
+		текста
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан инпут. В него вводится число. По потери
+		фокуса проверьте, что в нем лежит число от
+		<code class="number inline">1</code> до <code class="number inline">100</code>. Если это так - покрасьте
+		инпут в зеленый цвет, а если не так - в красный.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан инпут и кнопка. По нажатию на кнопку
+		сгенерируйте случайную строку из <code class="number inline">8</code>-ми
+		символов и запишите в инпут.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан инпут и кнопка. Пользователь вводит в
+		инпут какую-то строку. По нажатию на кнопку
+		перемешайте введенные символы случайным образом
+		и запишите ее обратно в инпут.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан инпут, кнопка и абзац. В инпут вводится температура в
+		градусах Фаренгейта. По клику на кнопку
+		выведите в абзац температуру в градусах Цельсия.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан инпут, кнопка и абзац. В инпут вводится
+		число. По нажатию на кнопку выведите в абзац
+		факториал этого числа.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Даны <code class="number inline">3</code> инпута, кнопка и абзац. В инпуты
+		вводятся коэффициенты квадратного уравнения.
+		По нажатию на кнопку найдите корни этого
+		уравнения и выведите их в абзац.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/prime/" data-persent="75" data-hash="jsPmDmPm" data-quantity="363" data-num="273"><a href="../../../../../../ru/javascript/book/prime/dom/basis/mistakes.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../ru/javascript/book/prime/dom/form/textarea.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/basis/practicum.html">en</a><a href="../../../../../../ru/javascript/book/prime/dom/basis/practicum.html" class="active">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

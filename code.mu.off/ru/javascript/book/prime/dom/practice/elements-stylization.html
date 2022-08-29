@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Стилизация элементов на JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами реализуем стилизацию элементов на JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Стилизация элементов на JavaScript</h1>
+				<div class="content">
+<p>
+	Пусть у нас есть несколько абзацев:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;p&gt;text1&lt;/p&gt;
+&lt;p&gt;text2&lt;/p&gt;
+&lt;p&gt;text3&lt;/p&gt;</code>
+</div>
+<p>
+	Давайте переберем эти абзацы циклом и в конец
+	каждого абзаца добавим ссылку, по нажатию
+	на которую тексту абзаца будет добавляться
+	некоторая стилизация. К примеру, текст абзаца
+	будет становится перечеркнутым (это делает
+	CSS свойство <a href="../../../../../../ru/markup/manual/css/property/text-decoration.html"><code class="code inline">text-decoration</code></a>).
+</p>
+<p>
+	Давайте обсудим два нюанса такой задачи.
+</p>
+<p>
+	Во-первых, как уже обсуждалось в предыдущих
+	уроках, не следует менять стили абзацы напрямую
+	через JavaScript - гораздо удобнее будет
+	навешивать какие-нибудь CSS классы.
+</p>
+<p>
+	Во-вторых, при реализации такой задачи вас
+	ожидает некоторый сюрприз. Чтобы понять его
+	суть, давайте посмотрим на HTML код абзацев
+	после добавления ссылок:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;p&gt;text1&lt;a href=""&gt;link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;text2&lt;a href=""&gt;link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;text3&lt;a href=""&gt;link&lt;/a&gt;&lt;/p&gt;</code>
+</div>
+<p>
+	Представим теперь, что по нажатию на ссылку
+	текст абзаца перечеркнется. Однако, ссылка
+	в данном случае также является частью абзаца
+	и тоже перечеркнется! Скорее всего такой
+	эффект нам не нужен. Мы хотим, чтобы текст
+	перечеркивался, но ссылка - нет.
+</p>
+<p>
+	Для решения проблемы нужно просто обернуть
+	текст абзаца в тег <code class="code inline">span</code>, вот так:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;p&gt;&lt;span&gt;text1&lt;/span&gt;&lt;a href=""&gt;link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;text2&lt;/span&gt;&lt;a href=""&gt;link&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;text3&lt;/span&gt;&lt;a href=""&gt;link&lt;/a&gt;&lt;/p&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Дан следующий HTML код:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;p&gt;text1&lt;/p&gt;
+&lt;p&gt;text2&lt;/p&gt;
+&lt;p&gt;text3&lt;/p&gt;</code>
+	</div>
+	<p>
+		Добавьте в конец каждого абзаца ссылку, по
+		клику на которую текст абзаца будет перечеркиваться
+		(а ссылка - нет).
+	</p>
+</div>
+<div class="task">
+	<p>
+		Модифицируйте предыдущую задачу так, чтобы
+		после нажатия на ссылку эта ссылка удалялась
+		из абзаца (а текст абзаца становился перечеркнутым).
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана некоторая HTML таблица. Добавьте в эту
+		таблицу еще одну колонку со ссылкой. По нажатию
+		на эту ссылку ряд с этой ссылкой должен стать
+		зеленого фона.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Модифицируйте предыдущую задачу так, чтобы
+		первое нажатие по ссылке красило ряд в зеленый
+		фон, а второе нажатие отменяло это действие.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/prime/" data-persent="94" data-hash="jsPmPrES" data-quantity="363" data-num="342"><a href="../../../../../../ru/javascript/book/prime/dom/practice/removing-and-editing-together.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../ru/javascript/book/prime/dom/practice/hide-show-button.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/practice/elements-stylization.html">en</a><a href="../../../../../../ru/javascript/book/prime/dom/practice/elements-stylization.html" class="active">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

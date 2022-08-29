@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Ошибки начинающих при работе с циклом while в PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами рассмотрим распространенные ошибки при работе с циклом while в PHP.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Ошибки начинающих при работе с циклом while в PHP</h1>
+				<div class="content">
+<p>
+	Цикл <code class="code inline">while</code> может выполняться бесконечно
+	(это приведет к зависанию скрипта и страницы
+	браузера), достаточно передать ему выражение,
+	которое <i>никогда не станет ложным</i>.
+	Например, так:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$test = true;
+	
+	while ($test === true) {
+		/*
+			Написанный здесь код будет выполняться "вечно"
+			(пока скрипт не будет остановлен принудительно).
+		*/
+	}
+?&gt;</code>
+</div>
+<p>
+	Начинающие программисты время от времени
+	загоняют свою программу в бесконечный цикл
+	(с вами это тоже обязательно случится пару раз).
+</p>
+<p>
+	Давайте рассмотрим распространенные ошибки
+	начинающих.
+</p>
+
+<h2>Ошибка 1</h2>
+<p>
+	Пусть есть вот такой цикл, выводящий числа
+	от <code class="number inline">1</code> до <code class="number inline">10</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$i = 1;
+	
+	while ($i &lt;= 10) {
+		echo $i;
+		$i++;
+	}
+?&gt;</code>
+</div>
+<p>
+	Представим теперь, что программист забыл
+	сделать увеличение счетчика в цикле:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$i = 1;
+	
+	while ($i &lt;= 10) {
+		echo $i;
+	}
+?&gt;</code>
+</div>
+<p>
+	В этом случае цикл будет выполнятся бесконечно,
+	так как условие, при котором цикл закончится,
+	никогда не будет достигнуто.
+</p>
+
+<h2>Ошибка 2</h2>
+<p>
+	Пусть опять наш программист хотел выводить
+	числа от <code class="number inline">1</code> до <code class="number inline">10</code>, однако, вместо
+	<code class="code inline">++</code> написал <code class="sql inline">--</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$i = 1;
+	
+	while ($i &lt;= 10) {
+		echo $i;
+		$i--; // перепутал ++ и --
+	}
+?&gt;</code>
+</div>
+<p>
+	В этом случае, хотя счетчик и изменяется,
+	но он изменяется не в ту сторону - и опять
+	условие никогда не будет достигнуто.
+</p>
+
+<h2>Ошибка 3</h2>
+<p>
+	Бывает и обратная проблема - можно так написать
+	код, что условие цикла уже изначально будет
+	неверно и цикл просто не запустится. Пусть,
+	к примеру, программист хотел вывести столбец
+	чисел от <code class="number inline">1</code> до <code class="number inline">10</code>, однако, вместо
+	знака <code class="code inline">меньше</code> написал знак <code class="code inline">больше</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$i = 1;
+	
+	while ($i &gt; 10) { // правильно было написать $i &lt; 10
+		echo $i;
+		$i++;
+	}
+?&gt;</code>
+</div>
+<p>
+	В таком случае цикл просто не начнется, так
+	как условие изначально неверно.
+</p>
+
+<h2>Ошибка 4</h2>
+<p>
+	Бывает и так, что некоторым начинающим кажется,
+	что цикл крутится не <i>пока условие верно</i>,
+	а наоборот - цикл крутится пока условие не
+	верно и остановится, когда оно станет верным.
+</p>
+<p>
+	Вот пример такого кода:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$i = 1;
+	
+	while ($i == 10) { // зачем-то написано ==
+		echo $i;
+		$i++;
+	}
+?&gt;</code>
+</div>
+<p>
+	При таком условии цикл вообще не начнется,
+	так как условие просто изначально не верно.
+</p>
+
+<h2>Практические задачи</h2>
+<div class="task">
+	<p>
+		В следующем коде программист вывел числа
+		от <code class="number inline">10</code> до <code class="number inline">1</code>:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$i = 10;
+	
+	while ($i &gt;= 1) {
+		echo $i;
+	}
+?&gt;</code>
+	</div>
+	<p>
+		В коде, однако, была допущена ошибка, которая
+		привела к тому, что цикл выполняется бесконечно.
+		Исправьте ошибку программиста.
+	</p>
+</div>
+<div class="task">
+	<p>
+		В следующем коде программист вывел числа
+		от <code class="number inline">10</code> до <code class="number inline">1</code>:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$i = 10;
+	
+	while ($i &gt;= 1) {
+		echo $i;
+		$i++;
+	}
+?&gt;</code>
+	</div>
+	<p>
+		В коде, однако, была допущена ошибка, которая
+		привела к тому, что цикл выполняется бесконечно.
+		Исправьте ошибку программиста.
+	</p>
+</div>
+<div class="task">
+	<p>
+		В следующем коде программист вывел числа
+		от <code class="number inline">10</code> до <code class="number inline">1</code>:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$i = 10;
+	
+	while ($i &lt;= 0) {
+		echo $i;
+		$i--;
+	}
+?&gt;</code>
+	</div>
+	<p>
+		В коде, однако, была допущена ошибка, которая
+		привела к тому, что на экран ничего не вывелось.
+		Исправьте ошибку программиста.
+	</p>
+</div>
+<div class="task">
+	<p>
+		В следующем коде программист вывел числа
+		от <code class="number inline">10</code> до <code class="number inline">1</code>:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$i = 10;
+	
+	while ($i == 0) {
+		echo $i;
+		$i--;
+	}
+?&gt;</code>
+	</div>
+	<p>
+		В коде, однако, была допущена ошибка, которая
+		привела к тому, что на экран ничего не вывелось.
+		Исправьте ошибку программиста.
+	</p>
+</div>
+<div class="task">
+	<p>
+		В следующем коде программист вывел числа
+		от <code class="number inline">10</code> до <code class="number inline">1</code>:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$i = 10;
+	
+	while ($i == 10) {
+		echo $i;
+		$i--;
+	}
+?&gt;</code>
+	</div>
+	<p>
+		В коде, однако, была допущена ошибка, которая
+		привела к тому, что цикл вывел только число
+		<code class="number inline">10</code> и закончил свою работу. Исправьте
+		ошибку программиста.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/prime/" data-persent="20" data-hash="ppPmLpWM" data-quantity="223" data-num="45"><a href="../../../../../ru/php/book/prime/loops/while.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/php/book/prime/loops/for.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

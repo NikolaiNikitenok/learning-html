@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Keys from variables in multidimensional structures in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will use keys from variables in multidimensional arrays and objects in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Keys from variables in multidimensional structures in JavaScript</h1>
+				<div class="content">
+<p>
+	Let the following object be given:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let obj = {
+	'de': ['mo', 'di', 'mi', 'do', 'fr', 'sa', 'so'],
+	'en': ['mo', 'tu', 'we', 'th', 'fr', 'sa', 'su'],
+};</code>
+</div>
+<p>
+	Let's output some element from our object, 
+	for example, the element <code class="string inline">'do'</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let obj = {
+	'de': ['mo', 'di', 'mi', 'do', 'fr', 'sa', 'so'],
+	'en': ['mo', 'tu', 'we', 'th', 'fr', 'sa', 'su'],
+};
+
+console.log(obj['de'][3]);</code>
+</div>
+<p>
+	Let now the language and day number are 
+	stored in variables:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let lang = 'de';
+let day = 3;</code>
+</div>
+<p>
+	Let's use our variables to display 
+	some day of the week:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let obj = {
+	'de': ['mo', 'di', 'mi', 'do', 'fr', 'sa', 'so'],
+	'en': ['mo', 'tu', 'we', 'th', 'fr', 'sa', 'su'],
+};
+
+let lang = 'de';
+let day = 3;
+console.log(obj[lang][day]);</code>
+</div>
+<div class="task">
+	<p>
+		Given the following object with month names:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let months = {
+	'de': [
+		'januar',
+		'februar',
+		'marz',
+		'april',
+		'mai',
+		'juni',
+		'juli',
+		'august',
+		'september',
+		'oktober',
+		'november',
+		'dezember',
+	],
+	'en': [
+		'january',
+		'february',
+		'march',
+		'april',
+		'may',
+		'june',
+		'july',
+		'august',
+		'september',
+		'october',
+		'november',
+		'december',
+	],
+};</code>
+	</div>
+	<p>
+		The following variables are also given:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let lang = 'de'; // can be either 'de' or 'en'
+let month = 5;   // number from 0 to 11</code>
+	</div>
+	<p>
+		Display the name of the month corresponding 
+		to the values of the variables 
+		<code class="code inline">lang</code> and <code class="code inline">month</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Here is such a structure for storing a 
+		to-do list for years, months and days:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let affairs = {
+	'2018': {
+		11: {
+			29: ['task111', 'task112', 'task113'],
+			30: ['task121', 'task122', 'task123'],
+		},
+		12: {
+			30: ['task211', 'task212', 'task213'],
+			31: ['task221', 'task222', 'task223'],
+		},
+	},
+	'2019': {
+		12: {
+			29: ['task311', 'task312', 'task313'],
+			30: ['task321', 'task322', 'task323'],
+			31: ['task331', 'task332', 'task333'],
+		}
+	},
+}</code>
+	</div>
+	<p>
+		Let also be given three variables containing 
+		the year, month and day. Output the task 
+		corresponding to the values 
+		of the variables.
+	</p>
+</div>
+<div class="task">
+	<p>
+		The author of the following code wanted to 
+		output an element with the value <code class="string inline">'24'</code>:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let obj = {
+	key1: {
+		key2: '12',
+		key3: '13',
+	},
+	key2: {
+		key4: '24',
+		key5: '25',
+	},
+}
+
+let key1 = 'key2';
+let key2 = 'key4';
+console.log(obj['key1'][key2]);</code>
+	</div>
+	<p>
+		The code, however, doesn't output what the 
+		author expected. Fix the error.
+	</p>
+</div>
+<div class="task">
+	<p>
+		The author of the following code wanted to 
+		output an element with the value <code class="string inline">'24'</code>:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let obj = {
+	key1: {
+		key2: '12',
+		key3: '13',
+	},
+	key2: {
+		key4: '24',
+		key5: '25',
+	},
+}
+
+let key1 = 'key2';
+let key2 = 'key4';
+console.log(obj.key1.key2);</code>
+	</div>
+	<p>
+		The code, however, doesn't output what the 
+		author expected. Fix the error.
+	</p>
+</div>
+<div class="task">
+	<p>
+		The author of the following code wanted to 
+		output an element with the value <code class="string inline">'24'</code>:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let obj = {
+	key1: {
+		key2: '12',
+		key3: '13',
+	},
+	key2: {
+		key4: '24',
+		key5: '25',
+	},
+}
+
+let key1 = 'key2';
+let key2 = 'key4';
+console.log(obj.key1['key2']);</code>
+	</div>
+	<p>
+		The code, however, doesn't output what the 
+		author expected. Fix the error.
+	</p>
+</div>
+<div class="task">
+	<p>
+		The author of the following code wanted to 
+		output an element with the value <code class="string inline">'24'</code>:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let obj = {
+	key1: {
+		key2: '12',
+		key3: '13',
+	},
+	key2: {
+		key4: '24',
+		key5: '25',
+	},
+}
+
+let key1 = 'key2';
+console.log(obj['key1']['key4']);</code>
+	</div>
+	<p>
+		The code, however, doesn't output what the 
+		author expected. Fix the error.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="40" data-hash="jsPmMuVK" data-quantity="363" data-num="148"><a href="../../../../../en//en/javascript/book/prime/multi/array-of-objects.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/multi/arrays-elements-adding.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/multi/vars-keys.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/multi/vars-keys.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Calendar in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will implement a square calendar in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Calendar in JavaScript</h1>
+				<div class="content">
+<p>
+	In this section, we will implement a calendar. 
+	For simplicity, we will simply make the calendar 
+	display for the current month. But with an eye 
+	to the fact that it can be finalized so that 
+	you can change the month and year. Here is an 
+	example of what we should get:
+</p>
+<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			#parent {
+			text-align: center;
+		}
+		#calendar {
+			display: inline-block;
+		}
+		#calendar td, #calendar th {
+			padding: 5px 12px;
+			border: 1px solid black;
+			text-align: center;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;parent&quot;>
+			<div id=&quot;calendar&quot;>
+				<table>
+					<thead>
+						<tr>
+							<th>Mon</th>
+							<th>Tue</th>
+							<th>Wed</th>
+							<th>Thu</th>
+							<th>Fri</th>
+							<th>Sat</th>
+							<th>Sun</th>
+						</tr>
+					</thead>
+					<tbody class=&quot;body&quot;></tbody>
+				</table>
+			</div>
+		</div>
+		
+		<script>
+			
+			let calendar = document.querySelector('#calendar');
+		let body = calendar.querySelector('.body');
+		let prev = calendar.querySelector('.prev');
+		let next = calendar.querySelector('.next');
+		
+		let date  = new Date();
+		let year  = date.getFullYear();
+		let month = date.getMonth();
+		
+		draw(body, year, month);
+		
+		function draw(body, year, month) {
+			let arr = range(getLastDay(year, month));
+			
+			let firstWeekDay = getFirstWeekDay(year, month);
+			let lastWeekDay  = getLastWeekDay(year, month);
+			
+			let nums = chunk(normalize(arr, firstWeekDay, 6 - lastWeekDay), 7);
+			createTable(body, nums)
+		}
+		
+		function createTable(parent, arr) {
+			parent.textContent = '';
+			let cells = [];
+			
+			for (let sub of arr) {
+				let tr = document.createElement('tr');
+				
+				for (let num of sub) {
+					let td = document.createElement('td');
+					td.textContent = num;
+					tr.appendChild(td);
+					
+					cells.push(td);
+				}
+				
+				parent.appendChild(tr);
+			}
+			
+			return cells;
+		}
+		
+		function normalize(arr, left, right) {
+			for (let i = 0; i < left; i++) {
+				arr.unshift('');
+			}
+			for (var i = 0; i < right; i++) {
+				arr.push('');
+			}
+			
+			return arr;
+		}
+		
+		function getFirstWeekDay(year, month) {
+			let date = new Date(year, month, 1);
+			let num  = date.getDay();
+			
+			if (num == 0) {
+				return 6;
+			} else {
+				return num - 1;
+			}
+		}
+		
+		function getLastWeekDay(year, month) {
+			let date = new Date(year, month + 1, 0);
+			let num  = date.getDay();
+			
+			if (num == 0) {
+				return 6;
+			} else {
+				return num - 1;
+			}
+		}
+		
+		function getLastDay(year, month) {
+			let date = new Date(year, month + 1, 0);
+			return date.getDate();
+		}
+
+		function range(count) {
+			let arr = [];
+			
+			for (let i = 1; i <= count; i++) {
+				arr.push(i);
+			}
+			
+			return arr;
+		}
+		
+		function chunk(arr, n) {
+			let result = [];
+			let count = Math.ceil(arr.length / n);
+			
+			for (let i = 0; i < count; i++) {
+				let elems = arr.splice(0, n);
+				result.push(elems);
+			}
+			
+			return result;
+		}
+		</script>
+	</body>
+</html>"></iframe></div>
+<p>
+	Here is the layout that you can use 
+	when solving the problem:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="parent"&gt;
+	&lt;div id="calendar"&gt;
+		&lt;table&gt;
+			&lt;thead&gt;
+				&lt;tr&gt;
+					&lt;th&gt;Mon&lt;/th&gt;
+					&lt;th&gt;Tue&lt;/th&gt;
+					&lt;th&gt;Wed&lt;/th&gt;
+					&lt;th&gt;Thu&lt;/th&gt;
+					&lt;th&gt;Fri&lt;/th&gt;
+					&lt;th&gt;Sat&lt;/th&gt;
+					&lt;th&gt;Sun&lt;/th&gt;
+				&lt;/tr&gt;
+			&lt;/thead&gt;
+			&lt;tbody class="body"&gt;&lt;/tbody&gt;
+		&lt;/table&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">#parent {
+	text-align: center;
+}
+#calendar {
+	display: inline-block;
+}
+#calendar td, #calendar th {
+	padding: 5px 12px;
+	border: 1px solid black;
+	text-align: center;
+}</code>
+</div>
+<p>
+	Immediately, let's get references to all the 
+	necessary tags in variables, and also write 
+	down the current month and year:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let calendar = document.querySelector('#calendar');
+let body = calendar.querySelector('.body');
+
+let date  = new Date();
+let year  = date.getFullYear();
+let month = date.getMonth();</code>
+</div>
+<div class="task">
+	<p>
+		Copy the code snippets I have provided.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/practice/" data-persent="85" data-hash="jsPrCndTF" data-quantity="75" data-num="65"><a href="../../../../../en/javascript/book/practice/game-find-number/final-code.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/practice/calendar/task-discussion.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/practice/calendar/task-formulation.html" class="active">en</a><a href="../../../../../ru/javascript/book/practice/calendar/task-formulation.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

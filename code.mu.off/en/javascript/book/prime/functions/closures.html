@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Closures in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will analyze the work with closures in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Closures in JavaScript</h1>
+				<div class="content">
+<p>
+	Let's now study the concept of <dfn>closure</dfn>. 
+	In fact, you are already familiar with this 
+	concept, it remains only to learn the correct 
+	terminology.
+</p>
+<p>
+	So a closure is a function along with all 
+	the external variables that are available 
+	to it. Or, in other words, a closure is a 
+	function along with its lexical environment.
+</p>
+<p>
+	In JavaScript, most often, when they say 
+	"function closure", they do not mean this 
+	function itself, but its external variables. 
+	If some function gets a variable from its 
+	lexical environment, then we say "the 
+	variable is taken from the closure".
+</p>
+<p>
+	Let's remember the code we made 
+	in the previous lesson:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test() {
+	let num = 1;
+	
+	return function() {
+		console.log(num);
+	}
+}
+
+let func = test();
+func(); // shows 1</code>
+</div>
+<p>
+	In this case, we can say that the function 
+	<code class="code inline">func</code> gets the value of the variable 
+	<code class="code inline">num</code> from the closure. We can also 
+	say that the function <code class="code inline">func</code> stores 
+	the value of the variable <code class="code inline">num</code> 
+	in a closure.
+</p>
+
+<h2>Counter using closure</h2>
+<p>
+	Let's rewrite our code so that the 
+	returned function increments the 
+	value of the variable <code class="code inline">num</code> 
+	by one each time:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test() {
+	let num = 1;
+	
+	return function() {
+		console.log(num);
+		num++; // adds one
+	}
+}
+
+let func = test();</code>
+</div>
+<p>
+	It turns out that each call to the function 
+	<code class="code inline">func</code> will output a new 
+	value to the console:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test() {
+	let num = 1;
+	
+	return function() {
+		console.log(num);
+		num++;
+	}
+}
+
+let func = test();
+
+func(); //shows 1
+func(); //shows 2
+func(); //shows 3
+func(); //shows 4
+func(); //shows 5</code>
+</div>
+<p>
+	It turns out that we implemented the function 
+	call counter using a closure (more precisely, 
+	using the variable <code class="code inline">num</code> from our 
+	function closure).
+</p>
+<p>
+	Note that each call to the function <code class="code inline">test</code> 
+	will return a new function that will have 
+	its own closure. That is, different counters 
+	will work independently:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test() {
+	let num = 1;
+	
+	return function() {
+		console.log(num);
+		num++;
+	};
+};
+
+let func1 = test(); // the first counter
+func1();  //shows 1
+func1();  //shows 2
+
+let func2 = test(); // the second counter
+func2();  //shows 1
+func2();  //shows 2</code>
+</div>
+<p>
+	It turns out that the same variable <code class="code inline">num</code> 
+	will have different values for 
+	different functions!
+</p>
+<p>
+	That is, if we call the function <code class="code inline">test</code> 
+	twice, then the functions derived from it will 
+	work independently and each of these functions 
+	will have its own independent variable <code class="code inline">num</code>.
+</p>
+<div class="task">
+	<p>
+		On your own, without looking into my 
+		code, implement a function call counter 
+		that works on closures.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Let the function store the number <code class="number inline">10</code> 
+		in the closure. Make it so that each 
+		function call decrements this number 
+		by <code class="number inline">1</code> and prints the decremented 
+		number to the console.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Modify the previous task so that the 
+		countdown goes up to <code class="number inline">0</code>, and then 
+		each subsequent function call prints a 
+		message to the console that the 
+		countdown has ended.
+	</p>
+</div>
+
+<h2>Nuance</h2>
+<p>
+	Consider the following code:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test() {
+	let num = 1;
+	
+	return function() {
+		console.log(num);
+		num++;
+	};
+};
+
+test()(); //shows 1
+test()(); //shows 1</code>
+</div>
+<p>
+	Why will the number 1 always be displayed? 
+	In order to understand this, let's 
+	rewrite our code differently:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test() {
+	let num = 1;
+	
+	return function() {
+		console.log(num);
+		num++;
+	};
+};
+
+let func1 = test(); //!! the first function
+func1();  //shows 1
+
+let func2 = test(); //!! the second function
+func2();  //shows 1</code>
+</div>
+<p>
+	That is, each function <code class="code inline">test</code> call 
+	like this: <code class="code inline">test()()</code> creates its 
+	own function with its own closure and 
+	immediately calls this function.
+</p>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	let num = 0;
+	
+	return function() {
+		console.log(num);
+		num++;
+	};
+};
+
+func()();
+func()();
+func()();</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	let num = 0;
+	
+	return function() {
+		console.log(num);
+		num++;
+	};
+};
+
+let test = func;
+
+test()();
+test()();
+test()();</code>
+	</div>
+</div>
+
+<h2>Nuance</h2>
+<p>
+	Let's take the variable <code class="code inline">num</code> out of 
+	functions, thereby making it global:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 1; // the global variable
+
+function test() {
+	return function() {
+		console.log(num);
+		num++;
+	};
+};</code>
+</div>
+<p>
+	In this case, all returned functions will 
+	change this global variable and the counters 
+	will work already depending on each other:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 1;
+
+function test() {
+	return function() {
+		console.log(num);
+		num++;
+	};
+};
+
+let func1 = test(); // the first counter
+func1();  //shows 1
+func1();  //shows 2
+
+let func2 = test(); // the second counter
+func2();  //shows 3
+func2();  //shows 4</code>
+</div>
+<p>
+	Why did our previous code make independent 
+	counters? Recall this code:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test() {
+	let num = 1;
+	
+	return function() {
+		console.log(num);
+		num++;
+	};
+};</code>
+</div>
+<p>
+	The point is that the variable <code class="code inline">num</code> 
+	is local inside the function <code class="code inline">test</code>. 
+	Therefore, each call to <code class="code inline">test</code> generates 
+	its own local variable.
+</p>
+<p>
+	Therefore, the each of returned functions will 
+	refer to its local function variable <code class="code inline">test</code>. 
+	This is how independence is achieved.
+</p>
+<p>
+	If we make <code class="code inline">num</code> a global variable, 
+	this will also be a closure. It's just 
+	that the lexical environments of returned 
+	functions refer to the same variable 
+	<code class="code inline">num</code> - any changes to this variable 
+	will be visible in all functions.
+</p>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let counter = 0;
+		
+function test() {
+	return function() {
+		console.log(counter);
+		counter++;
+	};
+};
+
+let func = test;
+
+let func1 = func();
+let func2 = func();
+func1();
+func2();
+func1();
+func2();</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function test() {
+	let counter = 0;
+	
+	return function() {
+		return function() {
+			console.log(counter);
+			counter++;
+		};
+	};
+};
+
+let func = test()();
+
+let func1 = func;
+let func2 = func;
+func1();
+func2();
+func1();
+func2();</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function test() {
+	let counter = 0;
+	
+	return function() {
+		return function() {
+			console.log(counter);
+			counter++;
+		};
+	};
+};
+
+let func = test();
+
+let func1 = func();
+let func2 = func();
+func1();
+func2();
+func1();
+func2();</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="52" data-hash="jsPmFACls" data-quantity="363" data-num="191"><a href="../../../../../en/javascript/book/prime/functions/functions-lexical-environment.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/functions/immediately-invoked-function-expression.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/functions/closures.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/functions/closures.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

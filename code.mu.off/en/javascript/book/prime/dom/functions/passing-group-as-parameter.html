@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Passing a group of DOM elements as function parameters in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to pass DOM elements as function parameters in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Passing a group of DOM elements as function parameters</h1>
+				<div class="content">
+<p>
+	Now let our <code class="code inline">setText</code> function take as the 
+	first parameter a reference not to single element, 
+	but to a set of elements at once:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function setText(elems, text) {
+	for (let elem of elems) {
+		elem.textContent = text;
+	}
+}</code>
+</div>
+<p>
+	Let's try out our function in practice. Suppose we 
+	have the following paragraphs:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;p class="elem"&gt;&lt;/p&gt;
+&lt;p class="elem"&gt;&lt;/p&gt;
+&lt;p class="elem"&gt;&lt;/p&gt;
+&lt;p class="elem"&gt;&lt;/p&gt;
+&lt;p class="elem"&gt;&lt;/p&gt;</code>
+</div>
+<p>
+	Let's use our function to set all these 
+	paragraphs to some text:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elems = document.querySelectorAll('.elem');
+setText(elems, 'text');</code>
+</div>
+<div class="task">
+	<p>
+		Make the <code class="code inline">appendText</code> function that takes 
+		an array of DOM elements as the first parameter 
+		and text as the second. Make this function append 
+		text to the end of passed elements.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Make the <code class="code inline">appendElem</code> function, which will 
+		take as the first parameter a reference to the DOM 
+		object that contains the <code class="code inline">ul</code> tag, and as the 
+		second - the text. Make this function create a new 
+		<code class="code inline">li</code> with the passed text and add it to the 
+		end of the passed <code class="code inline">ul</code> tag.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given an array and <code class="code inline">ul</code>. Using the <code class="code inline">appendElem</code> 
+		function created for the previous task, write each array 
+		element into a separate <code class="code inline">li</code> in this <code class="code inline">ul</code>.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="97" data-hash="jsPmFDPGAP" data-quantity="363" data-num="353"><a href="../../../../../../en/javascript/book/prime/dom/functions/passing-element-as-parameter.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../en/javascript/book/prime/dom/functions/tables-creating-function.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/functions/passing-group-as-parameter.html" class="active">en</a><a href="../../../../../../ru/javascript/book/prime/dom/functions/passing-group-as-parameter.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

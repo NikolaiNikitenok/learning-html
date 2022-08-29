@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Поиск ошибок в коде с DOM в JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами потренируемся искать ошибки в коде с DOM в JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Поиск ошибок в коде с DOM в JavaScript</h1>
+				<div class="content">
+<p>
+	В следующих задачах некоторый программист написал код
+	и, возможно, допустил в нем ошибки. Вы должны проверить,
+	делает ли код то, что описано. Если код
+	работает некорректно, вы должны исправить ошибки.
+</p>
+<div class="task">
+	<p>
+		Код должен добавить текст в конец
+		каждого абзаца:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;p&gt;1&lt;/p&gt;
+&lt;p&gt;2&lt;/p&gt;
+&lt;p&gt;3&lt;/p&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let elems = document.querySelector('p');
+elems.textContent += '!';</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		По клику на абзац его значение должно
+		увеличиться на единицу:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;p&gt;1&lt;/p&gt;
+&lt;p&gt;2&lt;/p&gt;
+&lt;p&gt;3&lt;/p&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let elems = document.querySelectorAll('p');
+
+for (let elem of elems) {
+	elem.addEventListener('click', function() {
+		this.textContent += Number(1);
+	});
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		По клику на кнопку текст абзаца должен
+		стать жирным:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;p&gt;text&lt;/p&gt;
+&lt;button&gt;click&lt;/button&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let button = document.querySelector('button');
+let elem   = document.querySelector('p');
+
+button.addEventListener('click', function() {
+	elem.innerHTML = '&lt;b&gt;elem.innerHTML&lt;/b&gt;';
+});</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		По клику на кнопку должна вывестись
+		сумма чисел из абзацев:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;p&gt;1&lt;/p&gt;
+&lt;p&gt;2&lt;/p&gt;
+&lt;p&gt;3&lt;/p&gt;
+
+&lt;button&gt;click&lt;/button&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let button = document.querySelector('button');
+let elems  = document.querySelector('p');
+
+button.addEventListener('click', function() {
+	let sum = 0;
+	
+	for (let elem of elems) {
+		sum += Number(elems.textContent);
+	}
+	
+	console.log(sum);
+});</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		По клику на абзац ему в конец должен
+		добавиться заданный текст:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;p&gt;1&lt;/p&gt;
+&lt;p&gt;2&lt;/p&gt;
+&lt;p&gt;3&lt;/p&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let elems = document.querySelectorAll('p');
+
+for (let elem of elems) {
+	elem.addEventListener('click', () =&gt; {
+		this.textContent += '!';
+	});
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		По клику на кнопку текст каждого
+		абзаца должен стать жирным:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;p&gt;text1&lt;/p&gt;
+&lt;p&gt;text2&lt;/p&gt;
+&lt;p&gt;text3&lt;/p&gt;
+&lt;button&gt;click&lt;/button&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let button = document.querySelector('button');
+let elems  = document.querySelectorAll('p');
+
+button.addEventListener('click', function() {
+	for (let elem of elems) {
+		elem.innerHTML = '&lt;b&gt;+elem.innerHTML+&lt;/b&gt;';
+	}
+});</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		По клику на кнопку в консоль должна
+		вывестись сумма чисел из абзацев:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;p&gt;1&lt;/p&gt;
+&lt;p&gt;2&lt;/p&gt;
+&lt;p&gt;3&lt;/p&gt;
+
+&lt;button&gt;click&lt;/button&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let button = document.querySelector('button');
+let elems  = document.querySelectorAll('p');
+let sum = 0;
+
+for (let elem of elems) {
+	sum = elem.textContent + 1;
+	
+	button.addEventListener('click', function() {
+		console.log(sum);
+	});
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		В инпуты вводятся числа. По клику на кнопку
+		в консоль должна вывестись сумма чисел
+		из инпутов:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;input&gt;
+&lt;input&gt;
+&lt;input&gt;
+
+&lt;button&gt;click&lt;/button&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let button = document.querySelector('button');
+let elems  = document.querySelectorAll('input');
+let sum = 0;
+
+for (let elem of elems) {
+	sum += elem.value;
+}
+
+button.addEventListener('click', function() {
+	console.log(sum);
+});</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		В первые два инпута вводятся числа.
+		По клику на кнопку в третий инпут
+		должна вывестись сумма этих чисел:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;input id="inp1"&gt;
+&lt;input id="inp2"&gt;
+&lt;input id="inp3"&gt;
+
+&lt;button id="btn"&gt;click&lt;/button&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let btn  = document.querySelector('#btn');
+let inp1 = document.querySelector('#inp1');
+let inp2 = document.querySelector('#inp2');
+let inp3 = document.querySelector('#inp3');
+
+btn.addEventListener('click', function() {
+	inp3.textContent = inp1.textContent + inp2.textContent;
+});</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		В первые два инпута вводятся числа.
+		По клику на кнопку в абзац
+		должна вывестись сумма этих чисел:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;input id="inp1"&gt;
+&lt;input id="inp2"&gt;
+&lt;p id="res"&gt;&lt;/p&gt;
+
+&lt;button id="btn"&gt;click&lt;/button&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let btn  = document.querySelector('btn');
+let res  = document.querySelector('res');
+let inp1 = document.querySelector('inp1');
+let inp2 = document.querySelector('inp2');
+
+button.addEventListener('click', function() {
+	res.value = inp1.value + inp2.value;
+});</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		По клику на кнопку нужно проверить,
+		что текст в каждом инпуте совпадает
+		с текстом его data атрибута:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;input data-text="text1"&gt;
+&lt;input data-text="text2"&gt;
+&lt;input data-text="text3"&gt;
+
+&lt;button id="btn"&gt;click&lt;/button&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let inputs = document.querySelectorAll('input')
+let button = document.querySelector('#button')
+
+button.addEventListener('click',function() {
+	for (let input of inputs) {
+		if (input.value === input.dataset) {
+			input.classList.add('right')
+		} else {
+			input.classList.add('wrong')
+		}
+	}
+});</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		По клику на кнопку нужно проверить,
+		что текст в каждом инпуте совпадает
+		с текстом соответствующего элемента
+		массива:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;input&gt;
+&lt;input&gt;
+&lt;input&gt;
+
+&lt;button id="btn"&gt;click&lt;/button&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let inputs = document.querySelectorAll('input')
+let button = document.querySelector('#button')
+
+let texts = [
+	'text1',
+	'text2',
+	'text3',
+];
+
+button.addEventListener('click',function() {
+	for (let input of inputs) {
+		for (let text of texts) {
+			if (input.value === text) {
+				input.classList.add('right')
+			} else {
+				input.classList.add('wrong')
+			}
+		}
+	}
+});</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		В инпуты вводятся числа.
+		По клику на кнопку в консоль
+		должна вывестись сумма введенных
+		чисел:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;input&gt;
+&lt;input&gt;
+&lt;input&gt;
+
+&lt;button id="btn"&gt;click&lt;/button&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let inputs = document.querySelectorAll('inputs');
+let btn = document.querySelector('#btm');
+let sum = 0;
+
+btn.addEventListener('click', function() {
+	for (let input of inputs) {
+		sum += Number(input);
+	}
+	
+	console.log(sum);
+});</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		В первые два инпута вводятся числа.
+		По клику на кнопку в третий инпут
+		должна вывестись сумма этих чисел:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;input id="inp1"&gt;
+&lt;input id="inp2"&gt;
+&lt;input id="inp3"&gt;
+
+&lt;button id="btn"&gt;click&lt;/button&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let btn  = document.querySelector('#btn');
+let inp1 = document.querySelector('#inp1');
+let inp2 = document.querySelector('#inp2');
+let inp3 = document.querySelector('#inp3');
+
+let sum  = inp1.value + inp2.value;
+
+btn.addEventListener('click', function() {
+	inp3.value = sum;
+});</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		В инпут вводится число.
+		По потери фокуса в консоль должна
+		вывестись сумма цифр этого числа:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;input id="inp"&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let inp = document.querySelector('#inp').value;
+
+inp.addEventListener('blur', function() {
+	let digits = +inp.split('');
+	let sum = 0;
+	
+	for (let digit of digits) {
+		sum += digit;
+	}
+	
+	console.log(sum);
+});</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/prime/" data-persent="75" data-hash="jsPmDmMst" data-quantity="363" data-num="272"><a href="../../../../../../ru/javascript/book/prime/dom/basis/coding.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../ru/javascript/book/prime/dom/basis/practicum.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/basis/mistakes.html">en</a><a href="../../../../../../ru/javascript/book/prime/dom/basis/mistakes.html" class="active">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

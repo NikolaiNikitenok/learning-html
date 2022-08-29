@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Основы работы с языком CSS | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами изучим основы работы с CSS.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Основы работы с языком CSS</h1>
+				<div class="content">
+<p>
+	Мы с вами уже разобрали основные теги языка
+	HTML и теперь пришло время навести красоту.
+	Хотелось бы иметь возможность менять цвет
+	текста, его размер, фон и многое другое.
+	Это делается с помощью языка CSS.
+</p>
+<p>
+	Как правило, CSS команды (<dfn>стили</dfn>) хранятся
+	в отдельном файле, который подключается специальным
+	тегом ко всем HTML страницам нашего сайта.
+</p>
+<p>
+	Преимущество такого подхода в том, что CSS
+	файл один, а HTML файлов может быть любое
+	количество, хоть тысяча. Если мы сделаем
+	изменение в одном месте CSS файла, например,
+	покрасим все абзацы в красный цвет, то эти
+	изменения применятся на всей тысяче HTML
+	страниц, к которым подключен наш CSS файл.
+	Очень удобно и быстро.
+</p>
+<p>
+	Файл со стилями должен иметь расширение <code class="path inline">.css</code>.
+	Чтобы подключить такой файл к HTML странице,
+	в теге <code class="code inline">head</code> следует написать такую
+	конструкцию:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;link rel="stylesheet" href="имяФайла.css"&gt;</code>
+</div>
+<p>
+	В следующем примере к нашему HTML файлу подключается
+	CSS файл <code class="path inline">styles.css</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset="utf-8"&gt;
+		&lt;title&gt;Это заголовок тайтл&lt;/title&gt;
+		&lt;link rel="stylesheet" href="styles.css"&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;p&gt;
+			Это абзац с текстом.
+		&lt;/p&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Создайте и подключите ко всем вашим страницам
+		файл <code class="path inline">styles.css</code>.
+	</p>
+</div>
+
+<h2>Как работать с CSS</h2>
+<p>
+	Каждому тегу в HTML соответствует так называемый
+	<dfn>селектор</dfn> CSS. К примеру, тегу <code class="code inline">&lt;p&gt;</code>
+	соответствует CSS селектор <code class="code inline">p</code>, с помощью
+	которого мы можем обратиться ко всем абзацам
+	HTML страницы и, например, покрасить их всех
+	одновременно в красный цвет.
+</p>
+<p>
+	После селектора следует ставить фигурные
+	скобки, внутри которых следует
+	писать CSS <dfn>свойства</dfn>.
+	Свойства и задают цвет, размер шрифта и другие
+	интересные вещи. Их следует писать в таком
+	формате: имя свойства, потом двоеточие, потом
+	значение этого свойства (например, свойство
+	- это цвет, а "красный" - это значение).
+	Потом нужно поставить точку с запятой и можно
+	писать следующее свойство.
+</p>
+<p>
+	Давайте, например, покрасим все абзацы в
+	красный цвет:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="css">p {
+	color: red;
+}</code>
+</div>
+<div class="task">
+	<p>
+		В вашем файле <code class="path inline">styles.css</code> разместите
+		код, красящий абзацы в красный цвет. Откройте
+		страницы вашего сайта в браузере и убедитесь
+		в том, что все абзацы стали красными.
+	</p>
+</div>
+
+<h2>Другие значения для цвета</h2>
+<p>
+	Помимо ключевого слова <code class="value inline">red</code>, задающего
+	красный, можно использовать и другие английские
+	слова для цвета, например, <code class="value inline">green</code> -
+	зеленый, <code class="value inline">blue</code> - голубой, <code class="value inline">yellow</code>
+	- желтый, <code class="value inline">orange</code> - оранжевый, <code class="value inline">black</code>
+	- черный, <code class="value inline">white</code> - белый.
+</p>
+<div class="task">
+	<p>
+		Используя соответствующие селекторы покрасьте
+		заголовки <code class="code inline">h1</code> в зеленый цвет, заголовки
+		<code class="code inline">h2</code> в голубой, заголовки <code class="code inline">h3</code>
+		- в красный, а абзацы - в оранжевый.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/markup/book/prime/" data-persent="7" data-hash="mkPmCLInr" data-quantity="115" data-num="9"><a href="../../../../../ru/markup/book/prime/html/practicum.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/markup/book/prime/css/colors.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

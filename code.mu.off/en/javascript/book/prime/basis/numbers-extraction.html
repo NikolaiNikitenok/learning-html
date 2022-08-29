@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Numbers extraction in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to extract numbers from strings in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Numbers extraction in JavaScript</h1>
+				<div class="content">
+<p>
+	The <code class="code inline">Number</code> function only works on 
+	strings containing numbers. However, 
+	when programming in JavaScript, there 
+	are often situations where you need to 
+	deal with strings that start with a number 
+	and then letters.
+</p>
+<p>
+	An example of such a string can be a value 
+	in pixels: <code class="string inline">'12px'</code>. Suppose we need 
+	to get the number at the beginning, discarding 
+	the string part. For such an operation, there 
+	is a function <code class="code inline">parseInt</code>. Let's see how 
+	it works with an example:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = parseInt('12px');
+alert(num); // shows 12</code>
+</div>
+<p>
+	Pixels, however, are sometimes fractional: 
+	<code class="string inline">'12.5px'</code>. In this case, the function 
+	<code class="code inline">parseInt</code> passes and prints only the 
+	integer part:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = parseInt('12.5px');
+alert(num); // still shows 12</code>
+</div>
+<p>
+	In general, perhaps this behavior is exactly 
+	what you need. But if not, use the <code class="code inline">parseFloat</code> 
+	function, which extracts the number together 
+	with its fractional part:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = parseFloat('12.5px');
+alert(num); // shows 12.5</code>
+</div>
+<p>
+	Of course, the absence of a fractional 
+	part does not prevent the <code class="code inline">parseFloat</code> 
+	function from working correctly:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = parseFloat('12px');
+alert(num); // shows 12</code>
+</div>
+<div class="task">
+	<p>
+		Given a variable with the value 
+		<code class="string inline">'5px'</code> and a variable with the value 
+		<code class="string inline">'6px'</code>. Find the sum of pixels from 
+		the values of these variables and display 
+		it on the screen.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given a variable with the value <code class="string inline">'5.5px'</code> 
+		and a variable with the value <code class="string inline">'6.25px'</code>. 
+		Find the sum of pixels from the values of these 
+		variables and display it on the screen.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Modify the previous task so that the letters 
+		<code class="string inline">'px'</code> are added to the output. 
+		That is, if our sum is equal to <code class="number inline">11.75</code>, 
+		then let <code class="string inline">'11.75px'</code> 
+		be displayed on the screen.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="6" data-hash="jsPmBsNE" data-quantity="363" data-num="23"><a href="../../../../../en/javascript/book/prime/basis/conversion-to-number.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/basis/conversion-to-string.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/basis/numbers-extraction.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/basis/numbers-extraction.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

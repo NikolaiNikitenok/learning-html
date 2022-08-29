@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Styling with CSS classes in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this tutorial, we will learn how to change the styles of elements by adding CSS classes.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Styling with CSS classes in JavaScript</h1>
+				<div class="content">
+<p>
+	In the previous lesson, we learned how to 
+	change the CSS styles of elements by changing 
+	the style attribute. More often than not, 
+	this is not a good idea. The fact is that 
+	if you scatter CSS styles over JavaScript 
+	code, it will be problematic to change the 
+	design of the site in the future, since 
+	you will have to pick the JavaScript code 
+	in search of styles hardcoded there.
+</p>
+<p>
+	More convenient for future support would be 
+	to add or remove CSS classes to the element, 
+	thereby styling them as needed.
+</p>
+<p>
+	Let's look at an example. Let's have a 
+	few paragraphs:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;p&gt;text1&lt;/p&gt;
+&lt;p&gt;text2&lt;/p&gt;
+&lt;p&gt;text3&lt;/p&gt;</code>
+</div>
+<p>
+	Let's make it so that when you click on any 
+	paragraph, this paragraph is painted in some 
+	color, for example, in green. To do this, 
+	in the CSS file we will make a special class 
+	for coloring paragraphs:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="css">.colored {
+	color: green;
+}</code>
+</div>
+<p>
+	The advantage of using a class is that now 
+	it will be easy to change the desired color - 
+	for this you will just need to make a change 
+	to the CSS file, without picking the JavaScript 
+	code. This will be especially convenient if 
+	you write the JavaScript code, and in the 
+	future someone else will style it (perhaps 
+	a less qualified person who can only work 
+	with CSS).
+</p>
+<p>
+	So, now, after introducing the class, by 
+	clicking on any paragraph, you can change 
+	its color by simply adding our class to it:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elems = document.querySelectorAll('p');
+
+for (let elem of elems) {
+	elem.addEventListener('click', function() {
+		this.classList.add('colored'); // adds the class to the paragraph
+	});
+}</code>
+</div>
+<div class="task">
+	<p>
+		Explain why I chose the word <code class="selector inline">colored</code> 
+		for the class name, and not the word 
+		<code class="selector inline">green</code>, which clearly indicates 
+		the color we want.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given a paragraph. Given buttons 
+		<code class="string inline">'cross out'</code>, <code class="string inline">'make bold'</code>, 
+		<code class="string inline">'make red'</code>. Let on clicking on 
+		each button the given action happens 
+		to the paragraph (becomes red, for 
+		example).
+	</p>
+</div>
+
+<h2>Additional advantage</h2>
+<p>
+	Using classes instead of changing styles 
+	directly has another benefit. With a slight 
+	movement of the hand, you can make the 
+	styles of the elements toggle.
+</p>
+<p>
+	For example, you can make it so that when 
+	you first click on a paragraph, it will be 
+	painted in a certain color, and when you 
+	click again, it will return to its original 
+	color. To do this, you just need to change 
+	the <code class="code inline">add</code> method to the 
+	<code class="code inline">toggle</code> method:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elems = document.querySelectorAll('p');
+
+for (let elem of elems) {
+	elem.addEventListener('click', function() {
+		this.classList.toggle('colored');
+	});
+}</code>
+</div>
+<div class="task">
+	<p>
+		Modify the previous task so that pressing 
+		the button again cancels the action of 
+		this button.
+	</p>
+</div>
+
+<h2>Application</h2>
+<p>
+	Let's make a button, by clicking on which 
+	the element will be either shown or hidden. 
+	Let the element be hidden by default (this 
+	is implemented using 
+	<a href="../../../../../../en/markup/manual/css/property/display.html"><code class="code inline">display: none</code></a>), 
+	and it will be shown by adding the class 
+	<code class="code inline">active </code>. This class will be either 
+	added or removed using <code class="code inline">classList.toggle</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;button id="button"&gt;click me&lt;/button&gt;
+&lt;div id="elem"&gt;&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">#elem {
+	display: none;
+	width: 200px;
+	height: 200px;
+	border: 1px solid green;
+}
+#elem.active {
+	display: block;
+}</code>
+	
+	<code class="highlight" data-module="highlight" data-lang="javascript">let button = document.querySelector('#button');
+let elem = document.querySelector('#elem');
+
+button.addEventListener('click', function() {
+	elem.classList.toggle('active');
+});</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			body {
+			height: 250px;
+		}
+		</style>
+		<style>
+			#elem {
+			display: none;
+			width: 200px;
+			height: 200px;
+			border: 1px solid green;
+		}
+		#elem.active {
+			display: block;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<button id=&quot;button&quot;>click me</button>
+		<div id=&quot;elem&quot;></div>
+		
+		<script>
+			
+			let button = document.querySelector('#button');
+		let elem = document.querySelector('#elem');
+		
+		button.addEventListener('click', function() {
+			elem.classList.toggle('active');
+		});
+		</script>
+	</body>
+</html>"></iframe></div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="73" data-hash="jsPmDmCCS" data-quantity="363" data-num="265"><a href="../../../../../../en/javascript/book/prime/dom/basis/attribute-style-stylization.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../en/javascript/book/prime/dom/basis/parent-relationships-searching.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/basis/css-classes-stylization.html" class="active">en</a><a href="../../../../../../ru/javascript/book/prime/dom/basis/css-classes-stylization.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

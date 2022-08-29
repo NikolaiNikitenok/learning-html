@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Свойство transform-origin - точка трансформации | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="Свойство transform-origin задает точку трансформации.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Свойство transform-origin</h1>
+				<div class="content">
+<p>
+	Свойство <code class="code inline">transform-origin</code> задает точку,
+	относительно которой будут происходить трансформации
+	элемента, задаваемые свойством <a href="../../../../../ru/markup/manual/css/property/transform.html"><code class="code inline">transform</code></a>.
+</p>
+<p>
+	По умолчанию эта точка - <b>центр элемента</b>,
+	и, например, вращение будет происходить относительно
+	его центра. Однако, это поведение можно поменять
+	и заставить элемент вращаться относительно
+	своей стороны, угла или вообще относительно
+	точки, которая лежит вне элемента.
+</p>
+
+<h2>Синтаксис</h2>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="css">селектор {
+	transform-origin: X-ось Y-ось Z-ось;
+}</code>
+</div>
+<p>
+	Значения по осям Y и Z не являются обязательными,
+	можно их опускать (они примут значения по
+	умолчанию). Сдвиг точки по оси Z нужен для
+	<b>3D</b> трансформаций.
+</p>
+
+<h2>Значения для оси X</h2>
+<table class="description">
+	<tr>
+		<th>Значение</th>
+		<th>Описание</th>
+	</tr>
+	<tr>
+		<th>CSS единицы</th>
+		<td>
+			Значением служат любые <a href="../../../../../ru/markup/manual/css/reference/units/sizes.html">единицы для размеров</a>,
+			которые задают отступ центра трансформации от левой границы элемента.
+			Положительное значение сдвигает центр трансформации вправо (вовнутрь элемента),
+			а отрицательное - влево (наружу от элемента) относительно левой границы элемента.
+		</td>
+	</tr>
+	<tr>
+		<th><code class="code inline">left</code></th>
+		<td>Точка вращения по горизонтали на левой границе элемента.</td>
+	</tr>
+	<tr>
+		<th><code class="code inline">right</code></th>
+		<td>Точка вращения по горизонтали на правой границе элемента.</td>
+	</tr>
+	<tr>
+		<th><code class="code inline">center</code></th>
+		<td>Точка вращения по горизонтали в центре элемента.</td>
+	</tr>
+</table>
+<p>
+	Значение по умолчанию: <code class="code inline">center</code>.
+</p>
+
+<h2>Значения для оси Y</h2>
+<table class="description">
+	<tr>
+		<th>Значение</th>
+		<th>Описание</th>
+	</tr>
+	<tr>
+		<th>CSS единицы</th>
+		<td>
+			Значением служат любые <a href="../../../../../ru/markup/manual/css/reference/units/sizes.html">единицы для размеров</a>,
+			которые задают отступ центра трансформации от верхней границы элемента.
+			Положительное значение сдвигает центр трансформации вниз (вовнутрь элемента),
+			а отрицательное - вверх (снаружу элемента) относительно верхней границы элемента.
+		</td>
+	</tr>
+	<tr>
+		<th><code class="code inline">top</code></th>
+		<td>Точка вращения по вертикали на верхней границе элемента.</td>
+	</tr>
+	<tr>
+		<th><code class="code inline">bottom</code></th>
+		<td>Точка вращения по вертикали на нижней границе элемента.</td>
+	</tr>
+	<tr>
+		<th><code class="code inline">center</code></th>
+		<td>Точка вращения по вертикали в центре элемента.</td>
+	</tr>
+</table>
+<p>
+	Значение по умолчанию: <code class="code inline">center</code>.
+</p>
+
+<h2>Значения по оси Z</h2>
+<table class="description">
+	<tr>
+		<th>Значение</th>
+		<th>Описание</th>
+	</tr>
+	<tr>
+		<th>CSS единицы</th>
+		<td>
+			Значением служат любые <a href="../../../../../ru/markup/manual/css/reference/units/sizes.html">единицы для размеров</a>,
+			которые задают отступ центра трансформации от плоскости элемента.
+			Положительное значение сдвигает его на нас (от плоскости экрана), а отрицательное от нас.
+		</td>
+	</tr>
+</table>
+<p>
+	Значение по умолчанию: <code class="unit inline">0px</code>.
+</p>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Сейчас значение свойства transform-origin
+	не задано и блок повернется относительно
+	своего центра. Наведите мышкой на блок, чтобы
+	увидеть эффект:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem"&gt;lorem ipsum&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">#elem {
+	border: 1px solid black;
+	width: 100px;
+	height: 50px;
+}
+#elem:hover {
+	transform-origin: center center;
+	transform: rotate(30deg);
+}</code>
+	
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			body {
+			padding: 50px;
+		}
+		</style>
+		<style>
+			#elem {
+			border: 1px solid black;
+			width: 100px;
+			height: 50px;
+		}
+		#elem:hover {
+			transform-origin: center center;
+			transform: rotate(30deg);
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;elem&quot;>lorem ipsum</div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	А теперь при наведении блок повернется относительно
+	верхнего левого угла:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem"&gt;lorem ipsum&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">#elem {
+	border: 1px solid black;
+	width: 100px;
+	height: 50px;
+}
+#elem:hover {
+	transform-origin: 0px 0px;
+	transform: rotate(30deg);
+}</code>
+	
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			body {
+			padding: 50px;
+		}
+		</style>
+		<style>
+			#elem {
+			border: 1px solid black;
+			width: 100px;
+			height: 50px;
+		}
+		#elem:hover {
+			transform-origin: 0px 0px;
+			transform: rotate(30deg);
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;elem&quot;>lorem ipsum</div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	А теперь при наведении блок повернется относительно
+	правого нижнего угла. Для этого следует отнести
+	точку трансформации на <code class="unit inline">100%</code> вправо
+	и на <code class="unit inline">100%</code> вниз (можно было бы задать
+	и px, но при изменении размеров элемента
+	точка трансформации осталась бы на месте,
+	поэтому лучше делать в %):
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem"&gt;lorem ipsum&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">#elem {
+	border: 1px solid black;
+	width: 100px;
+	height: 50px;
+}
+#elem:hover {
+	transform-origin: 100% 100%;
+	transform: rotate(30deg);
+}</code>
+	
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			body {
+			padding: 50px;
+		}
+		</style>
+		<style>
+			#elem {
+			border: 1px solid black;
+			width: 100px;
+			height: 50px;
+		}
+		#elem:hover {
+			transform-origin: 100% 100%;
+			transform: rotate(30deg);
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;elem&quot;>lorem ipsum</div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Повернем блок относительно правого верхнего угла:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem"&gt;lorem ipsum&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">#elem {
+	border: 1px solid black;
+	width: 100px;
+	height: 50px;
+}
+#elem:hover {
+	transform-origin: 100% 0%;
+	transform: rotate(30deg);
+}</code>
+	
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			body {
+			padding: 50px;
+		}
+		</style>
+		<style>
+			#elem {
+			border: 1px solid black;
+			width: 100px;
+			height: 50px;
+		}
+		#elem:hover {
+			transform-origin: 100% 0%;
+			transform: rotate(30deg);
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;elem&quot;>lorem ipsum</div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Повернем блок относительно центра левой стороны.
+	Для этого для оси X зададим <code class="code inline">left</code> (точка
+	вращения будет слева), а для оси Y - <code class="code inline">center</code>
+	(точка вращения будет по центру по вертикали):
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem"&gt;lorem ipsum&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">#elem {
+	border: 1px solid black;
+	width: 100px;
+	height: 50px;
+}
+#elem:hover {
+	transform-origin: left center;
+	transform: rotate(30deg);
+}</code>
+	
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			body {
+			padding: 50px;
+		}
+		</style>
+		<style>
+			#elem {
+			border: 1px solid black;
+			width: 100px;
+			height: 50px;
+		}
+		#elem:hover {
+			transform-origin: left center;
+			transform: rotate(30deg);
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;elem&quot;>lorem ipsum</div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Свойство можно задавать не только для вращения,
+	но и для других трансформаций. Давайте увеличим
+	масштаб с помощью <code class="code inline">scale</code>, указав точку
+	трансформации как левый нижний угол:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem"&gt;lorem ipsum&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">#elem {
+	border: 1px solid black;
+	width: 100px;
+	height: 50px;
+}
+#elem:hover {
+	transform-origin: left bottom;
+	transform: scale(1.5);
+}</code>
+	
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			body {
+			padding: 50px;
+		}
+		</style>
+		<style>
+			#elem {
+			border: 1px solid black;
+			width: 100px;
+			height: 50px;
+		}
+		#elem:hover {
+			transform-origin: left bottom;
+			transform: scale(1.5);
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;elem&quot;>lorem ipsum</div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	А теперь укажем точкой трансформации как
+	правый верхний угол:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem"&gt;lorem ipsum&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">#elem {
+	border: 1px solid black;
+	width: 100px;
+	height: 50px;
+}
+#elem:hover {
+	transform-origin: right top;
+	transform: scale(1.5);
+}</code>
+	
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			body {
+			padding: 50px;
+		}
+		</style>
+		<style>
+			#elem {
+			border: 1px solid black;
+			width: 100px;
+			height: 50px;
+		}
+		#elem:hover {
+			transform-origin: right top;
+			transform: scale(1.5);
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;elem&quot;>lorem ipsum</div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Точку трансформации можно задавать и вне
+	элемента. В следующем примере по наведению
+	мышкой на красный блок черный блок осуществит
+	поворот относительно точки, которая находится
+	снаружи:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="hover"&gt;&lt;/div&gt;
+&lt;div id="elem"&gt;&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">#hover {
+	border: 1px solid red;
+	width: 50px;
+	height: 50px;
+}
+#elem {
+	border: 1px solid black;
+	width: 100px;
+	height: 50px;
+	transition: transform 1s;
+	transform-origin: -100px -100px;
+}
+#hover:hover + #elem {
+	transform: rotate(30deg);
+}</code>
+	
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			body {
+			padding: 150px;
+		}
+		</style>
+		<style>
+			#hover {
+			border: 1px solid red;
+			width: 50px;
+			height: 50px;
+		}
+		#elem {
+			border: 1px solid black;
+			width: 100px;
+			height: 50px;
+			transition: transform 1s;
+			transform-origin: -100px -100px;
+		}
+		#hover:hover + #elem {
+			transform: rotate(30deg);
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;hover&quot;></div>
+		<div id=&quot;elem&quot;></div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/markup/manual/css/" data-persent="89" data-hash="" data-quantity="199" data-num="179"><a href="../../../../../ru/markup/manual/css/property/transform.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/markup/manual/css/function/rotate.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

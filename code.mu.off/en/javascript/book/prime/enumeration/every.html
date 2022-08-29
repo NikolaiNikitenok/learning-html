@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>every method to check an array in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will study the every method, which checks the array for compliance with a function in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>every method to check an array in JavaScript</h1>
+				<div class="content">
+<p>
+	The following method <code class="code inline">every</code> checks 
+	the array elements and returns <code class="code inline">true</code> 
+	if the callback returned <code class="code inline">true</code> for 
+	all array elements, otherwise the method 
+	returns <code class="code inline">false</code>. Let's check, for 
+	example, that all elements of the array 
+	are even numbers:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [2, 4, 6, 8];
+
+let result = arr.every(function(elem) {
+	if (elem % 2 == 0) {
+		return true;
+	} else {
+		return false;
+	}
+});
+
+console.log(result);</code>
+</div>
+<p>
+	Let's simplify:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [2, 4, 6, 8];
+
+let result = arr.every(function(elem) {
+	return elem % 2 == 0;
+});
+
+console.log(result);</code>
+</div>
+<p>
+	Let's simplify even more:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [2, 4, 6, 8];
+
+let result = arr.every(elem =&gt; elem % 2 == 0);
+console.log(result);</code>
+</div>
+<div class="task">
+	<p>
+		Given an array of numbers. Check that 
+		all elements in the array are greater 
+		than zero.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given an array of numbers. Check that 
+		for all elements the product of their 
+		values and their index numbers is less 
+		than <code class="number inline">30</code>.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="55" data-hash="jsPmEnmEv" data-quantity="363" data-num="201"><a href="../../../../../en/javascript/book/prime/enumeration/filter.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/enumeration/some.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/enumeration/every.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/enumeration/every.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Условные операторы в MongoDB | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы рассмотрим условные операторы MongoDB в NodeJS.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Условные операторы в MongoDB</h1>
+				<div class="content">
+<p>
+	В данном уроке мы рассмотрим условные операторы.
+	Они нам помогают выбирать документы, подходящие
+	по определенным условиям, добавляют гибкость
+	нашим запросам.
+</p>
+
+<h2>Оператор $lt</h2>
+<p>
+	Оператор <code class="code inline">$lt</code> выбирает все документы,
+	в которых заданное поле меньше переданного значения:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let cond = {age: {$lt: 27}};
+let res  = await coll.find(cond).toArray();
+console.log(res);</code>
+</div>
+<div class="task">
+	<p>
+		Получите продукты, у которых
+		цена меньше <code class="number inline">500</code>.
+	</p>
+</div>
+
+<h2>Оператор $gt</h2>
+<p>
+	Оператор <code class="code inline">$gt</code> выбирает все документы,
+	в которых заданное поле больше
+	определенного значения:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let cond = {age: {$gt: 26}};
+let res  = await coll.find(cond).toArray();
+console.log(res);</code>
+</div>
+<div class="task">
+	<p>
+		Получите продукты, у которых
+		цена больше <code class="number inline">500</code>.
+	</p>
+</div>
+
+<h2>Оператор $lte</h2>
+<p>
+	Оператор выбирает все документы, в которых
+	заданное поле меньше либо равно переданного
+	значения:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let cond = {age: {$lte: 27}};
+let res  = await coll.find(cond).toArray();
+console.log(res);</code>
+</div>
+<div class="task">
+	<p>
+		Получите пользователей, чей
+		возраст меньше либо равен <code class="number inline">44</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Получите продукты, у которых
+		цена меньше или равна <code class="number inline">500</code>.
+	</p>
+</div>
+
+<h2>Оператор $gte</h2>
+<p>
+	Оператор выбирает все документы, в которых
+	заданное поле больше либо равно определенного
+	значения:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let cond = {age: {$gte: 26}};
+let res  = await coll.find(cond).toArray();
+console.log(res);</code>
+</div>
+<div class="task">
+	<p>
+		Получите продукты, у которых
+		цена больше или равна <code class="number inline">500</code>.
+	</p>
+</div>
+
+<h2>Оператор $eq</h2>
+<p>
+	Оператор <code class="code inline">$eq</code> выбирает все документы,
+	в которых заданное поле равно определенному
+	значению:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let cond = {age: {$eq: 25}};
+let res  = await coll.find(cond).toArray();
+console.log(res);</code>
+</div>
+<div class="task">
+	<p>
+		Получите продукты, у которых
+		цена равна <code class="number inline">500</code>.
+	</p>
+</div>
+
+<h2>Оператор $ne</h2>
+<p>
+	Оператор выбирает все документы, в которых
+	заданное поле не равно переданному значению:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let cond = {age: {$ne: 25}};
+let res  = await coll.find(cond).toArray();
+console.log(res);</code>
+</div>
+<div class="task">
+	<p>
+		Получите продукты, у которых
+		цена не равна <code class="number inline">500</code>.
+	</p>
+</div>
+
+<h2>Оператор $in</h2>
+<p>
+	Оператор выбирает все документы, в которых
+	заданное поле равно одному из значений
+	переданного массива:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let cond = {age: {$in: [25, 26]}};
+let res  = await coll.find(cond).toArray();
+console.log(res);</code>
+</div>
+<div class="task">
+	<p>
+		Получите продукты, у которых
+		цена равна <code class="number inline">500</code>, <code class="number inline">600</code>
+		или <code class="number inline">700</code>.
+	</p>
+</div>
+
+<h2>Оператор $nin</h2>
+<p>
+	Оператор выбирает все документы, в которых
+	заданное поле не равно значениям переданным
+	в массиве, либо поле не существует:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let cond = {age: {$nin: [25, 26]}};
+let res  = await coll.find(cond).toArray();</code>
+</div>
+<div class="task">
+	<p>
+		Получите продукты, у которых
+		цена не равна <code class="number inline">100</code> или <code class="number inline">200</code>.
+	</p>
+</div>
+
+<h2>Использование с другими методами</h2>
+<p>
+	Условные операторы также можно использовать
+	с методами обновления коллекции или удаления
+	документов:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let cond = {age:  {$lte: 27}};
+let data = {$set: {salary: 1000}};
+await coll.updateMany(cond, data);</code>
+</div>
+<div class="task">
+	<p>
+		Удалите все продукты, у которых
+		цена больше <code class="number inline">300</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Удалите все продукты, у которых
+		цена равна <code class="number inline">100</code> или <code class="number inline">200</code>.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/nodejs/book/mongo/" data-persent="45" data-hash="ndMgBsCO" data-quantity="29" data-num="14"><a href="../../../../../../ru/javascript/nodejs/book/mongo/basis/document-updating.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../ru/javascript/nodejs/book/mongo/basis/operators-combinations.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

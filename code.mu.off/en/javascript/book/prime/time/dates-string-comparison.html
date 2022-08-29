@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>String comparison of dates in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to compare strings with dates in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>String comparison of dates in JavaScript</h1>
+				<div class="content">
+<p>
+	Let we have two dates in the 
+	following text format:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let date1 = '2020-12-01';
+let date2 = '2019-12-01';</code>
+</div>
+<p>
+	In this case, you can compare these dates 
+	and find out which of these dates is greater:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log(date1 &gt; date2); // shows true</code>
+</div>
+<p>
+	How are these dates compared? The point is that 
+	our dates are strings and JavaScript compares 
+	them as strings. That is, it first compares the 
+	first characters of the two dates: if they are 
+	the same, then JavaScript compares the second 
+	characters, and so on, until it finds a difference. 
+	Due to the fact that in our date format the year 
+	is first, then the month, and then the day, then 
+	such a comparison is possible.
+</p>
+<p>
+	The fact is that if the value of the first year 
+	turns out to be greater than the value of the 
+	second year, then it no longer matters what the 
+	months and days are - the first year is definitely 
+	greater. If the years coincide, then the date 
+	that has month value greater then it will be 
+	greater. And if the months coincide, then the 
+	date with the greater day value will be greater. 
+	Well, if the days are the same, then the dates 
+	are the same.
+</p>
+<p>
+	It is also important that the dates are in 
+	the same format. In our case, hyphens are 
+	separators for parts of dates. This, of 
+	course, is not required. For example, you 
+	can put dots:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let date1 = '2020.12.01';
+let date2 = '2019.12.01';</code>
+</div>
+<p>
+	Or remove the separators at all:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let date1 = '20201201';
+let date2 = '20191201';</code>
+</div>
+<p>
+	The main thing for the comparison to be 
+	correct, the placement should be as follows: 
+	first the year, then the month, then the day.
+</p>
+<div class="task">
+	<p>
+		Write code that will compare the two dates 
+		below and print a message about which 
+		one is greater:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let date1 = '2020-11-31';
+let date2 = '2020-12-01';</code>
+	</div>
+</div>
+
+<h2>Date without year</h2>
+<p>
+	It is not necessary to compare years. A date 
+	can simply be a month and a day:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let date1 = '12-01';
+let date2 = '11-01';
+
+console.log(date1 &gt; date2);</code>
+</div>
+<div class="task">
+	<p>
+		Write code that will compare the two dates 
+		below and print a message about which 
+		one is greater:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let date1 = '09-21';
+let date2 = '09-23';</code>
+	</div>
+</div>
+
+<h2>Date falling into the interval</h2>
+<p>
+	Let there be three intervals: from January 
+	<code class="number inline">1</code>st to March <code class="number inline">8</code>th, from March 
+	<code class="number inline">9</code>th to June <code class="number inline">17</code>th, from June 
+	<code class="number inline">18</code>th to December <code class="number inline">31</code>st. Suppose 
+	we also have some date containing month and 
+	day. Let's determine what period this date 
+	falls into:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let date = '08-20';
+
+if (date &gt;= '01-01' && date &lt;= '03-08') {
+	console.log('1st interval');
+}
+
+if (date &gt;= '03-09' && date &lt;= '06-17') {
+	console.log('2d interval');
+}
+
+if (date &gt;= '06-18' && date &lt;= '12-31') {
+	console.log('3d interval');
+}</code>
+</div>
+<div class="task">
+	<p>
+		Given a date containing the month and 
+		day. Determine the zodiac sign that 
+		this date falls on.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="65" data-hash="jsPmTmDSC" data-quantity="363" data-num="237"><a href="../../../../../en/javascript/book/prime/time/time-moments-training.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/time/comparing-dates-objects.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/time/dates-string-comparison.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/time/dates-string-comparison.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Разработка роутера в своем MVC фреймворке на PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами разработаем роутер (маршрутизатор) для своего MVC фреймворка.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Разработка роутера в своем MVC фреймворке</h1>
+				<div class="content">
+<p>
+	Теперь вам нужно разработать <dfn>роутер</dfn>.
+	Он представляет собой класс, который будет
+	брать массив роутов, брать запрошенный URL,
+	и определять, какой из роутов соответствует
+	данному урл. После нахождения соответствующего
+	роута наш класс должен получить части URL,
+	соответствующие параметрам роута.
+</p>
+<p>
+	Пусть своим результатом наш роутер возвращает
+	объект класса <code class="code inline">Track</code>, содержащего имя
+	контроллера, который должен быть вызван на
+	данный запрос, имя действия и параметры из URL.
+</p>
+<p>
+	Пусть наш класс <code class="code inline">Track</code> имеет свойства
+	<code class="code inline">controller</code>, <code class="code inline">action</code> и <code class="code inline">params</code>,
+	доступные только для чтения:
+</p>
+<div class="block" data-file="/core/Track.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	namespace Core;
+	
+	class Track
+	{
+		private $controller;
+		private $action;
+		private $params;
+		
+		public function __construct($controller, $action, $params)
+		{
+			$this-&gt;controller = $controller;
+			$this-&gt;action = $action;
+			$this-&gt;params = $params;
+		}
+		
+		public function __get($property)
+		{
+			return $this-&gt;$property;
+		}
+	}
+?&gt;</code>
+</div>
+
+<h2>Пример</h2>
+<p>
+	Для примера, пусть в адресной строке вбито
+	<code class="path inline">/test/1/2/</code>. Пусть у нас есть роут,
+	соответствующий этому адресу:
+</p>
+<div class="block" data-file="/project/config/routes.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	new Route('/test/:var1/:var2/', 'test', 'index');
+?&gt;</code>
+</div>
+<p>
+	Это значит, что имя контроллера будет <code class="code inline">test</code>,
+	имя действия - <code class="code inline">index</code>, а массив параметров
+	будет следующий:.
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	 ['var1' =&gt; 1, 'var2' =&gt; 2]
+?&gt;</code>
+</div>
+<p>
+	Цель данного урока - написать класс <code class="code inline">Router</code>,
+	возвращающий объект класса <code class="code inline">Track</code>.
+	Остальное нас пока не касается. Давайте приступим
+	к написанию этого класса.
+</p>
+
+<h2>Использование роутера</h2>
+<p>
+	Вспомним текущее содержимое файла <code class="path inline">index.php</code>:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	namespace Core;
+	
+	error_reporting(E_ALL);
+	ini_set('display_errors', 'on');
+	
+	spl_autoload_register(function($class) {
+		// ваша реализация автозагрузки
+	});
+	
+	$routes = require $_SERVER['DOCUMENT_ROOT'] . '/project/config/routes.php';
+?&gt;</code>
+</div>
+<p>
+	Пусть теперь далее в <code class="path inline">index.php</code> мы
+	хотим использовать наш роутер следующим образом:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$router = new Router();
+	$track  = $router-&gt;getTrack($routes, $_SERVER['REQUEST_URI']);
+?&gt;</code>
+</div>
+<p>
+	Можно переписать более компактно:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$track = ( new Router ) -&gt; getTrack($routes, $_SERVER['REQUEST_URI']);
+?&gt;</code>
+</div>
+
+<h2>Реализация роутера</h2>
+<p>
+	Давайте теперь напишем заготовку класса <code class="code inline">Router</code>
+	в соответствии с нашими вызовами:
+</p>
+<div class="block" data-file="/core/Router.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	namespace Core;
+	
+	class Router
+	{
+		private $routes;
+		
+		public function getTrack($routes, $uri)
+		{
+			// тут будет код
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	В методе <code class="code inline">getTrack</code> мы должны определить,
+	какой из роутов соответствует данному <code class="code inline">$uri</code>.
+	Для этого нужно перебрать наш массив с роутами
+	циклом:
+</p>
+<div class="block" data-file="/core/Router.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	namespace Core;
+	
+	class Router
+	{
+		public function getTrack($routes, $uri)
+		{
+			foreach ($routes as $route) {
+				// проверка $uri и $route
+			}
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Если какой-то роут соответствует URI, мы
+	должны получить из этого URI значения параметров
+	роута и вернуть объект класса <code class="code inline">Track</code>:
+</p>
+<div class="block" data-file="/core/Router.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	namespace Core;
+	
+	class Router
+	{
+		public function getTrack($routes, $uri)
+		{
+			foreach ($routes as $route) {
+				if (проверка соответствия роута и URI) {
+					$params = ; // нужно получить параметры из uri
+					return new Track($route-&gt;controller, $route-&gt;action, $params);
+				}
+			}
+			
+			return new Track('error', 'notFound'); // если ни один роут не подойдет
+		}
+	}
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Скопируйте код моего класса <code class="code inline">Track</code>
+		и разместите его в файле <code class="path inline">/core/Track.php</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Скопируйте мою заготовку класса <code class="code inline">Router</code>
+		и разместите его в файле <code class="path inline">/core/Router.php</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Реализуйте описанный класс <code class="code inline">Router</code>,
+		своим результатом возвращающий объект класса
+		<code class="code inline">Track</code>. Если будете испытывать затруднения
+		(что весьма вероятно), подсмотрите в исходный
+		код фреймворка, по которому вы изучали использование
+		MVC. Там в классе <code class="code inline">Router</code> вы найдете
+		недостающую часть реализации и мои комментарии
+		к ней.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/oop/" data-persent="95" data-hash="ppOpDFmRr" data-quantity="107" data-num="103"><a href="../../../../../../ru/php/book/oop/mvc/framework/routes.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../ru/php/book/oop/mvc/framework/controlles.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

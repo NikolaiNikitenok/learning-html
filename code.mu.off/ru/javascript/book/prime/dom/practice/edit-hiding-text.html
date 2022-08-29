@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Прячем текст при редактировании элемента на JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами изучим редактирование отдельного элемента на JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Прячем текст при редактировании элемента на JavaScript</h1>
+				<div class="content">
+<p>
+	Давайте теперь сделаем так, чтобы при редактировании
+	инпут появлялся в самом абзаце - вместо текста
+	этого абзаца. Пусть затем при окончании редактирования
+	инпут будет убираться, а вместо него опять
+	появляться текст абзаца.
+</p>
+<p>
+	Приступим к реализации.
+</p>
+<p>
+	Для начала давайте сделаем так, чтобы по
+	клику на абзац ему в конец добавлялся инпут
+	с текстом этого абзаца:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+
+elem.addEventListener('click', function() {
+	let input = document.createElement('input');
+	input.value = elem.textContent;
+	
+	elem.appendChild(input);
+});</code>
+</div>
+<p>
+	Наш код, однако, очень несовершенен - каждый
+	раз по клику на абзац в него будет добавляться
+	новый инпут.
+</p>
+<p>
+	При этом, если в первом инпуте будет стоять
+	текст абзаца, то во втором инпуте уже будет
+	стоять текст абзаца вместе с первым инпутом,
+	а третьем инпуте уже будет стоять текст абзаца
+	вместе с двумя инпутами и так далее.
+</p>
+<p>
+	Обратите также внимание на то, что клик по
+	добавленному инпуту будет расцениваться как
+	клик по абзацу: дело в том, что инпут находится
+	в абзаце, и клик по инпуту просто всплывет
+	выше к этому абзацу.
+</p>
+<p>
+	Это приведет к тому, что после появления
+	первого инпута при попытке нажать на него
+	для того, чтобы начать редактирование, мы
+	автоматически сделаем клик по абзацу со всеми
+	вытекающими последствиями.
+</p>
+<p>
+	Итак, проблема обрисована. Давайте теперь
+	ее исправим.
+</p>
+<p>
+	Для этого просто при появлении инпута отвяжем
+	от абзаца обработчик клика. В этом случае
+	только первый клик по абзацу будет приводить
+	к появлению инпута, а остальные клики, сделанные
+	после появления инпута, будут проигнорированы.
+</p>
+<p>
+	Реализуем:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+
+elem.addEventListener('click', function func() {
+	let input = document.createElement('input');
+	input.value = elem.textContent;
+	
+	elem.appendChild(input);
+	
+	elem.removeEventListener('click', func); // отвяжем событие
+});</code>
+</div>
+<p>
+	Давайте теперь сделаем так, чтобы при появлении
+	инпута, текст самого абзаца исчезал. Для этого
+	перед вставкой инпута <code class="code inline">textContent</code> абзаца
+	присвоим пустой строке:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+
+elem.addEventListener('click', function func() {
+	let input = document.createElement('input');
+	
+	input.value = elem.textContent; // сначала записываем текст абзаца в инпут
+	elem.textContent = ''; // затем убираем текст абзаца
+	elem.appendChild(input); // затем вставляем инпут
+	
+	elem.removeEventListener('click', func);
+});</code>
+</div>
+<p>
+	Давайте теперь сделаем так, чтобы при потери
+	фокуса в инпуте текст этого инпута записывался
+	в абзац:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+
+elem.addEventListener('click', function func() {
+	let input = document.createElement('input');
+	
+	input.value = elem.textContent;
+	elem.textContent = '';
+	elem.appendChild(input);
+	
+	input.addEventListener('blur', function() {
+		elem.textContent = this.value;
+	});
+	
+	elem.removeEventListener('click', func);
+});</code>
+</div>
+<p>
+	Обратите внимание на то, что нам не нужно
+	удалять инпут - он удаляет сам себя, когда
+	записывает свой текст в абзац: так как инпут
+	является частью текста абзаца, то запись
+	какого-то текста в этот абзац просто удаляет
+	наш инпут, и все.
+</p>
+<p>
+	У нас, однако, есть еще одна проблема: текст
+	абзаца будет редактироваться лишь первый
+	раз. После первого редактирования повторное
+	нажатие на текст абзаца ни к чему не приведет.
+</p>
+<p>
+	Дело в том, что в момент появления инпута
+	мы отвязали событие от абзаца по описанным
+	выше причинам. Теперь нам необходимо в момент
+	окончания редактирования привязать событие
+	обратно.
+</p>
+<p>
+	Сделаем это:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+
+elem.addEventListener('click', function func() {
+	let input = document.createElement('input');
+	input.value = elem.textContent;
+	
+	elem.textContent = '';
+	elem.appendChild(input);
+	
+	input.addEventListener('blur', function() {
+		elem.textContent = this.value;
+		elem.addEventListener('click', func); // повесим событие обратно
+	});
+	
+	elem.removeEventListener('click', func);
+});</code>
+</div>
+<div class="task">
+	<p>
+		Самостоятельно, не подсматривая в мой код,
+		решите описанную задачу.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/prime/" data-persent="93" data-hash="jsPmPrEHT" data-quantity="363" data-num="339"><a href="../../../../../../ru/javascript/book/prime/dom/practice/single-element-editing.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../ru/javascript/book/prime/dom/practice/elements-group-editing.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/practice/edit-hiding-text.html">en</a><a href="../../../../../../ru/javascript/book/prime/dom/practice/edit-hiding-text.html" class="active">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

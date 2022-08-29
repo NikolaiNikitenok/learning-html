@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Получение моментов времени в JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами научимся получать различные моменты времени в JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Получение моментов времени в JavaScript</h1>
+				<div class="content">
+<p>
+	В данном уроке мы с вами научимся получать
+	различные моменты времени в виде объекта
+	с датой. Также мы научимся находить разность
+	между этими моментами времени.
+</p>
+
+<h2>День текущего года</h2>
+<p>
+	Давайте получим объект с датой, содержащий
+	<code class="number inline">8</code>-е марта текущего года. Под словами
+	<i>текущий год</i> имеется ввиду то, что
+	скрипт должен работать в любом году, всегда
+	получая тот год, который сейчас на планете.
+</p>
+<p>
+	Для этого нам нужно сделать еще один вспомогательный
+	объект с датой, содержащий текущий момент
+	времени. С помощью этого объекта мы сможем
+	получить текущий год, а затем использовать
+	этот год при создании объекта с желаемой
+	нами датой, вот так:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let now  = new Date(); // получаем текущий момент
+let date = new Date(now.getFullYear(), 2, 8); // получаем нашу дату</code>
+</div>
+<p>
+	Полученный момент времени мы можем использовать,
+	например, чтобы определить день недели, соответствующий
+	этой дате:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log(date.getDay());</code>
+</div>
+<div class="task">
+	<p>
+		Определите, какой день недели будет <code class="number inline">31</code>
+		декабря текущего года.
+	</p>
+</div>
+
+<h2>День текущего месяца</h2>
+<p>
+	Давайте получим объект с датой, содержащий
+	<code class="number inline">25</code>-е число текущего месяца текущего года:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let now  = new Date();
+let date = new Date(now.getFullYear(), now.getMonth(), 25);</code>
+</div>
+<div class="task">
+	<p>
+		Определите, какой день недели будет <code class="number inline">1</code>
+		числа текущего месяца.
+	</p>
+</div>
+
+<h2>День следующего или предыдущего года</h2>
+<p>
+	Давайте получим объект с датой, содержащий
+	<code class="number inline">21</code> января следующего года. Для этого
+	прибавим к текущему году единицу:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let now  = new Date();
+let date = new Date(now.getFullYear() + 1, 0, 21);</code>
+</div>
+<div class="task">
+	<p>
+		Определите, какой день недели будет <code class="number inline">31</code>
+		декабря следующего года.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Определите, какой день недели будет через
+		год в такую же дату, как сегодня.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Определите, какой день недели был год назад
+		в такую же дату, как сегодня.
+	</p>
+</div>
+
+<h2>День следующего или предыдущего месяца</h2>
+<p>
+	Давайте узнаем день недели первого числа
+	предыдущего месяца. Для этого от текущего
+	месяца отнимем единицу:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let now = new Date();
+
+let date = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+console.log(date.getDay());</code>
+</div>
+<div class="task">
+	<p>
+		Вопрос: не будет ли проблемы, если текущий
+		месяц январь? Ведь он имеет номер <code class="number inline">0</code>,
+		и при вычитании из него единицы мы получим
+		минус первый месяц.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Определите, какой день недели был месяц назад
+		в такой же день месяца, как сегодня.
+	</p>
+</div>
+
+<h2>Разность моментов</h2>
+<p>
+	Давайте найдем разность между двумя моментами
+	времени:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let date1 = new Date();
+let date2 = new Date(2015, 4, 25, 12, 59, 59);
+
+console.log(date1 - date2); // разность в миллисекундах</code>
+</div>
+<div class="task">
+	<p>
+		Определите, сколько дней между <code class="number inline">1</code> января
+		и <code class="number inline">10</code> сентября текущего года.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Определите, сколько дней между <code class="number inline">20</code>
+		числом текущего месяца и <code class="number inline">10</code> числом
+		следующего.
+	</p>
+</div>
+
+<h2>Момент времени дня</h2>
+<p>
+	Давайте получим объект с датой, содержащий
+	полдень сегодняшнего дня:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let now  = new Date();
+let date = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 12);</code>
+</div>
+<p>
+	А теперь полдень завтрашнего дня:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let now  = new Date();
+let date = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 12);</code>
+</div>
+<div class="task">
+	<p>
+		Определите, сколько часов прошло между вчерашним
+		полднем и текущим моментом времени.
+	</p>
+</div>
+
+<h2>Начало дня</h2>
+<p>
+	Давайте получим объект с датой, содержащий
+	начало текущего дня:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let now  = new Date();
+let date = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0);</code>
+</div>
+<p>
+	Как вы уже знаете, параметры объекта <code class="code inline">Date</code>
+	можно опускать с конца. В этом случае часы,
+	минуты и секунды будут иметь значение <code class="number inline">0</code>.
+	Опустим их:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let now  = new Date();
+let date = new Date(now.getFullYear(), now.getMonth(), now.getDate());</code>
+</div>
+<p>
+	А вот день опустить нельзя, так как если
+	он опущен, то примет значение <code class="number inline">1</code>, а
+	нам нужен текущий день. Опустить месяц, не
+	опуская год также нельзя по правилам работы
+	с Date.
+</p>
+<p>
+	Опустить одновременно год, месяц и день также
+	нельзя - в этом случае возьмется текущий
+	момент времени. Почему это плохо, ведь нам
+	и нужен текущий год, текущий месяц и текущий
+	день? Дело в том, что нам нужна полночь,
+	то есть часы, минуты и секунды должны иметь
+	значение <code class="number inline">0</code>, а в текущем моменте времени
+	они будут иметь текущие значения, а не полночь.
+</p>
+<div class="task">
+	<p>
+		Определите, сколько часов прошло между началом
+		дня и текущим моментом времени.
+	</p>
+</div>
+
+<h2>Конец дня</h2>
+<p>
+	Давайте получим объект с датой, содержащий
+	конец текущего дня:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let now  = new Date();
+let date = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);</code>
+</div>
+<p>
+	Можно посчитать концом текущего дня полночь
+	следующего (разница в <code class="number inline">1</code> секунду):
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let now  = new Date();
+let date = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0);</code>
+</div>
+<p>
+	Как вы уже знаете, нули в таком случае можно
+	опустить:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let now  = new Date();
+let date = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);</code>
+</div>
+<p>
+	Кстати, полночью также будет является время
+	<code class="number inline">24</code>:00:00 текущего дня:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let now  = new Date();
+let date = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 24, 0, 0);</code>
+</div>
+<p>
+	Опустим нули:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let now  = new Date();
+let date = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 24);</code>
+</div>
+<div class="task">
+	<p>
+		Определите, сколько часов осталось до конца дня.
+	</p>
+</div>
+
+<h2>Циклическая проверка</h2>
+<p>
+	Давайте найдем все первые числа месяцев текущего
+	года, которые являются воскресеньем:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let now  = new Date();
+let year = now.getFullYear();
+
+for (let month = 0; month &lt;= 11; month++) {
+	let date = new Date(year, month, 1);
+	
+	if (date.getDay() == 0) {
+		console.log(year + '-' + month + '-1');
+	}
+}</code>
+</div>
+<div class="task">
+	<p>
+		Рассмотрите промежуток от <code class="number inline">2000</code> года
+		до текущего года. Определите, сколько раз
+		<code class="number inline">1</code> января в этом промежутке попадало
+		на выходной день, то есть на субботу или
+		на воскресенье.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/prime/" data-persent="64" data-hash="jsPmTmTMG" data-quantity="363" data-num="235"><a href="../../../../../ru/javascript/book/prime/time/date-correctness-checking.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/javascript/book/prime/time/time-moments-training.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/time/time-moments-getting.html">en</a><a href="../../../../../ru/javascript/book/prime/time/time-moments-getting.html" class="active">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

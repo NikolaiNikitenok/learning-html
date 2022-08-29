@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Event object basics in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn the basics of working with the Event object in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Event object basics in JavaScript</h1>
+				<div class="content">
+<p>
+	In this lesson, we will learn the basics of 
+	working with the <code class="code inline">Event</code> object. This 
+	object contains information about the event 
+	that occurred. For example, if an element was 
+	clicked, we can find out the coordinates of 
+	this click, whether the <code class="key inline">Ctrl</code>, <code class="key inline">Alt</code> 
+	or <code class="key inline">Shift</code> key was pressed at the time 
+	of the click etc.
+</p>
+<p>
+	Let's see how to get the <code class="code inline">Event</code> object. 
+	Let's have a button:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;button id="elem"&gt;text&lt;/button&gt;</code>
+</div>
+<p>
+	Let some function be executed by clicking 
+	on this button:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+
+elem.addEventListener('click', function() {
+
+});</code>
+</div>
+<p>
+	There is already a <code class="code inline">Event</code> object inside 
+	the bound function - we just don't know how 
+	to retrieve it yet. It retrieves as follows: 
+	when declaring our function, we need to pass 
+	any variable into it as a parameter (as a rule, 
+	<code class="code inline">event</code> - but the name can be anything) 
+	and <i>the browser will automatically put the 
+	<code class="code inline">Event</code> object</i> into this variable:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">elem.addEventListener('click', function(event) {
+	console.log(event); // shows the object with the event
+});</code>
+</div>
+<div class="task">
+	<p>
+		Perform the described actions yourself and 
+		output the object with the event to the 
+		console. Study the structure of this object.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="79" data-hash="jsPmOEInr" data-quantity="363" data-num="288"><a href="../../../../../../en/javascript/book/prime/dom/form/mistakes.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../en/javascript/book/prime/dom/object-Event/event-coordinates.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/object-Event/intro.html" class="active">en</a><a href="../../../../../../ru/javascript/book/prime/dom/object-Event/intro.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

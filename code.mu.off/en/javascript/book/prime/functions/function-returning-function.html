@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Function returning a function in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will analyze functions that return other functions in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Function returning a function in JavaScript</h1>
+				<div class="content">
+<p>
+	Let's say we have a function like 
+	this that returns a string:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	return '!';
+}
+
+let result = func();
+console.log(result); // shows '!'</code>
+</div>
+<p>
+	Let's now instead of a string, by analogy, 
+	return an anonymous function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	return function() {
+		return '!';
+	};
+}
+
+let result = func(); // there will be a function in the variable result
+console.log(result); // shows 'function() {return '!';}'</code>
+</div>
+<p>
+	As you can see, the variable <code class="code inline">result</code> 
+	is now a function. Let's display the result 
+	of its work in the console. To do this, 
+	write parentheses to it:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	return function() {
+		return '!';
+	};
+}
+
+let result = func();
+console.log( result() ); // shows '!'</code>
+</div>
+<p>
+	Since calling <code class="code inline">func()</code> returns a function, 
+	we can immediately invoke this returned function, 
+	like this: <code class="code inline">func()()</code> - the first parentheses 
+	get the result of the function <code class="code inline">func</code> 
+	(which is a function itself), and the second 
+	parentheses are applied to the result of <code class="code inline">func</code>.
+</p>
+<p>
+	Let's try:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	return function() {
+		return '!';
+	};
+}
+
+console.log( func()() ); // shows '!'</code>
+</div>
+<div class="task">
+	<p>
+		Make the function <code class="code inline">func1</code> which, when 
+		called like this: <code class="code inline">func1()()</code>, will 
+		return the number <code class="number inline">1</code>. Make a similar 
+		function <code class="code inline">func2</code> returning the number 
+		<code class="number inline">2</code>. Find the sum of the results of 
+		these functions.
+	</p>
+</div>
+
+<h2>Any nesting level</h2>
+<p>
+	There may be also such function calls: 
+	<code class="code inline">func()()()</code> and <code class="code inline">func()()()</code> - 
+	and so on ad infinitum.
+</p>
+<p>
+	To do this, you need the inner function 
+	to also return a function, that one - 
+	another one, and so on. Here is an example:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	return function() {
+		return function() {
+			return '!';
+		};
+	};
+}
+
+console.log( func()()() ); // shows '!'</code>
+</div>
+<div class="task">
+	<p>
+		Make the function <code class="code inline">func</code> that, 
+		when called like this: <code class="code inline">func()()()()()</code>, 
+		will return <code class="string inline">'!'</code>.
+	</p>
+</div>
+
+<h2>Parameters</h2>
+<p>
+	You can pass parameters to the function 
+	calls we have studied. In the following 
+	example, the inner function expects a 
+	string as a parameter and prints it to 
+	the console:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	return function(str) {
+		return str;
+	};
+}</code>
+</div>
+<p>
+	The second bracket corresponds to the internal 
+	function when called, which means that we 
+	pass the desired string to this second bracket:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	return function(str) {
+		return str;
+	};
+}
+
+console.log( func()('!') ); // shows '!'</code>
+</div>
+<p>
+	Let's make both the first function take a 
+	parameter and the second one. And the 
+	result of the call will be the sum of 
+	these parameters:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(num1) {
+	return function(num2) {
+		return num1 + num2;
+	};
+}
+
+console.log( func(1)(2) ); // shows 3</code>
+</div>
+<div class="task">
+	<p>
+		Make the function <code class="code inline">func</code>, which, 
+		when called like this: <code class="code inline">func(2)(3)(4)</code>, 
+		will return the sum of the numbers passed 
+		to the parameters.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Make the function <code class="code inline">func</code>, which, when 
+		called like this: <code class="code inline">func(2)(3)(4)(5)()</code>, 
+		will return an array of the numbers passed 
+		in the parameters.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="52" data-hash="jsPmFAFRF" data-quantity="363" data-num="189"><a href="../../../../../en/javascript/book/prime/functions/nested-functions-scope.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/functions/functions-lexical-environment.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/functions/function-returning-function.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/functions/function-returning-function.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Special values in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will look at the undefined, null, true, false, NaN, Infinity, -Infinity values in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Special values in JavaScript</h1>
+				<div class="content">
+<p>
+	In JavaScript, as in other programming languages, 
+	there are keywords for some special values. 
+	Here they are: <code class="code inline">undefined</code>, <code class="code inline">null</code>,
+	<code class="code inline">true</code>, <code class="code inline">false</code>, <code class="code inline">NaN</code>, <code class="code inline">Infinity</code>,
+	<code class="code inline">-Infinity</code>.
+</p>
+
+<h2>Undefined value</h2>
+<p>
+	The value <code class="code inline">undefined</code> denotes uncertainty.
+	A variable will have such a value if we 
+	declared it, but did not write the value to it:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a;
+alert(a); // shows undefined</code>
+</div>
+<p>
+	This value can be assigned explicitly to a variable :
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = undefined;
+alert(a); // shows undefined</code>
+</div>
+<div class="task">
+	<p>
+		Declare a variable without assigning a 
+		value to it. Display the value of 
+		the created variable on the screen.
+	</p>
+</div>
+
+<h2>Null value</h2>
+<p>
+	The value <code class="code inline">null</code> means "nothing". 
+	For example, we can assign such a value to 
+	a variable to indicate that there is nothing there:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = null;
+alert(a); // shows null</code>
+</div>
+<div class="task">
+	<p>
+		Set the variable to <code class="code inline">null</code>. 
+		Print this variable to the screen.
+	</p>
+</div>
+
+<h2>True and false values</h2>
+<p>
+	The values <code class="code inline">true</code> and <code class="code inline">false</code> 
+	are used for things that require two answers - yes or no.
+</p>
+<div class="task">
+	<p>
+		Set the variable to <code class="code inline">true</code>. 
+		Display this variable on the screen.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Set the variable to <code class="code inline">false</code>. 
+		Display this variable on the screen.
+	</p>
+</div>
+
+<h2>NaN value</h2>
+<p>
+	The value <code class="code inline">NaN</code> means <dfn>Not-A-Number</dfn>. 
+	This value is obtained when you try to do 
+	mathematical operations not with numbers, 
+	but with something else. 
+	For example, an attempt to multiply a string 
+	by a number will give such a value:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">alert('abc' * 3); // shows NaN</code>
+</div>
+<p>
+	Any operations with <code class="code inline">NaN</code> still lead to 
+	the <code class="code inline">NaN</code> result:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">alert(NaN + 1); // shows NaN</code>
+</div>
+<div class="task">
+	<p>
+		Make two strings. Multiply them over each other. 
+		Print the result of the multiplication on the screen.
+	</p>
+</div>
+
+<h2>Infinity and -Infinity values</h2>
+<p>
+	Such values as <code class="code inline">Infinity</code> and 
+	<code class="code inline">-Infinity</code> are obtained if some number 
+	is divided by zero. JavaScript does not 
+	throw an error, in such a case, as in other 
+	programming languages, but returns these values:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">alert( 1 / 0); // shows Infinity
+alert(-1 / 0); // shows -Infinity</code>
+</div>
+<div class="task">
+	<p>
+		Divide the number <code class="number inline">10</code> by <code class="number inline">0</code>. 
+		Display the result on the screen.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Divide the number <code class="number inline">-10</code> by <code class="number inline">0</code>. 
+		Display the result on the screen.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="5" data-hash="jsPmBsSV" data-quantity="363" data-num="18"><a href="../../../../../en/javascript/book/prime/basis/template-strings.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/basis/console.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/basis/special-values.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/basis/special-values.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

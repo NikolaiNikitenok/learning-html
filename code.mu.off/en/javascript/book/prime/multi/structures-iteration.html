@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Iterating over multidimensional structures in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will study the iteration over combinations of multidimensional arrays and objects in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Iterating over multidimensional structures in JavaScript</h1>
+				<div class="content">
+<p>
+	Let we have the following object with students:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let students = {
+	'group1': ['student11', 'student12', 'student13'],
+	'group2': ['student21', 'student22', 'student23'],
+	'group3': ['student31', 'student32'],
+};</code>
+</div>
+<p>
+	Let's display the names of all the students 
+	by looping through our object in 
+	two nested loops.
+</p>
+<p>
+	As you can see, we have an object with arrays. 
+	This means that the first loop should be for 
+	an object, and the second loop should be for 
+	arrays. That is, the first loop will be 
+	<code class="code inline">for-in</code>, and the second - <code class="code inline">for-of</code>, 
+	like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">for (let group in students) {
+	for (let name of students[group]) {
+		console.log(name);
+	}
+}</code>
+</div>
+<div class="task">
+	<p>
+		Given the following data structure:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let data = {
+	1: [
+		'data11',
+		'data12',
+		'data13',
+	],
+	2: [
+		'data21',
+		'data22',
+		'data23',
+	],
+	3: [
+		'data31',
+		'data32',
+		'data33',
+	],
+	4: [
+		'data41',
+		'data42',
+		'data43',
+	],
+};</code>
+	</div>
+	<p>
+		Use nested loops to display all data strings.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given the following data structure:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let data = [
+	{
+		1: 'data11',
+		2: 'data12',
+		3: 'data13',
+	},
+	{
+		1: 'data21',
+		2: 'data22',
+		3: 'data33',
+	},
+	{
+		1: 'data31',
+		2: 'data32',
+		3: 'data33',
+	},
+];</code>
+	</div>
+	<p>
+		Use nested loops to display all data strings.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given the following data structure:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let data = [
+	{
+		1: [
+			'data111',
+			'data112',
+			'data113',
+		],
+		2: [
+			'data121',
+			'data122',
+			'data123',
+		],
+	},
+	{
+		1: [
+			'data211',
+			'data212',
+			'data213',
+		],
+		2: [
+			'data221',
+			'data222',
+			'data223',
+		],
+	},
+	{
+		1: [
+			'data411',
+			'data412',
+			'data413',
+		],
+		2: [
+			'data421',
+			'data422',
+			'data423',
+		],
+	},
+];</code>
+	</div>
+	<p>
+		Use nested loops to display all data strings.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="40" data-hash="jsPmMuSI" data-quantity="363" data-num="146"><a href="../../../../../en/javascript/book/prime/multi/structures.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en//en/javascript/book/prime/multi/array-of-objects.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/multi/structures-iteration.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/multi/structures-iteration.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

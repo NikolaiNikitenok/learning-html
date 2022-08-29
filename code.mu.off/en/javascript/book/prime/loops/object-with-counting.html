@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Object with the number of elements in the array in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to get an object with the number of elements in the array in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Object with the number of elements in the array in JavaScript</h1>
+				<div class="content">
+<p>
+	Let's have an array:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = ['a', 'b', 'c', 'a', 'a', 'b'];</code>
+</div>
+<p>
+	Let's count how many and what elements there 
+	are in this array and present the result 
+	as an object like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">{a: 3, b: 2, c: 1}</code>
+</div>
+<p>
+	To solve this, let's make the object <code class="code inline">count</code> 
+	with the following initial values:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let count = {a: 0, b: 0, c: 0}</code>
+</div>
+<p>
+	We will loop through the array and increase 
+	the corresponding value in the object <code class="code inline">count</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = ['a', 'b', 'c', 'a', 'a', 'b'];
+let count = {a: 0, b: 0, c: 0};
+
+for (let elem of arr) {
+	count[elem]++;
+}
+
+console.log(count); // shows {a: 3, b: 2, c: 1}</code>
+</div>
+<p>
+	Let's go further: the fact that the object 
+	<code class="code inline">count</code> has characters listed in the 
+	initial values, because we usually do not 
+	know what elements are in the array.
+</p>
+<p>
+	Let the object <code class="code inline">count</code> be formed automatically 
+	in this way: if there is no such element in 
+	<code class="code inline">count</code>, then it should be assigned the 
+	value <code class="number inline">1</code>, and if there is, just 
+	increase the value by one:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = ['a', 'b', 'c', 'a', 'a', 'b'];
+let count = {};
+
+for (let elem of arr) {
+	if (count[elem] === undefined) {
+		count[elem] = 1;
+	} else {
+		count[elem]++;
+	}
+}
+
+console.log(count); // shows {a: 3, b: 2, c: 1}</code>
+</div>
+<div class="task">
+	<p>
+		Given a string. Count how many times each 
+		of its characters occurs in it.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="36" data-hash="jsPmLpOWC" data-quantity="363" data-num="132"><a href="../../../../../en/javascript/book/prime/loops/array-elements-counting.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/loops/array-elements-neighbors.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/loops/object-with-counting.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/loops/object-with-counting.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

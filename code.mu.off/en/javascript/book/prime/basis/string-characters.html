@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Retrieving the characters of a string in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will consider a method for retrieving individual characters of a string in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Retrieving the characters of a string in JavaScript</h1>
+				<div class="content">
+<p>
+	Let's say we have some string. Each character 
+	in this string has its own order index: the 
+	first character index is <code class="number inline">0</code>, the second 
+	is <code class="number inline">1</code>, the third is <code class="number inline">2</code> and so on.
+</p>
+<p>
+	As you've already noticed, character numbering 
+	starts from zero (zero as the start of numbering 
+	is often found in programming).
+</p>
+<p>
+	If it is necessary, you can access a specific 
+	character of a string by its index. To do this, 
+	the name of the variable is written, after this 
+	name square brackets are placed, and in these 
+	brackets the character index is inserted.
+</p>
+<p>
+	Let's look at an example. Let's say we 
+	have a string like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = 'abcde';</code>
+</div>
+<p>
+	Let's refer to some of the characters 
+	in this string:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = 'abcde';
+
+alert(str[0]); // shows 'a'
+alert(str[1]); // shows 'b'
+alert(str[2]); // shows 'c'</code>
+</div>
+<p>
+	The character index can also be 
+	stored in a variable:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = 'abcde';
+let num = 3; // the character index in variable
+
+alert(str[num]); // shows 'd'</code>
+</div>
+<div class="task">
+	<p>
+		Given the string <code class="string inline">'abcde'</code>. 
+		Referring to the individual characters of 
+		this string, print the character <code class="string inline">'a'</code>, 
+		the character <code class="string inline">'c'</code>, 
+		the character <code class="string inline">'e'</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given a variable with the string 
+		<code class="string inline">'abcde'</code>. Referring to the individual 
+		characters of this string, write the 
+		characters of this string in reverse order 
+		into a new variable, that is, <code class="string inline">'edcba'</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given the variable <code class="code inline">str</code> with the 
+		string <code class="string inline">'abcde'</code> and the variable 
+		<code class="code inline">num</code> with the character index. 
+		Display on the screen the character whose number is 
+		stored in the variable <code class="code inline">num</code>.
+	</p>
+</div>
+
+<h2>String immutability</h2>
+<p>
+	String characters can be read but not 
+	modified. The following code example 
+	will throw an error (in strict mode):
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = 'abcde';
+str[0] = '!';</code>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="7" data-hash="jsPmBsSCh" data-quantity="363" data-num="27"><a href="../../../../../en/javascript/book/prime/basis/conversion-to-logical-type.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/basis/last-string-character.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/basis/string-characters.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/basis/string-characters.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Объект со статическими свойствами и методами в ООП на PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../js/location.js?v=3"></script>
+		<script src="../../../../js/locale.js?v=5"></script>
+		<script src="../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами создадим объект со статическими свойствами и методами в ООП на PHP.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Объект со статическими свойствами и методами</h1>
+				<div class="content">
+<p>
+	Вы уже знаете, что статические свойства и
+	методы можно использовать, не создавая объект
+	класса. На самом деле, однако, класс может
+	содержать как статические свойства и методы,
+	так и обычные.
+</p>
+<p>
+	Давайте посмотрим, как с этим работать и
+	какие преимущества это дает. Пусть у нас
+	есть класс <code class="code inline">Test</code> одновременно и со
+	статическим свойством, и с обычным:
+</p>
+<div class="block" data-file="Test.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Test
+	{
+		public static $staticProperty; // публичное статическое свойство
+		public $usualProperty; // обычное свойство
+	}
+?&gt;</code>
+</div>
+<p>
+	Давайте, к примеру, поработаем с его обычным
+	свойством:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$test = new Test; // создаем объект класса
+	
+	$test-&gt;usualProperty = 'usual'; // записываем значение
+	echo $test-&gt;usualProperty; // выведет 'usual'
+?&gt;</code>
+</div>
+<p>
+	А теперь используем статическое свойство,
+	не создавая объект этого класса:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	Test::$staticProperty = 'static'; // записываем значение
+	echo Test::$staticProperty; // выведет 'static'
+?&gt;</code>
+</div>
+<p>
+	На самом деле, если у нас есть переменная
+	с объектом класса, то у этой переменной также
+	будет доступно статическое свойство:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$test = new Test; // создаем объект класса
+	
+	$test::$staticProperty = 'static'; // записываем значение
+	echo $test::$staticProperty; // выведет 'static'
+?&gt;</code>
+</div>
+<p>
+	Разницы нет - мы к одному и тому же статическому
+	свойству можем обращаться и так, и так. Вот
+	пример, иллюстрирующий это:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	// Записываем значение еще ДО создания объекта:
+	Test::$staticProperty = 'static';
+	
+	// Cоздаем объект класса:
+	$test = new Test;
+	
+	// Выводим статическое свойство:
+	echo $test::$staticProperty; // выведет 'static'
+?&gt;</code>
+</div>
+<p>
+	Вот еще пример:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	// Cоздаем объект класса:
+	$test = new Test;
+	
+	// Записываем значение в статическое свойство:
+	$test::$staticProperty  = 'static';
+	
+	// Выводим значение, обратившись к классу:
+	echo Test::$staticProperty; // выведет 'static'
+	
+	// Выводим значение, обратившись к объекту класса:
+	echo $test::$staticProperty; // выведет 'static'
+?&gt;</code>
+</div>
+
+<h2>Несколько объектов</h2>
+<p>
+	Статические свойства принадлежат не какому-то
+	объекту класса, а самому классу, хотя объекты
+	класса и имеют доступ к этим свойствам.
+</p>
+<p>
+	На практике это означает то, что если у нас
+	есть несколько объектов класса - статические
+	свойства у них будут общие. То есть, если
+	в одном объекте поменять значение статического
+	свойства - изменения произойдут во всех объектах.
+</p>
+<p>
+	Давайте посмотрим на примере:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$test1 = new Test; // первый объект
+	$test2 = new Test; // второй объект
+	
+	$test1::$staticProperty = 'static'; // запишем значение, используя первый объект
+	
+	echo $test1::$staticProperty; // выведет 'static'
+	echo $test2::$staticProperty; // также выведет 'static'
+?&gt;</code>
+</div>
+
+<h2>Статические методы и $this</h2>
+<p>
+	Пусть у нас есть класс <code class="code inline">Test</code> с двумя
+	свойствами, статическим и обычным:
+</p>
+<div class="block" data-file="Test.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Test
+	{
+		public static $staticProperty = 'static'; // статическое свойство
+		public $usualProperty = 'usual'; // обычное свойство
+	}
+?&gt;</code>
+</div>
+<p>
+	Давайте выведем значения этих свойств в обычном
+	методе <code class="code inline">method</code>:
+</p>
+<div class="block" data-file="Test.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Test
+	{
+		public static $staticProperty = 'static'; // статическое свойство
+		public $usualProperty = 'usual'; // обычное свойство
+		
+		// Обычный метод:
+		public function method()
+		{
+			var_dump(self::$staticProperty); // выведет 'static'
+			var_dump($this-&gt;usualProperty);  // выведет 'usual'
+		}
+	}
+	
+	$test = new Test;
+	$test-&gt;method(); // обычный метод - вызываем через -&gt;
+?&gt;</code>
+</div>
+<p>
+	Из примера видно, что в обычном методе доступны
+	как статические, так и обычные свойства (и
+	методы). Пусть теперь наш метод <code class="code inline">method</code>
+	будет статическим. В этом случае он сможет
+	обратиться с статическим методом и свойствам,
+	но к обычным - нет.
+</p>
+<p>
+	Почему: потому что внутри статических методов
+	недоступен <code class="code inline">$this</code>. Это происходит из-за
+	того, что статические методы могут вызываться
+	вне контекста объекта, просто обращаясь к
+	имени класса.
+</p>
+<p>
+	А ведь <code class="code inline">$this</code> внутри класса как раз-таки
+	ссылается на объект этого класса. Нет объекта
+	- <code class="code inline">$this</code> ни на что не ссылается. Убедимся
+	в этом: переделаем наш метод на статический
+	- теперь обращение к обычному свойству внутри
+	нашего метода будет выдавать ошибку:
+</p>
+<div class="block" data-file="Test.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Test
+	{
+		public static $staticProperty = 'static'; // статическое свойство
+		public $usualProperty = 'usual'; // обычное свойство
+		
+		// Переделали на статический метод:
+		public static function method()
+		{
+			var_dump(self::$staticProperty); // выведет 'static'
+			var_dump($this-&gt;usualProperty);  // выдаст ошибку
+		}
+	}
+	
+	$test = new Test;
+	$test::method(); // статический метод - вызываем через ::
+?&gt;</code>
+</div>
+
+<h2>Применение</h2>
+<p>
+	Пусть у нас есть вот такой класс <code class="code inline">User</code>:
+</p>
+<div class="block" data-file="User.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class User
+	{
+		public $name;
+		
+		public function __construct($name)
+		{
+			$this-&gt;name = $name;
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Давайте сделаем так, чтобы этот класс подсчитывал
+	количество своих объектов. Для этого сделаем
+	статическое свойство <code class="code inline">count</code>. Изначально
+	запишем в него значение <code class="number inline">0</code>, а при создании
+	каждого нового объекта будем увеличивать
+	это значение на <code class="number inline">1</code>.
+</p>
+<p>
+	Будем увеличивать значение нашего счетчика
+	в конструкторе объекта:
+</p>
+<div class="block" data-file="User.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class User
+	{
+		public static $count = 0; // счетчик объектов
+		public $name;
+		
+		public function __construct($name)
+		{
+			$this-&gt;name = $name;
+			
+			// Увеличиваем счетчик при создании объекта:
+			self::$count++;
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Проверим, что все работает:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$user1 = new User('user1'); // создаем первый объект класса
+	echo User::$count; //выведет 1
+	
+	$user2 = new User('user2'); // создаем второй объект класса
+	echo User::$count; //выведет 2
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Не подсматривая в мой код реализуйте такой
+		же класс <code class="code inline">User</code>, подсчитывающий количество
+		своих объектов.
+	</p>
+</div>
+
+<h2>Улучшим наш код</h2>
+<p>
+	Не очень хорошо то, что наш счетчик публичный
+	- его случайно можно изменить снаружи класса.
+	Давайте сделаем его доступным только для
+	чтения. Для этого объявим его приватным и
+	сделаем для него статический метод-геттер
+	<code class="code inline">getCount</code>:
+</p>
+<div class="block" data-file="User.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class User
+	{
+		private static $count = 0;
+		public $name;
+		
+		public function __construct($name)
+		{
+			$this-&gt;name = $name;
+			
+			// Увеличиваем счетчик при создании объекта:
+			self::$count++;
+		}
+		
+		// Метод, возвращающий значение счетчика:
+		public static function getCount()
+		{
+			// Выводим значение счетчика:
+			return self::$count;
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Проверим:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$user1 = new User('user1'); // создаем первый объект класса
+	echo User::getCount(); //выведет 1
+	
+	$user2 = new User('user2'); // создаем второй объект класса
+	echo User::getCount(); //выведет 2
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Самостоятельно переделайте код вашего класса
+		<code class="code inline">User</code> в соответствии с теоретической
+		частью урока.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/oop/" data-persent="28" data-hash="ppOpBsOWSPM" data-quantity="107" data-num="31"><a href="../../../../ru/php/book/oop/static-properties.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../ru/php/book/oop/class-constants.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../js/metrika.js?v=1"></script>	</body>
+</html>

@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Абстрактные классы в ООП на PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../js/location.js?v=3"></script>
+		<script src="../../../../js/locale.js?v=5"></script>
+		<script src="../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами разберем работу с абстрактными классами в ООП на PHP.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Абстрактные классы в ООП на PHP</h1>
+				<div class="content">
+<p>
+	Пусть у вас есть класс <code class="code inline">User</code>, а от
+	него наследуют классы <code class="code inline">Employee</code> и <code class="code inline">Student</code>.
+</p>
+<p>
+	При этом предполагается, что вы будете создавать
+	объекты классов <code class="code inline">Employee</code> и <code class="code inline">Student</code>,
+	но объекты класса <code class="code inline">User</code> - не будете,
+	так как этот класс используется только для
+	группировки общих свойств и методов своих
+	наследников.
+</p>
+<p>
+	В этом случае можно принудительно запретить
+	создавать объекты класса <code class="code inline">User</code>, чтобы
+	вы или другой программист где-нибудь их случайно
+	не создали.
+</p>
+<p>
+	Для этого существуют так называемые <dfn>абстрактные</dfn>
+	классы. Абстрактные классы представляют собой
+	классы, предназначенные для наследования
+	от них. При этом объекты таких классов нельзя
+	создать.
+</p>
+<p>
+	Для того, чтобы объявить класс абстрактным,
+	нужно при его объявлении написать ключевое
+	слово <code class="code inline">abstract</code>:
+</p>
+<div class="block" data-file="User.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	abstract class User
+	{
+		
+	}
+?&gt;</code>
+</div>
+<p>
+	Итак, давайте напишем реализацию абстрактного
+	класса <code class="code inline">User</code>. Пусть у него будет приватное
+	свойство <code class="code inline">name</code>, а также геттеры и сеттеры
+	для него:
+</p>
+<div class="block" data-file="User.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	abstract class User
+	{
+		private $name;
+		
+		public function getName()
+		{
+			return $this-&gt;name;
+		}
+		
+		public function setName($name)
+		{
+			$this-&gt;name = $name;
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Попытка создать объект класса <code class="code inline">User</code>
+	вызовет ошибку:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$user = new User; // выдаст ошибку
+?&gt;</code>
+</div>
+<p>
+	А вот унаследовать от нашего класса будет
+	можно. Сделаем класс <code class="code inline">Employee</code>, который
+	будет наследовать от нашего абстрактного
+	класса <code class="code inline">User</code>:
+</p>
+<div class="block" data-file="Employee.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Employee extends User
+	{
+		private $salary;
+		
+		public function getSalary()
+		{
+			return $this-&gt;salary;
+		}
+		
+		public function setSalary($salary)
+		{
+			$this-&gt;salary = $salary;
+		}
+		
+	}
+?&gt;</code>
+</div>
+<p>
+	Создадим объект класса <code class="code inline">Employee</code> -
+	все будет работать:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$employee = new Employee;
+	$employee-&gt;setName('john');  // метод родителя, т.е. класса User
+	$employee-&gt;setSalary(1000);  // свой метод, т.е. класса Employee
+	
+	echo $employee-&gt;getName();   // выведет 'john'
+	echo $employee-&gt;getSalary(); // выведет 1000
+?&gt;</code>
+</div>
+<p>
+	Аналогично можно создать объект класса <code class="code inline">Student</code>,
+	наследующий от <code class="code inline">User</code>:
+</p>
+<div class="block" data-file="Student.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Student extends User
+	{
+		private $scholarship;
+		
+		public function getScholarship()
+		{
+			return $this-&gt;scholarship;
+		}
+		
+		public function setScholarship($scholarship)
+		{
+			$this-&gt;scholarship = $scholarship;
+		}
+	}
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Самостоятельно, не подсматривая в мой код,
+		реализуйте такой же абстрактный класс <code class="code inline">User</code>,
+		а также классы <code class="code inline">Employee</code> и <code class="code inline">Student</code>,
+		наследующие от него.
+	</p>
+</div>
+
+<h2>Абстрактные методы</h2>
+<p>
+	Абстрактные классы также могут содержать
+	абстрактные методы. Такие методы не должны
+	иметь реализации, а нужны для того, чтобы
+	указать, что такие методы должны быть у потомков.
+	А собственно <i>реализация таких методов
+	- уже задача потомков</i>.
+</p>
+<p>
+	Для того, чтобы объявить метод абстрактным,
+	при его объявлении следует написать ключевое
+	слово <code class="code inline">abstract</code>.
+</p>
+<p>
+	Давайте попробуем на практике. Пусть предполагается,
+	что все потомки класса <code class="code inline">User</code> должны
+	иметь метод <code class="code inline">increaseRevenue</code> (<span class="translate-ru">увеличить
+	доход</span>).
+</p>
+<p>
+	Этот метод должен брать текущий доход пользователя
+	и увеличивать его на некоторую величину,
+	переданную параметром.
+</p>
+<p>
+	Сам класс <code class="code inline">User</code> не знает, какой именно
+	доход будет получать наследник - ведь у работника
+	это зарплата, а у студента - стипендия. Поэтому
+	каждый потомок будет реализовывать этот метод
+	по-своему.
+</p>
+<p>
+	Фишка тут в том, что абстрактный метод класса
+	<code class="code inline">User</code> заставляет программиста реализовывать
+	этот метод в потомках, иначе PHP выдаст ошибку.
+	Таким образом вы, или другой программист,
+	работающий с вашим кодом, никак не сможете
+	забыть реализовать нужный метод в потомке.
+</p>
+<p>
+	Итак, давайте попробуем на практике. Добавим
+	абстрактный метод <code class="code inline">increaseRevenue</code>
+	в класс <code class="code inline">User</code>:
+</p>
+<div class="block" data-file="User.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	abstract class User
+	{
+		private $name;
+		
+		public function getName()
+		{
+			return $this-&gt;name;
+		}
+		
+		public function setName($name)
+		{
+			$this-&gt;name = $name;
+		}
+		
+		// Абстрактный метод без тела:
+		abstract public function increaseRevenue($value);
+	}
+?&gt;</code>
+</div>
+<p>
+	Пусть наш класс <code class="code inline">Employee</code> пока останется
+	без изменений. В этом случае, даже если не
+	создавать объект класса <code class="code inline">Employee</code>,
+	а просто запустить код, в котором определяются
+	наши классы, - PHP выдаст ошибку.
+</p>
+<p>
+	Давайте теперь напишем реализацию метода
+	<code class="code inline">increaseRevenue</code> в классе <code class="code inline">Employee</code>:
+</p>
+<div class="block" data-file="Employee.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Employee extends User
+	{
+		private $salary;
+		
+		public function getSalary()
+		{
+			return $this-&gt;salary;
+		}
+		
+		public function setSalary($salary)
+		{
+			$this-&gt;salary = $salary;
+		}
+		
+		// Напишем реализацию метода:
+		public function increaseRevenue($value)
+		{
+			$this-&gt;salary = $this-&gt;salary + $value;
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Проверим работу нашего класса:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$employee = new Employee;
+	$employee-&gt;setName('john');      // установим имя
+	$employee-&gt;setSalary(1000);      // установим зарплату
+	$employee-&gt;increaseRevenue(100); // увеличим зарплату
+	
+	echo $employee-&gt;getSalary();     // выведет 1100
+?&gt;</code>
+</div>
+<p>
+	Реализуем метод <code class="code inline">increaseRevenue</code> и
+	в классе <code class="code inline">Student</code>. Только теперь наш
+	метод будет увеличивать уже стипендию:
+</p>
+<div class="block" data-file="Student.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Student extends User
+	{
+		private $scholarship; // стипендия
+		
+		public function getScholarship()
+		{
+			return $this-&gt;scholarship;
+		}
+		
+		public function setScholarship($scholarship)
+		{
+			$this-&gt;scholarship = $scholarship;
+		}
+		
+		// Метод увеличивает стипендию:
+		public function increaseRevenue($value)
+		{
+			$this-&gt;scholarship = $this-&gt;scholarship + $value;
+		}
+	}
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Добавьте в ваш класс <code class="code inline">User</code> такой же
+		абстрактный метод <code class="code inline">increaseRevenue</code>.
+		Напишите реализацию этого метода в классах
+		<code class="code inline">Employee</code> и <code class="code inline">Student</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Добавьте также в ваш класс <code class="code inline">User</code> абстрактный
+		метод <code class="code inline">decreaseRevenue</code> (<span class="translate-ru">уменьшить
+		зарплату</span>). Напишите реализацию этого
+		метода в классах <code class="code inline">Employee</code> и <code class="code inline">Student</code>.
+	</p>
+</div>
+
+<h2>Некоторые замечания</h2>
+<p>
+	При наследовании от абстрактного класса,
+	все методы, помеченные абстрактными в родительском
+	классе, должны быть определены в дочернем классе.
+</p>
+<p>
+	При этом область видимости этих методов должна
+	совпадать или быть менее строгой. Что значит
+	менее строгой: например, если абстрактный
+	метод объявлен как <code class="code inline">protected</code>, то реализация
+	этого метода должна быть <code class="code inline">protected</code>
+	или <code class="code inline">public</code>, но не <code class="code inline">private</code>.
+</p>
+<p>
+	Объявления методов также должны совпадать:
+	количество обязательных параметром должно
+	быть одинаковым. Однако класс-потомок может
+	добавлять необязательные параметры, которые
+	не были указаны при объявлении метода в родителе.
+</p>
+
+<h2>Практика</h2>
+<p>
+	Пусть нам необходимо работать с геометрическими
+	фигурами, например, с квадратами, прямоугольниками,
+	треугольниками и так далее. Пусть каждая
+	фигура будет описываться своим классом, при
+	этом мы хотим сделать так, чтобы каждый класс
+	имел метод для вычисления площади и метод
+	для вычисления периметра фигуры.
+</p>
+<p>
+	Давайте сделаем для этого абстрактный класс
+	<code class="code inline">Figure</code> с двумя абстрактными методами
+	<code class="code inline">getSquare</code> и <code class="code inline">getPerimeter</code>.
+</p>
+<p>
+	Почему класс <code class="code inline">Figure</code> абстрактный: потому
+	что он не описывает реально существующую
+	геометрическую фигуру и, соответственно,
+	объект этого класса мы не будем создавать.
+</p>
+<p>
+	Почему методы <code class="code inline">getSquare</code> и <code class="code inline">getPerimeter</code>
+	абстрактные: потому что каждая фигура имеет
+	свой алгоритм вычисления площади и периметра
+	и, соответственно, класс <code class="code inline">Figure</code> не
+	может написать реализацию этих методов.
+</p>
+<p>
+	Зачем нам вообще нужен класс <code class="code inline">Figure</code>:
+	чтобы наследовать от него и таким образом
+	заставить всех наследников реализовать указанные
+	методы.
+</p>
+<p>
+	Итак, напишем реализацию класса <code class="code inline">Figure</code>:
+</p>
+<div class="block" data-file="Figure.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	abstract class Figure
+	{
+		abstract public function getSquare();
+		abstract public function getPerimeter();
+	}
+?&gt;</code>
+</div>
+<p>
+	Пусть теперь мы хотим создать класс <code class="code inline">Quadrate</code>
+	для описания геометрической фигуры квадрат.
+	Как известно, у квадрата все стороны равны,
+	поэтому для описания квадрата нам нужно задать
+	только его ширину.
+</p>
+<p>
+	Давайте для этого сделаем приватное свойство
+	<code class="code inline">$a</code>, значение которого будет задаваться
+	в конструкторе класса:
+</p>
+<div class="block" data-file="Quadrate.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Quadrate
+	{
+		private $a;
+		
+		public function __construct($a)
+		{
+			$this-&gt;a = $a;
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Давайте теперь унаследуем наш класс <code class="code inline">Quadrate</code>
+	от класса <code class="code inline">Figure</code>:
+</p>
+<div class="block" data-file="Quadrate.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Quadrate extends Figure
+	{
+		private $a;
+		
+		public function __construct($a)
+		{
+			$this-&gt;a = $a;
+		}
+	}
+	
+	/*
+		Код класса не рабочий
+		и будет выдавать ошибку,
+		так как мы не написали
+		реализацию методов родителя.
+	*/
+?&gt;</code>
+</div>
+<p>
+	Сейчас наша реализация класса <code class="code inline">Quadrate</code>
+	не рабочая, так как мы не написали реализацию
+	абстрактных методов родителя.
+</p>
+<p>
+	Давайте сделаем это:
+</p>
+<div class="block" data-file="Quadrate.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Quadrate extends Figure
+	{
+		private $a;
+		
+		public function __construct($a)
+		{
+			$this-&gt;a = $a;
+		}
+		
+		public function getSquare()
+		{
+			return $this-&gt;a * $this-&gt;a;
+		}
+		
+		public function getPerimeter()
+		{
+			return 4 * $this-&gt;a;
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Давайте создадим квадрат со стороной <code class="number inline">2</code>
+	и найдем его площадь и периметр:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$quadrate = new Quadrate(2);
+	echo $quadrate-&gt;getSquare();    // выведет 4
+	echo $quadrate-&gt;getPerimeter(); // выведет 8
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Сделайте аналогичный класс <code class="code inline">Rectangle</code>
+		(<span class="translate-ru">прямоугольник</span>), у которого будет
+		два приватных свойства: <code class="code inline">$a</code> для ширины
+		и <code class="code inline">$b</code> для длины. Данный класс также
+		должен наследовать от класса <code class="code inline">Figure</code>
+		и реализовывать его методы.
+	</p>
+</div>
+
+<h2>Усложним</h2>
+<p>
+	Сейчас все методы класса <code class="code inline">Figure</code> -
+	абстрактные. Это, конечно же, не обязательно.
+	Пусть наш класс имеет еще и метод <code class="code inline">getRatio</code>,
+	который будет находить отношение площади
+	к периметру (то есть одно делить на второе).
+</p>
+<p>
+	Этот метод уже будет не абстрактный, а иметь
+	реализацию, и все потомки смогут воспользоваться
+	этим методом.
+</p>
+<p>
+	Почему мы можем написать реализацию этого
+	метода прямо в классе <code class="code inline">Figure</code>: потому
+	что этот метод будет одинаковым для всех потомков.
+</p>
+<p>
+	Итак, добавим наш метод:
+</p>
+<div class="block" data-file="Figure.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	abstract class Figure
+	{
+		abstract public function getSquare();
+		abstract public function getPerimeter();
+		
+		// Метод для вычисления отношения площади к периметру:
+		public function getRatio()
+		{
+			return $this-&gt;getSquare() / $this-&gt;getPerimeter();
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Обратите внимание на следующее: хотя методы
+	<code class="code inline">getSquare</code> и <code class="code inline">getPerimeter</code> абстрактные
+	и не имеют реализации, мы их все равно можем
+	использовать в своем методе <code class="code inline">getRatio</code>,
+	хотя реализация этих методов появится только
+	в потомках.
+</p>
+<p>
+	Применим наш метод:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$quadrate = new Quadrate(2);
+	echo $quadrate-&gt;getSquare();    // выведет 4
+	echo $quadrate-&gt;getPerimeter(); // выведет 8
+	
+	echo $quadrate-&gt;getRatio();     // выведет 0.5
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Добавьте в класс <code class="code inline">Figure</code> метод <code class="code inline">getSquarePerimeterSum</code>,
+		который будет находить сумму площади и периметра.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/oop/" data-persent="32" data-hash="ppOpBsAC" data-quantity="107" data-num="35"><a href="../../../../ru/php/book/oop/polymorphism.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../ru/php/book/oop/interfaces/intro.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../js/metrika.js?v=1"></script>	</body>
+</html>

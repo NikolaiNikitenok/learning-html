@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>filter method to filter an array in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will study the filter method, which allows you to filter the array elements by the passed function in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>filter method to filter an array in JavaScript</h1>
+				<div class="content">
+<p>
+	Let's now explore the very useful <code class="code inline">filter</code> 
+	method to filter the elements of an array. 
+	Like the methods we have already studied, 
+	this method gets a callback function in the 
+	parameter (with the same parameters as the 
+	<code class="code inline">map</code> and <code class="code inline">forEach</code> methods), which 
+	will be executed for each array element.
+</p>
+<p>
+	As a result, <code class="code inline">filter</code> returns a new array, 
+	which will include only those elements for 
+	which the callback returns <code class="code inline">true</code>.
+</p>
+<p>
+	Let's see how the function works with an 
+	example. Let's say we have an array 
+	of numbers:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3, 4, 5];</code>
+</div>
+<p>
+	Let's filter the array, leaving only 
+	even numbers in it:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3, 4, 5];
+
+let result = arr.filter(function(elem) {
+	if (elem % 2 == 0) {
+		return true;
+	} else {
+		return false;
+	}
+});
+
+console.log(result); // shows [2, 4]</code>
+</div>
+<p>
+	Let's simplify the code using 
+	logical operators:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3, 4, 5];
+
+let result = arr.filter(function(elem) {
+	return elem % 2 == 0;
+});
+
+console.log(result); // shows [2, 4]</code>
+</div>
+<p>
+	Let's simplify the code even more 
+	using arrow functions:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3, 4, 5];
+
+let result = arr.filter(elem =&gt; elem % 2 == 0);
+console.log(result); // shows [2, 4]</code>
+</div>
+<p>
+	This solution is so short that it can 
+	be placed in the parameter of <code class="code inline">console.log</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3, 4, 5];
+console.log( arr.filter(elem =&gt; elem % 2 == 0) );</code>
+</div>
+<div class="task">
+	<p>
+		Given an array of numbers. Leave only 
+		positive numbers in it.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given an array of numbers. Leave only 
+		negative numbers in it.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given an array of numbers. Leave in it 
+		only numbers that are greater than zero, 
+		but less than <code class="number inline">10</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given an array with strings. Leave in it 
+		only those strings whose length is more 
+		than <code class="number inline">5</code> characters.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given an array of numbers. Leave in it 
+		only those numbers whose product of their 
+		values and index numbers is less 
+		than <code class="number inline">30</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		An array is given, it can contain ordinary 
+		elements and subarrays, for example 
+		[1, <code class="number inline">2</code>, [3, 4], <code class="number inline">5</code>, [6, 7]]. 
+		Leave only ordinary elements in it.
+	</p>
+</div>
+
+<h2>One more usage</h2>
+<p>
+	Let us again have our array:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3, 4, 5];</code>
+</div>
+<p>
+	Let's count the number of even elements in it:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3, 4, 5];
+
+let filtered = arr.filter(elem =&gt; elem % 2 == 0);
+console.log( filtered.length ); // shows 2</code>
+</div>
+<p>
+	Let's rewrite it even easier:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3, 4, 5];
+console.log( arr.filter(elem =&gt; elem % 2 == 0).length );</code>
+</div>
+<div class="task">
+	<p>
+		Given an array of numbers. Count the 
+		number of negative numbers 
+		in this array.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="55" data-hash="jsPmEnmFi" data-quantity="363" data-num="200"><a href="../../../../../en/javascript/book/prime/enumeration/forEach.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/enumeration/every.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/enumeration/filter.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/enumeration/filter.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

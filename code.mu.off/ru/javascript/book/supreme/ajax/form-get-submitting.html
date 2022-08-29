@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Отправка форм методом GET через AJAX | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами разберем отправку форм методом GET через AJAX на PHP.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Отправка форм методом GET через AJAX</h1>
+				<div class="content">
+<p>
+	Давайте отправим научимся отправлять HTML
+	формы без перезагрузки страницы.
+</p>
+<p>
+	Пусть у нас есть следующая форма:
+</p>
+<div class="block" data-file="public/index.html">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;form action="" method="GET"&gt;
+	&lt;input name="num1"&gt;
+	&lt;input name="num2"&gt;
+	&lt;input type="submit"&gt;
+&lt;/form&gt;</code>
+</div>
+<p>
+	Давайте отправим эту форму через AJAX. Для
+	начала получим ссылку на форму в переменную:
+</p>
+<div class="block" data-file="public/client.js">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let form = document.querySelector('form');</code>
+</div>
+<p>
+	Получим также ссылки на элементы формы:
+</p>
+<div class="block" data-file="public/client.js">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let input1 = document.querySelector('[name="num1"]');
+let input2 = document.querySelector('[name="num2"]');</code>
+</div>
+<p>
+	Из содержимого инпутов сформируем строку
+	с параметрами и добавим ее к адресу. Используем
+	для этого <a href="../../../../../ru/javascript/book/supreme/form/URLSearchParams.html"><code class="code inline">URLSearchParams</code></a>:
+</p>
+<div class="block" data-file="public/client.js">
+	<code class="highlight" data-module="highlight" data-lang="javascript">form.addEventListener('submit', function(event) {
+	let searchParams = new URLSearchParams();
+	
+	searchParams.set('num1', input1.value);
+	searchParams.set('num2', input2.value);
+	
+	let path = '/handler/?' + searchParams.toString();
+});</code>
+</div>
+<p>
+	Запретим отправку формы "естественным" путем:
+</p>
+<div class="block" data-file="public/client.js">
+	<code class="highlight" data-module="highlight" data-lang="javascript">form.addEventListener('submit', function(event) {
+	event.preventDefault(); // отменим отправку формы
+});</code>
+</div>
+<p>
+	Соберем весь код вместе и отправим форму
+	через AJAX:
+</p>
+<div class="block" data-file="public/client.js">
+	<code class="highlight" data-module="highlight" data-lang="javascript">form.addEventListener('submit', function(event) {
+	let searchParams = new URLSearchParams();
+	
+	searchParams.set('num1', input1.value);
+	searchParams.set('num2', input2.value);
+	
+	let path = '/handler/?' + searchParams.toString();
+	
+	fetch(path).then(
+		response =&gt; {
+			return response.text();
+		}
+	).then(
+		text =&gt; {
+			console.log(text); // ответ сервера
+		}
+	);
+	
+	event.preventDefault();
+});</code>
+</div>
+<p>
+	Выведем в консоль сервера отправленные данные:
+</p>
+<div class="block" data-file="server.js">
+	<code class="highlight" data-module="highlight" data-lang="javascript">export default {
+	'/handler/': function({get}) {
+		console.log(get);
+		return 'form data received';
+	}
+}</code>
+</div>
+<div class="task">
+	<p>
+		Пусть сервер ожидает три параметра с числами,
+		а возвращает сумму этих чисел. На клиенте
+		сделайте форму для ввода этих чисел. Отправьте
+		форму через AJAX. После получения ответа
+		сервера запишите этот ответ в какой-нибудь абзац.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/supreme/" data-persent="92" data-hash="jsSpAXFGS" data-quantity="114" data-num="106"><a href="../../../../../ru/javascript/book/supreme/ajax/passing-get-parameters.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/javascript/book/supreme/ajax/data-post-submitting.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

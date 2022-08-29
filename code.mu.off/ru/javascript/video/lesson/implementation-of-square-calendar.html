@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Реализация квадратного календарика на JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../js/location.js?v=3"></script>
+		<script src="../../../../js/locale.js?v=5"></script>
+		<script src="../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данных видео я расскажу вам реализация квадратного календарика на JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Реализация квадратного календарика на JavaScript</h1>
+				<div class="content">
+<p>
+	В уроке показана реализация квадратного календарика
+	на JavaScript. Разобран общий подход к реализации
+	проектов с помощью пользовательских функций.
+</p>
+<div class="video">
+	<h3>Начало</h3>
+	<iframe src="https://www.youtube.com/embed/vw-pvefl-bQ" allowfullscreen></iframe>
+	
+	<h3>Продложение</h3>
+	<iframe src="https://www.youtube.com/embed/8v5ymxIp-XQ" allowfullscreen></iframe>
+</div>
+
+<h2>Исходники кода</h2>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="css">#calendar {
+	display: inline-block;
+}
+#calendar td, #calendar th {
+	padding: 10px;
+	border: 1px solid black;
+	text-align: center;
+}
+
+#calendar .nav, #calendar .info {
+	text-align: center;
+}
+#calendar a {
+	color: blue;
+	font-size: 25px;
+	text-decoration: none;
+}
+#calendar a:hover {
+	color: red;
+}
+
+#calendar .active {
+	color: red;
+}</code>
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div class="info"&gt;Январь 2018&lt;/div&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+		&lt;tr&gt;
+			&lt;th&gt;пн&lt;/th&gt;
+			&lt;th&gt;вт&lt;/th&gt;
+			&lt;th&gt;ср&lt;/th&gt;
+			&lt;th&gt;чт&lt;/th&gt;
+			&lt;th&gt;пт&lt;/th&gt;
+			&lt;th&gt;сб&lt;/th&gt;
+			&lt;th&gt;вс&lt;/th&gt;
+		&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody class="dates"&gt;&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;div class="nav"&gt;
+	&lt;a href="#" class="prev"&gt;&larr;&lt;/a&gt;
+	&lt;a href="#" class="next"&gt;&rarr;&lt;/a&gt;
+&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="javascript">(function(selector) {
+	initCalendar(document.querySelector(selector));
+	
+	function initCalendar(calendar) {
+		var date = new Date();
+		var showedYear = date.getFullYear();
+		var showedMonth = date.getMonth();
+		
+		var currentMoment = {
+			year: showedYear,
+			month: showedMonth,
+			date: date.getDate()
+		};
+	
+		var dates = calendar.querySelector('.dates');
+		var info = calendar.querySelector('.info');
+		drawCalendar(showedYear, showedMonth, currentMoment, calendar);
+		
+		var prev = calendar.querySelector('.prev');
+		var next = calendar.querySelector('.next');
+		
+		prev.addEventListener('click', function() {
+			showedYear = getPrevYear(showedYear, showedMonth);
+			showedMonth = getPrevMonth(showedMonth);
+			
+			drawCalendar(showedYear, showedMonth, currentMoment, calendar);
+		});
+		
+		next.addEventListener('click', function() {
+			showedYear = getNextYear(showedYear, showedMonth);
+			showedMonth = getNextMonth(showedMonth);
+			
+			drawCalendar(showedYear, showedMonth, currentMoment, calendar);
+		});
+		
+		function drawCalendar(showedYear, showedMonth, currentMoment, calendar) {
+			drawDates(showedYear, showedMonth, dates);
+			showInfo(showedYear, showedMonth, info);
+			showCurrentDate(showedYear, showedMonth, currentMoment, dates);
+		}
+	}
+	
+	function showCurrentDate(showedYear, showedMonth, currentMoment, dates) {	
+		if (
+			showedYear == currentMoment['year'] && 
+			showedMonth == currentMoment['month']
+		) {
+			var tds = dates.querySelectorAll('td');
+			for (var i = 0; i &lt; tds.length; i++) {
+				if (tds[i].innerHTML == currentMoment['date']) {
+					tds[i].classList.add('active');
+					break;
+				}
+			}
+		}
+	}
+	
+	function getPrevYear(year, month) {
+		if (month == 0) {
+			return year - 1;
+		} else {
+			return year;
+		}
+	}
+	
+	function getPrevMonth(month) {
+		if (month == 0) {
+			return 11;
+		} else {
+			return month - 1;
+		}
+	}
+	
+	function getNextYear(year, month) {
+		if (month == 11) {
+			return year + 1;
+		} else {
+			return year;
+		}
+	}
+	
+	function getNextMonth(month) {
+		if (month == 11) {
+			return 0;
+		} else {
+			return month + 1;
+		}
+	}
+	
+	function showInfo(year, month, elem) {
+		elem.innerHTML = getMonthName(month) + ' ' + year;
+	}
+	
+	function getMonthName(num) {
+		var monthes = [
+			'Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн',
+			'Июль', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'
+		];
+			
+		return monthes[num];
+	}
+	
+	function drawDates(year, month, dates) {
+		var arr = [];
+		var firstDateOfMonth = 1;
+		var lastDateOfMonth = getLastDayOfMonth(year, month);
+		
+		var unshiftElemsNum = getUnshiftElemsNum(year, month);
+		var pushElemsNum = getPushElemsNum(year, month);
+		
+		arr = createArr(firstDateOfMonth, lastDateOfMonth);
+		arr = unshiftElems(unshiftElemsNum, '', arr);
+		arr = pushElems(pushElemsNum, '', arr);
+		arr = chunkArr(7, arr);
+		
+		createTable(arr, dates);
+	}
+	
+	//[['', '', 1, 2, 3, 4, 5], [], [], ]
+	function createTable(arr, parent) {
+		parent.innerHTML = '';
+		
+		for (var i = 0; i &lt; arr.length; i++) {
+			var tr = document.createElement('tr');
+			
+			for (var j = 0; j &lt; arr[i].length; j++) {
+				var td = document.createElement('td');
+				td.innerHTML = arr[i][j];
+				tr.appendChild(td);
+			}
+			
+			parent.appendChild(tr);
+		}
+	}
+	
+	function createArr(from, to) {
+		var arr = [];
+		for (var i = from; i &lt;= to; i++) {
+			arr.push(i);
+		}
+		
+		return arr;
+	}
+	
+	function unshiftElems(num, elem, arr) {
+		for (var i = 0; i &lt; num; i++) {
+			arr.unshift(elem);
+		}
+		
+		return arr;
+	}
+	
+	function pushElems(num, elem, arr) {
+		for (var i = 0; i &lt; num; i++) {
+			arr.push(elem);
+		}
+		
+		return arr;
+	}
+	
+	function getLastDayOfMonth(year, month) {
+		var date = new Date(year, month + 1, 0);
+		return date.getDate();
+	}
+	/*
+	function getLastDayOfMonth(year, month) {
+		if (month == 1) {
+			if (isLeap(year)) {
+				return 29;
+			} else {
+				return 28;
+			}
+		} else {
+			var days = [31, undefined, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+			return days[month];
+		}
+	}
+	
+	function isLeap(year) {
+		if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	*/
+	
+	function getUnshiftElemsNum(year, month) {
+		var jsDayNum = getFirstWeekDayOfMonthNum(year, month);
+		var realDayNum = getRealDayOfWeekNum(jsDayNum);
+		
+		return realDayNum - 1;
+	}
+	
+	function getPushElemsNum(year, month) {
+		var jsDayNum = getLastWeekDayOfMonthNum(year, month);
+		var realDayNum = getRealDayOfWeekNum(jsDayNum);
+		
+		return 7 - realDayNum;
+	}
+	
+	function chunkArr(num, arr) {
+		var result = [];
+		var chunk = [];
+		var iterCount = arr.length / num;
+		
+		for (var i = 0; i &lt; iterCount; i++) {
+			chunk = arr.splice(0, num);
+			result.push(chunk);
+		}
+			
+		return result;
+	}
+	
+	function getRealDayOfWeekNum(jsNumOfDay) {
+		if (jsNumOfDay == 0) {
+			return 7;
+		} else {
+			return jsNumOfDay;
+		}
+	}
+	
+	function getFirstWeekDayOfMonthNum(year, month) {
+		var date = new Date(year, month, 1);
+		return date.getDay();
+	}
+	
+	function getLastWeekDayOfMonthNum(year, month) {
+		var date = new Date(year, month + 1, 0);
+		return date.getDay();
+	}
+}('#calendar'));</code>
+</div>
+
+<h2>Смотрите также</h2>
+<ul class="ref">
+	<li>
+		видео <br>
+		<a href="../../../../ru/javascript/video/lesson/last-month-day-and-leap-year.html">
+			последний день месяца и високосный год JavaScript
+		</a>
+	</li>
+</ul>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/video/lesson/" data-persent="74" data-hash="" data-quantity="73" data-num="55"><a href="../../../../ru/javascript/video/lesson/sum-of-table-rows.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../ru/javascript/video/lesson/sticky-notes-on-oop-with-saving-to-local-storage.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../js/metrika.js?v=1"></script>	</body>
+</html>

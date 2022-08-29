@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Context loss in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will consider the this context when using a function within a function in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Context loss in JavaScript</h1>
+				<div class="content">
+<p>
+	Let's say we have a function within a function. 
+	Let's call the outer function <code class="code inline">parent</code> 
+	and the inner one <code class="code inline">child</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function parent() {
+	function child() {
+		
+	}
+}</code>
+</div>
+<p>
+	From <a href="../../../../../en/javascript/book/prime/functions/nested-functions-scope.html">previous lessons</a> you know that if you set any variable 
+	in the outer function, it will be available in 
+	the inner one
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function parent() {
+	let str = 'abcde';
+	
+	function child() {
+		console.log(str); // shows 'abcde'
+	}
+	child(); // calls the inner function
+}
+
+parent(); // calling the outer function</code>
+</div>
+<p>
+	There is, however, a nuance: the inner function has 
+	access to all variables of the outer one, but does 
+	not have access to <code class="code inline">this</code>. That is: if an 
+	external function is bound to some DOM element, 
+	then <code class="code inline">this</code> in it will point to this element, 
+	but <code class="code inline">this</code> of the inner function will not!
+</p>
+<p>
+	What would <code class="code inline">this</code> of the inner function point 
+	to then? Answer: it will be equal to <code class="code inline">undefined</code> 
+	(in strict mode) since the function is not 
+	bound to anything.
+</p>
+<p>
+	Let's check in practice. Let us have an input:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;input id="elem" value="text"&gt;</code>
+</div>
+<p>
+	Let's attach the function <code class="code inline">parent</code> to this 
+	input, which will be called when the input 
+	loses focus:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">"use strict";
+
+let elem = document.querySelector('#elem');
+elem.addEventListener('blur', parent);
+
+// Called on loss of focus:
+function parent() {
+	// there will be some code
+	
+	function child() {
+		// there will be some code
+	}
+	child(); // calls child function
+}</code>
+</div>
+<p>
+	Let's print the contents of <code class="code inline">this</code> to the 
+	console in two places: inside the <code class="code inline">parent</code> 
+	function and inside the <code class="code inline">child</code> function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">"use strict";
+
+let elem = document.querySelector('#elem');
+elem.addEventListener('blur', parent);
+
+function parent() {
+	console.log(this); // will display the reference to our input
+	
+	function child() {
+		console.log(this); // will display undefined
+	}
+	child();
+}</code>
+</div>
+<p>
+	Run this code, lose focus to the input and look at 
+	the console - you will see that the first 
+	<code class="code inline">console.log</code> will print a reference to our 
+	input to the console, and the second will just 
+	<code class="code inline">undefined</code>. This situation, when <code class="code inline">this</code>, 
+	in an unexpected way for us, indicates not what we 
+	need, is called <dfn>context loss</dfn>.
+</p>
+<div class="task">
+	<p>
+		Let now in one and in the second function we will 
+		display <code class="code inline">value</code> of the input. Determine what 
+		will be displayed in the lines of code marked 
+		with comments:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">"use strict";
+
+let elem = document.querySelector('#elem');
+elem.addEventListener('blur', parent);
+
+function parent() {
+	console.log(this.value); // what will output?
+	
+	function child() {
+		console.log(this.value); // what will output?
+	}
+	child();
+}</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="83" data-hash="jsPmCtxCL" data-quantity="363" data-num="303"><a href="../../../../../en/javascript/book/prime/context/unbound-function-context.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/context/solving-context-problem.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/context/context-losing.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/context/context-losing.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

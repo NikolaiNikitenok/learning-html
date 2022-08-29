@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Строковые функции PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами изучим строковые функции PHP.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Строковые функции PHP</h1>
+				<div class="content">
+<h2>Работа с регистром символов</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/string/strtolower.html"><code class="code inline">strtolower</code></a>
+	<a href="../../../../../ru/php/manual/string/strtoupper.html"><code class="code inline">strtoupper</code></a>
+	<a href="../../../../../ru/php/manual/string/ucfirst.html"><code class="code inline">ucfirst</code></a>
+	<a href="../../../../../ru/php/manual/string/lcfirst.html"><code class="code inline">lcfirst</code></a>
+	<a href="../../../../../ru/php/manual/string/ucwords.html"><code class="code inline">ucwords</code></a>
+</div>
+<div class="task">
+	<p>
+		Дана строка <code class="string inline">'php'</code>. Сделайте из нее
+		строку <code class="string inline">'PHP'</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка <code class="string inline">'PHP'</code>. Сделайте из нее
+		строку <code class="string inline">'php'</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка <code class="string inline">'london'</code>. Сделайте из
+		нее строку <code class="string inline">'London'</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка <code class="string inline">'London'</code>. Сделайте из
+		нее строку <code class="string inline">'london'</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка <code class="string inline">'london is the capital of
+		great britain'</code>. Сделайте из нее строку
+		<code class="string inline">'London Is The Capital Of Great Britain'</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка <code class="string inline">'LONDON'</code>. Сделайте из
+		нее строку <code class="string inline">'London'</code>.
+	</p>
+</div>
+
+<h2>Работа с strlen</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/string/strlen.html"><code class="code inline">strlen</code></a>
+</div>	
+<div class="task">
+	<p>
+		Дана строка <code class="string inline">'html css php'</code>. Найдите
+		количество символов в этой строке.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана переменная <code class="code inline">$password</code>, в которой
+		хранится пароль пользователя. Если количество
+		символов пароля больше <code class="number inline">5</code>-ти и меньше
+		<code class="number inline">10</code>-ти, то выведите пользователю сообщение
+		о том, что пароль подходит, иначе сообщение
+		о том, что нужно придумать другой пароль.
+	</p>
+</div>
+	
+<h2>Работа с substr</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/string/substr.html"><code class="code inline">substr</code></a>
+</div>
+<div class="task">
+	<p>
+		Дана строка <code class="string inline">'html css php'</code>. Вырежьте
+		из нее и выведите на экран слово <code class="string inline">'html'</code>,
+		слово <code class="string inline">'css'</code> и слово <code class="string inline">'php'</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка. Вырежьте и выведите на экран
+		последние <code class="number inline">3</code> символа этой строки.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка. Проверьте, что она начинается
+		на <code class="string inline">'http://'</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка. Проверьте, что она начинается
+		на <code class="string inline">'http://'</code> или на <code class="string inline">'https://'</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка. Проверьте, что она заканчивается
+		на <code class="string inline">'.png'</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка. Проверьте, что она заканчивается
+		на <code class="string inline">'.png'</code> или на <code class="string inline">'.jpg'</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка. Если в этой строке более <code class="number inline">5</code>-ти
+		символов - вырежьте из нее первые <code class="number inline">5</code>
+		символов, добавьте троеточие в конец и выведите
+		на экран. Если же в этой строке <code class="number inline">5</code>
+		и менее символов - просто выведите эту строку
+		на экран.
+	</p>
+</div>
+
+<h2>Работа с str_replace</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/string/str_replace.html"><code class="code inline">str_replace</code></a>
+</div>
+<div class="task">
+	<p>
+		Дана строка <code class="string inline">'31.12.2013'</code>. Замените
+		все точки на дефисы.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка. Замените в ней все буквы <code class="string inline">'a'</code>
+		на цифру <code class="number inline">1</code>, буквы <code class="string inline">'b'</code> - на
+		<code class="number inline">2</code>, а буквы <code class="string inline">'c'</code> - на <code class="number inline">3</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка с буквами и цифрами, например,
+		<code class="string inline">'1a2b3c4b5d6e7f8g9h0'</code>. Удалите из
+		нее все цифры. То есть в нашем случае должна
+		получится строка <code class="string inline">'abcbdefgh'</code>.
+	</p>
+</div>
+
+<h2>Работа с strtr</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/string/strtr.html"><code class="code inline">strtr</code></a>
+</div>
+<div class="task">
+	<p>
+		Дана строка <code class="code inline">$str</code>. Замените в ней все
+		<code class="string inline">'a'</code> на цифру <code class="number inline">1</code>, буквы <code class="string inline">'b'</code>
+		- на <code class="number inline">2</code>, а буквы <code class="string inline">'c'</code> - на <code class="number inline">3</code>.
+		Решите задачу двумя способами работы с функцией
+		<code class="code inline">strtr</code> (массив замен и две строки замен).
+	</p>
+</div>
+
+<h2>Работа с substr_replace</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/string/substr_replace.html"><code class="code inline">substr_replace</code></a>
+</div>
+<div class="task">
+	<p>
+		Дана строка <code class="code inline">$str</code>. Вырежьте из нее
+		подстроку с <code class="number inline">3</code>-го символа (отсчет с
+		нуля), <code class="number inline">5</code> штук и вместо нее вставьте
+		<code class="string inline">'!!!'</code>.
+	</p>
+</div>
+
+<h2>Работа с strpos, strrpos</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/string/strpos.html"><code class="code inline">strpos</code></a>
+	<a href="../../../../../ru/php/manual/string/strrpos.html"><code class="code inline">strrpos</code></a>
+</div>
+<div class="task">
+	<p>
+		Дана строка <code class="string inline">'abc abc abc'</code>. Определите
+		позицию первой буквы <code class="string inline">'b'</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка <code class="string inline">'abc abc abc'</code>. Определите
+		позицию последней буквы <code class="string inline">'b'</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка <code class="string inline">'abc abc abc'</code>. Определите
+		позицию первой найденной буквы <code class="string inline">'b'</code>,
+		если начать поиск не с начала строки, а с
+		позиции <code class="number inline">3</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка <code class="string inline">'aaa aaa aaa aaa aaa'</code>.
+		Определите позицию второго пробела.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Проверьте, что в строке есть две точки подряд.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Проверьте, что строка начинается на <code class="string inline">'http://'</code>.
+	</p>
+</div>
+
+<h2>Работа с explode, implode</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/string/explode.html"><code class="code inline">explode</code></a>
+	<a href="../../../../../ru/php/manual/array/implode.html"><code class="code inline">implode</code></a>
+</div>	
+<div class="task">
+	<p>
+		Дана строка <code class="string inline">'html css php'</code>. Запишите
+		каждое слово этой строки в отдельный элемент
+		массива.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан массив с элементами <code class="string inline">'html'</code>, <code class="string inline">'css'</code>,
+		<code class="string inline">'php'</code>. С помощью <code class="code inline">implode</code> создайте
+		строку из этих элементов, разделенных запятыми.
+	</p>
+</div>
+<div class="task">
+	<p>
+		В переменной <code class="code inline">$date</code> лежит дата в формате
+		<i>год-месяц-день</i>. Преобразуйте эту дату
+		в формат <i>день.месяц.год</i>.
+	</p>
+</div>
+
+<h2>Работа с str_split</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/string/str_split.html"><code class="code inline">str_split</code></a>
+</div>
+<div class="task">
+	<p>
+		Дана строка <code class="string inline">'1234567890'</code>. Разбейте
+		ее на массив с элементами <code class="string inline">'12'</code>, <code class="string inline">'34'</code>,
+		<code class="string inline">'56'</code>, <code class="string inline">'78'</code>, <code class="string inline">'90'</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка <code class="string inline">'1234567890'</code>. Разбейте
+		ее на массив с элементами <code class="string inline">'1', <code class="string inline">'2'</code>,
+		<code class="string inline">'3'</code>, <code class="string inline">'4'</code>, <code class="string inline">'5'</code>, <code class="string inline">'6'</code>,
+		<code class="string inline">'7'</code>, <code class="string inline">'8'</code>, <code class="string inline">'9'</code>, <code class="string inline">'0'</code></code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка <code class="string inline">'1234567890'</code>. Сделайте
+		из нее строку <code class="string inline">'12-34-56-78-90'</code> не
+		используя цикл.
+	</p>
+</div>
+	
+<h2>Работа с trim, ltrim, rtrim</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/string/trim.html"><code class="code inline">trim</code></a>
+	<a href="../../../../../ru/php/manual/string/ltrim.html"><code class="code inline">ltrim</code></a>
+	<a href="../../../../../ru/php/manual/string/rtrim.html"><code class="code inline">rtrim</code></a>
+</div>
+<div class="task">
+	<p>
+		Дана строка. Очистите ее от концевых пробелов.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка <code class="string inline">'/php/'</code>. Сделайте из нее
+		строку <code class="string inline">'php'</code>, удалив концевые слеши.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка <code class="string inline">'слова слова слова.'</code>.
+		В конце этой строки может быть точка, а может
+		и не быть. Сделайте так, чтобы в конце этой
+		строки гарантировано стояла точка. То есть:
+		если этой точки нет - ее надо добавить, а
+		если есть - ничего не делать. Задачу решите
+		через <code class="code inline">rtrim</code> без всяких ифов.
+	</p>
+</div>
+
+<h2>Работа с strrev</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/string/strrev.html"><code class="code inline">strrev</code></a>
+</div>
+<div class="task">
+	<p>
+		Дана строка <code class="string inline">'12345'</code>. Сделайте из нее
+		строку <code class="string inline">'54321'</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Проверьте, является ли слово <i>палиндромом</i>
+		(одинаково читается во всех направлениях,
+		примеры таких слов: madam, otto, kayak, nun,
+		level).
+	</p>
+</div>
+	
+<h2>Работа с str_shuffle</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/string/str_shuffle.html"><code class="code inline">str_shuffle</code></a>
+</div>
+<div class="task">
+	<p>
+		Дана строка. Перемешайте символы этой строки
+		в случайном порядке.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Создайте строку из <code class="number inline">6</code>-ти случайных
+		маленьких латинских букв так, чтобы буквы
+		не повторялись. Нужно сделать так, чтобы
+		в нашей строке могла быть любая латинская
+		буква, а не ограниченный набор.
+	</p>
+</div>
+
+<h2>Работа с number_format</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/string/number_format.html"><code class="code inline">number_format</code></a>
+</div>
+<div class="task">
+	<p>
+		Дана строка <code class="string inline">'12345678'</code>. Сделайте из
+		нее строку <code class="string inline">'12 <code class="number inline">345</code> 678'</code>.
+	</p>
+</div>
+
+<h2>Работа с str_repeat</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/string/str_repeat.html"><code class="code inline">str_repeat</code></a>
+</div>
+<div class="task">
+	<p>
+		С помощью одного цикла и функции <code class="code inline">str_repeat</code>
+		выведите на экран следующую пирамидку:
+	</p>
+	<div class="monoblock">
+		x<br>
+		xx<br>
+		xxx<br>
+		xxxx<br>
+		xxxxx<br>
+		xxxxxx<br>
+		xxxxxxx<br>
+		xxxxxxxx<br>
+		xxxxxxxxx
+	</div>
+</div>
+<div class="task">
+	<p>
+		С помощью одного цикла и функции <code class="code inline">str_repeat</code>
+		выведите на экран следующую пирамидку:
+	</p>
+	<div class="monoblock">
+		1<br>
+		22<br>
+		333<br>
+		4444<br>
+		55555<br>
+		666666<br>
+		7777777<br>
+		88888888<br>
+		<code class="number inline">999999999</code>
+	</div>
+</div>
+
+<h2>Работа с strip_tags и htmlspecialchars</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/string/htmlspecialchars.html"><code class="code inline">htmlspecialchars</code></a>
+	<a href="../../../../../ru/php/manual/string/strip_tags.html"><code class="code inline">strip_tags</code></a>
+</div>	
+<div class="task">
+	<p>
+		Дана строка <code class="string inline">'html, &lt;b&gt;php&lt;/b&gt;, js'</code>.
+		Удалите теги из этой строки.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка <code class="code inline">$str</code>. Удалите все теги
+		из этой строки, кроме тегов &lt;b&gt; и &lt;i&gt;.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка <code class="string inline">'html, &lt;b&gt;php&lt;/b&gt;, js'</code>.
+		Выведите ее на экран <code class="string inline">'как есть'</code>: то
+		есть браузер не должен преобразовать &lt;b&gt;
+		в жирный.
+	</p>
+</div>
+
+<h2>Работа с chr и ord</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/string/chr.html"><code class="code inline">chr</code></a>
+	<a href="../../../../../ru/php/manual/string/ord.html"><code class="code inline">ord</code></a>
+</div>
+<div class="task">
+	<p>
+		Узнайте код символов <code class="string inline">'a'</code>, <code class="string inline">'b'</code>,
+		<code class="string inline">'c'</code>, пробела.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Изучите <a href="http://www.asciitable.com/">таблицу
+		ASCII</a> Определите границы, в которых располагаются
+		буквы английского алфавита.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Выведите на экран символ с кодом <code class="number inline">33</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Запишите в переменную <code class="code inline">$str</code> случайный
+		символ - большую букву латинского алфавита.
+		Для этого с помощью таблицы ASCII определите
+		какие целые числа соответствуют большим буквам
+		латинского алфавита.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Запишите в переменную <code class="code inline">$str</code> случайную
+		строку <code class="code inline">$len</code> длиной, состоящую из маленьких
+		букв латинского алфавита.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана буква английского алфавита. Узнайте,
+		она маленькая или большая.
+	</p>
+</div>
+
+<!--
+<h2>Работа с str_word_count</h2>
+<div class="ref">
+	
+	<a href="../../../../../ru/php/manual/string/str_word_count.html"><code class="code inline">str_word_count</code></a>
+</div>
+<div class="task">
+	<p>
+	</p>
+</div>
+	
+<h2>Работа с substr_count</h2>
+<div class="ref">
+	
+	<a href="../../../../../ru/php/manual/string/substr_count.html"><code class="code inline">substr_count</code></a>
+</div>
+<div class="task">
+	<p>
+	</p>
+</div>
+	
+<h2>Работа с count_chars</h2>
+<div class="ref">
+	
+	<a href="../../../../../ru/php/manual/string/count_chars.html"><code class="code inline">count_chars</code></a>
+</div>
+<div class="task">
+	<p>
+	</p>
+</div>
+-->
+
+<h2>Работа с strchr, strrchr</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/string/strchr.html"><code class="code inline">strchr</code></a>
+	<a href="../../../../../ru/php/manual/string/strrchr.html"><code class="code inline">strrchr</code></a>
+</div>
+<div class="task">
+	<p>
+		Дана строка <code class="string inline">'ab-cd-ef'</code>. С помощью
+		функции <code class="code inline">strchr</code> выведите на экран строку
+		<code class="string inline">'-cd-ef'</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка <code class="string inline">'ab-cd-ef'</code>. С помощью
+		функции <code class="code inline">strrchr</code> выведите на экран
+		строку <code class="string inline">'-ef'</code>.
+	</p>
+</div>
+
+<h2>Работа с strstr</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/string/strstr.html"><code class="code inline">strstr</code></a>
+</div>
+<div class="task">
+	<p>
+		Дана строка <code class="string inline">'ab--cd--ef'</code>. С помощью
+		функции <code class="code inline">strstr</code> выведите на экран строку
+		<code class="string inline">'--cd--ef'</code>.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/prime/" data-persent="33" data-hash="ppPmIBSt" data-quantity="223" data-num="75"><a href="../../../../../ru/php/book/prime/inbuilt/math.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/php/book/prime/inbuilt/array.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

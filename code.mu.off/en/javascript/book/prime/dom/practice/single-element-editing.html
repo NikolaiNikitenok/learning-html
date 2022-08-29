@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Editing a single element in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will study editing a single element in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Editing a single element in JavaScript</h1>
+				<div class="content">
+<p>
+	Now we will learn how to edit element texts 
+	using input fields. Let's start with simple 
+	things and gradually get more complex.
+</p>
+<p>
+	So, let's say we have a paragraph and an input 
+	located in the same parent:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="parent"&gt;
+	&lt;p id="elem"&gt;text&lt;/p&gt;
+	&lt;input id="input"&gt;
+&lt;/div&gt;</code>
+</div>
+<p>
+	Let's make it so that when the focus is lost 
+	in the input, its text appears in the paragraph:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+let input = document.querySelector('#input');
+
+input.addEventListener('blur', function() {
+	elem.textContent = this.value;
+});</code>
+</div>
+<p>
+	Let's now make it so that when you enter the page, 
+	the input already contains the text of the paragraph. 
+	Thus, using the input, we will be able to edit the 
+	text located in the paragraph.
+</p>
+<p>
+	Let's implement:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+let input = document.querySelector('#input');
+
+input.value = elem.textContent; // writes the paragraph text to the input
+
+input.addEventListener('blur', function() {
+	elem.textContent = this.value;
+});</code>
+</div>
+<div class="task">
+	<p>
+		Modify the code above so that the paragraph text 
+		doesn't change when focus is lost, but as text 
+		is entered into the input.
+	</p>
+</div>
+
+<h2>Appearance of input</h2>
+<p>
+	Let's now make it so that the input was not initially 
+	on the page, but it appeared when clicking on the 
+	paragraph. So our initial HTML will look like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="parent"&gt;
+	&lt;p id="elem"&gt;text&lt;/p&gt;
+&lt;/div&gt;</code>
+</div>
+<p>
+	To begin with, we simply implement the appearance 
+	of the input, without editing:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+
+elem.addEventListener('click', function() {
+	let input = document.createElement('input');
+	input.value = elem.textContent;
+	
+	elem.parentElement.appendChild(input);
+});</code>
+</div>
+<p>
+	And now let's make it so that when the focus is 
+	lost in the input, the text of the 
+	paragraph changes:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+
+elem.addEventListener('click', function() {
+	let input = document.createElement('input');
+	input.value = elem.textContent;
+	
+	input.addEventListener('blur', function() {
+		elem.textContent = this.value;
+	});
+	
+	elem.parentElement.appendChild(input);
+});</code>
+</div>
+<p>
+	Our code, however, is not perfect, since each click on 
+	a paragraph will result in a new input.
+</p>
+<p>
+	To solve the problem, we will simply remove the 
+	current input by losing focus:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+
+elem.addEventListener('click', function() {
+	let input = document.createElement('input');
+	input.value = elem.textContent;
+	
+	input.addEventListener('blur', function() {
+		elem.textContent = this.value;
+		this.remove(); // removes the input
+	});
+	
+	elem.parentElement.appendChild(input);
+});</code>
+</div>
+<div class="task">
+	<p>
+		On your own, without looking into my code, 
+		solve the described problem.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="93" data-hash="jsPmPrSEE" data-quantity="363" data-num="338"><a href="../../../../../../en/javascript/book/prime/dom/practice/creating-removing-links.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../en/javascript/book/prime/dom/practice/edit-hiding-text.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/practice/single-element-editing.html" class="active">en</a><a href="../../../../../../ru/javascript/book/prime/dom/practice/single-element-editing.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

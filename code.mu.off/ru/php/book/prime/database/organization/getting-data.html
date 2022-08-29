@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Получении данных из связанных таблиц в PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке рассказывается о получении данных из связанных таблиц через команду LEFT JOIN.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Получении данных из связанных таблиц в PHP</h1>
+				<div class="content">
+<p>
+	Давайте сделаем запрос, который достанет
+	всех юзеров вместе с их городами. Для этого
+	нам понадобится команда <a href="../../../../../../ru/sql/manual/left-join.html"><code class="sql inline">LEFT
+	JOIN</code></a>:
+</p>
+<p>
+	Ее синтаксис выглядит следующим образом:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="sql">SELECT поля FROM имя_таблицы
+	LEFT JOIN имя_связанной_таблицы ON условие_связи 
+WHERE условие_выборки</code>
+</div>
+<p>
+	Давайте разберем отдельные части синтаксиса
+	этой команды.
+</p>
+
+<h2>Поля</h2>
+<p>
+	Так как выборка идет из нескольких таблиц,
+	то выборка всех полей через <code class="code inline">*</code> не будет
+	работать. Следующий запрос выберет поля только
+	из основной таблицы, но не из связанной:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="sql">SELECT *</code>
+</div>
+<p>
+	Для того, чтобы данные выбирались из всех
+	таблиц, нужно перед <code class="code inline">*</code> указать имя
+	таблицы для выборки:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="sql">SELECT users.*, cities.*</code>
+</div>
+<p>
+	Либо можно перечислить нужные нам поля с
+	указанием имени таблицы перед ними:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="sql">SELECT users.name, cities.name</code>
+</div>
+<p>
+	Эти два способа имеют проблему. Дело в том,
+	что если поля в таблицах имеют одинаковые
+	имена, то в массиве PHP произойдет конфликт
+	имен и победит только одно поле, а второго
+	не будет.
+</p>
+<p>
+	Для решения проблемы нужно конфликтные имена
+	переименовывать через команду <code class="sql inline">as</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="sql">SELECT users.name, cities.name as city_name</code>
+</div>
+
+<h2>Связь</h2>
+<p>
+	После команды <code class="sql inline">ON</code> мы должны указать
+	поля из двух таблиц, по которым осуществляется
+	связь. В нашем случае это будет поле <code class="code inline">id</code>
+	из таблицы с городами и поле <code class="code inline">city_id</code>
+	из таблицы с юзерами:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="sql">ON cities.id=users.city_id</code>
+</div>
+
+<h2>Запрос</h2>
+<p>
+	В итоге запрос, который достанет юзеров вместе
+	с их городами будет выглядеть следующим образом:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="sql">SELECT 
+	users.name, cities.name as city_name
+FROM 
+	users
+LEFT JOIN cities ON cities.id=users.city_id</code>
+</div>
+
+<h2>Практические задачи</h2>
+<div class="task">
+	<p>
+		Пусть у вас есть таблица с товарами и таблица
+		с их категориями. Напишите запрос, который
+		достанет названия товаров вместе с их категориями.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/prime/" data-persent="83" data-hash="ppPmDOGD" data-quantity="223" data-num="185"><a href="../../../../../../ru/php/book/prime/database/organization/linking-tables.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../ru/php/book/prime/database/organization/chain-linked-tabled.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

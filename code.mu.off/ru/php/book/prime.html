@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Основной учебник PHP для новичков | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../js/location.js?v=3"></script>
+		<script src="../../../js/locale.js?v=5"></script>
+		<script src="../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="Простой учебник PHP для новичков с задачником и примерами решения задач.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Основной учебник PHP8+</h1>
+				<div class="menu" data-module="menu" data-mode="hash" data-book="ppPm">
+<h2>Основы</h2>
+<div data-section="Bs">
+	<a data-lesson="Inr" href="../../../ru/php/book/prime/basis/intro.html">
+		Начало работы с PHP
+		<span class="__label__ __acceptable__">начало дописать</span>
+	</a>
+	<a data-lesson="Ov" href="../../../ru/php/book/prime/basis/overview.html">
+		Обзор начальных PHP команд
+	</a>
+	<a data-lesson="Vr" href="../../../ru/php/book/prime/basis/variables.html">
+		Переменные
+	</a>
+	<a data-lesson="MON" href="../../../ru/php/book/prime/basis/math-operations-numbers.html">
+		Математические операции с числами
+	</a>
+	<a data-lesson="MOV" href="../../../ru/php/book/prime/basis/math-operations-variables.html">
+		Математические операции с переменными
+	</a>
+	<a data-lesson="MOP" href="../../../ru/php/book/prime/basis/math-operations-priority.html">
+		Приоритет математических операций
+	</a>
+	<a data-lesson="Fr" href="../../../ru/php/book/prime/basis/fractions.html">
+		Дроби
+	</a>
+	<a data-lesson="NN" href="../../../ru/php/book/prime/basis/negative-numbers.html">
+		Отрицательные числа
+	</a>
+	<a data-lesson="DR" href="../../../ru/php/book/prime/basis/division-remainder.html">
+		Остаток от деления
+	</a>
+	<a data-lesson="NP" href="../../../ru/php/book/prime/basis/numbers-powering.html">
+		Возведение в степень
+	</a>
+	
+	<a data-lesson="St" href="../../../ru/php/book/prime/basis/strings.html">
+		Строки
+		<span class="__label__ __acceptable__">задачи про имя и возраст закомменчены</span>
+	</a>
+	
+	<a data-lesson="Tg" href="../../../ru/php/book/prime/basis/tags.html">
+		Теги
+	</a>
+	<a data-lesson="BV" href="../../../ru/php/book/prime/basis/boolean-values.html">
+		Логические значения
+	</a>
+	<a data-lesson="Nl" href="../../../ru/php/book/prime/basis/null.html">
+		Значение null
+	</a>
+	<a data-lesson="ATC" href="../../../ru/php/book/prime/basis/automatic-types-conversion.html">
+		Автоматическое преобразование типов
+		<span class="__label__ __acceptable__">задачу в конце</span>
+	</a>
+	<a data-lesson="FTC" href="../../../ru/php/book/prime/basis/forced-types-conversion.html">
+		Принудительное преобразование типов
+	</a>
+	<a data-lesson="SCh" href="../../../ru/php/book/prime/basis/string-characters.html">
+		Символы строки
+	</a>
+	<a data-lesson="ShO" href="../../../ru/php/book/prime/basis/short-operations.html">
+		Сокращенные операции
+	</a>
+	<a data-lesson="ID" href="../../../ru/php/book/prime/basis/increment-decrement.html">
+		Инкремент и декремент
+	</a>
+	<!--
+	<a data-lesson="IC" href="../../../ru/php/book/prime/basis/inaccurate-calculations.html">
+		Неточные вычисления
+		<span class="__label__">забрать из js</span>
+	</a>
+	-->
+	<a data-lesson="PrmO" href="../../../ru/php/book/prime/basis/practicum/operations.html">
+		Практика на операции
+	</a>
+	<a data-lesson="PrmF" href="../../../ru/php/book/prime/basis/practicum/formulas.html">
+		Практика на формулы
+	</a>
+</div>
+
+<h2>Массивы</h2>
+<div data-section="Ar">
+	<a data-lesson="Inr" href="../../../ru/php/book/prime/arrays/intro.html">
+		Введение в массивы
+	</a>
+	<a data-lesson="As" href="../../../ru/php/book/prime/arrays/associative.html">
+		Ассоциативные массивы
+	</a>
+	<a data-lesson="Or" href="../../../ru/php/book/prime/arrays/order.html">
+		Порядок элементов
+	</a>
+	<a data-lesson="Ln" href="../../../ru/php/book/prime/arrays/length.html">
+		Длина массива
+	</a>
+	<a data-lesson="Chn" href="../../../ru/php/book/prime/arrays/changing.html">
+		Изменение элементов
+	</a>
+	<a data-lesson="Fl" href="../../../ru/php/book/prime/arrays/filling.html">
+		Заполнение массивов
+	</a>
+	<a data-lesson="VK" href="../../../ru/php/book/prime/arrays/vars-keys.html">
+		Ключи из переменных
+	</a>
+</div>
+
+<h2>Условия</h2>
+<div data-section="Cd">
+	<a data-lesson="IE" href="../../../ru/php/book/prime/conditions/if-else.html">
+		Конструкция if-else
+	</a>
+	<a data-lesson="DT" href="../../../ru/php/book/prime/conditions/data-types.html">
+		Сравнения по типу данных
+	</a>
+	<a data-lesson="CS" href="../../../ru/php/book/prime/conditions/compound-statements.html">
+		Логическое И и ИЛИ
+		<span class="__label__ __acceptable__">раздел про группировку доработать, может разделить их?</span>
+	</a>
+	<a data-lesson="SI" href="../../../ru/php/book/prime/conditions/statements-inverting.html">
+		Инвертирование высказываний
+		<span class="__label__ __acceptable__">правила де моргана</span>
+	</a>
+	<a data-lesson="BT" href="../../../ru/php/book/prime/conditions/boolean-types.html">
+		Конструкция if-else и булевы значения
+	</a>
+	<a data-lesson="Is" href="../../../ru/php/book/prime/conditions/isset.html">
+		Команда isset
+	</a>
+	<a data-lesson="Em" href="../../../ru/php/book/prime/conditions/empty.html">
+		Команда empty
+	</a>
+	<a data-lesson="ShS" href="../../../ru/php/book/prime/conditions/shorthand-syntax.html">
+		Сокращенный синтаксис
+		<span class="__label__ __acceptable__">снизу дать задачу</span>
+	</a>
+	<a data-lesson="Cm" href="../../../ru/php/book/prime/conditions/combinations.html">
+		Комбинации if-else
+	</a>
+	<a data-lesson="Ex" href="../../../ru/php/book/prime/conditions/examples.html">
+		Примеры на if else
+	</a>
+	<a data-lesson="Prm" href="../../../ru/php/book/prime/conditions/practicum.html">
+		Практика if else
+	</a>
+	<a data-lesson="SwCs" href="../../../ru/php/book/prime/conditions/switch-case.html">
+		Конструкция switch-case
+		<span class="__label__ __acceptable__">задачи в конец, с готовым кодом</span>
+	</a>
+	<a data-lesson="TO" href="../../../ru/php/book/prime/conditions/ternary-operator.html">
+		Тернарный оператор
+	</a>
+	<a data-lesson="NC" href="../../../ru/php/book/prime/conditions/null-coalescing.html">
+		Оператор объединения с null
+	</a>
+	<a data-lesson="LO" href="../../../ru/php/book/prime/conditions/logical-operations.html">
+		Логические операции
+	</a>
+	
+</div>
+
+<h2>Циклы</h2>
+<div data-section="Lp">
+	<a data-lesson="Wh" href="../../../ru/php/book/prime/loops/while.html">
+		Цикл while
+	</a>
+	<a data-lesson="WM" href="../../../ru/php/book/prime/loops/while-mistakes.html">
+		Ошибки начинающих в while
+	</a>
+	<a data-lesson="Fr" href="../../../ru/php/book/prime/loops/for.html">
+		Цикл for
+	</a>
+	<a data-lesson="RLA" href="../../../ru/php/book/prime/loops/result-loop-accumulation.html">
+		Накопление результата в цикле
+		<span class="__label__ __acceptable__">получше расписать</span>
+	</a>
+	<a data-lesson="Fe" href="../../../ru/php/book/prime/loops/foreach.html">
+		Цикл foreach
+	</a>
+	<a data-lesson="FK" href="../../../ru/php/book/prime/loops/foreach-keys.html">
+		Цикл foreach с ключами
+	</a>
+	<a data-lesson="FI" href="../../../ru/php/book/prime/loops/foreach-and-if.html">
+		Цикл foreach и условие if
+		<span class="__label__ __acceptable__">нужен ранее урок на теги выходные курсив жирность пока убрал</span>
+	</a>
+	<a data-lesson="ShS" href="../../../ru/php/book/prime/loops/shorthand-syntax.html">
+		Сокращенный синтаксис циклов
+		<span class="__label__ __acceptable__">доработать, задачи</span>
+	</a>
+	<a data-lesson="FGS" href="../../../ru/php/book/prime/loops/for-general-syntax.html">
+		Полный синтаксис for
+		<span class="__label__ __acceptable__">задачи</span>
+	</a>
+	<a data-lesson="Br" href="../../../ru/php/book/prime/loops/break.html">
+		Инструкция break
+	</a>
+	<a data-lesson="Cn" href="../../../ru/php/book/prime/loops/continue.html">
+		Инструкция continue
+		<span class="__label__ __acceptable__">задачи</span>
+	</a>
+	<a data-lesson="Fl" href="../../../ru/php/book/prime/loops/flags.html">
+		Работа с флагами
+	</a>
+	<a data-lesson="PrNm" href="../../../ru/php/book/prime/loops/prime-numbers.html">
+		Простые числа через флаг
+	</a>
+	<a data-lesson="AIN" href="../../../ru/php/book/prime/loops/arbitrary-iterations-number.html">
+		Произвольное количество итераций
+		<span class="__label__ __acceptable__">тут цикл без тела for. Надо ли?</span>
+	</a>
+	
+	<a data-lesson="SF" href="../../../ru/php/book/prime/loops/string-forming.html">
+		Формирование строк в цикле
+	</a>
+	<a data-lesson="Nsd" href="../../../ru/php/book/prime/loops/nested.html">
+		Вложенные циклы
+	</a>
+	
+	<a data-lesson="ALF" href="../../../ru/php/book/prime/loops/array-loop-filling.html">
+		Заполнение массивов в цикле
+		<span class="__label__ __acceptable__">Заполнение массивов в цикле из другого массива и еще по условию</span>
+	</a>
+	<a data-lesson="AF" href="../../../ru/php/book/prime/loops/array-for.html">
+		Цикл for для массивов
+	</a>
+	<a data-lesson="ALCh" href="../../../ru/php/book/prime/loops/array-loop-changing.html">
+		Изменение массивов в цикле
+	</a>
+	<a data-lesson="LAT" href="../../../ru/php/book/prime/loops/loops-arrays-training.html">
+		Практика на массивы в цикле
+	</a>
+	<a data-lesson="AEN" href="../../../ru/php/book/prime/loops/array-elements-neighbors.html">
+		Получение соседей элементов в массиве
+		<span class="__label__ __acceptable__">снизу флаги. надо ли?</span>
+	</a>
+	<a data-lesson="FN" href="../../../ru/php/book/prime/loops/fibonacci-numbers.html">
+		Получение чисел Фибоначчи
+	</a>
+	<a data-lesson="PLC" href="../../../ru/php/book/prime/loops/pyramids-loops-creating.html">
+		Создание пирамидок с помощью циклов
+	</a>
+	<a data-lesson="SAAF" href="../../../ru/php/book/prime/loops/string-accumulation-array-filling.html">
+		Заполнение массивов с накоплением строки
+	</a>
+	<a data-lesson="Prm" href="../../../ru/php/book/prime/loops/practicum.html">
+		Практика на циклы
+	</a>
+</div>
+
+<h2>Многомерность</h2>
+<div data-section="Md">
+	<a data-lesson="MA" href="../../../ru/php/book/prime/multidimensionality/multi-arrays.html">
+		Многомерные массивы
+	</a>
+	<a data-lesson="MAI" href="../../../ru/php/book/prime/multidimensionality/multi-arrays-iteration.html">
+		Перебор многомерных массивов
+	</a>
+	<a data-lesson="MAF" href="../../../ru/php/book/prime/multidimensionality/multi-arrays-filling.html">
+		Заполнение многомерных массивов
+		<span class="__label__ __acceptable__">в конце задачи на поиск ошибок рассмотреть</span>
+	</a>
+	<a data-lesson="AAA" href="../../../ru/php/book/prime/multidimensionality/array-associative-arrays.html">
+		Массив ассоциативных массивов
+	</a>
+	<a data-lesson="MAC" href="../../../ru/php/book/prime/multidimensionality/multi-arrays-conversion.html">
+		Конвертация многомерных массивов
+		<span class="__label__ __acceptable__">сдел конвертор лучше</span>
+	</a>
+	<!--
+	<a data-lesson="CDS" href="../../../ru/php/book/prime/multidimensionality/convenient-data-storage.html">
+		Удобное хранение данных
+		<span class="__label__">удрать урок?</span>
+	</a>
+	-->
+</div>
+
+<h2>Стандартные функции</h2>
+<div data-section="IB">
+	<a data-lesson="Mth" href="../../../ru/php/book/prime/inbuilt/math.html">
+		Математические функции
+	</a>
+	<a data-lesson="St" href="../../../ru/php/book/prime/inbuilt/string.html">
+		Строковые функции
+	</a>
+	<a data-lesson="Ar" href="../../../ru/php/book/prime/inbuilt/array.html">
+		Функции для массивов
+	</a>
+	<a data-lesson="Tm" href="../../../ru/php/book/prime/inbuilt/time.html">
+		Функции для времени-даты
+	</a>
+	<a data-lesson="Prm" href="../../../ru/php/book/prime/inbuilt/practicum.html">
+		Практика
+	</a>
+	<!--
+		тут сделать про mb_ функции
+	-->
+</div>
+
+<h2>Пользовательские функции</h2>
+<div data-section="UF">
+	<a data-lesson="CC" href="../../../ru/php/book/prime/functions/creation-and-call.html">
+		Создание и вызов функции
+	</a>
+	<a data-lesson="Pr" href="../../../ru/php/book/prime/functions/parameters.html">
+		Параметры функции
+	</a>
+	<a data-lesson="Rt" href="../../../ru/php/book/prime/functions/return.html">
+		Инструкция return
+		<span class="__label__ __acceptable__">в середине задачи закомменчены, сделать</span>
+	</a>
+	<a data-lesson="Ex" href="../../../ru/php/book/prime/functions/examples.html">
+		Примеры на создание функций
+		<span class="__label__ __acceptable__">нужно больше задач</span>
+	</a>
+	<a data-lesson="Fl" href="../../../ru/php/book/prime/functions/flags.html">
+		Флаги в функциях
+	</a>
+	<a data-lesson="LO" href="../../../ru/php/book/prime/functions/logical-operators.html">
+		Логические операторы в функциях
+	</a>
+	<a data-lesson="PU" href="../../../ru/php/book/prime/functions/proper-using.html">
+		Правильное применение функций
+	</a>
+	<a data-lesson="AFC" href="../../../ru/php/book/prime/functions/auxiliary-functions-combination.html">
+		Комбинация вспомогательных функций
+	</a>
+	<a data-lesson="AFIF" href="../../../ru/php/book/prime/functions/auxiliary-functions-inside-functions.html">
+		Вспомогательные функции внутри других функций
+	</a>
+	<a data-lesson="Rc" href="../../../ru/php/book/prime/functions/recursion.html">
+		Рекурсия
+	</a>
+	<a data-lesson="RMA" href="../../../ru/php/book/prime/functions/recursion-multi-arrays.html">
+		Рекурсия и многомерные структуры
+	</a>
+	<a data-lesson="Prm" href="../../../ru/php/book/prime/functions/practicum.html">
+		Практика на функции
+	</a>
+</div>
+
+<h2>Регулярные выражения</h2>
+<div data-section="Rg">
+	<a data-lesson="Inr" href="../../../ru/php/book/prime/regular/intro.html">
+		Введение
+	</a>
+	<a data-lesson="RO" href="../../../ru/php/book/prime/regular/repeat-operators.html">
+		Операторы повторения
+	</a>
+	<a data-lesson="GB" href="../../../ru/php/book/prime/regular/grouping-brackets.html">
+		Группирующие скобки
+	</a>
+	<a data-lesson="ESCh" href="../../../ru/php/book/prime/regular/escaping-special-characters.html">
+		Экранировка спецсимволов
+	</a>
+	<a data-lesson="CB" href="../../../ru/php/book/prime/regular/curly-braces.html">
+		Фигурные скобки
+	</a>
+	<a data-lesson="GL" href="../../../ru/php/book/prime/regular/greediness-limitation.html">
+		Ограничение жадности
+	</a>
+	<a data-lesson="ChG" href="../../../ru/php/book/prime/regular/characters-groups.html">
+		Группы символов
+	</a>
+	<a data-lesson="ChS" href="../../../ru/php/book/prime/regular/characters-sets.html">
+		Наборы символов
+	</a>
+	<a data-lesson="ChSI" href="../../../ru/php/book/prime/regular/characters-sets-invertion.html">
+		Инвертирование наборов символов
+	</a>
+	<a data-lesson="CF" href="../../../ru/php/book/prime/regular/cyrillic-features.html">
+		Особенности кириллицы
+	</a>
+	<a data-lesson="SChISB" href="../../../ru/php/book/prime/regular/special-characters-inside-square-brackets.html">
+		Спецсимволы внутри []
+	</a>
+	<a data-lesson="ChGISB" href="../../../ru/php/book/prime/regular/characters-groups-inside-square-brackets.html">
+		Группы символов внутри []
+	</a>
+	<a data-lesson="SChEISB" href="../../../ru/php/book/prime/regular/special-characters-exclusion-inside-square-brackets.html">
+		Спецсимволы-исключения внутри []
+	</a>
+	<a data-lesson="HSISB" href="../../../ru/php/book/prime/regular/hat-symbol-inside-square-brackets.html">
+		Символ шляпки внутри []
+	</a>
+	<a data-lesson="HISBF" href="../../../ru/php/book/prime/regular/hyphen-inside-square-brackets-features.html">
+		Особенности дефиса внутри []
+	</a>
+	<a data-lesson="LBE" href="../../../ru/php/book/prime/regular/line-beginning-and-end.html">
+		Начало и конец строки
+		<span class="__label__ __acceptable__">еще задач с долларом</span>
+	</a>
+	<a data-lesson="OC" href="../../../ru/php/book/prime/regular/or-command.html">
+		Команда 'или'
+		<span class="__label__ __acceptable__">еще задач</span>
+	</a>
+	<a data-lesson="WBE" href="../../../ru/php/book/prime/regular/word-beginning-and-end.html">
+		Конец или начало слова
+	</a>
+	<a data-lesson="Lm" href="../../../ru/php/book/prime/regular/limiters.html">
+		Ограничители
+	</a>
+	<a data-lesson="Bc" href="../../../ru/php/book/prime/regular/backslash.html">
+		Обратный слеш
+	</a>
+	<a data-lesson="SCh" href="../../../ru/php/book/prime/regular/string-checking.html">
+		Проверка строки
+	</a>
+	<a data-lesson="AT" href="../../../ru/php/book/prime/regular/auto-testing.html">
+		Автоматическое тестирование регулярок
+	</a>
+	<a data-lesson="WSCh" href="../../../ru/php/book/prime/regular/whole-string-checking.html">
+		Проверка всей строки
+	</a>
+	<a data-lesson="SP" href="../../../ru/php/book/prime/regular/searching-pockets.html">
+		Карманы при поиске
+	</a>
+	<a data-lesson="SAM" href="../../../ru/php/book/prime/regular/searching-all-matches.html">
+		Поиск всех совпадений
+		<span class="__label__ __acceptable__">стоит ссылка на 4тый параметр</span>
+	</a>
+	<a data-lesson="NPB" href="../../../ru/php/book/prime/regular/non-preserving-brackets.html">
+		Несохраняющие скобки
+	</a>
+	<a data-lesson="RP" href="../../../ru/php/book/prime/regular/replace-pockets.html">
+		Карманы при замене
+	</a>
+	<a data-lesson="EP" href="../../../ru/php/book/prime/regular/expression-pockets.html">
+		Карманы в выражении
+	</a>
+	<a data-lesson="NP" href="../../../ru/php/book/prime/regular/named-pockets.html">
+		Именованные карманы
+	</a>
+	<a data-lesson="ENP" href="../../../ru/php/book/prime/regular/expression-named-pockets.html">
+		Именованные карманы внутри выражения
+	</a>
+	<a data-lesson="CPN" href="../../../ru/php/book/prime/regular/common-pockets-number.html">
+		Общий номер карманов
+	</a>
+	<!--
+	<a data-lesson="CS" href="../../../ru/php/book/prime/regular/conditional-subpatterns.html">
+		Работа с условными подмасками
+		<span class="__label__">перепис лена</span>
+	</a>
+	-->
+	<a data-lesson="PNV" href="../../../ru/php/book/prime/regular/positive-and-negative-viewing.html">
+		Позитивный и негативный просмотр
+		<span class="__label__ __acceptable__">я бы переписал</span>
+	</a>
+	<a data-lesson="RCb" href="../../../ru/php/book/prime/regular/replace-callback.html">
+		Замена с коллбэком
+		<span class="__label__ __acceptable__">еще задач</span>
+	</a>
+	<!--
+	<a data-lesson="RN" href="../../../ru/php/book/prime/regular/replacements-numbers.html">
+		Количество замен в preg_replace | переставить куда нибудь
+		<span class="__label__">перепис со ста</span>
+	</a>
+	<a data-lesson="AF" href="../../../ru/php/book/prime/regular/addditional-functions.html">
+		Еще функции для работы с регулярками
+		<span class="__label__">перепис со ста</span>
+	</a>
+	-->
+	<a data-lesson="Md" href="../../../ru/php/book/prime/regular/modifiers.html">
+		Модификаторы
+	</a>
+	<!--
+	<a data-lesson="MLM" href="../../../ru/php/book/prime/regular/multi-line-mode.html">
+		Многострочный режим
+		<span class="__label__">перепис со ста</span>
+	</a>
+	-->
+</div>
+
+<h2>Формирование строк</h2>
+<div data-section="SF">
+	<a data-lesson="VI" href="../../../ru/php/book/prime/forming/variables-insertion.html">
+		Вставка переменных
+	</a>
+	<a data-lesson="LVI" href="../../../ru/php/book/prime/forming/loop-variables-insertion.html">
+		Цикл и вставка переменных
+	</a>
+	<a data-lesson="TG" href="../../../ru/php/book/prime/forming/tags-generation.html">
+		Генерация тегов
+	</a>
+	<a data-lesson="LTG" href="../../../ru/php/book/prime/forming/loop-tags-generation.html">
+		Цикл и генерация тегов
+	</a>
+	<a data-lesson="LTAG" href="../../../ru/php/book/prime/forming/loop-tags-attributes-generation.html">
+		Цикл и генерация тегов и атрибутов
+	</a>
+	<a data-lesson="LHTG" href="../../../ru/php/book/prime/forming/loop-html-tables-generation.html">
+		Цикл и генерация HTML таблиц
+	</a>
+	<a data-lesson="PB" href="../../../ru/php/book/prime/forming/php-breaking.html">
+		Разрыв PHP кода
+	</a>
+	<a data-lesson="CPB" href="../../../ru/php/book/prime/forming/conditions-php-breaking.html">
+		Условия и разрыв PHP кода
+	</a>
+	<a data-lesson="LPB" href="../../../ru/php/book/prime/forming/loops-php-breaking.html">
+		Циклы и разрыв PHP кода 
+	</a>
+</div>
+
+<h2>Формы</h2>
+<div data-section="Fm">
+	<a data-lesson="Inr" href="../../../ru/php/book/prime/forms/intro.html">
+		Введение в формы
+	</a>
+	<a data-lesson="DG" href="../../../ru/php/book/prime/forms/data-getting.html">
+		Получение данных форм
+	</a>
+	<a data-lesson="OFH" href="../../../ru/php/book/prime/forms/one-file-handling.html">
+		Обработка формы в одном файле
+	</a>
+	<a data-lesson="HAS" href="../../../ru/php/book/prime/forms/hiding-after-submit.html">
+		Скрытие формы после отправки
+	</a>
+	<a data-lesson="VR" href="../../../ru/php/book/prime/forms/values-remaining.html">
+		Сохранение значений формы
+	</a>
+	<a data-lesson="Tx" href="../../../ru/php/book/prime/forms/textarea.html">
+		Элемент textarea
+	</a>
+	<a data-lesson="Chc" href="../../../ru/php/book/prime/forms/checkbox.html">
+		Чекбокс
+	</a>
+	<a data-lesson="Rd" href="../../../ru/php/book/prime/forms/radio.html">
+		Радиокнопки
+	</a>
+	<a data-lesson="Sl" href="../../../ru/php/book/prime/forms/select.html">
+		Селекты
+	</a>
+	
+	
+	<a data-lesson="GQ" href="../../../ru/php/book/prime/forms/get-queries.html">
+		GET-запросы
+	</a>
+	<a data-lesson="GQL" href="../../../ru/php/book/prime/forms/get-queries-links.html">
+		GET-запросы с помощью ссылок
+	</a>
+	<a data-lesson="Prm" href="../../../ru/php/book/prime/forms/practicum.html">
+		Практика
+	</a>
+</div>
+
+<h2>Сеанс</h2>
+<div data-section="Snc">
+	<a data-lesson="SIn" href="../../../ru/php/book/prime/seance/session/intro.html">
+		Введение в сессии
+	</a>
+	<a data-lesson="SOP" href="../../../ru/php/book/prime/seance/session/one-page.html">
+		Использование сессий на одной странице
+	</a>
+	<a data-lesson="SRm" href="../../../ru/php/book/prime/seance/session/removing.html">
+		Удаление сессий
+	</a>
+	<a data-lesson="SFr" href="../../../ru/php/book/prime/seance/session/forms.html">
+		Сессии и формы
+	</a>
+	<a data-lesson="SAr" href="../../../ru/php/book/prime/seance/session/arrays.html">
+		Запись массивов в сессии
+	</a>
+	<a data-lesson="CIn" href="../../../ru/php/book/prime/seance/cookie/intro.html">
+		Введение в куки
+	</a>
+	<a data-lesson="COP" href="../../../ru/php/book/prime/seance/cookie/one-page.html">
+		Запись и чтение куки на одной странице
+	</a>
+	<a data-lesson="CLT" href="../../../ru/php/book/prime/seance/cookie/living-time.html">
+		Время жизни куки
+	</a>
+	<a data-lesson="CRm" href="../../../ru/php/book/prime/seance/cookie/removing.html">
+		Удаление кук
+	</a>
+	
+	
+</div>
+
+<h2>Файловая система</h2>
+<div data-section="FS">
+	<a data-lesson="FRW" href="../../../ru/php/book/prime/file-system/file-reading-writing.html">
+		Чтение и запись файлов
+	</a>
+	<a data-lesson="RP" href="../../../ru/php/book/prime/file-system/relative-paths.html">
+		Относительные пути
+	</a>
+	<a data-lesson="AP" href="../../../ru/php/book/prime/file-system/absolute-paths.html">
+		Абсолютные пути
+	</a>
+	<a data-lesson="FO" href="../../../ru/php/book/prime/file-system/files-operations.html">
+		Операции над файлами
+	</a>
+	<a data-lesson="DO" href="../../../ru/php/book/prime/file-system/dirs-operations.html">
+		Операции над папками
+	</a>
+	<a data-lesson="DR" href="../../../ru/php/book/prime/file-system/dir-reading.html">
+		Чтение содержимого папки
+	</a>
+	<a data-lesson="FDD" href="../../../ru/php/book/prime/file-system/file-dir-distinguishing.html">
+		Отличаем папку от файла
+	</a>
+	
+	
+	
+	<a data-lesson="Inc" href="../../../ru/php/book/prime/file-system/include.html">
+		Вставка файлов
+	</a>
+	<a data-lesson="IM" href="../../../ru/php/book/prime/file-system/include-markup.html">
+		Деление верстки на элементы
+	</a>
+	<a data-lesson="IV" href="../../../ru/php/book/prime/file-system/include-variable.html">
+		Запись вставки в переменную
+	</a>
+	<a data-lesson="Rq" href="../../../ru/php/book/prime/file-system/require.html">
+		Подключение файлов
+	</a>
+	<a data-lesson="RO" href="../../../ru/php/book/prime/file-system/require-once.html">
+		Однократное подключение файлов
+	</a>
+	<a data-lesson="RV" href="../../../ru/php/book/prime/file-system/require-variable.html">
+		Запись подключения в переменную
+	</a>
+</div>
+
+<h2>Базы данных</h2>
+<div data-section="DB">
+	<a data-lesson="Inr" href="../../../ru/php/book/prime/database/intro.html">
+		Введение в базы данных
+	</a>
+	<a data-lesson="Ph" href="../../../ru/php/book/prime/database/phpmyadmin.html">
+		PhpMyAdmin
+		<span class="__label__ __acceptable__">поработать, стоит видео</span>
+	</a>
+	<a data-lesson="TTU" href="../../../ru/php/book/prime/database/test-table-users.html">
+		Тестовая таблица users
+	</a>
+	<a data-lesson="PM" href="../../../ru/php/book/prime/database/preparatory-manipulations.html">
+		Подготовительные манипуляции
+	</a>
+	<a data-lesson="EP" href="../../../ru/php/book/prime/database/encoding-problems.html">
+		Проблемы с кодировками
+	</a>
+	<a data-lesson="RG" href="../../../ru/php/book/prime/database/result-getting.html">
+		Получение результата
+	</a>
+	<a data-lesson="NSl" href="../../../ru/php/book/prime/database/notes-selection.html">
+		Выборка записей
+	</a>
+	<a data-lesson="LO" href="../../../ru/php/book/prime/database/logical-operations.html">
+		Логические операции
+	</a>
+	<a data-lesson="SF" href="../../../ru/php/book/prime/database/selection-fields.html">
+		Поля выборки
+	</a>
+	<a data-lesson="NI" href="../../../ru/php/book/prime/database/notes-insertion.html">
+		Вставка записей
+	</a>
+	<a data-lesson="NU" href="../../../ru/php/book/prime/database/notes-updation.html">
+		Обновление записей
+	</a>
+	<a data-lesson="ND" href="../../../ru/php/book/prime/database/notes-deletion.html">
+		Удаление записей
+	</a>
+	<a data-lesson="NSr" href="../../../ru/php/book/prime/database/notes-sorting.html">
+		Сортировка записей
+	</a>
+	<a data-lesson="QL" href="../../../ru/php/book/prime/database/quantity-limitation.html">
+		Ограничение количества
+	</a>
+	<a data-lesson="QC" href="../../../ru/php/book/prime/database/quantity-counting.html">
+		Подсчет количества
+	</a>
+	<a data-lesson="AQ" href="../../../ru/php/book/prime/database/advanced-queries.html"> 
+		Продвинутые запросы
+		<span class="__label__ __acceptable__">может отдел уроки?</span>
+	</a>
+</div>
+
+<h2>Организация БД</h2>
+<div data-section="DO">
+	<a data-lesson="LT" href="../../../ru/php/book/prime/database/organization/linking-tables.html">
+		Связывание таблиц
+	</a>
+	<a data-lesson="GD" href="../../../ru/php/book/prime/database/organization/getting-data.html">
+		Получении данных из связанных таблиц
+	</a>
+	<a data-lesson="ChLT" href="../../../ru/php/book/prime/database/organization/chain-linked-tabled.html">
+		Цепочка связанных таблиц
+	</a>
+	<a data-lesson="LVT" href="../../../ru/php/book/prime/database/organization/linking-via-table.html">
+		Связывание через таблицу связи
+	</a>
+	<a data-lesson="FR" href="../../../ru/php/book/prime/database/organization/family-relations.html">
+		Родственные связи
+	</a>
+	<a data-lesson="SD" href="../../../ru/php/book/prime/database/organization/several-descendants.html">
+		Несколько потомков
+	</a>
+	<a data-lesson="DR" href="../../../ru/php/book/prime/database/organization/double-relation.html">
+		Двойная связь
+	</a>
+	<a data-lesson="Prm" href="../../../ru/php/book/prime/database/organization/practicum.html">
+		Практика
+	</a>
+</div>
+
+<h2>Практика БД</h2>
+<div data-section="DP">
+	<a data-lesson="TTU" href="../../../ru/php/book/prime/database/practice/test-table-users.html">
+		Тестовая таблица users
+	</a>
+	<a data-lesson="OF" href="../../../ru/php/book/prime/database/practice/output-formation.html">
+		Оформление вывода
+	</a>
+	<a data-lesson="DR" href="../../../ru/php/book/prime/database/practice/data-removing.html">
+		Удаление данных
+	</a>
+	<a data-lesson="DV" href="../../../ru/php/book/prime/database/practice/data-viewing.html">
+		Просмотр данных
+	</a>
+	<a data-lesson="DA" href="../../../ru/php/book/prime/database/practice/data-adding.html">
+		Добавление данных
+	</a>
+	<a data-lesson="DE" href="../../../ru/php/book/prime/database/practice/data-editing.html">
+		Редактирование данных
+	</a>
+	
+</div>
+
+<h2>Редиректы</h2>
+<div data-section="Rd">
+	<a data-lesson="Inr" href="../../../ru/php/book/prime/redirect/intro.html">
+		Введение в редиректы
+	</a>
+	<a data-lesson="GQ" href="../../../ru/php/book/prime/redirect/get-queries.html">
+		GET запросы и редирект
+	</a>
+	<a data-lesson="Fl" href="../../../ru/php/book/prime/redirect/flash.html">
+		Флеш сообщения
+	</a>
+	<a data-lesson="FS" href="../../../ru/php/book/prime/redirect/form-saving.html">
+		Сохранение форм
+	</a>
+</div>
+
+<h2>Аутентификация</h2>
+<div data-section="Au">
+	<a data-lesson="Inr" href="../../../ru/php/book/prime/auth/intro.html">
+		Введение
+	</a>
+	<a data-lesson="Atr" href="../../../ru/php/book/prime/auth/authorization.html">
+		Авторизация
+	</a>
+	<a data-lesson="Ss" href="../../../ru/php/book/prime/auth/session.html">
+		Сессии
+	</a>
+	<a data-lesson="Rg" href="../../../ru/php/book/prime/auth/registration.html">
+		Регистрация
+	</a>
+	<a data-lesson="Vld" href="../../../ru/php/book/prime/auth/validation.html">
+		Валидация
+	</a>
+	<a data-lesson="Hs" href="../../../ru/php/book/prime/auth/hashing.html">
+		Хеширование
+	</a>
+	<a data-lesson="Prf" href="../../../ru/php/book/prime/auth/profile.html">
+		Профиль
+	</a>
+	<a data-lesson="Ac" href="../../../ru/php/book/prime/auth/account.html">
+		Аккаунт
+	</a>
+	<a data-lesson="PCh" href="../../../ru/php/book/prime/auth/password-changing.html">
+		Смена пароля
+	</a>
+	<a data-lesson="PR" href="../../../ru/php/book/prime/auth/account-removing.html">
+		Удаление аккаунта
+	</a>
+	<a data-lesson="Rgt" href="../../../ru/php/book/prime/auth/rights.html">
+		Права
+	</a>
+</div>
+
+<h2>Движок сайта</h2>
+<div data-section="SD">
+	<a data-lesson="Inr" href="../../../ru/php/book/prime/driver/intro.html">
+		Введение
+	</a>
+	<a data-lesson="Ht" href="../../../ru/php/book/prime/driver/htaccess.html">
+		Использование htaccess
+	</a>
+	<a data-lesson="Fl" href="../../../ru/php/book/prime/driver/files.html">
+		Движок на файлах
+	</a>
+	<a data-lesson="FT" href="../../../ru/php/book/prime/driver/files-title.html">
+		Тайтл в движке на файлах
+	</a>
+	<a data-lesson="EP" href="../../../ru/php/book/prime/driver/error-page.html">
+		Страница 404 в движке на файлах
+	</a>
+	<a data-lesson="Db" href="../../../ru/php/book/prime/driver/database.html">
+		Движок на базе данных
+	</a>
+	<a data-lesson="HRU" href="../../../ru/php/book/prime/driver/human-readable-url.html">
+		ЧПУ в движке
+	</a>
+	<a data-lesson="Rt" href="../../../ru/php/book/prime/driver/routing.html">
+		Простой роутинг
+	</a>
+	<a data-lesson="RNP" href="../../../ru/php/book/prime/driver/routing-named-parameters.html">
+		Роутинг с именованными параметрами
+	</a>
+	<a data-lesson="RSP" href="../../../ru/php/book/prime/driver/routing-several-parameters.html">
+		Несколько параметров в роуте
+	</a>
+	
+	<a data-lesson="Prm" href="../../../ru/php/book/prime/driver/practicum.html">
+		Практика
+		<span class="__label__ __acceptable__">верстку сделать</span>
+	</a>
+</div>
+</div>			</main>
+			<div class="bottom">
+	</div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../js/metrika.js?v=1"></script>	</body>
+</html>

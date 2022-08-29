@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Function as variable in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will consider a function as a variable in the JavaScript language.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Function as variable in JavaScript</h1>
+				<div class="content">
+<p>
+	So, in the previous lesson, we found out 
+	that by referring to a function without 
+	parentheses, we get its source code.
+</p>
+<p>
+	In fact, everything is much more interesting. 
+	In JavaScript, unlike other languages, 
+	functions are just like the values of 
+	variables, just like numbers, strings, 
+	and arrays.
+</p>
+<p>
+	Let's look at an example. Suppose we have, 
+	for example, the function <code class="code inline">func</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	console.log('!');
+}</code>
+</div>
+<p>
+	We don't actually have the function <code class="code inline">func</code>. 
+	We have the variable <code class="code inline">func</code> that stores 
+	the source code of the function.
+</p>
+<p>
+	We can, for example, overwrite the variable 
+	<code class="code inline">func</code> with something else, such as a 
+	string. In this case, the function <code class="code inline">func</code> 
+	will no longer be a function, but a string. 
+	Look at the example:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	console.log('!');
+}
+func(); // shows '!'
+
+func = 'string'; // overwrites the variable func
+console.log(func); // shows 'string'</code>
+</div>
+<div class="task">
+	<p>
+		Make the function <code class="code inline">func</code> that will 
+		return some string through <code class="code inline">return</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Print the result of the function 
+		<code class="code inline">func</code> with alert to the console.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Print the source code of the function 
+		<code class="code inline">func</code> with alert to the console.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Write the number <code class="number inline">123</code> into the 
+		variable <code class="code inline">func</code>, thus overwriting 
+		the function in this variable. Print 
+		the new value of the variable 
+		<code class="code inline">func</code> to the console.
+	</p>
+</div>
+
+<h2>Writing a function to another variable</h2>
+<p>
+	Let we have our function <code class="code inline">func</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	console.log('!');
+}</code>
+</div>
+<p>
+	Let's copy its source code into 
+	the variable <code class="code inline">test</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	console.log('!');
+}
+
+let test = func; // now test is the same function as func
+
+// Let's check:
+test(); // shows '!'
+func(); // shows '!'</code>
+</div>
+<div class="task">
+	<p>
+		Make the function <code class="code inline">func1</code> that 
+		will return the number <code class="number inline">3</code> 
+		via <code class="code inline">return</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Copy the source code of the function 
+		<code class="code inline">func1</code> into the 
+		variable <code class="code inline">func2</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Print to the console the sum of the 
+		results of the functions <code class="code inline">func1</code> 
+		and <code class="code inline">func2</code>.
+	</p>
+</div>
+
+<h2>Assigning functions to variables on creation</h2>
+<p>
+	So, we have already found out that the 
+	name of the function and its source code 
+	are separated from each other. Therefore, 
+	in JavaScript there is an alternative 
+	syntax for creating a function: a function 
+	is created without a name and assigned 
+	to some variable. This variable becomes 
+	the name of the function.
+</p>
+<p>
+	Let's look at an example:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let func = function() {
+	console.log('!');
+};
+
+func(); // shows '!'</code>
+</div>
+<div class="task">
+	<p>
+		Make an anonymous function that will 
+		return the number <code class="number inline">1</code> via 
+		<code class="code inline">return</code>. Write this function 
+		to the variable <code class="code inline">func1</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Make an anonymous function that will 
+		return the number <code class="number inline">2</code> via 
+		<code class="code inline">return</code>. Write this function 
+		to the variable <code class="code inline">func2</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Find the sum of the values of the 
+		functions <code class="code inline">func1</code> and <code class="code inline">func2</code>. 
+		Print this sum using alert to the console.
+	</p>
+</div>
+
+<h2>Important nuance</h2>
+<p>
+	It follows from the above that the presence 
+	of a variable and a function with the 
+	same names can easily lead to a problem.
+</p>
+<p>
+	In the following example, the function 
+	<code class="code inline">func</code> will be overwritten and 
+	replaced by the string <code class="string inline">'string'</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	return '!';
+}
+
+func = 'string'; // overwrites the variable with function by the string
+func(); // we get an error, because func is not a function</code>
+</div>
+<div class="notice">
+	<p>
+		To prevent this from happening, you 
+		should follow the rule common to all 
+		programming languages: functions must 
+		be verbs, and variables must be nouns.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="49" data-hash="jsPmFAFAV" data-quantity="363" data-num="180"><a href="../../../../../en/javascript/book/prime/functions/function-code-result.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/functions/function-declaration-expression.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/functions/function-as-variable.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/functions/function-as-variable.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

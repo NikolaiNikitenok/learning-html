@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>confirm function in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will study the confirm function in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>confirm function in JavaScript</h1>
+				<div class="content">
+<p>
+	The <code class="code inline">confirm</code> function calls up a window 
+	with a question that the user needs to answer 
+	and two buttons for answering: with the <code class="string inline">'OK'</code> 
+	button and with the <code class="string inline">'Cancel'⁅/s button ⁆. 
+	If the user presses <code class="string inline">'OK'</code>, then the 
+	function will return <code class="code inline">true</code>, and if 
+	<code class="string inline">'Cancel'</code>, it will return <code class="code inline">false</code>.
+</p>
+<p>
+	In the following example, the function 
+	<code class="code inline">confirm</code> will display a dialog box 
+	with a question. If you press <code class="string inline">'OK'</code>, 
+	then <code class="code inline">true</code> will be written to the 
+	variable <code class="code inline">ok</code>, and if you press 
+	<code class="string inline">'Cancel'</code>, then <code class="code inline">false</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let ok = confirm('The question text');
+console.log(ok);</code>
+</div>
+<p>
+	We use the construct <code class="code inline">if</code> to 
+	process the user's response:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let ok = confirm('The question text');
+
+if (ok) {
+	console.log('You answered yes');
+} else {
+	console.log('You answered no');
+}</code>
+</div>
+<div class="task">
+	<p>
+		Ask the user if they are already <code class="number inline">18</code> 
+		years old. If there is, display an alert 
+		with the text for adults, and if not, 
+		display a message that the user access 
+		is denied.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="27" data-hash="jsPmCdCfrm" data-quantity="363" data-num="100"><a href="../../../../../en/javascript/book/prime/conditions/logical-operations.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/conditions/scope.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/conditions/confirm.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/conditions/confirm.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

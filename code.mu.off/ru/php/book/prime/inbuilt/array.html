@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Функции для массивов в PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами изучим функции для работы с массивами в PHP.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Функции для массивов в PHP</h1>
+				<div class="content">
+<h2>Работа с in_array</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/array/in_array.html"><code class="code inline">in_array</code></a>
+</div>
+<div class="task">
+	<p>
+		Дан массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = [1, 2, 3, 4, 5];
+?&gt;</code>
+	</div>
+	<p>
+		Проверьте, что в нем есть элемент со значением
+		<code class="number inline">3</code>.
+	</p>
+</div>
+
+<h2>Работа с array_sum и array_product</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/array/array_sum.html"><code class="code inline">array_sum</code></a>
+	<a href="../../../../../ru/php/manual/array/array_product.html"><code class="code inline">array_product</code></a>
+</div>
+<div class="task">
+	<p>
+		Дан массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = [1, 2, 3, 4, 5];
+?&gt;</code>
+	</div>
+	<p>
+		Найдите сумму элементов данного массива.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = [1, 2, 3, 4, 5];
+?&gt;</code>
+	</div>
+	<p>
+		Найдите произведение (умножение) элементов
+		данного массива.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = [1, 2, 3, 4, 5];
+?&gt;</code>
+	</div>
+	<p>
+		С помощью функций <a href="../../../../../ru/php/manual/array/array_sum.html"><code class="code inline">array_sum</code></a>
+		и <a href="../../../../../ru/php/manual/array/count.html"><code class="code inline">count</code></a>
+		найдите среднее арифметическое элементов
+		(сумма элементов делить на их количество)
+		данного массива.
+	</p>
+</div>
+
+<h2>Работа с range</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/array/range.html"><code class="code inline">range</code></a>
+</div>
+<div class="task">
+	<p>
+		Создайте массив, заполненный числами от <code class="number inline">1</code>
+		до <code class="number inline">100</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Создайте массив, заполненный буквами от <code class="string inline">'a'</code>
+		до <code class="string inline">'z'</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Создайте строку <code class="string inline">'1-2-3-4-5-6-7-8-9'</code>
+		не используя цикл.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Найдите сумму чисел от <code class="number inline">1</code> до <code class="number inline">100</code>
+		не используя цикл.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Найдите произведение чисел от <code class="number inline">1</code> до
+		<code class="number inline">10</code> не используя цикл.
+	</p>
+</div>
+
+<h2>Работа с array_merge</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/array/array_merge.html"><code class="code inline">array_merge</code></a>
+</div>
+<div class="task">
+	<p>
+		Даны массивы:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr1 = [1, 2, 3];
+	$arr2 = ['a', 'b', 'c'];
+?&gt;</code>
+	</div>
+	<p>
+		Сделайте из них массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	[1, 2, 3, 'a', 'b', 'c']
+?&gt;</code>
+	</div>
+</div>
+
+<h2>Работа с array_slice</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/array/array_slice.html"><code class="code inline">array_slice</code></a>
+</div>
+<div class="task">
+	<p>
+		Дан массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = [1, 2, 3, 4, 5];
+?&gt;</code>
+	</div>
+	<p>
+		С помощью функции <code class="code inline">array_slice</code> сделайте
+		из него следующий массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	[2, 3, 4]
+?&gt;</code>
+	</div>
+</div>
+
+<h2>Работа с array_splice</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/array/array_splice.html"><code class="code inline">array_splice</code></a>
+</div>
+<div class="task">
+	<p>
+		Дан массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = [1, 2, 3, 4, 5];
+?&gt;</code>
+	</div>
+	<p>
+		С помощью функции <code class="code inline">array_splice</code> сделайте
+		из него следующий массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	[1, 4, 5]
+?&gt;</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Дан массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = [1, 2, 3, 4, 5];
+?&gt;</code>
+	</div>
+	<p>
+		С помощью функции <code class="code inline">array_splice</code> сделайте
+		из него следующий массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	[2, 3, 4]
+?&gt;</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Дан массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = [1, 2, 3, 4, 5];
+?&gt;</code>
+	</div>
+	<p>
+		С помощью функции <code class="code inline">array_splice</code> сделайте
+		из него следующий массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	[1, 2, 3, 'a', 'b', 'c', 4, 5]
+?&gt;</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Дан массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = [1, 2, 3, 4, 5];
+?&gt;</code>
+	</div>
+	<p>
+		С помощью функции <code class="code inline">array_splice</code> сделайте
+		из него следующий массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	[1, 'a', 'b', 2, 3, 4, 'c',  5, 'e']
+?&gt;</code>
+	</div>
+</div>
+
+<h2>Работа с array_keys, array_values, array_combine</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/array/array_keys.html"><code class="code inline">array_keys</code></a>
+	<a href="../../../../../ru/php/manual/array/array_values.html"><code class="code inline">array_values</code></a>
+	<a href="../../../../../ru/php/manual/array/array_combine.html"><code class="code inline">array_combine</code></a>
+</div>
+<div class="task">
+	<p>
+		Дан массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = ['a' =&gt; 1, 'b' =&gt; 2, 'c' =&gt; 3];
+?&gt;</code>
+	</div>
+	<p>
+		Запишите в массив <code class="code inline">$keys</code> ключи из этого
+		массива, а в <code class="code inline">$values</code> – значения.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан массивы:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr1 = ['a', 'b', 'c'];
+	$arr2 = [1, 2, 3];
+?&gt;</code>
+	</div>
+	<p>
+		Создайте с их помощью следующий массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	['a' =&gt; 1, 'b' =&gt; 2, 'c' =&gt; 3]
+?&gt;</code>
+	</div>
+</div>
+
+<h2>Работа с array_flip, array_reverse</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/array/array_flip.html"><code class="code inline">array_flip</code></a>
+	<a href="../../../../../ru/php/manual/array/array_reverse.html"><code class="code inline">array_reverse</code></a>
+</div>
+<div class="task">
+	<p>
+		Дан массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = ['a' =&gt; 1, 'b' =&gt; 2, 'c' =&gt; 3];
+?&gt;</code>
+	</div>
+	<p>
+		Поменяйте в нем местами ключи и значения.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = [1, 2, 3, 4, 5];
+?&gt;</code>
+	</div>
+	<p>
+		Сделайте из него следующий массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	[5, 4, 3, 2, 1]
+?&gt;</code>
+	</div>
+</div>
+
+<h2>Работа с array_search</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/array/array_search.html"><code class="code inline">array_search</code></a>
+</div>
+<div class="task">
+	<p>
+		Дан массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = ['a', '-', 'b', '-', 'c', '-', 'd'];
+?&gt;</code>
+	</div>
+	<p>
+		Найдите позицию первого элемента <code class="string inline">'-'</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = ['a', '-', 'b', '-', 'c', '-', 'd'];
+?&gt;</code>
+	</div>
+	<p>
+		Найдите позицию первого элемента <code class="string inline">'-'</code>
+		и удалите его с помощью функции <code class="code inline">array_splice</code>.
+	</p>
+</div>
+	
+<h2>Работа с array_replace</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/array/array_replace.html"><code class="code inline">array_replace</code></a>
+</div>
+<div class="task">
+	<p>
+		Дан массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = ['a', 'b', 'c', 'd', 'e'];
+?&gt;</code>
+	</div>
+	<p>
+		Поменяйте элемент с ключом <code class="number inline">0</code> на <code class="string inline">'!'</code>,
+		а элемент с ключом <code class="number inline">3</code> - на <code class="string inline">'!!'</code>.
+	</p>
+</div>
+
+<h2>Работа с сортировку</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/array/sort.html"><code class="code inline">функции для сортировки</code></a>
+</div>
+<div class="task">
+	<p>
+		Дан массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = ['3'=&gt;'a', '1'=&gt;'c', '2'=&gt;'e', '4'=&gt;'b'];
+?&gt;</code>
+	</div>
+	<p>
+		Попробуйте на нем различные типы сортировок.
+	</p>
+</div>
+	
+<h2>Работа с array_rand</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/array/array_rand.html"><code class="code inline">array_rand</code></a>
+</div>
+<div class="task">
+	<p>
+		Дан массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = ['a' =&gt; 1, 'b' =&gt; 2, 'c' =&gt; 3];
+?&gt;</code>
+	</div>
+	<p>
+		Выведите на экран случайный ключ из данного
+		массива.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = ['a' =&gt; 1, 'b' =&gt; 2, 'c' =&gt; 3];
+?&gt;</code>
+	</div>
+	<p>
+		Выведите на экран случайный элемент данного
+		массива.
+	</p>
+</div>
+
+<h2>Работа с shuffle</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/array/shuffle.html"><code class="code inline">shuffle</code></a>
+</div>
+<div class="task">
+	<p>
+		Дан массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = [1, 2, 3, 4, 5];
+?&gt;</code>
+	</div>
+	<p>
+		Перемешайте его элементы в случайном порядке.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Заполните массив числами от <code class="number inline">1</code> до <code class="number inline">25</code>
+		с помощью <code class="code inline">range</code>, а затем перемешайте
+		его элементы в случайном порядке.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Создайте массив, заполненный буквами от <code class="string inline">'a'</code>
+		до <code class="string inline">'z'</code> так, чтобы буквы шли в случайном
+		порядке и не повторялись.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Сделайте строку длиной <code class="number inline">6</code> символов,
+		состоящую из маленьких английских букв, расположенных
+		в случайном порядке. Буквы не должны повторяться.
+	</p>
+</div>
+
+<h2>Работа с array_unique</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/array/array_unique.html"><code class="code inline">array_unique</code></a>
+</div>
+<div class="task">
+	<p>
+		Дан массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = ['a', 'b', 'c', 'b', 'a'];
+?&gt;</code>
+	</div>
+	<p>
+		Удалите из этого массива повторяющиеся элементы.
+	</p>
+</div>
+
+<h2>Начало и конец массива</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/array/array_shift.html"><code class="code inline">array_shift</code></a>
+	<a href="../../../../../ru/php/manual/array/array_pop.html"><code class="code inline">array_pop</code></a>
+	<a href="../../../../../ru/php/manual/array/array_unshift.html"><code class="code inline">array_unshift</code></a>
+	<a href="../../../../../ru/php/manual/array/array_push.html"><code class="code inline">array_push</code></a>
+</div>
+<div class="task">
+	<p>
+		Дан массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = [1, 2, 3, 4, 5];
+?&gt;</code>
+	</div>
+	<p>
+		Выведите на экран его первый и последний
+		элемент, причем так, чтобы в исходном массиве
+		они исчезли.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = [1, 2, 3, 4, 5];
+?&gt;</code>
+	</div>
+	<p>
+		Добавьте ему в начало элемент <code class="number inline">0</code>, а
+		в конец - элемент <code class="number inline">6</code>.
+	</p>
+</div>
+
+<h2>Заполнение массива</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/array/array_pad.html"><code class="code inline">array_pad</code></a>
+	<a href="../../../../../ru/php/manual/array/array_fill.html"><code class="code inline">array_fill</code></a>
+	<a href="../../../../../ru/php/manual/array/array_fill_keys.html"><code class="code inline">array_fill_keys</code></a>
+</div>
+<div class="task">
+	<p>
+		Дан массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = ['a', 'b', 'c'];
+?&gt;</code>
+	</div>
+	<p>
+		Сделайте из него следующий массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	['a', 'b', 'c', '-', '-', '-']
+?&gt;</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Заполните массив <code class="number inline">10</code>-ю буквами <code class="string inline">'x'</code>.
+	</p>
+</div>
+
+<h2>Работа с array_chunk</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/array/array_chunk.html"><code class="code inline">array_chunk</code></a>
+</div>
+<div class="task">
+	<p>
+		Создайте массив, заполненный целыми числами
+		от <code class="number inline">1</code> до <code class="number inline">20</code>. С помощью функции
+		<code class="code inline">array_chunk</code> разбейте этот массив на
+		<code class="number inline">5</code> подмассивов по пять элементов в каждом.
+	</p>
+</div>
+
+<h2>Работа с array_count_values</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/array/array_count_values.html"><code class="code inline">array_count_values</code></a>
+</div>
+<div class="task">
+	<p>
+		Дан массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = ['a', 'b', 'c', 'b', 'a'];
+?&gt;</code>
+	</div>
+	<p>
+		Подсчитайте сколько раз встречается каждая
+		из букв.
+	</p>
+</div>
+
+<h2>Работа с array_map</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/array/array_map.html"><code class="code inline">array_map</code></a>
+</div>
+<div class="task">
+	<p>
+		Дан массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = [1, 2, 3, 4, 5];
+?&gt;</code>
+	</div>
+	<p>
+		Создайте новый массив, в котором будут лежать
+		квадратные корни данных элементов.
+	</p>
+</div>
+
+<h2>Работа с array_intersect, array_diff</h2>
+<div class="ref">
+	<a href="../../../../../ru/php/manual/array/array_intersect.html"><code class="code inline">array_intersect</code></a>
+	<a href="../../../../../ru/php/manual/array/array_diff.html"><code class="code inline">array_diff</code></a>
+</div>
+<div class="task">
+	<p>
+		Дан массивы:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr1 = [1, 2, 3, 4, 5];
+	$arr2 = [3, 4, 5, 6, 7];
+?&gt;</code>
+	</div>
+	<p>
+		Запишите в новый массив элементы, которые
+		есть и в том, и в другом массиве.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан массивы:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr1 = [1, 2, 3, 4, 5];
+	$arr2 = [3, 4, 5, 6, 7];
+?&gt;</code>
+	</div>
+	<p>
+		Запишите в новый массив элементы, которые
+		не присутствуют в обоих массивах одновременно.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/prime/" data-persent="34" data-hash="ppPmIBAr" data-quantity="223" data-num="76"><a href="../../../../../ru/php/book/prime/inbuilt/string.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/php/book/prime/inbuilt/time.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

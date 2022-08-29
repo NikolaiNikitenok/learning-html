@@ -1,0 +1,94 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+/* Холст */
+
+.wrapper {
+    width: 890px;
+
+    margin: 0 auto;
+}
+
+/* Меню */
+
+header {
+    background-color: rgb(248, 170, 3);
+
+}
+nav {
+    display: flex;
+    background-color: rgb(248, 170, 3);
+    margin-left: 20px;
+}
+a {
+    color: white;
+    padding: 13px 20px 15px 0;
+    text-decoration: none;
+    font-size: 19px;
+}
+a.active, a:hover {
+    text-decoration: underline;
+}
+
+/* Container */
+
+.container {
+    display: flex;
+}
+
+/* Main */
+
+main {
+    width: 510px;
+    margin-right: 20px;
+
+    padding-left: 20px;
+}
+main p {
+    text-align: justify;
+}
+
+img {
+    width: 490px;
+}
+
+table {
+    width: 490px;
+    border-collapse: separate;
+    border-color: grey;
+    border-spacing: 2px;
+    text-align: center;
+}
+th {
+    border: 1px black solid;
+    background-color: rgb(235, 235, 235);
+}
+td {
+    border: 1px black solid;
+}
+
+/* Aside */
+
+aside {
+    width: 360px;
+}
+
+aside p {
+    text-align: justify;
+}
+
+/* Footer */
+
+footer {
+    background-color: rgb(248, 170, 3);
+    text-align: center;
+    color: white;
+    height: 75px;
+    padding-top: 27px;
+}

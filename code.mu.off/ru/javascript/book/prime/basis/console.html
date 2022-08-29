@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Работа с консолью в JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами рассмотрим работу с консолью в JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Работа с консолью в JavaScript</h1>
+				<div class="content">
+<p>
+	Для удобства программистов в каждом
+	браузере есть специальная <dfn>панель разработчика</dfn>.
+	Чтобы открыть эту панель, вам нужно, находясь
+	на странице сайта кликнуть правой кнопкой
+	мышки в любое место. В появившемся меню
+	нужно выбрать самый нижний пункт (он будет
+	называться Inspect или как-то похоже на это).
+</p>
+<p>
+	В открывшейся панели вы в основном будете
+	пользоваться двумя вкладками: Elements и Console.
+	В первой вкладке вы можете получать информацию
+	по тегам страницы, а во второй - отладочную
+	информацию JavaScript.
+</p>
+<p>
+	Давайте разберемся с возможностями консоли.
+</p>
+<p>
+	С помощью специальной команды
+	<code class="code inline">console.log</code> вы в своих скриптах
+	можете выводить данные в консоль.
+	Это применяется для того, чтобы
+	заниматься <dfn>отладкой</dfn> программ.
+</p>
+<p>
+	Давайте для примера что-нибудь
+	выведем в консоль:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log(123);</code>
+</div>
+<p>
+	А теперь выведем значение
+	переменной:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 123;
+console.log(num);</code>
+</div>
+<p>
+	Можно вывести несколько
+	переменных по очереди:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num1 = 123;
+let num2 = 456;
+
+console.log(num1);
+console.log(num2);</code>
+</div>
+<p>
+	Можно вывести несколько переменных
+	с помощью одной команды, написав
+	эти переменные через запятую:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num1 = 123;
+let num2 = 456;
+console.log(num1, num2);</code>
+</div>
+<div class="task">
+	<p>
+		Дана переменная. Выведите в консоль
+		ее значение.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Даны три переменные. Выведите в консоль
+		их значения.
+	</p>
+</div>
+
+<h2>Тип данных в консоли</h2>
+<p>
+	В консоли разным цветом выводятся
+	строки и числа. Это часто помогает
+	найти ошибки в программах.
+</p>
+<p>
+	Давайте выведем рядом число
+	и строку, чтобы можно было
+	увидеть разницу в цвете:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log(123);
+console.log('123');</code>
+</div>
+<div class="task">
+	<p>
+		Выведите в консоль все известные
+		вам типы данных. Посмотрите, чем
+		отличается их цвет.
+	</p>
+</div>
+
+<h2>Ошибки в консоли</h2>
+<p>
+	Когда вы в вашем коде допускаете синтаксическую
+	ошибку, JavaScript выведет информацию об
+	этом в консоль. Такая ошибка будет выведена
+	красным цветом, а справа от нее будет указан
+	номер строки, на которой случилась эта ошибка.
+	Этот номер является ссылкой - на него можно
+	нажать и в консоли откроется ваш код на строке
+	с ошибкой.
+</p>
+<p>
+	Давайте попробуем на практике.
+	Обратимся к несуществуещей переменной.
+	В этом случае JavaScript выдаст
+	ошибку:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">alert(eee); // Uncaught ReferenceError: eee is not defined</code>
+</div>
+<div class="task">
+	<p>
+		Сознательно допустите ошибку в вашем
+		коде. Убедитесь, что ошибка появляется
+		в консоли. Определите, в какой строке
+		кода случилась ошибка.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/prime/" data-persent="5" data-hash="jsPmBsCns" data-quantity="363" data-num="19"><a href="../../../../../ru/javascript/book/prime/basis/special-values.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/javascript/book/prime/basis/constants.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/basis/console.html">en</a><a href="../../../../../ru/javascript/book/prime/basis/console.html" class="active">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

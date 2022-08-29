@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Цепочки методов и свойств в JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами научимся строить цепочки методов и свойств в JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Цепочки методов и свойств в JavaScript</h1>
+				<div class="content">
+<p>
+	Пусть у нас есть инпут:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;input id="elem" value="text"&gt;</code>
+</div>
+<p>
+	Давайте выведем на экран текст инпута:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+console.log(elem.value); // выведет 'text'</code>
+</div>
+<p>
+	Как вы видите, мы сначала получаем элемент
+	по его <code class="code inline">id</code>, записываем этот элемент
+	в переменную <code class="code inline">elem</code>, а затем выводим
+	на экран свойство <code class="code inline">value</code> из этой переменной.
+</p>
+<p>
+	На самом деле можно не вводить переменную
+	<code class="code inline">elem</code>, а строить цепочку из точек таким
+	образом:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log( document.querySelector('#elem').value ); // выведет 'text'</code>
+</div>
+<p>
+	Таким же образом - цепочкой - можно производить
+	и перезапись атрибутов:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">document.querySelector('#elem').value = 'www';</code>
+</div>
+<div class="task">
+	<p>
+		Дан следующий код:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;img id="image" src="avatar.png"&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let image = document.querySelector('#image');
+console.log(image.src);</code>
+	</div>
+	<p>
+		Переделайте приведенный выше код так, чтобы
+		вместо введения переменной <code class="code inline">image</code> использовалась
+		цепочка.
+	</p>
+</div>
+
+<h2>Преимущества и недостатки цепочек</h2>
+<p>
+	Не смотря на то, что цепочки сокращают код,
+	в большинстве случаев введение переменной
+	все-таки удобнее. Сравните два примера -
+	сейчас я ввел переменную <code class="code inline">elem</code> и могу
+	записывать любое количество атрибутов, при
+	этом <code class="code inline">querySelector</code> вызывается только
+	один раз:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+elem.value = 'www';
+elem.type  = 'submit';</code>
+</div>
+<p>
+	А сейчас я не ввожу новую переменную и поэтому
+	мне приходится вызывать <code class="code inline">querySelector</code>
+	два раза:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">document.querySelector('#elem').value = 'www';
+document.querySelector('#elem').type  = 'submit';</code>
+</div>
+<p>
+	На мой взгляд, этот код стал сложнее, хотя
+	и занимает на одну строчку меньше. Кроме
+	того, если я захочу сменить значение <code class="code inline">id</code>
+	с <code class="string inline">'elem'</code> на какое-то другое, мне придется
+	делать это во многих местах, что не очень удобно.
+</p>
+<p>
+	Есть и еще проблема - нагрузка на браузер.
+	Поиск элементов по странице, который делает
+	метод <code class="code inline">querySelector</code>, является довольно
+	медленной операцией (<i>и вообще любая работа
+	с элементами страницы - это медленная операция</i>
+	- запомните это).
+</p>
+<p>
+	В нашем случае, если мы каждый раз используем
+	<code class="code inline">querySelector</code>, то браузер каждый раз
+	будет обрабатывать HTML страницу и искать
+	элемент с заданным <code class="code inline">id</code> несколько раз
+	(не важно, что <code class="code inline">id</code> одинаковые - браузер
+	проделает все действия несколько раз), совершая
+	бесполезные операции, которые могут замедлить
+	работу браузера.
+</p>
+<p>
+	Если же мы используем переменную <code class="code inline">elem</code>
+	- никакого поиска по странице не происходит
+	(элемент уже найден и ссылка на него лежит
+	в переменной).
+</p>
+<div class="task">
+	<p>
+		Дан следующий код:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;img id="image" src="avatar.png" width="300" height="500"&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">console.log(document.querySelector('#image').src);
+console.log(document.querySelector('#image').width);
+console.log(document.querySelector('#image').height);</code>
+	</div>
+	<p>
+		Укажите на недостатки данного кода. Исправьте их.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/prime/" data-persent="69" data-hash="jsPmDmChn" data-quantity="363" data-num="253"><a href="../../../../../../ru/javascript/book/prime/dom/basis/exception-attributes.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../ru/javascript/book/prime/dom/basis/this.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/basis/chaining.html">en</a><a href="../../../../../../ru/javascript/book/prime/dom/basis/chaining.html" class="active">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

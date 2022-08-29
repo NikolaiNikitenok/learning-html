@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Справочник SQL | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../js/location.js?v=3"></script>
+		<script src="../../js/locale.js?v=5"></script>
+		<script src="../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="Удобный справочник SQL, написанный простым языком, с видео и примерами.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../ru/php/manual.html">Справочник</a>
+		<a href="../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Справочник SQL</h1>
+				<div class="menu" data-module="menu" data-mode="tabs" data-headers-type="sql">
+<section data-name="основное">
+	<h2>Основные запросы</h2>
+	<div>
+		<a href="../../ru/sql/manual/select.html">
+			получение записей
+		</a>
+		<a href="../../ru/sql/manual/insert.html">
+			вставка записей
+		</a>
+		<a href="../../ru/sql/manual/update.html">
+			редактирование записей
+		</a>
+		<a href="../../ru/sql/manual/delete.html">
+			удаление записей
+		</a>
+		<a href="../../ru/sql/manual/count.html">
+			подсчет записей
+		</a>
+	</div>
+
+	<h2>Условия выборки</h2>
+	<div>
+		<a href="../../ru/sql/manual/where.html">
+			условие
+		</a>
+		<a href="../../ru/sql/manual/or.html">
+			логическое ИЛИ
+		</a>
+		<a href="../../ru/sql/manual/and.html">
+			логическое И
+		</a>
+		<a href="../../ru/sql/manual/order-by.html">
+			сортировка
+		</a>
+		<a href="../../ru/sql/manual/limit.html">
+			ограничение выборки
+		</a>
+		<a href="../../ru/sql/manual/between.html">
+			выбор из промежутка
+		</a>
+		<a href="../../ru/sql/manual/in.html">
+			заданные значения
+		</a>
+		<a href="../../ru/sql/manual/like.html">
+			поиск по шаблону
+		</a>
+		<a href="../../ru/sql/manual/as.html">
+			смена имен полей
+		</a>
+		<a href="../../ru/sql/manual/distinct.html">
+			уникальные значения
+		</a>
+		<a href="../../ru/sql/manual/not.html">
+			отрицание
+		</a>
+		<a href="../../ru/sql/manual/is-not-null.html">
+			значение не равно NULL
+		</a>
+		<a href="../../ru/sql/manual/is-null.html">
+			значение равно NULL
+		</a>
+	</div>
+</section>
+<section data-name="математика">
+	<h2>Математические функции</h2>
+	<div>
+		<!--
+			http://www.mysql.ru/docs/man/Mathematical_functions/
+			http://www.mysql.ru/docs/man/Group_by_functions/
+		-->
+		<a href="../../ru/sql/manual/min.html">
+			минимальное значение
+		</a>
+		<a href="../../ru/sql/manual/max.html">
+			максимальное значение
+		</a>
+		<a href="../../ru/sql/manual/sum.html">
+			сумма полей
+		</a>
+		<a href="../../ru/sql/manual/avg.html">
+			среднее арифметическое
+		</a>
+		<a href="../../ru/sql/manual/round.html">
+			округление
+		</a>
+		<a href="../../ru/sql/manual/floor.html">
+			округление
+		</a>
+		<a href="../../ru/sql/manual/ceiling.html">
+			округление
+		</a>
+		<a href="../../ru/sql/manual/truncate.html">
+			усечение числа
+		</a>
+		<a href="../../ru/sql/manual/abs.html">
+			модуль числа
+		</a>
+		<a href="../../ru/sql/manual/sign.html">
+			знак числа
+		</a>
+		<a href="../../ru/sql/manual/mod.html">
+			деление по модулю
+		</a>
+		<a href="../../ru/sql/manual/pow.html">
+			степень числа
+		</a>
+		<a href="../../ru/sql/manual/sqrt.html">
+			корень числа
+		</a>
+		<a href="../../ru/sql/manual/rand.html">
+			случайное число
+		</a>
+		<a href="../../ru/sql/manual/least.html">
+			минимальное из значений
+		</a>
+		<a href="../../ru/sql/manual/greatest.html">
+			максимальное из значений
+		</a>
+	</div>
+	
+	<!--
+	<h2>Тригонометрия</h2>
+	<div>
+		<a href="../../ru/sql/manual/sin.html">
+			?
+		</a>
+		<a href="../../ru/sql/manual/cos.html">
+			?
+		</a>
+		<a href="../../ru/sql/manual/tan.html">
+			?
+		</a>
+		<a href="../../ru/sql/manual/cot.html">
+			?
+		</a>
+		<a href="../../ru/sql/manual/asin.html">
+			?
+		</a>
+		<a href="../../ru/sql/manual/acos.html">
+			?
+		</a>
+		<a href="../../ru/sql/manual/atan.html">
+			?
+		</a>
+		<a href="../../ru/sql/manual/atan2.html">
+			?
+		</a>
+		<a href="../../ru/sql/manual/pi.html">
+			?
+		</a>
+		<a href="../../ru/sql/manual/degrees.html">
+			?
+		</a>
+		<a href="../../ru/sql/manual/radians.html">
+			?
+		</a>
+		<a href="../../ru/sql/manual/radians.html">
+			?
+		</a>
+	</div>
+	
+	<h2>Системы счисления</h2>
+	<div>
+		<a href="../../ru/sql/manual/bin.html">
+			?
+		</a>
+		<a href="../../ru/sql/manual/oct.html">
+			?
+		</a>
+		<a href="../../ru/sql/manual/hex.html">
+			?
+		</a>
+	</div>
+	-->
+</section>
+<section data-name="строки">
+	<h2>Поиск по строкам</h2>
+	<div>
+		<a href="../../ru/sql/manual/replace.html">
+			поиск и замена
+		</a>
+		<a href="../../ru/sql/manual/position.html">
+			поиск подстроки
+		</a>
+		<a href="../../ru/sql/manual/locate.html">
+			поиск подстроки
+		</a>
+		<a href="../../ru/sql/manual/instr.html">
+			поиск подстроки
+		</a>
+	</div>
+
+	<h2>Изменение строк</h2>
+	<div>
+		<a href="../../ru/sql/manual/left.html">
+			вырезание слева
+		</a>
+		<a href="../../ru/sql/manual/right.html">
+			вырезание справа
+		</a>
+		<a href="../../ru/sql/manual/substring.html">
+			взятие подстроки
+		</a>
+		<a href="../../ru/sql/manual/mid.html">
+			взятие подстроки
+		</a>
+		<a href="../../ru/sql/manual/substring_index.html">
+			взятие подстроки
+		</a>
+		<a href="../../ru/sql/manual/lpad.html">
+			дополнение строки слева
+		</a>
+		<a href="../../ru/sql/manual/rpad.html">
+			дополнение строки справа
+		</a>
+		<a href="../../ru/sql/manual/reverse.html">
+			переворот строки
+		</a>
+		<a href="../../ru/sql/manual/repeat.html">
+			повторение строки
+		</a>
+	</div>
+	
+	<h2>Сложение строк</h2>
+	<div>
+		<a href="../../ru/sql/manual/concat.html">
+			сложение строк
+		</a>
+		<a href="../../ru/sql/manual/concat_ws.html">
+			сложение с разделителем
+		</a>
+		<a href="../../ru/sql/manual/group_concat.html">
+			сложение ячеек
+		</a>
+	</div>
+
+	<h2>Работа с регистром</h2>
+	<div>
+		<a href="../../ru/sql/manual/lower.html">
+			нижний регистр
+		</a>
+		<a href="../../ru/sql/manual/lcase.html">
+			нижний регистр
+		</a>
+		<a href="../../ru/sql/manual/upper.html">
+			верхний регистр
+		</a>
+		<a href="../../ru/sql/manual/ucase.html">
+			верхний регистр
+		</a>
+	</div>
+	
+	<h2>Работа с пробелами</h2>
+	<div>
+		<a href="../../ru/sql/manual/trim.html">
+			обрезание пробелов
+		</a>
+		<a href="../../ru/sql/manual/ltrim.html">
+			обрезание пробелов слева
+		</a>
+		<a href="../../ru/sql/manual/rtrim.html">
+			обрезание пробелов справа
+		</a>
+		<a href="../../ru/sql/manual/space.html">
+			строка из пробелов
+		</a>
+	</div>
+	
+	<h2>Списки</h2>
+	<div>
+		<a href="../../ru/sql/manual/elt.html">
+			строка по номеру
+		</a>
+		<a href="../../ru/sql/manual/field.html">
+			номер по строке
+		</a>
+	</div>
+	
+	<h2>Длина строк</h2>
+	<div>
+		<a href="../../ru/sql/manual/length.html">
+			длина строки
+		</a>
+	</div>
+	
+	<!--
+	<h2>Отдельные символы</h2>
+	<div>
+		<a href="../../ru/sql/manual/ascii.html">
+			?
+		</a>
+		<a href="../../ru/sql/manual/ord.html">
+			?
+		</a>
+		<a href="../../ru/sql/manual/char.html">
+			?
+		</a>
+	</div>
+	-->
+</section>
+
+<section data-name="даты">
+	<h2>Извлечение части даты</h2>
+	<div>
+		<a href="../../ru/sql/manual/day.html">
+			день из даты
+		</a>
+		<a href="../../ru/sql/manual/dayofmonth.html">
+			день из даты
+		</a>
+		<a href="../../ru/sql/manual/month.html">
+			месяц из даты
+		</a>
+		<a href="../../ru/sql/manual/year.html">
+			год из даты
+		</a>
+		<a href="../../ru/sql/manual/hour.html">
+			часы из даты
+		</a>
+		<a href="../../ru/sql/manual/minute.html">
+			минуты из даты
+		</a>
+		<a href="../../ru/sql/manual/second.html">
+			секунды из даты
+		</a>
+		<a href="../../ru/sql/manual/date.html">
+			дата из datetime
+		</a>
+		<a href="../../ru/sql/manual/extract.html">
+			части даты
+		</a>
+		<a href="../../ru/sql/manual/weekday.html">
+			день недели
+		</a>
+		<a href="../../ru/sql/manual/dayofweek.html">
+			день недели
+		</a>
+		<a href="../../ru/sql/manual/dayname.html">
+			название дня недели
+		</a>
+		<a href="../../ru/sql/manual/monthname.html">
+			название месяца
+		</a>
+		<a href="../../ru/sql/manual/dayofyear.html">
+			номер дня в году
+		</a>
+		<a href="../../ru/sql/manual/week.html">
+			номер недели в году
+		</a>
+		<a href="../../ru/sql/manual/yearweek.html">
+			год и номер недели в году
+		</a>
+	</div>
+
+	<h2>Получение даты и времени</h2>
+	<div>
+		<a href="../../ru/sql/manual/now.html">
+			текущие дата и время
+		</a>
+		<a href="../../ru/sql/manual/current_date.html">
+			текущая дата
+		</a>
+		<a href="../../ru/sql/manual/current_time.html">
+			текущее время
+		</a>
+	</div>
+
+	<h2>Преобразование даты</h2>
+	<div>
+		<a href="../../ru/sql/manual/date_format.html">
+			смена формата даты
+		</a>
+		<a href="../../ru/sql/manual/time_format.html">
+			смена формата времени
+		</a>
+		<a href="../../ru/sql/manual/to_days.html">
+			дата в дни
+		</a>
+		<a href="../../ru/sql/manual/from_days.html">
+			дни в дату
+		</a>
+		<a href="../../ru/sql/manual/sec_to_time.html">
+			секунды в time
+		</a>
+		<a href="../../ru/sql/manual/time_to_sec.html">
+			время в секунды
+		</a>
+	</div>
+
+	<h2>Сложение дат</h2>
+	<div>
+		<a href="../../ru/sql/manual/interval.html">
+			операции с датами
+		</a>
+		<a href="../../ru/sql/manual/date_add.html">
+			сложение дат
+		</a>
+		<a href="../../ru/sql/manual/date_sub.html">
+			вычитание дат
+		</a>
+		<a href="../../ru/sql/manual/period_add.html">
+			?
+		</a>
+		<a href="../../ru/sql/manual/period_diff.html">
+			?
+		</a>
+	</div>
+</section>
+<section data-name="объединения">
+	<h2>Группировка</h2>
+	<div>
+		<a href="../../ru/sql/manual/group-by.html">
+			группировка
+		</a>
+		<a href="../../ru/sql/manual/having.html">
+			условие на group by
+		</a>
+	</div>
+	
+	<h2>Несколько таблиц</h2>
+	<div>
+		<a href="../../ru/sql/manual/union.html">
+			объединение таблиц
+		</a>
+		<a href="../../ru/sql/manual/join.html">
+			связывание таблиц
+		</a>
+		<a href="../../ru/sql/manual/left-join.html">
+			левый join
+		</a>
+		<a href="../../ru/sql/manual/right-join.html">
+			правый join
+		</a>
+		<a href="../../ru/sql/manual/inner-join.html">
+			внутренний join
+		</a>
+		<a href="../../ru/sql/manual/select-into.html">
+			копирование в другую таблицу
+		</a>
+	</div>
+</section>
+<!--
+<section data-name="">
+	<h2>Структура базы данных</h2>
+	<div>
+		
+			http://www.mysql.ru/docs/man/Miscellaneous_functions/
+			
+			http://www.mysql.ru/docs/man/Data_Definition/
+		
+		
+		<a href="../../ru/sql/manual/create-database.html">
+			создание базы данных
+		</a>
+		<a href="../../ru/sql/manual/create-table.html">
+			создание таблицы
+		</a>
+		<a href="../../ru/sql/manual/drop.html">
+			удаление баз и таблиц
+		</a>
+		<a href="../../ru/sql/manual/alter.html">
+			изменение таблиц
+		</a>
+		<a href="../../ru/sql/manual/truncate-table.html">
+			очистка таблиц
+		</a>
+		<a href="../../ru/sql/manual/rename.html">
+			очистка таблиц
+		</a>
+		<a href="../../ru/sql/manual/create-index.html">
+			создание индекса
+		</a>
+		<a href="../../ru/sql/manual/primary-key.html">
+			первичный ключ
+		</a>
+
+		https://ru.wikipedia.org/wiki/%D0%92%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D0%B9_%D0%BA%D0%BB%D1%8E%D1%87
+		
+		<a href="../../ru/sql/manual/foreign-key.html">
+			поле связи
+		</a>
+	</div>
+
+	<h2>Информация</h2>
+	<div>
+		<a href="../../ru/sql/manual/describe.html">
+			информация о таблице
+		</a>
+		<a href="../../ru/sql/manual/show-databases.html">
+			информация о базах данных
+		</a>
+		<a href="../../ru/sql/manual/show-columns.html">
+			информация о полях таблицы
+		</a>
+	</div>
+
+	<h2>Условия</h2>
+	<div>
+		Полезные штуки местами
+			http://www.mysql.ru/docs/man/Comparison_Operators/
+		<a href="../../ru/sql/manual/if-not-exists.html">
+			если не существует
+		</a>
+		<a href="../../ru/sql/manual/if-exists.html">
+			если существует
+		</a>
+	</div>
+
+	<h2>Полезное</h2>
+	<div>
+			http://www.mysql.ru/docs/man/Miscellaneous_functions/
+			LAST_INSERT_ID - клевая функция
+		
+		<a href="../../ru/sql/manual/last_insert_id.html">
+			id последней записи
+		</a>
+		<a href="../../ru/sql/manual/ignore.html">
+
+		</a>
+		<a href="../../ru/sql/manual/explain.html">
+			план запроса
+		</a>
+	</div>
+</section>
+-->
+</div>			</main>
+			<div class="bottom">
+	</div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../js/metrika.js?v=1"></script>	</body>
+</html>

@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Immediately invoked function call in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will analyze the immediately invoked function call in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Immediately invoked function call in JavaScript</h1>
+				<div class="content">
+<p>
+	Now we will analyze a trick that allows 
+	you to call a function right at the place 
+	of its declaration. This construct is 
+	called <dfn>Immediately Invoked Function 
+	Expression (IIFE)</dfn>.
+</p>
+<p>
+	Let's look at an example. Let's say we 
+	have the following functional expression:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let func = function() {
+	console.log('!');
+};
+
+func(); // shows '!'</code>
+</div>
+<p>
+	Let's now not assign our function to a 
+	variable, but call it immediately, 
+	"in-place". To do this, put parentheses 
+	after the function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">+function() {
+	console.log('!'); // shows '!'
+}();</code>
+</div>
+<p>
+	The presence of a plus in this case is 
+	a required condition, since without it 
+	the function will become a Function 
+	Declaration, and they cannot be called 
+	in-place (and even without a name). Of 
+	course, instead of a plus, anything can 
+	be - the main thing is that our function 
+	is a functional expression.
+</p>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">!function() {
+	console.log('!');
+}();</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function() {
+	console.log('!');
+}();</code>
+	</div>
+</div>
+
+<h2>Assignment to a variable</h2>
+<p>
+	Now let our locally called function doesn't 
+	display something to the console, but 
+	returns it via <code class="code inline">return</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">+function() {
+	return '!';
+}();</code>
+</div>
+<p>
+	Let's assign the result of our function 
+	to a variable and print it to the console:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let result = function() {
+	return '!';
+}();
+
+console.log(result); // shows '!'</code>
+</div>
+<p class="comment">
+	Since in this case there is an assignment 
+	to a variable, the plus is no longer needed.
+</p>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let result = function() {
+	return '!';
+}();
+		
+console.log(result);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let result = function() {
+	return '!';
+};
+		
+console.log(result);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let result = function() {
+	return '!';
+};
+		
+console.log(result());</code>
+	</div>
+</div>
+
+<h2>Application of in-place call</h2>
+<p>
+	Let's use an in-place function 
+	call as one of the terms:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let sum = 1 + function() {
+	return 2;
+}();
+
+console.log(sum); // shows 3</code>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let result = function() {return 1;}() + function() {return 2;}();
+console.log(result);</code>
+	</div>
+</div>
+
+<h2>Parentheses</h2>
+<p>
+	Normally, parentheses are used instead of 
+	plus when calling a function in-place, 
+	because this style is considered more obvious:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">(function() {
+	console.log('!');
+}());</code>
+</div>
+<p>
+	Most often, the parentheses of a function 
+	call are placed outside, like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">(function() {
+	console.log('!');
+})();</code>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let result = (function() {
+	return '!';
+}());
+
+console.log(result);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let result = (function() {
+	return '!';
+})();
+
+console.log(result);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let result = (function() {
+	return '!';
+});
+
+console.log(result);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let result = (function() {
+	return '!';
+});
+
+console.log(result());</code>
+	</div>
+</div>
+
+<h2>Parameters</h2>
+<p>
+	Let our function, which we are going to 
+	call in-place, take a string for output 
+	as a parameter:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function(str) {
+	console.log(str);
+}</code>
+</div>
+<p>
+	Let's call our function in-place, passing 
+	it a string to output to the console:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">(function(str) {
+	console.log(str); // shows '!!!'
+})('!!!');</code>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">(function(num1, num2) {
+	console.log(num1 + num2);
+})(1, 2);</code>
+	</div>
+</div>
+
+<h2>Multiple parentheses</h2>
+<p>
+	Let them offer you a tricky task: make 
+	some calling parentheses, like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">(function() {
+	// some code
+})()(); // multiple calling parentheses</code>
+</div>
+<p>
+	If you think about it, it becomes obvious 
+	that in this case the in-place function 
+	call should return an anonymous function, 
+	like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">(function() {
+	return function() {
+		console.log('!');
+	};
+})()(); // shows '!'</code>
+</div>
+<div class="task">
+	<p>
+		Add the following code so that, when 
+		its running, <code class="string inline">'!'</code> will be 
+		displayed:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">(function() {
+	// some code
+})()()();</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Add the following code so that its 
+		launch prints the sum of the numbers 
+		passed in the parameters:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">(function() {
+	// some code
+})(1)(2);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Add the following code so that its 
+		launch prints the sum of the numbers 
+		passed in the parameters:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">(function() {
+	// some code
+})(1)(2)(3);</code>
+	</div>
+</div>
+
+<h2>Pitfalls</h2>
+<p>
+	Let's look at two pieces of code.
+</p>
+<p>
+	First:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let result = 1
++function() {
+	return 2;
+}();
+
+console.log(result);</code>
+</div>
+<p>
+	Second:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let result = 1;
++function() {
+	return 2;
+}();
+
+console.log(result);</code>
+</div>
+<p>
+	These two pieces of code are almost the 
+	same, but if you run them, the result will 
+	be different. The first code will print the 
+	number <code class="number inline">3</code> to the console, and the 
+	second - the number <code class="number inline">1</code>.
+</p>
+<p>
+	Why there is such a difference: the whole 
+	point is that in one case in the first 
+	line of the code at the end there is no 
+	semicolon, and in the second case 
+	it presents.
+</p>
+<p>
+	You may ask: how is that, because in JavaScript, 
+	the semicolon at the end of the command is 
+	not required! Actually this is not true. 
+	Let's take a look at what's 
+	really going on.
+</p>
+<p>
+	The first code can be rewritten like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let result = 1 + function() {
+	return 2;
+}();
+
+console.log(result); // shows 3</code>
+</div>
+<p>
+	Now it immediately becomes obvious that 
+	the result of calling the function in-place, 
+	that is, <code class="number inline">2</code>, is added to one. 
+	Therefore, the final result will be <code class="number inline">3</code>.
+</p>
+<p>
+	If you put a semicolon after one, then 
+	the code will be perceived by the 
+	interpreter differently:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">// First command:
+let result = 1;
+
+// Second command:
++function() {
+	return 2;
+}();
+
+// Third command:
+console.log(result); // shows 1</code>
+</div>
+<p>
+	That is, assigning to a variable and 
+	calling a function in-place will become 
+	different commands. And all because of 
+	the semicolon!
+</p>
+<p>
+	It turns out that in this case, calling 
+	the function in-place does nothing at 
+	all - it just returns to nowhere the 
+	number <code class="number inline">2</code>, which does not affect 
+	the variable <code class="code inline">result</code>.
+</p>
+<p>
+	Let's then figure out why we can not 
+	write a semicolon in JavaScript at all. 
+	Suppose we have such code 
+	without semicolons:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let result = 1 // 1 will be written to the result 
+let test = 2   // 2 will be written to the test</code>
+</div>
+<p>
+	It works correctly, because the interpreter 
+	itself placed a semicolon at the end 
+	of each line.
+</p>
+<p>
+	But look at this code:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let result = 1
++ 2; // 3 will be written to the result</code>
+</div>
+<p>
+	Now the semicolon at the end of the 
+	first line is not automatically 
+	inserted, because the interpreter 
+	understands that the second line 
+	command is part of the first line 
+	command.
+</p>
+<p>
+	But if we put a semicolon ourselves, 
+	the result will be completely different:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let result = 1; // 1 will be written to the result 
++ 2; // the command does nothing, but there will be no error either</code>
+</div>
+<p>
+	It turns out that the interpreter itself 
+	puts a semicolon only if the next command 
+	is not part of the previous one.
+</p>
+<p>
+	Now look at this code:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let result = 1
++function() {
+	return 2;
+}();
+
+console.log(result);</code>
+</div>
+<p>
+	Indeed, the second line is just a continuation 
+	of the command from the first line, and the 
+	interpreter does not automatically insert 
+	a semicolon.
+</p>
+<p>
+	That is why, if we ourselves write a semicolon 
+	at the end of the first line, the result will 
+	be completely different.
+</p>
+<p>
+	This suggests that <i>it's best to always 
+	put semicolons in the right places to avoid 
+	problems</i>.
+</p>
+
+<h2>Semicolon for safety</h2>
+<p>
+	Let now our function called in-place not 
+	be with a plus at the beginning, but wrapped 
+	in parentheses, like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">(function() {
+	console.log(1); // shows 1
+})();</code>
+</div>
+<p>
+	Let the variable <code class="code inline">num</code> be set 
+	outside the function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 1; // semicolon is put
+
+(function() {
+	console.log(num); // shows 1
+})();</code>
+</div>
+<p>
+	Let now we forgot to put a semicolon:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 1
+
+(function() {
+	console.log(num); //!! will throw an error
+})();</code>
+</div>
+<p>
+	It turns out that such code will generate 
+	an error, since JavaScript perceives our 
+	function as a continuation of the first 
+	line command.
+</p>
+<p>
+	To avoid such problems, you should always 
+	put a semicolon before calling a function 
+	in-place, like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 1
+
+;(function() {
+	console.log(num); // shows 1
+})();</code>
+</div>
+<p>
+	The problem seems to be somewhat contrived. 
+	Actually, it is not. There may be such a 
+	situation that several scripts from separate 
+	files are connected on your page. In this case, 
+	a semicolon can be omitted at the end of one 
+	file, and this will automatically lead to a 
+	problem if the second file starts with an 
+	in-place function call.
+</p>
+<p>
+	Therefore, always, always put a semicolon 
+	before calling a function in-place, even if 
+	you are currently sure that there will be 
+	no problems. They may come later.
+</p>
+<p>
+	Let's apply the above and call the function 
+	in-place, putting a semicolon at the beginning:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">;(function() {
+	console.log(1); // shows 1
+})();</code>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let str = 'str';
+
+(function() {
+	console.log(1);
+})();</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let str = 'str'
+
+(function() {
+	console.log(1);
+})();</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="53" data-hash="jsPmFAIIFE" data-quantity="363" data-num="192"><a href="../../../../../en/javascript/book/prime/functions/closures.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/functions/closures-and-IIEF.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/functions/immediately-invoked-function-expression.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/functions/immediately-invoked-function-expression.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Passing module settings via closures in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will analyze the creation of a module using a in-place function call in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Passing module settings via closures in JavaScript</h1>
+				<div class="content">
+<p>
+	Let's say we have the following module:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">;(function(root, type, amount) {
+	let parent = document.querySelector(root);
+	
+	for (let i = 1; i &lt;= amount; i++) {
+		let elem = document.createElement(type);
+		parent.append(elem);
+	}
+})('#parent', 'p', 5);</code>
+</div>
+<p>
+	As you can see, three settings are passed into this 
+	module: the parent element selector, the element type 
+	to create, and the number of elements.
+</p>
+<p>
+	As a rule, such settings are made in 
+	the form of an object:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let config = {
+	root:  '#parent',
+	type:  'p',
+	amount: 5
+}</code>
+</div>
+<p>
+	Let's pass our object as a 
+	module parameter:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">;(function(config) {
+	let parent = document.querySelector(config.root);
+	
+	for (let i = 1; i &lt;= config.amount; i++) {
+		let elem = document.createElement(config.type);
+		parent.append(elem);
+	}
+})(config);</code>
+</div>
+<p>
+	It is more common to destructure 
+	an object with settings:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">;(function({root, type, amount}) {
+	let parent = document.querySelector(root);
+	
+	for (let i = 1; i &lt;= amount; i++) {
+		let elem = document.createElement(type);
+		parent.append(elem);
+	}
+})(config);</code>
+</div>
+
+<h2>Default parameters</h2>
+<p>
+	Suppose we want to allow not specify all settings 
+	when using the module. If any of the settings is 
+	not specified, then it will take the default value.
+</p>
+<p>
+	For example, in our case, we can make the default 
+	type take the value <code class="string inline">p</code>, and the amount - 
+	the value <code class="number inline">5</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">;(function({root, type = 'p', amount = 5}) {
+	let parent = document.querySelector(root);
+	
+	for (let i = 1; i &lt;= amount; i++) {
+		let elem = document.createElement(type);
+		parent.append(elem);
+	}
+})(config);</code>
+</div>
+<p>
+	In this case, we can easily configure our module in 
+	different ways. For example, let's specify only the 
+	parent element:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let config = {
+	root:  '#parent',
+}</code>
+</div>
+<p>
+	Now let's specify the parent element and the amount. 
+	In this case, we will not need to specify the type - 
+	after all, the elements of the settings object have 
+	no order, and we can omit them as we like. So here 
+	is our setup:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let config = {
+	root:  '#parent',
+	amount: 10
+}</code>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="99" data-hash="jsPmMClPS" data-quantity="363" data-num="361"><a href="../../../../../en/javascript/book/prime/modules/passing-parent-elements.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/modules/variables-functions-export.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/modules/passing-settings.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/modules/passing-settings.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

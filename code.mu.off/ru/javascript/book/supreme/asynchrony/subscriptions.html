@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Асинхронный код через подписки в JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы реализуем асинхронное выполнение операций через подписки в JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Асинхронный код через подписки в JavaScript</h1>
+				<div class="content">
+<p>
+	Пусть у нас есть некоторый таймер, который
+	имитирует загрузку массива с данными через ajax:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">setTimeout(function() {
+	let arr = [1, 2, 3, 4, 5]; // массив с результатом
+}, 3000);</code>
+</div>
+<p>
+	Пусть у нас также есть вот такая верстка:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;p id="message"&gt;&lt;/p&gt;
+&lt;ul id="list"&gt;
+	&lt;li&gt;a&lt;/li&gt;
+	&lt;li&gt;b&lt;/li&gt;
+	&lt;li&gt;c&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p id="amount"&gt;&lt;/p&gt;
+&lt;p id="result"&gt;&lt;/p&gt;</code>
+</div>
+<p>
+	Пусть также после загрузки данных нам с этими
+	данными необходимо выполнить следующие не
+	зависящие друг от друга операции:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func1(arr) {
+	// выведем в #message сообщение о том, что данные получены
+}
+
+function func2(arr) {
+	// добавим в #list элементы массива в качестве тегов li
+}
+
+function func3(arr) {
+	// выведем в #amount количество элементов в массиве
+}
+
+function func4(arr) {
+	// выведем в #result сумму элементов массива
+}</code>
+</div>
+<p>
+	Для того, чтобы наши операции выполнились
+	по загрузке, нам необходимо после загрузки
+	вызвать каждую из функций, передав ей параметром
+	полученный массив с данными:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">setTimeout(function() {
+	let arr = [1, 2, 3, 4, 5];
+	
+	func1(arr);
+	func2(arr);
+	func3(arr);
+	func4(arr);
+}, 3000);</code>
+</div>
+<div class="task">
+	<p>
+		Напишите реализацию приведенных функций.
+	</p>
+</div>
+
+<h2>Решение через подписки</h2>
+<p>
+	В приведенном выше коде есть некоторое неудобство:
+	нам приходится в том месте, где получаются
+	данные, вызывать все связанные с этими данными
+	функции.
+</p>
+<p>
+	Это неудобство можно устранить через альтернативный
+	подход - <dfn>подписки</dfn>. Суть подхода сводится
+	к следующему: когда происходит желаемое нами
+	событие, в нашем случае получение данных,
+	во внешний мир <dfn>испускается событие</dfn>
+	и это событие получают все те функции, которые
+	на него подписались.
+</p>
+<p>
+	На практике для этого нужно создать две специальные
+	функции:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">// Функция для испускания события:
+function emit('имя события', 'данные события') {
+
+}
+
+// Функция для подписки на событие:
+function on('имя события', 'обработчик события') {
+
+}</code>
+</div>
+<p>
+	Давайте посмотрим, как мы будем пользоваться
+	этими функциями. Пусть наш таймер по загрузке
+	испускает событие, скажем с названием <code class="string inline">'loaded'</code>,
+	передав ему в качестве данных массив с числами:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">setTimeout(function() {
+	emit('loaded', [1, 2, 3, 4, 5]);
+}, 3000);</code>
+</div>
+<p>
+	Все желающие могут заранее подписаться на
+	событие с этим именем:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">on('loaded', function(arr) {
+	// тут код из func1
+});
+
+on('loaded', function(arr) {
+	// тут код из func2
+});
+
+on('loaded', function(arr) {
+	// тут код из func3
+});
+
+on('loaded', function(arr) {
+	// тут код из func4
+});</code>
+</div>
+<p>
+	При этом подписываться на событие можно в
+	абсолютно различных местах нашего кода и
+	столько раз, сколько нам нужно.
+</p>
+
+<h2>Реализация</h2>
+<p>
+	Итак, для того, чтобы все заработало, как
+	описано, нам необходимо реализовать функции
+	<code class="code inline">on</code> и <code class="code inline">emit</code>. Давайте сделаем
+	это. Для начала нам понадобится специальный
+	объект, в котором мы будем хранить события
+	и их подписчиков:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let subsribers = {};</code>
+</div>
+<p>
+	Структура этого объекта должна быть следующей:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let subsribers = {
+	'имя события 1': [массив коллбэков события],
+	'имя события 2': [массив коллбэков события],
+	'имя события 3': [массив коллбэков события],
+};</code>
+</div>
+<p>
+	При вызове функции on мы должны добавить
+	коллбэк в массив с определенным событием:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function on(name, callback) {
+	if (!subsribers[name]) {
+		subsribers[name] = [];
+	}
+	
+	subsribers[name].push(callback);
+}</code>
+</div>
+<p>
+	А при вызове функции <code class="code inline">emit</code> мы должны
+	перебрать и вызвать все коллбэки данного
+	события, передав при вызове данные события:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function emit(name, data) {
+	if (subsribers[name]) {
+		for (let callback of subsribers[name]) {
+			callback(data);
+		}
+	}
+}</code>
+</div>
+<div class="task">
+	<p>
+		Соберите весь код вместе и проверьте его работу.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Сделайте таймер, в начале каждого часа испускающий
+		событие <code class="code inline">nextHour</code>. В качестве данных
+		события пусть передается номер нового часа
+		от <code class="number inline">0</code> до <code class="number inline">23</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Сделайте кнопку, по нажатию на которую будет
+		осуществляться подписка на событие <code class="code inline">nextHour</code>.
+		Сделайте так, чтобы после нажатия на кнопку
+		на экран каждый час выводилось сообщение
+		о наступлении нового часа.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Сделайте еще кнопку, подписывающуюся на событие
+		<code class="code inline">nextHour</code>. Пусть после нажатия на эту
+		кнопку на экран выводятся сообщения о наступлении
+		времени завтрака, обеда, ужина и отбоя.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Сделайте таймер, каждую минуту испускающий
+		событие <code class="code inline">nextMinute</code>. В качестве данных
+		события пусть передается номер минуты от
+		<code class="number inline">0</code> до <code class="number inline">59</code> и номер часа от <code class="number inline">0</code>
+		до <code class="number inline">23</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Сделайте так, чтобы каждые <code class="number inline">15</code> минут
+		на экран выводилось сообщение о том, что
+		пора сделать <code class="number inline">5</code>-ти минутный перерыв.
+		Используйте для этого подписку на событие
+		<code class="code inline">nextMinute</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Давайте реализуем напоминалку о событиях.
+		Она будет представлять собой три инпута и
+		кнопку, с помощью которых можно будет задать
+		время и текст напоминания. В указанное время
+		на экран должно вывестись напоминание. Используйте
+		для этого подписку на событие <code class="code inline">nextMinute</code>.
+		Сделайте так, чтобы можно было создать любое
+		количество событий для напоминания.
+	</p>
+</div>
+
+<h2>Модель подписок в самом JavaScript</h2>
+<p>
+	Вы уже знаете, что метод <code class="code inline">addEventListener</code>
+	создает асинхронный код:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">elem.addEventListener('click', function() {
+	// код выполнится асинхронно - по клику
+});</code>
+</div>
+<p>
+	Как вы теперь можете понять, эта асинхронность
+	использует механизм особого типа: <i>подписку</i>.
+	Когда в элементе происходит событие, например,
+	клик, это событие <i>испускается</i> во внешний
+	мир. Если какой-то код <i>подписался</i>
+	на это событие - он получит уведомление об
+	этом событии и будет выполнен. При этом подписаться
+	на событие можно много раз и в любом месте
+	кода нашего проекта.
+</p>
+<p>
+	Разница между созданными нами выше механизмом
+	подписки через <code class="code inline">on</code> и <code class="code inline">emit</code> и
+	встроенным в JavaScript в том, что <code class="code inline">addEventListener</code>
+	подписывается на события, которые случаются
+	в DOM элементах. Наша модель подписок позволяет
+	нам самим придумывать имена событий и испускать
+	их тогда, когда нам удобно.
+</p>
+<div class="task">
+	<p>
+		В JavaScript можно <i>отписаться</i> от события
+		через метод <code class="code inline">removeEventListener</code>. Написанная
+		нами модель этого, однако, не допускает.
+		Исправьте эту недоработку, сделав функцию
+		<code class="code inline">off</code>, отписывающуюся от события. Пусть
+		первым параметром функция принимает имя события,
+		а вторым - функцию, которая подписана на
+		это событие.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/supreme/" data-persent="82" data-hash="jsSpAsnSbs" data-quantity="114" data-num="95"><a href="../../../../../ru/javascript/book/supreme/asynchrony/callbacks.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/javascript/book/supreme/asynchrony/promise/intro.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

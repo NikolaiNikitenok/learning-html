@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Калькулятор продуктов на JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы реализуем калькулятор продуктов на JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Калькулятор продуктов на JavaScript</h1>
+				<div class="content">
+<p>
+	В данном разделе мы реализуем калькулятор
+	продуктов. Он будет представлять собой таблицу,
+	в которую пользователь нашего сайта будет
+	вносить свои покупки.
+</p>
+<p>
+	Пусть покупки вносятся с помощью формы. Кроме
+	того, для каждого продукта предусмотрим ссылку
+	на удаление. Сделаем также возможность редактирования
+	названия, цены и количества продукта. Пусть
+	такое редактирование будет происходить по
+	двойному клику по ячейке таблицы.
+</p>
+<p>
+	Пусть под таблицей выводится суммарная стоимость
+	продуктов. Сделаем так, чтобы эта сумма пересчитывалась
+	при удалении и при редактировании продуктов.
+</p>
+<p>
+	Вот образец того, что должно получится:
+</p>
+<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			body {
+			height: 300px;
+		}
+		</style>
+		<style>
+			* {
+			box-sizing: border-box;
+		}
+		#parent {
+			margin: 0 auto;
+			width: 500px;
+		}
+		
+		#form {
+			display: flex;
+			margin-bottom: 15px;
+		}
+		#form input {
+			padding: 8px;
+			width: 24%;
+			margin: 0 0.5% 10px 0.5%;
+		}
+		
+		h2 {
+			margin-top: 0;
+			margin-bottom: 7px;
+		}
+		
+		#table {
+			width: 100%;
+			margin-bottom: 10px;
+		}
+		#table td, #table th {
+			padding: 8px;
+			text-align: center;
+			border: 1px solid black;
+		}
+		#table td.remove {
+			color: blue;
+			cursor: pointer;
+			text-decoration: underline;
+		}
+		#table td.remove:hover {
+			text-decoration: none;
+		}
+		
+		#result {
+			text-align: right;
+			margin-right: 10px;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;parent&quot;>
+			<div id=&quot;form&quot;>
+				<input id=&quot;name&quot; placeholder=&quot;название&quot;>
+				<input id=&quot;price&quot; placeholder=&quot;цена&quot;>
+				<input id=&quot;amount&quot; placeholder=&quot;количество&quot;>
+				<input id=&quot;add&quot; type=&quot;button&quot; value=&quot;добавить&quot;>
+			</div>
+			
+			<h2>Таблица продуктов:</h2>
+			<table id=&quot;table&quot;>
+				<tr>
+					<th>название</th>
+					<th>цена</th>
+					<th>кол-во</th>
+					<th>сумма</th>
+					<th>удалить</th>
+				</tr>
+			</table>
+			<div id=&quot;result&quot;>
+				общий итог: <span id=&quot;total&quot;>0</span>
+			</div>
+		</div>
+		
+		<script>
+			
+			let name   = document.querySelector('#name');
+		let price  = document.querySelector('#price');
+		let amount = document.querySelector('#amount');
+		let add    = document.querySelector('#add');
+		let table  = document.querySelector('#table');
+		let total  = document.querySelector('#total');
+		
+		add.addEventListener('click', function() {
+			let tr = document.createElement('tr');
+			
+			allowEdit(createCell(tr, name.value, 'name'));
+			allowEdit(createCell(tr, price.value, 'price'));
+			allowEdit(createCell(tr, amount.value, 'amount'));
+			
+			createCell(tr, price.value * amount.value, 'cost');
+			
+			createCell(tr, 'удалить', 'remove').addEventListener('click', function() {
+				this.parentElement.parentElement.removeChild(this.parentElement);
+				recountTotal();
+			});
+			
+			table.appendChild(tr);
+			recountTotal();
+		});
+		
+		function createCell(tr, value, name) {
+			let td = document.createElement('td');
+			td.textContent = value;
+			td.classList.add(name);
+			tr.appendChild(td);
+			
+			return td;
+		}
+		
+		function allowEdit(td) {
+			td.addEventListener('dblclick', function() {
+				let text = td.textContent
+				td.textContent = '';
+				
+				let input = document.createElement('input');
+				input.value = text;
+				input.focus();
+				td.appendChild(input);
+				
+				input.addEventListener('keydown', function(event) {
+					if (event.key == 'Enter') {
+						td.textContent = this.value;
+						
+						if (td.classList.contains('price') || td.classList.contains('amount')) {
+							let tr = td.parentElement;
+							let price = tr.querySelector('.price');
+							let amount = tr.querySelector('.amount');
+							let cost = tr.querySelector('.cost');
+							
+							cost.textContent = price.textContent * amount.textContent;
+							recountTotal();
+						}
+					}
+				});
+			});
+		}
+		
+		function recountTotal() {
+			let costs = table.querySelectorAll('.cost');
+			
+			if (costs) {
+				let sum = 0;
+				
+				for (let cost of costs) {
+					sum += +cost.textContent;
+				}
+				
+				total.textContent = sum;
+			}
+		}
+		</script>
+	</body>
+</html>"></iframe></div>
+<p>
+	Вот верстка, которую вы можете использовать
+	при решении задачи:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="parent"&gt;
+	&lt;div id="form"&gt;
+		&lt;input id="name" placeholder="название"&gt;
+		&lt;input id="price" placeholder="цена"&gt;
+		&lt;input id="amount" placeholder="количество"&gt;
+		&lt;input id="add" type="button" value="добавить"&gt;
+	&lt;/div&gt;
+	
+	&lt;h2&gt;Таблица продуктов:&lt;/h2&gt;
+	&lt;table id="table"&gt;
+		&lt;tr&gt;
+			&lt;th&gt;название&lt;/th&gt;
+			&lt;th&gt;цена&lt;/th&gt;
+			&lt;th&gt;кол-во&lt;/th&gt;
+			&lt;th&gt;сумма&lt;/th&gt;
+			&lt;th&gt;удалить&lt;/th&gt;
+		&lt;/tr&gt;
+	&lt;/table&gt;
+	&lt;div id="result"&gt;
+		общий итог: &lt;span id="total"&gt;0&lt;/span&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">* {
+	box-sizing: border-box;
+}
+#parent {
+	margin: 0 auto;
+	width: 500px;
+}
+
+#form {
+	display: flex;
+	margin-bottom: 15px;
+}
+#form input {
+	padding: 8px;
+	width: 24%;
+	margin: 0 0.5% 10px 0.5%;
+}
+
+h2 {
+	margin-top: 0;
+	margin-bottom: 7px;
+}
+
+#table {
+	width: 100%;
+	margin-bottom: 10px;
+}
+#table td, #table th {
+	padding: 8px;
+	text-align: center;
+	border: 1px solid black;
+}
+#table td.remove {
+	color: blue;
+	cursor: pointer;
+	text-decoration: underline;
+}
+#table td.remove:hover {
+	text-decoration: none;
+}
+
+#result {
+	text-align: right;
+	margin-right: 10px;
+}</code>
+</div>
+<p>
+	Сразу давайте получим ссылки на все нужные
+	теги в переменные:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let name   = document.querySelector('#name');
+let price  = document.querySelector('#price');
+let amount = document.querySelector('#amount');
+let add    = document.querySelector('#add');
+let table  = document.querySelector('#table');
+let total  = document.querySelector('#total');</code>
+</div>
+<div class="task">
+	<p>
+		Скопируйте себе представленные мною заготовки
+		кода.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/practice/" data-persent="37" data-hash="jsPrPCTF" data-quantity="75" data-num="29"><a href="../../../../../ru/javascript/book/practice/notepad/notes-removing.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/javascript/book/practice/products-calculator/purchase-adding.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/practice/products-calculator/task-formulation.html">en</a><a href="../../../../../ru/javascript/book/practice/products-calculator/task-formulation.html" class="active">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

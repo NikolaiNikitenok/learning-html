@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Getting neighbors of array elements in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to get the neighbors of array elements in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Getting neighbors of array elements in JavaScript</h1>
+				<div class="content">
+<p>
+	Let some array be given, for example:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3, 4, 5];</code>
+</div>
+<p>
+	Let's print the elements of this array to 
+	the screen using the ordinary <code class="code inline">for</code> loop:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">for (let i = 0; i &lt; arr.length; i++) {
+	console.log(arr[i]);
+}</code>
+</div>
+<p>
+	And now let's remake our code so that not the 
+	current elements are displayed, 
+	but the previous ones:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">for (let i = 0; i &lt; arr.length; i++) {
+	console.log(arr[i - 1]);
+}</code>
+</div>
+<p>
+	As you can see, to solve the problem, we simply 
+	subtract the number <code class="number inline">1</code> from the counter, 
+	thereby obtaining the key of 
+	the previous element.
+</p>
+<p>
+	Here, however, lies the problem: at the very 
+	beginning of the loop, the counter value will 
+	be zero and we will try to get the array element 
+	with the key <code class="number inline">-1</code>. There is no such element, 
+	of course, and as a result we get the 
+	value <code class="code inline">undefined</code>.
+</p>
+<p>
+	In general, this is logical just geometrically: 
+	the very first element of the array does not 
+	have a previous one. In other words, there 
+	are <code class="number inline">5</code> elements in our array, but only 
+	<code class="number inline">4</code> of them have the previous element.
+</p>
+<p>
+	That is, the number of previous elements are 
+	always <code class="number inline">1</code> less than the number of 
+	elements in the array. It is logical in 
+	this case that the loop should perform 
+	one less iteration. So just start the 
+	loop with <code class="number inline">1</code> and not with <code class="number inline">0</code> 
+	and the problem will be solved:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">for (let i = 1; i &lt; arr.length; i++) {
+	console.log(arr[i - 1]);
+}</code>
+</div>
+<p>
+	Just stupidly displaying the previous elements 
+	is a stupid operation. Let's do something more 
+	meaningful. For example, let's find the sum of 
+	the previous and current array elements and 
+	print it to the console:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3, 4, 5];
+
+for (let i = 1; i &lt; arr.length; i++) {
+	console.log(arr[i - 1] + arr[i]);
+}</code>
+</div>
+<div class="task">
+	<p>
+		Given an array of numbers. Iterate over it 
+		in a loop and in each iteration of the 
+		loop print the next element of the array.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Modify the previous task so that in each 
+		iteration of the loop, the sum of the 
+		current and the next element of the 
+		array is displayed.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given an array of numbers. Loop through 
+		it and in each iteration of the loop 
+		print the previous two elements 
+		of the array.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Modify the previous task so that in each 
+		iteration of the loop, the sum of the 
+		two previous elements and the current 
+		element of the array is displayed.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given an array of numbers. Loop through 
+		it and in each iteration of the loop 
+		print the sum of the previous, current 
+		and next elements of the array.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="36" data-hash="jsPmLpAEN" data-quantity="363" data-num="133"><a href="../../../../../en/javascript/book/prime/loops/object-with-counting.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/loops/coding.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/loops/array-elements-neighbors.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/loops/array-elements-neighbors.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

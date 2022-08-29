@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Function parameters destructuring in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will study the destructuring of function parameters in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Function parameters destructuring in JavaScript</h1>
+				<div class="content">
+<p>
+	Destructuring has another very important 
+	application area - passing function 
+	parameters. The bottom line is this: 
+	if a function takes an array as a 
+	parameter, we can set directly in 
+	the function declaration how to 
+	destructure this array.
+</p>
+<p>
+	Let's look at an example. Suppose we have 
+	a function that takes an array with a year, 
+	month and day as a parameter:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">func([2025, 12, 31]);</code>
+</div>
+<p>
+	Let's specify directly in the function 
+	parameter which variables this array 
+	should be split into:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func([year, month, day]) {
+	console.log(year);  // shows 2025
+	console.log(month); // shows 12
+	console.log(day);   // shows 31
+}</code>
+</div>
+<p>
+	The above construction should be considered 
+	as a single function parameter. You can 
+	add more parameters if you want:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">func('str1', [2025, 12, 31], 'str2');
+
+function func(param1, [year, month, day], param2) {
+	console.log(param1); // shows 'str1'
+	
+	console.log(year);   // shows 2025
+	console.log(month);  // shows 12
+	console.log(day);    // shows 31
+	
+	console.log(param2); // shows 'str2'
+}</code>
+</div>
+<p>
+	And in the following example, arrays are 
+	passed as the first and second parameters 
+	to the function, and we destructure 
+	both of them:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">func([2025, 12, 31], [2026, 11, 30]);
+
+function func([year1, month1, day1], [year2, month2, day2]) {
+	console.log(year1);  // shows 2025
+	console.log(month1); // shows 12
+	console.log(day1);   // shows 31
+	
+	console.log(year2);  // shows 2026
+	console.log(month2); // shows 11
+	console.log(day2);   // shows 30
+}</code>
+</div>
+<div class="task">
+	<p>
+		Rework the following code through 
+		destructuring according to the 
+		theory you learned:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function func(employee) {
+	let name       = employee[0];
+	let surname    = employee[1];
+	let department = employee[2];
+	let position   = employee[3];
+	let salary     = employee[4];
+}
+
+func( ['John', 'Smit', 'development', 'programmer', 2000] );</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Rework the following code through 
+		destructuring according to the 
+		theory you learned:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function func(employee) {
+	let name     = employee[0];
+	let surname  = employee[1];
+	let info     = employee[2];
+}
+
+func( ['John', 'Smit', 'development', 'programmer', 2000] );</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Rework the following code through 
+		destructuring according to the 
+		theory you learned:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function func(employee) {
+	let name       = employee[0];
+	let surname    = employee[1];
+	let department = employee[2];
+	
+	let position;
+	if (arr[3] !== undefined) {
+		position = arr[3];
+	} else {
+		position = 'junior';
+	}
+}
+
+func( ['John', 'Smit', 'development'] );</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Rework the following code through 
+		destructuring according to the 
+		theory you learned:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function func(department, employee, hired) {
+	let name     = employee[0];
+	let surname  = employee[1];
+	
+	let year  = hired[0];
+	let month = hired[1];
+	let day   = hired[2];
+}
+
+func( 'development', ['John', 'Smit'], [2018, 12, 31] );</code>
+	</div>
+</div>
+
+<h2>Objects in parameters</h2>
+<p>
+	Similarly, you can destructure parameter-objects:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func({year, month, day}) {
+	console.log(year);  // shows 2025
+	console.log(month); // shows 12
+	console.log(day);   // shows 31
+}
+
+func({year: 2025, month: 12, day: 31,});</code>
+</div>
+<div class="task">
+	<p>
+		Rework the following code through 
+		destructuring according to the 
+		theory you learned:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function func(options) {
+	let color  = options.color;
+	let width  = options.width;
+	let height = options.height;
+}
+
+func( {color: 'red', width: 400, height: 500} );</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Rework the following code through 
+		destructuring according to the 
+		theory you learned:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function func(options) {
+	let width  = options.width;
+	let height = options.height;
+	
+	let color;
+	if (options.color !== undefined) {
+		color = options.color;
+	} else {
+		color = 'black';
+	}
+}
+
+func( {color: 'red', width: 400, height: 500} );</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="61" data-hash="jsPmDstFP" data-quantity="363" data-num="221"><a href="../../../../../en/javascript/book/prime/destructuring/objects/variables-declaration.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/time/object-Date.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/destructuring/function-parameters.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/destructuring/function-parameters.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

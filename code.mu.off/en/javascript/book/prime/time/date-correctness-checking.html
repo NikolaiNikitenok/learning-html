@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Date validation in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to check the date for correctness in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Date validation in JavaScript</h1>
+				<div class="content">
+<p>
+	Let's now learn how to check the date for 
+	correctness. For example, January <code class="number inline">31</code>st 
+	is a valid date, but January <code class="number inline">32</code>d is not. 
+	As you know, JavaScript automatically corrects 
+	dates. In our case, this means that January 
+	<code class="number inline">32</code> will automatically become February 
+	<code class="number inline">1</code>st.
+</p>
+<p>
+	Such a JavaScript property can be used to check 
+	for the existence of a date. How we will check: 
+	let's create an object with a date and see if 
+	parts of the date have changed or not. In other 
+	words, whether JavaScript has performed the 
+	adjustment on our date or not. If fulfilled, 
+	then the date passed by us is incorrect, and 
+	if not fulfilled, it is correct.
+</p>
+<p>
+	Let's do the above:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let year  = 2025;
+let month = 0;
+let day   = 32;
+
+let date = new Date(year, month, day);
+
+if (date.getFullYear() == year && date.getMonth() == month && date.getDate() == day) {
+	console.log('correct');
+} else {
+	console.log('incorrect');
+}</code>
+</div>
+<div class="task">
+	<p>
+		Make the function <code class="code inline">checkDate</code> that will 
+		perform the above check. Let the function 
+		return <code class="code inline">true</code> if the date is correct 
+		and <code class="code inline">false</code> otherwise. An example of 
+		how this function works for January 
+		<code class="number inline">31</code> and January <code class="number inline">32</code>:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">console.log(checkDate(2025, 0, 31)); // shows true
+console.log(checkDate(2025, 0, 32)); // shows false</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="64" data-hash="jsPmTmDCCh" data-quantity="363" data-num="234"><a href="../../../../../en/javascript/book/prime/time/leap-year.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/time/time-moments-getting.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/time/date-correctness-checking.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/time/date-correctness-checking.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

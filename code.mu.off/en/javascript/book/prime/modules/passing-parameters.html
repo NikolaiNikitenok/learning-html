@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Passing parameters to a module via closures in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will analyze the creation of a module using a in-place function call in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Passing parameters to a module via closures in JavaScript</h1>
+				<div class="content">
+<p>
+	It is considered good practice not to hardcode any values 
+	into the module, but to pass them as a parameter of the 
+	module itself (that is, as a parameter of the function 
+	called in-place):
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">;(function(arg1, arg2) { // the parameters get into variables
+	
+})(1, 2); // passing some parameters</code>
+</div>
+<p>
+	Let's look at an example. Let's have a div 
+	with a number and a button:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="div"&gt;3&lt;/div&gt;
+&lt;button id="btn"&gt;click me&lt;/button&gt;</code>
+</div>
+<p>
+	Suppose we also have some module:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">;(function() {
+	let div = document.querySelector('#div');
+	let btn = document.querySelector('#btn');
+	
+	function func(num) {
+		return num * num;
+	}
+	
+	btn.addEventListener('click', function() {
+		div.textContent = func(div.textContent);
+	});
+})();</code>
+</div>
+<p>
+	As you can see, our element selectors are hardcoded in 
+	the module code. A better solution would be to pass 
+	them as module parameters - so in the future we can 
+	easily change them. Let's refactor our module:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">;(function(selector1, selector2) {
+	let div = document.querySelector(selector1);
+	let btn = document.querySelector(selector2);
+	
+	function func(num) {
+		return num * num;
+	}
+	
+	btn.addEventListener('click', function() {
+		div.textContent = func(div.textContent);
+	});
+})('#div', '#btn');</code>
+</div>
+<div class="task">
+	<p>
+		Given a button and three inputs into which numbers 
+		are entered. On pressing the button print the sum 
+		of the entered numbers to the console. Implement a 
+		task using a module.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="99" data-hash="jsPmMClPP" data-quantity="363" data-num="359"><a href="../../../../../en/javascript/book/prime/modules/modules-clousures.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/modules/passing-parent-elements.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/modules/passing-parameters.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/modules/passing-parameters.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

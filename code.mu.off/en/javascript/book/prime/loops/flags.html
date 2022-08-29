@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Working with flags in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will look at working with flags in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Working with flags in JavaScript</h1>
+				<div class="content">
+<p>
+	Now we will learn how to work with <dfn>flags</dfn>. 
+	The flag is a special variable that can only 
+	take two values: <code class="code inline">true</code> and <code class="code inline">false</code>. 
+	Using flags, you can solve problems that check 
+	for the absence of something: for example, you 
+	can check that there is no element with a certain 
+	value in an array. Let's get started.
+</p>
+<p>
+	Let's solve the following problem: given an array 
+	of numbers, you need to check if it has an element 
+	with the value <code class="number inline">3</code> or not. If there is, 
+	we print <code class="string inline">'+++'</code>, if not, 
+	we print <code class="string inline">'---'</code>.
+</p>
+<p>
+	First, let's try to print <code class="string inline">'+++'</code>. To do this, 
+	let's go through all the elements of our array 
+	and with if we ask if the current element is 
+	equal to the value <code class="number inline">3</code>. If equal - we'll 
+	output <code class="string inline">'+++'</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3, 4, 5];
+
+for (let elem of arr) {
+	if (elem == 3) {
+		console.log('+++');
+	}
+}</code>
+</div>
+<p>
+	But our solution is not very good: after all, 
+	if the array contains more than one value 
+	<code class="number inline">3</code>, but several, then <code class="string inline">'+++'</code> will 
+	be displayed several times. Let's remake our 
+	array (make two elements with value 3) 
+	and make sure of it:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3, 4, 3, 5];
+
+for (let elem of arr) {
+	if (elem == 3) {
+		console.log('+++'); // outputs several times
+	}
+}</code>
+</div>
+<p>
+	Let's fix the problem: end the loop with 
+	<code class="code inline">break</code> if the element 
+	is already found:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3, 4, 3, 5];
+
+for (let elem of arr) {
+	if (elem == 3) {
+		console.log('+++');
+		break;  // terminates the loop
+	}
+}</code>
+</div>
+<p>
+	Let's now try to make it so that if there 
+	are no elements with the value <code class="number inline">3</code> in 
+	the array at all, <code class="string inline">'---'</code> is displayed. 
+	A common mistake is to add <code class="code inline">else</code> to 
+	our if - in this case, <code class="string inline">'---'</code> will be 
+	displayed for all elements that are not <code class="number inline">3</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3, 4, 5];
+
+for (let elem of arr) {
+	if (elem == 3) {
+		console.log('+++'); // outputs for element 3
+	} else {
+		console.log('---'); // outputs for elements 1, 2, 4, 5
+	}
+}</code>
+</div>
+<p>
+	So the idea of adding <code class="code inline">else</code> is a bad 
+	idea, not a working one. To solve problems 
+	of this type (such problems are quite common) 
+	they use the so-called flags.
+</p>
+<p>
+	As mentioned above, a flag is a variable 
+	that can take two values: <code class="code inline">true</code> or 
+	<code class="code inline">false</code>.
+</p>
+<p>
+	So, let's make the variable <code class="code inline">flag</code> with 
+	the following value: if it is equal to 
+	<code class="code inline">true</code>, then there is an element <code class="number inline">3</code> 
+	in the array, and if <code class="code inline">false⁅ /c⁆, then 
+	there is no such element.
+</p>
+<p>
+	Initially, we set the variable <code class="code inline">flag</code> 
+	to the value <code class="code inline">false</code> - that is, we will 
+	assume that there is no element <code class="number inline">3</code> 
+	in the array:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3, 4, 5];
+let flag = false; // consider that element 3 is not in the array</code>
+</div>
+<p>
+	Then we'll run the loop with if just like 
+	we did before. If the loop detects that 
+	the array has element 3, then set the 
+	variable <code class="code inline">flag</code> to <code class="code inline">true</code> and 
+	exit the loop with <code class="code inline">break</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3, 4, 5];
+let flag = false; // consider that element 3 is not in the array
+
+for (let elem of arr) {
+	if (elem == 3) {
+		flag = true; // the element exists - redefine the flag variable
+		break; // get out of the loop
+	}
+}</code>
+</div>
+<p>
+	The answer to the question, if the array 
+	has <code class="number inline">3</code> or not, we can only give after 
+	the loop. And we already have this answer: 
+	after the loop, the variable <code class="code inline">flag</code> 
+	could remain <code class="code inline">false</code> or could change 
+	its value to <code class="code inline">true</code> if the loop found 
+	<code class="number inline">3</code> in the array:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3, 4, 5];
+let flag = false;
+
+for (let elem of arr) {
+	if (elem == 3) {
+		flag = true;
+		break;
+	}
+}
+
+// here the flag variable is either true or false</code>
+</div>
+<p>
+	Now, after the loop, we can make an if that 
+	looks at the variable <code class="code inline">flag</code> and 
+	displays <code class="string inline">'+++'</code> or <code class="string inline">'---'</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3, 4, 5];
+let flag = false;
+
+for (let elem of arr) {
+	if (elem == 3) {
+		flag = true;
+		break;
+	}
+}
+
+if (flag === true) {
+	console.log('+++');
+} else {
+	console.log('---');
+}</code>
+</div>
+<div class="task">
+	<p>
+		Given an array:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let arr = ['a', 'b', 'c', 'd', 'e'];</code>
+	</div>
+	<p>
+		Check that this array contains the element 
+		<code class="string inline">'c'</code>. If yes, print <code class="string inline">'+++'</code>, and 
+		if not, print <code class="string inline">'---'</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Write code to check if a number is prime 
+		or not. A prime number is only divisible 
+		by 1 and itself, and is not divisible by 
+		other numbers.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="36" data-hash="jsPmLpFl" data-quantity="363" data-num="130"><a href="../../../../../en/javascript/book/prime/loops/objects-changing.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/loops/array-elements-counting.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/loops/flags.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/loops/flags.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

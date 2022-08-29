@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Test with answer options in HTML code in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will implement a multiple choice test with answer options in HTML code in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Test with answer options in HTML code in JavaScript</h1>
+				<div class="content">
+<p>
+	In the previous lessons, the answers to the 
+	test questions had to be typed into inputs. 
+	In life, however, there are often also tests 
+	in which you can choose one answer from those 
+	offered. Let's learn how to create such tests.
+</p>
+<p>
+	Let's start again with a simple things, when 
+	questions and answers are stored in HTML code, 
+	and then we will gradually complicate it.
+</p>
+<p>
+	So here's a multiple choice test:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="test"&gt;
+	&lt;div&gt;
+		&lt;p&gt;question 1?&lt;/p&gt;
+		
+		&lt;label&gt;
+			&lt;input type="radio" name="1" data-right&gt;
+			answer 1
+		&lt;/label&gt;
+		&lt;label&gt;
+			&lt;input type="radio" name="1"&gt;
+			answer 2
+		&lt;/label&gt;
+		&lt;label&gt;
+			&lt;input type="radio" name="1"&gt;
+			answer 3
+		&lt;/label&gt;
+	&lt;/div&gt;
+	&lt;div&gt;
+		&lt;p&gt;question 2?&lt;/p&gt;
+		
+		&lt;label&gt;
+			&lt;input type="radio" name="2"&gt;
+			answer 1
+		&lt;/label&gt;
+		&lt;label&gt;
+			&lt;input type="radio" name="2" data-right&gt;
+			answer 2
+		&lt;/label&gt;
+		&lt;label&gt;
+			&lt;input type="radio" name="2"&gt;
+			answer 3
+		&lt;/label&gt;
+	&lt;/div&gt;
+	&lt;div&gt;
+		&lt;p&gt;question 3?&lt;/p&gt;
+		
+		&lt;label&gt;
+			&lt;input type="radio" name="3"&gt;
+			answer 1
+		&lt;/label&gt;
+		&lt;label&gt;
+			&lt;input type="radio" name="3"&gt;
+			answer 2
+		&lt;/label&gt;
+		&lt;label&gt;
+			&lt;input type="radio" name="3" data-right&gt;
+			answer 3
+		&lt;/label&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code>
+</div>
+<p>
+	As you can see, we can select answer options using 
+	the radio buttons. At the same time, in each question, 
+	the radio button with the correct option is marked 
+	with the <code class="code inline">data-right</code> attribute.
+</p>
+<div class="task">
+	<p>
+		Make it so that when you select one of the 
+		answers to the question, this answer is 
+		immediately checked for correctness.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Modify your code so that answers are 
+		checked on button click.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/practice/" data-persent="51" data-hash="jsPrTstHAV" data-quantity="75" data-num="39"><a href="../../../../../en/javascript/book/practice/test/object-questions-answers.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/practice/test/array-answers-variants.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/practice/test/html-answers-variants.html" class="active">en</a><a href="../../../../../ru/javascript/book/practice/test/html-answers-variants.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

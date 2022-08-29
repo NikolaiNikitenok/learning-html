@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Getting the DOM element in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to get elements in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Getting the DOM element in JavaScript</h1>
+				<div class="content">
+<p>
+	Now we will learn how to get the page 
+	DOM elements in order to perform some 
+	manipulations with them in the future.
+</p>
+<p>
+	Let's have some button:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;input id="button" type="submit"&gt;</code>
+</div>
+<p>
+	Let's get a reference to this button into 
+	a variable. To do this, use the <code class="code inline">querySelector</code> 
+	method of the special object <code class="code inline">document</code>. 
+	This method takes a CSS selector as a parameter 
+	and returns a reference to the element found 
+	with this selector.
+</p>
+<p>
+	Our button has an attribute <code class="code inline">id</code> with 
+	the value <code class="value inline">button</code>. So we can find 
+	this button by the selector <code class="selector inline">#button</code>. 
+	So, let's find our button and write a 
+	reference to it into a variable:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let button = document.querySelector('#button');
+console.log(button);</code>
+</div>
+<div class="task">
+	<p>
+		Given <code class="number inline">3</code> paragraphs:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;p id="elem1"&gt;1&lt;/p&gt;
+&lt;p id="elem2"&gt;2&lt;/p&gt;
+&lt;p id="elem3"&gt;3&lt;/p&gt;</code>
+	</div>
+	<p>
+		Put the reference to each of the paragraphs 
+		in a separate variable and print the 
+		contents of each of these variables 
+		to the console.
+	</p>
+</div>
+
+<h2>More advanced selectors</h2>
+<p>
+	Let's do something more complicated. Let, for 
+	example, we have the following HTML code:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="parent"&gt;
+	&lt;input&gt;
+&lt;/div&gt;</code>
+</div>
+<p>
+	Let's get a reference to the input located 
+	inside the block <code class="selector inline">#parent</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#parent input');
+console.log(elem);</code>
+</div>
+<p>
+	As you can see, we got our input using the 
+	<code class="selector inline">#parent input</code> selector. In fact, all 
+	inputs that are in <code class="selector inline">#parent</code> match 
+	this CSS selector.
+</p>
+<p>
+	Let, for example, we have two such inputs:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="parent"&gt;
+	&lt;input value="1"&gt;
+	&lt;input value="2"&gt;
+&lt;/div&gt;</code>
+</div>
+<p>
+	Then, if we write the selector <code class="selector inline">#parent input</code> 
+	in the CSS code, it will affect both of our inputs:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="css">#parent input {
+	color: red;
+}</code>
+</div>
+<p>
+	The <code class="code inline">querySelector</code> method, however, does 
+	not work that way. It always gets only one 
+	element - the first one that matches the 
+	specified selector. Let's look at an example. 
+	Let's say we have inputs with class <code class="selector inline">elem</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;input class="elem"&gt;
+&lt;input class="elem"&gt;</code>
+</div>
+<p>
+	Let's get the first of these inputs:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('.elem');
+console.log(elem); // here will be the first input</code>
+</div>
+<div class="task">
+	<p>
+		Given the following HTML:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="block"&gt;
+	&lt;p&gt;1&lt;/p&gt;
+	&lt;p&gt;2&lt;/p&gt;
+&lt;/div&gt;</code>
+	</div>
+	<p>
+		Get a reference to the first paragraph 
+		from a div with <code class="code inline">id</code> equal to 
+		<code class="selector inline">block</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given the following HTML:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;div class="block"&gt;
+	&lt;p&gt;1&lt;/p&gt;
+	&lt;p&gt;2&lt;/p&gt;
+&lt;/div&gt;</code>
+	</div>
+	<p>
+		Get a reference to the first paragraph 
+		from a div with the class <code class="selector inline">block</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given the following HTML:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;p class="www"&gt;text&lt;/p&gt;
+&lt;p class="www"&gt;text&lt;/p&gt;</code>
+	</div>
+	<p>
+		Get a reference to the first paragraph 
+		with the class <code class="selector inline">www</code>.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="66" data-hash="jsPmDmEG" data-quantity="363" data-num="241"><a href="../../../../../../en/javascript/book/prime/dom/basis/dom-elements.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../en/javascript/book/prime/dom/basis/events-handlers-binding.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/basis/element-getting.html" class="active">en</a><a href="../../../../../../ru/javascript/book/prime/dom/basis/element-getting.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

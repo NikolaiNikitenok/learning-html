@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Checking the digits of a number in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to check the digits of a number using the if-else construct in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Checking the digits of a number in JavaScript</h1>
+				<div class="content">
+<p>
+	Let's have a number:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 12345;</code>
+</div>
+<p>
+	Attempting to access the first character 
+	of a number will result in 
+	unexpected behavior:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 12345;
+
+if (num[0] == 1) {
+	console.log('+++');
+} else {
+	console.log('---'); // it will work
+}</code>
+</div>
+<p>
+	As you should already know, the problem is 
+	that you can access the characters of a 
+	string, but not the digits of a number:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 12345;
+console.log(num[0]); // shows undefined</code>
+</div>
+<p>
+	To solve the problem, let's convert our 
+	number to a string:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 12345;
+let str = String(num);
+
+if (str[0] == 1) {
+	console.log('+++'); // it will work
+} else {
+	console.log('---');
+}</code>
+</div>
+<p>
+	It is not necessary to introduce a new 
+	variable, you can apply <code class="code inline">[0]</code> directly 
+	to the result of the <code class="code inline">String</code> function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 12345;
+
+if (String(num)[0] == 1) {
+	console.log('right'); // shows 'right'
+} else {
+	console.log('wrong');
+}</code>
+</div>
+<p>
+	Let now we want to check the first digit for 
+	the fact that it is equal to <code class="number inline">1</code> or 
+	<code class="number inline">2</code>. Let's write the corresponding code:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 12345;
+
+if (String(num)[0] == 1 || String(num)[0] == 2) {
+	console.log('+++');
+} else {
+	console.log('---');
+}</code>
+</div>
+<p>
+	In this case, it turns out that the construct 
+	<code class="code inline">String(num)[0]</code> will be repeated twice. 
+	This, firstly, is too long, and secondly, it 
+	is not optimal, since we will convert the 
+	number into a string twice - the second time 
+	it turns out to be redundant, but the program 
+	resources are spent on it.
+</p>
+<p>
+	Let's fix the problem:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 12345;
+let first = String(num)[0];
+
+if (first == 1 || first == 2) {
+	console.log('+++');
+} else {
+	console.log('---');
+}</code>
+</div>
+<div class="task">
+	<p>
+		Given an integer. Write a condition that 
+		will check if the last digit of this 
+		number is equal to zero.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Let the variable <code class="code inline">num</code> store a number. 
+		Determine if the number is even or not. 
+		The number will be even if the last 
+		character is <code class="number inline">0</code>, <code class="number inline">2</code>, <code class="number inline">4</code>, 
+		<code class="number inline">6</code>, or <code class="number inline">8</code>, and odd otherwise.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="29" data-hash="jsPmCdExND" data-quantity="363" data-num="106"><a href="../../../../../../en/javascript/book/prime/conditions/examples/strings-characters.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../en/javascript/book/prime/conditions/examples/division-remainders.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/conditions/examples/numbers-digits.html" class="active">en</a><a href="../../../../../../ru/javascript/book/prime/conditions/examples/numbers-digits.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

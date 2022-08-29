@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Accordion in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../js/location.js?v=3"></script>
+		<script src="../../../../js/locale.js?v=5"></script>
+		<script src="../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will implement an accordion in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Accordion in JavaScript</h1>
+				<div class="content">
+<p>
+	Let's now implement the accordion. It is similar 
+	to tabs laid on their side. At the same time, 
+	in the accordion, you can collapse the current 
+	tab by clicking on the active link.
+</p>
+<p>
+	Here is a sample:
+</p>
+<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			#parent {
+			margin: 0 auto;
+			width: 400px;
+		}
+		.tab {
+			margin-bottom: 10px;
+		}
+		
+		.tab .link a {
+			display: block;
+			padding: 10px;
+			color: black;
+			text-decoration: none;
+			text-align: center;
+			background: #f8f8f8;
+			border: 1px solid gray;
+		}
+		.tab .link:hover a {
+			background: #f2f2f2;
+		}
+		
+		.tab:not(.active) .text {
+			display: none;
+		}
+		.tab .text {
+			border: 1px dashed gray;
+			border-top: none;
+			
+			padding: 10px;
+			height: 300px;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;parent&quot;>
+			<div class=&quot;tab active&quot;>
+				<div class=&quot;link&quot;>
+					<a href=&quot;#&quot; >tab 1</a>
+				</div>
+				<div class=&quot;text&quot;>
+					tab text 1
+				</div>
+			</div>
+			<div class=&quot;tab&quot;>
+				<div class=&quot;link&quot;>
+					<a href=&quot;#&quot; >tab 2</a>
+				</div>
+				<div class=&quot;text&quot;>
+					tab text 2
+				</div>
+			</div>
+			<div class=&quot;tab&quot;>
+				<div class=&quot;link&quot;>
+					<a href=&quot;#&quot; >tab 3</a>
+				</div>
+				<div class=&quot;text&quot;>
+					tab text 3
+				</div>
+			</div>
+		</div>
+		
+		<script>
+			
+			let parent = document.querySelector('#parent');
+		let links  = parent.querySelectorAll('.tab .link a');
+		
+		for (let link of links) {
+			link.addEventListener('click', function(event) {
+				let activeTab = parent.querySelector('.tab.active');
+				
+				if (activeTab) {
+					activeTab.classList.remove('active');
+				}
+				
+				let newTab = link.closest('.tab');
+				if (newTab !== activeTab) {
+					newTab.classList.add('active');
+				}
+				
+				event.preventDefault();
+			});
+		}
+		</script>
+	</body>
+</html>"></iframe></div>
+<p>
+	Also study the layout with which 
+	we will solve the problem:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="parent"&gt;
+	&lt;div class="tab active"&gt;
+		&lt;div class="link"&gt;
+			&lt;a href="#" &gt;tab 1&lt;/a&gt;
+		&lt;/div&gt;
+		&lt;div class="text"&gt;
+			tab text 1
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class="tab"&gt;
+		&lt;div class="link"&gt;
+			&lt;a href="#" &gt;tab 2&lt;/a&gt;
+		&lt;/div&gt;
+		&lt;div class="text"&gt;
+			tab text 2
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class="tab"&gt;
+		&lt;div class="link"&gt;
+			&lt;a href="#" &gt;tab 3&lt;/a&gt;
+		&lt;/div&gt;
+		&lt;div class="text"&gt;
+			tab text 3
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">#parent {
+	margin: 0 auto;
+	width: 400px;
+}
+.tab {
+	margin-bottom: 10px;
+}
+
+.tab .link a {
+	display: block;
+	padding: 10px;
+	color: black;
+	text-decoration: none;
+	text-align: center;
+	background: #f8f8f8;
+	border: 1px solid gray;
+}
+.tab .link:hover a {
+	background: #f2f2f2;
+}
+
+.tab:not(.active) .text {
+	display: none;
+}
+.tab .text {
+	border: 1px dashed gray;
+	border-top: none;
+	
+	padding: 10px;
+	height: 300px;
+}</code>
+</div>
+
+<h2>Discussion</h2>
+<p>
+	Technically, the HTML code for the accordion 
+	is more convenient than the code for the tabs: 
+	it has links directly above the spoiler that 
+	they open and close. In addition, the <code class="selector inline">active</code> 
+	class in our layout is given to the common 
+	parent of the link and spoiler.
+</p>
+<p>
+	This means that when you click on a link, you 
+	just need to deactivate the old tab and activate 
+	the new one. To deactivate the old tab, you need 
+	to find a tab with the class <code class="selector inline">active</code> and 
+	remove this class from it.
+</p>
+<p>
+	To activate a new tab, you need to click on the 
+	link to find the parent tab of this link and 
+	assign it the <code class="selector inline">active</code> class. Technically, 
+	such a search can be done like this: just find 
+	the closest parent of a link that has the 
+	<code class="selector inline">tab</code> class.
+</p>
+<div class="task">
+	<p>
+		Copy the provided HTML and CSS codes. 
+		Implement the accordion according to 
+		the described algorithm.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/practice/" data-persent="19" data-hash="jsPrStAcc" data-quantity="75" data-num="15"><a href="../../../../en/javascript/book/practice/tabs.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../en/javascript/book/practice/game-cities/task-formulation.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../en/javascript/book/practice/accordion.html" class="active">en</a><a href="../../../../ru/javascript/book/practice/accordion.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../js/metrika.js?v=1"></script>	</body>
+</html>

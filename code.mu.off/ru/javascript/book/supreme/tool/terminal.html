@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Основы работы с терминалом | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы разберем основные команды командной строки для работы инструментами JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Основы работы с терминалом</h1>
+				<div class="content">
+<p>
+	В данном уроке мы разберем основные команды
+	командной строки для работы инструментами
+	JavaScript. Командная строка (<dfn>терминал</dfn>,
+	<dfn>консоль</dfn>) представляет собой программу,
+	позволяющую вводить текстовые команды. С
+	помощью этих команд можно перемещаться по
+	файловой системе и запускать программы.
+</p>
+<p>
+	Для того, чтобы начать работать с командной
+	строкой, погуглите, как ее открыть в вашей
+	операционной системе. После этого переходите
+	к дальнейшему чтению.
+</p>
+<p>
+	Давайте рассмотрим основные команды терминала.
+	Пусть для этого у нас создана следующая файловая
+	структура:
+</p>
+<div class="block"><ul class="structure"><li class="dir">/xxx/<ul><li class="dir">/aaa/<ul><li class="file">dddd.html</li><li class="file">eeee.html</li><li class="dir">/zzz/</li></ul></li><li class="dir">/bbb/<ul><li class="file">cccc.html</li><li class="file">ffff.html</li><li class="dir">/kkk/</li><li class="dir">/yyy/</li></ul></li></ul></li></ul></div>
+<p>
+	Пусть терминал открыт на папке <code class="path inline">xxx</code>.
+	В примерах кода я вместе с командами терминала
+	буду указывать рабочий каталог перед символом
+	доллара:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="terminal">xxx$</code>
+</div>
+<p>
+	После доллара я буду указывать команды, которые
+	мы хотим использовать:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="terminal">xxx$ your command</code>
+</div>
+
+<h2>Переход по папкам</h2>
+<p>
+	Давайте для начала научимся выполнять переход
+	по папкам. Это делает команда команду <code class="code inline">cd</code>.
+</p>
+<p>
+	Пусть рабочей папкой нашего терминала является
+	папка <code class="path inline">xxx</code>. Давайте перейдем на папку
+	<code class="path inline">aaa</code>, находящуюся внутри нее:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="terminal">/xxx$ cd aaa</code>
+</div>
+<p>
+	Теперь перейдем в папку <code class="path inline">zzz</code>, находящуюся
+	внутри <code class="path inline">aaa</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="terminal">/xxx/aaa$ cd zzz</code>
+</div>
+<p>
+	Если в качестве имени папки указать две точки,
+	то осуществится переход на одну папку вверх:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="terminal">/xxx/aaa/zzz$ cd ..</code>
+</div>
+<p>
+	Давайте выйдем еще на один уровень:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="terminal">/xxx/aaa$ cd ..</code>
+</div>
+<p>
+	Точка в качестве имени файла обозначает текущий
+	каталог. В следующем примере мы останемся
+	на месте:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="terminal">/xxx$ cd .</code>
+</div>
+<p>
+	Следующая команда осуществит переход к предыдущему
+	каталогу:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="terminal">/xxx$ cd-</code>
+</div>
+<p>
+	Можно в качестве пути указывать не только
+	имя каталога, но и путь к нему:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="terminal">/xxx$ cd aaa/zzz</code>
+</div>
+<p>
+	Можно начинать поиск каталога, выйдя на уровень
+	вверх. К примеру, находясь в папке <code class="path inline">aaa</code>
+	мы хотим перейти к папке <code class="path inline">bbb/kkk</code>.
+	Очевидно, что для этого нам необходимо сначала
+	выйти на уровень вверх - в папку <code class="path inline">xxx</code>.
+	Это можно сделать следующим образом:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="terminal">/xxx/aaa/$ cd ../bbb/kkk</code>
+</div>
+<p>
+	Можно выходить на сколько угодно уровней вверх:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="terminal">/xxx/aaa/zzz$ cd ../../bbb/kkk</code>
+</div>
+
+<h2>Полный текущий путь</h2>
+<p>
+	С помощью команды <code class="code inline">pwd</code> можно узнать
+	абсолютный путь относительно корня операционной
+	системы к текущему рабочему каталогу:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="terminal">/xxx$ pwd</code>
+</div>
+
+<h2>Просмотр содержимого каталога</h2>
+<p>
+	Команда <code class="code inline">ls</code> используется для просмотра
+	содержимого каталога:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="terminal">/xxx$ ls</code>
+</div>
+<p>
+	Следующая команда также выведет список всех
+	файлов в подкаталогах:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="terminal">/xxx$ ls -R</code>
+</div>
+<p>
+	Следующая команда также покажет скрытые файлы:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="terminal">/xxx$ ls -a</code>
+</div>
+<p>
+	Следующая команда выведет список файлов и
+	каталогов с подробной информацией, такой
+	как разрешения, размер, владелец:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="terminal">/xxx$ ls -al</code>
+</div>
+
+<h2>Просмотр содержимого файла</h2>
+<p>
+	Команда <code class="code inline">cat</code> используется для просмотра
+	содержимого файла, выводя его прямо в терминал:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="terminal">/xxx$ cat aaa/dddd.html</code>
+</div>
+
+<h2>Создание файла</h2>
+<p>
+	С помощью команды <code class="code inline">cat</code> можно создавать
+	новые файлы:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="terminal">/xxx$ cat&gt; new.txt</code>
+</div>
+
+<h2>Копирование файла</h2>
+<p>
+	Команда <code class="code inline">cp</code> выполняет копирование файла.
+	Первым параметром она принимает путь к файлу,
+	который мы хотим копировать, а вторым - путь,
+	по которому мы хотим создать копию файла:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="terminal">/xxx$ cp aaa/dddd.html bbb/copy.html</code>
+</div>
+
+<h2>Перемещение файла</h2>
+<p>
+	Команда <code class="code inline">mv</code> выполняет перемещение файла.
+	Первым параметром она принимает старый путь
+	к файлу, а вторым параметром - новый путь:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="terminal">/xxx$ mv aaa/dddd.html bbb/dddd.html</code>
+</div>
+<p>
+	Эту команду можно использовать не только
+	для копирования, но и для переименования файлов:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="terminal">/xxx$ mv aaa/dddd.html aaaa/ssss.html</code>
+</div>
+
+<h2>Создание каталога</h2>
+<p>
+	Команда <code class="code inline">mkdir</code> выполняет создание новой
+	папки:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="terminal">/xxx$ mkdir test</code>
+</div>
+
+<h2>Удаление каталога</h2>
+<p>
+	Команда <code class="code inline">rmdir</code> выполняет удаление пустого
+	каталога:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="terminal">/xxx$ rmdir test</code>
+</div>
+<p>
+	Команда <code class="code inline">rm</code> используется для удаления
+	каталогов и содержимого внутри них:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="terminal">/xxx$ rm aaa</code>
+</div>
+<p class="notice">
+	Будьте очень осторожны с этой командой и всегда
+	проверяйте, в каком каталоге вы находитесь.
+	Она удаляет все и ее невозможно отменить.
+</p>
+
+<h2>Практические задачи</h2>
+<div class="task">
+	<p>
+		Вручную создайте где-нибудь папку <code class="path inline">test</code>,
+		а в ней - папку <code class="path inline">dir</code> и файл <code class="path inline">file.txt</code>.
+		Разместите в подпапке какие-нибудь файлы и папки.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Запустите командную строку в папке <code class="path inline">test</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		С помощью соответствующей команды перейдите
+		в папку <code class="path inline">dir</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		С помощью соответствующей команды просмотрите
+		содержимое папки <code class="path inline">dir</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		С помощью соответствующей команды выйдите
+		обратно в папку <code class="path inline">test</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		С помощью соответствующей команды удалите
+		папку <code class="path inline">dir</code>
+	</p>
+</div>
+<div class="task">
+	<p>
+		С помощью соответствующей команды сделайте
+		копию файла <code class="path inline">file.txt</code> в файл <code class="path inline">copy.text</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		С помощью соответствующей команды удалите
+		файл <code class="path inline">file.text</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		С помощью соответствующей команды переименуйте
+		файл <code class="path inline">copy.text</code> в файл <code class="path inline">file.txt</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		С помощью соответствующей команды создайте
+		папку <code class="path inline">dir</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		С помощью соответствующей команды переместите
+		файл <code class="path inline">file.txt</code> в папку <code class="path inline">dir</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		С помощью соответствующей команды создайте
+		в папке <code class="path inline">dir</code> файл <code class="path inline">test.txt</code>.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/supreme/" data-persent="46" data-hash="jsSpTlTr" data-quantity="114" data-num="54"><a href="../../../../../ru/javascript/book/supreme/exceptions/throwing.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/javascript/book/supreme/tool/nodejs.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

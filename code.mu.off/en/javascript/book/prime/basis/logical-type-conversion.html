@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Boolean type conversion in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will analyze the conversion of a boolean type in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Boolean type conversion in JavaScript</h1>
+				<div class="content">
+<p>
+	Now we will look at how the special 
+	values <code class="code inline">true</code> and <code class="code inline">false</code> 
+	behave when converted to strings or numbers. 
+	You will need this knowledge in the following lessons.
+</p>
+<p>
+	So, let's try to convert to a string using the function <code class="code inline">String</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">alert(String(true));  // shows 'true'
+alert(String(false)); // shows 'false'</code>
+</div>
+<p>
+	As you can see, the value <code class="code inline">true</code> is converted 
+	to the string <code class="string inline">'true'</code>, and the value 
+	<code class="code inline">false</code> is converted to the string <code class="string inline">'false'</code>. 
+	That is, when you try to add a string and a 
+	boolean value, this boolean value will be converted 
+	to a string and the strings will be concatenated:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">alert('a' + true);    // shows 'atrue'</code>
+</div>
+<p>
+	When cast to a number, the value <code class="code inline">true</code> 
+	is converted to the number <code class="number inline">1</code>, 
+	and the value <code class="code inline">false</code> is converted 
+	to the number <code class="number inline">0</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">alert(Number(true));  // shows 1
+alert(Number(false)); // shows 0</code>
+</div>
+<p>
+	Boolean values are first converted 
+	to a number in all mathematical operations. 
+	An example:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">alert(true + 1);     // shows 2
+alert(true + true);  // shows 2</code>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">alert(true + 3);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">alert(true + true);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">alert(true - true);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">alert(true + false);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">alert('1' + true);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">alert( String(true) + 1 );</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">alert( String(true) + Number(true) );</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="7" data-hash="jsPmBsLTC" data-quantity="363" data-num="25"><a href="../../../../../en/javascript/book/prime/basis/conversion-to-string.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/basis/conversion-to-logical-type.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/basis/logical-type-conversion.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/basis/logical-type-conversion.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

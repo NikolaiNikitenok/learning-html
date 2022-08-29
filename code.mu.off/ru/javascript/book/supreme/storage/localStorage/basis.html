@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Основы работы с локальным хранилищем в JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами разберем сохранение, получение и удаление данных через localStorage в JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Основы работы с локальным хранилищем в JavaScript</h1>
+				<div class="content">
+<p>
+	Сейчас мы с вами разберемся со специальным
+	объектом <code class="code inline">localStorage</code>, позволяющим
+	хранить данные между заходами пользователя
+	на ваш сайт (<code class="number inline">5</code>-<code class="number inline">10</code> мегабайт
+	информации). Данные хранятся в специальном
+	месте браузера под названием <code class="code inline">локальное
+	хранилище</code>.
+</p>
+<p>
+	Доступ к данным производится по ключу: вы
+	сохраняете данные с каким-то ключом, а затем
+	можете получить их по этому ключу или удалить.
+	При этом разрешено сохранять только строки.
+	Для работы с данными есть специальные методы.
+	Давайте их рассмотрим.
+</p>
+
+<h2>Сохранение и получение данных</h2>
+<p>
+	Метод <code class="code inline">setItem</code> предназначен для сохранения
+	данных. Первым параметром он принимает ключ,
+	а вторым - значение. Метод <code class="code inline">getItem</code>
+	предназначен для получения данных. Он принимает
+	один параметр - ключ, под которым эти данные
+	были сохранены.
+</p>
+<p>
+	Давайте попробуем эти методы на практике.
+	Для начала давайте сохраним какую-нибудь
+	строку с каким-нибудь ключом:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">localStorage.setItem('key', 'hello'); // сохраняем с ключом 'key'</code>
+</div>
+<p>
+	Скопируйте приведенный код и запустите его.
+	В результате строка <code class="string inline">'hello'</code> сохранится
+	с ключом <code class="string inline">'key'</code>.
+</p>
+<p>
+	Давайте теперь получим нашу строку из локального
+	хранилища:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = localStorage.getItem('key'); // получаем данные по ключу
+console.log(str); // выведет 'hello'</code>
+</div>
+<div class="task">
+	<p>
+		Напишите скрипт, который сохранит в локальном
+		хранилище три числа под тремя разными ключами.
+		Запустите этот скрипт, чтобы данные сохранились.
+		Затем напишите скрипт, который получит ваши
+		три числа из локального хранилища и найдет
+		их сумму. Запустите второй скрипт и убедитесь
+		в его работоспособности.
+	</p>
+</div>
+
+<h2>Однократное сохранение</h2>
+<p>
+	Если попытаться прочитать ключ, для которого
+	не были записаны данные, то результатом будет
+	<code class="code inline">null</code>. Это можно использовать для того,
+	чтобы выполнить однократное сохранение данных.
+</p>
+<p>
+	К примеру, давайте запишем в локальное хранилище
+	момент первого захода пользователя на сайт.
+	А если пользователь зайдет не первый раз,
+	то ничего делать не будем:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let time = localStorage.getItem('time');
+
+if (time === null) {
+	let now = ( new Date() ).getTime();
+	localStorage.setItem('time', now);
+}</code>
+</div>
+<p>
+	Перепишем условие в более коротком виде:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let time = localStorage.getItem('time');
+
+if (!time) {
+	let now = ( new Date() ).getTime();
+	localStorage.setItem('time', now);
+}</code>
+</div>
+<div class="task">
+	<p>
+		По заходу пользователя на сайт запишите в
+		локальное хранилище текущий момент времени.
+		Затем по повторному заходу выведите, сколько
+		прошло времени с предыдущего захода пользователя
+		на сайт.
+	</p>
+</div>
+<div class="task">
+	<p>
+		По заходу пользователя на сайт спросите у
+		него дату рождения. При следующем заходе
+		пользователя на сайт, если у него в этот
+		день будет День Рождения - поздравьте его
+		с этим праздником.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан инпут. По потери фокуса в этом инпуте
+		сохраните его значение в локальное хранилище.
+		При следующем заходе пользователя на страницу
+		установите в инпуте сохраненный ранее текст.
+	</p>
+</div>
+
+<h2>Перезапись данных</h2>
+<p>
+	Можно перезаписывать данные, хранящиеся под
+	определенным ключом, смотрите пример:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">localStorage.setItem('key', 1);
+let value1 = localStorage.getItem('key');
+console.log(value1); // выведет 1
+
+localStorage.setItem('key', 2);
+let value2 = localStorage.getItem('key');
+console.log(value2); // выведет 2
+
+localStorage.setItem('key', 3);
+let value3 = localStorage.getItem('key');
+console.log(value3); // выведет 3</code>
+</div>
+<div class="task">
+	<p>
+		Пользователь заходит на сайт, затем обновляет
+		страницу, затем еще раз обновляет и так далее.
+		Сделайте счетчик обновления страницы. Каждый
+		раз при обновлении выводите значение счетчика
+		на экран.
+	</p>
+</div>
+
+<h2>Удаление данных</h2>
+<p>
+	С помощью метода <code class="code inline">removeItem</code> можно
+	удалять данные и связанный с ними ключ. Смотрите
+	пример:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">localStorage.removeItem('key');
+
+let value = localStorage.getItem('key');
+console.log(value); // выведет null</code>
+</div>
+<div class="task">
+	<p>
+		Модифицируйте предыдущую задачу. Сделайте
+		так, чтобы счетчик обнулялся после того,
+		как дойдет до <code class="number inline">100</code>.
+	</p>
+</div>
+
+<h2>Удаление всех данных</h2>
+<p>
+	С помощью метода <code class="code inline">clear</code> можно очистить
+	все хранилище. Смотрите пример:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">localStorage.clear();</code>
+</div>
+<div class="task">
+	<p>
+		Очистите хранилище. Проверьте, что все ранее
+		установленные вами ключи пропали.
+	</p>
+</div>
+
+<!--
+	Дополнительные возможности
+	Определение количества записей в хранилище: alert(localStorage.length).
+
+	Определение названия ключа по его номеру: alert(localStorage.key(номер)).
+
+	При выполнении операций с хранилищем, срабатывает событие onstorage. Если к этому событию привязать функцию - то в ней будет доступен объект Event со следующими свойствами:
+
+	<body onstorage="func()">
+	function func(event) {
+		var key = event.key; //ключ изменяемых данных
+		var oldValue = event.oldValue; //старое значение
+		var newValue = event.newValue; //новое значение
+		var storageArea = event.storageArea; //storageArea
+	}
+-->
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/supreme/" data-persent="42" data-hash="jsSpSgBs" data-quantity="114" data-num="49"><a href="../../../../../../ru/javascript/book/supreme/collections/json/data-changing.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../ru/javascript/book/supreme/storage/localStorage/arrays-and-objects.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

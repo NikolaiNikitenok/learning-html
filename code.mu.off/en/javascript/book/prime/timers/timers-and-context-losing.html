@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Timers and context loss in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will analyze the loss of context when using timers in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Timers and context loss in JavaScript</h1>
+				<div class="content">
+<p>
+	When using timers in event handlers, we are faced 
+	with problems with loss of context. Let's look 
+	at an example.
+</p>
+<p>
+	Let us have an input:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;input id="elem" value="text"&gt;</code>
+</div>
+<p>
+	Let an anonymous function be triggered by clicking 
+	on this input and a timer will start inside this 
+	function, outputting something to the console 
+	every second:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+
+elem.addEventListener('click', function() {
+	setInterval(function() {
+		console.log('!!!'); // outputs something to the console
+	}, 1000);
+});</code>
+</div>
+<p>
+	As long as everything is working correctly. But now 
+	let's say we want to output <code class="code inline">value</code> of our input 
+	to the console - a surprise awaits us: <code class="code inline">undefined</code> 
+	will be output to the console:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">elem.addEventListener('click', function() {
+	setInterval(function() {
+		console.log(this.value); // will output undefined
+	}, 1000);
+});</code>
+</div>
+<p>
+	The thing is that we get a function within a function: 
+	there is an external anonymous function that is called 
+	on click and an internal anonymous function that the 
+	timer starts. In the outer function, <code class="code inline">this</code> points 
+	to an input, but not in the inner one. There is a loss 
+	of context.
+</p>
+<p>
+	Why is <code class="code inline">undefined</code> displayed instead of throwing 
+	an error in the console, as it was in previous lessons? 
+	Because <code class="code inline">this</code> inside a function called via 
+	<code class="code inline">setInterval</code> points to <code class="code inline">window</code>.
+</p>
+<p>
+	This means that we are trying to read the value property 
+	of the <code class="code inline">window</code> object, like this: <code class="code inline">window.value</code>, 
+	but there is no such property in it, and we get 
+	<code class="code inline">undefined</code> (not an error).
+</p>
+<p>
+	Let's fix the problem by introducing <code class="code inline">self</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">elem.addEventListener('click', function() {
+	let self = this;
+	
+	setInterval(function() {
+		console.log(self.value);
+	}, 1000);
+});</code>
+</div>
+<div class="task">
+	<p>
+		Let this code be given:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;input type="button" id="elem" value="1"&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+
+elem.addEventListener('click', function() {
+	setInterval(function() {
+		this.value = Number(elem.value) + 1;
+	}, 1000);
+});</code>
+	</div>
+	<p>
+		The author of the code wanted that when a button is 
+		pressed, the value of this button increases by <code class="number inline">1</code> 
+		every second. However, when the button is pressed, 
+		nothing happens at all. Please correct the code author's 
+		mistake. Write a text in which you will explain to the 
+		author of the code why this error occurred.
+	</p>
+</div>
+
+<h2>Other ways to solve the problem</h2>
+<p>
+	Of course, you can use all 
+	<a href="../../../../../en/javascript/book/prime/context/solving-context-problem.html">methods 
+	for solving</a> context problems you know. For example, 
+	you can use the arrow function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">elem.addEventListener('click', function() {
+	setInterval(() =&gt; console.log(this.value), 1000);
+});</code>
+</div>
+<div class="task">
+	<p>
+		Fix the problem of the previous 
+		task with an arrow function.
+	</p>
+</div>
+
+<h2>Solving the problem using closure</h2>
+<p>
+	You can also solve the context problem by using 
+	<a href="../../../../../ru/javascript/book/prime/functions/closures.html">closure</a>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+
+elem.addEventListener('click', function() {
+	function func(self) {
+		return function() {
+			console.log(self.value);
+		}
+	}
+	
+	setInterval(func(this), 1000);
+});</code>
+</div>
+<p>
+	You can not use a named function at all, but perform 
+	<a href="../../../../../ru/javascript/book/prime/functions/immediately-invoked-function-expression.html">calling
+	a function in-place</a>. In this case, we get a 
+	more elegant, but less clear solution:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+
+elem.addEventListener('click', function() {
+	setInterval((function(self) {
+		return function() {
+			console.log(self.value);
+		}
+	})(this), 1000);
+});</code>
+</div>
+<div class="task">
+	<p>
+		Explain how the code I've provided works.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="86" data-hash="jsPmTmrTCL" data-quantity="363" data-num="314"><a href="../../../../../en/javascript/book/prime/timers/dom.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/timers/passing-context-by-parameter.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/timers/timers-and-context-losing.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/timers/timers-and-context-losing.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

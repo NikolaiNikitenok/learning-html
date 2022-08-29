@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Тег meter - вывод значений в диапазоне (HTML5) | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="Тег meter используется для вывода значения в красиво оформленном виде в HTML5.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Тег meter</h1>
+				<div class="content">
+<p>
+	Тег <code class="code inline">meter</code> используется для вывода
+	некоторого значения в красиво оформленном виде.
+</p>
+<p>
+	Внешний вид тега представляет собой частично
+	или полностью закрашенную полоску. Полоска
+	может быть зеленой, желтой или красной (цвет
+	полоски зависит от значений атрибутов, об
+	этом будет ниже):
+</p>
+<p>
+	Тег <code class="code inline">meter</code> следует использовать, к
+	примеру, в следующей ситуации: вы хотите
+	вывести на экран текущее значение температуры,
+	при этом температура может изменятся от <code class="number inline">0</code>
+	до <code class="number inline">100</code>. Вам следует указать следующие
+	атрибуты: атрибут <code class="code inline">value</code> должен указывать
+	текущее значение температуры, атрибут <code class="code inline">min</code>
+	- минимально возможное значение (в нашем
+	случае 0), атрибут <code class="code inline">max</code> - максимально
+	возможное (в нашем случае 100).
+</p>
+<p>
+	В зависимости от значения атрибута <code class="code inline">value</code>
+	полоска будет маленькой или большой. Если
+	указать <code class="code inline">value</code> в значении <code class="number inline">10</code>,
+	то полоска будет маленькой (так как <code class="number inline">10</code>
+	очень близко к минимуму - к нулю), если же
+	указать значение <code class="number inline">90</code>, то полоска будет
+	большой (так как <code class="number inline">90</code> близко к максимуму
+	- к 100). Если указать значение 100 - то
+	полоска займет весь элемент (так как значение
+	достигло максимума).
+</p>
+<p>
+	Если указать значение, большее, чем <code class="number inline">100</code>,
+	то полоска все равно займет весь элемент.
+	Если же указать <code class="number inline">0</code> и менее - то полоски
+	совсем не будет.
+</p>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Значение атрибута value <b>маленькое</b>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;meter value="10" min="0" max="100"&gt;&lt;/meter&gt;</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		
+		<meter value=&quot;10&quot; min=&quot;0&quot; max=&quot;100&quot;></meter>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Значение атрибута value <b>большое</b>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;meter value="90" min="0" max="100"&gt;&lt;/meter&gt;</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		
+		<meter value=&quot;90&quot; min=&quot;0&quot; max=&quot;100&quot;></meter>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Значение атрибута value <b>среднее</b>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;meter value="50" min="0" max="100"&gt;&lt;/meter&gt;</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		
+		<meter value=&quot;50&quot; min=&quot;0&quot; max=&quot;100&quot;></meter>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Значение атрибута value <b>равно максимальному</b>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;meter value="100" min="0" max="100"&gt;&lt;/meter&gt;</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		
+		<meter value=&quot;100&quot; min=&quot;0&quot; max=&quot;100&quot;></meter>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Значение атрибута value <b>равно минимальному</b>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;meter value="0" min="0" max="100"&gt;&lt;/meter&gt;</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		
+		<meter value=&quot;0&quot; min=&quot;0&quot; max=&quot;100&quot;></meter>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Значение атрибута value <b>больше максимального</b>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;meter value="110" min="0" max="100"&gt;&lt;/meter&gt;</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		
+		<meter value=&quot;110&quot; min=&quot;0&quot; max=&quot;100&quot;></meter>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Значение атрибута value <b>меньше минимального</b>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;meter value="-10" min="0" max="100"&gt;&lt;/meter&gt;</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		
+		<meter value=&quot;-10&quot; min=&quot;0&quot; max=&quot;100&quot;></meter>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Добавляем атрибуты low и high</h2>
+<p>
+	В теге <code class="code inline">meter</code> есть еще <code class="number inline">2</code> атрибута:
+	<code class="code inline">low</code> и <code class="code inline">high</code>.
+</p>
+<p>
+	Рассмотрим их работу на примере температуры.
+	Напоминаю, что наша минимальная температура
+	равна <code class="number inline">0</code>, а максимальная - <code class="number inline">100</code>.
+	Пусть теперь мы хотим сделать следующие диапазоны
+	- "холодная температура" от <code class="number inline">0</code> до <code class="number inline">20</code>,
+	"нормальная" от <code class="number inline">20</code> до <code class="number inline">80</code> и
+	"горячая" от <code class="number inline">80</code> до <code class="number inline">100</code>.
+</p>
+<p>
+	Чтобы задать холодную температуру, укажем
+	значением атрибута <code class="code inline">low</code> число <code class="number inline">20</code>.
+	Получится, что от нуля (это значение атрибута
+	<code class="code inline">min</code>) до <code class="number inline">20</code> (значение атрибута
+	<code class="code inline">low</code>) у нас <b>область низких значений</b>.
+</p>
+<p>
+	Чтобы задать горячую температуру, укажем
+	значением атрибута <code class="code inline">high</code> число <code class="number inline">80</code>.
+	Получится, что от <code class="number inline">80</code> (это значение
+	атрибута <code class="code inline">high</code>) до <code class="number inline">100</code> (значение
+	атрибута <code class="code inline">max</code>) у нас <b>область высоких
+	значений</b>.
+</p>
+<p>
+	Нормальная температура будет от <code class="number inline">20</code>
+	(это значение атрибута <code class="code inline">low</code>) до <code class="number inline">80</code>
+	(значение атрибута <code class="code inline">high</code>). Эту область
+	назовем <b>областью нормальных значений</b>.
+</p>
+<p>
+	Теперь, в зависимости от того, в какую область
+	попадает значение атрибута <code class="code inline">value</code>,
+	полоска будет окрашиваться в зеленый или
+	желтый цвет. Зеленый будет, если мы попали
+	в <b>область нормальных значений</b>, а желтый
+	- если в <b>область высоких или низких значений</b>.
+</p>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Значение атрибута <code class="code inline">value</code> попадает в
+	<b>область низких значений</b>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;meter value="10" min="0" low="20" high="80" max="100"&gt;&lt;/meter&gt;</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		
+		<meter value=&quot;10&quot; min=&quot;0&quot; low=&quot;20&quot; high=&quot;80&quot; max=&quot;100&quot;></meter>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Значение атрибута <code class="code inline">value</code> попадет в
+	<b>область нормальных значений</b>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;meter value="50" min="0" low="20" high="80" max="100"&gt;&lt;/meter&gt;</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		
+		<meter value=&quot;50&quot; min=&quot;0&quot; low=&quot;20&quot; high=&quot;80&quot; max=&quot;100&quot;></meter>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Значение атрибута <code class="code inline">value</code> попадет в
+	<b>область высоких значений</b>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;meter value="90" min="0" low="20" high="80" max="100"&gt;&lt;/meter&gt;</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		
+		<meter value=&quot;90&quot; min=&quot;0&quot; low=&quot;20&quot; high=&quot;80&quot; max=&quot;100&quot;></meter>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Добавляем атрибут optimum</h2>
+<p>
+	Атрибут <code class="code inline">optimum</code> определяет оптимальное
+	значение. Для нашего примера оптимальной
+	может быть холодная температура, нормальная
+	или горячая - на ваш выбор. Предположим,
+	что вы укажите, что <b>оптимальная температура
+	холодная</b>. Теперь, в зависимости от значения
+	атрибута <code class="code inline">value</code> (то есть от текущей
+	температуры) цвет полоски будет зеленый,
+	желтый или красный.
+</p>
+<p>
+	Если текущая температура попадает в область
+	оптимальных температур (а мы указали, что
+	оптимальная - холодная), то цвет полоски
+	будет зеленый. Если текущая температура попадает
+	в соседний с оптимальным диапазон (в нашем
+	случае это нормальная температура), то полоска
+	станет желтой. Если же текущая температура
+	попадает не в соседний с оптимальным диапазон
+	(в нашем случае это горячая температура),
+	то полоска станет красной.
+</p>
+<p>
+	Аналогичным образом все будет происходить,
+	если оптимальной температурой указать горячую.
+	В этом случае, если текущая температура попала
+	в область горячих температур - полоска будет
+	зеленой, если попала в область нормальных
+	- желтой, если в область холодных - красной.
+</p>
+<p>
+	Если оптимальной указать нормальную температуру,
+	то полоска может быть только зеленой (если
+	текущая температура попала в нормальную)
+	или желтой (если текущая температура попала
+	в соседа нормальной температуры, а это горячая
+	или холодная).
+</p>
+<p>
+	Чтобы указать, какой диапазон является оптимальным,
+	нужно указать в качестве значения атрибута
+	<code class="code inline">optimum</code> любое число из этого диапазона.
+</p>
+<p>
+	В примерах ниже значение атрибута <code class="code inline">optimum</code>
+	попадает в <b>область низких значений</b>
+	(то есть холодных температур).
+</p>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Значение атрибута <code class="code inline">value</code> попадает в
+	<b>область низких значений</b>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;meter value="10" min="0" low="20" high="80" max="100" optimum="10"&gt;&lt;/meter&gt;</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		
+		<meter value=&quot;10&quot; min=&quot;0&quot; low=&quot;20&quot; high=&quot;80&quot; max=&quot;100&quot; optimum=&quot;10&quot;></meter>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Значение атрибута <code class="code inline">value</code> попадает в
+	<b>область нормальных значений</b>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;meter value="50" min="0" low="20" high="80" max="100" optimum="10"&gt;&lt;/meter&gt;</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		
+		<meter value=&quot;50&quot; min=&quot;0&quot; low=&quot;20&quot; high=&quot;80&quot; max=&quot;100&quot; optimum=&quot;10&quot;></meter>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Значение атрибута <code class="code inline">value</code> попадает в
+	<b>область высоких значений</b>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;meter value="90" min="0" low="20" high="80" max="100" optimum="10"&gt;&lt;/meter&gt;</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		
+		<meter value=&quot;90&quot; min=&quot;0&quot; low=&quot;20&quot; high=&quot;80&quot; max=&quot;100&quot; optimum=&quot;10&quot;></meter>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<p>
+	В примерах ниже значение атрибута <code class="code inline">optimum</code>
+	попадает в <b>область высоких значений</b>
+	(то есть горячих температур).
+</p>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Значение атрибута <code class="code inline">value</code> попадает в
+	<b>область низких значений</b>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;meter value="10" min="0" low="20" high="80" max="100" optimum="90"&gt;&lt;/meter&gt;</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		
+		<meter value=&quot;10&quot; min=&quot;0&quot; low=&quot;20&quot; high=&quot;80&quot; max=&quot;100&quot; optimum=&quot;90&quot;></meter>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Значение атрибута <code class="code inline">value</code> попадает в
+	<b>область нормальных значений</b>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;meter value="50" min="0" low="20" high="80" max="100" optimum="90"&gt;&lt;/meter&gt;</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		
+		<meter value=&quot;50&quot; min=&quot;0&quot; low=&quot;20&quot; high=&quot;80&quot; max=&quot;100&quot; optimum=&quot;90&quot;></meter>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Значение атрибута <code class="code inline">value</code> попадает в
+	<b>область высоких значений</b>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;meter value="90" min="0" low="20" high="80" max="100" optimum="90"&gt;&lt;/meter&gt;</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		
+		<meter value=&quot;90&quot; min=&quot;0&quot; low=&quot;20&quot; high=&quot;80&quot; max=&quot;100&quot; optimum=&quot;90&quot;></meter>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<hr>
+<p>
+	В примерах ниже значение атрибута <code class="code inline">optimum</code>
+	попадает в <b>область нормальных значений</b>
+	(то есть нормальных температур).
+</p>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Значение атрибута <code class="code inline">value</code> попадает в
+	<b>область низких значений</b>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;meter value="10" min="0" low="20" high="80" max="100" optimum="50"&gt;&lt;/meter&gt;</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		
+		<meter value=&quot;10&quot; min=&quot;0&quot; low=&quot;20&quot; high=&quot;80&quot; max=&quot;100&quot; optimum=&quot;50&quot;></meter>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Значение атрибута <code class="code inline">value</code> попадает в
+	<b>область нормальных значений</b>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;meter value="50" min="0" low="20" high="80" max="100" optimum="50"&gt;&lt;/meter&gt;</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		
+		<meter value=&quot;50&quot; min=&quot;0&quot; low=&quot;20&quot; high=&quot;80&quot; max=&quot;100&quot; optimum=&quot;50&quot;></meter>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Значение атрибута <code class="code inline">value</code> попадает в
+	<b>область высоких значений</b>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;meter value="90" min="0" low="20" high="80" max="100" optimum="50"&gt;&lt;/meter&gt;</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		
+		<meter value=&quot;90&quot; min=&quot;0&quot; low=&quot;20&quot; high=&quot;80&quot; max=&quot;100&quot; optimum=&quot;50&quot;></meter>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Старые браузеры</h2>
+<p>
+	Старые браузеры не смогут показать тег <code class="code inline">meter</code>
+	в красивом виде и будут выводить вместо этого
+	содержимое самого тега:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;meter value="10" min="0" max="100"&gt;Этот текст покажется в старых браузерах.&lt;/meter&gt;</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		
+		<meter value=&quot;10&quot; min=&quot;0&quot; max=&quot;100&quot;>Этот текст покажется в старых браузерах.</meter>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Атрибуты</h2>
+<p>
+	Значение атрибутов может быть дробным и отрицательным
+	числом.
+</p>
+<table class="description">
+	<tr>
+		<th>Атрибут</th>
+		<th>Описание</th>
+	</tr>
+	<tr>
+		<th><code class="code inline">value</code></th>
+		<td>Устанавливает текущее значение. <b>Обязательный атрибут.</b></td>
+	</tr>
+	<tr>
+		<th><code class="code inline">min</code></th>
+		<td>Задает минимально возможное значение. Значение по умолчанию: <code class="number inline">0</code>.</td>
+	</tr>
+	<tr>
+		<th><code class="code inline">max</code></th>
+		<td>Задает максимально возможное значение. Значение по умолчанию: <code class="number inline">1</code>.</td>
+	</tr>
+	<tr>
+		<th><code class="code inline">low</code></th>
+		<td>
+			Задает границу области низких значений. Низкие значения будут от числа в атрибуте
+			<code class="code inline">min</code> до числа в атрибуте <code class="code inline">low</code>.
+		</td>
+	</tr>
+	<tr>
+		<th><code class="code inline">high</code></th>
+		<td>
+			Задает границу области низких значений. Низкие значения будут от числа в атрибуте
+			<code class="code inline">high</code> до числа в атрибуте <code class="code inline">max</code>.
+		</td>
+	</tr>
+	<tr>
+		<th><code class="code inline">optimum</code></th>
+		<td>Определяет область оптимальных значений.</td>
+	</tr>
+</table>
+
+<h2>Смотрите также</h2>
+<ul class="ref">
+	<li>
+		тег <a href="../../../../../ru/markup/manual/html/tag/progress.html"><code class="code inline">progress</code></a>, <br>
+		который создает полосу загрузки.
+	</li>
+</ul>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/markup/manual/html/" data-persent="68" data-hash="" data-quantity="126" data-num="87"><a href="../../../../../ru/markup/manual/html/tag/mark.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/markup/manual/html/tag/progress.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Форма для добавления в массив объектов в React | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы научимся реактивно добавлять элементы в массив объектов в React.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Форма для добавления в массив объектов в React</h1>
+				<div class="content">
+<p>
+	Пусть у нас есть массив объектов <code class="code inline">initNotes</code>
+	из предыдущего урока, элементы которого выводятся
+	в виде абзацев:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function App() {
+	const [notes, setNotes] = useState(initNotes);
+	
+	const result = notes.map(note =&gt; {
+		return &lt;p key={note.id}&gt;
+			&lt;span&gt;{note.prop1}&lt;/span&gt;,
+			&lt;span&gt;{note.prop2}&lt;/span&gt;,
+			&lt;span&gt;{note.prop3}&lt;/span&gt;
+		&lt;/p&gt;;
+	});
+	
+	return &lt;div&gt;
+		{result}
+	&lt;/div&gt;;
+}</code>
+</div>
+<p>
+	Давайте сделаем инпуты для добавления новых
+	элементов в наш массив.
+</p>
+<p>
+	Для начала сделаем три инпута и кнопку, по
+	нажатию на которую будет происходить добавление:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">return &lt;div&gt;
+	{result}
+	
+	&lt;br /&gt;
+	
+	&lt;input /&gt;
+	&lt;input /&gt;
+	&lt;input /&gt;
+	&lt;button&gt;save&lt;/button&gt;
+&lt;/div&gt;;</code>
+</div>
+<p>
+	В дальнейшем решении задачи мы можем пойти
+	двумя путями: можно для каждого инпута сделать
+	отдельный стейт, либо сделать один общий
+	стейт-объект, содержащий <code class="code inline">value</code> наших
+	инпутов.
+</p>
+<p>
+	Давайте рассмотрим оба пути по очереди.
+</p>
+
+<h2>Путь первый</h2>
+<p>
+	Давайте каждому инпуту сделаем свой отдельный
+	стейт:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function App() {
+	const [notes, setNotes] = useState(initNotes);
+	
+	const [value1, setValue1] = useState('');
+	const [value2, setValue2] = useState('');
+	const [value3, setValue3] = useState('');
+	...
+}</code>
+</div>
+<p>
+	Добавим обработчики события <code class="code inline">onChange</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">return &lt;div&gt;
+	{result}
+	
+	&lt;br /&gt;
+	
+	&lt;input value={value1} onChange={event =&gt; setValue1(event.target.value)} /&gt;
+	&lt;input value={value2} onChange={event =&gt; setValue2(event.target.value)} /&gt;
+	&lt;input value={value3} onChange={event =&gt; setValue3(event.target.value)} /&gt;
+	
+	&lt;button&gt;save&lt;/button&gt;
+&lt;/div&gt;;</code>
+</div>
+<p>
+	Сделаем так, чтобы по нажатию на кнопку вызывалась
+	функция <code class="code inline">addItem</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">return &lt;div&gt;
+	{result}
+	
+	&lt;br /&gt;
+	
+	&lt;input value={value1} onChange={event =&gt; setValue1(event.target.value)} /&gt;
+	&lt;input value={value2} onChange={event =&gt; setValue2(event.target.value)} /&gt;
+	&lt;input value={value3} onChange={event =&gt; setValue3(event.target.value)} /&gt;
+	
+	&lt;button onClick={addItem}&gt;save&lt;/button&gt;
+&lt;/div&gt;;</code>
+</div>
+<p>
+	Данная функция должна взять значение каждого
+	инпута из соответствующего стейта, сделать
+	из этих значений объект с новым элементом,
+	а затем добавить этот элемент в массив:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function addItem() {
+	let obj = {
+		prop1: value1,
+		prop2: value2,
+		prop3: value3,
+	};
+	
+	setNotes([...notes, obj]);
+}</code>
+</div>
+<p>
+	Кроме того, добавляемый элемент должен иметь
+	уникальный id. Будем генерировать этот id
+	с помощью созданной в одном из предыдущих
+	уроков функции <code class="code inline">id()</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function addItem() {
+	let obj = {
+		id: id(),
+		prop1: value1,
+		prop2: value2,
+		prop3: value3,
+	};
+	
+	setNotes([...notes, obj]);
+}</code>
+</div>
+<p>
+	Соберем весь код вместе и получим решение
+	нашей задачи:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function App() {
+	const [notes, setNotes] = useState(initNotes);
+	
+	const [value1, setValue1] = useState('');
+	const [value2, setValue2] = useState('');
+	const [value3, setValue3] = useState('');
+	
+	const result = notes.map(note =&gt; {
+		return &lt;p key={note.id}&gt;
+			&lt;span&gt;{note.prop1}&lt;/span&gt;,
+			&lt;span&gt;{note.prop2}&lt;/span&gt;,
+			&lt;span&gt;{note.prop3}&lt;/span&gt;
+		&lt;/p&gt;;
+	});
+	
+	function addItem() {
+		let obj = {
+			id: id(),
+			prop1: value1,
+			prop2: value2,
+			prop3: value3,
+		};
+		
+		setNotes([...notes, obj]);
+	}
+	
+	return &lt;div&gt;
+		{result}
+		
+		&lt;br /&gt;
+		
+		&lt;input value={value1} onChange={event =&gt; setValue1(event.target.value)} /&gt;
+		&lt;input value={value2} onChange={event =&gt; setValue2(event.target.value)} /&gt;
+		&lt;input value={value3} onChange={event =&gt; setValue3(event.target.value)} /&gt;
+		
+		&lt;button onClick={addItem}&gt;save&lt;/button&gt;
+	&lt;/div&gt;;
+}</code>
+</div>
+<div class="task">
+	<p>
+		Возьмите таблицу с продуктами <code class="code inline">initProds</code>.
+		Сделайте под таблицей инпуты для добавления
+		нового продукта.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Сделайте так, чтобы текст инпутов очищался
+		после добавления продуктов.
+	</p>
+</div>
+
+<h2>Путь второй</h2>
+<p>
+	Сделаем так, чтобы значения инпутов были
+	привязаны к одному объекту, вот такому:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">const obj = {
+	prop1: '',
+	prop2: '',
+	prop3: ''
+}</code>
+</div>
+<p>
+	Пусть этот объект также хранит в себе <code class="string inline">id</code>
+	нового элемента массива:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">const obj = {
+	id: 'ай ди нового элемента'
+	prop1: '',
+	prop2: '',
+	prop3: ''
+}</code>
+</div>
+<p>
+	Сделаем специальную функцию, которая будет
+	возвращать нам описанный объект, сгенерировав
+	в нем случайный <code class="string inline">id</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function getInitObj() {
+	return {
+		id: id(),
+		prop1: '',
+		prop2: '',
+		prop3: ''
+	}
+}</code>
+</div>
+<p>
+	Используем эту функцию для получения начального
+	значения стейта:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function App() {
+	const [notes, setNotes] = useState(initNotes);
+	const [obj, setObj] = useState(getInitObj()); // используем функцию
+	
+	...
+}</code>
+</div>
+<p>
+	Давайте привяжем части нашего объекта к инпутам:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">return &lt;div&gt;
+	{result}
+	
+	&lt;br /&gt;
+	
+	&lt;input value={obj.prop1} /&gt;
+	&lt;input value={obj.prop2} /&gt;
+	&lt;input value={obj.prop3} /&gt;
+	
+	&lt;button&gt;save&lt;/button&gt;
+&lt;/div&gt;;</code>
+</div>
+<p>
+	Привяжем в качестве обработчика <code class="code inline">onChange</code>
+	инпутов общую функцию <code class="code inline">changeProp</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">return &lt;div&gt;
+	{result}
+	
+	&lt;br /&gt;
+	
+	&lt;input value={obj.prop1} onChange={event =&gt; changeProp('prop1', event)} /&gt;
+	&lt;input value={obj.prop2} onChange={event =&gt; changeProp('prop2', event)} /&gt;
+	&lt;input value={obj.prop3} onChange={event =&gt; changeProp('prop3', event)} /&gt;
+	
+	&lt;button&gt;save&lt;/button&gt;
+&lt;/div&gt;;</code>
+</div>
+<p>
+	В функции <code class="code inline">changeProp</code> будем изменять
+	свойство, имя которого передано первым параметром:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function changeProp(prop, event) {
+	setObj({...obj, [prop]: event.target.value});
+}</code>
+</div>
+<p>
+	В качестве обработчика клика по кнопке привяжем
+	функцию <code class="code inline">addItem</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">return &lt;div&gt;
+	{result}
+	
+	&lt;br /&gt;
+	
+	&lt;input value={obj.prop1} onChange={event =&gt; changeProp('prop1', event)} /&gt;
+	&lt;input value={obj.prop2} onChange={event =&gt; changeProp('prop2', event)} /&gt;
+	&lt;input value={obj.prop3} onChange={event =&gt; changeProp('prop3', event)} /&gt;
+	
+	&lt;button onClick={addItem}&gt;save&lt;/button&gt;
+&lt;/div&gt;;</code>
+</div>
+<p>
+	Внутри функции <code class="code inline">addItem</code> мы можем сразу
+	же добавлять наш стейт <code class="code inline">obj</code> в качестве
+	нового элемента массива:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function addItem() {
+	setNotes([...notes, obj]);
+}</code>
+</div>
+<p>
+	После этого следует вернуть объект в исходное
+	состояние, чтобы произошла очистка инпута
+	и сгенерировался новый <code class="string inline">id</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function addItem() {
+	setNotes([...notes, obj]);
+	setObj(getInitObj());
+}</code>
+</div>
+<p>
+	Таким образом фактически получается, что
+	стейт <code class="code inline">obj</code> хранит заготовку нового
+	элемента массива с уникальным <code class="string inline">id</code>.
+	Когда заготовка становится элементом массива,
+	то в <code class="code inline">obj</code> опять записывается начальная
+	заготовка с новым <code class="string inline">id</code>. И так далее.
+</p>
+<p>
+	Давайте соберем весь наш код вместе и получим
+	решение нашей задачи:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function getInitObj() {
+	return {
+		id: id(),
+		prop1: '',
+		prop2: '',
+		prop3: ''
+	}
+}
+
+function App() {
+	const [notes, setNotes] = useState(initNotes);
+	const [obj, setObj] = useState(getInitObj());
+	
+	const result = notes.map(note =&gt; {
+		return &lt;p key={note.id}&gt;
+			&lt;span&gt;{note.prop1}&lt;/span&gt;,
+			&lt;span&gt;{note.prop2}&lt;/span&gt;,
+			&lt;span&gt;{note.prop3}&lt;/span&gt;
+		&lt;/p&gt;;
+	});
+	
+	function changeProp(prop, event) {
+		setObj({...obj, [prop]: event.target.value});
+	}
+	
+	function addItem() {
+		setNotes([...notes, obj]);
+		setObj(getInitObj());
+	}
+	
+	return &lt;div&gt;
+		{result}
+		
+		&lt;br /&gt;
+		
+		&lt;input value={obj.prop1} onChange={event =&gt; changeProp('prop1', event)} /&gt;
+		&lt;input value={obj.prop2} onChange={event =&gt; changeProp('prop2', event)} /&gt;
+		&lt;input value={obj.prop3} onChange={event =&gt; changeProp('prop3', event)} /&gt;
+		
+		&lt;button onClick={addItem}&gt;save&lt;/button&gt;
+	&lt;/div&gt;;
+}</code>
+</div>
+<div class="task">
+	<p>
+		Возьмите таблицу с продуктами <code class="code inline">initProds</code>.
+		Сделайте под таблицей инпуты для добавления
+		нового продукта.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/framework/react/book/prime/" data-persent="67" data-hash="jsrtPmScOAAF" data-quantity="51" data-num="35"><a href="../../../../../../../ru/javascript/framework/react/book/prime/structures/removing-array-objects.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../../ru/javascript/framework/react/book/prime/structures/objects-array-editing-form.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Команда 'или' в регулярных выражениях PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами изучим команду 'или' через вертикальную черту | в PHP.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Команда 'или' в регулярных выражениях PHP</h1>
+				<div class="content">
+<p>
+	В данном уроке мы с вами разберем команду
+	<code class="code inline">|</code>, которая представляет собой более
+	мощный вариант <code class="code inline">ИЛИ</code> по сравнению с
+	командой <code class="code inline">[]</code>. Данная команда позволяет
+	разделить регулярку на несколько частей.
+	При этом искомое может попасть либо под одну
+	часть регулярки, либо под другую. Давайте
+	посмотрим на примерах.
+</p>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	В данном примере шаблон поиска такой: <i>три
+	буквы <code class="string inline">'a'</code> или три буквы <code class="string inline">'b'</code></i>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = 'aaa bbb abb';
+	$res = preg_replace('#a{3}|b{3}#', '!', $str);
+?&gt;</code>
+</div>
+<p>
+	В результате в переменную запишется следующее:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">'! ! abb'</code>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	В данном примере шаблон поиска такой: <i>три
+	буквы <code class="string inline">'a'</code> или от <code class="number inline">1</code> и более
+	букв <code class="string inline">'b'</code></i>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = 'aaa bbb bbbb bbbbb axx';
+	$res = preg_replace('#a{3}|b+#', '!', $str);
+?&gt;</code>
+</div>
+<p>
+	В результате в переменную запишется следующее:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">'! ! ! ! axx'</code>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	В данном примере шаблон поиска такой: <i>одна
+	или более буквы или три цифры</i>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = 'a ab abc 1 12 123';
+	$res = preg_replace('#[a-z]+|\d{3}#', '!', $str);
+?&gt;</code>
+</div>
+<p>
+	В результате в переменную запишется следующее:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">'! ! ! 1 12 !'</code>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Вертикальная черта может делить регулярку
+	не на две части, а на любое количество частей:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = 'aaa bbb ccc ddd';
+	$res = preg_replace('#a+|b+|c+#', '!', $str);
+?&gt;</code>
+</div>
+<p>
+	В результате в переменную запишется следующее:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">'! ! ! ddd'</code>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Если вертикальная черта стоит внутри круглых
+	скобок, то <code class="string inline">'или'</code> работает только внутри
+	этих скобок. Для примера давайте найдем строки
+	по следующему шаблону: <i>в начале стоит
+	или <code class="string inline">'a'</code>, или <code class="string inline">'b'</code> один или более
+	раз, а потом две буквы <code class="string inline">'x'</code></i>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = 'axx bxx bbxx exx';
+	$res = preg_replace('#(a|b+)xx#', '!', $str);
+?&gt;</code>
+</div>
+<p>
+	В результате в переменную запишется следующее:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">'! ! ! exx'</code>
+</div>
+
+<h2>Практические задачи</h2>
+<div class="task">
+	<p>
+		Дана строка:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = 'aeeea aeea aea axa axxa axxxa';
+?&gt;</code>
+	</div>
+	<p>
+		Напишите регулярку, которая найдет строки
+		по шаблону: <i>по краям стоят буквы <code class="string inline">'a'</code>,
+		а между ними - или буква <code class="string inline">'e'</code> любое
+		количество раз или буква <code class="string inline">'x'</code> любое
+		количество раз</i>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = 'aeeea aeea aea axa axxa axxxa';
+?&gt;</code>
+	</div>
+	<p>
+		Напишите регулярку, которая найдет строки
+		по шаблону: <i>по краям стоят буквы <code class="string inline">'a'</code>,
+		а между ними - или буква <code class="string inline">'e'</code> два раза
+		или буква <code class="string inline">'x'</code> любое количество раз</i>.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/prime/" data-persent="48" data-hash="ppPmRgOC" data-quantity="223" data-num="107"><a href="../../../../../ru/php/book/prime/regular/line-beginning-and-end.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/php/book/prime/regular/word-beginning-and-end.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

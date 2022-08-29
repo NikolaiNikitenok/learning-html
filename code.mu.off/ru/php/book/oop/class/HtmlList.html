@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Класс HtmlList в ООП на PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами разработаем ООП класс HtmlList на PHP.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Класс HtmlList</h1>
+				<div class="content">
+<p>
+	Сейчас мы с вами сделаем класс <code class="code inline">HtmlList</code>
+	для создания списков <code class="code inline">ul</code> и <code class="code inline">ol</code>.
+	У этого класса будет метод <code class="code inline">addItem</code>
+	для добавления пунктов списка и метод <code class="code inline">show</code>
+	для вывода результата на экран.
+</p>
+<p>
+	Для самих пунктов списка также сделаем отдельный
+	класс, назовем его <code class="code inline">ListItem</code>. Вот пример
+	того, как мы будем пользоваться нашими классами:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$list = new HtmlList('ul');
+	
+	echo $list
+		-&gt;addItem( (new ListItem())-&gt;setText('item1') )
+		-&gt;addItem( (new ListItem())-&gt;setText('item2') )
+		-&gt;addItem( (new ListItem())-&gt;setText('item3') )
+		-&gt;show();
+	
+	/*
+		Результат выполнения кода выведет следующее:
+		&lt;ul&gt;
+			&lt;li&gt;item1&lt;/li&gt;
+			&lt;li&gt;item2&lt;/li&gt;
+			&lt;li&gt;item3&lt;/li&gt;
+		&lt;/ul&gt;
+	*/
+?&gt;</code>
+</div>
+
+<h2>Реализация</h2>
+<p>
+	Класс <code class="code inline">ListItem</code> по сути этот тот же
+	класс <code class="code inline">Tag</code>. С той разницей, что конструктор
+	класса <code class="code inline">Tag</code> требует имя тега, а конструктор
+	<code class="code inline">ListItem</code> не требует параметров, так
+	как всегда создает один и тот же тег <code class="code inline">li</code>.
+</p>
+<p>
+	Поэтому для реализации класса <code class="code inline">ListItem</code>
+	достаточно просто просто наследовать от класса
+	<code class="code inline">Tag</code>, переопределив его конструктор:
+</p>
+<div class="block" data-file="ListItem.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class ListItem extends Tag
+	{
+		public function __construct()
+		{
+			parent::__construct('li');
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Давайте теперь напишем реализацию класса
+	<code class="code inline">HtmlList</code>. Данный класс также удобно
+	унаследовать от <code class="code inline">Tag</code>, расширив затем
+	родителя нужными нам методами. Итак, наследуем:
+</p>
+<div class="block" data-file="HtmlList.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class HtmlList extends Tag
+	{
+		
+	}
+?&gt;</code>
+</div>
+<!--
+<p class="comment">
+	Класс <code class="code inline">HtmlList</code> предназначен как для создания тегов
+	<code class="code inline">ul</code>, так и для создания тегов <code class="code inline">ol</code>. Тип тега будет
+	передаваться параметром конструктора, поэтому наш
+	класс <code class="code inline">HtmlList</code> не будет переопределять конструктор
+	родителя - этот конструктор как раз такой, как нам нужно.
+</p>
+<p class="comment">
+	Внимательный читатель может заметить, что на самом
+	деле в конструктор класса <code class="code inline">HtmlList</code> можно передать любое
+	имя тега, не только <code class="code inline">ul</code> или <code class="code inline">ol</code>. Пока проигнорируем эту проблему,
+	оставив контроль имени тега на программисте-пользователе
+	нашего класса.
+</p>
+-->
+<p>
+	Реализуем метод <code class="code inline">addItem</code> для добавления
+	пунктов списка:
+</p>
+<div class="block" data-file="HtmlList.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class HtmlList extends Tag
+	{
+		private $items = []; // массив для хранения лишек
+		
+		public function addItem($li)
+		{
+			$this-&gt;items[] = $li;
+			return $this; // вернем $this для цепочки
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Давайте улучшим наш код, указав, что параметр
+	нашего метода принимает только объекты класса
+	<code class="code inline">ListItem</code>:
+</p>
+<div class="block" data-file="HtmlList.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class HtmlList extends Tag
+	{
+		private $items = [];
+		
+		public function addItem(ListItem $li)
+		{
+			$this-&gt;items[] = $li;
+			return $this;
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Давайте теперь сделаем метод <code class="code inline">show</code>.
+	На самом деле наш класс <code class="code inline">HtmlList</code> наследует
+	от своего родителя такой метод - но этот
+	наследуемый метод делает немного не то, что
+	нам нужно.
+</p>
+<p>
+	Наследуемый метод <code class="code inline">show</code> выводит открывающий
+	тег, закрывающий, а между ними текст. Но
+	в нашем случае в качестве текста будут выступать
+	теги <code class="code inline">li</code>.
+</p>
+<p>
+	Давайте в таком случае просто переопределим
+	метод <code class="code inline">show</code> родителя и напишем ему
+	свою реализацию:
+</p>
+<div class="block" data-file="HtmlList.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class HtmlList extends Tag
+	{
+		private $items = [];
+		
+		public function addItem(ListItem $li)
+		{
+			$this-&gt;items[] = $li;
+			return $this;
+		}
+		
+		// Переопределим метод родителя:
+		public function show()
+		{
+			// тут будет наша реализация без вызова parent::show
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Пишем свою реализацию:
+</p>
+<div class="block" data-file="HtmlList.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	public function show()
+	{
+		$result = $this-&gt;open(); // открывающий тег
+		
+		// тут надо сформировать лишки и добавить в $result
+		
+		$result .= $this-&gt;close(); // закрывающий тег
+		
+		return $result;
+	}
+?&gt;</code>
+</div>
+<p>
+	Давайте сформируем лишки. Для этого запустим
+	цикл <code class="code inline">foreach</code> для массива <code class="code inline">$this->items</code>:
+</p>
+<div class="block" data-file="HtmlList.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	public function show()
+	{
+		$result = $this-&gt;open();
+		
+		foreach ($this-&gt;items as $item) {
+			$result .= 'тут нужно добавлять теги li';
+		}
+		
+		$result .= $this-&gt;close();
+		
+		return $result;
+	}
+?&gt;</code>
+</div>
+<p>
+	В нашем цикле нужно в переменную <code class="code inline">$result</code>
+	записывать теги <code class="code inline">li</code> в формате:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;li&gt;текст&lt;/li&gt;</code>
+</div>
+<p>
+	Здесь нам очень поможет то, что объекты класса
+	<code class="code inline">ListItem</code> являются наследниками класса
+	<code class="code inline">Tag</code>, а следовательно, имеют метод
+	<code class="code inline">show</code>, который и делает то, что нам нужно.
+</p>
+<p>
+	В нашем цикле <code class="code inline">foreach</code> в переменную
+	<code class="code inline">$item</code> как раз-таки попадают объекты
+	класса <code class="code inline">ListItem</code>. Значит, просто будем
+	вызывать у них метод <code class="code inline">show</code> и наша задача
+	будет решена:
+</p>
+<div class="block" data-file="HtmlList.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	public function show()
+	{
+		$result = $this-&gt;open();
+		
+		foreach ($this-&gt;items as $item) {
+			$result .= $item-&gt;show(); // вызываем метод show
+		}
+		
+		$result .= $this-&gt;close();
+		
+		return $result;
+	}
+?&gt;</code>
+</div>
+<p>
+	Добавим созданный метод <code class="code inline">show</code> в наш
+	класс <code class="code inline">HtmlList</code>:
+</p>
+<div class="block" data-file="HtmlList.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class HtmlList extends Tag
+	{
+		private $items = [];
+		
+		public function addItem(ListItem $li)
+		{
+			$this-&gt;items[] = $li;
+			return $this;
+		}
+		
+		public function show()
+		{
+			$result = $this-&gt;open();
+			
+			foreach ($this-&gt;items as $item) {
+				$result .= $item-&gt;show();
+			}
+			
+			$result .= $this-&gt;close();
+			
+			return $result;
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Давайте проверим работу нашего класса:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$list = new HtmlList('ul');
+	
+	echo $list
+		-&gt;addItem((new ListItem())-&gt;setText('item1'))
+		-&gt;addItem((new ListItem())-&gt;setText('item2'))
+		-&gt;addItem((new ListItem())-&gt;setText('item3'))
+		-&gt;show();
+?&gt;</code>
+</div>
+<p>
+	Результат выполнения кода выведет следующее
+	(форматирование мое):
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;ul&gt;
+	&lt;li&gt;item1&lt;/li&gt;
+	&lt;li&gt;item2&lt;/li&gt;
+	&lt;li&gt;item3&lt;/li&gt;
+&lt;/ul&gt;</code>
+</div>
+<p>
+	А теперь рассмотрим не очевидные на первый
+	взгляд бонусы: так как и класс <code class="code inline">HtmlList</code>,
+	и класс <code class="code inline">ListItem</code> наследуют от класса
+	<code class="code inline">Tag</code>, то автоматически получают все
+	его методы, например, <code class="code inline">setAttr</code>.
+</p>
+<p>
+	Это дает нам возможность задавать атрибуты
+	создаваемых тегов. Смотрите пример:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$list = new HtmlList('ul');
+	
+	echo $list-&gt;setAttr('class', 'eee')
+		-&gt;addItem((new ListItem())-&gt;setText('item1')-&gt;setAttr('class', 'first'))
+		-&gt;addItem((new ListItem())-&gt;setText('item2'))
+		-&gt;addItem((new ListItem())-&gt;setText('item3'))
+		-&gt;show();
+	
+	/*
+		Результат выполнения кода выведет следующее:
+		&lt;ul class="eee"&gt;
+			&lt;li class="first"&gt;item1&lt;/li&gt;
+			&lt;li&gt;item2&lt;/li&gt;
+			&lt;li&gt;item3&lt;/li&gt;
+		&lt;/ul&gt;
+	*/
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Реализуйте самостоятельно описанные мною
+		классы. Проверьте их работу.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Сделайте так, чтобы при преобразовании наших
+		классов к строке, метод <code class="code inline">show</code> не нужно
+		было вызывать. Модифицируйте весь код в соответствии
+		с этим. Не забудьте про вот это место метода
+		<code class="code inline">show</code> класса <code class="code inline">HtmlList</code>:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	foreach ($this-&gt;items as $item) {
+		$result .= $item-&gt;show(); // здесь тоже преобразование к строке
+	}
+?&gt;</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Сделайте классы <code class="code inline">Ul</code> и <code class="code inline">Ol</code>, которые
+		будут наследовать от класса <code class="code inline">HtmlList</code>.
+		Эти классы должны будут создавать соответствующий
+		тип списков. Пример:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$ul = new Ul; // сделаем список ul
+	$ol = new Ol; // сделаем список ol
+?&gt;</code>
+	</div>
+	<p>
+		С помощью созданных классов выведите следующие
+		списки:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;ul&gt;
+	&lt;li&gt;item1&lt;/li&gt;
+	&lt;li&gt;item2&lt;/li&gt;
+	&lt;li&gt;item3&lt;/li&gt;
+&lt;/ul&gt;</code>
+	</div>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;ol&gt;
+	&lt;li&gt;item1&lt;/li&gt;
+	&lt;li&gt;item2&lt;/li&gt;
+	&lt;li&gt;item3&lt;/li&gt;
+&lt;/ol&gt;</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/oop/" data-persent="64" data-hash="ppOpClHL" data-quantity="107" data-num="70"><a href="../../../../../ru/php/book/oop/class/Link.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/php/book/oop/class/Form.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

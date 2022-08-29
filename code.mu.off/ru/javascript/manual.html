@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Справочник JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../js/location.js?v=3"></script>
+		<script src="../../js/locale.js?v=5"></script>
+		<script src="../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="Удобный справочник JavaScript, написанный простым языком, с видео и примерами.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../ru/php/manual.html">Справочник</a>
+		<a href="../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Справочник JavaScript</h1>
+				<div class="menu" data-module="menu" data-mode="tabs">
+<section data-name="язык">
+	<h2>Конструкции и команды</h2>
+	<div>
+		<a href="../../ru/javascript/manual/lang/if.html">
+			условие
+		</a>
+		<a href="../../ru/javascript/manual/lang/else.html">
+			альтернатива условию
+		</a>
+		<a href="../../ru/javascript/manual/lang/elseif.html">
+			альтернатива условию
+		</a>
+		<a href="../../ru/javascript/manual/lang/switch.html">
+			множественный выбор
+		</a>
+		<a href="../../ru/javascript/manual/lang/while.html">
+			цикл
+		</a>
+		<a href="../../ru/javascript/manual/lang/for.html">
+			цикл
+		</a>
+		<a href="../../ru/javascript/manual/lang/for-of.html">
+			цикл для массивов
+		</a>
+		<a href="../../ru/javascript/manual/lang/for-in.html">
+			цикл для объектов
+		</a>
+		<a href="../../ru/javascript/manual/lang/break.html">
+			остановка цикла
+		</a>
+		<a href="../../ru/javascript/manual/lang/continue.html">
+			переход на следующую итерацию
+		</a>
+		<a href="../../ru/javascript/manual/lang/function.html">
+			создание функции
+		</a>
+		<a href="../../ru/javascript/manual/lang/delete.html">
+			удаление свойства объекта
+		</a>
+		<a href="../../ru/javascript/manual/lang/in.html">
+			проверка наличия свойства
+		</a>
+		<a href="../../ru/javascript/manual/lang/eval.html">
+			выполнение строки кода
+		</a>
+		<!--
+		<a href="../../ru/javascript/manual/lang/Array.html">
+			создание массива
+		</a>
+		<a href="../../ru/javascript/manual/lang/Object.html">
+			создание объекта
+		</a>
+		<a href="../../ru/javascript/manual/lang/arguments.html">
+			все переданные параметры
+			<span class="__label__">переписать</span>
+		</a>
+		-->
+	</div>
+	
+	<h2>Типизация</h2>
+	<div>
+		<a href="../../ru/javascript/manual/lang/Number.html">
+			преобразование к числу
+		</a>
+		<a href="../../ru/javascript/manual/lang/parseInt.html">
+			строка в число
+		</a>
+		<a href="../../ru/javascript/manual/lang/parseFloat.html">
+			строка в дробь
+		</a>
+		<a href="../../ru/javascript/manual/lang/String.html">
+			преобразование к строке
+		</a>
+		<a href="../../ru/javascript/manual/lang/Boolean.html">
+			преобразование к boolean
+		</a>
+		<a href="../../ru/javascript/manual/lang/typeof.html">
+			тип переменной
+		</a>
+		<a href="../../ru/javascript/manual/lang/isFinite.html">
+			проверка на конечное число
+		</a>
+		<a href="../../ru/javascript/manual/lang/isNaN.html">
+			проверка на NaN
+		</a>
+	</div>
+	
+	<h2>Специальные значения</h2>
+	<div>
+		<a href="../../ru/javascript/manual/lang/true.html">
+			истина
+			<span class="__label__ __acceptable__">почти ничего не написано</span>
+		</a>
+		<a href="../../ru/javascript/manual/lang/false.html">
+			ложь
+			<span class="__label__ __acceptable__">почти ничего не написано</span>
+		</a>
+		<a href="../../ru/javascript/manual/lang/NaN.html">
+			не число
+			<span class="__label__ __acceptable__">примеры, свойства</span>
+		</a>
+		<a href="../../ru/javascript/manual/lang/null.html">
+			ничего
+			<span class="__label__ __acceptable__">почти ничего не написано</span>
+		</a>
+		<a href="../../ru/javascript/manual/lang/undefined.html">
+			неопределенность
+			<span class="__label__ __acceptable__">почти ничего не написано</span>
+		</a>
+		<a href="../../ru/javascript/manual/lang/Infinity.html">
+			бесконечность
+			<span class="__label__ __acceptable__">примеры, свойства</span>
+		</a>
+	</div>
+</section>
+<section data-name="математика">
+	<h2>Математические методы</h2>
+	<div>
+		<a href="../../ru/javascript/manual/math/Math.random.html">
+			случайное число
+		</a>
+		<a href="../../ru/javascript/manual/math/Math.round.html">
+			округление числа
+		</a>
+		<a href="../../ru/javascript/manual/math/Math.ceil.html">
+			округление в большую сторону
+		</a>
+		<a href="../../ru/javascript/manual/math/Math.floor.html">
+			округление в меньшую сторону
+		</a>
+		<a href="../../ru/javascript/manual/math/toFixed.html">
+			округление числа
+			<span class="__label__ __acceptable__">поработать еще</span>
+		</a>
+		<a href="../../ru/javascript/manual/math/toPrecision.html">
+			округление числа
+			<span class="__label__ __acceptable__">поработать еще</span>
+		</a>
+		<a href="../../ru/javascript/manual/math/Math.sqrt.html">
+			квадратный корень числа
+		</a>
+		<a href="../../ru/javascript/manual/math/Math.pow.html">
+			степень числа
+		</a>
+		<a href="../../ru/javascript/manual/math/Math.max.html">
+			максимальное число
+		</a>
+		<a href="../../ru/javascript/manual/math/Math.min.html">
+			минимальное число
+		</a>
+		<a href="../../ru/javascript/manual/math/Math.abs.html">
+			модуль числа
+		</a>
+	</div>
+	
+	<h2>Редкие методы</h2>
+	<div>
+		<a href="../../ru/javascript/manual/math/Math.sin.html">
+			синус числа
+		</a>
+		<a href="../../ru/javascript/manual/math/Math.cos.html">
+			косинус числа
+		</a>
+		<a href="../../ru/javascript/manual/math/Math.tan.html">
+			тангенс угла
+		</a>
+		<a href="../../ru/javascript/manual/math/Math.asin.html">
+			арксинус числа
+		</a>
+		<a href="../../ru/javascript/manual/math/Math.acos.html">
+			арккосинус числа
+		</a>
+		<a href="../../ru/javascript/manual/math/Math.atan.html">
+			арктангенс числа 
+		</a>
+		<a href="../../ru/javascript/manual/math/Math.exp.html">
+			экспонента
+		</a>
+		<a href="../../ru/javascript/manual/math/Math.log.html">
+			натуральный логарифм
+		</a>
+		<a href="../../ru/javascript/manual/math/toExponential.html">
+			экспоненциальная нотация
+			<span class="__label__ __acceptable__">поработать еще</span>
+		</a>
+	</div>
+	
+	<h2>Константы</h2>
+	<div>
+		<a href="../../ru/javascript/manual/math/Math.PI.html">
+			число Пи
+		</a>
+		<a href="../../ru/javascript/manual/math/Math.E.html">
+			значение экспоненты
+		</a>
+		<a href="../../ru/javascript/manual/math/Math.LN2.html">
+			натуральный логарифм [n]2[/n]-х
+		</a>
+		<a href="../../ru/javascript/manual/math/Math.LN10.html">
+			натуральный логарифм [n]10[/n]-ти
+		</a>
+		<a href="../../ru/javascript/manual/math/Math.LOG2E.html">
+			логарифм от e по основанию [n]2[/n]
+		</a>
+		<a href="../../ru/javascript/manual/math/Math.LOG10E.html">
+			логарифм от e по основанию [n]10[/n]
+		</a>
+		<a href="../../ru/javascript/manual/math/Math.SQRT1_2.html">
+			квадратный корень из 1/2
+		</a>
+		<a href="../../ru/javascript/manual/math/Math.SQRT2.html">
+			квадратный корень из [n]2[/n]
+		</a>
+	</div>
+</section>
+<section data-name="строки">
+	<h2>Строки</h2>
+	<div>
+		<a href="../../ru/javascript/manual/string/length.html">
+			длина строки
+		</a>
+		<a href="../../ru/javascript/manual/string/toLowerCase.html">
+			нижний регистр
+		</a>
+		<a href="../../ru/javascript/manual/string/toUpperCase.html">
+			верхний регистр
+		</a>
+		<a href="../../ru/javascript/manual/string/split.html">
+			разбиение строки на массив
+		</a>
+		<a href="../../ru/javascript/manual/string/substr.html">
+			вырезание подстроки
+		</a>
+		<a href="../../ru/javascript/manual/string/substring.html">
+			вырезание подстроки
+		</a>
+		<a href="../../ru/javascript/manual/string/slice.html">
+			вырезание подстроки
+			<span class="__label__ __acceptable__">поработать еще</span>
+		</a>
+		<a href="../../ru/javascript/manual/string/concat.html">
+			объединение строк
+		</a>
+		<a href="../../ru/javascript/manual/string/indexOf.html">
+			поиск совпадений с начала
+			<span class="__label__ __acceptable__">примеры получше, пример на поиск всех совпадений</span>
+		</a>
+		<a href="../../ru/javascript/manual/string/lastIndexOf.html">
+			поиск совпадений с конца
+			<span class="__label__ __acceptable__">примеры получше</span>
+		</a>
+		<a href="../../ru/javascript/manual/string/startsWith.html">
+			проверка начала
+			<span class="__label__ __acceptable__">todo</span>
+		</a>
+		<a href="../../ru/javascript/manual/string/endsWith.html">
+			проверка конца
+			<span class="__label__ __acceptable__">todo</span>
+		</a>
+		<a href="../../ru/javascript/manual/string/trim.html">
+			удаление пробелов по краям
+		</a>
+		<a href="../../ru/javascript/manual/string/charAt.html">
+			символ строки
+		</a>
+		<a href="../../ru/javascript/manual/string/charCodeAt.html">
+			символ по его коду
+		</a>
+		<a href="../../ru/javascript/manual/string/String.fromCharCode.html">
+			код символа
+			<span class="__label__ __acceptable__">подробнее</span>
+		</a>
+		
+	</div>
+</section>
+<section data-name="массивы">
+	<h2>Массивы</h2>
+	<div>
+		<a href="../../ru/javascript/manual/array/length.html">
+			длина массива
+		</a>
+		<a href="../../ru/javascript/manual/array/concat.html">
+			слияние массивов вместе
+			<span class="__label__ __acceptable__">пример на ...</span>
+		</a>
+		<a href="../../ru/javascript/manual/array/join.html">
+			слияние массива в строку
+		</a>
+		<a href="../../ru/javascript/manual/array/reverse.html">
+			переворот массива
+		</a>
+		<a href="../../ru/javascript/manual/array/indexOf.html">
+			поиск по массиву
+			<span class="__label__ __acceptable__">ссылка на мозиллу</span>
+		</a>
+		<a href="../../ru/javascript/manual/array/slice.html">
+			отрезание части массива
+		</a>
+		<a href="../../ru/javascript/manual/array/splice.html">
+			отрезание части массива
+		</a>
+		<a href="../../ru/javascript/manual/array/shift.html">
+			удаление первого элемента
+		</a>
+		<a href="../../ru/javascript/manual/array/pop.html">
+			удаление последнего элемента
+		</a>
+		<a href="../../ru/javascript/manual/array/unshift.html">
+			добавление элементов в начало
+		</a>
+		<a href="../../ru/javascript/manual/array/push.html">
+			добавление элементов в конец
+		</a>
+		<a href="../../ru/javascript/manual/array/map.html">
+			перебор массива
+			<span class="__label__ __acceptable__">ссылку на учебник</span>
+		</a>
+		<a href="../../ru/javascript/manual/array/forEach.html">
+			перебор массива
+			<span class="__label__ __acceptable__">ссылку на учебник</span>
+		</a>
+		<a href="../../ru/javascript/manual/array/filter.html">
+			фильтрация массива
+			<span class="__label__ __acceptable__">ссылку на учебник</span>
+		</a>
+		<a href="../../ru/javascript/manual/array/every.html">
+			все в массиве
+			<span class="__label__ __acceptable__">ссылку на учебник</span>
+		</a>
+		<a href="../../ru/javascript/manual/array/some.html">
+			хотя бы один в массиве
+			<span class="__label__ __acceptable__">ссылку на учебник</span>
+		</a>
+		<a href="../../ru/javascript/manual/array/reduce.html">
+			свертка к значению
+			<span class="__label__ __acceptable__">ссылку на учебник</span>
+		</a>
+		<a href="../../ru/javascript/manual/array/reduceRight.html">
+			свертка к значению
+			<span class="__label__ __acceptable__">ссылку на учебник, примеры</span>
+		</a>
+		
+	</div>
+</section>
+<section data-name="время">
+	<h2>Время</h2>
+	<div>
+		<a href="../../ru/javascript/manual/time/Date.html">
+			объект для работы даты
+			<span class="__label__ __acceptable__">поработать еще</span>
+		</a>
+		<a href="../../ru/javascript/manual/time/getFullYear.html">
+			год (4 цифры)
+		</a>
+		<a href="../../ru/javascript/manual/time/getMonth.html">
+			месяц
+		</a>
+		<a href="../../ru/javascript/manual/time/getDate.html">
+			день месяца
+		</a>
+		<a href="../../ru/javascript/manual/time/getHours.html">
+			часы
+		</a>
+		<a href="../../ru/javascript/manual/time/getMinutes.html">
+			минуты
+		</a>
+		<a href="../../ru/javascript/manual/time/getSeconds.html">
+			секунды
+		</a>
+		<a href="../../ru/javascript/manual/time/getMilliseconds.html">
+			миллисекунды
+		</a>
+		<a href="../../ru/javascript/manual/time/getDay.html">
+			день недели
+		</a>
+		<a href="../../ru/javascript/manual/time/getTime.html">
+			дата в миллисекундах
+		</a>
+		<a href="../../ru/javascript/manual/time/Date.parse.html">
+			дата из строки
+		</a>
+		<!--
+		<a href="../../ru/javascript/manual/time/setFullYear.html">
+			установка года
+		</a>
+		<a href="../../ru/javascript/manual/time/setMonth.html">
+			установка месяца
+		</a>
+		<a href="../../ru/javascript/manual/time/setDate.html">
+			установка дня месяца
+		</a>
+		<a href="../../ru/javascript/manual/time/setHours.html">
+			установка часа
+		</a>
+		<a href="../../ru/javascript/manual/time/setMinutes.html">
+			установка минуты
+		</a>
+		<a href="../../ru/javascript/manual/time/setSeconds.html">
+			установка секунды
+		</a>
+		<a href="../../ru/javascript/manual/time/setMilliseconds.html">
+			установка миллисекунды
+		</a>
+		<a href="../../ru/javascript/manual/time/now.html">
+			текущая дата в миллисекундах
+		</a>
+		<a href="../../ru/javascript/manual/time/getTimezoneOffset.html">
+			смещение времени
+		</a>
+		<a href="../../ru/javascript/manual/time/toTimeString.html">
+			преобразование времени в строку
+		</a>
+		<a href="../../ru/javascript/manual/time/toDateString.html">
+			преобразование даты в строку
+		</a>
+		<a href="../../ru/javascript/manual/time/toISOString.html">
+			дата в формате ISO
+		</a>
+		<a href="../../ru/javascript/manual/time/toUTCString.html">
+			дата в формате GMT
+		</a>
+		<a href="../../ru/javascript/manual/time/toLocaleString.html">
+			форматирование даты
+		</a>
+		-->
+	</div>
+	
+	<h2>Таймеры</h2>
+	<div>
+		<a href="../../ru/javascript/manual/time/setInterval.html">
+			таймер выполнения кода
+		</a>
+		<a href="../../ru/javascript/manual/time/setTimeout.html">
+			пауза при выполнении кода
+		</a>
+		<a href="../../ru/javascript/manual/time/clearInterval.html">
+			сброс таймера
+		</a>
+		<a href="../../ru/javascript/manual/time/clearTimeout.html">
+			сброс паузы
+		</a>
+	</div>
+</section>
+<section data-name="выборка">
+	<h2>Получение элементов</h2>
+	<div>
+		<a href="../../ru/javascript/manual/dom/querySelector.html">
+			элемент по селектору
+		</a>
+		<a href="../../ru/javascript/manual/dom/getElementById.html">
+			элемент по id
+		</a>
+		<a href="../../ru/javascript/manual/dom/querySelectorAll.html">
+			элементы по селектору
+		</a>
+		<a href="../../ru/javascript/manual/dom/getElementsByTagName.html">
+			элементы по тегу
+		</a>
+		<a href="../../ru/javascript/manual/dom/getElementsByClassName.html">
+			элементы по классу
+		</a>
+		<a href="../../ru/javascript/manual/dom/closest.html">
+			родитель по селектору
+		</a>
+		<a href="../../ru/javascript/manual/dom/matches.html">
+			соответствие селектору
+		</a>
+		<a href="../../ru/javascript/manual/dom/contains.html">
+			проверка на вложенность
+		</a>
+	</div>
+	
+	<h2>Получение родственников</h2>
+	<div>
+		<a href="../../ru/javascript/manual/dom/children.html">
+			все потомки элемента
+		</a>
+		<a href="../../ru/javascript/manual/dom/childNodes.html">
+			дочерние узлы
+		</a>
+		<a href="../../ru/javascript/manual/dom/firstElementChild.html">
+			первый потомок
+		</a>
+		<a href="../../ru/javascript/manual/dom/firstChild.html">
+			первый потомок узел
+		</a>
+		<a href="../../ru/javascript/manual/dom/lastElementChild.html">
+			последний потомок
+		</a>
+		<a href="../../ru/javascript/manual/dom/lastChild.html">
+			последний потомок узел
+		</a>
+		<a href="../../ru/javascript/manual/dom/previousElementSibling.html">
+			следующий элемент
+		</a>
+		<a href="../../ru/javascript/manual/dom/nextElementSibling.html">
+			предыдущий элемент
+		</a>
+		<a href="../../ru/javascript/manual/dom/parentElement.html">
+			родительский элемент
+		</a>
+		<a href="../../ru/javascript/manual/dom/parentNode.html">
+			родительский узел
+		</a>
+	</div>
+	
+	<h2>Части таблиц</h2>
+	<div>
+		<a href="../../ru/javascript/manual/dom/rows.html">
+			массив строк таблицы
+		</a>
+		<a href="../../ru/javascript/manual/dom/cells.html">
+			массив ячеек таблицы
+		</a>
+		<a href="../../ru/javascript/manual/dom/tHead.html">
+			thead таблицы
+		</a>
+		<a href="../../ru/javascript/manual/dom/tFoot.html">
+			tfoot таблицы
+		</a>
+		<a href="../../ru/javascript/manual/dom/tBodies.html">
+			tbody таблицы
+		</a>
+	</div>
+</section>
+<section data-name="манипуляции">
+	<h2>Создание элементов</h2>
+	<div>
+		<a href="../../ru/javascript/manual/dom/createElement.html">
+			создание элемента
+		</a>
+		<a href="../../ru/javascript/manual/dom/cloneNode.html">
+			клонирование узла
+		</a>
+		
+	</div>
+	
+	<h2>Вставка элементов</h2>
+	<div>
+		<a href="../../ru/javascript/manual/dom/prepend.html">
+			вставка в начало
+		</a>
+		<a href="../../ru/javascript/manual/dom/append.html">
+			вставка в конец
+		</a>
+		<a href="../../ru/javascript/manual/dom/appendChild.html">
+			вставка в конец
+		</a>
+		<a href="../../ru/javascript/manual/dom/insertBefore.html">
+			вставка перед
+		</a>
+		<a href="../../ru/javascript/manual/dom/insertAdjacentElement.html">
+			вставка элементов
+		</a>
+		<a href="../../ru/javascript/manual/dom/insertAdjacentHTML.html">
+			вставка HTML кода
+		</a>
+		<a href="../../ru/javascript/manual/dom/insertAdjacentText.html">
+			вставка текста
+		</a>
+	</div>
+	
+	<h2>Удаление</h2>
+	<div>
+		<a href="../../ru/javascript/manual/dom/removeChild.html">
+			удаление узлов
+		</a>
+		<a href="../../ru/javascript/manual/dom/remove.html">
+			удаление
+		</a>
+	</div>
+</section>
+<section data-name="элемент">
+	<h2>Текст и тег</h2>
+	<div>
+		<a href="../../ru/javascript/manual/dom/innerHTML.html">
+			текст элемента
+		</a>
+		<a href="../../ru/javascript/manual/dom/outerHTML.html">
+			текст элемента с тегом
+		</a>
+		
+		
+		
+		<a href="../../ru/javascript/manual/dom/tagName.html">
+			название тега
+		</a>
+	</div>
+	
+	<h2>Атрибуты</h2>
+	<div>
+		<a href="../../ru/javascript/manual/dom/getAttribute.html">
+			получение атрибутов элемента
+		</a>
+		<a href="../../ru/javascript/manual/dom/setAttribute.html">
+			изменение атрибутов элемента
+		</a>
+		<a href="../../ru/javascript/manual/dom/removeAttribute.html">
+			удаление атрибутов элемента
+		</a>
+		<a href="../../ru/javascript/manual/dom/hasAttribute.html">
+			проверка наличия атрибута
+		</a>
+		<a href="../../ru/javascript/manual/dom/dataset.html">
+			атрибуты data-
+			<span class="__label__ __acceptable__">улучшить</span>
+		</a>
+	</div>
+	
+	<h2>CSS классы</h2>
+	<div>
+		<a href="../../ru/javascript/manual/dom/classList.html">
+			Объект с классами
+		</a>
+		<a href="../../ru/javascript/manual/dom/classList/add.html">
+			Добавление классов
+		</a>
+		<a href="../../ru/javascript/manual/dom/classList/remove.html">
+			Удаление классов
+		</a>
+		<a href="../../ru/javascript/manual/dom/classList/toggle.html">
+			Чередование классов
+		</a>
+		<a href="../../ru/javascript/manual/dom/classList/contains.html">
+			Проверка классов
+		</a>
+	</div>
+	
+	<h2>Работа с CSS</h2>
+	<div>
+		<a href="../../ru/javascript/manual/dom/cssText.html">
+			стиль одной строкой
+		</a>
+		<a href="../../ru/javascript/manual/dom/getComputedStyle.html">
+			стиль из CSS
+			<span class="__label__ __acceptable__">попробовать улучшить</span>
+		</a>
+	</div>
+</section>
+<section data-name="метрики">
+	<h2>Размеры</h2>
+	<div>
+		<a href="../../ru/javascript/manual/dom/metric/offsetWidth.html">
+			полная ширина
+		</a>
+		<a href="../../ru/javascript/manual/dom/metric/offsetHeight.html">
+			полная высота
+		</a>
+		<a href="../../ru/javascript/manual/dom/metric/clientLeft.html">
+			левая граница
+		</a>
+		<a href="../../ru/javascript/manual/dom/metric/clientTop.html">
+			верхняя граница
+		</a>
+		<a href="../../ru/javascript/manual/dom/metric/clientWidth.html">
+			ширина содержимого
+		</a>
+		<a href="../../ru/javascript/manual/dom/metric/clientHeight.html">
+			высота содержимого
+		</a>
+	</div>
+	
+	<h2>Смещения</h2>
+	<div>
+		<a href="../../ru/javascript/manual/dom/metric/offsetParent.html">
+			родитель с позиционированием
+		</a>
+		<a href="../../ru/javascript/manual/dom/metric/offsetTop.html">
+			смещение сверху
+		</a>
+		<a href="../../ru/javascript/manual/dom/metric/offsetLeft.html">
+			смещение слева
+		</a>
+		<a href="../../ru/javascript/manual/dom/metric/getBoundingClientRect.html">
+			координаты элемента
+		</a>
+		<a href="../../ru/javascript/manual/dom/metric/elementFromPoint.html">
+			элемент на координатах
+		</a>
+	</div>
+	
+	<!--
+	<h2>Прокрутка</h2>
+	<div>
+		<a href="../../ru/javascript/manual/dom/metric/scrollWidth.html">
+			ширина с прокруткой
+		</a>
+		<a href="../../ru/javascript/manual/dom/metric/scrollHeight.html">
+			высота с прокруткой
+		</a>
+		<a href="../../ru/javascript/manual/dom/metric/scrollLeft.html">
+			горизонтальная прокрутка
+		</a>
+		<a href="../../ru/javascript/manual/dom/metric/scrollTop.html">
+			вертикальная прокрутка
+		</a>
+		<a href="../../ru/javascript/manual/dom/metric/scrollBy.html">
+			прокрутка страницы
+		</a>
+		<a href="../../ru/javascript/manual/dom/metric/scrollTo.html">
+			прокрутка страницы
+		</a>
+		<a href="../../ru/javascript/manual/dom/metric/scrollIntoView.html">
+			прокрутить до видимости
+		</a>
+		<a href="../../ru/javascript/manual/dom/metric/pageXOffset.html">
+			горизонтальная прокрутка документа
+		</a>
+		<a href="../../ru/javascript/manual/dom/metric/pageYOffset.html">
+			вертикальная прокрутка документа
+		</a>
+	</div>
+	-->
+</section>
+<section data-name="события">
+	<h2>События</h2>
+	<div>
+		<a href="../../ru/javascript/manual/dom/addEventListener.html">
+			привязка событий
+			<span class="__label__ __acceptable__">ссылку на список событий</span>
+		</a>
+		<a href="../../ru/javascript/manual/dom/removeEventListener.html">
+			удаление событий
+		</a>
+		<a href="../../ru/javascript/manual/page/event-types.html" data-header="страница">
+			список типов событий
+			<span class="__label__ __acceptable__">переделать</span>
+		</a>
+	</div>
+	
+	<h2>Объект Event</h2>
+	<div>
+		<a href="../../ru/javascript/manual/dom/event/preventDefault.html">
+			отмена действия по умолчанию
+			<span class="__label__ __acceptable__">отправку формы</span>
+		</a>
+		<a href="../../ru/javascript/manual/dom/event/type.html">
+			тип события
+			<span class="__label__ __acceptable__">примеры, примеры применения</span>
+		</a>
+		<a href="../../ru/javascript/manual/dom/event/target.html">
+			элемент, на котором событие сработало
+		</a>
+		<a href="../../ru/javascript/manual/dom/event/currentTarget.html">
+			элемент, на который назначили событие
+		</a>
+		<a href="../../ru/javascript/manual/dom/event/isTrusted.html">
+			настоящее ли событие
+		</a>
+		<a href="../../ru/javascript/manual/dom/event/ctrlKey.html">
+			нажат ли Ctrl
+		</a>
+		<a href="../../ru/javascript/manual/dom/event/altKey.html">
+			нажат ли Alt
+			</a>
+		<a href="../../ru/javascript/manual/dom/event/shiftKey.html">
+			нажат ли Shift
+		</a>
+		
+		<a href="../../ru/javascript/manual/dom/event/clientX.html">
+			координаты мыши
+			<span class="__label__ __acceptable__">поработать</span>
+		</a>
+		<a href="../../ru/javascript/manual/dom/event/clientY.html">
+			координаты мыши
+			<span class="__label__ __acceptable__">поработать</span>
+		</a>
+		<a href="../../ru/javascript/manual/dom/event/pageX.html">
+			координаты мыши
+			<span class="__label__ __acceptable__">поработать</span>
+		</a>
+		<a href="../../ru/javascript/manual/dom/event/pageY.html">
+			координаты мыши
+			<span class="__label__ __acceptable__">поработать</span>
+		</a>
+	</div>
+	
+	<h2>Продвинутое</h2>
+	<div>
+		<a href="../../ru/javascript/manual/dom/event/constructor.html">
+			конструктор событий
+		</a>
+		<a href="../../ru/javascript/manual/dom/dispatchEvent.html">
+			имитация события
+		</a>
+		<a href="../../ru/javascript/manual/dom/focus.html">
+			установить фокус
+		</a>
+		<a href="../../ru/javascript/manual/dom/blur.html">
+			снять фокус
+		</a>
+	</div>
+</section>
+<section data-name="ооп">
+	<h2>Контекст</h2>
+	<div>
+		<a href="../../ru/javascript/manual/context/call.html">
+			вызов функции с контекстом
+		</a>
+		<a href="../../ru/javascript/manual/context/apply.html">
+			вызов функции с контекстом
+		</a>
+		<a href="../../ru/javascript/manual/context/bind.html">
+			привязка контекста
+		</a>
+	</div>
+</section>
+<section data-name="окна">
+	<h2>Диалоговые окошки</h2>
+	<div>
+		<a href="../../ru/javascript/manual/dialog/alert.html">
+			окно для сообщения
+		</a>
+		<a href="../../ru/javascript/manual/dialog/confirm.html">
+			окно для подтверждения
+		</a>
+		<a href="../../ru/javascript/manual/dialog/prompt.html">
+			окно для ввода данных
+		</a>
+	</div>
+</section>
+<section data-name="canvas">
+	<h2>Основное</h2>
+	<div>
+		<a href="../../ru/javascript/manual/canvas/moveTo.html">
+			перемещение пера
+		</a>
+		<a href="../../ru/javascript/manual/canvas/lineTo.html">
+			рисование линии
+		</a>
+		<a href="../../ru/javascript/manual/canvas/strokeRect.html">
+			прямоугольник контур
+		</a>
+		<a href="../../ru/javascript/manual/canvas/fillRect.html">
+			прямоугольник фигура
+		</a>
+		<a href="../../ru/javascript/manual/canvas/rect.html">
+			прямоугольник
+		</a>
+		<a href="../../ru/javascript/manual/canvas/arc.html">
+			окружность, дуга
+		</a>
+		<a href="../../ru/javascript/manual/canvas/clearRect.html">
+			стерка прямоугольник
+		</a>
+	</div>
+	
+	<h2>Общее</h2>
+	<div>
+		<a href="../../ru/javascript/manual/canvas/beginPath.html">
+			начало линии
+		</a>
+		<a href="../../ru/javascript/manual/canvas/closePath.html">
+			завершение фигуры
+		</a>
+		<a href="../../ru/javascript/manual/canvas/stroke.html">
+			обводка контуром
+		</a>
+		<a href="../../ru/javascript/manual/canvas/fill.html">
+			заливка фигуры
+		</a>
+	</div>
+	
+	<h2>Настройки</h2>
+	<div>
+		<a href="../../ru/javascript/manual/canvas/lineWidth.html">
+			толщина контура
+		</a>
+		<a href="../../ru/javascript/manual/canvas/strokeStyle.html">
+			цвет контура
+		</a>
+		<a href="../../ru/javascript/manual/canvas/fillStyle.html">
+			цвет заливки
+		</a>
+		<a href="../../ru/javascript/manual/canvas/lineCap.html">
+			стиль конца линии
+			<span class="__label__ __acceptable__">пример переделать</span>
+		</a>
+		<a href="../../ru/javascript/manual/canvas/lineJoin.html">
+			стиль излома линии
+		</a>
+		<a href="../../ru/javascript/manual/canvas/miterLimit.html">
+			острота излома линии
+		</a>
+
+		<!--
+		<a href="../../ru/javascript/manual/canvas/setLineDash.html">
+			пунктирная линия
+		</a>
+		<a href="../../ru/javascript/manual/canvas/getLineDash.html">
+			настройки пунктира
+		</a>
+		<a href="../../ru/javascript/manual/canvas/lineDashOffset.html">
+			сдвиг пунктира
+		</a>
+		-->
+	</div>
+	
+	<!--
+	<div>
+		<h2>Настройки</h2>
+		<a href="../../ru/javascript/manual/canvas/createLinearGradient.html">
+			линейный градиент
+		</a>
+		<a href="../../ru/javascript/manual/canvas/createRadialGradient.html">
+			радиальный градиент
+		</a>
+		<a href="../../ru/javascript/manual/canvas/addColorStop.html">
+			настройка цветов
+		</a>
+	</div>
+	-->
+	
+	<h2>Работа с текстом</h2>
+	<div>
+		<a href="../../ru/javascript/manual/canvas/fillText.html">
+			текст
+		</a>
+		<a href="../../ru/javascript/manual/canvas/strokeText.html">
+			контур текста
+		</a>
+		<a href="../../ru/javascript/manual/canvas/font.html">
+			шрифт текста
+		</a>
+		<a href="../../ru/javascript/manual/canvas/textAlign.html">
+			выравнивание горизонталь
+			<span class="__label__ __acceptable__">примеры</span>
+		</a>
+		<a href="../../ru/javascript/manual/canvas/textBaseline.html">
+			выравнивание вертикаль
+			<span class="__label__ __acceptable__">примеры</span>
+		</a>
+		<a href="../../ru/javascript/manual/canvas/direction.html">
+			направление текста
+		</a>
+	</div>
+
+
+	<!--
+	<div>
+		<h2>Работа с тенями</h2>
+		<a href="../../ru/javascript/manual/canvas/shadowOffsetX.html">
+			сдвиг по X
+		</a>
+		<a href="../../ru/javascript/manual/canvas/shadowOffsetY.html">
+			сдвиг по Y
+		</a>
+		<a href="../../ru/javascript/manual/canvas/shadowBlur.html">
+			размытие
+		</a>
+		<a href="../../ru/javascript/manual/canvas/shadowColor.html">
+			цвет тени
+		</a>
+	</div>
+	-->
+
+	<!--
+
+	<h2>Работа с картинками</h2>
+	<div>
+		<a href="../../ru/javascript/manual/canvas/drawImage.html">
+			рисование картинки
+		</a>
+		<a href="../../ru/javascript/manual/canvas/getImageData.html">
+			работа с пикселями
+		</a>
+		<a href="../../ru/javascript/manual/canvas/toDataURL.html">
+			сохранение картинки
+		</a>
+		<a href="../../ru/javascript/manual/canvas/toBlob.html">
+			сохранение картинки
+		</a>
+	</div>
+	-->
+
+	<h2>Служебное</h2>
+	<div>
+		<a href="../../ru/javascript/manual/canvas/getContext.html">
+			начало работы
+			<span class="__label__ __acceptable__">мало написано</span>
+		</a>
+	</div>
+</section>
+
+<!--
+<section data-name="document">
+	
+	<h2>Объект страница</h2>
+	<div>
+		<a href="../../ru/javascript/manual/dom/document.html">
+			объект страница
+			<span class="__label__">примеров нет</span>
+		</a>
+	</div>
+</section>
+<section data-name="document">
+	<h2>Выделение</h2>
+	<div>
+		<a href="../../ru/javascript/manual/dom/getSelection.html">
+			выделение текста
+			<span class="__label__">дописать</span>
+		</a>
+		<a href="../../ru/javascript/manual/dom/createRange.html">
+			фрагмент документа
+			<span class="__label__">улучшить</span>
+		</a>
+	</div>
+</section>
+-->
+<!--
+
+
+<h2>Объекты</h2>
+<div>
+	<a href="../../ru/javascript/manual/object/defineProperty.html">
+		настройка свойства
+	</a>
+	<a href="../../ru/javascript/manual/object/defineProperties.html">
+		настройка свойств
+	</a>
+	<a href="../../ru/javascript/manual/object/toString.html">
+		преобразование в строку
+	</a>
+	<a href="../../ru/javascript/manual/object/valueOf.html">
+		преобразование в число
+	</a>
+	<a href="../../ru/javascript/manual/object/Object.keys.html">
+		массив свойств объекта
+	</a>
+	<a href="../../ru/javascript/manual/object/new.html">
+		конструктор объектов
+	</a>
+	<a href="../../ru/javascript/manual/object/prototype.html">
+		прототип объекта
+	</a>
+	<a href="../../ru/javascript/manual/object/instanceof.html">
+		проверка класса
+	</a>
+	<a href="../../ru/javascript/manual/object/create.html">
+		создание объекта с прототипом
+	</a>
+	<a href="../../ru/javascript/manual/object/constructor.html">
+		конструктор объекта
+	</a>
+	<a href="../../ru/javascript/manual/object/hasOwnProperty.html">
+		проверка наличия свойства
+	</a>
+</div>
+
+<div>
+	<h2>Window</h2>
+	<a href="../../ru/javascript/manual/window/window.open.html">
+		открытие окна
+	</a>
+	<a href="../../ru/javascript/manual/window/window.close.html">
+		закрытия окна
+	</a>
+	<a href="../../ru/javascript/manual/window/window.focus.html">
+		активное окно
+	</a>
+	<a href="../../ru/javascript/manual/window/window.location.html">
+		URL окна
+	</a>
+	<a href="../../ru/javascript/manual/window/window.parent.html">
+		родительское окно
+	</a>
+	<a href="../../ru/javascript/manual/window/window.top.html">
+		верхнее окно
+	</a>
+	<a href="../../ru/javascript/manual/window/window.name.html">
+		имя окна
+	</a>
+	<a href="../../ru/javascript/manual/window/window.frames.html">
+		список фреймов
+	</a>
+	<a href="../../ru/javascript/manual/window/window.opener.html">
+		родитель окна
+	</a>
+	<a href="../../ru/javascript/manual/window/window.closed.html">
+		состояние окна
+	</a>
+	<a href="../../ru/javascript/manual/window/window.status.html">
+		статус окна
+	</a>
+</div>
+
+
+	<h2>Прокрутка страницы</h2>
+	<div>
+		<a href="../../ru/javascript/manual/dom/metric/scrollBy.html">
+			прокрутка страницы
+		</a>
+		<a href="../../ru/javascript/manual/dom/metric/scrollTo.html">
+			прокрутка страницы
+		</a>
+		<a href="../../ru/javascript/manual/dom/metric/scrollIntoView.html">
+			прокрутить до видимости
+		</a>
+		<a href="../../ru/javascript/manual/dom/metric/pageXOffset.html">
+			горизонтальная прокрутка документа
+		</a>
+		<a href="../../ru/javascript/manual/dom/metric/pageYOffset.html">
+			вертикальная прокрутка документа
+		</a>
+	</div>
+
+<h2 class="__todo__">Регулярки</h2>
+<div>
+	<a href="../../ru/javascript/manual/string/replace.html">
+		замена текста в строке
+		<span class="__label__">переделать, перенести в регулярки</span>
+	</a>
+	<a href="../../ru/javascript/manual/string/match.html">
+		поиск
+		<span class="__label__">переделать, перенести в регулярки</span>
+	</a>
+	<a href="../../ru/javascript/manual/string/search.html">
+		поиск
+		<span class="__label__">переделать, перенести в регулярки</span>
+	</a>
+</div>
+
+<h2>Url кодирование - это в другую работу с урл URLSearchParams</h2>
+<div>
+	<a href="../../ru/javascript/manual/url/decodeURI.html">
+		декодирование URL
+	</a>
+	<a href="../../ru/javascript/manual/url/decodeURIComponent.html">
+		декодирование URL
+	</a>
+	<a href="../../ru/javascript/manual/url/encodeURI.html">
+		кодирование URL
+	</a>
+	<a href="../../ru/javascript/manual/url/encodeURIComponent.html">
+		кодирование компонентов URI
+	</a>
+</div>
+-->
+</div>			</main>
+			<div class="bottom">
+	</div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../js/metrika.js?v=1"></script>	</body>
+</html>

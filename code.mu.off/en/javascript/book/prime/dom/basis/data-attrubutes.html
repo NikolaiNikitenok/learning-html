@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Custom attributes in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will look at working with data- attributes in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Custom attributes in JavaScript</h1>
+				<div class="content">
+<p>
+	HTML allows you to add your own custom attributes 
+	to tags. Such attributes should start with <code class="code inline">data-</code> 
+	followed by whatever attribute name you like.
+</p>
+<p>
+	Custom attributes can be used in a huge number 
+	of different ways. We will explore many of these 
+	methods later in the tutorial, and there are many 
+	more you can invent yourself later on.
+</p>
+<p>
+	Access to such attributes is not arranged in a 
+	standard way. You can't just refer to the element's 
+	property of the same name, as we did before, but 
+	you should use the special property <code class="code inline">dataset</code>, 
+	after which the attribute name is written using a 
+	dot without <code class="code inline">data-</code>. For example, if our 
+	attribute is called <code class="code inline">data-test</code>, then to 
+	refer to it we will write <code class="code inline">elem.dataset.test</code>, 
+	where <code class="code inline">elem</code> is a variable with our element.
+</p>
+<p>
+	Let's look at an example. Let's say we 
+	have the following element:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem" data-num="1000"&gt;&lt;/div&gt;</code>
+</div>
+<p>
+	Let's display the value of its 
+	<code class="code inline">data-num</code> attribute:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+console.log(elem.dataset.num); // shows 1000</code>
+</div>
+<p>
+	Now let's assign this attribute 
+	a different value:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+elem.dataset.num = 123;</code>
+</div>
+<div class="task">
+	<p>
+		Given the following code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem" data-text="str"&gt;text&lt;/div&gt;</code>
+	</div>
+	<p>
+		Make it so that when you click on the 
+		div, the content of its <code class="code inline">data-text</code> 
+		attribute is added to the end of its text.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given divs that contain their ordinal 
+		number in the <code class="code inline">data-num</code> attribute:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;div data-num="1"&gt;text&lt;/div&gt;
+&lt;div data-num="2"&gt;text&lt;/div&gt;
+&lt;div data-num="3"&gt;text&lt;/div&gt;
+&lt;div data-num="4"&gt;text&lt;/div&gt;
+&lt;div data-num="5"&gt;text&lt;/div&gt;</code>
+	</div>
+	<p>
+		Make it so that when you click on any of 
+		the divs, its ordinal number is written 
+		to the end.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given a button. Make it so that this button 
+		counts the number of clicks on it, writing 
+		them to some custom attribute. Let by double 
+		clicking on this button, the screen displays 
+		how many clicks on this button were made.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given an input:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;input id="elem" data-length="5"&gt;</code>
+	</div>
+	<p>
+		In this input, the <code class="code inline">data-length</code> attribute 
+		contains the number of characters to be entered 
+		into the input. Make it so that when focus is 
+		lost, if the number of characters entered does 
+		not match the specified one, a message is 
+		displayed about this.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given an input:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;input id="elem" data-min="5" data-max="10"&gt;</code>
+	</div>
+	<p>
+		In this input, the attributes <code class="code inline">data-min</code> 
+		and <code class="code inline">data-max</code> contain a range. Make it 
+		so that when focus is lost, if the number of 
+		characters entered does not fall within this 
+		range, a message is displayed about this.
+	</p>
+</div>
+
+<h2>Hyphenated names</h2>
+<p>
+	Custom attributes can contain hyphens in 
+	their names, like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem" data-my-test="1000"&gt;&lt;/div&gt;</code>
+</div>
+<p>
+	To refer to such attributes, use camelCase:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+console.log(elem.dataset.myTest);</code>
+</div>
+<div class="task">
+	<p>
+		Given the following code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem" data-product-price="1000" data-product-amount="5"&gt;
+	apples
+&lt;/div&gt;</code>
+	</div>
+	<p>
+		Make it so that when you click on the div, 
+		the purchase price is added to the end of 
+		its text, equal to the price multiplied 
+		by the quantity.
+	</p>
+</div>
+
+<h2>Accessing via methods</h2>
+<p>
+	Custom attributes can also be accessed using 
+	methods like <code class="code inline">getAttribute</code>, in which 
+	case the full name of the attribute should 
+	be written:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem" data-num="1000" data-my-num="2000"&gt;&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+
+console.log(elem.getAttribute('data-num'));    // shows 1000
+console.log(elem.getAttribute('data-my-num')); // shows 2000</code>
+</div>
+<div class="task">
+	<p>
+		Given paragraphs. Go through them in a loop 
+		and for each paragraph write down the ordinal 
+		number of this paragraph into the <code class="code inline">data-num</code> 
+		attribute. Use the <code class="code inline">setAttribute</code> method.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="74" data-hash="jsPmDmDA" data-quantity="363" data-num="269"><a href="../../../../../../en/javascript/book/prime/dom/basis/inside-element-searching.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../en/javascript/book/prime/dom/basis/nodes.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/basis/data-attrubutes.html" class="active">en</a><a href="../../../../../../ru/javascript/book/prime/dom/basis/data-attrubutes.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

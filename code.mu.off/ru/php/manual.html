@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Справочник PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../js/location.js?v=3"></script>
+		<script src="../../js/locale.js?v=5"></script>
+		<script src="../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="Удобный справочник PHP, написанный простым языком, с видео и примерами.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../ru/php/manual.html">Справочник</a>
+		<a href="../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Справочник PHP</h1>
+				<div class="menu" data-module="menu" data-mode="tabs">
+<section data-name="математика">
+	<h2>Математические функции</h2>
+	<div>
+		<a href="../../ru/php/manual/math/abs.html">
+			модуль числа
+		</a>
+		<a href="../../ru/php/manual/math/pow.html">
+			степень числа
+		</a>
+		<a href="../../ru/php/manual/math/sqrt.html">
+			квадратный корень числа
+		</a>
+		<a href="../../ru/php/manual/math/max.html">
+			наибольшее значение
+		</a>
+		<a href="../../ru/php/manual/math/min.html">
+			наименьшее значение
+		</a>
+		<a href="../../ru/php/manual/math/round.html">
+			округление числа
+		</a>
+		<a href="../../ru/php/manual/math/ceil.html">
+			округление в большую сторону 
+		</a>
+		<a href="../../ru/php/manual/math/floor.html">
+			округление в меньшую сторону
+		</a>
+		<a href="../../ru/php/manual/math/fmod.html">
+			дробный остаток от деления
+		</a>
+		<a href="../../ru/php/manual/math/mt_rand.html">
+			случайное числа
+		</a>
+	</div>
+</section>
+<section data-name="строки">
+	<h2>Строки</h2>
+	<div>
+		<a href="../../ru/php/manual/string/strlen.html">
+			количество символов
+		</a>
+		<a href="../../ru/php/manual/string/strtolower.html">
+			нижний регистр
+		</a>
+		<a href="../../ru/php/manual/string/strtoupper.html">
+			верхний регистр
+		</a>
+		<a href="../../ru/php/manual/string/ucfirst.html">
+			первый символ в верхний регистр
+		</a>
+		<a href="../../ru/php/manual/string/lcfirst.html">
+			первый символ в нижний регистр
+		</a>
+		<a href="../../ru/php/manual/string/ucwords.html">
+			первый символ слова в верхний регистр
+		</a>
+		<a href="../../ru/php/manual/string/trim.html">
+			удаление пробелов по краям строки
+		</a>
+		<a href="../../ru/php/manual/string/ltrim.html">
+			удаление пробелов с начала строки
+		</a>
+		<a href="../../ru/php/manual/string/rtrim.html">
+			удаление пробелов с конца строки
+		</a>
+		<a href="../../ru/php/manual/string/substr.html">
+			вырезание части строки
+		</a>
+		<a href="../../ru/php/manual/string/chr.html">
+			возврат символа по коду
+		</a>
+		<a href="../../ru/php/manual/string/ord.html">
+			возврат кода символа
+		</a>
+		<a href="../../ru/php/manual/string/str_pad.html">
+			дополнение строки до заданной длины
+		</a>
+		<a href="../../ru/php/manual/string/str_repeat.html">
+			возврат повторяющейся строки
+		</a>
+		<a href="../../ru/php/manual/string/strrev.html">
+			переворот строки
+		</a>
+		<a href="../../ru/php/manual/string/str_shuffle.html">
+			перемешивание символов
+		</a>
+	</div>
+	
+	<h2>Разбиение в массив</h2>
+	<div>
+		<a href="../../ru/php/manual/string/explode.html">
+			разбиение строки в массив
+		</a>
+		<a href="../../ru/php/manual/string/str_split.html">
+			разбиение строки в массив
+		</a>
+		<a href="../../ru/php/manual/string/parse_str.html">
+			разбиение строки на переменные
+		</a>
+	</div>
+	
+	<h2>Поиск и замена</h2>
+	<div>
+		<a href="../../ru/php/manual/string/str_replace.html">
+			поиск и замена
+		</a>
+		<a href="../../ru/php/manual/string/strtr.html">
+			поиск и замена
+		</a>
+		<a href="../../ru/php/manual/string/substr_replace.html">
+			замена части строки
+		</a>
+	</div>
+	
+	<h2>Поиск по строке</h2>
+	<div>
+		<a href="../../ru/php/manual/string/strpos.html">
+			позиция первого вхождения подстроки
+		</a>
+		<a href="../../ru/php/manual/string/strrpos.html">
+			позиция последнего вхождения символа
+		</a>
+		<a href="../../ru/php/manual/string/strstr.html">
+			нахождение первого вхождения подстроки
+		</a>
+		<a href="../../ru/php/manual/string/strpbrk.html">
+			поиск в строке любого заданного символа 
+		</a>
+		<a href="../../ru/php/manual/string/strchr.html">
+			нахождение первого вхождения символа
+		</a>
+		<a href="../../ru/php/manual/string/strrchr.html">
+			нахождение последнего вхождения символа
+		</a>
+	</div>
+	
+	<h2>Подсчет по строке</h2>
+	<div>
+		<a href="../../ru/php/manual/string/substr_count.html">
+			подсчет количества вхождений подстроки
+		</a>
+		<a href="../../ru/php/manual/string/count_chars.html">
+			подсчет количества символов
+			<span class="__label__ __acceptable__">там список ul, пример сделать</span>
+		</a>
+		<a href="../../ru/php/manual/string/str_word_count.html">
+			подсчет количества слов
+		</a>
+	</div>
+	
+	<h2>Работа с тегами, экранированием</h2>
+	<div>
+		<a href="../../ru/php/manual/string/strip_tags.html">
+			удаление тегов из строки
+		</a>
+		<a href="../../ru/php/manual/string/htmlspecialchars.html">
+			вывод тегов в браузер
+		</a>
+		<a href="../../ru/php/manual/string/htmlspecialchars_decode.html">
+			обратная операция к htmlspecialchars
+		</a>
+		<a href="../../ru/php/manual/string/htmlentities.html">
+			преобразование символов в HTML сущности
+		</a>
+		<a href="../../ru/php/manual/string/html_entity_decode.html">
+			обратная операция к htmlentities
+		</a>
+		<a href="../../ru/php/manual/string/addslashes.html">
+			экранировка кавычек в строке
+		</a>
+		<a href="../../ru/php/manual/string/stripslashes.html">
+			удаление экранирования функции addslashes
+		</a>
+	</div>
+	
+	<h2>Форматирование строк</h2>
+	<div>
+		<a href="../../ru/php/manual/string/number_format.html">
+			отделение троек цифр в числе
+		</a>
+		<a href="../../ru/php/manual/string/printf.html">
+			вывод отформатированной строки
+		</a>
+		<a href="../../ru/php/manual/string/wordwrap.html">
+			вставка переноса строки
+			<span class="__label__ __acceptable__">примеров добавить</span>
+		</a>
+		<a href="../../ru/php/manual/string/nl2br.html">
+			вставка переноса строки
+		</a>
+	</div>
+</section>
+<section data-name="массивы">
+	<h2>Массивы</h2>
+	<div>
+		<a href="../../ru/php/manual/array/count.html">
+			количество элементов
+		</a>
+		<a href="../../ru/php/manual/array/range.html">
+			массив с диапазоном
+		</a>
+		<a href="../../ru/php/manual/array/array_sum.html">
+			сумма элементов массива
+		</a>
+		<a href="../../ru/php/manual/array/array_product.html">
+			произведение элементов
+		</a>
+		<a href="../../ru/php/manual/array/array_slice.html">
+			разрезание массива
+		</a>
+		<a href="../../ru/php/manual/array/array_merge.html">
+			слияние массивов
+		</a>
+		<a href="../../ru/php/manual/array/array_merge_recursive.html">
+			слияние массивов рекурсивно
+		</a>
+		<a href="../../ru/php/manual/array/array_reverse.html">
+			переворот массива
+		</a>
+		<a href="../../ru/php/manual/array/array_flip.html">
+			ключи на значения
+		</a>
+		<a href="../../ru/php/manual/array/array_keys.html">
+			выбор ключей массива
+		</a>
+		<a href="../../ru/php/manual/array/array_values.html">
+			выбор значений массива
+		</a>
+		<a href="../../ru/php/manual/array/array_combine.html">
+			слияние массивов
+		</a>
+		<a href="../../ru/php/manual/array/array_search.html">
+			поиск по массиву
+		</a>
+		<a href="../../ru/php/manual/array/array_count_values.html">
+			подсчет количества
+		</a>
+		<a href="../../ru/php/manual/array/array_replace.html">
+			замена в массиве
+		</a>
+		<a href="../../ru/php/manual/array/array_unique.html">
+			удаление дублей
+		</a>
+		<a href="../../ru/php/manual/array/array_rand.html">
+			случайный ключ
+		</a>
+		<a href="../../ru/php/manual/array/array_filter.html">
+			фильтрация массива
+		</a>
+		<a href="../../ru/php/manual/array/array_key_exists.html">
+			проверка присутствия
+		</a>
+		<a href="../../ru/php/manual/array/in_array.html">
+			проверка присутствия
+		</a>
+		<a href="../../ru/php/manual/array/array_map.html">
+			функция к каждому элементу массива
+		</a>
+		<a href="../../ru/php/manual/array/extract.html">
+			массив в переменные
+		</a>
+		<a href="../../ru/php/manual/array/list.html">
+			массив в переменные
+		</a>
+		<a href="../../ru/php/manual/array/implode.html">
+			слияние массива в строку
+		</a>
+		<a href="../../ru/php/manual/array/array_chunk.html">
+			в многомерный массив
+		</a>
+		<a href="../../ru/php/manual/array/array_shift.html">
+			первый элемент массива
+		</a>
+		<a href="../../ru/php/manual/array/array_pop.html">
+			последний элемента массива
+		</a>
+		<a href="../../ru/php/manual/array/array_unshift.html">
+			добавление в начало
+		</a>
+		<a href="../../ru/php/manual/array/array_push.html">
+			добавление в конец
+		</a>
+		<a href="../../ru/php/manual/array/array_pad.html">
+			дополнение массива
+		</a>
+		<a href="../../ru/php/manual/array/array_fill.html">
+			заполнение массива
+		</a>
+		<a href="../../ru/php/manual/array/array_fill_keys.html">
+			заполнение массива
+			<span class="__label__">что-то не то тут</span>
+		</a>
+		<a href="../../ru/php/manual/array/array_reduce.html">
+			свертка массива
+			<span class="__label__ __acceptable__">стоит ссылка на чужой сайт</span>
+		</a>
+	</div>
+	
+	<h2>Сортировка массивов</h2>
+	<div>
+		<a href="../../ru/php/manual/array/sort.html">
+			сортировка массива
+		</a>
+		<a href="../../ru/php/manual/array/array_multisort.html">
+			сортировка нескольких массивов
+			<span class="__label__ __acceptable__">стоит ссылка на чужой сайт</span>
+		</a>
+		<a href="../../ru/php/manual/array/shuffle.html">
+			перемешивание массива
+		</a>
+	</div>
+	
+	<h2>Пересечение массивов</h2>
+	<div>
+		<a href="../../ru/php/manual/array/array_intersect.html">
+			вычисление схождения массивов
+		</a>
+		<a href="../../ru/php/manual/array/array_diff.html">
+			вычисление расхождения в массивах
+			<span class="__label__ __acceptable__">стоит ссылка на чужой сайт</span>
+		</a>
+	</div>
+</section>
+<section data-name="время">
+	<h2>Время</h2>
+	<div>
+		<a href="../../ru/php/manual/time/time.html">
+			текущий момент в timestamp
+		</a>
+		<a href="../../ru/php/manual/time/mktime.html">
+			заданный момент в timestamp
+		</a>
+		<a href="../../ru/php/manual/time/date.html">
+			форматирование даты
+			<span class="__label__ __acceptable__">стоит список ul, поработать еще</span>
+		</a>
+		<a href="../../ru/php/manual/time/strtotime.html">
+			преобразование даты в timestamp
+		</a>
+		<a href="../../ru/php/manual/time/microtime.html">
+			получение микросекунд
+		</a>
+		<a href="../../ru/php/manual/time/checkdate.html">
+			проверка правильности даты
+		</a>
+		<a href="../../ru/php/manual/time/date_create.html">
+			создание объекта даты
+		</a>
+		<a href="../../ru/php/manual/time/date_modify.html">
+			прибавление и вычитание дат
+		</a>
+		<a href="../../ru/php/manual/time/date_format.html">
+			форматирование даты
+		</a>
+		<a href="../../ru/php/manual/time/date_diff.html">
+			разница между двумя датами
+		</a>
+
+		<!--
+		<a href="../../ru/php/manual/time/date_add.html">
+			прибавление к дате
+		</a>
+		<a href="../../ru/php/manual/time/date_sub.html">
+			вычитание из даты
+		</a>
+		-->
+
+		<a href="../../ru/php/manual/time/date_default_timezone_set.html">
+			установка часового пояса
+		</a>
+		<a href="../../ru/php/manual/time/date_default_timezone_get.html">
+			получение часового пояса
+		</a>
+	</div>
+</section>
+<!--
+<section data-name="файлы">
+	<h2>Чтение и запись файлов целиком</h2>
+	<div>
+		<a href="../../ru/php/manual/file/file_get_contents.html">
+			получение содержимого файла в виде строки
+		</a>
+		<a href="../../ru/php/manual/file/file_put_contents.html">
+			запись строки в файл
+		</a>
+		<a href="../../ru/php/manual/file/file.html">
+			чтение содержимого файла в массив
+		</a>
+	</div>
+
+	<h2>Чтение и запись файлов частями</h2>
+	<div>
+		<a href="../../ru/php/manual/file/fopen.html">
+			открытие файла или URL
+		</a>
+		<a href="../../ru/php/manual/file/fread.html">
+			чтение файла
+		</a>
+		<a href="../../ru/php/manual/file/fgets.html">
+			чтение строки из файла
+		</a>
+		<a href="../../ru/php/manual/file/fgetss.html">
+			чтение строки из файла без HTML-тегов
+		</a>
+		<a href="../../ru/php/manual/file/fgetc.html">
+			считывание символа из файла
+		</a>
+		<a href="../../ru/php/manual/file/fwrite.html">
+			запись в файл
+		</a>
+		<a href="../../ru/php/manual/file/fclose.html">
+			закрытие дескриптора файла
+		</a>
+		<a href="../../ru/php/manual/file/readfile.html">
+			чтение файла
+		</a>
+		<a href="../../ru/php/manual/file/feof.html">
+			проверка достижения конца файла
+		</a>
+	</div>
+
+	<h2>Операции над файлами</h2>
+	<div>
+		<a href="../../ru/php/manual/file/delete.html">
+			удаление файла
+		</a>
+		<a href="../../ru/php/manual/file/unlink.html">
+			удаление файла
+		</a>
+		<a href="../../ru/php/manual/file/copy.html">
+			копирование файла
+		</a>
+		<a href="../../ru/php/manual/file/rename.html">
+			переименование файла или папки
+		</a>
+		<a href="../../ru/php/manual/file/tmpfile.html">
+			создание временного файла
+		</a>
+		<a href="../../ru/php/manual/file/tempname.html">
+			создание файла с уникальным именем
+		</a>
+	</div>
+
+	<h2>Проверки файлов</h2>
+	<div>
+		<a href="../../ru/php/manual/file/filesize.html">
+			получение размера файла
+		</a>
+		<a href="../../ru/php/manual/file/file_exists.html">
+			проверка наличия указанного файла или папки 
+		</a>
+		<a href="../../ru/php/manual/file/is_file.html">
+			проверка на файл
+		</a>
+		<a href="../../ru/php/manual/file/is_readable.html">
+			определение доступности файла для чтения
+		</a>
+		<a href="../../ru/php/manual/file/is_writable.html">
+			проверка на доступность файла для записи
+		</a>
+		<a href="../../ru/php/manual/file/is_executable.html">
+			проверка на исполняемый файл
+		</a>
+	</div>
+
+	<h2>Загрузка файлов</h2>
+	<div>
+		<a href="../../ru/php/manual/file/is_uploaded_file.html">
+			определение загрузки файла
+		</a>
+		<a href="../../ru/php/manual/file/move_uploaded_file.html">
+			перемещение загруженного файла в новое место
+		</a>
+	</div>
+
+	<h2>Пути к файлам</h2>
+	<div>
+		<a href="../../ru/php/manual/file/realpath.html">
+			возврат абсолютного пути к файлу
+		</a>
+		<a href="../../ru/php/manual/file/pathinfo.html">
+			возврат информации о пути к файлу
+		</a>
+		<a href="../../ru/php/manual/file/glob.html">
+			нахождение путей файлов, совпадающих с шаблоном
+		</a>
+	</div>
+
+	<h2>Работа с папками</h2>
+	<div>
+		<a href="../../ru/php/manual/file/mkdir.html">
+			создание папки
+		</a>
+		<a href="../../ru/php/manual/file/rmdir.html">
+			удаление папки
+		</a>
+		<a href="../../ru/php/manual/file/is_dir.html">
+			проверка на папку
+		</a>
+		<a href="../../ru/php/manual/file/dirname.html">
+			возврат имени папки из указанного пути
+		</a>
+		<a href="../../ru/php/manual/file/disk_free_space.html">
+			получение размера доступного пространства в папке
+		</a>
+		<a href="../../ru/php/manual/file/disk_total_space.html">
+			возврат объема папки
+		</a>
+	</div>
+</section>
+-->
+</div>			</main>
+			<div class="bottom">
+	</div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../js/metrika.js?v=1"></script>	</body>
+</html>

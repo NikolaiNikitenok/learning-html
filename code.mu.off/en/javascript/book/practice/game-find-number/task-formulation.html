@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Find the number game in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will implement the find a number in a table game in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Find the number game in JavaScript</h1>
+				<div class="content">
+<p>
+	Let's make a game with a square table that will 
+	randomly contain numbers from <code class="number inline">1</code> to N, 
+	where N is the number of cells in the table. 
+	The essence of the game will be that you will 
+	need to click on the cells in the correct 
+	order: first on <code class="number inline">1</code>, then on <code class="number inline">2</code>, 
+	then on <code class="number inline">3</code> and etc.
+</p>
+<p>
+	If the player clicks on the correct cell - let 
+	it be activated and make a red background. If 
+	player clicks on the wrong cell, nothing happens.
+</p>
+<p>
+	When the player finds the last number - let the 
+	game start again, but the table increases by one 
+	row and one column. For a better understanding 
+	of your task, I have prepared a sample of what 
+	should be as result:
+</p>
+<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			body {
+			height: 300px;
+		}
+		</style>
+		<style>
+			#parent {
+			text-align: center;
+		}
+		#field {
+			display: inline-block;
+		}
+		
+		#field td {
+			padding: 20px;
+			border: 1px solid black;
+			cursor: pointer;
+		}
+		.active {
+			background: red;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;parent&quot;>
+			<table id=&quot;field&quot;></table>
+		</div>
+		
+		<script>
+			
+			let field = document.querySelector('#field');
+		start(2);
+		
+		function start(size) {
+			activate(build(field, prepare(size)), size);
+		}
+		
+		function build(field, arr) {
+			field.textContent = '';
+			let cells = [];
+			
+			for (let sub of arr) {
+				let tr = document.createElement('tr');
+				
+				for (let num of sub) {
+					let td = document.createElement('td');
+					td.textContent = num;
+					tr.appendChild(td);
+					
+					cells.push(td);
+				}
+				
+				field.appendChild(tr);
+			}
+			
+			return cells;
+		}
+		
+		function activate(cells, size) {
+			let counter = 1;
+			
+			for (let cell of cells) {
+				cell.addEventListener('click', function() {
+					if (this.textContent == counter) {
+						this.classList.add('active');
+						
+						if (counter == size * size) {
+							start(++size);
+						}
+						
+						counter++;
+					}
+				});
+			}
+		}
+		
+		function prepare(size) {
+			let arr = [];
+			
+			arr = range(size * size);
+			arr = shuffle(arr);
+			arr = chunk(arr, size);
+			
+			return arr;
+		}
+		
+		function range(count) {
+			let arr = [];
+			
+			for (let i = 1; i <= count; i++) {
+				arr.push(i);
+			}
+			
+			return arr;
+		}
+		
+		function shuffle(arr) {
+			let result = [];
+			let length = arr.length;
+			
+			for (let i = 0; i < length; i++) {
+				let random = getRandomInt(0, arr.length - 1);
+				let elem = arr.splice(random, 1)[0];
+				result.push(elem);
+			}
+			
+			return result;
+		}
+
+		function chunk(arr, n) {
+			let result = [];
+			let count = Math.ceil(arr.length / n);
+			
+			for (let i = 0; i < count; i++) {
+				let elems = arr.splice(0, n);
+				result.push(elems);
+			}
+			
+			return result;
+		}
+		
+		function getRandomInt(min, max) {
+			return Math.floor(Math.random() * (max - min + 1)) + min;
+		}
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Preparation</h2>
+<p>
+	First, let's prepare the layout:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="parent"&gt;
+	&lt;table id="field"&gt;&lt;/table&gt;
+&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">#parent {
+	text-align: center;
+}
+#field {
+	display: inline-block;
+}
+
+#field td {
+	padding: 20px;
+	border: 1px solid black;
+	cursor: pointer;
+}
+.active {
+	background: red;
+}</code>
+</div>
+<p>
+	We will also get a reference to the table 
+	representing the playing field:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let field = document.querySelector('#field');</code>
+</div>
+<div class="task">
+	<p>
+		Copy your preparation code.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/practice/" data-persent="76" data-hash="jsPrGFNTF" data-quantity="75" data-num="58"><a href="../../../../../en/javascript/book/practice/game-change-color/moves-minimum-number.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/practice/game-find-number/task-discussion.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/practice/game-find-number/task-formulation.html" class="active">en</a><a href="../../../../../ru/javascript/book/practice/game-find-number/task-formulation.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

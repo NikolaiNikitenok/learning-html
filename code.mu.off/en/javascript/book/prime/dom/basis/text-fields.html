@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Working with text fields in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to work with the values ​​of text fields using JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Working with text fields in JavaScript</h1>
+				<div class="content">
+<p>
+	Now we will learn how to get text from users 
+	of our site. To do this, HTML provides a 
+	special tag <code class="code inline">input</code>, which is a text 
+	field for data entry.
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;input&gt;</code>
+</div>
+<p>
+	This tag has the special <code class="code inline">value</code> attribute 
+	that specifies the initial text that will be 
+	written in the input when entering the page:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;input value="text"&gt;</code>
+</div>
+<p>
+	The user of our site after entering the page 
+	can change the text of the input. Moreover, 
+	if we have a variable containing a reference 
+	to this input, then the <code class="code inline">value</code> property 
+	of this variable will always contain the 
+	current value of the input text.
+</p>
+<p>
+	Let's try it in practice. Let us have an 
+	input with the attribute <code class="code inline">value</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;input id="elem" value="text"&gt;</code>
+</div>
+<p>
+	Get a reference to this input in a variable:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');</code>
+</div>
+<p>
+	And now we will display the current input text:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log(elem.value);</code>
+</div>
+<p>
+	And now change the text of the input to another:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">elem.value = 'new text';</code>
+</div>
+<div class="task">
+	<p>
+		Given an input:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;input id="elem" value="text"&gt;</code>
+	</div>
+	<p>
+		Make a button, clicking on which will display 
+		the current input text. After entering the 
+		page, click on the button to see the current 
+		input text, then edit the text in the input 
+		and click the button again. Make sure the new 
+		input text is displayed.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given an input and a button. On pressing the 
+		button, write some text to the input.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given an input, a paragraph, and a button. By 
+		pressing the button, write the text from the 
+		input into the paragraph.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given two inputs and a button. The user enters 
+		a number into the first input. By pressing the 
+		button, write the square of the entered number 
+		into the second input.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given two inputs and a button. By pressing the 
+		button, write the value of the second input into 
+		the first input, and the value of the first input 
+		into the second input. Your code should work 
+		universally, for any input values.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given <code class="number inline">5</code> inputs, a paragraph, and a button. 
+		Numbers are entered into the inputs. By pressing 
+		the button, write down the arithmetic mean of 
+		the entered numbers into a paragraph.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="69" data-hash="jsPmDmTF" data-quantity="363" data-num="250"><a href="../../../../../../en/javascript/book/prime/dom/basis/attributes-via-properties.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../en/javascript/book/prime/dom/basis/text-fields-focus.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/basis/text-fields.html" class="active">en</a><a href="../../../../../../ru/javascript/book/prime/dom/basis/text-fields.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Attaching handlers to new elements in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will consider the problem that arises when hanging event handlers on both old and new elements at the same time in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Attaching handlers to new elements in JavaScript</h1>
+				<div class="content">
+<p>
+	Suppose we have the list <code class="code inline">ul</code> and a button:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;ul&gt;
+	&lt;li&gt;item&lt;/li&gt;
+	&lt;li&gt;item&lt;/li&gt;
+	&lt;li&gt;item&lt;/li&gt;
+	&lt;li&gt;item&lt;/li&gt;
+	&lt;li&gt;item&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;button&gt;add&lt;/button&gt;</code>
+</div>
+<p>
+	Let's get our elements into the 
+	corresponding variables:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let button = document.querySelector('button');
+let list   = document.querySelector('ul');
+let items  = list.querySelectorAll('li');</code>
+</div>
+<p>
+	Let's make it so that when you click on any 
+	<code class="code inline">li</code>, an exclamation mark is added to 
+	the end of it:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">for (let item of items) {
+	item.addEventListener('click', function() {
+		this.innerHTML = this.innerHTML + '!';
+	});
+}</code>
+</div>
+<p>
+	Let's now make it so that when the button 
+	is pressed, a new <code class="code inline">li</code> is added to 
+	the end of the list:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">button.addEventListener('click', function() {
+	let item = document.createElement('li');
+	item.innerHTML = 'item';
+	list.appendChild(item);
+});</code>
+</div>
+<p>
+	We will however get a problem: clicking on 
+	the newly added <code class="code inline">li</code> will not add an 
+	exclamation mark to the end. The point is 
+	that we add a click handler only to those 
+	<code class="code inline">li</code> that originally existed, but 
+	<i>not to new ones</i>.
+</p>
+<p>
+	Let's fix the problem by attaching a click 
+	handler to the new <code class="code inline">li</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">button.addEventListener('click', function() {
+	let item = document.createElement('li');
+	item.innerHTML = 'item';
+	
+	item.addEventListener('click', function() { // click handler
+		this.innerHTML = this.innerHTML + '!';
+	});
+	
+	list.appendChild(item);
+});</code>
+</div>
+<p>
+	However, now the handler function code is 
+	duplicated in two places - for the original 
+	<code class="code inline">li</code> and for the new ones. Let's fix 
+	this by moving it to a separate function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function handler() {
+	this.innerHTML = this.innerHTML + '!';
+}</code>
+</div>
+<p>
+	Use our function to avoid code duplication:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">for (let item of items) {
+	item.addEventListener('click', handler);
+}
+
+button.addEventListener('click', function() {
+	let item = document.createElement('li');
+	item.innerHTML = 'item';
+	
+	item.addEventListener('click', handler);
+	
+	list.appendChild(item);
+});</code>
+</div>
+<p>
+	The task is generally solved and we have avoided 
+	duplicating the code of the handler function. 
+	However, we still have to hang event handlers 
+	in two places: both in the loop for the existing 
+	<code class="code inline">li</code>, and when the button is clicked. 
+	In the next lesson, we will look at a way to 
+	get rid of this inconvenience.
+</p>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="82" data-hash="jsPmOENEH" data-quantity="363" data-num="299"><a href="../../../../../../en/javascript/book/prime/dom/object-Event/events-capturing.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../en/javascript/book/prime/dom/object-Event/events-delegation.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/object-Event/new-elements-handlers.html" class="active">en</a><a href="../../../../../../ru/javascript/book/prime/dom/object-Event/new-elements-handlers.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

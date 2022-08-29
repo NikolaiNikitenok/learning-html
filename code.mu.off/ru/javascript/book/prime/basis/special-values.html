@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Специальные значения в JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы рассмотрим значения undefined, null, true, false, NaN, Infinity, -Infinity в JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Специальные значения в JavaScript</h1>
+				<div class="content">
+<p>
+	В JavaScript, как и в других языках программирования,
+	существуют ключевые слова для некоторых специальных
+	значений. Вот они: <code class="code inline">undefined</code>, <code class="code inline">null</code>,
+	<code class="code inline">true</code>, <code class="code inline">false</code>, <code class="code inline">NaN</code>, <code class="code inline">Infinity</code>,
+	<code class="code inline">-Infinity</code>.
+</p>
+
+<h2>Значение undefined</h2>
+<p>
+	Значение <code class="code inline">undefined</code> обозначает неопределенность.
+	Такое значение будет у переменной, если мы
+	объявили ее, но не записали в нее значение:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a;
+alert(a); // выведет undefined</code>
+</div>
+<p>
+	Это значение можно присвоить переменной явно:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = undefined;
+alert(a); // выведет undefined</code>
+</div>
+<div class="task">
+	<p>
+		Объявите переменную, не задавая ей значения.
+		Выведите значение созданной переменной на экран.
+	</p>
+</div>
+
+<h2>Значение null</h2>
+<p>
+	Значение <code class="code inline">null</code> обозначает "ничего".
+	К примеру, мы можем присвоить переменной
+	такое значение в знак того, что там
+	ничего не лежит:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = null;
+alert(a); // выведет null</code>
+</div>
+<div class="task">
+	<p>
+		Присвойте переменной значение <code class="code inline">null</code>.
+		Выведите эту переменную на экран.
+	</p>
+</div>
+
+<h2>Значения true и false</h2>
+<p>
+	Значения <code class="code inline">true</code> и <code class="code inline">false</code> обозначают
+	истину и ложь соответственно. Они используются
+	для таких вещей, которые предполагают два
+	варианта ответа - да или нет.
+</p>
+<div class="task">
+	<p>
+		Присвойте переменной значение <code class="code inline">true</code>.
+		Выведите эту переменную на экран.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Присвойте переменной значение <code class="code inline">false</code>.
+		Выведите эту переменную на экран.
+	</p>
+</div>
+
+<h2>Значение NaN</h2>
+<p>
+	Значение <code class="code inline">NaN</code> (<span class="translate-en">Not-A-Number</span>)
+	обозначает <dfn>не число</dfn>. Такое значение
+	получается тогда, когда вы пытаетесь делать
+	математические операции не с числами, а с
+	чем-то другим. К примеру, такое значение даст
+	попытка умножить строку на число:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">alert('abc' * 3); // выведет NaN</code>
+</div>
+<p>
+	Любые операции с <code class="code inline">NaN</code> приводят к тому,
+	что результатом все равно остается <code class="code inline">NaN</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">alert(NaN + 1); // выведет NaN</code>
+</div>
+<div class="task">
+	<p>
+		Сделайте две строки. Перемножьте их друг
+		на друга. Выведите результат умножения на экран.
+	</p>
+</div>
+
+<h2>Значения Infinity и -Infinity</h2>
+<p>
+	Значения <code class="code inline">Infinity</code> и <code class="code inline">-Infinity</code>
+	обозначают соответственно бесконечность и
+	минус бесконечность. Такие значения получаются,
+	если какое-то число поделить на ноль - в
+	этом случает JavaScript не выдает ошибку,
+	как в других языках программирования, а возвращает
+	эти значения:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">alert( 1 / 0); // выведет Infinity
+alert(-1 / 0); // выведет -Infinity</code>
+</div>
+<div class="task">
+	<p>
+		Поделите число <code class="number inline">10</code> на <code class="number inline">0</code>. Выведите
+		результат на экран.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Поделите число <code class="number inline">-10</code> на <code class="number inline">0</code>. Выведите
+		результат на экран.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/prime/" data-persent="5" data-hash="jsPmBsSV" data-quantity="363" data-num="18"><a href="../../../../../ru/javascript/book/prime/basis/template-strings.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/javascript/book/prime/basis/console.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/basis/special-values.html">en</a><a href="../../../../../ru/javascript/book/prime/basis/special-values.html" class="active">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Работа с флагами в PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами рассмотрим работу с флагами в PHP.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Работа с флагами в PHP</h1>
+				<div class="content">
+<p>
+	Сейчас мы с вами научимся работать с флагами.
+	Флаг - это специальная переменная, которое
+	может принимать только два значения: <code class="code inline">true</code>
+	или <code class="code inline">false</code>. С помощью флагов можно
+	решать задачи, проверяющие отсутствие чего-либо:
+	к примеру, можно проверить, что в массиве
+	нет элемента с определенным значением.
+</p>
+<p>
+	Давайте решим следующую задачу: дан массив
+	с числами, нужно проверить, есть ли в нем
+	элемент со значением <code class="number inline">3</code> или нет. Если
+	есть - выведем <code class="string inline">'есть'</code>, если нет -
+	выведем <code class="string inline">'нет'</code>.
+</p>
+
+<h2>Шаг первый</h2>
+<p>
+	Для начала давайте попробуем вывести <code class="string inline">'есть'</code>.
+	Для этого переберем все элементы нашего массива
+	и ифом будем спрашивать - равен ли текущий
+	элемент значению <code class="number inline">3</code>. Если равен - выведем
+	<code class="string inline">'есть'</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = [1, 2, 3, 4, 5];
+	
+	foreach ($arr as $elem) {
+		if ($elem === 3) {
+			echo 'есть';
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Но наше решение не очень хорошо: ведь если
+	в массиве будет не одно значение <code class="number inline">3</code>,
+	а несколько, то <code class="string inline">'есть'</code> выведется несколько
+	раз. Давайте исправим наш массив (сделаем
+	два элемента со значением <code class="number inline">3</code>) и убедимся
+	в этом:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = [1, 2, 3, 4, 3, 5];
+	
+	foreach ($arr as $elem) {
+		if ($elem === 3) {
+			echo 'есть'; // выведет несколько раз
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Поправим проблему: завершим цикл с помощью
+	<code class="code inline">break</code>, если элемент уже найден:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = [1, 2, 3, 4, 3, 5];
+	
+	foreach ($arr as $elem) {
+		if ($elem === 3) {
+			echo 'есть';
+			break;  // завершим цикл
+		}
+	}
+?&gt;</code>
+</div>
+
+<h2>Шаг второй</h2>
+<p>
+	Давайте теперь попробуем сделать так, чтобы,
+	если в массиве вообще нет элементов со значением
+	<code class="number inline">3</code>, выводилось <code class="string inline">'нет'</code>. Распространенным
+	заблуждением будет добавить <code class="code inline">else</code> к
+	нашему ифу - в этом случае <code class="string inline">'нет'</code> будет
+	выводиться на все элементы, не являющиеся
+	<code class="number inline">3</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = [1, 2, 3, 4, 5];
+	
+	foreach ($arr as $elem) {
+		if ($elem === 3) {
+			echo 'есть'; // выведет на элементе 3
+		} else {
+			echo 'нет';  // выведет на элементах 1, 2, 4, 5
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Итак, идея добавить <code class="code inline">else</code> - плохая
+	идея, не рабочая. Для решения задач подобного
+	типа и используют переменные-флаги.
+</p>
+<p>
+	Давайте сделаем такую переменную со следующем
+	поведением: если она равна <code class="code inline">true</code>, то
+	в массиве есть элемент <code class="number inline">3</code>, а если <code class="code inline">false</code>,
+	то такого элемента нет. Изначально поставим
+	наш флаг в значение <code class="code inline">false</code> - то есть
+	будем считать, что элемента <code class="number inline">3</code> в массиве
+	нет:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = [1, 2, 3, 4, 5];
+	$flag = false; // считаем, что элемента 3 в массиве нет
+?&gt;</code>
+</div>
+<p>
+	Затем запустим цикл с ифом так, как мы делали
+	это раньше. Если цикл обнаружит, что в массиве
+	есть элемент <code class="number inline">3</code> - то поставим переменную
+	<code class="code inline">$flag</code> в значение <code class="code inline">true</code> и выйдем
+	из цикла с помощью <code class="code inline">break</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = [1, 2, 3, 4, 5];
+	$flag = false; // считаем, что элемента 3 нет в массиве
+	
+	foreach ($arr as $elem) {
+		if ($elem === 3) {
+			$flag = true; // элемент есть - переопределим переменную $flag
+			break;        // выйдем из цикла
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Ответ на вопрос, есть ли в массиве <code class="number inline">3</code>
+	или нет, мы можем дать только после цикла.
+	И этот ответ у нас уже есть: после цикла
+	переменная <code class="code inline">$flag</code> могла остаться <code class="code inline">false</code>
+	или могла сменить свое значение на <code class="code inline">true</code>,
+	если цикл обнаружил в массиве <code class="number inline">3</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = [1, 2, 3, 4, 5];
+	$flag = false;
+	
+	foreach ($arr as $elem) {
+		if ($elem === 3) {
+			$flag = true;
+			break;
+		}
+	}
+	
+	// тут переменная $flag равна или true, или false
+?&gt;</code>
+</div>
+<p>
+	Теперь после цикла мы можем сделать иф, который
+	посмотрит на переменную <code class="code inline">$flag</code> и выведет
+	на экран <code class="string inline">'есть'</code> или <code class="string inline">'нет'</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = [1, 2, 3, 4, 5];
+	$flag = false;
+	
+	foreach ($arr as $elem) {
+		if ($elem === 3) {
+			$flag = true;
+			break;
+		}
+	}
+	
+	if ($flag === true) {
+		echo 'есть';
+	} else {
+		echo 'нет';
+	}
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Дан массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = ['a', 'b', 'c', 'd', 'e'];
+?&gt;</code>
+	</div>
+	<p>
+		Проверьте, что в этом массиве есть элемент
+		<code class="string inline">'c'</code>. Если есть - выведите <code class="string inline">'да'</code>,
+		а если нет - выведите <code class="string inline">'нет'</code>.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/prime/" data-persent="24" data-hash="ppPmLpFl" data-quantity="223" data-num="55"><a href="../../../../../ru/php/book/prime/loops/continue.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/php/book/prime/loops/prime-numbers.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

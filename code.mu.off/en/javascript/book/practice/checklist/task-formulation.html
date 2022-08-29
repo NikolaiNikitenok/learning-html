@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Checklist in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will make a checklist in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Checklist in JavaScript</h1>
+				<div class="content">
+<p>
+	In this tutorial, we will implement a checklist. 
+	A Checklist is a program that allows you to make 
+	a list of planned tasks, and then, as these tasks 
+	are completed, mark these tasks as done.
+</p>
+<p>
+	Let's make it so that tasks can be added, deleted, 
+	edited and marked as done.
+</p>
+<p>
+	Here is an example of what we should get (to enter 
+	a new task - enter the text into the input and 
+	press <code class="key inline">Enter</code>, to edit - double-click on the 
+	text of the task):
+</p>
+<div class="block"><a href="" data-module="opener" data-type="win"><span data-x="open-window"></span><div srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			body {
+			text-align: center;
+		}
+		
+		#input, #list {
+			display: inline-block;
+		}
+		
+		#list {
+			padding: 0;
+			list-style-type: none;
+		}
+		#list span {
+			margin-right: 5px;
+		}
+		#list .remove, #list .mark {
+			color: blue;
+			cursor: pointer;
+		}
+		#list .remove:hover, #list .mark:hover {
+			text-decoration: underline;
+		}
+		
+		#list .done .task {
+			text-decoration: line-through;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;wrapper&quot;>
+			<input id=&quot;input&quot;><br>
+			<ul id=&quot;list&quot;></ul>
+		</div>
+		
+		<script>
+			
+			let input = document.querySelector('#input');
+		let list = document.querySelector('#list');
+		
+		input.addEventListener('keypress', function(event) {
+			if (event.key == 'Enter') {
+				let li = document.createElement('li');
+				
+				let task = document.createElement('span');
+				task.classList.add('task');
+				task.textContent = this.value;
+				task.addEventListener('dblclick', function() {
+					let text = this.textContent;
+					this.textContent = '';
+					
+					let edit = document.createElement('input');
+					edit.value = text;
+					this.appendChild(edit);
+					
+					let self = this;
+					edit.addEventListener('keypress', function(event) {
+						if (event.key == 'Enter') {
+							self.textContent = this.value;
+						}
+					});
+				});
+				li.appendChild(task);
+				
+				let remove = document.createElement('span');
+				remove.textContent = 'remove';
+				remove.classList.add('remove');
+				remove.addEventListener('click', function() {
+					this.parentElement.remove();
+				});
+				li.appendChild(remove);
+				
+				let mark = document.createElement('span');
+				mark.textContent = 'done';
+				mark.classList.add('mark');
+				mark.addEventListener('click', function() {
+					this.parentElement.classList.add('done');
+				});
+				li.appendChild(mark);
+				
+				list.appendChild(li);
+				
+				this.value = '';
+			}
+		});
+		</script>
+	</body>
+</html>"></div></a></div>
+
+<h2>Let's begin</h2>
+<p>
+	So, let's start the implementation 
+	of the described problem.
+</p>
+<p>
+	First, let's write the HTML code for our checklist. 
+	Let new tasks be introduced using input and 
+	added to the <code class="code inline">ul</code> list:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;input id="input"&gt;
+&lt;ul id="list"&gt;&lt;/ul&gt;</code>
+</div>
+<p>
+	Immediately add CSS code that adds 
+	some beauty to our checklist:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="css">body {
+	text-align: center;
+}
+#input, #list {
+	display: inline-block;
+}
+#list {
+	padding: 0;
+	list-style-type: none;
+}</code>
+</div>
+<p>
+	As usual, we break a complex 
+	problem into simple steps.
+</p>
+<p>
+	As a first step, we will make it possible 
+	to enter text into the input, press 
+	<code class="key inline">Enter</code> - and <code class="code inline">li</code> with the 
+	entered text is added to the end of <code class="code inline">ul</code>.
+</p>
+<p>
+	Here is a draft code that 
+	implements the described:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let input = document.querySelector('#input');
+let list = document.querySelector('#list');
+
+input.addEventListener('keypress', function(event) {
+	if (event.key == 'Enter') {
+		// here will be the code for adding new li to the list
+	}
+});</code>
+</div>
+<div class="task">
+	<p>
+		Add the missing part of the code 
+		to solve the described task.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Modify the previous task so that after 
+		pressing the <code class="key inline">Enter</code> key, the 
+		input text is cleared.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/practice/" data-persent="24" data-hash="jsPrChLTF" data-quantity="75" data-num="19"><a href="../../../../../en/javascript/book/practice/game-cities/against-robot.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/practice/checklist/remove-complete-buttons.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/practice/checklist/task-formulation.html" class="active">en</a><a href="../../../../../ru/javascript/book/practice/checklist/task-formulation.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

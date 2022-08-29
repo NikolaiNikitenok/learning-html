@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Binding a context via the apply method in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to bind a context using the apply method in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Binding a context via the apply method in JavaScript</h1>
+				<div class="content">
+<p>
+	Let's now look at the <code class="code inline">apply</code> method for context 
+	binding. It works in much the same way as the call 
+	method. The difference is that in apply, the parameters 
+	are passed as an array, rather than listed with a comma. 
+	Depending on the task, one or the other method is 
+	convenient.
+</p>
+<p>
+	Here is an example of passing parameters 
+	to the apply method:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">func.apply(elem, [param1, param2]);</code>
+</div>
+<div class="task">
+	<p>
+		Let the following code be given:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;input id="elem" value="hello"&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+
+function func(surname, name) {
+	console.log(this.value + ', ' + surname + ' ' + name);
+}
+
+func(); // should output here 'hello, John Smit'</code>
+	</div>
+	<p>
+		Add the <code class="code inline">apply</code> method to the last line so 
+		that <code class="string inline">'hello, John Smit'</code> is displayed. The 
+		word <code class="string inline">'hello'</code> must come from the value input, 
+		<code class="string inline">'John'</code> and <code class="string inline">'Smit'</code> must be function 
+		parameters.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="84" data-hash="jsPmCtxAM" data-quantity="363" data-num="306"><a href="../../../../../en/javascript/book/prime/context/call-method.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/context/bind-method.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/context/apply-method.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/context/apply-method.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

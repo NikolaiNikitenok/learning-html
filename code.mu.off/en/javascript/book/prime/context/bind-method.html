@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Binding a context via the bind method in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to bind a context using the bind method in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Binding a context via the bind method in JavaScript</h1>
+				<div class="content">
+<p>
+	The following <code class="code inline">bind</code> method allows you to 
+	permanently bind a context to a function. As a 
+	result, this method returns a new function, 
+	inside which <code class="code inline">this</code> will have a 
+	hard-coded value.
+</p>
+<p>
+	Let's look at an example.
+</p>
+<p>
+	Let us have an input:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;input id="elem" value="text"&gt;</code>
+</div>
+<p>
+	Let the reference to this input be written 
+	into the variable <code class="code inline">elem</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');</code>
+</div>
+<p>
+	Suppose we also have the following 
+	function <code class="code inline">func</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(param1, param2) {
+	console.log(this.value + param1 + param2);
+}</code>
+</div>
+<p>
+	Let's make a new function using <code class="code inline">bind</code>, 
+	which will be a copy of the function <code class="code inline">func</code>, 
+	but <code class="code inline">this</code> in it will always be equal 
+	to <code class="code inline">elem</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let newFunc = func.bind(elem);</code>
+</div>
+<p>
+	Now the variable <code class="code inline">newFunc</code> contains a function. 
+	Let's call it by passing <code class="string inline">'1'</code> in the first 
+	parameter, and <code class="string inline">'2'</code> in the second (remember 
+	that elem contains an input with a value equal to 
+	<code class="string inline">'text'</code>):
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">newFunc('1', '2');</code>
+</div>
+<p>
+	Let's get it all together:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.getElementById('elem');
+
+function func(param1, param2) {
+	console.log(this.value + param1 + param2);
+}
+
+let newFunc = func.bind(elem);
+newFunc('1', '2'); // shows 'text12'</code>
+</div>
+<p>
+	It is not necessary to write the result of <code class="code inline">bind</code> 
+	into a new function <code class="code inline">newFunc</code>, you can simply 
+	overwrite <code class="code inline">func</code>. After that, <code class="code inline">func</code> will 
+	be the same function as it was, but with a 
+	hard-coded <code class="code inline">this</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">func = func.bind(elem);</code>
+</div>
+<div class="task">
+	<p>
+		Let the following code be given:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;input id="elem" value="привет"&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.getElementById('elem');
+
+function func(name, surname) {
+	console.log(this.value + ', ' + name + ' ' + surname);
+}
+
+// Let's write a construct with bind() here
+
+func('John', 'Smit'); // should output here 'hello, John Smit'
+func('Eric', 'Luis'); // should output here 'hello, Eric Luis'</code>
+	</div>
+	<p>
+		Write a construction with the method <code class="code inline">bind</code> 
+		in the indicated place so that <code class="code inline">this</code> inside 
+		the <code class="code inline">func</code> function always points to the 
+		input from the <code class="code inline">elem</code> variable 
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="84" data-hash="jsPmCtxBM" data-quantity="363" data-num="307"><a href="../../../../../en/javascript/book/prime/context/apply-method.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/timers/launching.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/context/bind-method.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/context/bind-method.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

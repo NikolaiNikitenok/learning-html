@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Changing a date format in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to change the date format in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Changing a date format in JavaScript</h1>
+				<div class="content">
+<p>
+	Let's now learn how to change the date 
+	format. Let, for example, we have a date 
+	string in the format <span class="format">year-month-day</span>. 
+	Let's change the format of this date to 
+	another, for example, to this one: 
+	<span class="format">day/month/year</span>.
+</p>
+<p>
+	Let's solve the problem with a specific 
+	example. Let the variable <code class="code inline">date</code> 
+	contain the date <code class="string inline">'2025-12-31'</code>. 
+	Let's convert this date to <code class="string inline">'31/12/2025'</code>
+</p>
+<p>
+	To solve the problem, let's split our tring 
+	<code class="string inline">'2025-12-31'</code> into an array using the 
+	<a href="../../../../../ru/javascript/manual/string/split.html"><code class="code inline">split</code></a> 
+	method with a separator hyphen. As a result, 
+	the zero element of the array will contain 
+	the year, the first - the month, and the 
+	second - the day:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = '2025-12-31';
+let arr = str.split('-');
+console.log(arr); // gets the array ['2025', '12', '31']</code>
+</div>
+<p>
+	Now, referring to different elements of the 
+	array by their keys, we will form the 
+	string we need:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = '2025-12-31';
+let arr = str.split('-');
+let res = arr[2] + '/' + arr[1] + '/' + arr[0];
+
+console.log(res); // gets the string '31/12/2025'</code>
+</div>
+<p>
+	You can also use a combination of methods
+	<a href="../../../../../ru/javascript/manual/string/split.html"><code class="code inline">split</code></a>,
+	<a href="../../../../../ru/javascript/manual/array/reverse.html"><code class="code inline">reverse</code></a>
+	and <a href="../../../../../ru/javascript/manual/array/join.html"><code class="code inline">join</code></a>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = '2025-12-31';
+let res = str.split('-').reverse().join('/');
+
+console.log(res); // gets the string '31/12/2025'</code>
+</div>
+<div class="task">
+	<p>
+		Given a date in the format <span class="format">year-month-day</span>. 
+		Convert this date to the format <span class="format">day.month.year</span>.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="61" data-hash="jsPmTmFCh" data-quantity="363" data-num="224"><a href="../../../../../en/javascript/book/prime/time/date-formatting.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/time/weekday-getting.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/time/format-changing.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/time/format-changing.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Разработка своего MVC фреймворка на PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами начнем разрабатывать свой MVC фреймворк на PHP.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Разработка своего MVC фреймворка на PHP</h1>
+				<div class="content">
+<p>
+	В предыдущих уроках вы тренировались использовать
+	готовый MVC фреймворк. Как правило, этим
+	PHP программисты и занимаются - берут один
+	из популярных готовых фреймворков, изучают
+	его, а потом используют. В настоящее время
+	есть <code class="number inline">3</code> самых популярных фреймворка:
+	<a href="../../../../../../ru/php/framework/laravel/book/prime.html">Laravel</a>,
+	Yii и Symfony.
+</p>
+<p>
+	Полученных вами знаний уже достаточно для
+	изучения настоящих фреймворков. При желании
+	или при недостатке времени вы можете не проходить
+	дальнейшие уроки данного учебника по ООП,
+	а перейти сразу на фреймворки.
+</p>
+<p>
+	Далее в данном учебнике мы с вами разработаем
+	свой MVC фреймворк на PHP. Еще раз подчеркну,
+	что данный этап уже не обязателен, но поспособствует
+	закреплению ваших знаний ООП на практическом
+	примере.
+</p>
+<p>
+	Итак, приступим к разработке. На самом деле
+	вы будете разрабатывать не какой-то абстрактный
+	фреймворк, а просто реализуете функционал
+	того учебного фреймворка, который мы использовали
+	в предыдущих уроках.
+</p>
+<p>
+	Вы уже знаете, какой функционал у вас должен
+	быть. Осталось его реализовать. Приступим!
+</p>
+
+<h2>Точка входа</h2>
+<p>
+	Для начала в корневой папке вашего домена
+	сделаем файл <code class="path inline">index.php</code> со следующим
+	содержанием:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	namespace Core;
+	
+	error_reporting(E_ALL);
+	ini_set('display_errors', 'on');
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Создайте файл <code class="code inline">index.php</code> и добавьте
+		в него указанные строки.
+	</p>
+</div>
+
+<h2>Настраиваем htaccess</h2>
+<p>
+	Теперь сделаем так, чтобы все запросы из
+	адресной строки адресовались на наш файл
+	<code class="path inline">index.php</code>. То есть всё, что бы не
+	вбил пользователь в браузер будет адресоваться
+	на <code class="path inline">index.php</code>, а код этого файла будет
+	разбираться с тем, какую именно страницу
+	показать пользователю.
+</p>
+<p>
+	Вот содержимое файла <code class="path inline">htaccess</code>:
+</p>
+<div class="block" data-file=".htaccess">
+	<code class="highlight" data-module="highlight" data-lang="htaccess">RewriteEngine On
+RewriteBase /
+
+RewriteRule .+ index.php</code>
+</div>
+<p>
+	Вспомним теперь, что адреса из папки <code class="path inline">project/webroot</code>
+	не должны перенаправляться на индекс, так
+	как там мы храним стили, скрипты, картинки
+	и тому подобные вещи. Учтем это в нашем <code class="path inline">htaccess</code>:
+</p>
+<div class="block" data-file=".htaccess">
+	<code class="highlight" data-module="highlight" data-lang="htaccess">RewriteEngine On
+RewriteBase /
+
+RewriteCond %{REQUEST_URI} !^/project/webroot/
+RewriteRule .+ index.php</code>
+</div>
+<div class="task">
+	<p>
+		Создайте файл <code class="path inline">htaccess</code>. Выполните
+		описанную настройку. Проверьте ее работу:
+		все адреса, кроме адресов из папки <code class="path inline">project/webroot</code>
+		должны редиректится на <code class="path inline">index</code>.
+	</p>
+</div>
+
+<h2>Автозагрузка классов</h2>
+<p>
+	Наш учебный фреймворк использует нестандартные
+	правила для автозагрузки классов (расскажите,
+	в чем отличия), поэтому нам придется реализовать
+	свою автозагрузку в файле <code class="path inline">index.php</code>:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	namespace Core;
+	
+	error_reporting(E_ALL);
+	ini_set('display_errors', 'on');
+	
+	spl_autoload_register(function($class) {
+		// ваша реализация автозагрузки
+	});
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Реализуйте функцию автозагрузки. Проверьте
+		ее работу.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/oop/" data-persent="93" data-hash="ppOpDFmInr" data-quantity="107" data-num="101"><a href="../../../../../../ru/php/book/oop/mvc/using/application-example.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../ru/php/book/oop/mvc/framework/routes.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

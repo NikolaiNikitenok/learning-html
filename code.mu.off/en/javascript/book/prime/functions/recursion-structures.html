@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Recursion and multidimensional structures in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will analyze the iteration of multidimensional arrays and objects using recursion in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Recursion and multidimensional structures in JavaScript</h1>
+				<div class="content">
+<p>
+	Given a multidimensional array of arbitrary 
+	nesting level, for example, this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [
+	1,
+	[
+		2, 7, 8
+	],
+	[
+		3, 4, [5, [6, 7]],
+	]
+];</code>
+</div>
+<p>
+	As you can see, this array has a complex 
+	structure, and it is assumed that this 
+	structure can be arbitrary and nesting 
+	levels can be arbitrarily deep.
+</p>
+<p>
+	Let's say we want to output to the console 
+	all the primitive (i.e., non-array) elements 
+	of our array. In this case, we simply cannot 
+	use loops to iterate over such an array, 
+	since the array has a not ordinary structure 
+	and an unknown nesting level.
+</p>
+<p>
+	But to iterate over such an array, it will 
+	be very convenient to use recursion.
+</p>
+<p>
+	To begin with, we will make a function 
+	into which we will pass our array as a 
+	parameter, and in the function we will 
+	make a loop to iterate over our array:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(arr) {
+	for (let elem of arr) {
+		console.log(elem);
+	}
+}
+
+func([1, [2, 7, 8], [3, 4, [5, [6, 7]]]]);</code>
+</div>
+<p>
+	The loop we made will only iterate over 
+	the elements of the main array. That is, 
+	first it will print <code class="code inline">1</code>, then <code class="code inline">[2, 7, 8]</code>, 
+	and then <code class="code inline">[3, 4, [5, [6, 7]]⁅ /c⁆.
+</p>
+<p>
+	Let's now separate primitive elements 
+	and array elements in a cycle:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(arr) {
+	for (let elem of arr) {
+		if (typeof elem == 'object') {
+			// element - array
+		} else {
+			// element - primitive
+			console.log(elem);
+		}
+	}
+}
+
+func([1, [2, 7, 8], [3, 4, [5, [6, 7]]]]);</code>
+</div>
+<p>
+	And now let's make it so that if our element 
+	is an array, the function calls itself, 
+	passing this array as a parameter:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(arr) {
+	for (let elem of arr) {
+		if (typeof elem == 'object') {
+			func(elem);
+		} else {
+			console.log(elem);
+		}
+	}
+}
+
+func([1, [2, 7, 8], [3, 4, [5, [6, 7]]]]);</code>
+</div>
+<div class="task">
+	<p>
+		Given a multidimensional object of 
+		arbitrary nesting level, for example, 
+		this one:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">{a: 1, b: {c: 2, d: 3, e: 4}, f: {g: 5, j: 6, k: {l: 7, m: {n: 8, o: 9}}}}</code>
+	</div>
+	<p>
+		Use recursion to print all the primitive 
+		elements of this object to the console.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given a multidimensional array of arbitrary 
+		nesting level, for example, this:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">[1, [2, 7, 8], [3, 4, [5, [6, 7]]]]</code>
+	</div>
+	<p>
+		Write code that will convert our 
+		multi-dimensional array into a 
+		one-dimensional one. For the above 
+		array it will look like this:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">[1, 2, 7, 8, 3, 4, 5, 6, 7]</code>
+	</div>
+</div>
+
+<h2>Sum of array elements</h2>
+<p>
+	Let's find the sum of the primitive 
+	elements of our array:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(arr) {
+	let sum = 0;
+	
+	for (let elem of arr) {
+		if (typeof elem == 'object') {
+			sum += func(elem);
+		} else {
+			sum += elem;
+		}
+	}
+	
+	return sum;
+}
+
+console.log(func([1, [2, 7, 8], [3, 4, [5, [6, 7]]]]));</code>
+</div>
+<div class="task">
+	<p>
+		A multidimensional object of arbitrary 
+		nesting level is given, for example, 
+		such as:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">{a: 1, b: {c: 2, d: 3, e: 4}, f: {g: 5, j: 6, k: {l: 7, m: {n: 8, o: 9}}}}</code>
+	</div>
+	<p>
+		Use recursion to find the sum of 
+		the elements of this object.
+	</p>
+</div>
+<div class="task">
+	<p>
+		A multidimensional array of arbitrary 
+		nesting level, containing strings inside, 
+		is given, for example, such as:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">['a', ['b', 'c', 'd'], ['e', 'f', ['g', ['j', 'k']]]]</code>
+	</div>
+	<p>
+		Use recursion to merge the elements 
+		of this array into one string:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">'abcdefgjk'</code>
+	</div>
+</div>
+
+<h2>Manipulations with elements</h2>
+<p>
+	Let's do something with the iterated elements 
+	of the array, for example, write the sign 
+	<code class="string inline">'!'</code> at the end of them.
+</p>
+<p>
+	In this case, we'll have to use the ordinary 
+	<code class="code inline">for</code> loop instead of <code class="code inline">for-of</code>, 
+	like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(arr) {
+	for (let i = 0; i &lt; arr.length; i++) {
+		if (typeof arr[i] == 'object') {
+			arr[i] = func(arr[i]);
+		} else {
+			arr[i] = arr[i] + '!';
+		}
+	}
+	
+	return arr;
+}
+
+console.log(func([1, [2, 7, 8], [3, 4, [5, 6]]]));</code>
+</div>
+<div class="task">
+	<p>
+		Given a multidimensional array of arbitrary 
+		nesting level, for example, this:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">[1, [2, 7, 8], [3, 4], [5, [6, 7]]]</code>
+	</div>
+	<p>
+		Square all elements-numbers of this array.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="54" data-hash="jsPmFARS" data-quantity="363" data-num="197"><a href="../../../../../en/javascript/book/prime/functions/recursion.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/enumeration/map.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/functions/recursion-structures.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/functions/recursion-structures.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Tabs in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../js/location.js?v=3"></script>
+		<script src="../../../../js/locale.js?v=5"></script>
+		<script src="../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will implement tabs in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Tabs in JavaScript</h1>
+				<div class="content">
+<p>
+	We are now implementing tabs. Take a look 
+	at a sample of what is required of you:
+</p>
+<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			#parent {
+			margin: 0 auto;
+			width: 400px;
+		}
+		
+		.menu a {
+			margin-right: 5px;
+			display: inline-block;
+			padding: 10px;
+			color: black;
+			text-decoration: none;
+			border: 1px solid gray;
+		}
+		.menu a:hover {
+			background: #f8f8f8;
+		}
+		.menu a.active {
+			border-color: transparent;
+			background: #f2f2f2;
+		}
+		
+		.content .tab:not(.active) {
+			display: none;
+		}
+		.content .tab {
+			padding: 10px;
+			background: #f2f2f2;
+			height: 300px;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;parent&quot;>
+			<div class=&quot;menu&quot;>
+				<a href=&quot;&quot; class=&quot;active&quot;>tab 1</a>
+				<a href=&quot;&quot;>tab 2</a>
+				<a href=&quot;&quot;>tab 3</a>
+			</div>
+			<div class=&quot;content&quot;>
+				<div class=&quot;tab active&quot;>
+					tab text 1
+				</div>
+				<div class=&quot;tab&quot;>
+					tab text 2
+				</div>
+				<div class=&quot;tab&quot;>
+					tab text 3
+				</div>
+			</div>
+		</div>
+		
+		<script>
+			
+			let parent = document.querySelector('#parent');
+		let links  = parent.querySelectorAll('.menu a');
+		let tabs   = parent.querySelectorAll('.tab');
+		
+		for (let i = 0; i < links.length; i++) {
+			links[i].addEventListener('click', function(event) {
+				let activeLink = parent.querySelector('.menu a.active');
+				activeLink.classList.remove('active');
+				
+				let activeTab = parent.querySelector('.tab.active');
+				activeTab.classList.remove('active');
+				
+				tabs[i].classList.add('active');
+				this.classList.add('active');
+				
+				event.preventDefault();
+			});
+		}
+		</script>
+	</body>
+</html>"></iframe></div>
+<p>
+	Also study the layout with which 
+	we will solve the problem:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="parent"&gt;
+	&lt;div class="menu"&gt;
+		&lt;a href="" class="active"&gt;tab 1&lt;/a&gt;
+		&lt;a href=""&gt;tab 2&lt;/a&gt;
+		&lt;a href=""&gt;tab 3&lt;/a&gt;
+	&lt;/div&gt;
+	&lt;div class="tabs"&gt;
+		&lt;div class="tab active"&gt;
+			tab text 1
+		&lt;/div&gt;
+		&lt;div class="tab"&gt;
+			tab text 2
+		&lt;/div&gt;
+		&lt;div class="tab"&gt;
+			tab text 3
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">#parent {
+	margin: 0 auto;
+	width: 400px;
+}
+
+.menu a {
+	margin-right: 5px;
+	display: inline-block;
+	padding: 10px;
+	color: black;
+	text-decoration: none;
+	border: 1px solid gray;
+}
+.menu a:hover {
+	background: #f8f8f8;
+}
+.menu a.active {
+	border-color: transparent;
+	background: #f2f2f2;
+}
+
+.tabs .tab:not(.active) {
+	display: none;
+}
+.tabs .tab {
+	padding: 10px;
+	background: #f2f2f2;
+	height: 300px;
+}</code>
+</div>
+<p>
+	Note that the active link and active 
+	tab have the <code class="selector inline">active</code> class.
+</p>
+
+<h2>Discussion</h2>
+<p>
+	Let's now discuss how to solve this problem. 
+	Obviously, you need to somehow link the links 
+	to their respective tabs. In this 
+	<a href="../../../../en/javascript/book/prime/dom/manipulation/many-elements-with-showing-buttons.html">lesson</a> from the theoretical 
+	tutorial, we have already analyzed the 
+	possible options.
+</p>
+<p>
+	In this case, I propose to link links and tabs 
+	simply by position: the first link will open 
+	the first tab, the second link will open the 
+	second tab, and so on.
+</p>
+<p>
+	The general algorithm will look like this: by 
+	clicking on the button, we must find a link 
+	with a class and remove this class from it. 
+	Similarly, we must find a tab with this class 
+	and also remove this class from it.
+</p>
+<p>
+	Then we have to take the link that was clicked 
+	and activate it. Then we must take the tab that 
+	has the same number as our link - and activate 
+	it too.
+</p>
+<div class="task">
+	<p>
+		Copy the provided HTML and CSS codes. 
+		Implement tabs according to the 
+		described algorithm.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/practice/" data-persent="17" data-hash="jsPrStTbs" data-quantity="75" data-num="14"><a href="../../../../en/javascript/book/practice/spoiler.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../en/javascript/book/practice/accordion.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../en/javascript/book/practice/tabs.html" class="active">en</a><a href="../../../../ru/javascript/book/practice/tabs.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../js/metrika.js?v=1"></script>	</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Статические свойства в ООП на PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../js/location.js?v=3"></script>
+		<script src="../../../../js/locale.js?v=5"></script>
+		<script src="../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами разберем работу со статическими свойствами в ООП на PHP.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Статические свойства в ООП на PHP</h1>
+				<div class="content">
+<p>
+	Кроме статических методов можно также делать
+	и статические свойства. Такие свойства также
+	объявляются с помощью ключевого слова <code class="code inline">static</code>:
+</p>
+<div class="block" data-file="Test.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Test
+	{
+		public static $property; // статическое свойство
+	}
+?&gt;</code>
+</div>
+<p>
+	Можно что-то записать в статическое свойство
+	и прочитать из него. При этом имя свойства
+	указывается вместе с долларом:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	Test::$property = 'test';
+	echo Test::$property; // выведет 'test'
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Сделайте класс <code class="code inline">Num</code>, у которого будут
+		два публичных статических свойства: <code class="code inline">num1</code>
+		и <code class="code inline">num2</code>. Запишите в первое свойство
+		число <code class="number inline">2</code>, а во второе - число <code class="number inline">3</code>.
+		Выведите сумму значений свойств на экран.
+	</p>
+</div>
+
+<h2>Статическое свойство внутри класса</h2>
+<p>
+	Можно также обращаться к статическим свойствам
+	внутри самого класса, используя <code class="code inline">self::</code>,
+	смотрите пример:
+</p>
+<div class="block" data-file="Test.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Test
+	{
+		// Приватное статическое свойство:
+		private static $property;
+		
+		// Статический метод для задания значения свойства:
+		public static function setProperty($value)
+		{
+			self::$property = $value; // записываем данные в наше static свойство
+		}
+		
+		// Статический метод для получения значения свойства:
+		public static function getProperty()
+		{
+			return self::$property; // прочитываем записанные данные
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Воспользуемся нашим классом:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	Test::setProperty('test'); // запишем данные в свойство
+	echo Test::getProperty(); // выведем на экран
+?&gt;</code>
+</div>
+<p>
+	Можно также задать начальное значение свойства:
+</p>
+<div class="block" data-file="Test.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Test
+	{
+		// Начальное значение свойства:
+		private static $property = 'test';
+		
+		public static function getProperty()
+		{
+			return self::$property;
+		}
+	}
+	
+	echo Test::getProperty(); // выведет 'test'
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Сделайте класс <code class="code inline">Num</code>, у которого будут
+		два приватны статических свойства: <code class="code inline">num1</code>
+		и <code class="code inline">num2</code>. Пусть по умолчанию в свойстве
+		<code class="code inline">num1</code> хранится число <code class="number inline">2</code>, а в
+		свойстве <code class="code inline">num2</code> - число <code class="number inline">3</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Сделайте в классе <code class="code inline">Num</code> метод <code class="code inline">getSum</code>,
+		который будет выводить на экран сумму значений
+		свойств <code class="code inline">num1</code> и <code class="code inline">num2</code>.
+	</p>
+</div>
+
+<h2>Применение</h2>
+<p>
+	Пусть у нас есть класс <code class="code inline">Geometry</code> для
+	работы с геометрическими фигурами. В этом
+	классе есть методы для определения площади
+	круга и длины окружности:
+</p>
+<div class="block" data-file="Geometry.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Geometry
+	{
+		// Площадь круга:
+		public static function getCircleSquare($radius)
+		{
+			return 3.14 * $radius * $radius;
+		}
+		
+		// Длина окружности:
+		public static function getCircleСircuit($radius)
+		{
+			return 2 * 3.14 * $radius;
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Как вы видите, в обоих методах используется
+	число Пи, равное <code class="number inline">3.14</code>. Было бы удобно
+	вынести это число в статическое свойство
+	класса - в этом случае значение числа Пи
+	будет задаваться в одном месте и мы легко
+	сможем поменять его в случае необходимости
+	(например, написать больше знаков в дробной
+	части).
+</p>
+<p>
+	Давайте сделаем это:
+</p>
+<div class="block" data-file="Geometry.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Geometry
+	{
+		private static $pi = 3.14; // вынесем Пи в свойство
+		
+		public static function getCircleSquare($radius)
+		{
+			return self::$pi * $radius * $radius;
+		}
+		
+		public static function getCircleСircuit($radius)
+		{
+			return 2 * self::$pi * $radius;
+		}
+	}
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Добавьте в наш класс <code class="code inline">Geometry</code> метод,
+		который будет находить объем шара по радиусу.
+		С помощью этого метода выведите на экран
+		объем шара с радиусом <code class="number inline">10</code>.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/oop/" data-persent="27" data-hash="ppOpBsSP" data-quantity="107" data-num="30"><a href="../../../../ru/php/book/oop/static-methods.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../ru/php/book/oop/object-with-static-properties-and-methods.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../js/metrika.js?v=1"></script>	</body>
+</html>

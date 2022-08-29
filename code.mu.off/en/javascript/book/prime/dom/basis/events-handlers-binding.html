@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Attaching handlers to elements in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to attach event handlers to DOM elements in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Attaching handlers to elements in JavaScript</h1>
+				<div class="content">
+<p>
+	Let's now teach our DOM elements to respond 
+	to site user actions. For example, the user 
+	clicks somewhere with the mouse, and our code 
+	in response will have to process this click 
+	and display some information on the screen.
+</p>
+<p>
+	User actions that we can track through JavaScript 
+	are called <dfn>events</dfn>. Events can be the 
+	following: a mouse click on a page element, 
+	mouse hover over a page element, or vice 
+	versa - the mouse cursor leaves the element, 
+	and so on. In addition, there are events that 
+	do not depend on user actions, for example, 
+	an event when an HTML page is loaded into 
+	the browser.
+</p>
+<p>
+	For example, let's make a button, by clicking on which some text will be displayed on the screen as an alert. Let's start with the HTML code for the button:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;input id="button" type="submit"&gt;</code>
+</div>
+<p>
+	Now we get a reference to the button into a variable:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let button = document.querySelector('#button');</code>
+</div>
+<p>
+	Now we need to set the reaction of our button 
+	when it is clicked. To do this, JavaScript has 
+	a special method <code class="code inline">addEventListener</code>, which 
+	takes the name of the event as the first parameter 
+	(clicking on the button is called <code class="string inline">'click'</code>), 
+	and the second parameter is 
+	<a href="../../../../../../en/javascript/book/prime/functions/callbacks.html">
+	a callback function</a> that is executed when 
+	this event occurs.
+</p>
+<p>
+	Let's, for example, by clicking on the 
+	button display some text:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">button.addEventListener('click', function() {
+	console.log('!!!');
+});</code>
+</div>
+<div class="task">
+	<p>
+		Given <code class="number inline">3</code> buttons:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;input id="button1" type="submit"&gt;
+&lt;input id="button2" type="submit"&gt;
+&lt;input id="button3" type="submit"&gt;</code>
+	</div>
+	<p>
+		Make it so that clicking on the first 
+		button displays the number <code class="number inline">1</code>, 
+		clicking on the second button displays 
+		the number <code class="number inline">2</code>, and clicking on 
+		the third button displays the 
+		number <code class="number inline">3</code>.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="66" data-hash="jsPmDmEHB" data-quantity="363" data-num="242"><a href="../../../../../../en/javascript/book/prime/dom/basis/element-getting.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../en/javascript/book/prime/dom/basis/named-event-handlers.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/basis/events-handlers-binding.html" class="active">en</a><a href="../../../../../../ru/javascript/book/prime/dom/basis/events-handlers-binding.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

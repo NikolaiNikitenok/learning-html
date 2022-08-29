@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>DOM Coding Tips in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will look at a number of tips to help you write code correctly when working with the DOM in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>DOM Coding Tips in JavaScript</h1>
+				<div class="content">
+<p>
+	Suppose you are faced with a task of sufficient 
+	complexity, for the implementation of which you 
+	need to write a certain number of code lines.
+</p>
+<p>
+	The wrong approach would be to try to write the 
+	entire code of the solution as a whole, and then 
+	start testing it. In this case, there is a high 
+	probability that nothing will work for you, and 
+	you will have to look for the error in a large 
+	amount of code.
+</p>
+<p>
+	The correct approach is to break the task into 
+	small elementary steps that you will implement 
+	and immediately check their correctness. In this 
+	case, even if you make a mistake somewhere, you 
+	will immediately notice the problem and fix it.
+</p>
+<p>
+	Let's try it in practice. Let's say you 
+	have paragraphs:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;p&gt;1&lt;/p&gt;
+&lt;p&gt;2&lt;/p&gt;
+&lt;p&gt;3&lt;/p&gt;
+&lt;p&gt;4&lt;/p&gt;
+&lt;p&gt;5&lt;/p&gt;
+&lt;p&gt;6&lt;/p&gt;</code>
+</div>
+<p>
+	Let your task be to find paragraphs with numbers 
+	divisible by <code class="number inline">3</code> and add some text at the 
+	end of them.
+</p>
+<p>
+	As a first small step, I would suggest getting 
+	our paragraphs as an array and printing this 
+	array to the console to see if we got everything 
+	right. Let's do it:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elems = document.querySelectorAll('p');
+console.log(elems);</code>
+</div>
+<p>
+	The next small step is to loop through our 
+	paragraphs and output each of them to the 
+	console individually:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elems = document.querySelectorAll('p');
+
+for (let elem of arr) {
+	console.log(elem);
+}</code>
+</div>
+<p>
+	And now in a loop we will display the texts 
+	of our paragraphs:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elems = document.querySelectorAll('p');
+
+for (let elem of arr) {
+	console.log(elem.textContent);
+}</code>
+</div>
+<p>
+	Now let's display the texts of those paragraphs 
+	whose number is divisible by <code class="code inline">3</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elems = document.querySelectorAll('p');
+
+for (let elem of arr) {
+	let text = +elem.textContent;
+	
+	if (text % 3 === 0) {
+		console.log(text);
+	}
+}</code>
+</div>
+<p>
+	After making sure that we get the correct 
+	paragraphs, we can proceed to sum their 
+	numbers:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elems = document.querySelectorAll('p');
+let sum = 0;
+
+for (let elem of arr) {
+	let text = +elem.textContent;
+	
+	if (text % 3 === 0) {
+		sum += text;
+	}
+}
+
+console.log(sum);</code>
+</div>
+<div class="task">
+	<p>
+		Given a list containing the years:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;ul&gt;
+	&lt;li&gt;2000&lt;/li&gt;
+	&lt;li&gt;2004&lt;/li&gt;
+	&lt;li&gt;2021&lt;/li&gt;
+	&lt;li&gt;2022&lt;/li&gt;
+	&lt;li&gt;2025&lt;/li&gt;
+	&lt;li&gt;2031&lt;/li&gt;
+&lt;/ul&gt;</code>
+	</div>
+	<p>
+		Get years whose sum of digits is <code class="number inline">6</code>. 
+		Find the sum of the years obtained.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="74" data-hash="jsPmDmCdg" data-quantity="363" data-num="271"><a href="../../../../../../en/javascript/book/prime/dom/basis/nodes.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../en/javascript/book/prime/dom/basis/mistakes.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/basis/coding.html" class="active">en</a><a href="../../../../../../ru/javascript/book/prime/dom/basis/coding.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

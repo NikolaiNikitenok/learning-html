@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Нюансы функциональных выражений в JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами разберем некоторые нюансы функциональных выражений в JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Нюансы функциональных выражений в JavaScript</h1>
+				<div class="content">
+<p>
+	Название Function Expression (<span class="translate-ru">функциональное
+	выражение</span>) дано не просто так. Оно действительно
+	означает это - то, что такие функции являются
+	частью какого-либо выражения.
+</p>
+<p>
+	Например, мы можем сложить какую-нибудь строку
+	и безымянную функцию:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = 'str' + function() {return 2;};
+console.log(str); // выведет 'strfunction() {return 2;}'</code>
+</div>
+<p>
+	Почему мы видим такой странный результат,
+	а не число 3? Потому что второе слагаемое
+	- это не результат работы функции, а ее исходный
+	код (ведь мы эту функцию не вызвали, а просто
+	написали).
+</p>
+<p>
+	То есть название <i>функциональное выражение</i>
+	обозначает то, что такая функция принимает
+	участие в каком-нибудь выражении.
+</p>
+<p>
+	Присваивание к переменной тоже выражение:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let func = function() {
+	console.log('!');
+};</code>
+</div>
+<p>
+	Можно также, к примеру, передать функцию
+	в качестве параметра алерта и он выведет
+	ее исходный код в консоль - это тоже будет
+	считаться выражением:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log(function() {return 2;});</code>
+</div>
+<p>
+	Почему это важно: потому что отличие Function
+	Declaration и Function Expression совсем
+	не в том, что первая функция создается с
+	именем, а вторая изначально имени не имеет.
+	Это не так.
+</p>
+<p>
+	Пример. Вот у нас функция без имени, но при
+	этом не участвует ни в каком выражении (то
+	есть с ней не совершается никаких действий,
+	говоря по-простому):
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">/*
+	Данная функция будет Function Declaration,
+	но с синтаксической ошибкой:
+*/
+function() {
+	console.log('!');
+}</code>
+</div>
+<p>
+	Такой код вообще выдаст ошибку! Почему: так
+	как функция не участвует ни в каком выражении,
+	то браузер считает ее Function Declaration,
+	но не находит ее имени и выдает ошибку.
+</p>
+<p>
+	Чтобы ошибка исчезла, нужно заставить функцию
+	стать частью какого-либо выражения. Например,
+	напишем перед ней операцию <code class="code inline">+</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">+function() { // такой код корректен
+	console.log('!');
+};</code>
+</div>
+<p>
+	Как это работает: сама по себе операция <code class="code inline">+</code>
+	ничего не делает, это все равно как написать
+	вместо числа <code class="number inline">3</code> число <code class="code inline">+3</code> - допустимо,
+	но ничего не меняет.
+</p>
+<p>
+	Но в случае с функцией - меняет. Теперь наша
+	функция уже не просто написана, а участвует
+	в выражении. Поэтому ошибки теперь не будет.
+	Результата выполнения функции тоже не будет,
+	ведь мы ее просто написали, но не вызвали.
+</p>
+<p>
+	Вместо <code class="code inline">+</code> можно написать все, что угодно.
+	Например:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">-function() { // такой код корректен
+	console.log('!');
+};
+
+!function() { // такой код корректен
+	console.log('!');
+};</code>
+</div>
+<p>
+	Можно также взять нашу функцию в круглые
+	скобки, в этом случае она также станет функциональным
+	выражением:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">(function() { // такой код корректен
+	console.log('!');
+});</code>
+</div>
+<div class="task">
+	<p>
+		Определите, является ли представленная функция
+		Function Declaration или Function Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	console.log('!');
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Определите, является ли представленная функция
+		Function Declaration или Function Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let func = function() {
+	console.log('!');
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Определите, является ли представленная функция
+		Function Declaration или Function Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">+function() {
+	console.log('!');
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Определите, является ли представленная функция
+		Function Declaration или Function Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">!function func() {
+	console.log('!');
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Определите, является ли представленная функция
+		Function Declaration или Function Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">-function func() {
+	console.log('!');
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Определите, является ли представленная функция
+		Function Declaration или Function Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">1 + function func() {
+	console.log('!');
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Определите, является ли представленная функция
+		Function Declaration или Function Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">(function func() {
+	console.log('!');
+})</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Определите, является ли представленная функция
+		Function Declaration или Function Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">console.log(
+	function() {
+		console.log('!');
+	}
+);</code>
+	</div>
+</div>
+
+<h2>Функция с именем, но Function Expression</h2>
+<p>
+	Давайте теперь сделаем функцию, которая будет
+	иметь имя, но при этом будет Function Expression,
+	потому что участвует в выражении:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">+function func() {
+	console.log('!');
+}</code>
+</div>
+<p>
+	Интересно, что по имени <code class="code inline">func</code> мы не
+	сможем обратиться к нашей функции, это будет
+	приводить к ошибке:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">+function func() {
+	console.log('!');
+}
+
+func(); //!! выдаст ошибку</code>
+</div>
+<p>
+	Чтобы иметь возможность вызвать нашу функцию,
+	ее нужно присвоить какой-нибудь переменной:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let test = function func() {
+	console.log('!');
+};
+
+test(); // выведет '!'</code>
+</div>
+<p>
+	Еще раз: функция, являющаяся функциональным
+	выражением не может быть вызвана по ее имени.
+	Такая функция может быть вызвана только с
+	использованием переменной, в которую была
+	записана эта функция.
+</p>
+<p>
+	Но тем не менее, функциональное выражение
+	может иметь имя функции, это будет синтаксически
+	корректно. Зачем такое нужно, мы будем разбираться
+	в следующих уроках.
+</p>
+
+<h2>Выводы</h2>
+<p>
+	Подведем итог: функции являются Function
+	Declaration или Function Expression не потому,
+	что имеют имя или не имеют, а потому, что
+	являются участниками выражений или не являются.
+</p>
+<p>
+	Как вы видели выше, функция без имени может
+	быть воспринята как Function Declaration,
+	а функции с именем может быть Function Expression.
+</p>
+
+<h2>Как проверить тип функции</h2>
+<p>
+	В задачах ниже вам нужно будет определить
+	функция определена как Function Declaration
+	или Function Expression.
+</p>
+<p>
+	В простых случаях это не составляет труда
+	сделать визуально. Но как проверить, что
+	вы сделали это правильно? Используйте разницу
+	между Function Declaration или Function Expression:
+	первые могут быть вызваны выше своего определения,
+	а вторые - нет.
+</p>
+<p>
+	Пусть у нас есть вот такая функция:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let test = function() {
+	console.log('!');
+}</code>
+</div>
+<p>
+	Обратимся к этой функции до ее определения:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">test(); // выведет ошибку в консоль, значит Function Expression
+
+let test = function() {
+	console.log('!');
+}</code>
+</div>
+<p>
+	Вот еще пример:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">func(); // выведет '!', значит Function Declaration
+
+function func() {
+	console.log('!');
+}</code>
+</div>
+<p>
+	Поставим перед нашей функцией плюсик:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">func(); // выведет ошибку в консоль, значит Function Expression
+
++function func() {
+	console.log('!');
+}</code>
+</div>
+<div class="notice">
+	<p>
+		Так как функция выше - это Function Expression
+		и она не присвоена никакой переменной, то
+		ее никак не вызвать, ведь по имени func она
+		будет недоступна.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Определите, является ли представленная функция
+		Function Declaration или Function Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test = function func() {
+	console.log('!');
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Определите, является ли представленная функция
+		Function Declaration или Function Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">console.log(
+	function func() {
+		console.log('!');
+	}
+);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Определите, является ли представленная функция
+		Function Declaration или Function Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">+function func() {
+	console.log('!');
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Определите, является ли представленная функция
+		Function Declaration или Function Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	console.log('!');
+}</code>
+	</div>
+</div>
+
+<h2>Более сложные нюансы</h2>
+<p>
+	Давайте рассмотрим следующий код:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">+function func() {
+	console.log('!');
+}</code>
+</div>
+<p>
+	Как вы уже знаете, эта функция является функциональным
+	выражением, ни смотря на то, что у нее задано
+	имя (мы уже выяснили, что наличие имени вообще
+	не критерий). Уберем этот плюс - и получим
+	Function Declaration:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	console.log('!');
+}</code>
+</div>
+<p>
+	Давайте поставим <code class="code inline">+</code> на строчке перед
+	функцией - она опять станет Function Expression:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">+
+function func() {
+	console.log('!');
+}</code>
+</div>
+<p>
+	А теперь после плюса поставим число <code class="number inline">1</code>
+	и точку с запятой - наша функция станет Function
+	Declaration:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">+1;
+function func() {
+	console.log('!');
+}</code>
+</div>
+<p>
+	Почему так: потому что на первой строке написана
+	одна законченная команда, закрытая точкой
+	с запятой. Поэтому эта команда никак не влияет
+	на нашу функцию.
+</p>
+<p>
+	На самом деле точку с запятой можно убрать,
+	ведь в JavaScript она не обязательна - функция
+	все равно останется Function Declaration:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">+1
+function func() {
+	console.log('!');
+}</code>
+</div>
+<p>
+	А вот если после <code class="number inline">1</code> влепить еще один
+	плюс, то функция станет Function Expression:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">+1+
+function func() {
+	console.log('!');
+}</code>
+</div>
+<p>
+	Почему так: потому что на первой строчке
+	незавершенное выражение - стоит плюс и после
+	него ничего. Поэтому интерпретатор JavaScript
+	считает, что этот плюс относится к строке
+	ниже, то есть к нашей функции.
+</p>
+<p>
+	Если же на первой строке стоит завершенное
+	выражение, то JavaScript автоматически ставит
+	ему точку с запятой и это выражение никак
+	не влияет на нашу функцию.
+</p>
+<div class="task">
+	<p>
+		Определите, является ли представленная функция
+		Function Declaration или Function Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">-
+function func() {
+	console.log('!');
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Определите, является ли представленная функция
+		Function Declaration или Function Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">-1;
+function func() {
+	console.log('!');
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Определите, является ли представленная функция
+		Function Declaration или Function Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">-1
+function func() {
+	console.log('!');
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Определите, является ли представленная функция
+		Function Declaration или Function Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">1
+function func() {
+	console.log('!');
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Определите, является ли представленная функция
+		Function Declaration или Function Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">-1-
+function func() {
+	console.log('!');
+}</code>
+	</div>
+</div>
+
+<h2>Выражение справа</h2>
+<p>
+	Учтите, что выражение, в котором участвует
+	функция, должно быть слева от нее. Если мы
+	что-то пытаемся сделать справа от функции,
+	это не сделает ее функциональным выражением.
+	Пример:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func() { // это Function Declaration
+	console.log('!');
+} + 1;</code>
+</div>
+<p>
+	Почему так: потому что в данном случае этот
+	+1 является просто новой командой, написанной
+	после функции. Если написать эту команду
+	с новой строки, все становится очевиднее:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	console.log('!');
+}
++1; // просто команда</code>
+</div>
+<p>
+	Сделаем из нашей функции Function Expression.
+	Например, поставим перед функцией <code class="code inline">+</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">+function func() { // это Function Expression
+	console.log('!');
+} + 1;</code>
+</div>
+<p>
+	Или выполним присваивание:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let test = function func() { // это Function Expression
+	console.log('!');
+} + 1;</code>
+</div>
+<p>
+	Или передадим параметром в алерт:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log(function func() { // это Function Expression
+	console.log('!');
+} + 1);</code>
+</div>
+<div class="task">
+	<p>
+		Определите, является ли представленная функция
+		Function Declaration или Function Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	console.log('!');
+}
++1;</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Определите, является ли представленная функция
+		Function Declaration или Function Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	console.log('!');
+} + 1;</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Определите, является ли представленная функция
+		Function Declaration или Function Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">+function func() {
+	console.log('!');
+} + 1;</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Определите, является ли представленная функция
+		Function Declaration или Function Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">+
+function func() {
+	console.log('!');
+} + 1;</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Определите, является ли представленная функция
+		Function Declaration или Function Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">+ 1
+function func() {
+	console.log('!');
+} + 1;</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Определите, является ли представленная функция
+		Function Declaration или Function Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	console.log('!');
+} + console.log('!');</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/prime/" data-persent="50" data-hash="jsPmFAFEN" data-quantity="363" data-num="182"><a href="../../../../../ru/javascript/book/prime/functions/function-declaration-expression.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/javascript/book/prime/functions/functions-array.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/functions/functional-expressions-nuances.html">en</a><a href="../../../../../ru/javascript/book/prime/functions/functional-expressions-nuances.html" class="active">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

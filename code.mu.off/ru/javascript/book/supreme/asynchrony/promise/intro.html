@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Введение в промисы в JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы научимся работать с промисами promise в JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Введение в промисы в JavaScript</h1>
+				<div class="content">
+<p>
+	Вы уже знаете, что использование коллбэк-модели
+	асинхронности легко приводит к ситуации callback
+	hell. Поэтому в JavaScript была введена новая
+	модель под названием <dfn>промисы</dfn> (<span class="translate-prefix">англ.</span> <span class="translate-en">promise</span>, <span class="translate-ru">обещание</span>). Давайте
+	изучим эту модель.
+</p>
+<p>
+	Промис представляет собой объект, в который
+	параметром передается функция, внутри которой
+	нужно размещать наш асинхронный код:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let promise = new Promise(function() {
+	// асинхронный код
+});</code>
+</div>
+<p>
+	Как вы видите, я записал объект с промисом
+	в переменную <code class="code inline">promise</code>. В каком-то другом
+	месте кода я могу применить к этой переменной
+	метод <code class="code inline">then</code>, передав в него функцию
+	с кодом, который должен быть выполнен по
+	завершении асинхронного кода, написанного
+	при создании данного промиса:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">promise.then(function() {
+	// выполнится при завершении асинхронного кода
+});</code>
+</div>
+<p>
+	Звучит запутано, поэтому давайте посмотрим
+	на примере. Пусть у меня есть вот такой асинхронный
+	код:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">setTimeout(function() {
+	let result = [1, 2, 3, 4, 5];
+}, 3000);</code>
+</div>
+<p>
+	Пусть я хочу решить для него нашу основную
+	задачу асинхронности: выполнить некоторый
+	код после срабатывания таймера. При этом
+	я не хочу размещать этот код в самом таймере
+	и хочу, чтобы в этот код как-то попал результат,
+	написанный мною в переменной <code class="code inline">result</code>.
+	В общем-то, мы решали эту задачу в предыдущих
+	уроках через коллбэки и подписки. Давайте
+	теперь посмотрим, как это сделать через промисы.
+</p>
+<p>
+	Для начала нужно обернуть наш асинхронный
+	код в промис:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let promise = new Promise(function() {
+	setTimeout(function() {
+		let result = [1, 2, 3, 4, 5];
+	}, 3000);
+});</code>
+</div>
+<p>
+	Этого, однако, не достаточно. Мы должны <i>в
+	явном виде указать, что наш асинхронный код
+	завершился</i>. В этом нам поможет специальная
+	функция завершения, автоматически попадающая
+	в первый параметр функции, если он указан:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let promise = new Promise(function(resolve) { // указываем параметр
+	setTimeout(function() {
+		let result = [1, 2, 3, 4, 5];
+	}, 3000);
+});</code>
+</div>
+<p>
+	С помощью функции завершения мы можем явно
+	указать промису, что асинхронный код завершился.
+	Для этого мы должны вызвать эту функцию в
+	нужном нам месте:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let promise = new Promise(function(resolve) {
+	setTimeout(function() {
+		let result = [1, 2, 3, 4, 5];
+		resolve(); // завершаем промис
+	}, 3000);
+});</code>
+</div>
+<p>
+	При этом, если мы хотим передать вовне какой-то
+	результат асинхронного кода, мы можем передать
+	его параметром нашей функции завершения:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let promise = new Promise(function(resolve) {
+	setTimeout(function() {
+		let result = [1, 2, 3, 4, 5];
+		resolve(result); // передаем результат
+	}, 3000);
+});</code>
+</div>
+<p>
+	Можно, конечно же, избавится от промежуточной
+	переменной:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let promise = new Promise(function(resolve) {
+	setTimeout(function() {
+		resolve([1, 2, 3, 4, 5]);
+	}, 3000);
+});</code>
+</div>
+<p>
+	Теперь в любом другом месте мы можем вызвать
+	метод <code class="code inline">then</code> нашего промиса:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">promise.then(function() {
+	// сработает по завершению промиса
+});</code>
+</div>
+<p>
+	Результат работы промиса попадет в первый
+	параметр функции, если мы пожелаем его указать:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">promise.then(function(result) {
+	console.log(result); // выведет массив с результатом
+});</code>
+</div>
+<div class="task">
+	<p>
+		Сделайте промис, внутри которого будет задержка
+		в <code class="number inline">5</code> секунд, после которой промис должен
+		выполнится, своим результатом вернув какой-нибудь
+		текст. Выведите этот текст на экран.
+	</p>
+</div>
+
+<h2>Исключительные ситуации</h2>
+<p>
+	Давайте теперь научимся обрабатывать исключительные
+	ситуации, случившиеся внутри промиса. В случае
+	возникновения такой ситуации мы должны отклонить
+	промис с помощью специальной функции отклонения,
+	которая автоматически попадает во второй
+	параметр функции промиса:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let promise = new Promise(function(resolve, reject) {
+	setTimeout(function() {
+		...
+	}, 3000);
+});</code>
+</div>
+<p>
+	Внутри функции промиса мы должны вызвать
+	<code class="code inline">resolve</code>, если все прошло штатно, либо
+	<code class="code inline">reject</code>, если возникла исключительная
+	ситуация:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let promise = new Promise(function(resolve, reject) {
+	setTimeout(function() {
+		let isError = false;
+		
+		if (!isError) {
+			resolve([1, 2, 3, 4, 5]);   // данные промиса
+		} else {
+			reject('error in promise'); // ваш текст ошибки
+		}
+	}, 3000);
+});</code>
+</div>
+<p>
+	Затем в методе then параметрами вы должны
+	передать не одну, а две функции: первая сработает,
+	если промис сработал штатно (<dfn>зарезолвился</dfn>),
+	а вторая - если сработал с ошибкой (<dfn>зареджектился</dfn>):
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">promise.then(
+	function(result) {
+		console.log(result); // выведет результат промиса
+	},
+	function(error) {
+		console.log(error);  // выведет текст ошибки
+	}
+);</code>
+</div>
+<p>
+	Как правило, приведенный выше код записывают
+	более компактно, вот так:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">promise.then(function(result) {
+	console.log(result); // выведет результат промиса
+}, function(error) {
+	console.log(error);  // выведет текст ошибки
+});</code>
+</div>
+<div class="task">
+	<p>
+		Сделайте асинхронный код, который будет генерировать
+		случайные числа от <code class="number inline">0</code> до <code class="number inline">5</code>.
+		Оберните все это в промис. Пусть промис своим
+		возвращает результат деления единицы на сгенерированное
+		число. Пусть промис выполнится с ошибкой,
+		если произошло деление на ноль, и с успехом
+		во всех остальных случаях.
+	</p>
+</div>
+
+<h2>Использование объекта с ошибкой</h2>
+<p>
+	Более принято в функцию <code class="code inline">reject</code> передавать
+	не строку с ошибкой, а объект с ошибкой:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let promise = new Promise(function(resolve, reject) {
+	setTimeout(function() {
+		reject(new Error('error in promise')); // объект с ошибкой
+	}, 3000);
+});</code>
+</div>
+<p>
+	Можно также выбрасывать объекты с ошибками
+	с помощью <code class="code inline">throw</code> - это будет эквивалентно
+	передаче их в <code class="code inline">reject</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let promise = new Promise(function(resolve, reject) {
+	setTimeout(function() {
+		throw new Error('error in promise'); // эквивалентно reject
+	}, 3000);
+});</code>
+</div>
+
+<h2>Только обработка ошибок</h2>
+<p>
+	В <code class="code inline">then</code> можно указать только функцию-обработчик
+	исключительной ситуации, передав вместо первого
+	параметра <code class="code inline">null</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">promise.then(
+	null,
+	function(error) {
+		console.log(error);
+	}
+);</code>
+</div>
+<p>
+	В таком случае удобно воспользоваться сокращенным
+	синтаксисом через метод <code class="code inline">catch</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">promise.catch(
+	function(error) {
+		console.log(error);
+	}
+);</code>
+</div>
+<p>
+	Метод <code class="code inline">catch</code> полностью эквивалентен
+	методу <code class="code inline">then</code>, у которого первый параметр
+	<code class="code inline">null</code>.
+</p>
+
+<h2>Состояния промиса</h2>
+<p>
+	Промис может находится в одном из трех состояний.
+	При создании промис находится в ожидании
+	(<span class="state">pending</span>), а затем может стать исполненным
+	(<span class="state">fulfilled</span>), вернув полученный результат,
+	или отклоненным (<span class="state">rejected</span>), вернув
+	причину отказа. Вы можете посмотреть переход
+	из одного состояния в другой, запустив следующий
+	код:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let promise = new Promise(function(resolve, reject) {
+	setTimeout(function() {
+		let isError = false; // поставьте либо true, либо false
+		
+		if (!isError) {
+			resolve([1, 2, 3, 4, 5]);
+		} else {
+			reject('error in promise');
+		}
+	}, 3000);
+});
+
+setInterval(function() {
+	console.log(promise); // каждую секунду выводим промис в консоль
+}, 1000);</code>
+</div>
+<p>
+	Учтите, что состояния <span class="state">fulfilled</span> и
+	<span class="state">rejected</span> неизменны: если промис перешел
+	в одно из этих состояний, то он уже не сможет
+	перейти в другое. Давайте посмотрим на примере.
+	В следующем коде вызов <span class="state">reject</span> случится
+	раньше, поэтому вызов <span class="state">resolve</span> будет
+	проигнорирован:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let promise = new Promise(function (resolve, reject) {
+	setTimeout(() =&gt; reject(new Error('error')), 1000);
+	setTimeout(() =&gt; resolve('ignored'), 2000);
+});</code>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/supreme/" data-persent="83" data-hash="jsSpAsnPsIn" data-quantity="114" data-num="96"><a href="../../../../../../ru/javascript/book/supreme/asynchrony/subscriptions.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../ru/javascript/book/supreme/asynchrony/promise/chaining.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

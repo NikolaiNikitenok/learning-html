@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Практика на формы в Express | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="Здесь находятся задачи на отработку практических навыков работы с формами в Express.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Практика на формы в Express</h1>
+				<div class="content">
+<div class="task">
+	<p>
+		Напишите скрипт, который будет преобразовывать
+		температуру из градусов Цельсия в градусы
+		Фаренгейта. Для этого сделайте инпут и кнопку
+	</p>
+</div>
+<div class="task">
+	<p>
+		Напишите скрипт, который будет считать факториал
+		числа. Само число вводится в инпут и после
+		нажатия на кнопку пользователь должен увидеть
+		результат.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан инпут и кнопка. В инпут вводится число.
+		По нажатию на кнопку выведите список делителей
+		этого числа.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Даны <code class="number inline">2</code> инпута и кнопка. В инпуты вводятся
+		числа. По нажатию на кнопку выведите список
+		общих делителей этих двух чисел.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Напишите скрипт, который будет находить корни
+		квадратного уравнения. Для этого сделайте
+		<code class="number inline">3</code> инпута, в которые будут вводиться
+		коэффициенты уравнения.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Даны <code class="number inline">3</code> инпута. В них вводятся числа.
+		Проверьте, что эти числа являются тройкой
+		Пифагора: квадрат самого большого числа должен
+		быть равен сумме квадратов двух остальных.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан инпут и кнопка. В этот инпут вводится
+		дата рождения в формате <code class="string inline">'01.12.1990'</code>.
+		По нажатию на кнопку выведите на экран сколько
+		дней осталось до дня рождения пользователя.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан текстареа и кнопка. В текстареа вводится
+		текст. По нажатию на кнопку выведите количество
+		слов и количество символов в тексте.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан текстареа и кнопка. В текстареа вводится
+		текст. По нажатию на кнопку нужно посчитать
+		процентное содержание каждого символа в тексте.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Даны <code class="number inline">3</code> селекта и кнопка. Первый селект
+		- это дни от <code class="number inline">1</code> до <code class="number inline">31</code>, второй
+		селект - это месяцы от января до декабря,
+		а третий - это годы от <code class="number inline">1990</code> до <code class="number inline">2025</code>.
+		С помощью этих селектов можно выбрать дату.
+		По нажатию на кнопку выведите на экран день
+		недели, соответствующий этой дате.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Сделайте скрипт-гороскоп. Внутри него хранится
+		массив гороскопов на несколько дней вперед
+		для каждого знака зодиака. По заходу на страницу
+		спросите у пользователя дату рождения, определите
+		его знак зодиака и выведите предсказание
+		для этого знака зодиака на текущий день.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/nodejs/book/express/" data-persent="86" data-hash="ndExFrPrm" data-quantity="56" data-num="49"><a href="../../../../../../ru/javascript/nodejs/book/express/forms/select.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../ru/javascript/nodejs/book/express/cookie/intro.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

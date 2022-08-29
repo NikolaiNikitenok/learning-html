@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Global variables and function parameters in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will consider the behavior of global variables and function parameters in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Global variables and function parameters in JavaScript</h1>
+				<div class="content">
+<p>
+	Suppose we have a function that takes 
+	a number as a parameter:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(localNum) {
+	console.log(localNum);
+}</code>
+</div>
+<p>
+	Let there be the variable <code class="code inline">num</code> 
+	outside the function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(localNum) {
+	console.log(localNum);
+}
+
+let num = 1; // the external global variable</code>
+</div>
+<p>
+	Let's invoke our function, passing it 
+	the variable <code class="code inline">num</code> as a parameter:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(localNum) {
+	console.log(localNum);
+}
+
+let num = 1;
+func(num); // call the function with a parameter, shows 1</code>
+</div>
+<p>
+	It turns out that both the <code class="code inline">localNum</code> 
+	variable (function parameter) and the 
+	<code class="code inline">num</code> variable (as an external 
+	variable) will be available inside 
+	the function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(localNum) {
+	console.log(num); // shows 1
+	console.log(localNum); // shows 1
+}
+
+let num = 1;
+func(num);</code>
+</div>
+<p>
+	The variable <code class="code inline">localNum</code> itself will 
+	be a local variable of the function and 
+	will not be accessible from outside:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(localNum) {
+	
+}
+
+let num = 1;
+func(num); // call the function with a parameter
+console.log(localNum); // will throw an error</code>
+</div>
+<p>
+	Since the variable <code class="code inline">localNum</code> is local, 
+	no changes to it will change anything outside:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(localNum) {
+	localNum = 2; // it doesn't change anything outside
+}
+
+let num = 1;
+func(num);</code>
+</div>
+<p>
+	If you change the variable <code class="code inline">num</code> (global) 
+	inside, then the changes will appear outside:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(localNum) {
+	num = 2;
+}
+
+let num = 1;
+func(num);
+console.log(num); // shows 2</code>
+</div>
+<p>
+	However, if inside the function we declare 
+	the variable <code class="code inline">num</code> through <code class="code inline">let</code>, 
+	then we will thus create the local variable 
+	<code class="code inline">num</code> that does not affect the external 
+	variable in any way:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(localNum) {
+	let num = 2; // declare with let
+}
+
+let num = 1;
+func(num);
+console.log(num); // shows 1 - nothing has changed</code>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function func(localNum) {
+	console.log(localNum);
+}
+
+func(1);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function func(localNum) {
+	console.log(localNum);
+}
+
+let num = 1;
+func(num);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function func(localNum) {
+	console.log(localNum);
+}
+
+let num = 1;
+func(num);
+num = 2;</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let num = 1;
+
+function func(localNum) {
+	console.log(localNum);
+}
+
+num = 2;
+func(num);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function func(localNum) {
+	localNum = 2;
+}
+
+let num = 1;
+func(num);
+console.log(num);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function func(localNum) {
+	num = 2;
+}
+
+let num = 1;
+func(num);
+console.log(num);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function func(localNum) {
+	let num = 2;
+}
+
+let num = 1;
+func(num);
+console.log(num);</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="48" data-hash="jsPmFAGVP" data-quantity="363" data-num="176"><a href="../../../../../en/javascript/book/prime/functions/global-variables-changing.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/functions/parameters-names-coincidence.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/functions/global-variables-and-parameters.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/functions/global-variables-and-parameters.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

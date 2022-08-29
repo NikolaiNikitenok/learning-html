@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Prompt function in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will study the prompt function in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Prompt function in JavaScript</h1>
+				<div class="content">
+<p>
+	You already know about the existence of 
+	the <code class="code inline">alert</code> function that displays 
+	the given message on the screen. There 
+	is also a similar function <code class="code inline">prompt</code> 
+	that allows you to get some text from the user.
+</p>
+<p>
+	Let's ask a user name as an example:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">prompt('What is your name?');</code>
+</div>
+<p>
+	Run the code above to see the window 
+	displayed by the <code class="code inline">prompt</code> function. 
+	Type in your name and click the button. 
+	If you have done all the actions 
+	described above, then the name you entered 
+	will appear in our script.
+</p>
+<p>
+	In order to get access to the entered name, 
+	the result of the <code class="code inline">prompt</code> function 
+	must be assigned to some variable, 
+	for example, like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let name = prompt('What is your name?');</code>
+</div>
+<p>
+	Let's display the name entered earlier 
+	on the next line of the code using the 
+	function <code class="code inline">alert</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let name = prompt('What is your name?');
+alert('Your name: ' + name);</code>
+</div>
+<p>
+	You should understand that when calling 
+	the <code class="code inline">prompt</code> function, further script 
+	execution is blocked until the appropriate 
+	data is entered. In general, the <code class="code inline">alert</code> 
+	function works the same way, except it waits 
+	for the appropriate button to be pressed.
+</p>
+<p>
+	By the way, you don't have to use a variable:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">alert('Your name: ' + prompt('What is your name?'));</code>
+</div>
+<div class="task">
+	<p>
+		Ask the user's age using the <code class="code inline">prompt</code> 
+		function. Print user entered age with <code class="code inline">alert</code>.
+	</p>
+</div>
+
+<h2>Issue with types</h2>
+<p>
+	Note that the <code class="code inline">prompt</code> function always 
+	returns a string, even if the user entered a 
+	number. For example, consider the following script:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num1 = prompt('Enter the first number');
+let num2 = prompt('Enter the second number');
+
+alert(num1 + num2); // concatenates numbers like strings</code>
+</div>
+<div class="task">
+	<p>
+		Modify the above code so that numbers 
+		are summed not like strings.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Use the <code class="code inline">prompt</code> function to ask 
+		the user for the side of a square. 
+		Display the area of the given square.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Use the two functions <code class="code inline">prompt</code> 
+		to ask the user for the sides of a 
+		rectangle. Display the perimeter of 
+		the given rectangle.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="9" data-hash="jsPmBsPmt" data-quantity="363" data-num="33"><a href="../../../../../en/javascript/book/prime/basis/inaccurate-calculations.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/basis/document-write.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/basis/prompt.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/basis/prompt.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

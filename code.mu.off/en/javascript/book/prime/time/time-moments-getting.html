@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Getting points in time in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to get different points in time in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Getting points in time in JavaScript</h1>
+				<div class="content">
+<p>
+	In this lesson, we will learn how to get 
+	different points in time as an object with 
+	a date. We will also learn how to find the 
+	difference between these points in time.
+</p>
+
+<h2>Day of the current year</h2>
+<p>
+	Let's get a date object containing March 
+	<code class="number inline">8</code>th of the current year. The words 
+	<i>current year</i> mean that the script 
+	should run in any year, always getting 
+	the year that is currently on the planet.
+</p>
+<p>
+	To do this, we need to make another helper 
+	object with a date containing the current 
+	moment in time. With this object, we can 
+	get the current year and then use that year 
+	to create an object with the date we want, 
+	like so:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let now  = new Date(); // gets the current moment
+let date = new Date(now.getFullYear(), 2, 8); // gets our date</code>
+</div>
+<p>
+	We can use the derived point in time, for 
+	example, to determine the day of the week 
+	corresponding to this date:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log(date.getDay());</code>
+</div>
+<div class="task">
+	<p>
+		Determine what day of the week will be 
+		December <code class="number inline">31</code> of the current year.
+	</p>
+</div>
+
+<h2>Day of the current month</h2>
+<p>
+	Let's get a date object containing <code class="number inline">25</code>th 
+	of the current month of the current year:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let now  = new Date();
+let date = new Date(now.getFullYear(), now.getMonth(), 25);</code>
+</div>
+<div class="task">
+	<p>
+		Determine what day of the week will be 
+		<code class="number inline">1</code>st of the current month.
+	</p>
+</div>
+
+<h2>Day of next or previous year</h2>
+<p>
+	Let's get a date object containing January 
+	<code class="number inline">21</code>st of next year. To do this, add 
+	one to the current year:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let now  = new Date();
+let date = new Date(now.getFullYear() + 1, 0, 21);</code>
+</div>
+<div class="task">
+	<p>
+		Determine what day of the week will be 
+		December <code class="number inline">31</code> of next year.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Determine what day of the week will be 
+		one year later on the same date as today.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Determine what day of the week was a 
+		year ago on the same date as today.
+	</p>
+</div>
+
+<h2>Day of next or previous month</h2>
+<p>
+	Let's find out the day of the week on the 
+	first of the previous month. To do this, 
+	subtract one from the current month:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let now = new Date();
+
+let date = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+console.log(date.getDay());</code>
+</div>
+<div class="task">
+	<p>
+		Question: will there be a problem if 
+		the current month is January? After 
+		all, it has the number <code class="number inline">0</code>, and 
+		when subtracting one from it, we get 
+		minus the first month.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Determine what day of the week was a 
+		month ago on the same day of the 
+		month as today.
+	</p>
+</div>
+
+<h2>Difference of points in time </h2>
+<p>
+	Let's find the difference between 
+	the two points in time:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let date1 = new Date();
+let date2 = new Date(2015, 4, 25, 12, 59, 59);
+
+console.log(date1 - date2); // difference in milliseconds</code>
+</div>
+<div class="task">
+	<p>
+		Determine the number of days between 
+		January <code class="number inline">1</code>st and September 
+		<code class="number inline">10</code>th of the current year.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Determine the number of days between 
+		<code class="number inline">20</code>th of the current month and 
+		<code class="number inline">10</code>th of the next month.
+	</p>
+</div>
+
+<h2>Point in time of day</h2>
+<p>
+	Let's get a date object containing today's noon:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let now  = new Date();
+let date = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 12);</code>
+</div>
+<p>
+	And now it's noon tomorrow:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let now  = new Date();
+let date = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 12);</code>
+</div>
+<div class="task">
+	<p>
+		Determine how many hours have passed 
+		between yesterday afternoon and the 
+		current point in time.
+	</p>
+</div>
+
+<h2>Beginning of the day</h2>
+<p>
+	Let's get a date object containing the 
+	beginning of the current day:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let now  = new Date();
+let date = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0);</code>
+</div>
+<p>
+	As you already know, the parameters of the 
+	<code class="code inline">Date</code> object can be omitted from the 
+	end. In this case hours, minutes and seconds 
+	will be <code class="number inline">0</code>. Let's omit them:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let now  = new Date();
+let date = new Date(now.getFullYear(), now.getMonth(), now.getDate());</code>
+</div>
+<p>
+	But the day cannot be omitted, because if 
+	it is omitted, then the value is <code class="number inline">1</code>, 
+	but we need the current day. It is also 
+	impossible to omit the month without 
+	omitting the year according to the rules 
+	for working with Date.
+</p>
+<p>
+	It is also impossible to omit the year, 
+	month and day at the same time - in this 
+	case, the current moment of time will be 
+	taken. Why is this bad, because we need 
+	the current year, current month and current 
+	day? The fact is that we need midnight, 
+	that is, hours, minutes and seconds should 
+	have the value <code class="number inline">0</code>, and at the current 
+	time they will have current values, 
+	not midnight.
+</p>
+<div class="task">
+	<p>
+		Determine how many hours have passed 
+		between the start of the day and the 
+		current time.
+	</p>
+</div>
+
+<h2>End of the day</h2>
+<p>
+	Let's get a date object containing the 
+	end of the current day:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let now  = new Date();
+let date = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);</code>
+</div>
+<p>
+	You can consider the end of the current 
+	day as midnight of the next (difference 
+	is <code class="number inline">1</code> second):
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let now  = new Date();
+let date = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0);</code>
+</div>
+<p>
+	As you already know, zeros can be 
+	omitted in this case:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let now  = new Date();
+let date = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);</code>
+</div>
+<p>
+	By the way, midnight will also be the time 
+	<code class="number inline">24</code>:00:00 of the current day:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let now  = new Date();
+let date = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 24, 0, 0);</code>
+</div>
+<p>
+	Omit the zeros:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let now  = new Date();
+let date = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 24);</code>
+</div>
+<div class="task">
+	<p>
+		Determine how many hours are left 
+		before the end of the day.
+	</p>
+</div>
+
+<h2>Loop check</h2>
+<p>
+	Let's find all the first numbers of the 
+	months of the current year that are Sunday:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let now  = new Date();
+let year = now.getFullYear();
+
+for (let month = 0; month &lt;= 11; month++) {
+	let date = new Date(year, month, 1);
+	
+	if (date.getDay() == 0) {
+		console.log(year + '-' + month + '-1');
+	}
+}</code>
+</div>
+<div class="task">
+	<p>
+		Consider the span from <code class="number inline">2000</code>th 
+		to the current year. Determine how many 
+		times January <code class="number inline">1</code>st fell on 
+		weekend in this interval, that is, 
+		on Saturday or Sunday.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="64" data-hash="jsPmTmTMG" data-quantity="363" data-num="235"><a href="../../../../../en/javascript/book/prime/time/date-correctness-checking.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/time/time-moments-training.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/time/time-moments-getting.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/time/time-moments-getting.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

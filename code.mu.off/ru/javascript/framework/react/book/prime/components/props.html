@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Пропсы компонентов в React | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами разберем передачу данных в компоненты с помощью пропсов.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Пропсы компонентов в React</h1>
+				<div class="content">
+<p>
+	В предыдущем уроке мы с вами вывели несколько
+	экземпляров продуктов:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function App() {
+	return &lt;div&gt;
+		&lt;Product /&gt;
+		&lt;Product /&gt;
+		&lt;Product /&gt;
+	&lt;/div&gt;;
+}</code>
+</div>
+<p>
+	Пока каждый вызов тега с продуктом выводит
+	на экран одно и тоже. Давайте теперь сделаем
+	каждый продукт уникальным.
+</p>
+<p>
+	Пусть, к примеру, каждый продукт должен иметь
+	название и цену. Сделаем так, чтобы каждый
+	вызов тега с продуктом выводил продукт со
+	своим именем и ценой, оформленными в нужную
+	нам верстку.
+</p>
+<p>
+	Для этого нам необходимо проделать несколько
+	шагов.
+</p>
+<p>
+	Для начала при вызове тега с продуктом мы
+	в этот тег будем писать два атрибута: атрибут
+	name с названием продукта и атрибут cost
+	с ценой, вот так:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function App() {
+	return &lt;div&gt;
+		&lt;Product name="product1" cost="100" /&gt;
+		&lt;Product name="product2" cost="200" /&gt;
+		&lt;Product name="product3" cost="300" /&gt;
+	&lt;/div&gt;;
+}</code>
+</div>
+<p>
+	Имена и значения этих атрибутов будут попадать
+	в виде объекта в первый параметр функции-конструктора
+	нашего компонента <code class="code inline">Product</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function Product(props) {
+	console.log(props); // объект с ключами name и cost
+	
+	return &lt;p&gt;
+		product
+	&lt;/p&gt;;
+}</code>
+</div>
+<p>
+	Имя параметра может быть каким угодно, но
+	в React принято называть его <code class="code inline">props</code>.
+	Фактически это не просто имя параметра, а
+	важная концепция React.
+</p>
+<p>
+	Суть этой концепции в следующем: при вызове
+	тега компонента в этот тег можно записывать
+	атрибуты с данными. Эти данные будут попадать
+	в <dfn>пропсы</dfn> компонента. Затем компонент
+	может использовать эти данные, например,
+	для создания нужной верстки.
+</p>
+<p>
+	Давайте сделаем это:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function Product(props) {
+	return &lt;p&gt;
+		name: &lt;span&gt;{props.name}&lt;/span&gt;,
+		cost: &lt;span&gt;{props.cost}&lt;/span&gt;
+	&lt;/p&gt;;
+}</code>
+</div>
+<p>
+	Более удобно и более принято не пользоваться
+	объектом props, а сразу выполнять <a href="../../../../../../../ru/javascript/book/prime/destructuring/function.html">дестуктуризацию</a>
+	пропсов прямо в параметрах функции:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function Product({ name, cost }) {
+	return &lt;p&gt;
+		name: &lt;span&gt;{name}&lt;/span&gt;,
+		cost: &lt;span&gt;{cost}&lt;/span&gt;
+	&lt;/p&gt;;
+}</code>
+</div>
+<div class="task">
+	<p>
+		Сделайте компонент <code class="code inline">Employee</code>, выводящий
+		данные работника на экран. Пусть этими данными
+		будут фамилия, имя, отчество и зарплата.
+		Оформите эти данные в нужную вам верстку.
+		Выведите в компоненте <code class="code inline">App</code> трех работников
+		с разными данными.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/framework/react/book/prime/" data-persent="84" data-hash="jsrtPmCpPr" data-quantity="51" data-num="44"><a href="../../../../../../../ru/javascript/framework/react/book/prime/components/intro.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../../ru/javascript/framework/react/book/prime/components/child-components.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

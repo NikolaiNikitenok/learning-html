@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Exporting variables and functions in modules via closures in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will analyze the creation of a module using an in-place function call in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Exporting variables and functions in modules via closures in JavaScript</h1>
+				<div class="content">
+<p>
+	Sometimes you need to make certain variables and functions 
+	of a module accessible from the outside. Let's see how it's 
+	done. Let's say we have the following module:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">;(function() {
+	let str = 'a module variable';
+	
+	function func() {
+		alert('a module function');
+	}
+})();</code>
+</div>
+<p>
+	Let's export our function <code class="code inline">func</code>. To do this, we write 
+	it into the property of the <code class="code inline">window</code> object embedded 
+	in the browser:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">;(function() {
+	let str = 'a module variable';
+	
+	function func() {
+		alert('a module function');
+	}
+	
+	window.func = func;
+})();</code>
+</div>
+<p>
+	Now we can call our function from outside the module:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">;(function() {
+	let str = 'a module variable';
+	
+	function func() {
+		alert('a module function');
+	}
+	
+	window.func = func;
+})();
+
+window.func(); // shows 'a module function'</code>
+</div>
+<p>
+	In this case, it is not necessary to call the function as 
+	a property of the <code class="code inline">window</code> object:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">;(function() {
+	let str = 'a module variable';
+	
+	function func() {
+		alert('a module function');
+	}
+	
+	window.func = func;
+})();
+
+func(); // shows 'a module function'</code>
+</div>
+<div class="task">
+	<p>
+		Given the following module:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">;(function() {
+	let str1 = 'a module variable';
+	let str2 = 'a module variable';
+	let str3 = 'a module variable';
+	
+	function func1() {
+		alert('a module function');
+	}
+	function func2() {
+		alert('a module function');
+	}
+	function func3() {
+		alert('a module function');
+	}
+})();</code>
+	</div>
+	<p>
+		Export one of the variables and any two 
+		functions to the outside.
+	</p>
+</div>
+
+<h2>Object export</h2>
+<p>
+	Let's say we have the following module:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">;(function() {
+	function func1() {
+		alert('a module function');
+	}
+	function func2() {
+		alert('a module function');
+	}
+	function func3() {
+		alert('a module function');
+	}
+})();</code>
+</div>
+<p>
+	Let's say we want to export all three functions to the 
+	outside. In this case, in order not to produce unnecessary 
+	function names outside the module, it is better to write 
+	all the functions into one object and export this object:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">;(function() {
+	function func1() {
+		alert('a module function');
+	}
+	function func2() {
+		alert('a module function');
+	}
+	function func3() {
+		alert('a module function');
+	}
+	
+	window.module = {func1: func1, func2: func2, func3: func3};
+})();</code>
+</div>
+<p>
+	Since the names of keys and variables are the same, the 
+	object with functions code can be simplified:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">;(function() {
+	function func1() {
+		alert('a module function');
+	}
+	function func2() {
+		alert('a module function');
+	}
+	function func3() {
+		alert('a module function');
+	}
+	
+	window.module = {func1, func2, func3};
+})();</code>
+</div>
+<p>
+	You can also go the other way. We will write functions 
+	to the object immediately when describing the function, 
+	like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">;(function() {
+	let module = {};
+	
+	module.func1 = function() {
+		alert('a module function');
+	}
+	module.func2 = function() {
+		alert('a module function');
+	}
+	module.func3 = function() {
+		alert('a module function');
+	}
+	
+	window.module = module;
+})();</code>
+</div>
+<div class="task">
+	<p>
+		Given the following module:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">;(function() {
+	let str1 = 'a module variable';
+	let str2 = 'a module variable';
+	let str3 = 'a module variable';
+	
+	function func1() {
+		alert('a module function');
+	}
+	function func2() {
+		alert('a module function');
+	}
+	function func3() {
+		alert('a module function');
+	}
+	function func4() {
+		alert('a module function');
+	}
+	function func5() {
+		alert('a module function');
+	}
+})();</code>
+	</div>
+	<p>
+		Export the object with the first five functions and 
+		the first two variables to the outside.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="99" data-hash="jsPmMClVFE" data-quantity="363" data-num="362"><a href="../../../../../en/javascript/book/prime/modules/passing-settings.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/modules/libraries.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/modules/variables-functions-export.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/modules/variables-functions-export.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

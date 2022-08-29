@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Analysis of the X and O marks alternation in the tic-tac-toe game in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, I will show you alternating an X and O marks with single code line in the tic-tac-toe game in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Analysis of the X and O marks alternation</h1>
+				<div class="content">
+<p>
+	In this lesson, I want to show you how to make 
+	an alternation of a cross and a zero in one line. 
+	You most likely did something like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function start(cells) {
+	let i = 0; // the counter initial value
+	
+	for (let cell of cells) {
+		cell.addEventListener('click', function() {
+			if (i % 2 == 0) {
+				this.textContent = 'X';
+			} else {
+				this.textContent = '0';
+			}
+			
+			i++; // increases the counter value
+		});
+	}
+}</code>
+</div>
+<p>
+	I will suggest to solve the problem in a 
+	shorter way. Let's make an array of our 
+	<code class="string inline">'players'</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let gamers = ['X', 'O'];</code>
+</div>
+<p>
+	As you can see, in this array, the X mark has the 
+	key <code class="number inline">0</code>, and the O mark has the key <code class="number inline">1</code>. 
+	The same can be said about <code class="code inline">i % 2</code> - for the 
+	X mark the remainder will be <code class="number inline">0</code>, and for 
+	the O mark - <code class="number inline">1</code>.
+</p>
+<p>
+	That is, this thing can be used instead of a key:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let gamers = ['X', 'O'];
+let key = i % 2;
+
+console.log(gamers[key]);</code>
+</div>
+<p>
+	Or even shorter:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let gamers = ['X', 'O'];
+console.log(gamers[i % 2]);</code>
+</div>
+<p>
+	Or even shorter:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log(['X', 'O'][i % 2]);</code>
+</div>
+<p>
+	Let's simplify our <code class="code inline">start</code> 
+	function code:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function start(cells) {
+	let i = 0;
+	
+	for (let cell of cells) {
+		cell.addEventListener('click', function() {
+			this.textContent = ['X', 'O'][i % 2];
+			i++;
+		});
+	}
+}</code>
+</div>
+<div class="task">
+	<p>
+		On your own, without looking into my 
+		code, make the described edit.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Now you can make an unlimited number of clicks 
+		on any cell, changing, for example, a cross to 
+		a zero. Fix it.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/practice/" data-persent="64" data-hash="jsPrTTTCTAA" data-quantity="75" data-num="49"><a href="../../../../../en/javascript/book/practice/tick-tack-toe/cross-and-toe-alternation.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/practice/tick-tack-toe/victory-checking.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/practice/tick-tack-toe/cross-and-toe-alternation-analysis.html" class="active">en</a><a href="../../../../../ru/javascript/book/practice/tick-tack-toe/cross-and-toe-alternation-analysis.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

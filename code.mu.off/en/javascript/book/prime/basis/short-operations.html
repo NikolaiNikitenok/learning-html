@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Shorthand operations in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will look at shorthand operations +=, -=, *=, /= в JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Shorthand operations in JavaScript</h1>
+				<div class="content">
+<p>
+	You can perform some operations on the 
+	current value of the variable, and then write 
+	the result back to the same variable. 
+	See an example:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 1;   // declare the variable num and write the value 1 to it
+num = num + 2; // write to num itself plus 2
+alert(num);    // shows 3</code>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let num = 1;
+num = num + 1;
+num = num + 1;
+
+alert(num);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let num = 1;
+num = num + 2;
+num = num + 3;
+
+alert(num);</code>
+	</div>
+</div>
+
+<h2>Shorthand operations</h2>
+<p>
+	For such operations, when to the variable 
+	its current value plus something else is written, 
+	there is a special shortened syntax. 
+	This syntax uses the special operator <code class="code inline">+=</code> 
+	instead of the normal assignment. 
+	Let's look at an example:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 1;
+num += 3; // equivalent to num = num + 3;</code>
+</div>
+<p>
+	There are similar operators for 
+	other mathematical operations:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 2;
+num -= 3; // equivalent to num = num - 3;</code>
+</div>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 2;
+num *= 3; // equivalent to num = num * 3;</code>
+</div>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 2;
+num /= 3; // equivalent to num = num / 3;</code>
+</div>
+<div class="task">
+	<p>
+		Modify this code to use the above 
+		described shorthand operations:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let num = 47;
+num = num + 7;
+num = num - 18;
+num = num * 10;
+num = num / 15;
+alert(num);</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="8" data-hash="jsPmBsShO" data-quantity="363" data-num="30"><a href="../../../../../en/javascript/book/prime/basis/digits-strings.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/basis/increment-decrement.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/basis/short-operations.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/basis/short-operations.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

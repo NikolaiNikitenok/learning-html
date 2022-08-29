@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Введение в классы и объекты в PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../js/location.js?v=3"></script>
+		<script src="../../../../js/locale.js?v=5"></script>
+		<script src="../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="На данной странице находится введение в классы и объекты PHP для новичков.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Введение в классы и объекты в PHP</h1>
+				<div class="content">
+<p>
+	Сейчас мы с вами займемся изучением ООП в
+	PHP. Давайте рассмотрим пример из жизни,
+	а потом перенесем его на PHP.
+</p>
+<p>
+	В качестве примера возьмем автомобиль. У
+	него есть колеса, цвет, вид кузова, объем
+	двигателя и так далее. Кроме того, водитель
+	может отдавать ему команды: ехать, остановится,
+	повернуть направо, налево и тп.
+</p>
+<p>
+	Можно говорить о том, что существует некоторый
+	<dfn>класс</dfn> автомобилей, обладающий общими
+	свойствами (у всех есть колеса и всем им
+	можно отдавать команды).
+</p>
+<p>
+	Конкретный автомобиль, стоящий на улице -
+	это представитель этого класса, или, другими
+	словами, <dfn>объект</dfn> этого класса. У всех
+	объектов этого класса есть <dfn>свойства</dfn>:
+	количество колес, цвет, вид кузова и <dfn>методы</dfn>:
+	ехать, остановится, повернуть направо, налево.
+</p>
+<p>
+	Другими словами сам класс - это чертеж, по
+	которым на заводе делаются автомобили. Объект
+	же - это сама машина, сделанная по этим чертежам.
+</p>
+<p>
+	В PHP класс создается с помощью ключевого
+	слова <code class="code inline">class</code>, за которым следует название
+	этого класса. Давайте сделаем класс <code class="code inline">Car</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Car
+	{
+		// тут код, то есть PHP-чертеж автомобиля
+	}
+?&gt;</code>
+</div>
+<p>
+	Укажем теперь в нашем чертеже, что любой
+	автомобиль, созданный по этому чертежу, будет
+	иметь свойство для цвета и свойство для количества
+	топлива.
+</p>
+<p>
+	Для этого внутри класса напишем свойство
+	<code class="code inline">$color</code> и свойство <code class="code inline">$fuel</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Car
+	{
+		// Зададим свойства (по сути переменные класса):
+		public $color; // цвет автомобиля
+		public $fuel; // количество топлива
+	}
+?&gt;</code>
+</div>
+<p>
+	Давайте теперь сделаем методы нашего класса.
+	В PHP методы, подобно обычным функциям, объявляются
+	с помощью ключевого слова <code class="code inline">function</code>,
+	перед которым пишется ключевое слово <code class="code inline">public</code>.
+</p>
+<p>
+	Как уже упоминалось выше, наш автомобиль
+	может ехать, может поворачивать, может останавливаться.
+	Сделаем соответствующие методы в нашем классе:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Car
+	{
+		public $color; // цвет автомобиля
+		public $fuel; // количество топлива
+		
+		// Команда ехать:
+		public function go()
+		{
+			// какой-то PHP код
+		}
+		
+		// Команда поворачивать:
+		public function turn()
+		{
+			// какой-то PHP код
+		}
+		
+		// Команда остановиться:
+		public function stop()
+		{
+			// какой-то PHP код
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Мы с вами сделали чертеж нашего автомобиля.
+	Теперь нужно отправится на завод и сделать
+	объект этого класса (то есть конкретный автомобиль).
+</p>
+<p>
+	В PHP это делается с помощью ключевого слова
+	<code class="code inline">new</code>, после которого пишется имя класса:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	new Car; // командуем заводу сделать автомобиль
+?&gt;</code>
+</div>
+<p>
+	Однако, если просто создать объект класса
+	- это ни к чему не приведет (это все равно,
+	что, к примеру, объявить массив и никуда
+	его не записать). Нам нужна переменная для
+	хранения этого объекта.
+</p>
+<p>
+	Пусть эта переменная будет называться <code class="code inline">$myCar</code>
+	- запишем в нее созданный нами объект:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$myCar = new Car; // запишем созданный объект в переменную $myCar
+?&gt;</code>
+</div>
+<p>
+	После создания автомобиля можно обращаться
+	к его свойствам. Обращение к ним происходит
+	через стрелочку <code class="code inline">-></code>. Давайте установим
+	свойства нашего объекта:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$myCar = new Car; // командуем заводу сделать автомобиль
+	
+	// Устанавливаем свойства объекта:
+	$myCar-&gt;color = 'red'; // красим в красный цвет
+	$myCar-&gt;fuel = 50; // заливаем топливо
+?&gt;</code>
+</div>
+<p>
+	Все, наш автомобиль создан, покрашен и заправлен.
+	Теперь мы можем отдавать ему команды через
+	методы этого автомобиля.
+</p>
+<p>
+	Обращение к методам также происходит через
+	стрелочку, но, в отличие от свойства, после
+	имени метода следует писать круглые скобки.
+	Давайте покомандуем нашим объектом:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$myCar-&gt;go();   // автомодиль-&gt;едь
+	$myCar-&gt;turn(); // автомодиль-&gt;поверни
+	$myCar-&gt;stop(); // автомодиль-&gt;остановись
+?&gt;</code>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/oop/" data-persent="0" data-hash="ppOpBsInr" data-quantity="107" data-num="1"><a href="../../../../ru/php/book/oop/properties.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../js/metrika.js?v=1"></script>	</body>
+</html>

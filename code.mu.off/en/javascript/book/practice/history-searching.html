@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Search for historical events in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../js/location.js?v=3"></script>
+		<script src="../../../../js/locale.js?v=5"></script>
+		<script src="../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will study search for historical events in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Search for historical events in JavaScript</h1>
+				<div class="content">
+<p>
+	Let's say we want to write a website that displays 
+	a table of historical events for a particular year. 
+	Let the year be entered into the input. By pressing 
+	<code class="key inline">Enter</code>, let's display a table of events that 
+	happened this year. Suppose we want to see the date, 
+	name and description of the event as information 
+	about the event. Let me show you an example of how 
+	it should turn out (for simplicity, I made events 
+	for <code class="number inline">2000</code>, <code class="number inline">2001</code> and <code class="number inline">2002</code>):
+</p>
+<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			body {
+			height: 300px;
+		}
+		</style>
+		<style>
+			* {
+			box-sizing: border-box;
+		}
+		#parent {
+			margin: 0 auto;
+			width: 600px;
+		}
+		#input {
+			width: 100%;
+			margin-bottom: 10px;
+			padding: 10px;
+		}
+		#table {
+			width: 100%;
+		}
+		#table td {
+			padding: 10px;
+			text-align: center;
+			border: 1px solid black;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;parent&quot;>
+			<input id=&quot;input&quot; placeholder=&quot;enter a year and press Enter&quot;>
+			<table id=&quot;table&quot;></table>
+		</div>
+		
+		<script>
+			
+			let events = {
+			2000: [
+				{
+					date: '20.01.2000',
+					name: 'event 1',
+					text: 'description of event 1'
+				},
+				{
+					date: '21.01.2000',
+					name: 'event 2',
+					text: 'description of event 2'
+				},
+			],
+			2001: [
+				{
+					date: '10.02.2001',
+					name: 'event 3',
+					text: 'description of event 3'
+				},
+				{
+					date: '11.02.2001',
+					name: 'event 4',
+					text: 'description of event 4'
+				},
+				{
+					date: '12.02.2001',
+					name: 'event 5',
+					text: 'description of event 5'
+				},
+			],
+			2002: [
+				{
+					date: '01.03.2002',
+					name: 'event 6',
+					text: 'description of event 6'
+				},
+				{
+					date: '02.04.2002',
+					name: 'event 7',
+					text: 'description of event 7'
+				},
+				{
+					date: '03.05.2002',
+					name: 'event 8',
+					text: 'description of event 8'
+				},
+				{
+					date: '04.06.2002',
+					name: 'event 9',
+					text: 'description of event 9'
+				},
+			],
+		};
+		
+		let input = document.querySelector('#input');
+		let table = document.querySelector('#table');
+		
+		input.addEventListener('keydown', function(event) {
+			if (event.key == 'Enter') {
+				let year = input.value;
+				
+				if (events[year]) {
+					table.textContent = '';
+					
+					for (let event of events[year]) {
+						let tr = document.createElement('tr');
+						
+						let td;
+						
+						td = document.createElement('td');
+						td.textContent = event.date;
+						tr.appendChild(td);
+						
+						td = document.createElement('td');
+						td.textContent = event.name;
+						tr.appendChild(td);
+						
+						td = document.createElement('td');
+						td.textContent = event.text;
+						tr.appendChild(td);
+						
+						table.appendChild(tr);
+					}
+				}
+			}
+		});
+		</script>
+	</body>
+</html>"></iframe></div>
+<p>
+	Here is the layout that you can use when 
+	solving the problem:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="parent"&gt;
+	&lt;input id="input" placeholder="enter a year and press Enter"&gt;
+	&lt;table id="table"&gt;&lt;/table&gt;
+&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">* {
+	box-sizing: border-box;
+}
+#parent {
+	margin: 0 auto;
+	width: 600px;
+}
+#input {
+	width: 100%;
+	margin-bottom: 10px;
+	padding: 10px;
+}
+#table {
+	width: 100%;
+}
+#table td {
+	padding: 10px;
+	text-align: center;
+	border: 1px solid black;
+}</code>
+</div>
+<div class="task">
+	<p>
+		Think about the best way to store 
+		historical events.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Implement the described site.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/practice/" data-persent="11" data-hash="jsPrStHS" data-quantity="75" data-num="9"><a href="../../../../en/javascript/book/practice/tags-searching.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../en/javascript/book/practice/horoscope.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../en/javascript/book/practice/history-searching.html" class="active">en</a><a href="../../../../ru/javascript/book/practice/history-searching.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../js/metrika.js?v=1"></script>	</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>The number of the selected dropdown list item in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to work with the selectedIndex property of dropdown lists in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>The number of the selected dropdown list item</h1>
+				<div class="content">
+<p>
+	In selects, there is a special property <code class="code inline">selectedIndex</code> 
+	that stores the number of the list item that is currently 
+	selected. The numbering starts from zero. At the same time, 
+	this property can be both read and written by changing 
+	the selected list item.
+</p>
+<p>
+	Let's see how this property works with an example. 
+	Let's say we have the following dropdown list:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;select id="select"&gt;
+	&lt;option value="one"&gt;one&lt;/option&gt;
+	&lt;option value="two" selected&gt;two&lt;/option&gt;
+	&lt;option value="three"&gt;three&lt;/option&gt;
+&lt;/select&gt;</code>
+</div>
+<p>
+	Let's display the number of the selected list item:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let select = document.querySelector('#select');
+console.log(select.selectedIndex); // shows 1</code>
+</div>
+<p>
+	Now let's choose some other item:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let select = document.querySelector('#select');
+select.selectedIndex = 2; // shows 'three'</code>
+</div>
+<div class="task">
+	<p>
+		Given input and select. A number is entered into 
+		the input. When focus is lost, select the list 
+		item whose number is equal to the value from 
+		the input.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Make a dropdown list with the names of the days of 
+		the week. Make JavaScript select by default the 
+		current day from this list.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="78" data-hash="jsPmFmSIN" data-quantity="363" data-num="284"><a href="../../../../../../../en/javascript/book/prime/dom/form/select/selected-item-changing.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../../en/javascript/book/prime/dom/form/select/dropdown-list-items-getting.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../../en/javascript/book/prime/dom/form/select/selected-item-number.html" class="active">en</a><a href="../../../../../../../ru/javascript/book/prime/dom/form/select/selected-item-number.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

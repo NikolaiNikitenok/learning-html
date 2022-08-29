@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Checking the division remainder in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to check the remainder of the division through the if-else construct in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Checking the division remainder in JavaScript</h1>
+				<div class="content">
+<p>
+	Suppose we have two variables with numbers:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = 10;
+let b = 3;</code>
+</div>
+<p>
+	Let's find the remainder after dividing 
+	one variable by another:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = 10;
+let b = 3;
+
+console.log(a % b); // shows 1</code>
+</div>
+<p>
+	Let now the variables store such values 
+	that one variable is divided by the 
+	second completely:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = 10;
+let b = 5;
+
+console.log(a % b); // shows 0</code>
+</div>
+<p>
+	Let's write a script that will check if 
+	one number is divisible by the second:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = 10;
+let b = 3;
+
+if (a % b === 0) {
+	console.log('is divisible');
+} else {
+	console.log('is divided with a remainder');
+}</code>
+</div>
+<p>
+	Let now it is required, if the number is 
+	divided with the remainder, output this 
+	remainder to the console:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = 10;
+let b = 3;
+
+if (a % b === 0) {
+	console.log('is divisible');
+} else {
+	console.log('is divided with a remainder ' + a % b);
+}</code>
+</div>
+<p>
+	In the code above, it turns out that the 
+	remainder is calculated in two places, 
+	and this is not optimal. 
+	Let's fix the problem:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = 10;
+let b = 3;
+let rest = a % b;
+
+if (rest === 0) {
+	console.log('is divisible');
+} else {
+	console.log('is divided with a remainder ' + rest);
+}</code>
+</div>
+<div class="task">
+	<p>
+		As you know, even numbers are divided 
+		by <code class="number inline">2</code> without a remainder, and 
+		odd numbers with a remainder. Let's say 
+		you have a number. Use the operator 
+		<code class="code inline">%</code> and the construct <code class="code inline">if</code> 
+		to check if this number is even or not.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given a number. Check that it is 
+		divisible by <code class="number inline">3</code>.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="29" data-hash="jsPmCdExDR" data-quantity="363" data-num="107"><a href="../../../../../../en/javascript/book/prime/conditions/examples/numbers-digits.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../en/javascript/book/prime/conditions/mistakes.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/conditions/examples/division-remainders.html" class="active">en</a><a href="../../../../../../ru/javascript/book/prime/conditions/examples/division-remainders.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

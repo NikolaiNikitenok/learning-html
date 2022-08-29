@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Работа с URLSearchParams в JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы разберем работу с классом URLSearchParams в JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Работа с URLSearchParams в JavaScript</h1>
+				<div class="content">
+<p>
+	<i>Здесь и далее мы работаем с браузерным
+	JavaScript, хотя описываемый функционал
+	как правило будет работать и на сервере.</i>
+</p>
+<p>
+	Как вы уже знаете, при работе с формами и
+	GET запросами в JavaScript возникают строки
+	такого вида:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let paramsString = 'a=1&b=2&c=3';</code>
+</div>
+<p>
+	Иногда нужно программным образом изменить
+	значение какого-либо параметра из этой строки.
+	Писать код, который делает это, не очень
+	удобно. Поэтому в JavaScript встроен специальный
+	класс <code class="code inline">URLSearchParams</code> для работы с
+	такими строками.
+</p>
+<p>
+	Давайте создадим объект этого класса, передав
+	параметром нашу строку с параметрами:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let paramsString = 'a=1&b=2&c=3';
+let searchParams = new URLSearchParams(paramsString);</code>
+</div>
+<p>
+	Давайте посмотрим, какие методы есть у созданного
+	объекта.
+</p>
+
+<h2>Получение значения параметра</h2>
+<p>
+	С помощью метода <code class="code inline">get</code> можно получить
+	значение параметра:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let res = searchParams.get('a');
+console.log(res);</code>
+</div>
+<p>
+	Попробуем получить значение несуществующего
+	параметра:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let res = searchParams.get('x');
+console.log(res); // выведет null</code>
+</div>
+
+<h2>Проверка наличия параметра</h2>
+<p>
+	С помощью метода <code class="code inline">has</code> можно проверить
+	наличие параметра. Проверим существующий параметр:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let res = searchParams.has('a');
+console.log(res); // выведет true</code>
+</div>
+<p>
+	Проверим несуществующий:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let res = searchParams.has('x');
+console.log(res); // выведет false</code>
+</div>
+
+<h2>Преобразование в строку</h2>
+<p>
+	С помощью метода <code class="code inline">toString</code> можно преобразовать
+	наш объект обратно в строку:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let res = searchParams.toString();
+console.log(res); // выведет 'a=1&b=2&c=3'</code>
+</div>
+
+<h2>Изменение параметров</h2>
+<p>
+	С помощью метода <code class="code inline">set</code> можно изменить
+	значение параметра:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">searchParams.set('b', '!');</code>
+</div>
+<p>
+	Проверим изменения:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let res = searchParams.toString();
+console.log(res); // выведет 'a=1&b=!&c=3'</code>
+</div>
+
+<h2>Добавление параметров</h2>
+<p>
+	С помощью метода <code class="code inline">set</code> можно также добавить
+	новый параметр:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">searchParams.set('d', '4');</code>
+</div>
+<p>
+	Проверим изменения:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let res = searchParams.toString();
+console.log(res); // выведет 'a=1&b=2&c=3&d=4'</code>
+</div>
+
+<h2>Добавление параметров</h2>
+<p>
+	С помощью метода <code class="code inline">append</code> можно также
+	добавить новый параметр:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">searchParams.append('d', '4');</code>
+</div>
+<p>
+	Проверим изменения:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let res = searchParams.toString();
+console.log(res); // выведет 'a=1&b=2&c=3&d=4'</code>
+</div>
+<p>
+	Давайте попробуем добавить уже существующий
+	параметр:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">searchParams.append('a', '4');</code>
+</div>
+<p>
+	В этом случае наш метод просто добавит одноименный
+	параметр в конец:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let res = searchParams.toString();
+console.log(res); // выведет 'a=1&b=2&c=3&a=4'</code>
+</div>
+<p>
+	В этом проявляется разница между методами
+	<code class="code inline">set</code> и <code class="code inline">append</code>. Первый изменит
+	существующий параметр, а второй просто добавит
+	его дубль в конец.
+</p>
+
+<h2>Удаление параметров</h2>
+<p>
+	С помощью метода <code class="code inline">delete</code> можно удалять
+	параметры:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">searchParams.delete('b');</code>
+</div>
+<p>
+	Проверим изменения:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let res = searchParams.toString();
+console.log(res); // выведет 'a=1&c=3'</code>
+</div>
+
+<h2>Перебор параметров циклом</h2>
+<p>
+	Параметры можно перебирать циклом:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">for (let p of searchParams) {
+	console.log(p);
+}</code>
+</div>
+
+<h2>Несколько одинаковых параметров</h2>
+<p>
+	Пусть в нашей строке несколько одинаковых
+	параметров:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let paramsString = 'a=1&a=2b=2&c=3';</code>
+</div>
+<p>
+	С помощью метода <code class="code inline">getAll</code> можно получить
+	массив значений этих параметров:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let res = searchParams.getAll('a');
+console.dir(res); // выведет [1, 2]</code>
+</div>
+
+<h2>Практические задачи</h2>
+<p>
+	Пусть дана следующая строка с параметрами:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let paramsString = 'test1=param1&test2=param2&test3=param3';</code>
+</div>
+<div class="task">
+	<p>
+		Добавьте в эту строку еще один параметр <code class="code inline">test3</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Удалите из этой строки параметр <code class="code inline">test2</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Измените параметр <code class="code inline">test1</code> на новое значение.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/supreme/" data-persent="78" data-hash="jsSpFSrUSP" data-quantity="114" data-num="90"><a href="../../../../../ru/javascript/book/supreme/form/submitting-preventing.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/javascript/book/supreme/form/FormData.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

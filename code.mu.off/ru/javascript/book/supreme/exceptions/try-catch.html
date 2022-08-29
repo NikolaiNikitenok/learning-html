@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Обработка исключительных ситуаций в JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами научимся обрабатывать исключительные ситуации в JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Обработка исключительных ситуаций в JavaScript</h1>
+				<div class="content">
+<p>
+	Сейчас мы с вами будем рассматривать исключительные
+	ситуации в JavaScript. Для начала я сделаю
+	некоторое введение, в котором будут примеры
+	исключительных ситуаций вообще для любых
+	языков программирования, а потом разберемся,
+	как дело обстоит в JavaScript.
+</p>
+<p>
+	Когда мы пишем наши программы, мы неявно
+	рассчитываем на то, что все программно-технические
+	механизмы, используемые нами, будут работать
+	корректно.
+</p>
+<p>
+	Это, однако, не всегда так. При передаче
+	данных по сети происходит обрыв связи и данные
+	приходят к нам в некорректном виде, или вообще
+	не приходят. При записи файла оказывается,
+	что выделенное нам место на жестком диске
+	закончилось, и файл не может записаться.
+	При чтении файла оказывается, что такого
+	файла не существует и нам не откуда читать.
+	При печати данных на принтере происходит
+	обрыв кабеля, соединяющего принтер и компьютер.
+</p>
+<p>
+	Все описанные ситуации имеют общую суть:
+	происходит некий сбой, который приводит к
+	невозможности или бессмысленности завершения
+	запланированной операции.
+</p>
+<p>
+	Бывают также ситуации, в которой происходит
+	некая ошибка, не являющаяся сбоем. Например,
+	вы спрашиваете у пользователя его email,
+	и он вводит email в некорректном формате.
+	Понятно, что наша программа не может продолжить
+	обрабатывать email, так как он не корректен.
+	Но, тем не менее это - не исключительная
+	ситуация. Наша программа может сама исправить
+	ситуацию: она выведет сообщение об ошибке
+	и пользователь повторит свой ввод.
+</p>
+<p>
+	На самом деле разница между сбоем и не сбоем
+	весьма расплывчата. Событие, которое одна
+	программа может трактовать как исключительную
+	ситуацию, другая программа может трактовать
+	как некую ошибку, с которой она может справится.
+</p>
+<p>
+	Критерий тут следующий: если при возникновении
+	проблемы ваша программа может продолжать
+	выполнять то, для чего она предназначена,
+	то это не исключительная ситуация, а если
+	не может - то да, это исключение.
+</p>
+<p>
+	Например, у нас есть программа, которая должна
+	спросить email пользователя. Если пользователь
+	ввел email в некорректном формате - это не
+	сбой. Это ожидаемая проблема и наша программа
+	будет спрашивать у пользователя email столько
+	раз, пока он не введет его корректно.
+</p>
+<p>
+	Пусть наша программа, которая спрашивает
+	email, должна также отправить этот корректный
+	email через интернет. При этом оказывается,
+	что интернет не работает. Вот это уже проблема:
+	программа никак не сможет отправить данные
+	через интернет, если интернет не работает.
+	Программа, тем не менее, может продолжить
+	свое выполнение: она может вывести информацию
+	о проблеме, повторить попытку отправки через
+	некоторое время, и так далее. Но эти действия
+	уже не совсем то, для чего программа была
+	предназначена, так как основное действие
+	- отправка email программа сделать не сможет.
+</p>
+<p>
+	Очень часто то, исключительная ситуация или
+	нет, зависит от языка программирования. Во
+	многих языках, если вдруг произошло деление
+	на ноль - это считается исключением (так
+	как на ноль делить нельзя), но в JavaScript
+	- не считается (в JavaScript на ноль делить
+	можно).
+</p>
+
+<h2>Исключения в JavaScript</h2>
+<p>
+	В JavaScript очень мало ситуаций, в которых
+	возникают исключения. Во-первых, просто потому,
+	что очень мало мест для их возникновения.
+</p>
+<p>
+	Во-вторых, потому, что сам язык "всепрощающий":
+	он на многое смотрит сквозь пальцы, например,
+	на деление на ноль или на некорректный HTML
+	код. Даже если вы укажете неверный путь к
+	картинке, которую собираетесь загрузить,
+	JavaScript вам простит и это и не посчитает
+	исключением.
+</p>
+<p>
+	Однако, исключительные ситуации есть. Мы
+	разберем две самые простые и на их примере
+	изучим работу с исключениями в JavaScript.
+</p>
+<p>
+	Первое исключение возникает, когда мы хотим
+	разобрать некорректный JSON:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let data = JSON.parse('{1,2,3,4,5}'); // данный json некорректен</code>
+</div>
+<p>
+	А второе исключение возникает, когда локальное
+	хранилище, выделенное под наш сайт переполняется
+	(больше <code class="number inline">5</code> мегабайт). Давайте искусственно
+	вызовем такое исключение:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = '';
+for (let i = 1; i &lt;= 6 * 10 ** 6; i++) { // формируем строку более 5 мб
+	str += '+';
+}
+
+localStorage.setItem('key', str); // пытаемся записать в хранилище</code>
+</div>
+<p>
+	Как JavaScript реагирует на такие исключительные
+	ситуации? Он просто вываливает ошибку в консоль
+	и прекращает дальнейшее выполнение скрипта.
+</p>
+<p>
+	Наша задача, как программистов, состоит в
+	том, чтобы отловить такую ситуацию и как-то
+	справится с ней, <i>не давая программе совсем
+	прекратить свое выполнение</i>. Для этого
+	существуют специальные конструкция <code class="code inline">try-catch</code>,
+	которую мы сейчас разберем.
+</p>
+
+<h2>Конструкция try-catch</h2>
+<p>
+	Конструкция <code class="code inline">try-catch</code> имеет следующий
+	синтаксис:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">try {
+	// код
+} catch (error) {
+	// обработка ошибки
+}</code>
+</div>
+<p>
+	В блоке <code class="code inline">try</code> следует размещать код,
+	который может содержать исключение. Если
+	вдруг при выполнении этого кода возникнет
+	исключительная ситуация, то наш скрипт не
+	рухнет с ошибкой в консоли, а начнет выполнятся
+	код блока <code class="code inline">catch</code>.
+</p>
+<p>
+	В этом блоке мы должны каким-то адекватным
+	образом отреагировать на ошибку. Например,
+	если мы хотели отправить какие-то данные
+	через интернет и интернет не работает, в
+	блоке <code class="code inline">catch</code> мы можем как-то справится
+	с ситуацией: можно, например, выдать сообщение
+	пользователю, а можно через некоторое время
+	попытаться отправить сообщение опять - вдруг
+	интернет уже заработал.
+</p>
+<p>
+	Если же при выполнении блока <code class="code inline">try</code> никаких
+	исключительных ситуаций не случилось, то
+	полезный код просто выполнится, а код из
+	блока <code class="code inline">catch</code> - нет.
+</p>
+<p>
+	Для примера давайте попробуем разобрать JSON
+	и в случае его некорректности выведем на
+	экран сообщение об этом:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">try {
+	let data = JSON.parse('{1,2,3,4,5}');
+} catch (error) {
+	alert('невозможно выполнить операцию разбора JSON');
+}</code>
+</div>
+<div class="task">
+	<p>
+		Дан код, который записывает некоторую строку
+		в локальное хранилище:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let str = 'некая строка';
+localStorage.setItem('key', str);</code>
+	</div>
+	<p>
+		Оберните этот код в конструкцию <code class="code inline">try-catch</code>.
+		В блоке <code class="code inline">catch</code> выведите сообщение о
+		переполнении хранилища. Проверьте работу
+		вашего кода для строки размером менее <code class="number inline">5</code>
+		мб и для строки большего размера.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан JSON, внутри которого хранится массив.
+		Если этот JSON корректный, то выведите элементы
+		массива в виде списка <code class="code inline">ul</code>. Если же
+		JSON не корректный, выведите на экран сообщение
+		о том, что на странице случилась ошибка.
+	</p>
+</div>
+
+<h2>Как разрабатывать с try-catch</h2>
+<p>
+	После изучения конструкции <code class="code inline">try-catch</code>
+	стиль написания вами кода должен изменится.
+	Теперь вы должны все места, в которых может
+	возникнуть исключительная ситуация, оборачивать
+	в <code class="code inline">try</code>, а в блоке <code class="code inline">catch</code> прописывать
+	реакцию на это исключение.
+</p>
+<div class="task">
+	<p>
+		Дан следующий код:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let str = 'некая строка';
+localStorage.setItem('key', str);
+alert('успешно сохранено!');</code>
+	</div>
+	<p>
+		Что не так с этим кодом? Исправьте недостатки
+		этого кода.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан следующий код:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let json = '[1,2,3,4,5]';
+
+let arr = JSON.parse(json);
+
+let sum = 0;
+for (let elem of arr) {
+	sum += +elem;
+}
+
+alert(sum);</code>
+	</div>
+	<p>
+		Что не так с этим кодом? Исправьте недостатки
+		этого кода.
+	</p>
+</div>
+
+<h2>Вложенность кода</h2>
+<p>
+	Особенность и удобство исключений заключаются
+	в том, что их можно ловить при любом уровне
+	вложенности кода. Посмотрим на примере. Пусть
+	у нас есть функция, сохраняющая данные в
+	локальное хранилище:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function save(str) {
+	localStorage.setItem('key', str);
+}</code>
+</div>
+<p>
+	Как вы уже знаете, при переполнении хранилища,
+	метод <code class="code inline">setItem</code> выбросит исключение.
+	Не обязательно, однако, это исключение ловить
+	внутри функции <code class="code inline">save</code>. Можно обернуть
+	в <code class="code inline">try</code> каждый вызов самой функции:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">try {
+	save('некая строка');
+} catch (error) {
+	alert('закончилось место в локальном хранилище!');
+}</code>
+</div>
+<div class="task">
+	<p>
+		Дана функция, преобразующая JSON в массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function getArr(json) {
+	return JSON.parse(json);
+}</code>
+	</div>
+	<p>
+		В следующем коде из JSON получают массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let arr = getArr('[1,2,3,4,5]');
+console.log(arr);</code>
+	</div>
+	<p>
+		Оберните вызов функции в конструкцию <code class="code inline">try-catch</code>.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/supreme/" data-persent="44" data-hash="jsSpExcTC" data-quantity="114" data-num="51"><a href="../../../../../ru/javascript/book/supreme/storage/localStorage/arrays-and-objects.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/javascript/book/supreme/exceptions/error-object.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

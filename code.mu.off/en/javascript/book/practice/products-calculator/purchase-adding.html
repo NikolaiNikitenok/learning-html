@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Adding a new purchase in a shopping calculator in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will implement adding a new purchase in a shopping calculator in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Adding a new purchase in a shopping calculator</h1>
+				<div class="content">
+<p>
+	First, let's make it so that when the button is 
+	clicked, a new row with a purchase is added 
+	to the table:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">add.addEventListener('click', function() {
+	let tr = document.createElement('tr');
+	
+	let td;
+	
+	td = document.createElement('td');
+	td.textContent = name.value;
+	td.classList.add('name');
+	tr.appendChild(td);
+	
+	td = document.createElement('td');
+	td.textContent = price.value;
+	td.classList.add('price');
+	tr.appendChild(td);
+	
+	td = document.createElement('td');
+	td.textContent = amount.value;
+	td.classList.add('amount');
+	tr.appendChild(td);
+	
+	td = document.createElement('td');
+	td.textContent = price.value * amount.value;
+	td.classList.add('cost');
+	tr.appendChild(td);
+	
+	td = document.createElement('td');
+	td.textContent = 'remove';
+	td.classList.add('remove');
+	tr.appendChild(td);
+	
+	table.appendChild(tr);
+});</code>
+</div>
+<p>
+	The solution I provided, however, has obvious problems 
+	with code duplication: in fact, for each cell we write 
+	the same code.
+</p>
+<p>
+	It would be appropriate to have some function to create 
+	a table cell. Let this function accept  a reference to 
+	a row of the table as the first parameter, the second 
+	parameter is the text of the table cell, and the third 
+	is the name of the CSS class of the cell:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function createCell(tr, value, name) {
+	
+}</code>
+</div>
+<p>
+	With such a function, we could rewrite 
+	the above code as follows:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">add.addEventListener('click', function() {
+	let tr = document.createElement('tr');
+	
+	createCell(tr, name.value, 'name');
+	createCell(tr, price.value, 'price');
+	createCell(tr, amount.value, 'amount');
+	createCell(tr, price.value * amount.value, 'cost');
+	createCell(tr, 'remove', 'remove');
+	
+	table.appendChild(tr);
+});</code>
+</div>
+<div class="task">
+	<p>
+		Implement the function <code class="code inline">createCell</code> 
+		I described.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Copy my code to add a new purchase. Test 
+		adding a new purchase to the table.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Modify the <code class="code inline">createCell</code> function so 
+		that it returns the created table cell 
+		via <code class="code inline">return</code>.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/practice/" data-persent="39" data-hash="jsPrPCPA" data-quantity="75" data-num="30"><a href="../../../../../en/javascript/book/practice/products-calculator/task-formulation.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/practice/products-calculator/total-sum.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/practice/products-calculator/purchase-adding.html" class="active">en</a><a href="../../../../../ru/javascript/book/practice/products-calculator/purchase-adding.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

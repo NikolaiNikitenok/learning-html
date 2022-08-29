@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Getting a group of elements in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to get a group of elements using querySelectorAll in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Getting a group of elements in JavaScript</h1>
+				<div class="content">
+<p>
+	In the previous lessons, we used the 
+	<code class="code inline">querySelector</code> method to get one 
+	element on page. Now it's time to learn 
+	how to get a group of elements and do 
+	some operations with many elements at once.
+</p>
+<p>
+	To do this, there is a <code class="code inline">querySelectorAll</code> 
+	method that receives all tags that match the 
+	CSS selector as an array of elements. To do 
+	something with the found elements, you need 
+	to work with the resulting array, for example, 
+	loop through it and perform some operation 
+	with each element in the loop separately.
+</p>
+<p>
+	Let, for example, we have paragraphs 
+	with the class <code class="selector inline">www</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;p class="www"&gt;text1&lt;/p&gt;
+&lt;p class="www"&gt;text2&lt;/p&gt;
+&lt;p class="www"&gt;text3&lt;/p&gt;</code>
+</div>
+<p>
+	Let's get an array of these paragraphs, loop 
+	through them and in the loop print the texts 
+	of the found paragraphs to the console:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elems = document.querySelectorAll('.www');
+
+for (let elem of elems) {
+	console.log(elem.textContent);
+}</code>
+</div>
+<p>
+	And now let's add an exclamation mark to 
+	the end of each paragraph text:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elems = document.querySelectorAll('.www');
+
+for (let elem of elems) {
+	elem.textContent = elem.textContent + '!';
+}</code>
+</div>
+<div class="task">
+	<p>
+		Given paragraphs and a button. On button 
+		click, find all paragraphs, loop through 
+		and set the text of each paragraph to 
+		<code class="string inline">'text'</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given paragraphs with text and a button. 
+		By clicking on the button, write down its 
+		ordinal number at the end of the text of 
+		each paragraph.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given inputs with numbers, a paragraph and 
+		a button. By pressing the button, find the 
+		sum of numbers from the inputs and write 
+		this sum in the text of the paragraph.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="70" data-hash="jsPmDmEGG" data-quantity="363" data-num="256"><a href="../../../../../../en/javascript/book/prime/dom/basis/this-advantage.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../en/javascript/book/prime/dom/basis/loop-named-handlers.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/basis/elements-group-getting.html" class="active">en</a><a href="../../../../../../ru/javascript/book/prime/dom/basis/elements-group-getting.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

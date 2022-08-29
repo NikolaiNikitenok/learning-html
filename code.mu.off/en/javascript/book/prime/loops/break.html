@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>break statement in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will analyze the work with the break statement in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>break statement in JavaScript</h1>
+				<div class="content">
+<p>
+	The <code class="code inline">break</code> statement allows you to 
+	terminate the loop early. Let's see when 
+	this might come in handy. Let's say we have 
+	a loop that prints the elements of an 
+	array to the console:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3, 4, 5];
+
+for (let elem of arr) {
+	console.log(elem);
+}</code>
+</div>
+<p>
+	Suppose we are faced with the task to determine 
+	whether the array contains the number <code class="number inline">3</code>. 
+	If there is, we will display the word 
+	<code class="string inline">'contains'</code> in the console 
+	(and if not, we will do nothing).
+</p>
+<p>
+	Let's solve our task:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3, 4, 5];
+
+for (let elem of arr) {
+	if (elem === 3) {
+		console.log('contains');
+	}
+}</code>
+</div>
+<p>
+	The task is solved, however, there is a problem: 
+	after the number <code class="number inline">3</code> has already been found, 
+	the array still keeps iterating over without sense, 
+	wasting valuable processor resources and 
+	slowing down our script.
+</p>
+<p>
+	It would be more optimal to terminate the work 
+	of our loop immediately after finding the number. 
+	This can be done using the special statement 
+	<code class="code inline">break</code>, which allows you to terminate the 
+	loop ahead of schedule.
+</p>
+<p>
+	So, let's terminate the loop as soon 
+	as we meet the number <code class="number inline">3</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3, 4, 5];
+
+for (let elem of arr) {
+	if (elem == 3) {
+		console.log('contains');
+		break; // get out of the loop
+	}
+}</code>
+</div>
+<div class="notice">
+	<p>
+		The statement <code class="code inline">break</code> can terminate 
+		any loop: the usual <code class="code inline">for</code>, 
+		<code class="code inline">while</code>, and so on.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given an array of numbers. Run a loop that 
+		prints the elements of this array to the 
+		console one by one until an element with 
+		the value <code class="number inline">0</code> is encountered. After 
+		that, the loop should finish work.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given an array of numbers. Find the sum 
+		of the elements from the beginning of the 
+		array to the first negative number.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given an array of numbers. Find the position 
+		of the first number <code class="number inline">3</code> in this array 
+		(we assume that this number must be in the array).
+	</p>
+</div>
+<div class="task">
+	<p>
+		Determine how many integers, starting with 
+		the number <code class="number inline">1</code>, must be added to make 
+		the sum greater than <code class="number inline">100</code>.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="33" data-hash="jsPmLpBr" data-quantity="363" data-num="121"><a href="../../../../../en/javascript/book/prime/loops/numbers-digits.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/loops/continue.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/loops/break.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/loops/break.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

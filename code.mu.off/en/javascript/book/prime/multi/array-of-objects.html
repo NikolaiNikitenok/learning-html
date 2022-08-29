@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Array of objects in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will look at working with an array of objects in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Array of objects in JavaScript</h1>
+				<div class="content">
+<p>
+	The most common multidimensional structure 
+	is an array of objects. It has some special 
+	features. Let's study them. Suppose we have 
+	the following array with users:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let users = [
+	{
+		name: 'name1',
+		surn: 'surn1',
+	},
+	{
+		name: 'name2',
+		surn: 'surn2',
+	},
+	{
+		name: 'name3',
+		surn: 'surn3',
+	},
+];</code>
+</div>
+<p>
+	Let's go through all the users and display 
+	their names and surnames in the console. 
+	When iterating over an array of objects, 
+	as a rule, only one loop over the array 
+	is used, and inside it, objects are 
+	accessed by keys. Let's do it:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">for (let user of users) {
+	console.log(user.name + ' ' + user.surn);
+}</code>
+</div>
+<div class="task">
+	<p>
+		Given the following array of employees:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let employees = [
+	{
+		name: 'name1',
+		salary: 300,
+	},
+	{
+		name: 'name2',
+		salary: 400,
+	},
+	{
+		name: 'name3',
+		salary: 500,
+	},
+];</code>
+	</div>
+	<p>
+		Display the data for each employee 
+		in the format <span class="format">name - salary</span>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given the following array of employees:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let employees = [
+	{
+		name: 'name1',
+		salary: 300,
+	},
+	{
+		name: 'name2',
+		salary: 400,
+	},
+	{
+		name: 'name3',
+		salary: 500,
+	},
+];</code>
+	</div>
+	<p>
+		Display the sum of salaries of all employees.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given the following array of employees:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let employees = [
+	{
+		name: 'name1',
+		salary: 300,
+		age: 28,
+	},
+	{
+		name: 'name2',
+		salary: 400,
+		age: 29,
+	},
+	{
+		name: 'name3',
+		salary: 500,
+		age: 30,
+	},
+	{
+		name: 'name4',
+		salary: 600,
+		age: 31,
+	},
+	{
+		name: 'name5',
+		salary: 700,
+		age: 32,
+	},
+];</code>
+	</div>
+	<p>
+		Display the sum of the salaries of 
+		those employees whose age is equal 
+		to or greater than <code class="number inline">30</code> years.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	</div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/multi/array-of-objects.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/multi/array-of-objects.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

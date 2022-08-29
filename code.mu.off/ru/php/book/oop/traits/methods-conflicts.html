@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Разрешение конфликтов методов трейтов в ООП на PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами разрешение конфликтов методов трейтов в ООП на PHP.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Разрешение конфликтов в трейтах</h1>
+				<div class="content">
+<p>
+	Так как один класс может использовать несколько
+	трейтов, то нас может поджидать проблема,
+	возникающая тогда, когда два трейта имеют
+	одноименные методы.
+</p>
+<p>
+	В этом случае PHP выдаст фатальную ошибку.
+	Чтобы поправить ситуацию, нужно будет разрешить
+	конфликт имен явным образом. Как это делается
+	- посмотрим на практике.
+</p>
+<p>
+	Пусть у нас есть два трейта с одинаковым
+	методом <code class="code inline">method</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	trait Trait1
+	{
+		private function method()
+		{
+			return 1;
+		}
+	}
+	
+	trait Trait2
+	{
+		private function method()
+		{
+			return 2;
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Пусть у нас также есть класс <code class="code inline">Test</code>,
+	использующий оба наших трейта. Если просто
+	подключить оба трейта к нашему классу, то
+	PHP выдаст ошибку, так как у трейтов есть
+	совпадающий методы:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	// Данный код выдаст ошибку!
+	class Test
+	{
+		use Trait1, Trait2; // подключаем трейты
+	}
+?&gt;</code>
+</div>
+<p>
+	Давайте разрешим (в данном контексте это
+	слово значит <i>разрулим</i>) конфликт имен
+	наших трейтов. Для этого существует специальный
+	оператор <code class="code inline">insteadof</code> (переводится <span class="translate-ru">вместо
+	чего-то</span>). С помощью этого оператора
+	будем использовать метод <code class="code inline">method</code> трейта
+	<code class="code inline">Trait1</code> вместо такого же метода трейта
+	<code class="code inline">Trait2</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Test
+	{
+		use Trait1, Trait2 {
+			Trait1::method insteadof Trait2;
+		}
+	}
+	
+	new Test;
+?&gt;</code>
+</div>
+<p>
+	Как вы видите, синтаксис тут следующий: вначале
+	имя трейта, потом два двоеточия, потом имя
+	метода, потом наш оператор <code class="code inline">insteadof</code>
+	и имя второго трейта.
+</p>
+<p>
+	Давайте проверим:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Test
+	{
+		use Trait1, Trait2 {
+			Trait1::method insteadof Trait2;
+		}
+		
+		public function __construct()
+		{
+			echo $this-&gt;method(); // выведет 1, тк это метод первого трейта
+		}
+	}
+	
+	new Test;
+?&gt;</code>
+</div>
+<p>
+	Итак, в нашем классе мы сказали, что если
+	используется метод <code class="code inline">method</code>, то следует
+	брать его из первого трейта. Можно и наоборот
+	- взять метод второго трейта:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Test
+	{
+		use Trait1, Trait2 {
+			Trait2::method insteadof Trait1;
+		}
+		
+		public function __construct()
+		{
+			echo $this-&gt;method(); // выведет 2, тк это метод второго трейта
+		}
+	}
+	
+	new Test;
+?&gt;</code>
+</div>
+<p>
+	В любом случае, если мы указываем использовать
+	метод одного трейта, то метод второго трейта
+	оказывается недоступным. Можно использовать
+	и метод второго трейта, переименовав его
+	через ключевое слово <code class="code inline">as</code>, вот так:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Test
+	{
+		use Trait1, Trait2 {
+			Trait1::method insteadof Trait2; // берем метод из первого трейта
+			Trait2::method as method2; // метод второго трейта будет доступен как method2
+		}
+		
+		public function __construct()
+		{
+			echo $this-&gt;method() + $this-&gt;method2(); // выведет 3
+		}
+	}
+	
+	new Test;
+?&gt;</code>
+</div>
+<p>
+	При желании можно переименовать и метод первого
+	трейта:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Test
+	{
+		use Trait1, Trait2 {
+			Trait1::method insteadof Trait2;
+			Trait1::method as method1; // метод первого трейта будет доступен как method1
+			Trait2::method as method2; // метод второго трейта будет доступен как method2
+		}
+		
+		public function __construct()
+		{
+			echo $this-&gt;method1() + $this-&gt;method2(); // выведет 3
+		}
+	}
+	
+	new Test;
+?&gt;</code>
+</div>
+<p>
+	Использовать ключевое слово <code class="code inline">as</code> без
+	определения главного метода через <code class="code inline">insteadof</code>
+	нельзя, это выдаст ошибку:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	// Данный класс выдаст ошибку:
+	class Test
+	{
+		use Trait1, Trait2 {
+			Trait1::method as method1;
+			Trait2::method as method2;
+		}
+		
+		public function __construct()
+		{
+			echo $this-&gt;method1() + $this-&gt;method2();
+		}
+	}
+	
+	new Test;
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Сделайте <code class="number inline">3</code> трейта с названиями <code class="code inline">Trait1</code>,
+		<code class="code inline">Trait2</code> и <code class="code inline">Trait3</code>. Пусть в первом
+		трейте будет метод <code class="code inline">method</code>, возвращающий
+		<code class="number inline">1</code>, во втором трейте - одноименный
+		метод, возвращающий <code class="number inline">2</code>, а в третьем
+		трейте - одноименный метод, возвращающий <code class="number inline">3</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Сделайте класс <code class="code inline">Test</code>, использующий
+		все три созданных нами трейта. Сделайте в
+		этом классе метод <code class="code inline">getSum</code>, возвращающий
+		сумму результатов методов подключенных трейтов.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/oop/" data-persent="43" data-hash="ppOpTrMC" data-quantity="107" data-num="47"><a href="../../../../../ru/php/book/oop/traits/intro.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/php/book/oop/traits/access-modifiers.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

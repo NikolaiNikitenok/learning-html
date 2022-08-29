@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Comparing values with a boolean type in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will consider a non-strict comparison of data with a boolean type in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Comparing values with a boolean type in JavaScript</h1>
+				<div class="content">
+<p>
+	In the previous example, we used the operator 
+	<code class="code inline">===</code> for comparison. In this case, our 
+	variable was compared for equality to <code class="code inline">true</code> 
+	both by value and by type.
+</p>
+<p>
+	For such a comparison, you can also use the 
+	operator <code class="code inline">==</code>. If the variable <code class="code inline">test</code> 
+	always has one of the values <code class="code inline">true</code> or 
+	<code class="code inline">false</code>, then nothing will change:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let test = true; // here we write either true or false
+
+if (test == true) {
+	console.log('+++');
+} else {
+	console.log('---');
+}</code>
+</div>
+<p>
+	But if any values can fall into the variable 
+	<code class="code inline">test</code>, then everything becomes much 
+	more complicated.
+</p>
+<p>
+	In this case, if the variable <code class="code inline">test</code> 
+	contains a non-boolean value, then this value 
+	will first be converted to a boolean and only 
+	then will be compared.
+</p>
+<p>
+	Let, for example, the variable <code class="code inline">test</code> 
+	contain the number <code class="number inline">1</code>. In this case, 
+	it is first converted to a boolean type, 
+	that is, to <code class="code inline">true</code>. And then the 
+	comparison will be done:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let test = 1;
+
+if (test == true) {
+	console.log('+++'); // it will work
+} else {
+	console.log('---');
+}</code>
+</div>
+<p>
+	But, for example, the number <code class="number inline">0</code> is 
+	converted to <code class="code inline">false</code>. And our condition 
+	will result in <code class="string inline">'false'</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let test = 0;
+
+if (test == true) {
+	console.log('+++');
+} else {
+	console.log('---'); // it will work
+}</code>
+</div>
+<p>
+	In fact, such a comparison can be explicitly 
+	rewritten in the following form:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let test = 1;
+
+if (Boolean(test) == true) {
+	console.log('+++');
+} else {
+	console.log('---');
+}</code>
+</div>
+<div class="task">
+	<p>
+		Remember and write what values when cast 
+		to a boolean type give <code class="code inline">false</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine what 
+		will be output to the console:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test = 1;
+		
+if (test == true) {
+	console.log('+++');
+} else {
+	console.log('---');
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine what 
+		will be output to the console:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test = 0;
+		
+if (test == true) {
+	console.log('+++');
+} else {
+	console.log('---');
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine what 
+		will be output to the console:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test = 1;
+		
+if (test == false) {
+	console.log('+++');
+} else {
+	console.log('---');
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine what 
+		will be output to the console:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test = 1;
+		
+if (test != true) {
+	console.log('+++');
+} else {
+	console.log('---');
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine what 
+		will be output to the console:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test = '';
+		
+if (test == false) {
+	console.log('+++');
+} else {
+	console.log('---');
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine what 
+		will be output to the console:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test;
+		
+if (test == true) {
+	console.log('+++');
+} else {
+	console.log('---');
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine what 
+		will be output to the console:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test = 3 * 'a';
+		
+if (test == true) {
+	console.log('+++');
+} else {
+	console.log('---');
+}</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="24" data-hash="jsPmCdCWB" data-quantity="363" data-num="87"><a href="../../../../../en/javascript/book/prime/conditions/boolean-values-conditions.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/conditions/shorthand-true-checking.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/conditions/comparison-with-boolean.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/conditions/comparison-with-boolean.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

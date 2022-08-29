@@ -1,0 +1,31 @@
+h1 {
+    text-align: center;
+    font-weight: normal;
+}
+
+.block {
+    border: 1px black solid;
+    width: 700px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    padding: 25px 20px 30px;
+}
+
+a {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+p {
+    text-align: justify;
+    font-size: 16px;
+}
+
+.more {
+    text-align: right;
+}
+.more a {
+    margin-right: 20px;
+}

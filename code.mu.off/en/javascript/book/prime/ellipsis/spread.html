@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Spread operator in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to work with the spread operator in JavaScript">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Spread operator in JavaScript</h1>
+				<div class="content">
+<p>
+	ES6 introduced a special operator 
+	<code class="code inline">...</code> called <dfn>spread</dfn>.
+</p>
+<p>
+	When the spread operator is placed in 
+	front of an array, it splits the array 
+	into individual values, turning the array 
+	into a set of parameters needed to call 
+	the function.
+</p>
+<p>
+	It probably sounds confusing, so let's 
+	look at a simple example. Let's say we 
+	have a function that takes <code class="number inline">3</code> 
+	parameters and returns their sum:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(num1, num2, num3) {
+	return num1 + num2 + num3;
+}</code>
+</div>
+<p>
+	Let's also have an array of three elements:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3];</code>
+</div>
+<p>
+	Obviously, we cannot just take and pass 
+	this array as a function parameter, 
+	like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3];
+func(arr);</code>
+</div>
+<p>
+	Indeed, in this case, the entire array 
+	will fall into the first parameter of 
+	the function, but a number must be passed 
+	to this parameter (and to other parameters too).
+</p>
+<p>
+	Of course, you can do the following:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3];
+func(arr[0], arr[1], arr[2]);</code>
+</div>
+<p>
+	But there is an easier way - to use 
+	the spread operator:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3];
+func(...arr);</code>
+</div>
+<p>
+	The presence of a variable is optional - you 
+	can apply spread directly to the array:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">func(...[1, 2, 3]);</code>
+</div>
+<div class="task">
+	<p>
+		Given an array:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3, 4, 5];</code>
+	</div>
+	<p>
+		Also given is the function:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function func(num1, num2, num3, num4, num5) {
+	return num1 + num2 + num3 + num4 + num5;
+}</code>
+	</div>
+	<p>
+		Use the above function to find the 
+		sum of the array elements.
+	</p>
+</div>
+
+<h2>More advanced examples</h2>
+<p>
+	Suppose we have such a function with 
+	<code class="number inline">5</code> parameters:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(num1, num2, num3, num4, num5) {
+	return num1 + num2 + num3 + num4 + num5;
+}</code>
+</div>
+<p>
+	We can use <code class="code inline">spread</code> to pass one 
+	array to this function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">func(...[1, 2, 3, 4, 5]);</code>
+</div>
+<p>
+	But this is optional!
+</p>
+<p>
+	You can pass two arrays:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">func(...[1, 2], ...[3, 4, 5]);</code>
+</div>
+<p>
+	You can pass part of the parameters 
+	in the ordinary way, and part - using 
+	spread:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">func(1, 2, ...[3, 4, 5]);</code>
+</div>
+<p>
+	Or like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">func(1, ...[2, 3, 4], 5);</code>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be output to the console:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function func(n1, n2, n3, n4, n5, n6, n7, n8) {
+	return (n1 + n2 + n3 + n4) * (n5 + n6 + n7 + n8);
+}
+
+console.log( func(1, ...[2, 3, 4], 5, ...[6], ...[7, 8]) );</code>
+	</div>
+</div>
+
+<h2>More useful usage</h2>
+<p>
+	Surely the previous examples of using the 
+	spread operator do not seem very 
+	inspiring to you.
+</p>
+<p>
+	Let's do something more impressive. 
+	Look at the following code:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let max = Math.max(1, 2, 3, 4, 5);</code>
+</div>
+<p>
+	As you can see, this code contains the 
+	maximum of the numbers. But what if our 
+	numbers are represented as an array? 
+	For example, like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3, 4, 5];</code>
+</div>
+<p>
+	Unfortunately, we cannot do the following:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3, 4, 5];
+let max = Math.max(arr); // you can't pass an array here</code>
+</div>
+<p>
+	Of course, we can manually put the array 
+	elements into <code class="code inline">Math.max</code>, like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3, 4, 5];
+let max = Math.max(arr[0], arr[1], arr[2], arr[3], arr[4]);</code>
+</div>
+<p>
+	However, in this case, any universality 
+	is lost: our code will only find the maximum 
+	value for an array of <code class="number inline">5</code> elements.
+</p>
+<p>
+	What if we need more or less elements in 
+	the array? There is a solution! We use 
+	the spread operator:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3, 4, 5]
+let max = Math.max(...arr);</code>
+</div>
+<p>
+	This code, despite its simplicity, is very 
+	powerful. After all, <code class="code inline">Math.max</code> can 
+	take any number of parameters, which means 
+	that using the spread operator, we can use 
+	an array of arbitrary size!
+</p>
+<div class="task">
+	<p>
+		Given an array of numbers. Using 
+		<code class="code inline">Math.min</code> and spread, display 
+		the minimum value of the array.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="56" data-hash="jsPmOsrSp" data-quantity="363" data-num="203"><a href="../../../../../en/javascript/book/prime/enumeration/some.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/ellipsis/spread-and-array-merging.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/ellipsis/spread.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/ellipsis/spread.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

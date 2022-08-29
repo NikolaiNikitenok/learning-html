@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Notepad in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will start making a notepad in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Notepad in JavaScript</h1>
+				<div class="content">
+<p>
+	Let's make a notepad that allows you to create 
+	notes with different text. Let this notepad be 
+	a text area and a button. To the left of the 
+	textarea, let there be a list of created notes.
+</p>
+<p>
+	A text will be entered in the textarea. After 
+	pressing the button, the text of the textarea 
+	should be cleared, and a link should appear 
+	in the menu with the text <code class="string inline">'note N'</code>, 
+	where instead of N there will be an index 
+	number of the note.
+</p>
+<p>
+	By clicking on the menu link in textarea, the 
+	text of the corresponding entry should appear. 
+	This text can be edited and, by clicking on 
+	the button, it should be updated.
+</p>
+<p>
+	For a better understanding of your task, I 
+	have prepared a layout that you will use:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="wrapper"&gt;
+	&lt;div id="menu"&gt;
+		&lt;ul id="notes"&gt;
+			&lt;li&gt;note 1&lt;/li&gt;
+			&lt;li&gt;note 2&lt;/li&gt;
+			&lt;li&gt;note 3&lt;/li&gt;
+		&lt;/ul&gt;
+		&lt;div id="create"&gt;
+			&lt;button&gt;new note&lt;/button&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div id="text"&gt;
+		&lt;textarea&gt;&lt;/textarea&gt;
+		&lt;button&gt;save&lt;/button&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">#wrapper {
+	width: 500px;
+	margin: 0 auto;
+	position: relative;
+}
+
+#menu {
+	width: 150px;
+	position: absolute;
+	right: 105%;
+}
+#notes {
+	padding: 0;
+	margin: 0;
+}
+#notes li {
+	padding: 5px;
+	text-align: center;
+	margin-bottom: 10px;
+	border: 1px dashed gray;
+	list-style-type: none;
+	cursor: pointer;
+}
+#notes li:hover, #notes li.active {
+	background: #f1f1f1;
+}
+#create button {
+	width: 100%;
+	padding: 5px;
+}
+
+#text textarea {
+	width: 100%;
+	height: 400px;
+	box-sizing: border-box;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+#text button {
+	width: 100%;
+	height: 30px;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><a href="" data-module="opener" data-type="win"><span data-x="open-window"></span><div srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			#wrapper {
+			width: 500px;
+			margin: 0 auto;
+			position: relative;
+		}
+		
+		#menu {
+			width: 150px;
+			position: absolute;
+			right: 105%;
+		}
+		#notes {
+			padding: 0;
+			margin: 0;
+		}
+		#notes li {
+			padding: 5px;
+			text-align: center;
+			margin-bottom: 10px;
+			border: 1px dashed gray;
+			list-style-type: none;
+			cursor: pointer;
+		}
+		#notes li:hover, #notes li.active {
+			background: #f1f1f1;
+		}
+		#create button {
+			width: 100%;
+			padding: 5px;
+		}
+		
+		#text textarea {
+			width: 100%;
+			height: 400px;
+			box-sizing: border-box;
+			padding: 10px;
+			margin-bottom: 10px;
+		}
+		#text button {
+			width: 100%;
+			height: 30px;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;wrapper&quot;>
+			<div id=&quot;menu&quot;>
+				<ul id=&quot;notes&quot;>
+					<li>note 1</li>
+					<li>note 2</li>
+					<li>note 3</li>
+				</ul>
+				<div id=&quot;create&quot;>
+					<button>new note</button>
+				</div>
+			</div>
+			<div id=&quot;text&quot;>
+				<textarea></textarea>
+				<button>save</button>
+			</div>
+		</div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></div></a></div>
+
+<h2>Discussion</h2>
+<p>
+	So, the task is set. Let's now discuss 
+	the algorithm for solving it.
+</p>
+<p>
+	We will store the texts of the 
+	notes in an array:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let texts = [
+	'text1',
+	'text2',
+	'text3',
+];</code>
+</div>
+<p>
+	As a first step, we will make it so that when 
+	the button is pressed, the text from the 
+	textarea is added to the array, and at the 
+	same time, a link for this note is added 
+	to the menu.
+</p>
+<div class="task">
+	<p>
+		Implement the assigned subtask.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/practice/" data-persent="32" data-hash="jsPrNbTF" data-quantity="75" data-num="25"><a href="../../../../../en/javascript/book/practice/checklist/final-code.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/practice/notepad/notes-showing.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/practice/notepad/task-formulation.html" class="active">en</a><a href="../../../../../ru/javascript/book/practice/notepad/task-formulation.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

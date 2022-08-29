@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Remove and complete buttons for checklist in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will add buttons for removing and completing a task in the checklist in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Remove and complete buttons for checklist in JavaScript</h1>
+				<div class="content">
+<p>
+	In the previous lesson, after solving the problems, 
+	you should have obtained the following code:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;input id="input"&gt;
+&lt;ul id="list"&gt;&lt;/ul&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="javascript">let input = document.querySelector('#input');
+let list = document.querySelector('#list');
+
+input.addEventListener('keypress', function(event) {
+	if (event.key == 'Enter') {
+		let li = document.createElement('li');
+		li.textContent = this.value;
+		list.appendChild(li);
+		
+		this.value = '';
+	}
+});</code>
+</div>
+<p>
+	Let's now add buttons <code class="string inline">'remove'</code> and <code class="string inline">'done'</code>. 
+	Let's design these buttons as <code class="code inline">span</code> tags. We will 
+	also place the task text in the <code class="code inline">span</code> tag:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">input.addEventListener('keypress', function(event) {
+	if (event.key == 'Enter') {
+		let li = document.createElement('li');
+		
+		let task = document.createElement('span');
+		task.textContent = this.value;
+		li.appendChild(task);
+		
+		let remove = document.createElement('span');
+		remove.textContent = 'remove';
+		li.appendChild(remove);
+		
+		let mark = document.createElement('span');
+		mark.textContent = 'done';
+		li.appendChild(mark);
+		
+		list.appendChild(li);
+		
+		this.value = '';
+	}
+});</code>
+</div>
+<p>
+	Let's also assign CSS classes to each of the <code class="code inline">span</code> 
+	tags so that they can be accessed via CSS to make the 
+	beauty we need:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let input = document.querySelector('#input');
+let list = document.querySelector('#list');
+
+input.addEventListener('keypress', function(event) {
+	if (event.key == 'Enter') {
+		let li = document.createElement('li');
+		
+		let task = document.createElement('span');
+		task.classList.add('task');
+		task.textContent = this.value;
+		li.appendChild(task);
+		
+		let remove = document.createElement('span');
+		remove.classList.add('remove');
+		remove.textContent = 'remove';
+		li.appendChild(remove);
+		
+		let mark = document.createElement('span');
+		mark.classList.add('mark');
+		mark.textContent = 'done';
+		li.appendChild(mark);
+		
+		list.appendChild(li);
+		
+		this.value = '';
+	}
+});</code>
+</div>
+<p>
+	Add CSS to assigned classes:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="css">#list span {
+	margin-right: 5px;
+}
+#list .remove, #list .mark {
+	color: blue;
+	cursor: pointer;
+}
+#list .remove:hover, #list .mark:hover {
+	text-decoration: underline;
+}</code>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/practice/" data-persent="25" data-hash="jsPrChLRCB" data-quantity="75" data-num="20"><a href="../../../../../en/javascript/book/practice/checklist/task-formulation.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/practice/checklist/deal-removing.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/practice/checklist/remove-complete-buttons.html" class="active">en</a><a href="../../../../../ru/javascript/book/practice/checklist/remove-complete-buttons.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

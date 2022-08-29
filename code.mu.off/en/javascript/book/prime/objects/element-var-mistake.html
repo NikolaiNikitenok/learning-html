@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Error accessing element by key in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will look at the difference when accessing object keys name with and without quotes in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Error accessing element by key in JavaScript</h1>
+				<div class="content">
+<p>
+	When referring to an array element 
+	through square brackets, key names 
+	must be quoted, but variable names 
+	must not. Misunderstanding this can 
+	often lead to errors. So let's 
+	discuss the rules of accessing again.
+</p>
+<p>
+	In the following code, we get 
+	an element with the key <code class="string inline">'key'</code> 
+	from the object:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log(obj['key']);</code>
+</div>
+<p>
+	And in the following code, we get 
+	an element with a key from the object, 
+	the name of which is stored in 
+	the variable <code class="code inline">key</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log(obj[key]);</code>
+</div>
+<div class="task">
+	<p>
+		Fix the error in the following code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let obj = {x: 1, y: 2, z: 3};
+console.log(obj[x]);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Fix the error in the following code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let obj = {x: 1, y: 2, z: 3};
+let key = 'x';
+console.log(obj['key']);</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="16" data-hash="jsPmObEVM" data-quantity="363" data-num="59"><a href="../../../../../en/javascript/book/prime/objects/vars-keys.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/objects/property-var-mistake.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/objects/element-var-mistake.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/objects/element-var-mistake.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

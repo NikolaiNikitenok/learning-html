@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Проблема promise hell в JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы разберем проблему promise hell в JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Проблема promise hell в JavaScript</h1>
+				<div class="content">
+<p>
+	Вы уже знаете, что промисы были созданы для
+	того, чтобы решить проблему callback hell.
+	Однако, со временем оказалось, что промисы
+	также способны породить сложный код. Эта
+	проблема по аналогии была названа <dfn>promise
+	hell</dfn>.
+</p>
+<p>
+	Давайте рассмотрим эту проблему на примерах
+	кода. Пусть у нас есть функция <code class="code inline">getSmth</code>,
+	получающая параметр и возвращающая результат
+	в зависимости от этого параметра:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function getSmth(num) {
+	return new Promise((resolve, reject) =&gt; {
+		setTimeout(() =&gt; resolve(num * num), 1000)
+	});
+}</code>
+</div>
+<p>
+	В данном случае мы имитируем некоторую полезную
+	операцию (например, получения данных с сервера).
+	В качестве имитации мы просто параметром
+	передаем число и через секунду возвращаем
+	квадрат этого числа.
+</p>
+<p>
+	Давайте теперь воспользуемся нашей функцией
+	<code class="code inline">getSmth</code> внутри другой функции:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	getSmth(2).then(res =&gt; {
+		console.log(res); // выведет 4
+	});
+}
+
+func();</code>
+</div>
+
+<h2>Первая проблема</h2>
+<p>
+	Множество следующих друг за другом конструкций
+	<code class="code inline">then</code> затрудняют понимание кода:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(){
+	getSmth(2).then(res1 =&gt; {
+		// делаем что-то
+	}).then(res2 =&gt; {
+		// делаем что-то
+	}).then(res3 =&gt; {
+		// делаем что-то
+	}).then(res4 =&gt; {
+		// делаем что-то
+	}).then(res5 =&gt; {
+		// делаем что-то
+	}).then(res6 =&gt; {
+		// делаем что-то
+	});
+}
+
+func();</code>
+</div>
+
+<h2>Вторая проблема</h2>
+<p>
+	Есть проблема и другого плана. Пусть теперь
+	мы хотим воспользоваться нашей функцией два
+	раза, затем просуммировав результаты. В результате
+	у нас получится вот такой код:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	getSmth(2).then(res1 =&gt; {
+		getSmth(3).then(res2 =&gt; {
+			console.log(res1 + res2); // выведет 13
+		});
+	});
+}
+
+func();</code>
+</div>
+<p>
+	Уже напоминает callback hell, не так ли?
+	Добавим еще один вызов функции - код станет
+	еще хуже:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	getSmth(2).then(res1 =&gt; {
+		getSmth(3).then(res2 =&gt; {
+			getSmth(4).then(res3 =&gt; {
+				console.log(res1 + res2 + res3);
+			});
+		});
+	});
+}
+
+func();</code>
+</div>
+<p>
+	Можно, конечно же, воспользоваться <code class="code inline">Promise.all</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	Promise.all([getSmth(2), getSmth(3), getSmth(4)]).then(res =&gt; {
+		console.log(res[0] + res[1] + res[2]);
+	});
+}
+
+func();</code>
+</div>
+<p>
+	Однако, получили ли мы то же самое? Нет!
+	В первом случае каждая новая функция ожидает
+	завершения предыдущего промиса, а во втором
+	случае - все промисы выполняются одновременно.
+	Эта разница будет существенна в том случае,
+	когда мы в следующую функцию захотим передать
+	вызов предыдущей:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	getSmth(2).then(res1 =&gt; {
+		getSmth(res1).then(res2 =&gt; {
+			getSmth(res2).then(res3 =&gt; {
+				console.log(res3);
+			});
+		});
+	});
+}
+
+func();</code>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/supreme/" data-persent="88" data-hash="jsSpAsnPsPH" data-quantity="114" data-num="101"><a href="../../../../../../ru/javascript/book/supreme/asynchrony/promise/promisification.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../ru/javascript/book/supreme/asynchrony/promise/sync-style.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

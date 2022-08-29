@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Getting the target element when an event is bubbling in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to get the target element through event.target in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Getting the target element when an event is bubbling in JavaScript</h1>
+				<div class="content">
+<p>
+	Let's say we have two elements: a <code class="code inline">div</code> and a 
+	paragraph <code class="code inline">p</code> lying inside this div:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div&gt;
+	&lt;p&gt;&lt;/p&gt;
+&lt;/div&gt;</code>
+</div>
+<p>
+	Get a reference to our div into a variable:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let div = document.querySelector('div');</code>
+</div>
+<p>
+	Let's add some styling to our tags:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="css">div {
+	padding: 20px;
+	border: 1px solid red;
+}
+
+p {
+	width: 200px;
+	height: 200px;
+	border: 1px solid green;
+}</code>
+</div>
+<p>
+	Now let the click handler be hung on the div:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">div.addEventListener('click', function() {
+	console.log('click');
+});</code>
+</div>
+<p>
+	Due to the fact that our div has 
+	<a href="../../../../../../en/markup/manual/css/property/padding.html"><code class="code inline">padding</code></a>, 
+	when we click on the div, we can hit the paragraph, 
+	and we can get to a place where this paragraph does 
+	not exist, that is, directly on the div.
+</p>
+<p>
+	At the same time, in the click handler, <code class="code inline">this</code> 
+	will always point to the element on which the handler 
+	is hung. In our case this is our div:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">div.addEventListener('click', function() {
+	console.log(this); // div
+});</code>
+</div>
+<p>
+	However, we can get exactly the tag in which the 
+	event happened. To do this, we can see what is 
+	in <code class="code inline">event.target</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">div.addEventListener('click', function(event) {
+	console.log(event.target); // or div, or paragraph
+});</code>
+</div>
+<p>
+	You can distinguish between these two options 
+	using the conditions:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let div = document.querySelector('div');
+
+div.addEventListener('click', function(event) {
+	if (event.target.tagName === 'DIV') {
+		console.log('clicks exactly on the div');
+	}
+	if (event.target.tagName === 'P') {
+		console.log('clicks exactly on the paragraph');
+	}
+});</code>
+</div>
+<p>
+	You can use 
+	<a href="../../../../../../en/javascript/manual/dom/matches.html"><code class="code inline">matches</code></a> 
+	instead of <code class="code inline">tagName</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let div = document.querySelector('div');
+
+div.addEventListener('click', function(event) {
+	if (event.target.matches('div')) {
+		console.log('clicks exactly on the div');
+	}
+	if (event.target.matches('p')) {
+		console.log('clicks exactly on the paragraph');
+	}
+});</code>
+</div>
+<div class="task">
+	<p>
+		Given the following elements:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;div&gt;
+	&lt;ul&gt;
+		&lt;li&gt;1&lt;/li&gt;
+		&lt;li&gt;2&lt;/li&gt;
+		&lt;li&gt;3&lt;/li&gt;
+	&lt;/ul&gt;
+&lt;/div&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="css">div, ul, li {
+	padding: 20px;
+}
+
+div {
+	border: 1px solid red;
+}
+ul {
+	border: 1px solid orange;
+}
+li {
+	border: 1px solid green;
+}</code>
+	</div>
+	<p>
+		Attach a click handler to the div. In this handler, 
+		determine in which of the tags the event fired.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Modify the previous task. Make sure that when 
+		you click on <code class="code inline">li</code>, an exclamation mark is 
+		added to the its end, and when you click on 
+		<code class="code inline">ul</code>, a new <code class="code inline">li</code> is added to the end.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="81" data-hash="jsPmOEBTE" data-quantity="363" data-num="296"><a href="../../../../../../en/javascript/book/prime/dom/object-Event/events-bubbling.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../en/javascript/book/prime/dom/object-Event/stop-events-bubbling.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/object-Event/bubbling-target-element.html" class="active">en</a><a href="../../../../../../ru/javascript/book/prime/dom/object-Event/bubbling-target-element.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

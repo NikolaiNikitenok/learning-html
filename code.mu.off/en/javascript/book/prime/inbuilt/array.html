@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Array methods in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn methods for working with arrays in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Array methods in JavaScript</h1>
+				<div class="content">
+<h2>Working with push, unshift</h2>
+<div class="ref">
+	<a href="../../../../../ru/javascript/manual/array/push.html"><code class="code inline">push</code></a>
+	<a href="../../../../../ru/javascript/manual/array/unshift.html"><code class="code inline">unshift</code></a>
+</div>
+<div class="task">
+	<p>
+		Given the following array:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">[1, 2, 3]</code>
+	</div>
+	<p>
+		Add the elements <code class="number inline">4</code>, <code class="number inline">5</code>, 
+		<code class="number inline">6</code> to its end.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given the following array:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">[1, 2, 3]</code>
+	</div>
+	<p>
+		Add the elements <code class="number inline">4</code>, <code class="number inline">5</code>, 
+		<code class="number inline">6</code> to its start.
+	</p>
+</div>
+
+<h2>Working with push shift, pop</h2>
+<div class="ref">
+	<a href="../../../../../ru/javascript/manual/array/shift.html"><code class="code inline">shift</code></a>
+	<a href="../../../../../ru/javascript/manual/array/pop.html"><code class="code inline">pop</code></a>
+</div>
+<div class="task">
+	<p>
+		Given the following array:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">[1, 2, 3]</code>
+	</div>
+	<p>
+		Display the first element of this array.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given the following array:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">[1, 2, 3]</code>
+	</div>
+	<p>
+		Display the last element of this array.
+	</p>
+</div>
+
+<h2>Working with slice</h2>
+<div class="ref">
+	<a href="../../../../../ru/javascript/manual/array/slice.html"><code class="code inline">slice</code></a>
+</div>
+<div class="task">
+	<p>
+		Given the following array:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">[1, 2, 3, 4, 5]</code>
+	</div>
+	<p>
+		Make this array into the following:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">[1, 2, 3]</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Given the following array:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">[1, 2, 3, 4, 5]</code>
+	</div>
+	<p>
+		Using this array, store the following 
+		array in a new variable:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">[4, 5]</code>
+	</div>
+</div>
+
+<h2>Working with splice</h2>
+<div class="ref">
+	<a href="../../../../../ru/javascript/manual/array/splice.html"><code class="code inline">splice</code></a>
+</div>
+<div class="task">
+	<p>
+		Given the following array:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">[1, 2, 3, 4, 5]</code>
+	</div>
+	<p>
+		Use the <code class="code inline">splice</code> method to transform 
+		the array into the following:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">[1, 4, 5]</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Given the following array:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">[1, 2, 3, 4, 5]</code>
+	</div>
+	<p>
+		Use the <code class="code inline">splice</code> method to 
+		make it into an array:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">[1, 2, 3, 'a', 'b', 'c', 4, 5]</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Given the following array:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">[1, 2, 3, 4, 5]</code>
+	</div>
+	<p>
+		Use the <code class="code inline">splice</code> method to 
+		make it into an array:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">[1, 'a', 'b', 2, 3, 4, 'c', 5, 'e']</code>
+	</div>
+</div>
+
+<!--
+<h2>Работа с sort</h2>
+<div class="ref">
+	<a href="../../../../../ru/javascript/manual/array/sort.html"><code class="code inline">sort</code></a>
+</div>
+-->
+
+<h2>Working with indexOf</h2>
+<div class="ref">
+	<a href="../../../../../ru/javascript/manual/array/indexOf.html"><code class="code inline">indexOf</code></a>
+</div>
+<div class="task">
+	<p>
+		Given the following array:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">[1, 2, 3, 4, 5]</code>
+	</div>
+	<p>
+		Find the position of the number 
+		<code class="number inline">3</code> in this array.
+	</p>
+</div>
+
+<h2>Working with includes</h2>
+<div class="ref">
+	<a href="../../../../../ru/javascript/manual/array/includes.html"><code class="code inline">includes</code></a>
+</div>
+<div class="task">
+	<p>
+		Given the following array:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">[1, 2, 3, 4, 5]</code>
+	</div>
+	<p>
+		Check if this array contains 
+		the number <code class="number inline">3</code>.
+	</p>
+</div>
+
+<!--
+<h2>Работа с Object.keys</h2>
+<div class="ref">
+	<a href="../../../../../ru/javascript/manual/object/Object.keys.html"><code class="code inline">Object.keys</code></a>.
+</div>
+<div class="task">
+	<p>
+		Дан объект <b>{js:'test', jq: <code class="string inline">'hello'</code>,
+		css: <code class="string inline">'world'</code>}</b>. Получите массив
+		его ключей.
+	</p>
+</div>
+-->
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="42" data-hash="jsPmSMAr" data-quantity="363" data-num="153"><a href="../../../../../en/javascript/book/prime/inbuilt/string.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/inbuilt/practicum.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/inbuilt/array.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/inbuilt/array.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

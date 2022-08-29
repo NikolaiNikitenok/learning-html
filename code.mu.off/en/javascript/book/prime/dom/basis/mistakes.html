@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Finding errors in code with DOM in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will practice looking for errors in the code with the DOM in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Finding errors in code with DOM in JavaScript</h1>
+				<div class="content">
+<p>
+	In the following tasks, some programmer has written 
+	code and may have made mistakes in it. You should 
+	check if the code does what is described. If the code 
+	does not work correctly, you need fix the errors.
+</p>
+<div class="task">
+	<p>
+		The code should add text to the 
+		end of each paragraph:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;p&gt;1&lt;/p&gt;
+&lt;p&gt;2&lt;/p&gt;
+&lt;p&gt;3&lt;/p&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let elems = document.querySelector('p');
+elems.textContent += '!';</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		When you click on a paragraph, its value 
+		should increase by one:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;p&gt;1&lt;/p&gt;
+&lt;p&gt;2&lt;/p&gt;
+&lt;p&gt;3&lt;/p&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let elems = document.querySelectorAll('p');
+
+for (let elem of elems) {
+	elem.addEventListener('click', function() {
+		this.textContent += Number(1);
+	});
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		By clicking on the button, the text of the 
+		paragraph should become bold:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;p&gt;text&lt;/p&gt;
+&lt;button&gt;click&lt;/button&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let button = document.querySelector('button');
+let elem   = document.querySelector('p');
+
+button.addEventListener('click', function() {
+	elem.innerHTML = '&lt;b&gt;elem.innerHTML&lt;/b&gt;';
+});</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		By clicking on the button, the sum of the 
+		numbers from the paragraphs should be 
+		displayed:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;p&gt;1&lt;/p&gt;
+&lt;p&gt;2&lt;/p&gt;
+&lt;p&gt;3&lt;/p&gt;
+
+&lt;button&gt;click&lt;/button&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let button = document.querySelector('button');
+let elems  = document.querySelector('p');
+
+button.addEventListener('click', function() {
+	let sum = 0;
+	
+	for (let elem of elems) {
+		sum += Number(elems.textContent);
+	}
+	
+	console.log(sum);
+});</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		By clicking on a paragraph, the specified 
+		text should be added to the end of it:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;p&gt;1&lt;/p&gt;
+&lt;p&gt;2&lt;/p&gt;
+&lt;p&gt;3&lt;/p&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let elems = document.querySelectorAll('p');
+
+for (let elem of elems) {
+	elem.addEventListener('click', () =&gt; {
+		this.textContent += '!';
+	});
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		By clicking on the button, the text of each 
+		paragraph should become bold:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;p&gt;text1&lt;/p&gt;
+&lt;p&gt;text2&lt;/p&gt;
+&lt;p&gt;text3&lt;/p&gt;
+&lt;button&gt;click&lt;/button&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let button = document.querySelector('button');
+let elems  = document.querySelectorAll('p');
+
+button.addEventListener('click', function() {
+	for (let elem of elems) {
+		elem.innerHTML = '&lt;b&gt;+elem.innerHTML+&lt;/b&gt;';
+	}
+});</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		By clicking on the button, the sum of the 
+		numbers from the paragraphs should be 
+		displayed in the console:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;p&gt;1&lt;/p&gt;
+&lt;p&gt;2&lt;/p&gt;
+&lt;p&gt;3&lt;/p&gt;
+
+&lt;button&gt;click&lt;/button&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let button = document.querySelector('button');
+let elems  = document.querySelectorAll('p');
+let sum = 0;
+
+for (let elem of elems) {
+	sum = elem.textContent + 1;
+	
+	button.addEventListener('click', function() {
+		console.log(sum);
+	});
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Numbers are entered into the inputs. By 
+		clicking on the button, the sum of the 
+		numbers from the inputs should be 
+		displayed in the console:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;input&gt;
+&lt;input&gt;
+&lt;input&gt;
+
+&lt;button&gt;click&lt;/button&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let button = document.querySelector('button');
+let elems  = document.querySelectorAll('input');
+let sum = 0;
+
+for (let elem of elems) {
+	sum += elem.value;
+}
+
+button.addEventListener('click', function() {
+	console.log(sum);
+});</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Numbers are entered into the first two 
+		inputs. By clicking on the button, the 
+		sum of these numbers should be displayed 
+		in the third input:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;input id="inp1"&gt;
+&lt;input id="inp2"&gt;
+&lt;input id="inp3"&gt;
+
+&lt;button id="btn"&gt;click&lt;/button&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let btn  = document.querySelector('#btn');
+let inp1 = document.querySelector('#inp1');
+let inp2 = document.querySelector('#inp2');
+let inp3 = document.querySelector('#inp3');
+
+btn.addEventListener('click', function() {
+	inp3.textContent = inp1.textContent + inp2.textContent;
+});</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Numbers are entered into the first two inputs. 
+		By clicking on the button, the sum of these 
+		numbers should be displayed in the paragraph:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;input id="inp1"&gt;
+&lt;input id="inp2"&gt;
+&lt;p id="res"&gt;&lt;/p&gt;
+
+&lt;button id="btn"&gt;click&lt;/button&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let btn  = document.querySelector('btn');
+let res  = document.querySelector('res');
+let inp1 = document.querySelector('inp1');
+let inp2 = document.querySelector('inp2');
+
+button.addEventListener('click', function() {
+	res.value = inp1.value + inp2.value;
+});</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		On button click, you need to check that the 
+		text in each input matches the text of its 
+		data attribute:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;input data-text="text1"&gt;
+&lt;input data-text="text2"&gt;
+&lt;input data-text="text3"&gt;
+
+&lt;button id="btn"&gt;click&lt;/button&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let inputs = document.querySelectorAll('input')
+let button = document.querySelector('#button')
+
+button.addEventListener('click',function() {
+	for (let input of inputs) {
+		if (input.value === input.dataset) {
+			input.classList.add('right')
+		} else {
+			input.classList.add('wrong')
+		}
+	}
+});</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		By clicking on the button, you need to check 
+		that the text in each input matches the text 
+		of the corresponding array element:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;input&gt;
+&lt;input&gt;
+&lt;input&gt;
+
+&lt;button id="btn"&gt;click&lt;/button&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let inputs = document.querySelectorAll('input')
+let button = document.querySelector('#button')
+
+let texts = [
+	'text1',
+	'text2',
+	'text3',
+];
+
+button.addEventListener('click',function() {
+	for (let input of inputs) {
+		for (let text of texts) {
+			if (input.value === text) {
+				input.classList.add('right')
+			} else {
+				input.classList.add('wrong')
+			}
+		}
+	}
+});</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Numbers are entered into the inputs. By clicking 
+		on the button, the sum of the entered numbers 
+		should be displayed in the console:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;input&gt;
+&lt;input&gt;
+&lt;input&gt;
+
+&lt;button id="btn"&gt;click&lt;/button&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let inputs = document.querySelectorAll('inputs');
+let btn = document.querySelector('#btm');
+let sum = 0;
+
+btn.addEventListener('click', function() {
+	for (let input of inputs) {
+		sum += Number(input);
+	}
+	
+	console.log(sum);
+});</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Numbers are entered into the first two inputs. 
+		By clicking on the button, the sum of these 
+		numbers should be displayed in the third input:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;input id="inp1"&gt;
+&lt;input id="inp2"&gt;
+&lt;input id="inp3"&gt;
+
+&lt;button id="btn"&gt;click&lt;/button&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let btn  = document.querySelector('#btn');
+let inp1 = document.querySelector('#inp1');
+let inp2 = document.querySelector('#inp2');
+let inp3 = document.querySelector('#inp3');
+
+let sum  = inp1.value + inp2.value;
+
+btn.addEventListener('click', function() {
+	inp3.value = sum;
+});</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		A number is entered into the input. Upon loss 
+		of focus, the sum of the digits of this number 
+		should be displayed in the console:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;input id="inp"&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let inp = document.querySelector('#inp').value;
+
+inp.addEventListener('blur', function() {
+	let digits = +inp.split('');
+	let sum = 0;
+	
+	for (let digit of digits) {
+		sum += digit;
+	}
+	
+	console.log(sum);
+});</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="75" data-hash="jsPmDmMst" data-quantity="363" data-num="272"><a href="../../../../../../en/javascript/book/prime/dom/basis/coding.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../en/javascript/book/prime/dom/basis/practicum.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/basis/mistakes.html" class="active">en</a><a href="../../../../../../ru/javascript/book/prime/dom/basis/mistakes.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

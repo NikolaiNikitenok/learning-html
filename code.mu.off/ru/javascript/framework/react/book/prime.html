@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Основной учебник React для новичков по-русски | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="Учебник по JavaScript фреймворку React от Трепачёва Дмитрия. Для новичков. По-русски. Есть задачи.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Основной учебник React</h1>
+				<div class="menu" data-module="menu" data-mode="hash" data-book="jsrtPm">
+<div data-section="Bs">
+	<a data-lesson="IF" href="../../../../../ru/javascript/framework/react/book/prime/basis/install-framework.html">
+		Установка фреймворка React
+	</a>
+	<a data-lesson="CI" href="../../../../../ru/javascript/framework/react/book/prime/basis/components-intro.html">
+		Введение в компонентный подход
+	</a>
+	<a data-lesson="JI" href="../../../../../ru/javascript/framework/react/book/prime/basis/jsx-intro.html">
+		Введение в JSX
+	</a>
+	<a data-lesson="FRT" href="../../../../../ru/javascript/framework/react/book/prime/basis/function-returning-tags.html">
+		Возврат тегов функциями
+	</a>
+	<a data-lesson="VVI" href="../../../../../ru/javascript/framework/react/book/prime/basis/variables-values-inserting.html">
+		Вставка значений переменных
+	</a>
+	<a data-lesson="TVS" href="../../../../../ru/javascript/framework/react/book/prime/basis/tags-variables-storing.html">
+		Хранение тегов в переменных
+	</a>
+	<a data-lesson="VIA" href="../../../../../ru/javascript/framework/react/book/prime/basis/variables-inserting-attributes.html">
+		Вставка переменных в атрибуты
+	</a>
+	<a data-lesson="AC" href="../../../../../ru/javascript/framework/react/book/prime/basis/applying-conditions.html">
+		Применение условий
+	</a>
+	<a data-lesson="ShC" href="../../../../../ru/javascript/framework/react/book/prime/basis/shorten-conditions.html">
+		Сокращенные условия
+	</a>
+	<a data-lesson="UF" href="../../../../../ru/javascript/framework/react/book/prime/basis/using-functions.html">
+		Использование функций
+	</a>
+	<a data-lesson="HE" href="../../../../../ru/javascript/framework/react/book/prime/basis/hooking-events.html">
+		Навешивание событий
+	</a>
+	<a data-lesson="EO" href="../../../../../ru/javascript/framework/react/book/prime/basis/event-object.html">
+		Объект Event
+	</a>
+	<a data-lesson="ALT" href="../../../../../ru/javascript/framework/react/book/prime/basis/arrays-loops-tags.html">
+		Теги в массивах и циклах
+	</a>
+	<a data-lesson="OAO" href="../../../../../ru/javascript/framework/react/book/prime/basis/objects-array-output.html">
+		Вывод массива объектов
+	</a>
+	<a data-lesson="OAT" href="../../../../../ru/javascript/framework/react/book/prime/basis/objects-array-table.html">
+		Массив объектов в виде таблицы
+	</a>
+	<a data-lesson="OAI" href="../../../../../ru/javascript/framework/react/book/prime/basis/objects-array-id.html">
+		Обсуждение id для массива объектов
+	</a>
+</div>
+
+<h2>Стейты</h2>
+<div data-section="St">
+	<a data-lesson="Inr" href="../../../../../ru/javascript/framework/react/book/prime/states/intro.html">
+		Введение в стейты
+	</a>
+	<a data-lesson="Inp" href="../../../../../ru/javascript/framework/react/book/prime/states/input.html">
+		Работа с инпутами
+	</a>
+	<a data-lesson="HFD" href="../../../../../ru/javascript/framework/react/book/prime/states/handling-form-data.html">
+		Обработка данных формы
+	</a>
+	<a data-lesson="Tx" href="../../../../../ru/javascript/framework/react/book/prime/states/textarea.html">
+		Работа с textarea
+	</a>
+	<a data-lesson="Chc" href="../../../../../ru/javascript/framework/react/book/prime/states/checkbox.html">
+		Работа с чекбоксами
+	</a>
+	<a data-lesson="Sl" href="../../../../../ru/javascript/framework/react/book/prime/states/select.html">
+		Работа с селектами
+	</a>
+	<a data-lesson="Rd" href="../../../../../ru/javascript/framework/react/book/prime/states/radio.html">
+		Работа с radio
+	</a>
+	<a data-lesson="DV" href="../../../../../ru/javascript/framework/react/book/prime/states/default-values.html">
+		Значения по умолчанию
+	</a>
+	
+</div>
+
+<h2>Структуры</h2>
+<div data-section="Sc">
+	<a data-lesson="Ar" href="../../../../../ru/javascript/framework/react/book/prime/structures/arrays.html">
+		Реактивность массивов
+	</a>
+	<a data-lesson="AEF" href="../../../../../ru/javascript/framework/react/book/prime/structures/adding-elements-form.html">
+		Форма для добавления элементов в массив
+	</a>
+	<a data-lesson="RE" href="../../../../../ru/javascript/framework/react/book/prime/structures/removing-elements.html">
+		Реализация удаления элементов из массива
+	</a>
+	<a data-lesson="IAB" href="../../../../../ru/javascript/framework/react/book/prime/structures/inputs-array-binding.html">
+		Привязка инпутов к массиву
+	</a>
+	<a data-lesson="EEF" href="../../../../../ru/javascript/framework/react/book/prime/structures/elements-editing-form.html">
+		Форма для редактирования элементов массива
+	</a>
+	<a data-lesson="UAF" href="../../../../../ru/javascript/framework/react/book/prime/structures/universal-array-form.html">
+		Универсальная форма для массива
+	</a>
+	<a data-lesson="Ob" href="../../../../../ru/javascript/framework/react/book/prime/structures/objects.html">
+		Реактивность объектов
+	</a>
+	<a data-lesson="OIB" href="../../../../../ru/javascript/framework/react/book/prime/structures/object-inputs-binding.html">
+		Привязка инпутов к объекту
+		<span class="__label__ __acceptable__">ссылка на выч им свойст</span>
+	</a>
+	<a data-lesson="OA" href="../../../../../ru/javascript/framework/react/book/prime/structures/objects-array.html">
+		Реактивность массива объектов
+	</a>
+	<a data-lesson="RAO" href="../../../../../ru/javascript/framework/react/book/prime/structures/removing-array-objects.html">
+		Реализация удаления из массива объектов
+	</a>
+	<a data-lesson="OAAF" href="../../../../../ru/javascript/framework/react/book/prime/structures/objects-array-adding-form.html">
+		Форма для добавления в массив объектов
+	</a>
+	<a data-lesson="OAEF" href="../../../../../ru/javascript/framework/react/book/prime/structures/objects-array-editing-form.html">
+		Форма для редактирования массива объектов
+	</a>
+	<a data-lesson="UOAF" href="../../../../../ru/javascript/framework/react/book/prime/structures/universal-objects-array-form.html">
+		Универсальная форма для массива объектов
+	</a>
+	
+</div>
+
+<h2>Редактирование</h2>
+<div data-section="Ed">
+	<a data-lesson="CTR" href="../../../../../ru/javascript/framework/react/book/prime/editing/conditional-tag-rendering.html">
+		Стейты и условный рендеринг тегов
+	</a>
+	<a data-lesson="LCR" href="../../../../../ru/javascript/framework/react/book/prime/editing/loop-conditional-rendering.html">
+		Стейты и условный рендеринг в цикле
+	</a>
+	<a data-lesson="Tg" href="../../../../../ru/javascript/framework/react/book/prime/editing/tags.html">
+		Теги
+	</a>
+	<a data-lesson="LI" href="../../../../../ru/javascript/framework/react/book/prime/editing/list-items.html">
+		Элементы списка
+	</a>
+	<a data-lesson="TC" href="../../../../../ru/javascript/framework/react/book/prime/editing/table-cells.html">
+		Ячейки таблицы
+	</a>
+</div>
+
+<h2>Компоненты</h2>
+<div data-section="Cp">
+	<a data-lesson="Inr" href="../../../../../ru/javascript/framework/react/book/prime/components/intro.html">
+		Введение в компоненты
+	</a>
+	<a data-lesson="Pr" href="../../../../../ru/javascript/framework/react/book/prime/components/props.html">
+		Пропсы компонентов
+	</a>
+	<a data-lesson="ChC" href="../../../../../ru/javascript/framework/react/book/prime/components/child-components.html">
+		Создание дочерних компонентов
+	</a>
+	<a data-lesson="ChCPS" href="../../../../../ru/javascript/framework/react/book/prime/components/child-components-passing-states.html">
+		Передача стейтов в дочерние компоненты
+	</a>
+	<a data-lesson="ChPS" href="../../../../../ru/javascript/framework/react/book/prime/components/changing-parent-state.html">
+		Изменение стейта родителя
+	</a>
+	<a data-lesson="EPS" href="../../../../../ru/javascript/framework/react/book/prime/components/editing-parent-state.html">
+		Редактирование стейта родителя
+	</a>
+	<a data-lesson="EGS" href="../../../../../ru/javascript/framework/react/book/prime/components/editing-grandparent-state.html">
+		Редактирование стейта прародителя
+	</a>
+	<a data-lesson="MVS" href="../../../../../ru/javascript/framework/react/book/prime/components/modes-via-states.html">
+		Режимы работы через стейты
+	</a>
+	<a data-lesson="RCC" href="../../../../../ru/javascript/framework/react/book/prime/components/react-components-concepts.html">
+		Концепции React при работе с компонентами
+	</a>
+	
+</div>
+
+<!--
+<h2>Стилизация</h2>
+<div>
+	<a data-lesson="5" href="../../../../../ru/javascript/framework/react/book/prime/5.html">
+		Работа с CSS стилями в JSX
+	</a>
+	<a data-lesson="4" href="../../../../../ru/javascript/framework/react/book/prime/49.html">
+		Стилизация через styled-components
+		
+		
+		это [n]3[/n] урока будет, не обязательно подряд
+		https://medium.com/@stasonmars/%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%BE-%D0%BF%D0%BE-%D1%82%D1%80%D1%91%D0%BC-%D1%81%D0%BF%D0%BE%D1%81%D0%BE%D0%B1%D0%B0%D0%BC-%D1%81%D1%82%D0%B8%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8-%D0%B2-react-2ca5c0c7464b
+		Инлайновая стилизация - взять все способы из статьи
+			
+		Styled Components npm install --save styled-components
+		CSS Modules - это не очень понятно из статьи, но интересно, надо попробовать
+		
+		<span class="__label__">todo</span>
+	</a>
+</div>
+
+<h2>Практика</h2>
+<div>
+	<a data-lesson="Pr" href="../../../../../ru/javascript/framework/react/book/prime/practice.html">
+		
+		<span class="__label__">todo</span>
+	</a>
+</div>
+
+<h2>Продвинутые темы</h2>
+<div>
+	<a data-lesson="4" href="../../../../../ru/javascript/framework/react/book/prime/48.html">
+		хук такой то
+		<span class="__label__">todo</span>
+	</a>
+	<a data-lesson="5" href="../../../../../ru/javascript/framework/react/book/prime/50.html">
+		Контекст
+		<span class="__label__">todo</span>
+	</a>
+</div>
+
+<h2>Роутер</h2>
+<div>
+	<a data-lesson="4" href="../../../../../ru/javascript/framework/react/book/prime/48.html">
+		
+		<span class="__label__">todo</span>
+	</a>
+</div>
+
+<h2>Редакс</h2>
+<div>
+	<a data-lesson="4" href="../../../../../ru/javascript/framework/react/book/prime/48.html">
+		
+		<span class="__label__">todo</span>
+	</a>
+</div>
+-->
+</div>			</main>
+			<div class="bottom">
+	</div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

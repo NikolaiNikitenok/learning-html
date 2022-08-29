@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Conversion to number in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will study the force conversion of strings to numbers in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Conversion to number in JavaScript</h1>
+				<div class="content">
+<p>
+	Let's consider the following code:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = '2';
+let b = '3';
+alert(a + b); // shows '23'</code>
+</div>
+<p>
+	As you can see, in our case, both variables 
+	contain strings, and respectively, they add up 
+	like strings.
+</p>
+<p>
+	Suppose, we would like the values of our 
+	variables in this case to be added not as strings, 
+	but as numbers. In this case, we can force 
+	our variable type to be converted to a number 
+	using the special function <code class="code inline">Number</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = '2';
+let b = '3';
+alert(Number(a) + Number(b)); // shows 5</code>
+</div>
+<p>
+	You can convert strings to numbers 
+	not with the addition operation, but 
+	immediately when writing to a variable. 
+	This will work:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = Number('2'); // the number 2 will be written to the variable 
+let b = Number('3'); // the number 3 will be written to the variable
+alert(a + b); // shows 5</code>
+</div>
+<div class="task">
+	<p>
+		Given a variable <code class="code inline">a</code> with the value 
+		<code class="string inline">'10'</code> and a variable <code class="code inline">b</code> with 
+		the value <code class="string inline">'20'</code>. Add the given 
+		variables as numbers.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">alert( Number('2') + Number('3') );</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">alert( 2 + Number('3') );</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">alert( '2' + Number('3') );</code>
+	</div>
+</div>
+
+<h2>Alternative</h2>
+<p>
+	Often, the sign <code class="code inline">+</code> is placed before 
+	the string instead of <code class="code inline">Number</code> to 
+	shorten the code. Thus, an operation is 
+	performed on the string that is valid 
+	only for numbers, and the string is 
+	converted to a number.
+</p>
+<p>
+	See an example:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = +'2'; // the number 2 will be written to the variable
+let b = +'3'; // the number 3 will be written to the variable
+alert(a + b); // shows 5</code>
+</div>
+<p>
+	Here is another example:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = '2';
+let b = +a; // the number 2 will be written to b</code>
+</div>
+<p>
+	And here is the following example, 
+	although working, but it does not 
+	look very nice. It would be more 
+	appropriate to use the function <code class="code inline">Number</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = '2';
+let b = '3';
+alert(+a + +b); // shows 5</code>
+</div>
+<div class="task">
+	<p>
+		Given a code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let a = '2';
+let b = '3';
+alert(a + b); // shows '23'</code>
+	</div>
+	<p>
+		Using the described above technique 
+		with a plus, correct the above code 
+		such a way that the variables <code class="code inline">a</code> 
+		and <code class="code inline">b</code> are assigned a number, 
+		not a string, and the result, respectively, 
+		would be not <code class="string inline">'23'</code>, but <code class="number inline">5</code>.
+	</p>
+</div>
+
+<h2>Not only numbers</h2>
+<p>
+	When trying to convert a string containing 
+	not only numbers, but also other characters, 
+	the <code class="code inline">Number</code> function will return 
+	the value <code class="code inline">NaN</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">alert(Number('2s')); // shows NaN</code>
+</div>
+<p>
+	The same effect will bring the use of plus:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">alert(+'2s'); // shows NaN</code>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="6" data-hash="jsPmBsFTN" data-quantity="363" data-num="22"><a href="../../../../../en/javascript/book/prime/basis/automatic-types-conversion.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/basis/numbers-extraction.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/basis/conversion-to-number.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/basis/conversion-to-number.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

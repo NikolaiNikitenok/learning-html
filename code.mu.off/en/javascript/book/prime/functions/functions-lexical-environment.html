@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Lexical environment of functions in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will consider the concept of the lexical environment of functions in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Lexical environment of functions in JavaScript</h1>
+				<div class="content">
+<p>
+	Let's consider the following code:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 1; // set the value of the variable
+
+function func() {
+	console.log(num); // print it to the console
+}
+
+func(); // call the function</code>
+</div>
+<p>
+	As I mentioned earlier, the variable value 
+	does not have to be before the function 
+	definition, the main thing is that it 
+	should be before the function call:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	console.log(num);
+}
+
+let num = 1;
+func();</code>
+</div>
+<p>
+	In fact, this is not entirely true. Our 
+	function even before its call knows the 
+	value of the variable <code class="code inline">num</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 1;
+
+function func() {
+	console.log(num); // the function already knows that num = 1
+}</code>
+</div>
+<p>
+	Here's a more complicated example:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 1; // the function at this point learns that num = 1
+
+function func() {
+	console.log(num);
+}
+
+num = 2; // the function at this point learns that num = 2</code>
+</div>
+<p>
+	Add function calls:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 1; // the function at this point learns that num = 1
+func(); // shows 1
+
+function func() {
+	console.log(num);
+}
+
+func(); // shows 1
+num = 2; // the function at this point learns that num = 2
+func(); // shows 2</code>
+</div>
+<p>
+	Once again: in fact, the function knows 
+	the values of external variables, even 
+	without being called.
+</p>
+
+<h2>Lexical environment</h2>
+<p>
+	All external variables available 
+	to the function are called its 
+	<dfn><i>Lexical Environment</i></dfn>
+</p>
+<p>
+	In the following function example, two 
+	variables are available: <code class="code inline">num1</code> and 
+	<code class="code inline">num2</code>, which are the lexical 
+	environment of our function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num1 = 1;
+let num2 = 2;
+
+function func() {
+	// the function knows about the variables num1 and num2
+}</code>
+</div>
+<p>
+	The lexical environment itself is some 
+	kind of internal JavaScript object 
+	attached to our function. In this case, 
+	it can be represented as follows:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">{num1: 1, num2: 2}</code>
+</div>
+<p>
+	The value of any lexical environment 
+	variable is always equal to the current 
+	value of that variable:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num1 = 1; // environment {num1: 1}
+let num2 = 2; // environment {num1: 1, num2: 2}
+
+// Let's change the variable num1:
+num1 = 123; // environment {num1: 123, num2: 2}
+
+function func() {
+	
+}</code>
+</div>
+<p>
+	When we try to refer to some variable 
+	inside a function, this variable is 
+	first looked up among the local variables 
+	of the function and, if such a variable 
+	is not there, then it is looked up in 
+	the lexical environment of the function.
+</p>
+
+<h2>Practical usage</h2>
+<p>
+	Suppose we have a function that returns 
+	another function as its result:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test() {
+	return function() {
+		
+	}
+}</code>
+</div>
+<p>
+	If the parent function has any variables, 
+	then those variables will be contained in 
+	the lexical environment of the 
+	returned function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test() {
+	let num = 1; // the parent function variable
+	
+	return function() {
+		// lexical environment = {num: 1}
+	}
+}</code>
+</div>
+<p>
+	Let's write an alert in the code of our 
+	returned function that displays the value 
+	of the variable <code class="code inline">num</code> in the console:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test() {
+	let num = 1;
+	
+	return function() {
+		console.log(num);
+	}
+}</code>
+</div>
+<p>
+	Let's now call the parent function <code class="code inline">test</code> 
+	and write the result of its work into 
+	the variable <code class="code inline">func</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test() {
+	let num = 1;
+	
+	return function() {
+		console.log(num);
+	}
+}
+
+let func = test();</code>
+</div>
+<p>
+	The returned function will be written to 
+	the variable <code class="code inline">func</code>. Let's call our 
+	function - as its result, it will display 
+	the contents of the variable <code class="code inline">num</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test() {
+	let num = 1;
+	
+	return function() {
+		console.log(num);
+	}
+}
+
+let func = test();
+func(); // shows 1</code>
+</div>
+<p>
+	If you just try to display the variable 
+	<code class="code inline">num</code> outside the function, it will 
+	be unavailable:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test() {
+	let num = 1;
+	
+	return function() {
+		console.log(num);
+	}
+}
+
+console.log(num); // the variable num is not available here</code>
+</div>
+<p>
+	As you can see, the local variable <code class="code inline">num</code> 
+	is bound to the lexical environment of our 
+	function, and now, by calling this function 
+	anywhere in the code, we can get the value 
+	of the variable <code class="code inline">num</code>, even if at the 
+	place of the call this variable is not 
+	available by itself.
+</p>
+<p>
+	In fact, a similar result can be achieved 
+	by making the variable <code class="code inline">num</code> global:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test() {
+	return function() {
+		console.log(num);
+	}
+}
+
+let num = 1; // the global variable
+let func = test();
+func(); // shows 1</code>
+</div>
+<p>
+	Here, however, there will be a significant 
+	difference: in the new version, the variable 
+	<code class="code inline">num</code> can be changed outside of functions 
+	(since it is global), but not in the old one.
+</p>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function test() {
+	let num1 = 1;
+	let num2 = 2;
+	
+	return function() {
+		return num1 + num2;
+	}
+}
+
+let func = test();
+console.log(func());</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function test() {
+	let num1 = 1;
+	let num2 = 2;
+	
+	return function() {
+		return num1 + num2;
+	}
+}
+
+console.log(test()());</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function test() {
+	let num1 = 1;
+	
+	return function() {
+		return num1 + num2;
+	}
+}
+
+let num2 = 2;
+let func = test();
+console.log(func());</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function test() {
+	let num = 1;
+	
+	return function() {
+		return num;
+	}
+}
+
+let num = 2;
+let func = test();
+console.log(func());</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="52" data-hash="jsPmFAFLE" data-quantity="363" data-num="190"><a href="../../../../../en/javascript/book/prime/functions/function-returning-function.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/functions/closures.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/functions/functions-lexical-environment.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/functions/functions-lexical-environment.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

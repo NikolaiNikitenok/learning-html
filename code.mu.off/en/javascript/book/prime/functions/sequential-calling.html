@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Sequential function calls in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to pass the result of one function as a parameter to another function in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Sequential function calls in JavaScript</h1>
+				<div class="content">
+<p>
+	You can also pass the result of one function 
+	as a parameter to another, for example, this 
+	is how we first find the square of the number 
+	<code class="number inline">2</code>, and then the square of the result:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(num) {
+	return num ** 2;
+}
+
+let res = func(func(2));
+console.log(res); // shows 16</code>
+</div>
+<p>
+	The functions, of course, do not have to be 
+	the same. Let, for example, we have a function 
+	that returns the square of a number, and a 
+	function that returns the cube of a number:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function square(num) {
+	return num ** 2;
+}
+
+function cube(num) {
+	return num ** 3;
+}</code>
+</div>
+<p>
+	Let's use these functions to square the number 
+	<code class="number inline">2</code>, and then cube the result of this operation:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let res = cube(square(2));
+console.log(res);</code>
+</div>
+<p>
+	Suppose now we have a function that returns 
+	the square of a number, and a function that 
+	finds the sum of two numbers:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function square(num) {
+	return num ** 2;
+}
+
+function sum(num1, num2) {
+	return num1 + num2;
+}</code>
+</div>
+<p>
+	Using these functions, we find the sum of 
+	the square of the number <code class="number inline">2</code> and the 
+	square of the number <code class="number inline">3</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let res = sum(square(2), square(3));
+console.log(res);</code>
+</div>
+<div class="task">
+	<p>
+		Suppose you have a function that returns 
+		the square root of a number, and a function 
+		that rounds a fraction to three decimal places:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function sqrt(num) {
+	return Math.sqrt(num);
+}
+
+function round(num) {
+	return num.toFixed(3);
+}</code>
+	</div>
+	<p>
+		Use these functions to find the square 
+		root of <code class="number inline">2</code> and round it to three 
+		decimal places.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Suppose you have a function that returns 
+		the square root of a number and a function 
+		that returns the sum of three numbers:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function sqrt(num) {
+	return Math.sqrt(num);
+}
+
+function sum(num1, num2, num3) {
+	return num1 + num2 + num3;
+}</code>
+	</div>
+	<p>
+		Using these functions, find the sum of 
+		the roots of the numbers <code class="number inline">2</code>, <code class="number inline">3</code> 
+		and <code class="number inline">4</code> and write it into 
+		the variable <code class="code inline">res</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Suppose you have a function that rounds 
+		a fraction to three decimal places:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function round(num) {
+	return num.toFixed(3);
+}</code>
+	</div>
+	<p>
+		Use this function to modify the previous 
+		task so that the variable <code class="code inline">res</code> is 
+		set to a fraction rounded to <code class="number inline">3</code> 
+		decimal places.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="44" data-hash="jsPmUFSC" data-quantity="363" data-num="162"><a href="../../../../../en/javascript/book/prime/functions/return.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/functions/return-nuance.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/functions/sequential-calling.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/functions/sequential-calling.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

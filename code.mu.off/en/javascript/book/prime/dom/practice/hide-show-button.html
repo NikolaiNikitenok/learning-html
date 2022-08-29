@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Buttons to hide and show an element in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to hide or show an element in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Buttons to hide and show an element in JavaScript</h1>
+				<div class="content">
+<p>
+	In this section, we will learn how to hide and 
+	show page elements. As usual, we will start with 
+	something simple, and we will gradually complicate.
+</p>
+<p>
+	Suppose we have a paragraph and two 
+	buttons to warm up:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;p id="elem"&gt;text&lt;/p&gt;
+&lt;input type="submit" id="show" value="show"&gt;
+&lt;input type="submit" id="hide" value="hide"&gt;</code>
+</div>
+<p>
+	Let's get references to our elements 
+	into variables:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+let show = document.querySelector('#show');
+let hide = document.querySelector('#hide');</code>
+</div>
+<p>
+	Now let's make it so that by clicking on one button 
+	our paragraph is hidden, and on the other it is shown. 
+	To do this, we will add or remove the corresponding 
+	CSS class to the element:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="css">.hidden {
+	display: none;
+}</code>
+</div>
+<p>
+	Let's solve our problem:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">hide.addEventListener('click', function() {
+	elem.classList.add('hidden');
+});
+
+show.addEventListener('click', function() {
+	elem.classList.remove('hidden');
+});</code>
+</div>
+<div class="task">
+	<p>
+		Modify my code so that there is only one button. 
+		Let the element be shown on the first click on 
+		this button, and hidden on the second.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="94" data-hash="jsPmPrHShB" data-quantity="363" data-num="343"><a href="../../../../../../en/javascript/book/prime/dom/practice/elements-stylization.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../en/javascript/book/prime/dom/practice/many-elements-with-showing-buttons.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/practice/hide-show-button.html" class="active">en</a><a href="../../../../../../ru/javascript/book/prime/dom/practice/hide-show-button.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

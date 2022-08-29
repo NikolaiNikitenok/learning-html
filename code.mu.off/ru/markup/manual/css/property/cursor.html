@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Свойство cursor | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="Свойство cursor.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Свойство cursor</h1>
+				<div class="content">
+<p>
+	Свойство <code class="code inline">cursor</code> устанавливает внешний
+	вид курсора при наведении на элемент.
+</p>
+
+<h2>Синтаксис</h2>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="css">селектор {
+	cursor: значение;
+}</code>
+</div>
+
+<h2>Примечание</h2>
+<p>
+	Свойство имеет очень много значений. Ниже
+	я сгруппировал эти значения, чтобы было проще
+	ориентироваться. Внешний вид курсора отличается
+	в разных браузерах, поэтому я не делал фото
+	курсоров, а просто в таблицах со значениями
+	сделал специальную колонку, наведя мышкой
+	на ячейку которой, вы сможете увидеть внешний
+	вид описываемого курсора.
+</p>
+
+<h2>Значения</h2>
+<table class="description">
+	<tr>
+		<th>Значение</th>
+		<th>Описание</th>
+		<th>Внешний вид</th>
+	</tr>
+	<tr>
+		<th><code class="code inline">default</code></th>
+		<td>
+			Стандартный внешний вид в виде указателя-стрелки.
+		</td>
+		<td style="cursor: default;"></td>
+	</tr>
+	<tr>
+		<th><code class="code inline">pointer</code></th>
+		<td>
+			Используется, чтобы показать, что элемент
+			является активным и на него можно нажимать
+			(такой по умолчанию для ссылок).
+		</td>
+		<td style="cursor: pointer;"></td>
+	</tr>
+	<tr>
+		<th><code class="code inline">help</code></th>
+		<td>
+			Используется, чтобы показать, что с элементом
+			связана какая-то помощь или вопрос.
+		</td>
+		<td style="cursor: help;"></td>
+	</tr>
+	<tr>
+		<th><code class="code inline">not-allowed</code></th>
+		<td>
+			Используется, чтобы показать недопустимость операции.
+		</td>
+		<td style="cursor: not-allowed;"></td>
+	</tr>
+</table>
+
+<h2>Текст</h2>
+<table class="description">
+	<tr>
+		<th>Значение</th>
+		<th>Описание</th>
+		<th>Внешний вид</th>
+	</tr>
+	<tr>
+		<th><code class="code inline">text</code></th>
+		<td>
+			Стандартный текстовый курсор в виде вертикальной палочки.
+		</td>
+		<td style="cursor: text;"></td>
+	</tr>
+	<tr>
+		<th><code class="code inline">vertical-text</code></th>
+		<td>
+			Текстовый курсор для вертикального текста.
+		</td>
+		<td style="cursor: vertical-text;"></td>
+	</tr>
+</table>
+
+<h2>Ожидание</h2>
+<table class="description">
+	<tr>
+		<th>Значение</th>
+		<th>Описание</th>
+		<th>Внешний вид</th>
+	</tr>
+	<tr>
+		<th><code class="code inline">progress</code></th>
+		<td>
+			Используется, чтобы показать, что происходит
+			какая-то операция и пользователю нужно подождать.
+		</td>
+		<td style="cursor: progress;"></td>
+	</tr>
+	<tr>
+		<th><code class="code inline">wait</code></th>
+		<td>
+			Используется, чтобы показать, что пользователю
+			нужно подождать.
+		</td>
+		<td style="cursor: wait;"></td>
+	</tr>
+</table>
+
+<h2>Курсор при изменениях размеров</h2>
+<p>
+	При изменении размеров элемента значение
+	свойства формируется так: слово <code class="code inline">resize</code>,
+	а перед ним через дефис какая-то буква или
+	несколько букв, например: n-resize или ne-resize.
+</p>
+<p>
+	Эти буквы являются первыми буквами сторон
+	света: nord - север, south - юг, east - восток,
+	west - запад. В данном случае используются
+	соглашения, принятые для карт местности:
+	вверху север, снизу юг, слева запад, справа
+	восток. Конечно же, это запутывает, но придется
+	пользоваться, как придумано:)
+</p>
+<p>
+	Итак, вот значения:
+</p>
+<table class="description">
+	<tr>
+		<th>Значение</th>
+		<th>Направление</th>
+		<th>Часть света</th>
+		<th>Внешний вид</th>
+	</tr>
+	<tr>
+		<th><code class="code inline">n-resize</code></th>
+		<td>вверх</td>
+		<td>nord</td>
+		<td style="cursor: n-resize;"></td>
+	</tr>
+	<tr>
+		<th><code class="code inline">ne-resize</code></th>
+		<td>вправо вверх</td>
+		<td>nord east</td>
+		<td style="cursor: ne-resize;"></td>
+	</tr>
+	<tr>
+		<th><code class="code inline">e-resize</code></th>
+		<td>вправо</td>
+		<td>east</td>
+		<td style="cursor: e-resize;"></td>
+	</tr>
+	<tr>
+		<th><code class="code inline">se-resize</code></th>
+		<td>вправо вниз</td>
+		<td>south eas</td>
+		<td style="cursor: se-resize;"></td>
+	</tr>
+	<tr>
+		<th><code class="code inline">s-resize</code></th>
+		<td>вниз</td>
+		<td>south</td>
+		<td style="cursor: s-resize;"></td>
+	</tr>
+	<tr>
+		<th><code class="code inline">sw-resize</code></th>
+		<td>влево вниз</td>
+		<td>south west</td>
+		<td style="cursor: sw-resize;"></td>
+	</tr>
+	<tr>
+		<th><code class="code inline">w-resize</code></th>
+		<td>влево</td>
+		<td>west</td>
+		<td style="cursor: w-resize;"></td>
+	</tr>
+	<tr>
+		<th><code class="code inline">nw-resize</code></th>
+		<td>влево вверх</td>
+		<td>nord west</td>
+		<td style="cursor: nw-resize;"></td>
+	</tr>
+	<tr>
+		<th><code class="code inline">nesw-resize</code></th>
+		<td>вправо вверх и влево вниз</td>
+		<td>nord east - south west</td>
+		<td style="cursor: nesw-resize;"></td>
+	</tr>
+	<tr>
+		<th><code class="code inline">nwse-resize</code></th>
+		<td>влево вверх и вправо вниз</td>
+		<td>nord west - south east</td>
+		<td style="cursor: nwse-resize;"></td>
+	</tr>
+</table>
+
+<h2>Изменение размеров двух элементов</h2>
+<table class="description">
+	<tr>
+		<th>Значение</th>
+		<th>Описание</th>
+		<th>Внешний вид</th>
+	</tr>
+	<tr>
+		<th><code class="code inline">col-resize</code></th>
+		<td>Изменение по горизонтали.</td>
+		<td style="cursor: col-resize;"></td>
+	</tr>
+	<tr>
+		<th><code class="code inline">row-resize</code></th>
+		<td>Изменение по вертикали.</td>
+		<td style="cursor: row-resize;"></td>
+	</tr>
+</table>
+
+<h2>Изменение масштаба</h2>
+<table class="description">
+	<tr>
+		<th>Значение</th>
+		<th>Описание</th>
+		<th>Внешний вид</th>
+	</tr>
+	<tr>
+		<th><code class="code inline">zoom-in</code></th>
+		<td>Увеличение масштаба.</td>
+		<td style="cursor: zoom-in;"></td>
+	</tr>
+	<tr>
+		<th><code class="code inline">zoom-out</code></th>
+		<td>Уменьшение масштаба.</td>
+		<td style="cursor: zoom-out;"></td>
+	</tr>
+</table>
+
+<h2>Движение</h2>
+<table class="description">
+	<tr>
+		<th>Значение</th>
+		<th>Описание</th>
+		<th>Внешний вид</th>
+	</tr>
+	<tr>
+		<th><code class="code inline">move</code></th>
+		<td>
+			Используется, чтобы показать, что элемент
+			можно перемещать, или в момент перемещения.
+		</td>
+		<td style="cursor: move;"></td>
+	</tr>
+	<tr>
+		<th><code class="code inline">all-scroll</code></th>
+		<td>
+			Используется, чтобы показать, что элемент
+			прокручивается мышкой во всех направлениях.
+		</td>
+		<td style="cursor: all-scroll;"></td>
+	</tr>
+</table>
+
+<h2>Разное</h2>
+<table class="description">
+	<tr>
+		<th>Значение</th>
+		<th>Описание</th>
+		<th>Внешний вид</th>
+	</tr>
+	<tr>
+		<th><code class="code inline">crosshair</code></th>
+		<td>
+			Внешний вид в виде прицела.
+		</td>
+		<td style="cursor: crosshair;"></td>
+	</tr>
+	<tr>
+		<th><code class="code inline">cell</code></th>
+		<td>
+			Внешний вид в виде прицела.
+		</td>
+		<td style="cursor: crosshair;"></td>
+	</tr>
+</table>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/markup/manual/css/" data-persent="43" data-hash="" data-quantity="199" data-num="87"><a href="../../../../../ru/markup/manual/css/property/pointer-events.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/markup/manual/css/property/list-style-type.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Асинхронный код с коллбэками в JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы изучим асинхронный код, работающий через коллбэки в JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Асинхронный код с коллбэками в JavaScript</h1>
+				<div class="content">
+<p>
+	Вспомним код, сделанный нами в предыдущем уроке:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">make();
+console.log('2');</code>
+</div>
+<p>
+	Пусть мы хотим решить для него нашу основную
+	задачу: сделать так, чтобы второй вывод в
+	консоль выполнился после того, как выполнится
+	асинхронная операция внутри функции make.
+</p>
+<p>
+	Одним из подходов, используемых для этого,
+	является использование <a href="../../../../../ru/javascript/book/prime/functions/callbacks.html">коллбэка</a>:
+	обернем ожидающий код в анонимную функцию
+	и передадим параметром в функцию <code class="code inline">make</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">make(function() {
+	console.log('2');
+});</code>
+</div>
+<p>
+	Конечно же, само по себе это не решит нашу
+	задачу. Пока мы просто заключили следующее
+	соглашение: при желании выполнить код после
+	срабатывания <code class="code inline">make</code> передайте этот код
+	коллбэком в вызов <code class="code inline">make</code>.
+</p>
+<p>
+	Исправим код функции <code class="code inline">make</code> так, чтобы
+	она начала работать в соответствии с нашим
+	соглашением:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function make(callback) {
+	setTimeout(function() {
+		console.log('1'); // некая асинхронная операция, может не одна
+		callback();       // затем наш коллбэк
+	}, 3000);
+}</code>
+</div>
+
+<h2>Передача результата в коллбэк</h2>
+<p>
+	Пусть теперь асинхронная операция после своего
+	завершения не выводит нечто в консоль, а
+	получает некий результат. Пусть это будет
+	массив с данными, который, например, мог
+	бы быть получен через ajax. Но так как с
+	ajax мы работать пока не умеем, то просто
+	сымитируем это получение:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function make() {
+	setTimeout(function() {
+		let res = [1, 2, 3, 4, 5]; // массив с результатом
+	}, 3000);
+}</code>
+</div>
+<p>
+	Сделаем так, чтобы массив с результатом передавался
+	в параметр коллбэка:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function make(callback) {
+	setTimeout(function() {
+		let res = [1, 2, 3, 4, 5];
+		callback(res); // передаем результат параметром
+	}, 3000);
+}</code>
+</div>
+<p>
+	Теперь, при передаче коллбэка в вызов функции
+	<code class="code inline">make</code> мы можем написать в нем параметр
+	- и в этот параметр попадет результат асинхронной
+	операции:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">make(function(res) {
+	console.log(res); // наш массив
+});</code>
+</div>
+<div class="task">
+	<p>
+		Допишите код коллбэка так, чтобы он находил
+		сумму элементов массива с результатом.
+	</p>
+</div>
+
+<h2>Передача параметров в асинхронную функцию</h2>
+<p>
+	Сделаем теперь так, чтобы в асинхронную функцию
+	можно было передавать входные параметры.
+	Пусть для примера в качестве первого параметра
+	функции <code class="code inline">make</code> мы будем передавать номер
+	того элемента массива, который мы хотим получить
+	в качестве результата. Для примера давайте
+	получим третий элемент массива:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">make(3, function(res) {
+	console.log(res); // третий элемент массива
+});</code>
+</div>
+<p>
+	Давайте переделаем код нашей функции make
+	в соответствии с описанным:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function make(num, callback) {
+	setTimeout(function() {
+		let arr = [1, 2, 3, 4, 5];
+		callback(arr[num]); // результатом передаем элемент массива
+	}, 3000);
+}</code>
+</div>
+<div class="task">
+	<p>
+		Сделайте так, чтобы функция <code class="code inline">make</code> принимала
+		два параметра: номер одного и другого элемента
+		массива. Пусть результатом асинхронной операции
+		эта функция возвращает сумму указанных элементов.
+	</p>
+</div>
+
+<h2>Обработка исключений в коллбэках</h2>
+<p>
+	Пусть, если параметром <code class="code inline">make</code> передан
+	номер несуществующего элемента массива -
+	это исключительная ситуация. Как вы уже знаете,
+	исключения, возникшие внутри асинхронной
+	функции, не могут быть пойманы через <code class="code inline">try-catch</code>.
+	В нашем случае исключение, возникшее внутри
+	<code class="code inline">make</code> или коллбэка, не будет поймано:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">try {
+	make(10, function(res) {
+		console.log(res);
+	});
+} catch(err) {
+	// не поймается
+}</code>
+</div>
+<p>
+	В коллбэк-подходе с исключениями работают
+	следующим образом: в первый параметр коллбэка
+	отправляют результат, а во второй - ошибку.
+	В этом случае обработка ошибок происходит
+	следующим образом:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">make(10, function(res, err) {
+	if (!err) {
+		console.log(res); // ошибки не возникло, выведем результат
+	} else {
+		console.log(err); // ошибка возникла, выведем ее текст
+	}
+});</code>
+</div>
+<p>
+	Давайте переделаем код нашей функции make
+	в соответствии с описанным:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function make(num, callback) {
+	setTimeout(function() {
+		let arr = [1, 2, 3, 4, 5];
+		
+		let err;
+		if (arr[num] === undefined) {
+			err = 'elem not exists'; // текст ошибки
+		} else {
+			err = null; // ошибки нет
+		}
+		
+		callback(arr[num], err);
+	}, 3000);
+}</code>
+</div>
+
+<h2>Практическая задача</h2>
+<p>
+	Давайте реализуем функцию <code class="code inline">loadImage</code>,
+	которая будет загружать картинки. Пусть первым
+	параметром эта функция принимает путь к картинке,
+	а вторым - коллбэк, который выполнится, когда
+	картинка будет загружена:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">loadImage('img.png', function() {
+	// выполнится по загрузке картинки
+});</code>
+</div>
+<p>
+	Пусть в первый параметр нашего коллбэка попадает
+	ссылка на DOM элемент картинки, а во второй
+	- ошибка, если произойдет исключительная ситуация:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">loadImage('img.png', function(image, err) {
+	console.log(image, err);
+});</code>
+</div>
+<p>
+	Мы можем использовать нашу функцию следующим
+	образом:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">loadImage('image.png', function(image, err) {
+	document.body.append(image); // разместим картинку по загрузке
+});</code>
+</div>
+<p>
+	Либо с обработкой исключительной ситуации:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">loadImage('image.png', function(image, err) {
+	if (!err) {
+		document.body.append(image);
+	} else {
+		console.log('произошла ошибка: ' + err);
+	}
+});</code>
+</div>
+<div class="task">
+	<p>
+		Реализуйте функцию <code class="code inline">loadImage</code>. Используйте
+		для этого изученный вами ранее код для загрузки
+		картинок.
+	</p>
+</div>
+
+<h2>Callback hell</h2>
+<p>
+	Пусть мы хотим с помощью функции <code class="code inline">loadImage</code>
+	загрузить три картинки:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">loadImage('img1.png', function(image, err) {
+	document.body.append(image);
+});
+loadImage('img2.png', function(image, err) {
+	document.body.append(image);
+});
+loadImage('img3.png', function(image, err) {
+	document.body.append(image);
+});</code>
+</div>
+<p>
+	С этим кодом кое-что не так. Дело в том,
+	что картинки будут добавляться в <code class="code inline">body</code>
+	по мере их загрузки. То есть никто не гарантирует
+	нам, что картинки будут добавлены именно
+	в том порядке, который нам нужен.
+</p>
+<p>
+	Есть еще кое-что. Пусть мы хотим сделать
+	что-нибудь, когда будут загружены все три
+	картинки. В нашем коде мы просто не сможем
+	поймать этот момент, так как <i>все три картинки
+	грузятся независимо</i>.
+</p>
+<p>
+	Окей, переделаем код:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">loadImage('img1.png', function(image1, err1) {
+	document.body.append(image1);
+	
+	loadImage('img2.png', function(image2, err2) {
+		document.body.append(image2);
+		
+		loadImage('img3.png', function(image3, err3) {
+			document.body.append(image3);
+			console.log('все картинки загружены');
+		});
+	});
+});</code>
+</div>
+<p>
+	Мы решили обе описанные проблемы. Однако,
+	получили взамен другую. Пока она еще не сильно
+	видна, но представьте себе, как будет выглядеть
+	наш код, если в нем будет загрузка не трех,
+	а, скажем, десяти картинок, плюс будет добавлена
+	обработка исключений. В результате код станет
+	крайне нечитаемым: <i>сложность кода лавинообразно
+	нарастает при вложенности коллбэков друга</i>.
+	Такая ситуация называется <dfn>callback hell</dfn>
+	- ад коллбэков.
+</p>
+<div class="task">
+	<p>
+		Перепишите приведенный код так, чтобы в нем
+		была загрузка <code class="number inline">10</code> картинок плюс обработка
+		исключений.
+	</p>
+</div>
+
+<h2>Загрузка картинок в цикле</h2>
+<p>
+	Пусть пути к картинкам хранятся в массиве:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = ['img1.png', 'img2.png', 'img3.png'];</code>
+</div>
+<p>
+	Мы можем загрузить эти картинки в цикле:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">for (let path of arr) {
+	loadImage(path, function(image, err) {
+		document.body.append(image);
+	});
+}</code>
+</div>
+<p>
+	Код получился красивый и без callback hell,
+	однако, мы вернулись к двум нашим проблемам:
+	порядок картинок не гарантирован и невозможно
+	поймать момент загрузки всех картинок.
+</p>
+<p>
+	И решения в данной ситуации нет: невозможно
+	запустить цикл, использовать внутри него
+	асинхронную функцию, а потом поймать момент
+	завершения всех функций цикла. Либо вам не
+	нужно ловить этот момент и приведенный выше
+	код вам подойдет либо добро пожаловать в
+	callback hell.
+</p>
+<p>
+	Но, расстраиваться не стоит - решение проблемы
+	возможно через промисы, которые мы будем
+	изучать в следующих уроках.
+</p>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/supreme/" data-persent="82" data-hash="jsSpAsnClb" data-quantity="114" data-num="94"><a href="../../../../../ru/javascript/book/supreme/asynchrony/code.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/javascript/book/supreme/asynchrony/subscriptions.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Проблемы плиточки на флексах в CSS | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы научимся делать плиточку на флексбоксах на CSS.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Проблемы плиточки на флексах в CSS</h1>
+				<div class="content">
+<p>
+	Давайте сейчас научимся делать плиточку на
+	флексбоксах. Для начала расположим флекс-блоки
+	в несколько рядов, по три блок в ряд.
+</p>
+<p>
+	Для этого родителю флексов установим ширину
+	в <code class="unit inline">300px</code> и <code class="code inline">flex-wrap</code> в значении
+	<code class="value inline">wrap</code>, а потомкам ширину в <code class="unit inline">100px</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div class="parent"&gt;
+	&lt;div class="child"&gt;1&lt;/div&gt;
+	&lt;div class="child"&gt;2&lt;/div&gt;
+	&lt;div class="child"&gt;3&lt;/div&gt;
+	&lt;div class="child"&gt;4&lt;/div&gt;
+	&lt;div class="child"&gt;5&lt;/div&gt;
+	&lt;div class="child"&gt;6&lt;/div&gt;
+	&lt;div class="child"&gt;7&lt;/div&gt;
+	&lt;div class="child"&gt;8&lt;/div&gt;
+	&lt;div class="child"&gt;9&lt;/div&gt;
+&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">.parent	{
+	display: flex;
+	flex-wrap: wrap;
+	width: 300px;
+	border: 1px solid red;
+}
+.child {
+	box-sizing: border-box;
+	width: 100px;
+	height: 100px;
+	border: 1px solid green;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			.parent	{
+			display: flex;
+			flex-wrap: wrap;
+			width: 300px;
+			border: 1px solid red;
+		}
+		.child {
+			box-sizing: border-box;
+			width: 100px;
+			height: 100px;
+			border: 1px solid green;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div class=&quot;parent&quot;>
+			<div class=&quot;child&quot;>1</div>
+			<div class=&quot;child&quot;>2</div>
+			<div class=&quot;child&quot;>3</div>
+			<div class=&quot;child&quot;>4</div>
+			<div class=&quot;child&quot;>5</div>
+			<div class=&quot;child&quot;>6</div>
+			<div class=&quot;child&quot;>7</div>
+			<div class=&quot;child&quot;>8</div>
+			<div class=&quot;child&quot;>9</div>
+		</div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+<p>
+	Давайте теперь сделаем расстояние между нашими
+	блоками по горизонтали. Для этого увеличим
+	ширину родителя, чтобы дать дополнительное
+	место для отступов.
+</p>
+<p>
+	Так как у нас три блока в ряд, получается
+	что между ними по два промежутка. Пусть мы
+	хотим, чтобы каждый промежуток имел ширину
+	<code class="unit inline">10px</code>. Получится, что ширину родителя
+	нужно увеличить на <code class="unit inline">20px</code>, то есть сделать
+	не <code class="unit inline">300px</code>, а <code class="unit inline">320px</code>.
+</p>
+<p>
+	Давайте теперь родителю блоков зададим <code class="code inline">justify-content</code>
+	в значение <code class="value inline">space-between</code> и получим
+	желаемое расстояние между блоками:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div class="parent"&gt;
+	&lt;div class="child"&gt;1&lt;/div&gt;
+	&lt;div class="child"&gt;2&lt;/div&gt;
+	&lt;div class="child"&gt;3&lt;/div&gt;
+	&lt;div class="child"&gt;4&lt;/div&gt;
+	&lt;div class="child"&gt;5&lt;/div&gt;
+	&lt;div class="child"&gt;6&lt;/div&gt;
+	&lt;div class="child"&gt;7&lt;/div&gt;
+	&lt;div class="child"&gt;8&lt;/div&gt;
+	&lt;div class="child"&gt;9&lt;/div&gt;
+&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">.parent	{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	width: 320px;
+	border: 1px solid red;
+}
+.child {
+	box-sizing: border-box;
+	width: 100px;
+	height: 100px;
+	border: 1px solid green;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			.parent	{
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			width: 320px;
+			border: 1px solid red;
+		}
+		.child {
+			box-sizing: border-box;
+			width: 100px;
+			height: 100px;
+			border: 1px solid green;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div class=&quot;parent&quot;>
+			<div class=&quot;child&quot;>1</div>
+			<div class=&quot;child&quot;>2</div>
+			<div class=&quot;child&quot;>3</div>
+			<div class=&quot;child&quot;>4</div>
+			<div class=&quot;child&quot;>5</div>
+			<div class=&quot;child&quot;>6</div>
+			<div class=&quot;child&quot;>7</div>
+			<div class=&quot;child&quot;>8</div>
+			<div class=&quot;child&quot;>9</div>
+		</div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+<p>
+	Давайте теперь добавим такое же расстояние
+	между блоками и по вертикали. Для этого можно
+	задать свойство <code class="code inline">align-content</code> в значении
+	<code class="value inline">space-between</code>.
+</p>
+<p>
+	Для этого, однако, нужно задать высоту родителю,
+	иначе <code class="code inline">align-content</code> не будет работать.
+	Давайте установим высоту в <code class="unit inline">320px</code>.
+	В этом случае у нас как раз поместятся три
+	ряда блоков по <code class="unit inline">100px</code> высотой плюс
+	два отступа между рядами в <code class="unit inline">10px</code>.
+</p>
+<p>
+	Давайте запустим:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div class="parent"&gt;
+	&lt;div class="child"&gt;1&lt;/div&gt;
+	&lt;div class="child"&gt;2&lt;/div&gt;
+	&lt;div class="child"&gt;3&lt;/div&gt;
+	&lt;div class="child"&gt;4&lt;/div&gt;
+	&lt;div class="child"&gt;5&lt;/div&gt;
+	&lt;div class="child"&gt;6&lt;/div&gt;
+	&lt;div class="child"&gt;7&lt;/div&gt;
+	&lt;div class="child"&gt;8&lt;/div&gt;
+	&lt;div class="child"&gt;9&lt;/div&gt;
+&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">.parent	{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-content: space-between;
+	flex-wrap: wrap;
+	width: 320px;
+	height: 320px;
+	border: 1px solid red;
+}
+.child {
+	box-sizing: border-box;
+	width: 100px;
+	height: 100px;
+	border: 1px solid green;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			.parent	{
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-content: space-between;
+			flex-wrap: wrap;
+			width: 320px;
+			height: 320px;
+			border: 1px solid red;
+		}
+		.child {
+			box-sizing: border-box;
+			width: 100px;
+			height: 100px;
+			border: 1px solid green;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div class=&quot;parent&quot;>
+			<div class=&quot;child&quot;>1</div>
+			<div class=&quot;child&quot;>2</div>
+			<div class=&quot;child&quot;>3</div>
+			<div class=&quot;child&quot;>4</div>
+			<div class=&quot;child&quot;>5</div>
+			<div class=&quot;child&quot;>6</div>
+			<div class=&quot;child&quot;>7</div>
+			<div class=&quot;child&quot;>8</div>
+			<div class=&quot;child&quot;>9</div>
+		</div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+<p>
+	Все работает замечательно, но есть некоторые
+	проблемы.
+</p>
+
+<h2>Проблемы плитки</h2>
+<p>
+	Первая проблема в общем-то очевидна сразу
+	- очень не удобно то, что родителю приходится
+	явно задавать высоту. Ведь у нас вполне может
+	быть такое, что количество блоков будет меняться
+	динамически и их количество будет то меньше,
+	то больше, чем <code class="number inline">9</code>.
+</p>
+<p>
+	А вот вторая проблема возникнет, если количество
+	блоков такое, что в последнем ряду будет
+	недостаточное количество блоков. В этом случае
+	последний ряд будет выглядеть отвратительно:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div class="parent"&gt;
+	&lt;div class="child"&gt;1&lt;/div&gt;
+	&lt;div class="child"&gt;2&lt;/div&gt;
+	&lt;div class="child"&gt;3&lt;/div&gt;
+	&lt;div class="child"&gt;4&lt;/div&gt;
+	&lt;div class="child"&gt;5&lt;/div&gt;
+	&lt;div class="child"&gt;6&lt;/div&gt;
+	&lt;div class="child"&gt;7&lt;/div&gt;
+	&lt;div class="child"&gt;8&lt;/div&gt;
+&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">.parent	{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	width: 320px;
+	border: 1px solid red;
+}
+.child {
+	box-sizing: border-box;
+	width: 100px;
+	height: 100px;
+	border: 1px solid green;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			.parent	{
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			width: 320px;
+			border: 1px solid red;
+		}
+		.child {
+			box-sizing: border-box;
+			width: 100px;
+			height: 100px;
+			border: 1px solid green;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div class=&quot;parent&quot;>
+			<div class=&quot;child&quot;>1</div>
+			<div class=&quot;child&quot;>2</div>
+			<div class=&quot;child&quot;>3</div>
+			<div class=&quot;child&quot;>4</div>
+			<div class=&quot;child&quot;>5</div>
+			<div class=&quot;child&quot;>6</div>
+			<div class=&quot;child&quot;>7</div>
+			<div class=&quot;child&quot;>8</div>
+		</div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+<p>
+	Получается, что даже по горизонтали значение
+	<code class="value inline">space-between</code> работает плохо в нашем
+	случае.
+</p>
+<p>
+	Резюмируем: если количество ваших потомков
+	всегда постоянно и нормально помещается в
+	родителя, то плиточка на <code class="value inline">space-between</code>
+	достаточно удобная вещь. В противном случае
+	придется придумывать что-то еще.
+</p>
+
+<h2>Практические задачи</h2>
+<div class="task">
+	<p>
+		Даны <code class="number inline">12</code> элементов. Сделайте из них
+		плиточку по <code class="number inline">4</code> элемента в ряд с шириной
+		каждого элемента в <code class="unit inline">100px</code> и расстоянием
+		между ними в <code class="unit inline">20px</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Даны <code class="number inline">12</code> элементов. Сделайте из них
+		плиточку по <code class="number inline">3</code> элемента в ряд с шириной
+		каждого элемента в <code class="unit inline">150px</code> и расстоянием
+		между ними в <code class="unit inline">10px</code>.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/markup/book/supreme/" data-persent="84" data-hash="mkSpFxFTP" data-quantity="64" data-num="55"><a href="../../../../../ru/markup/book/supreme/flexbox/flex-property.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/markup/book/supreme/flexbox/tiles-correct-gaps.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

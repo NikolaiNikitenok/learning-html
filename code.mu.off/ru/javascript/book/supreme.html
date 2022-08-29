@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Высший учебник JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../js/location.js?v=3"></script>
+		<script src="../../../js/locale.js?v=5"></script>
+		<script src="../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="Продвинутый учебник JavaScript с задачником и примерами решения задач.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Высший учебник JavaScript</h1>
+				<div class="menu" data-module="menu" data-mode="hash" data-book="jsSp">
+<h2>Регулярные выражения</h2>
+<div data-section="RE">
+	<a data-lesson="Inr" href="../../../ru/javascript/book/supreme/regular/intro.html">
+		Введение
+	</a>
+	<a data-lesson="RO" href="../../../ru/javascript/book/supreme/regular/repeat-operators.html">
+		Операторы повторения
+	</a>
+	<a data-lesson="GB" href="../../../ru/javascript/book/supreme/regular/grouping-brackets.html">
+		Группирующие скобки
+	</a>
+	<a data-lesson="ESCh" href="../../../ru/javascript/book/supreme/regular/escaping-special-characters.html">
+		Экранировка спецсимволов
+	</a>
+	<a data-lesson="CB" href="../../../ru/javascript/book/supreme/regular/curly-braces.html">
+		Фигурные скобки
+	</a>
+	<a data-lesson="GL" href="../../../ru/javascript/book/supreme/regular/greediness-limitation.html">
+		Ограничение жадности
+	</a>
+	<a data-lesson="ChG" href="../../../ru/javascript/book/supreme/regular/characters-groups.html">
+		Группы символов
+	</a>
+	<a data-lesson="ChS" href="../../../ru/javascript/book/supreme/regular/characters-sets.html">
+		Наборы символов
+	</a>
+	<a data-lesson="ChSI" href="../../../ru/javascript/book/supreme/regular/characters-sets-invertion.html">
+		Инвертирование наборов символов
+	</a>
+	<a data-lesson="CF" href="../../../ru/javascript/book/supreme/regular/cyrillic-features.html">
+		Особенности кириллицы
+	</a>
+	<a data-lesson="SChISB" href="../../../ru/javascript/book/supreme/regular/special-characters-inside-square-brackets.html">
+		Спецсимволы внутри [ ]
+	</a>
+	<a data-lesson="ChGISB" href="../../../ru/javascript/book/supreme/regular/characters-groups-inside-square-brackets.html">
+		Группы символов внутри [ ]
+	</a>
+	<a data-lesson="SChEISB" href="../../../ru/javascript/book/supreme/regular/special-characters-exclusion-inside-square-brackets.html">
+		Спецсимволы-исключения внутри [ ]
+	</a>
+	<a data-lesson="HSISB" href="../../../ru/javascript/book/supreme/regular/hat-symbol-inside-square-brackets.html">
+		Символ шляпки внутри [ ]
+	</a>
+	<a data-lesson="HISBF" href="../../../ru/javascript/book/supreme/regular/hyphen-inside-square-brackets-features.html">
+		Особенности дефиса внутри [ ]
+	</a>
+	<a data-lesson="LBE" href="../../../ru/javascript/book/supreme/regular/line-beginning-and-end.html">
+		Начало и конец строки
+		<span class="__label__ __acceptable__">еще задач с долларом</span>
+	</a>
+	<a data-lesson="OC" href="../../../ru/javascript/book/supreme/regular/or-command.html">
+		Команда 'или'
+		<span class="__label__ __acceptable__">еще задач</span>
+	</a>
+	<a data-lesson="MT" href="../../../ru/javascript/book/supreme/regular/method-test.html">
+		Метод test
+	</a>
+	<a data-lesson="MMWGM" href="../../../ru/javascript/book/supreme/regular/method-match-with-g-modifier.html">
+		Метод match с модификатором g
+	</a>
+	<a data-lesson="MP" href="../../../ru/javascript/book/supreme/regular/match-pockets.html">
+		Карманы в методе match
+	</a>
+	<a data-lesson="RP" href="../../../ru/javascript/book/supreme/regular/replace-pockets.html">
+		Карманы в методе replace
+	</a>
+	<a data-lesson="RDP" href="../../../ru/javascript/book/supreme/regular/replace-default-pockets.html">
+		Карманы по умолчанию в методе replace
+		<span class="__label__ __acceptable__">пример получше</span>
+	</a>
+	<a data-lesson="EP" href="../../../ru/javascript/book/supreme/regular/expression-pockets.html">
+		Карманы в самой регулярке
+	</a>
+	<a data-lesson="NPB" href="../../../ru/javascript/book/supreme/regular/non-preserving-brackets.html">
+		Несохраняющие скобки
+		<span class="__label__ __acceptable__">задачи</span>
+	</a>
+	<a data-lesson="PNV" href="../../../ru/javascript/book/supreme/regular/positive-and-negative-viewing.html">
+		Позитивный и негативный просмотр
+	</a>
+	<a data-lesson="RMC" href="../../../ru/javascript/book/supreme/regular/replace-method-callback.html">
+		Коллбэк в методе replace
+	</a>
+	<a data-lesson="MSch" href="../../../ru/javascript/book/supreme/regular/method-search.html">
+		Метод search
+	</a>
+	<a data-lesson="MSp" href="../../../ru/javascript/book/supreme/regular/method-split.html">
+		Метод split
+		<span class="__label__ __acceptable__">еще задачи?</span>
+	</a>
+	
+	<a data-lesson="Pz" href="../../../ru/javascript/book/supreme/regular/puzzles.html">
+		Головоломки
+	</a>
+
+	
+	
+</div>
+
+<h2>Коллекции</h2>
+<div data-section="Cl">
+	<a data-lesson="PaIn" href="../../../ru/javascript/book/supreme/collections/pseudoarrays/intro.html">
+		Псевдомассивы
+	</a>
+	<a data-lesson="PaCn" href="../../../ru/javascript/book/supreme/collections/pseudoarrays/convertion.html">
+		Преобразование псевдомассивов
+	</a>
+	<a data-lesson="PaTp" href="../../../ru/javascript/book/supreme/collections/pseudoarrays/types.html">
+		Типы псевдомассивов
+	</a>
+	<a data-lesson="MpIn" href="../../../ru/javascript/book/supreme/collections/map/intro.html">
+		Коллекции Map
+	</a>
+	<a data-lesson="MpMP" href="../../../ru/javascript/book/supreme/collections/map/methods-properties.html">
+		Полезные свойства и методы коллекций Map
+	</a>
+	<a data-lesson="MpLp" href="../../../ru/javascript/book/supreme/collections/map/loop.html">
+		Перебор коллекций Map циклом
+	</a>
+	<a data-lesson="MpKV" href="../../../ru/javascript/book/supreme/collections/map/keys-values.html">
+		Отделение ключей и значений в коллекциях Map
+	</a>
+	<a data-lesson="MpAp" href="../../../ru/javascript/book/supreme/collections/map/applying.html">
+		Применение коллекций Map
+	</a>
+	
+	<a data-lesson="StIn" href="../../../ru/javascript/book/supreme/collections/set/intro.html">
+		Коллекции Set
+	</a>
+	<a data-lesson="StMP" href="../../../ru/javascript/book/supreme/collections/set/methods-properties.html">
+		Полезные свойства и методы коллекций Set
+	</a>
+	<a data-lesson="StLp" href="../../../ru/javascript/book/supreme/collections/set/loop.html">
+		Перебор коллекций Set циклом
+	</a>
+	<a data-lesson="StCn" href="../../../ru/javascript/book/supreme/collections/set/convertion.html">
+		Преобразование коллекций Set
+	</a>
+	<a data-lesson="StRD" href="../../../ru/javascript/book/supreme/collections/set/removing-duplicates.html">
+		Удаление дублей с помощью коллекций Set
+	</a>
+	<a data-lesson="Bfr" href="../../../ru/javascript/book/supreme/collections/binary/buffers.html">
+		Буферы
+	</a>
+	<a data-lesson="Itr" href="../../../ru/javascript/book/supreme/collections/iterators.html">
+		Итераторы
+		<span class="__label__ __acceptable__">ссылка на new.code.mu</span>
+	</a>
+	<a data-lesson="JnIn" href="../../../ru/javascript/book/supreme/collections/json/intro.html">
+		Введение в формат JSON
+	</a>
+	<a data-lesson="JnTS" href="../../../ru/javascript/book/supreme/collections/json/to-structure.html">
+		Преобразование JSON в структуру данных
+	</a>
+	<a data-lesson="JnFS" href="../../../ru/javascript/book/supreme/collections/json/from-structure.html">
+		Преобразование структур данных в формат JSON
+	</a>
+	<a data-lesson="JnDCh" href="../../../ru/javascript/book/supreme/collections/json/data-changing.html">
+		Изменение данных в JSON
+	</a>
+</div>
+
+<h2>Хранилища</h2>
+<div data-section="Sg">
+	<a data-lesson="Bs" href="../../../ru/javascript/book/supreme/storage/localStorage/basis.html">
+		Основы работы
+	</a>
+	<a data-lesson="AO" href="../../../ru/javascript/book/supreme/storage/localStorage/arrays-and-objects.html">
+		Массивы и объекты
+	</a>
+	
+	
+</div>
+
+<h2>Исключительные ситуации</h2>
+<div data-section="Exc">
+	<a data-lesson="TC" href="../../../ru/javascript/book/supreme/exceptions/try-catch.html">
+		Работа с try catch
+	</a>
+	<a data-lesson="EO" href="../../../ru/javascript/book/supreme/exceptions/error-object.html">
+		Объект Error
+	</a>
+	<a data-lesson="Thr" href="../../../ru/javascript/book/supreme/exceptions/throwing.html">
+		Выбрасывание исключений
+	</a>
+</div>
+
+<h2>Инструменты</h2>
+<div data-section="Tl">
+	<a data-lesson="Tr" href="../../../ru/javascript/book/supreme/tool/terminal.html">
+		Терминал
+	</a>
+	<a data-lesson="Nd" href="../../../ru/javascript/book/supreme/tool/nodejs.html">
+		NodeJS
+	</a>
+	<a data-lesson="pm" href="../../../ru/javascript/book/supreme/tool/pm.html">
+		Пакетные менеджеры
+		<span class="__label__ __acceptable__">стоит заглушка</span>
+	</a>
+	<a data-lesson="Bl" href="../../../ru/javascript/book/supreme/tool/builder.html">
+		Сборщик файлов
+	</a>
+	<a data-lesson="THS" href="../../../ru/javascript/book/supreme/tool/test-http-server.html">
+		Тестовый HTTP сервер
+	</a>
+	<a data-lesson="Md" href="../../../ru/javascript/book/supreme/tool/modules.html">
+		Модули
+	</a>
+</div>
+
+<h2>Модули CommonJS</h2>
+<div data-section="MCm">
+	<a data-lesson="Inr" href="../../../ru/javascript/book/supreme/modules/commonjs/intro.html">
+		Введение в модули CommonJS
+	</a>
+	<a data-lesson="SVE" href="../../../ru/javascript/book/supreme/modules/commonjs/single-value-export.html">
+		Экспорт одного значения из модуля CommonJS
+	</a>
+	<a data-lesson="SES" href="../../../ru/javascript/book/supreme/modules/commonjs/shorthand-export-syntax.html">
+		Сокращенный синтаксис экспорта в модулях CommonJS
+	</a>
+	<a data-lesson="PP" href="../../../ru/javascript/book/supreme/modules/commonjs/passing-parameters.html">
+		Передача параметров в модули CommonJS
+		<span class="__label__ __acceptable__">задача</span>
+	</a>
+	<a data-lesson="INM" href="../../../ru/javascript/book/supreme/modules/commonjs/import-npm-modules.html">
+		Подключение npm модулей в CommonJS
+	</a>
+</div>
+
+<h2>Модули ES</h2>
+<div data-section="MEs">
+	<a data-lesson="Prp" href="../../../ru/javascript/book/supreme/modules/es/preparation.html">
+		Подготовка к модулям ES
+	</a>
+	<a data-lesson="Inr" href="../../../ru/javascript/book/supreme/modules/es/intro.html">
+		Введение в модули ES
+	</a>
+	<a data-lesson="SVE" href="../../../ru/javascript/book/supreme/modules/es/single-value-export.html">
+		Экспорт одного значения из модуля ES
+	</a>
+	<a data-lesson="PP" href="../../../ru/javascript/book/supreme/modules/es/passing-parameters.html">
+		Передача параметров в модули ES
+		<span class="__label__ __acceptable__">задача</span>
+	</a>
+	<a data-lesson="INM" href="../../../ru/javascript/book/supreme/modules/es/import-npm-modules.html">
+		Подключение npm модулей в ES
+	</a>
+</div>
+
+<!--
+<h2>Сборщик Webpack</h2> работник
+<div data-section="TWp">
+	<a data-lesson="1" href="../../../ru/javascript/book/supreme/canvas/1.html">
+		[n]1[/n]
+		<span class="__label__">todo</span>
+	</a>
+</div>
+-->
+
+<h2>Сборщик Gulp</h2>
+<div data-section="TGp">
+	<a data-lesson="Inr" href="../../../ru/javascript/book/supreme/tool/gulp/intro.html">
+		Введение
+	</a>
+	<a data-lesson="TC" href="../../../ru/javascript/book/supreme/tool/gulp/tasks-creation.html">
+		Создание задач
+	</a>
+	<a data-lesson="PbT" href="../../../ru/javascript/book/supreme/tool/gulp/public-tasks.html">
+		Публичные задачи
+	</a>
+	<a data-lesson="PrT" href="../../../ru/javascript/book/supreme/tool/gulp/private-tasks.html">
+		Приватные задачи
+	</a>
+	<a data-lesson="TA" href="../../../ru/javascript/book/supreme/tool/gulp/tasks-asynchrony.html">
+		Асинхронность задач
+	</a>
+	<a data-lesson="TCp" href="../../../ru/javascript/book/supreme/tool/gulp/tasks-composition.html">
+		Композиции задач
+	</a>
+	<a data-lesson="Fl" href="../../../ru/javascript/book/supreme/tool/gulp/files.html">
+		Работа с файлами
+	</a>
+	
+	<a data-lesson="FMn" href="../../../ru/javascript/book/supreme/tool/gulp/files-minimization.html">
+		Минимизация файлов
+	</a>
+	<a data-lesson="Prp" href="../../../ru/javascript/book/supreme/tool/gulp/preprocessors.html">
+		Препроцессоры CSS
+	</a>
+	<a data-lesson="OP" href="../../../ru/javascript/book/supreme/tool/gulp/operations-pipe.html">
+		Поток операций
+	</a>
+	<a data-lesson="FR" href="../../../ru/javascript/book/supreme/tool/gulp/files-renaming.html">
+		Переименование файлов
+	</a>
+	<a data-lesson="FMr" href="../../../ru/javascript/book/supreme/tool/gulp/files-merging.html">
+		Объединение файлов
+	</a>
+	<a data-lesson="DC" href="../../../ru/javascript/book/supreme/tool/gulp/dir-clearing.html">
+		Очистка папки
+	</a>
+	<a data-lesson="FW" href="../../../ru/javascript/book/supreme/tool/gulp/file-watching.html">
+		Наблюдение за файлами
+	</a>
+</div>
+
+<h2>Формы и сервер</h2>
+<div data-section="FSr">
+	<a data-lesson="Sb" href="../../../ru/javascript/book/supreme/form/submit.html">
+		Отправка форм
+	</a>
+	<a data-lesson="MG" href="../../../ru/javascript/book/supreme/form/method-get.html">
+		Отправка форм методом GET
+	</a>
+	<a data-lesson="MP" href="../../../ru/javascript/book/supreme/form/method-post.html">
+		Отправка форм методом POST
+	</a>
+	<a data-lesson="GQ" href="../../../ru/javascript/book/supreme/form/get-queries.html">
+		GET запросы
+	</a>
+	<a data-lesson="SW" href="../../../ru/javascript/book/supreme/form/submitting-ways.html">
+		Способы отправки форм
+	</a>
+	<a data-lesson="SP" href="../../../ru/javascript/book/supreme/form/submitting-preventing.html">
+		Запрет отправки формы
+	</a>
+	<a data-lesson="USP" href="../../../ru/javascript/book/supreme/form/URLSearchParams.html">
+		URLSearchParams
+	</a>
+	<a data-lesson="FD" href="../../../ru/javascript/book/supreme/form/FormData.html">
+		FormData
+	</a>
+	<a data-lesson="Url" href="../../../ru/javascript/book/supreme/form/URL.html">
+		URL
+		<span class="__label__ __acceptable__">задачи</span>
+	</a>
+</div>
+
+<h2>Асинхронность</h2>
+<div data-section="Asn">
+	<a data-lesson="Cd" href="../../../ru/javascript/book/supreme/asynchrony/code.html">
+		Синхронный и асинхронный код
+	</a>
+	<a data-lesson="Clb" href="../../../ru/javascript/book/supreme/asynchrony/callbacks.html">
+		Асинхронный код с коллбэками
+	</a>
+	<a data-lesson="Sbs" href="../../../ru/javascript/book/supreme/asynchrony/subscriptions.html">
+		Асинхронный код через подписки
+	</a>
+	<a data-lesson="PsIn" href="../../../ru/javascript/book/supreme/asynchrony/promise/intro.html">
+		Введение в промисы
+	</a>
+	<a data-lesson="PsChn" href="../../../ru/javascript/book/supreme/asynchrony/promise/chaining.html">
+		Цепочки промисов
+	</a>
+	<a data-lesson="PsAr" href="../../../ru/javascript/book/supreme/asynchrony/promise/arrays.html">
+		Работа с массивами промисов
+	</a>
+	<a data-lesson="PsFC" href="../../../ru/javascript/book/supreme/asynchrony/promise/fulfilled-creation.html">
+		Создание сработавших промисов
+	</a>
+	<a data-lesson="PsPmsf" href="../../../ru/javascript/book/supreme/asynchrony/promise/promisification.html">
+		Промисификация асинхронного кода
+	</a>
+	<a data-lesson="PsPH" href="../../../ru/javascript/book/supreme/asynchrony/promise/promise-hell.html">
+		Проблема promise hell
+	</a>
+	<a data-lesson="PsSS" href="../../../ru/javascript/book/supreme/asynchrony/promise/sync-style.html">
+		Промисы в синхронном стиле
+	</a>
+</div>
+
+<h2>AJAX</h2>
+<div data-section="AX">
+	<a data-lesson="Inr" href="../../../ru/javascript/book/supreme/ajax/intro.html">
+		Введение в AJAX
+	</a>
+	<a data-lesson="Fch" href="../../../ru/javascript/book/supreme/ajax/fetch.html">
+		Работа с fetch
+	</a>
+	<a data-lesson="PGP" href="../../../ru/javascript/book/supreme/ajax/passing-get-parameters.html">
+		Передача GET параметров в запросе
+	</a>
+	<a data-lesson="FGS" href="../../../ru/javascript/book/supreme/ajax/form-get-submitting.html">
+		Отправка форм методом GET
+	</a>
+	<a data-lesson="DPS" href="../../../ru/javascript/book/supreme/ajax/data-post-submitting.html">
+		Отправка данных методом POST
+	</a>
+	
+	
+</div>
+
+<h2>Работа с канвас</h2>
+<div data-section="Cnv">
+	<a data-lesson="Inr" href="../../../ru/javascript/book/supreme/canvas/intro.html">
+		Начало работы
+	</a>
+	<a data-lesson="Ln" href="../../../ru/javascript/book/supreme/canvas/line.html">
+		Рисование линий
+	</a>
+	<a data-lesson="Rc" href="../../../ru/javascript/book/supreme/canvas/rectangle.html">
+		Рисование прямоугольников
+	</a>
+	<a data-lesson="Cr" href="../../../ru/javascript/book/supreme/canvas/circle.html">
+		Рисование окружностей
+	</a>
+	<a data-lesson="LC" href="../../../ru/javascript/book/supreme/canvas/line-color.html">
+		Смена цвета линии
+	</a>
+	<a data-lesson="LW" href="../../../ru/javascript/book/supreme/canvas/line-width.html">
+		Смена размера линий
+	</a>
+	<a data-lesson="Lp" href="../../../ru/javascript/book/supreme/canvas/loops.html">
+		Циклы
+	</a>
+	
+</div>
+
+<!--
+<h2>Работа с аудио видео</h2> работник
+<div>
+	<a data-lesson="1" href="../../../ru/javascript/book/supreme/canvas/1.html">
+		[n]1[/n]
+		<span class="__label__">todo</span>
+	</a>
+</div>
+
+<h2>Работа с файлами</h2> потом
+<div>
+	<a data-lesson="1" href="../../../ru/javascript/book/supreme/canvas/1.html">
+		[n]1[/n]
+		<span class="__label__">todo</span>
+	</a>
+</div>
+
+
+<h2>Drag-and-drop</h2> от лены, работник
+<div>
+	<a data-lesson="1" href="../../../ru/javascript/book/supreme/drag-and-drop/1.html">
+		[n]1[/n]
+		<span class="__label__">todo</span>
+	</a>
+</div>
+
+<h2>History API</h2> работник
+<div>
+	<a data-lesson="1" href="../../../ru/javascript/book/supreme/canvas/1.html">
+		[n]1[/n]
+		<span class="__label__">todo</span>
+	</a>
+</div>
+-->
+
+
+<!--
+window
+document
+итераторы генераторы
+symbol
+
+<h2>Выделение</h2>
+<div>
+	<a data-lesson="1" href="../../../ru/javascript/book/supreme/canvas/1.html">
+		[n]1[/n]
+		<span class="__label__">todo</span>
+	</a>
+</div>
+
+-->
+</div>			</main>
+			<div class="bottom">
+	</div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../js/metrika.js?v=1"></script>	</body>
+</html>

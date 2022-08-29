@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Модификаторы доступа public и private в PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../js/location.js?v=3"></script>
+		<script src="../../../../js/locale.js?v=5"></script>
+		<script src="../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами разберем модификаторы доступа public и private в ООП на PHP.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Модификаторы доступа public и private в PHP</h1>
+				<div class="content">
+<p>
+	Ключевое слово <code class="code inline">public</code>, которое мы
+	пишем перед именами указывает на то, что
+	данные свойства и методы доступны извне (вне
+	кода класса). В противоположность ключевое
+	слово <code class="code inline">private</code>, которое указывает на
+	то, что свойства и методы недоступны извне.
+</p>
+<p>
+	Зачем это надо? К примеру, у нас есть класс,
+	реализующий некоторый функционал. Есть набор
+	методов, но часть этих методов является вспомогательными.
+</p>
+<p>
+	Будет лучше, чтобы эти вспомогательные методы
+	нельзя было использовать вне нашего класса.
+	В этом случае мы легко сможем поредактировать
+	код этих вспомогательных методов и будем
+	уверенными в том, что их снаружи никто не
+	использует и ничего страшного не случится.
+</p>
+<p>
+	Такой подход называется <dfn>инкапсуляцией</dfn>
+	- все лишнее не должно быть доступно извне,
+	в этом случае жизнь программиста станет проще.
+</p>
+<p>
+	То же самое касается и свойств. Некоторые
+	свойства выполняют чисто вспомогательную
+	функцию и не должны быть доступны вне класса,
+	иначе мы их можем случайно поменять снаружи
+	и сломать работу нашего кода.
+</p>
+<p>
+	Методы и свойства, которые мы хотим сделать
+	недоступными извне, называются <dfn>приватными</dfn>
+	и объявляются с помощью ключевого слова <code class="code inline">private</code>.
+</p>
+<p>
+	Давайте попробуем - объявим свойства <code class="code inline">$name</code>
+	и <code class="code inline">$age</code> приватными и попытаемся обратиться
+	к ним снаружи - мы сразу увидим ошибку:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class User
+	{
+		private $name;
+		private $age;
+	}
+	
+	$user = new User;
+	
+	// Выдаст ошибку, так как свойство name - private:
+	$user-&gt;name = 'john';
+?&gt;</code>
+</div>
+
+<h2>Применим на практике</h2>
+<p>
+	Давайте посмотрим на класс <code class="code inline">User</code>, который
+	мы сделали в предыдущем уроке:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class User
+	{
+		public $name;
+		public $age;
+		
+		// Метод для проверки возраста:
+		public function isAgeCorrect($age)
+		{
+			return $age &gt;= 18 and $age &lt;= 60;
+		}
+		
+		// Метод для изменения возраста юзера:
+		public function setAge($age)
+		{
+			// Проверим возраст на корректность:
+			if ($this-&gt;isAgeCorrect($age)) {
+				$this-&gt;age = $age;
+			}
+		}
+		
+		// Метод для добавления к возрасту:
+		public function addAge($years)
+		{
+			$newAge = $this-&gt;age + $years; // вычислим новый возраст
+			
+			// Проверим возраст на корректность:
+			if ($this-&gt;isAgeCorrect($newAge)) {
+				$this-&gt;age = $newAge; // обновим, если новый возраст прошел проверку
+			}
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Как мы знаем, метод <code class="code inline">isAgeCorrect</code> является
+	вспомогательным и мы не планируем использовать
+	его снаружи класса. Логично сделать его приватным,
+	чтобы другой программист, который будет потом
+	работать над нашим проектом (или мы сами
+	через некоторое время) случайно не использовал
+	этот метод снаружи класса.
+</p>
+<p>
+	Сделаем это:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class User
+	{
+		public $name;
+		public $age;
+		
+		// Объявим приватным:
+		private function isAgeCorrect($age)
+		{
+			return $age &gt;= 18 and $age &lt;= 60;
+		}
+		
+		// Метод для изменения возраста юзера:
+		public function setAge($age)
+		{
+			// Проверим возраст на корректность:
+			if ($this-&gt;isAgeCorrect($age)) {
+				$this-&gt;age = $age;
+			}
+		}
+		
+		// Метод для добавления к возрасту:
+		public function addAge($years)
+		{
+			$newAge = $this-&gt;age + $years; // вычислим новый возраст
+			
+			// Проверим возраст на корректность:
+			if ($this-&gt;isAgeCorrect($newAge)) {
+				$this-&gt;age = $newAge; // обновим, если новый возраст прошел проверку
+			}
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Обычно все приватные методы размещают в конце
+	класса, давайте перенесем наш метод в самый низ:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class User
+	{
+		public $name;
+		public $age;
+		
+		// Метод для изменения возраста юзера:
+		public function setAge($age)
+		{
+			// Проверим возраст на корректность:
+			if ($this-&gt;isAgeCorrect($age)) {
+				$this-&gt;age = $age;
+			}
+		}
+		
+		// Метод для добавления к возрасту:
+		public function addAge($years)
+		{
+			$newAge = $this-&gt;age + $years; // вычислим новый возраст
+			
+			// Проверим возраст на корректность:
+			if ($this-&gt;isAgeCorrect($newAge)) {
+				$this-&gt;age = $newAge; // обновим, если новый возраст прошел проверку
+			}
+		}
+		
+		// Метод для проверки возраста:
+		private function isAgeCorrect($age)
+		{
+			return $age &gt;= 18 and $age &lt;= 60;
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Существует специальное правило: если вы делаете
+	новый метод и не знаете, сделать его публичным
+	или приватным, - делайте приватным. В дальнейшем,
+	если он понадобится снаружи, - вы поменяете
+	его на публичный.
+</p>
+<p>
+	Еще раз резюмируем: слова <code class="code inline">public</code> и
+	<code class="code inline">private</code> не нужны для реализации логики
+	программы, а нужны для того, чтобы уберечь
+	программистов от ошибок.
+</p>
+<div class="task">
+	<p>
+		Не подсматривая в мой код внесите такие же
+		правки в класс <code class="code inline">User</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Попробуйте вызвать метод <code class="code inline">isAgeCorrect</code>
+		снаружи класса. Убедитесь, что это будет
+		вызывать ошибку.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Сделайте класс <code class="code inline">Student</code> со свойствами
+		<code class="code inline">$name</code> и <code class="code inline">$course</code> (курс студента,
+		от <code class="number inline">1</code>-го до <code class="number inline">5</code>-го).
+	</p>
+</div>
+<div class="task">
+	<p>
+		В классе <code class="code inline">Student</code> сделайте <code class="code inline">public</code>
+		метод <code class="code inline">transferToNextCourse</code>, который
+		будет переводить студента на следующий курс.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Выполните в методе <code class="code inline">transferToNextCourse</code>
+		проверку на то, что следующий курс не больше
+		<code class="number inline">5</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Вынесите проверку курса в отдельный <code class="code inline">private</code>
+		метод <code class="code inline">isCourseCorrect</code>.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/oop/" data-persent="5" data-hash="ppOpBsAMPP" data-quantity="107" data-num="6"><a href="../../../../ru/php/book/oop/methods-and-this.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../ru/php/book/oop/constructor.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../js/metrika.js?v=1"></script>	</body>
+</html>

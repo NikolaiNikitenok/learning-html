@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Передача GET параметров в запросе fetch в AJAX | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами разберем передачу GET параметров в запросе fetch в AJAX на PHP.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Передача GET параметров в запросе fetch в AJAX</h1>
+				<div class="content">
+<p>
+	При выполнении запросов через <code class="code inline">fetch</code>
+	в адресе страницы можно также передавать
+	GET параметры, например, вот так:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let promise = fetch('/handler/?get=data');</code>
+</div>
+<p>
+	Можно также передать несколько параметров:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let promise = fetch('/handler/?get1=data1&get2=data2');</code>
+</div>
+<p>
+	Давайте потренируемся на какой-нибудь задаче.
+	Пусть, к примеру, обработчик запросов на
+	севере ожидает, что при обращении к нему
+	GET параметром с именем <code class="code inline">num</code> будет
+	передаваться какое-то число.
+</p>
+<p>
+	Сделаем так, чтобы переданное число возводилось
+	в квадрат и результат отправлялся обратно
+	в браузер.
+</p>
+
+<h2>Клиентская часть</h2>
+<p>
+	Пусть на нашей странице <code class="path inline">index.html</code>
+	будет расположен див и кнопка:
+</p>
+<div class="block" data-file="public/index.html">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div&gt;&lt;/div&gt;
+&lt;button&gt;click me&lt;/button&gt;</code>
+</div>
+<p>
+	Получим в переменные ссылки на наши элементы:
+</p>
+<div class="block" data-file="public/client.js">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let div    = document.querySelector('div');
+let button = document.querySelector('button');</code>
+</div>
+<p>
+	По клику на кнопку отправим AJAX запрос с
+	GET параметром:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">button.addEventListener('click', function() {
+	fetch('/handler/?num=3').then(
+		response =&gt; {
+			return response.text();
+		}
+	).then(
+		text =&gt; {
+			div.innerHTML = text; // запишем ответ сервера
+		}
+	);
+});</code>
+</div>
+
+<h2>Серверная часть</h2>
+<p>
+	Теперь на сервере напишем обработчик GET запросов:
+</p>
+<div class="block" data-file="server.js">
+	<code class="highlight" data-module="highlight" data-lang="javascript">export default {
+	'/handler/': function({get}) {
+		return 'form data received';
+	}
+}</code>
+</div>
+<p>
+	Получим в нем переданное число:
+</p>
+<div class="block" data-file="server.js">
+	<code class="highlight" data-module="highlight" data-lang="javascript">export default {
+	'/handler/': function({get}) {
+		console.log(get.num);
+		return 'form data received';
+	}
+}</code>
+</div>
+<p>
+	Возведем его в квадрат и отправим обратно:
+</p>
+<div class="block" data-file="server.js">
+	<code class="highlight" data-module="highlight" data-lang="javascript">export default {
+	'/handler/': function({get}) {
+		return get.num ** 2;
+	}
+}</code>
+</div>
+
+<h2>Практические задачи</h2>
+<div class="task">
+	<p>
+		На клиенте дан див и кнопка. По нажатию на
+		кнопку отправьте на сервер два числа. Пусть
+		сервер найдет сумму переданных чисел. Результат
+		запишите в див.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Пусть на сервере дан массив. Пусть сервер
+		ожидает, что параметром будет передано число,
+		и возвращает элемент массива, соответствующий
+		этому числу. По нажатию на кнопку передайте
+		на сервер некоторое число, а ответ сервера
+		выведите в абзац.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/supreme/" data-persent="91" data-hash="jsSpAXPGP" data-quantity="114" data-num="105"><a href="../../../../../ru/javascript/book/supreme/ajax/fetch.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/javascript/book/supreme/ajax/form-get-submitting.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

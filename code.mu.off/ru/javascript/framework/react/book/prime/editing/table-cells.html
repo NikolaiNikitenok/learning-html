@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Редактирование ячеек таблицы появляющимся инпутом в React | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы реализуем редактирование ячеек HTML таблицы с помощью появляющегося инпута в React.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Редактирование ячеек таблицы появляющимся инпутом в React</h1>
+				<div class="content">
+<p>
+	Пусть теперь у нас дан массив объектов:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">let initNotes = [
+	{
+		id: id(),
+		prop1: 'value11',
+		prop2: 'value12',
+		prop3: 'value13',
+	},
+	{
+		id: id(),
+		prop1: 'value21',
+		prop2: 'value22',
+		prop3: 'value23',
+	},
+	{
+		id: id(),
+		prop1: 'value31',
+		prop2: 'value32',
+		prop3: 'value33',
+	},
+];</code>
+</div>
+<p>
+	Давайте выведем этот массив в виде HTML таблицы,
+	а затем сделаем так, чтобы по клику на ячейку
+	в ней появлялся инпут для редактирования.
+</p>
+
+<h2>Переделаем массив</h2>
+<p>
+	Для решения задачи нам нужно сделать так,
+	чтобы для каждого значения каждого свойства
+	можно было включать либо режим показа, либо
+	режим редактирования.
+</p>
+<p>
+	Для этого нам придется переделать наш массив
+	объектов в следующий:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">const initNotes = [
+	{
+		id: id(),
+		fields: [
+			{name: 'prop1', value: 'value11', isEdit: false},
+			{name: 'prop2', value: 'value12', isEdit: false},
+			{name: 'prop3', value: 'value13', isEdit: false},
+		]
+	},
+	{
+		id: id(),
+		fields: [
+			{name: 'prop1', value: 'value21', isEdit: false},
+			{name: 'prop2', value: 'value22', isEdit: false},
+			{name: 'prop3', value: 'value23', isEdit: false},
+		]
+	},
+	{
+		id: id(),
+		fields: [
+			{name: 'prop1', value: 'value31', isEdit: false},
+			{name: 'prop2', value: 'value32', isEdit: false},
+			{name: 'prop3', value: 'value33', isEdit: false},
+		]
+	},
+];</code>
+</div>
+
+<h2>Решение задачи</h2>
+<p>
+	Ниже я приведу готовое решение описанной
+	задачи. Оно похоже на то, что мы делали в
+	предыдущих уроках:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function App() {
+	const [notes, setNotes] = useState(initNotes);
+	
+	const rows = notes.map(note =&gt; {
+		const cells = note.fields.map(field =&gt; {
+			let elem;
+			
+			if (!field.isEdit) {
+				elem = &lt;span onClick={() =&gt; startEdit(note.id, field.name)}&gt;
+					{field.value}
+				&lt;/span&gt;;
+			} else {
+				elem = &lt;input
+					value={field.value}
+					onChange={(event) =&gt; changeCell(note.id, field.name, event)}
+					onBlur={() =&gt; endEdit(note.id, field.name)}
+				/&gt;;
+			}
+			
+			return &lt;td key={field.name}&gt;{elem}&lt;/td&gt;;
+		});
+		
+		return &lt;tr key={note.id}&gt;{cells}&lt;/tr&gt;;
+	});
+	
+	function startEdit(id, name) {
+		setNotes(notes.map(note =&gt; {
+			if (note.id === id) {
+				const fields = note.fields.map(field =&gt; {
+					if (field.name === name) {
+						return {...field, isEdit: true}
+					} else {
+						return field;
+					}
+				});
+				
+				return {id, fields};
+			} else {
+				return note;
+			}
+		}));
+	}
+	
+	function endEdit(id, name) {
+		setNotes(notes.map(note =&gt; {
+			if (note.id === id) {
+				const fields = note.fields.map(field =&gt; {
+					if (field.name === name) {
+						return {...field, isEdit: false}
+					} else {
+						return field;
+					}
+				});
+				
+				return {id, fields};
+			} else {
+				return note;
+			}
+		}));
+	}
+	
+	function changeCell(id, name, event) {
+		setNotes(notes.map(note =&gt; {
+			if (note.id === id) {
+				const fields = note.fields.map(field =&gt; {
+					if (field.name === name) {
+						return {...field, value: event.target.value}
+					} else {
+						return field;
+					}
+				});
+				
+				return {id, fields};
+			} else {
+				return note;
+			}
+		}));
+	}
+	
+	return &lt;div&gt;
+		&lt;table&gt;
+			&lt;tbody&gt;
+				{rows}
+			&lt;/tbody&gt;
+		&lt;/table&gt;
+	&lt;/div&gt;;
+}</code>
+</div>
+<div class="task">
+	<p>
+		Разберите код приведенного решения. Повторите
+		его самостоятельно.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Функции <code class="code inline">startEdit</code>, <code class="code inline">endEdit</code>
+		и <code class="code inline">changeCell</code> имеют практически полностью
+		идентичный код. Упростите их код, вынеся
+		общую часть в вспомогательную функцию.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/framework/react/book/prime/" data-persent="80" data-hash="jsrtPmEdTC" data-quantity="51" data-num="42"><a href="../../../../../../../ru/javascript/framework/react/book/prime/editing/list-items.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../../ru/javascript/framework/react/book/prime/components/intro.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

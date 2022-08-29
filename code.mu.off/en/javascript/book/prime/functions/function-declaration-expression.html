@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Function expression and Function declaration in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will analyze function expressions and function declarations in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Function expression and Function declaration in JavaScript</h1>
+				<div class="content">
+<p>
+	After studying the previous lesson, you 
+	know that in JavaScript a function can 
+	be declared in two ways.
+</p>
+<p>
+	The first way is to simply declare the 
+	function via <code class="code inline">function</code>, immediately 
+	giving its name:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	console.log('!');
+}
+
+func(); // shows '!'</code>
+</div>
+<p>
+	The second way is to make an unnamed 
+	function and write it to some variable:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let func = function() {
+	console.log('!');
+};
+
+func(); // shows '!'</code>
+</div>
+<p>
+	Scientifically, the first method is 
+	called Function Declaration, and 
+	the second - Function Expression.
+</p>
+<div class="task">
+	<p>
+		Determine if the presented function 
+		is a Function Declaration or 
+		a Function Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	console.log('!');
+}</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine if the presented function 
+		is a Function Declaration or a 
+		Function Expression:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let func = function() {
+	console.log('!');
+}</code>
+	</div>
+</div>
+
+<h2>Difference</h2>
+<p>
+	Both ways of declaring a function are 
+	equivalent, but there is a significant 
+	difference: functions declared as Function 
+	Declaration will be available even if 
+	they are accessed before they were declared.
+</p>
+<p>
+	See an example:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">// Calling a function before it is declared:
+func(); // shows '!'
+
+function func() {
+	console.log('!');
+}</code>
+</div>
+<p>
+	And Function Expressions are created at 
+	the time of code execution and are not 
+	available above. So this code will 
+	throw an error:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">func(); // error, there is no such function yet!
+
+let func = function() {
+	console.log('!');
+};</code>
+</div>
+<div class="task">
+	<p>
+		Create a function as a Function 
+		Declaration. Check that it will be 
+		available above the place of its 
+		declaration.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Create a function as a Function 
+		Expression. Check that it will 
+		not be available above the place 
+		of its declaration.
+	</p>
+</div>
+
+<h2>Explanation of Function Declaration work</h2>
+<p>
+	Why are functions created as a Function 
+	Declaration available before the declaration?
+</p>
+<p>
+	As you should already know, the JavaScript 
+	interpreter processes the code line by line. 
+	Functions, however, are exceptions: the 
+	interpreter first runs through the entire 
+	document with code and looks for all the 
+	functions declared as a Function Declaration, 
+	and only then starts executing the document 
+	code line by line.
+</p>
+<p>
+	Functions created as Function Expressions 
+	are created at the moment the interpreter 
+	reaches them. Therefore, they are not 
+	available above the place of 
+	their declaration.
+</p>
+
+<h2>Semicolon</h2>
+<p>
+	When declaring a function as a Function 
+	Declaration, there is no semicolon after 
+	the curly brace <code class="code inline">}</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	console.log('!');
+}</code>
+</div>
+<p>
+	But if the function is declared as a 
+	Function Expression, then after <code class="code inline">}</code> 
+	a semicolon is placed:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let func = function() {
+	console.log('!');
+};</code>
+</div>
+<p>
+	Why: because in JavaScript any expression 
+	must end with a semicolon, and in this case 
+	we just have an expression. This semicolon 
+	is optional, since JavaScript generally 
+	allows them to be omitted, but it is 
+	desirable. Always put :)
+</p>
+<div class="task">
+	<p>
+		Put semicolons in all 
+		the necessary places:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let func1 = function() {console.log('!')}
+let func2 = function() {
+	console.log('!')
+}
+function func3() {
+	console.log('!')
+}</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="50" data-hash="jsPmFAFDE" data-quantity="363" data-num="181"><a href="../../../../../en/javascript/book/prime/functions/function-as-variable.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/functions/functional-expressions-nuances.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/functions/function-declaration-expression.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/functions/function-declaration-expression.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

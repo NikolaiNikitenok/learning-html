@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Массивы в PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы изучим работу с массивами в PHP.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Массивы в PHP</h1>
+				<div class="content">
+<p>
+	В данном уроке мы начнем изучать специальный
+	тип данных, который называется <dfn>массив</dfn>.
+	Массив представляет собой переменную, в которой
+	в упорядоченном виде можно хранить целый
+	набор каких-то значений.
+</p>
+<p>
+	Для создания массива используются квадратные
+	скобки:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = []; // создаем массив $arr
+?&gt;</code>
+</div>
+<p>
+	Пока созданный нами массив не содержит никаких
+	данных. Заполним его названиями дней недели:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
+?&gt;</code>
+</div>
+<p>
+	Каждое значение списка, который мы записали
+	в массив, в нашем случае каждый день недели,
+	называется <dfn>элементом</dfn> массива. Как
+	вы видите, элементы разделяются между собой
+	запятой. После этой запятой можно ставить
+	пробелы, а можно и не ставить (более принято
+	ставить, ставьте).
+</p>
+<p>
+	Обратите внимание на то, что названия дней
+	недели представляют собой строки и поэтому
+	взяты в кавычки. Кроме строк в массиве можно
+	хранить числа, и их в кавычки мы не берем:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = [1, 2, 3];
+?&gt;</code>
+</div>
+<p>
+	Кроме строк и чисел в массиве можно хранить
+	все допустимые типы данных PHP, а также смешивать
+	их между собой в одном массиве, пример:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = [1, 2, 'a', 'b', null, true, false];
+?&gt;</code>
+</div>
+
+<h2>Как посмотреть содержимое массива</h2>
+<p>
+	Посмотреть содержимое всего массива с помощью
+	<code class="code inline">echo</code> нельзя. При попытке сделать это
+	на экран просто выведется слово <code class="code inline">Array</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">$a = [1, 2, 3];
+echo $a; // выведет 'Array'</code>
+</div>
+<p>
+	Для того, чтобы PHP вывел нам все элементы
+	массива, нужно воспользоваться функцией <code class="code inline">var_dump</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">$a = [1, 2, 3];
+var_dump($a);</code>
+</div>
+</p>
+<div class="task">
+	<p>
+		Создайте массив с элементами <code class="string inline">'a'</code>,
+		<code class="string inline">'b'</code> и <code class="string inline">'c'</code>. Выведите его на
+		экран с помощью команды <code class="code inline">echo</code> и с помощью
+		функции <code class="code inline">var_dump</code>.
+	</p>
+</div>
+
+<h2>Как вывести отдельный элемент массива</h2>
+<p>
+	Обращение к элементам массива осуществляется
+	подобно обращениям к символам строки: первый
+	элемент имеет номер <code class="number inline">0</code>, второй - номер
+	<code class="number inline">1</code> и так далее. Эти номера называются
+	<dfn>ключами</dfn> элементов массива. Давайте
+	посмотрим на примере:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
+	
+	echo $arr[0]; // выведет 'пн'
+	echo $arr[1]; // выведет 'вт'
+	echo $arr[2]; // выведет 'ср'
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Создайте массив с элементами <code class="string inline">'a'</code>,
+		<code class="string inline">'b'</code> и <code class="string inline">'c'</code>. Выведите на экран
+		каждый из этих элементов.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Создайте массив с элементами массив с элементами
+		<code class="string inline">'a'</code>, <code class="string inline">'b'</code> и <code class="string inline">'c'</code>, <code class="string inline">'d'</code>.
+		Выведите с его помощью на экран строку <code class="string inline">'a+b+c+d'</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Создайте массив с элементами <code class="number inline">1</code>, <code class="number inline">2</code>
+		и <code class="number inline">3</code>. Выведите на экран сумму этих
+		элементов.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Создайте массив с элементами <code class="number inline">2</code>, <code class="number inline">5</code>,
+		<code class="number inline">3</code>, <code class="number inline">9</code>. Умножьте первый элемент
+		массива на второй, а третий элемент на четвертый.
+		Результаты сложите, присвойте переменной
+		<code class="code inline">$result</code>. Выведите на экран значение
+		этой переменной.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/prime/" data-persent="9" data-hash="ppPmArInr" data-quantity="223" data-num="22"><a href="../../../../../ru/php/book/prime/basis/practicum/formulas.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/php/book/prime/arrays/associative.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

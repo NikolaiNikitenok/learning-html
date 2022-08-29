@@ -1,0 +1,123 @@
+/* .square {
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+
+    border: blue 2px solid;
+    border-radius: 100px;
+}
+.text {
+    margin-top: 30px;
+    width: 300px;
+    height: 200px;
+    background-color: rgb(26, 197, 26);
+    text-align: center;
+    font-size: 20px;
+    color: white;
+}
+.border {
+    margin-top: 20px;
+
+    width: 400px;
+    height: 200px;
+
+    border-radius: 50%;
+
+    background-color: aquamarine;
+}
+body {
+    background-image: url('/assets/pictures/bg.png');
+    background-repeat: repeat-y;
+}
+
+.elem {
+	width: 100px;
+	height: 100px;
+	border: 1px solid red;
+
+    display: inline-block;
+} */
+
+.kv {
+    margin-top: 30px;
+
+    height: 150px;
+}
+
+.kv1 {
+    border: 1px red solid;
+    width: 50px;
+    height: 50px;
+
+    background-color: red;
+}
+
+.kv2 {
+    border: blue 1px solid;
+    width: 50px;
+    height: 50px;
+
+    position: absolute;
+    top: 60px;
+    left: 40px;
+
+    background-color: blue;
+}
+
+.kv3 {
+    border: green 1px solid;
+    width: 50px;
+    height: 50px;
+
+    position: absolute;
+    top: 90px;
+    left: 70px;
+
+    background-color: green;
+}
+
+#elem1 {
+	width: 100px;
+	height: 100px;
+	margin-bottom: 20px;
+	background-color: #FF8888;
+}
+#elem2 {
+    position: relative;
+    bottom: 40px;
+    left: 50px;
+
+	width: 100px;
+	height: 100px;
+	margin-bottom: 20px;
+	background-color: #7E89EB;
+}
+#elem3 {
+    position: relative;
+    bottom: 80px;
+    left: 100px;
+
+	width: 100px;
+	height: 100px;
+	margin-bottom: 20px;
+	background-color: #4DEE99;
+}
+
+.block {
+    position: relative;
+
+    width: 400px;
+    height: 300px;
+    border: red 1px solid;
+}
+
+.miniblock {
+    position: absolute;
+    top: 80px;
+    left: 80px;
+
+    width: 100px;
+    height: 100px;
+    border: green 1px solid;
+
+}

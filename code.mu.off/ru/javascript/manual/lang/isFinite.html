@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Функция isFinite - проверка числа | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../js/location.js?v=3"></script>
+		<script src="../../../../js/locale.js?v=5"></script>
+		<script src="../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="Функция isFinite проверяет является ли число конечным. Вернет true, если да и false, если нет.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Функция isFinite</h1>
+				<div class="content">
+<p>
+	Функция <code class="code inline">isFinite</code> для проверки параметра
+	на то, что он является конечным числом (то
+	есть не строкой, массивом и т.п. и не плюс
+	или минус бесконечностью).
+</p>
+<p>
+	Как работает эта функция: она вернет false,
+	если число является плюс или минус бесконечностью
+	(то есть <a href="../../../../ru/javascript/manual/lang/Infinity.html"><code class="code inline">Infinity</code></a>)
+	или не числом (то есть <a href="../../../../ru/javascript/manual/lang/NaN.html"><code class="code inline">NaN</code></a>),
+	в остальных случаях вернет <code class="code inline">true</code>.
+</p>
+<p>
+	То есть строки, массивы и т.п. будут преобразованы
+	в <code class="code inline">NaN</code> и соответственно вернут <code class="code inline">false</code>.
+</p>
+<p>
+	Однако есть <b>исключения</b>: пустая строка
+	'' возвращает true, строка с пробелами <code class="string inline">'&nbsp;&nbsp;&nbsp;&nbsp;'</code>
+	также возвращает true, <a href="../../../../ru/javascript/manual/lang/null.html"><code class="code inline">null</code></a>
+	возвращает true, для значений true и false
+	также возвращается true.
+</p>
+<p>
+	Это происходит потому, что эти значения корректно
+	преобразуются в числа, а не в NaN.
+</p>
+<p>
+	Если вам нужна действительно точная проверка
+	на число, которая не считает числом строку
+	из пробелов, логические и специальные значения
+	- используйте следующую функцию <code class="code inline">isNumeric</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function isNumeric(num) {
+	return !isNaN(parseFloat(num)) && isFinite(num);
+}</code>
+</div>
+<p>
+	Давайте разберемся, как она работает.
+</p>
+<p>
+	Функция <code class="code inline">isFinite</code> преобразует параметр
+	к числу и возвращает true, если это не Infinity,
+	-Infinity или NaN.
+</p>
+<p>
+	Таким образом, правая часть отсеет заведомо
+	<i>нечисла</i>, но оставит такие значения
+	как true, false, null, пустую строку '' и
+	строку с пробелами, т.к. они корректно преобразуются
+	в числа.
+</p>
+<p>
+	Чтобы отсеять эти значения, нужна функция
+	<a href="../../../../ru/javascript/manual/lang/parseFloat.html"><code class="code inline">parseFloat</code></a>,
+	которая для true, false, null, <code class="string inline">'', '</code>&nbsp;&nbsp;&nbsp;'
+	вернет NaN.
+</p>
+<p>
+	Так устроена функция <code class="code inline">parseFloat</code>: она
+	преобразует параметр к строке, т.е. true,
+	false, null становятся <code class="string inline">'true'</code>, <code class="string inline">'false'</code>,
+	<code class="string inline">'null'</code>, а затем считывает из нее число,
+	при этом пустая строка и строка с пробелами
+	дают NaN.
+</p>
+<p>
+	Затем результат parseFloat обрабатывается
+	с помощью <a href="../../../../ru/javascript/manual/lang/isNaN.html">!isNaN</a>,
+	чтобы получить true или false вместо NaN.
+</p>
+<p>
+	В результате отсеивается все, кроме строк-чисел
+	и обычных чисел.
+</p>
+
+<h2>Синтаксис</h2>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">isFinite(значение)</code>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Сейчас <code class="code inline">isFinite</code> выведет <code class="code inline">true</code>,
+	так как параметр является числом:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 3;
+console.log(isFinite(num));</code>
+</div>
+<p>
+	Результат выполнения кода:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">true</code>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Сейчас <code class="code inline">isFinite</code> выведет <code class="code inline">false</code>,
+	так как параметр не является числом:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 'abcde';
+console.log(isFinite(num));</code>
+</div>
+<p>
+	Результат выполнения кода:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">false</code>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Сейчас <code class="code inline">isFinite</code> выведет <code class="code inline">false</code>,
+	так как параметр является бесконечностью:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = Infinity;
+console.log(isFinite(num));</code>
+</div>
+<p>
+	Результат выполнения кода:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">false</code>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Сейчас <code class="code inline">isFinite</code> выведет <code class="code inline">false</code>,
+	так как <b>1/0</b> - это по сути <code class="code inline">Infinity</code>
+	(бесконечность):
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 1 / 0;
+console.log(isFinite(num));</code>
+</div>
+<p>
+	Результат выполнения кода:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">false</code>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Сейчас <code class="code inline">isFinite</code> выведет <code class="code inline">true</code>,
+	так как пустая строка, не являющаяся числом,
+	- это исключение:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = '';
+console.log(isFinite(num));</code>
+</div>
+<p>
+	Результат выполнения кода:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">true</code>
+</div>
+
+<h2>Смотрите также</h2>
+<ul class="ref">
+	<li>
+		функцию <a href="../../../../ru/javascript/manual/lang/isNaN.html"><code class="code inline">isNaN</code></a>, <br>
+		которая осуществляет проверку на NaN
+	</li>
+	<li>
+		оператор <a href="../../../../ru/javascript/manual/lang/typeof.html"><code class="code inline">typeof</code></a>, <br>
+		который определяет тип данных
+	</li>
+</ul>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/manual/" data-persent="9" data-hash="" data-quantity="214" data-num="21"><a href="../../../../ru/javascript/manual/lang/typeof.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../ru/javascript/manual/lang/isNaN.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../js/metrika.js?v=1"></script>	</body>
+</html>

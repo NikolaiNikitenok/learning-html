@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>New level in the find the number game in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will implement an increase in the field size in the find the number game in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>New level in the find the number game in JavaScript</h1>
+				<div class="content">
+<p>
+	Let's now make it so that when the last cell of the 
+	playing field is activated, this field increases 
+	by one row and one column.
+</p>
+<p>
+	In the previous lesson, you had to make a function 
+	to activate cells. This is the code you should have:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let field = document.querySelector('#field');
+start(2);
+
+function start(size) {
+	activate(build(field, prepare(size)));
+}
+
+function activate(cells) {
+	let counter = 1;
+	
+	for (let cell of cells) {
+		cell.addEventListener('click', function() {
+			if (this.textContent == counter) {
+				this.classList.add('active');
+				
+				counter++;
+			}
+		});
+	}
+}</code>
+</div>
+<p>
+	Let's modify this function so that when you click on 
+	the last cell, the game starts again but with a 
+	larger field.
+</p>
+<p>
+	How to capture the end moment? With each click, you 
+	need to check the counter for the fact that its new 
+	value is equal to the last number of the field. If 
+	equal, then we will start the game from the beginning.
+</p>
+<p>
+	What is the value of the last number of the field? We 
+	know that we have the <code class="code inline">size</code> variable which 
+	contains the size of the field. So <code class="code inline">size * size</code> 
+	will give us the last number.
+</p>
+<p>
+	This means that the <code class="code inline">size</code> variable should be 
+	passed as the second parameter to the 
+	<code class="code inline">activate</code> function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function start(size) {
+	activate(build(field, prepare(size)), size); // correction
+}
+
+function activate(cells, size) { // correction
+	let last = size * size; // the last number
+}</code>
+</div>
+<p>
+	Now let's discuss how to start the game again. We already 
+	have a <code class="code inline">start</code> function to do this. So, inside the 
+	<code class="code inline">activate</code> function, at the end of the level, we 
+	need to call the <code class="code inline">start</code> function, but passing it 
+	the size by <code class="number inline">1</code> larger than the current one.
+</p>
+<div class="task">
+	<p>
+		Implement described.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/practice/" data-persent="83" data-hash="jsPrGFNNS" data-quantity="75" data-num="63"><a href="../../../../../en/javascript/book/practice/game-find-number/start-game.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/practice/game-find-number/final-code.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/practice/game-find-number/new-stage.html" class="active">en</a><a href="../../../../../ru/javascript/book/practice/game-find-number/new-stage.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

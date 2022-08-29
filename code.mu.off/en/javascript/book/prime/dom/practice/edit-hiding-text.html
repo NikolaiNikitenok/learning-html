@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Hiding text while editing an element in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will study editing a single element in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Hiding text while editing an element in JavaScript</h1>
+				<div class="content">
+<p>
+	Let's now make it so that when editing, the input 
+	appears in the paragraph itself - instead of the 
+	text of this paragraph. Let then, at the end of 
+	editing, the input will be removed, and instead 
+	of it, the paragraph text will appear again.
+</p>
+<p>
+	Let's start implementation.
+</p>
+<p>
+	First, let's make it so that when you click on the 
+	paragraph, an input with the text of this paragraph 
+	is added to the end of it:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+
+elem.addEventListener('click', function() {
+	let input = document.createElement('input');
+	input.value = elem.textContent;
+	
+	elem.appendChild(input);
+});</code>
+</div>
+<p>
+	Our code, however, is very imperfect - every time you 
+	click on a paragraph, a new input will be added to it.
+</p>
+<p>
+	In this case, if the first input contains the text of 
+	the paragraph, then the second input will already 
+	contain the text of the paragraph along with the 
+	first input, and the third input will already 
+	contain the text of the paragraph along with 
+	two inputs, and so on.
+</p>
+<p>
+	Also note that clicking on the added input will be 
+	treated as a click on the paragraph: the fact is 
+	that the input is in the paragraph, and clicking 
+	on the input will simply float above this paragraph.
+</p>
+<p>
+	This will lead to the fact that after the appearance 
+	of the first input when trying to click on it in order 
+	to start editing, we will automatically click on the 
+	paragraph with all the ensuing consequences.
+</p>
+<p>
+	So, the problem is described. Let's fix it now.
+</p>
+<p>
+	To do this, simply unbind the click handler from the 
+	paragraph when an input appears. In this case, only 
+	the first click on the paragraph will result in an 
+	input, and other clicks after the input appearance 
+	will be ignored.
+</p>
+<p>
+	Реализуем:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+
+elem.addEventListener('click', function func() {
+	let input = document.createElement('input');
+	input.value = elem.textContent;
+	
+	elem.appendChild(input);
+	
+	elem.removeEventListener('click', func); // unbinds the event
+});</code>
+</div>
+<p>
+	Let's now make it so that when an input appears, the text 
+	of the paragraph itself disappears. To do this, before 
+	inserting the input of the paragraph, assign an empty 
+	string to <code class="code inline">textContent</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+
+elem.addEventListener('click', function func() {
+	let input = document.createElement('input');
+	
+	input.value = elem.textContent; // first writes the text of the paragraph to the input
+	elem.textContent = ''; // then removes the paragraph text
+	elem.appendChild(input); // then inserts the input
+	
+	elem.removeEventListener('click', func);
+});</code>
+</div>
+<p>
+	Let's now make it so that when focus is lost in the 
+	input, its text is written in a paragraph:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+
+elem.addEventListener('click', function func() {
+	let input = document.createElement('input');
+	
+	input.value = elem.textContent;
+	elem.textContent = '';
+	elem.appendChild(input);
+	
+	input.addEventListener('blur', function() {
+		elem.textContent = this.value;
+	});
+	
+	elem.removeEventListener('click', func);
+});</code>
+</div>
+<p>
+	Note that we don't need to remove the input - it 
+	removes itself when it writes its text to the 
+	paragraph: since the input is part of the text 
+	of the paragraph, writing some text to this 
+	paragraph simply removes our input, and that's it.
+</p>
+<p>
+	However, we have another problem: the text of the 
+	paragraph will only be edited the first time. 
+	After the first edit, clicking the paragraph 
+	text again will do nothing.
+</p>
+<p>
+	The fact is that at the moment the input appeared, 
+	we unbound the event from the paragraph for the 
+	reasons described above. Now we need to bind the 
+	event back at the end of editing.
+</p>
+<p>
+	Let's do it:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+
+elem.addEventListener('click', function func() {
+	let input = document.createElement('input');
+	input.value = elem.textContent;
+	
+	elem.textContent = '';
+	elem.appendChild(input);
+	
+	input.addEventListener('blur', function() {
+		elem.textContent = this.value;
+		elem.addEventListener('click', func); // hangs the event back
+	});
+	
+	elem.removeEventListener('click', func);
+});</code>
+</div>
+<div class="task">
+	<p>
+		On your own, without looking into my code, 
+		solve the described problem.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="93" data-hash="jsPmPrEHT" data-quantity="363" data-num="339"><a href="../../../../../../en/javascript/book/prime/dom/practice/single-element-editing.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../en/javascript/book/prime/dom/practice/elements-group-editing.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/practice/edit-hiding-text.html" class="active">en</a><a href="../../../../../../ru/javascript/book/prime/dom/practice/edit-hiding-text.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

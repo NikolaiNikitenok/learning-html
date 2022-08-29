@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Получение результата при SQL запросе в PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы научимся получать результат SQL запроса в PHP коде.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Получение результата при SQL запросе в PHP</h1>
+				<div class="content">
+<p>
+	В предыдущем уроке мы сделали тестовый код.
+	Напомню его существенную часть, выполняющую
+	запрос к базе:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$query = 'SELECT * FROM users';
+	$result = mysqli_query($link, $query) or die(mysqli_error($link));
+	var_dump($result);
+?&gt;</code>
+</div>
+<p>
+	Как вы видите, после того, как произойдет
+	запрос к базе, в переменной <code class="code inline">$result</code>
+	будет лежать результат этого действия. Однако
+	лежит он не в той форме, которая нам нужна
+	в PHP, а в той форме, в которой его прислала
+	нам база.
+</p>
+<p>
+	Для того, чтобы получить результат в привычной
+	нам форме, необходимо воспользоваться функцией
+	<code class="code inline">mysqli_fetch_assoc</code>, извлекающей из
+	результата одну строку.
+</p>
+<p>
+	Давайте попробуем:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$row = mysqli_fetch_assoc($result);
+	var_dump($row);
+?&gt;</code>
+</div>
+<p>
+	В результате <code class="code inline">var_dump</code> выведет массив
+	с первым работником:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	['id' =&gt; 1, 'name' =&gt; 'user1', 'age' =&gt; 23, 'salary' =&gt; 400]
+?&gt;</code>
+</div>
+<p>
+	При этом из переменной <code class="code inline">$result</code> первый
+	работник исчезнет, и следующий вызов <code class="code inline">mysqli_fetch_assoc</code>
+	получит уже следующего работника.
+</p>
+<p>
+	И так можно можно вызывать нашу функцию до
+	тех пор, пока работники не закончатся. Как
+	только это произойдет, то следующий вызов
+	функции вернет <code class="code inline">false</code>.
+</p>
+<p>
+	Давайте попробуем:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$row1 = mysqli_fetch_assoc($result);
+	var_dump($row1); // работник номер 1
+	
+	$row2 = mysqli_fetch_assoc($result);
+	var_dump($row2); // работник номер 2
+	
+	$row3 = mysqli_fetch_assoc($result);
+	var_dump($row3); // работник номер 3
+	
+	$row4 = mysqli_fetch_assoc($result);
+	var_dump($row4); // работник номер 4
+	
+	$row5 = mysqli_fetch_assoc($result);
+	var_dump($row5); // работник номер 5
+	
+	$row6 = mysqli_fetch_assoc($result);
+	var_dump($row6); // работник номер 6
+	
+	$row7 = mysqli_fetch_assoc($result);
+	var_dump($row7); // выведет NULL - работники кончились
+?&gt;</code>
+</div>
+
+<h2>Получение в виде массива</h2>
+<p>
+	При считывании по рядам можно не выводить
+	каждого работника, а записывать их в какой-нибудь
+	массив:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$row1 = mysqli_fetch_assoc($result);
+	$data[] = $row1;
+	
+	$row2 = mysqli_fetch_assoc($result);
+	$data[] = $row2;
+	
+	$row3 = mysqli_fetch_assoc($result);
+	$data[] = $row3;
+	
+	$row4 = mysqli_fetch_assoc($result);
+	$data[] = $row4;
+	
+	$row5 = mysqli_fetch_assoc($result);
+	$data[] = $row5;
+	
+	$row6 = mysqli_fetch_assoc($result);
+	$data[] = $row6;
+?&gt;</code>
+</div>
+<p>
+	В результате в переменной <code class="code inline">$data</code> получится
+	следующий двухмерный массив:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	[
+		['id' =&gt; 1, 'name' =&gt; 'user1', 'age' =&gt; 23, 'salary' =&gt; 400],
+		['id' =&gt; 2, 'name' =&gt; 'user2', 'age' =&gt; 25, 'salary' =&gt; 500],
+		['id' =&gt; 3, 'name' =&gt; 'user3', 'age' =&gt; 23, 'salary' =&gt; 500],
+		['id' =&gt; 4, 'name' =&gt; 'user4', 'age' =&gt; 30, 'salary' =&gt; 900],
+		['id' =&gt; 5, 'name' =&gt; 'user5', 'age' =&gt; 27, 'salary' =&gt; 500],
+		['id' =&gt; 6, 'name' =&gt; 'user6', 'age' =&gt; 28, 'salary' =&gt; 900],
+	]
+?&gt;</code>
+</div>
+
+<h2>Формируем массив в цикле</h2>
+<p>
+	Конечно же, в ручную перебирать всех работников
+	не очень удобно. Пусть лучше за нас это сделает
+	цикл:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	for ($data = []; $row = mysqli_fetch_assoc($result); $data[] = $row);
+	var_dump($data); // здесь будет массив с результатом
+?&gt;</code>
+</div>
+<p>
+	Давайте разберемся, как работает этот цикл.
+</p>
+<p>
+	В каждой итерации цикла функция <code class="code inline">mysqli_fetch_assoc</code>
+	последовательно считывает каждую строку результата,
+	записывая его в массив $data.
+</p>
+<p>
+	Как только в <code class="code inline">$result</code> закончатся строки,
+	то <code class="code inline">mysqli_fetch_assoc</code> вернет <code class="sql inline">NULL</code>
+	и цикл закончит свою работу. А полученный
+	результат будет лежать в двухмерном массиве
+	<code class="code inline">$data</code>.
+</p>
+<div class="task">
+	<p>
+		С помощью описанного цикла получите и выведите
+		через <code class="code inline">var_dump</code> на экран массив всех
+		работников.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Из полученного результата получите первого
+		работника. Через <code class="code inline">echo</code> выведите на
+		экран его имя.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Из полученного результата получите второго
+		работника. Через <code class="code inline">echo</code> выведите на
+		экран его имя и возраст.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Из полученного результата получите третьего
+		работника. Через <code class="code inline">echo</code> выведите на
+		экран его имя, возраст и зарплату.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/prime/" data-persent="77" data-hash="ppPmDBRG" data-quantity="223" data-num="173"><a href="../../../../../ru/php/book/prime/database/encoding-problems.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/php/book/prime/database/notes-selection.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>X and O marks alternation in the tic-tac-toe game in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will implement the alternation of X and O marks in the tic-tac-toe game in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>X and O marks alternation</h1>
+				<div class="content">
+<p>
+	After solving the problem of the previous 
+	lesson, you should get the following code:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let cells = document.querySelectorAll('#field td');
+start(cells);
+
+function start(cells) {
+	for (let cell of cells) {
+		cell.addEventListener('click', function() {
+			this.textContent = 'X';
+		});
+	}
+}</code>
+</div>
+<p>
+	Let's now make alternation of crosses and zeros. 
+	To do this, I propose to introduce a counter 
+	of moves:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function start(cells) {
+	let i = 0; // the counter initial value
+	
+	for (let cell of cells) {
+		cell.addEventListener('click', function() {
+			this.textContent = 'X';
+			
+			i++; // increases the counter value
+		});
+	}
+}</code>
+</div>
+<p>
+	Having such a counter, we can easily implement the 
+	alternation of a cross and a zero: it is obvious 
+	that the X mark will appear at even counter values, 
+	and the O mark at odd ones.
+</p>
+<div class="task">
+	<p>
+		Implement the described alternation 
+		of a cross and a zero.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/practice/" data-persent="63" data-hash="jsPrTTTCTA" data-quantity="75" data-num="48"><a href="../../../../../en/javascript/book/practice/tick-tack-toe/writing-to-cell.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/practice/tick-tack-toe/cross-and-toe-alternation-analysis.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/practice/tick-tack-toe/cross-and-toe-alternation.html" class="active">en</a><a href="../../../../../ru/javascript/book/practice/tick-tack-toe/cross-and-toe-alternation.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

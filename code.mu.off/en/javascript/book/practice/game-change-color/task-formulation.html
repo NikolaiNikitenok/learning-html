@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Colors change game in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will implement the colors change game in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Colors change game in JavaScript</h1>
+				<div class="content">
+<p>
+	In this section, you will implement a game with 
+	my help. The game will be a table whose cells are 
+	colored in different random colors.
+</p>
+<p>
+	Let there be a certain set of colors, for example, 
+	red, green, blue. Let each click on a cell change 
+	its color in a circle. The goal of the game is to 
+	make a table of one - any - color in the least 
+	number of clicks.
+</p>
+<p>
+	Let's get started with the implementation. First, 
+	let's make the playing field in the form of a 
+	table <code class="code inline">&lt;table&gt;</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;table id="field"&gt;&lt;/table&gt;</code>
+</div>
+<p>
+	Let's add some CSS code to bring some beauty:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="css">#field td {
+	width: 50px;
+	height: 50px;
+	border: 1px solid black;
+	text-align: center;
+	font-weight: bold;
+}</code>
+</div>
+<p>
+	Let's now discuss how to approach the implementation 
+	of our game. As you can see, this task is large enough 
+	to solve it right off the bat. Therefore, it should 
+	be divided into some stages - subtasks, by performing 
+	which we will gradually solve our main task.
+</p>
+<p>
+	To begin with, the most logical step would be to 
+	write a script that creates table cells. Let, for 
+	example, the size of the playing field be stored 
+	in the following variables:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let rows = 3;
+let cols = 3;</code>
+</div>
+<div class="task">
+	<p>
+		Copy the provided HTML and CSS codes. Write 
+		code that creates a table of the given size.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/practice/" data-persent="68" data-hash="jsPrGChCTF" data-quantity="75" data-num="52"><a href="../../../../../en/javascript/book/practice/tick-tack-toe/draw-checking-analysis.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/practice/game-change-color/cells-different-colors.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/practice/game-change-color/task-formulation.html" class="active">en</a><a href="../../../../../ru/javascript/book/practice/game-change-color/task-formulation.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

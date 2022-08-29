@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Flags in JavaScript functions | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will look at the use of flags in JavaScript functions.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Flags in JavaScript functions</h1>
+				<div class="content">
+<p>
+	You can implicitly use flags in functions 
+	using the <code class="code inline">return</code> statement. Let's 
+	see how it's done. Suppose we have the 
+	following function that checks that all 
+	array elements are positive numbers:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function isPositive(arr) {
+	let flag = true;
+	
+	for (let elem of arr) {
+		if (elem &lt; 0) {
+			flag = false;
+		}
+	}
+	
+	return flag;
+}</code>
+</div>
+<p>
+	Let's rewrite the function 
+	code with implicit flags:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function isPositive(arr) {
+	for (let elem of arr) {
+		if (elem &lt; 0) {
+			return false;
+		}
+	}
+	
+	return true;
+}</code>
+</div>
+<p>
+	How it works: if there is a required element 
+	in the array, we exit the function (and the 
+	loop too) with <code class="code inline">return</code>. But if the 
+	required element is not found in the array, 
+	the function will not exit and execution will 
+	reach the command <code class="code inline">return true</code>. And it 
+	turns out that the function will return 
+	<code class="code inline">true</code> as a sign that all elements 
+	in the array are positive.
+</p>
+<div class="task">
+	<p>
+		Make a function that takes an array of 
+		numbers as a parameter, and check that 
+		all elements in this array are 
+		even numbers.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Make a function that will take a number 
+		as a parameter and check that all 
+		digits of this number are odd.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Make a function that takes an array as 
+		a parameter and checks if there are two 
+		identical elements in a row in this array.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="46" data-hash="jsPmUFFl" data-quantity="363" data-num="167"><a href="../../../../../en/javascript/book/prime/functions/return-dodge.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/functions/logical-operators.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/functions/flags.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/functions/flags.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

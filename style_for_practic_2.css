@@ -1,0 +1,76 @@
+/* div p {
+    color: red;
+} */
+
+/* div h2 {
+    color: red;
+} */
+
+/* #block p {
+    color: red;
+} */
+
+/* #block h2 {
+    color: red;
+} */
+
+/* .bbb {
+    color: reda;
+} */
+
+/* #block .bbb {
+    color: red;
+} */
+
+/* p.bbb {
+    color: red;
+} */
+
+/* h2.bbb {
+    color: red;
+} */
+
+/* #block p.bbb {
+    color: red;
+} */
+
+/* .bbb, .xxx {
+    color: red;
+} */
+
+/* p.bbb, h2.xxx {
+    color: red;
+} */
+
+/* #block p.bbb, #block p.xxx {
+    color: red;
+} */
+
+/* .fff {
+    color: red;
+} */
+
+/* .fff p {
+    color: red;
+} */
+
+/* .fff .bbb {
+    color: red;
+} */
+
+/* .fff h2.bbb {
+    color: red;
+} */
+
+/* .elem + li {
+    color: red;
+} */
+
+/* #elem ~ li {
+    color: red;
+} */
+
+/* main * > p {
+    color: red;
+} */
+

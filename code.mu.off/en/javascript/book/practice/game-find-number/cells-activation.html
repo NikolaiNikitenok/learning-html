@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Cells activation in the find the number game in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will implement the activation of cells in the find the number game in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Cells activation in the find the number game in JavaScript</h1>
+				<div class="content">
+<p>
+	In the previous lesson, you had to make our 
+	<code class="code inline">build</code> function return an array of 
+	table cells:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let cells = build(field, prepare(2));
+console.log(cells);</code>
+</div>
+<p>
+	Let's take this array, iterate over it and 
+	activate each cell. By activation, I mean 
+	that each cell background will turn red 
+	when you click on it.
+</p>
+<p>
+	However, according to the rules of the game, 
+	only the cell whose number goes in order 
+	should be activated. We need to consider this.
+</p>
+<p>
+	Move the activation code to a separate function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let size = 2;
+let cells = build(field, prepare(size));
+activate(cells);</code>
+</div>
+<p>
+	First, let's do a simple cell activation 
+	in this function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function activate(cells) {
+	for (let cell of cells) {
+		cell.addEventListener('click', function() {
+			this.classList.add('active');
+		});
+	}
+}</code>
+</div>
+<p>
+	And now we take into account the fact that 
+	cells can only be activated in order. To do 
+	this, we will introduce a counter that will 
+	store the number corresponding to the cell 
+	that can now be activated:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function activate(cells) {
+	let counter = 1; // the counter
+	
+	for (let cell of cells) {
+		cell.addEventListener('click', function() {
+			this.classList.add('active');
+		});
+	}
+}</code>
+</div>
+<p>
+	The further algorithm of actions will be as 
+	follows: if, when clicking on a cell, its 
+	text matches the counter, then we activate 
+	it and increase the counter by <code class="number inline">1</code>. 
+	And if it doesn't match, we don't activate it.
+</p>
+<div class="task">
+	<p>
+		Complete the implementation of the 
+		described <code class="code inline">activate</code> function.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/practice/" data-persent="80" data-hash="jsPrGFNCA" data-quantity="75" data-num="61"><a href="../../../../../en/javascript/book/practice/game-find-number/field-building.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/practice/game-find-number/start-game.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/practice/game-find-number/cells-activation.html" class="active">en</a><a href="../../../../../ru/javascript/book/practice/game-find-number/cells-activation.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

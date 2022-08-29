@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Working with dropdown list items in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to work with dropdown list items in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Working with dropdown list items in JavaScript</h1>
+				<div class="content">
+<p>
+	Let us have a reference to the <code class="code inline">option</code> 
+	tag in a variable. For example, obtained as 
+	follows:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let select = document.querySelector('#select');
+let option = select[0];</code>
+</div>
+<p>
+	In this case, the <code class="code inline">text</code> property will store 
+	the text of the option, the <code class="code inline">value</code> property 
+	will store the value of the attribute of the same 
+	name, and the <code class="code inline">selected</code> property will store 
+	the value of <code class="code inline">true </code> or <code class="code inline">false</code> depending 
+	on whether the list item is selected or not:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log(option.text);
+console.log(option.value);
+console.log(option.selected);</code>
+</div>
+<div class="task">
+	<p>
+		Go through the list items in a loop and add an 
+		exclamation mark to the end of the text for the 
+		selected item, and a question mark for 
+		unselected items.
+	</p>
+</div>
+
+<h2>Selecting a list item</h2>
+<p>
+	In previous lessons, we accessed the <code class="code inline">select</code> 
+	tag to get or change the selected list item. It's 
+	not really necessary. After all, you can directly 
+	set the property <code class="code inline">selected</code> of some 
+	<code class="code inline">option</code> tag to <code class="code inline">true</code>.
+</p>
+<p>
+	For example, let's make the list item with 
+	number two selected:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let select = document.querySelector('#select');
+let option = select[2];
+option.selected = true;</code>
+</div>
+<div class="task">
+	<p>
+		Given a dropdown list and a button. By clicking 
+		on the button, make selected the last 
+		item in the list.
+	</p>
+</div>
+
+<h2>Getting the selected option</h2>
+<p>
+	Using everything learned, you can get the 
+	selected <code class="code inline">option</code> tag as follows:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let select = document.querySelector('#select');
+console.log(select[select.selectedIndex]);</code>
+</div>
+<div class="task">
+	<p>
+		Given a select and a button. By pressing 
+		the button, display the text of the 
+		marked list item.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given a select and a button. Add an exclamation 
+		mark to the end of the selected item 
+		text when you click the button.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="79" data-hash="jsPmFmDLIO" data-quantity="363" data-num="286"><a href="../../../../../../../en/javascript/book/prime/dom/form/select/dropdown-list-items-getting.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../../en/javascript/book/prime/dom/form/mistakes.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../../en/javascript/book/prime/dom/form/select/dropdown-list-items-options.html" class="active">en</a><a href="../../../../../../../ru/javascript/book/prime/dom/form/select/dropdown-list-items-options.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

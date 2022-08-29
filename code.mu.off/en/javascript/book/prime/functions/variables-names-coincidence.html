@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Same variables name in JavaScript functions | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will consider the coincidence of the global and local variables names in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Same variables name in JavaScript functions</h1>
+				<div class="content">
+<p>
+	Let there be the variable <code class="code inline">num</code> both 
+	outside the function and inside. In this 
+	case, any changes to the local variable 
+	<code class="code inline">num</code> do not affect the global 
+	variable <code class="code inline">num</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 1; // the global variable
+
+function func() {
+	let num = 2; // the local variable
+	console.log(num);
+}
+func(); // call the function, 2 will be output
+
+console.log(num); // shows 1 - the global variable hasn't changed</code>
+</div>
+<p>
+	But, if we forget to declare the local variable 
+	<code class="code inline">num</code> through <code class="code inline">let</code>, then the local 
+	variable <code class="code inline">num</code> will not be created inside 
+	the function, but the global variable will 
+	simply change:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 1;
+
+function func() {
+	num = 2; // we forgot to write let - it changes the external variable
+	console.log(num);
+}
+func(); // call the function, 2 will be output
+
+console.log(num); // shows 2 - the variable has changed</code>
+</div>
+<p>
+	There can be two situations here: either we 
+	really wanted to change the global variable 
+	(then everything is OK), or we forgot <code class="code inline">let</code> 
+	and accidentally changed the global variable.
+</p>
+<p>
+	The second case is a subtle error leading to 
+	unpredictable script behavior. Therefore, 
+	always, when introducing a new variable, 
+	declare it through <code class="code inline">let</code>.
+</p>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let num = 1;
+
+function func() {
+	num = 2;
+}
+func();
+
+console.log(num);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be output to the 
+		console without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let num = 1;
+
+function func() {
+	let num = 2;
+}
+func();
+
+console.log(num);</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="48" data-hash="jsPmFAVNC" data-quantity="363" data-num="174"><a href="../../../../../en/javascript/book/prime/functions/local-variables.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/functions/global-variables-changing.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/functions/variables-names-coincidence.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/functions/variables-names-coincidence.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

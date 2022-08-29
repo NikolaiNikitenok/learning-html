@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Passing functions as parameters in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will consider passing functions as parameters in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Passing functions as parameters in JavaScript</h1>
+				<div class="content">
+<p>
+	Functions, like numbers, strings, and arrays, 
+	can be passed as parameters to other functions.
+</p>
+<p>
+	Let's take a closer look at a practical 
+	example. Let's say we have the function 
+	<code class="code inline">test</code> that takes two parameters:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">test(parameter1, parameter2);</code>
+</div>
+<p>
+	Let's pass an anonymous function that 
+	returns <code class="number inline">1</code> to the first parameter 
+	of the <code class="code inline">test</code> function, and an 
+	anonymous function that returns <code class="number inline">2</code> 
+	to the second parameter:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">test(
+	function() {return 1;},
+	function() {return 2;}
+);</code>
+</div>
+<p>
+	The code above is not working yet because 
+	we haven't created the function itself.
+	Let's do it:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test(func1, func2) {
+	
+}</code>
+</div>
+<p>
+	When defining the function, we specified 
+	two parameters - <code class="code inline">func1</code> and <code class="code inline">func2</code>. 
+	These parameters don't know anything about 
+	what will be transmitted in them. We can, 
+	for example, pass numbers:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">test(1, 2); // call the function
+
+function test(func1, func2) {
+	console.log(func1); // shows 1
+	console.log(func2); // shows 2
+}</code>
+</div>
+<p>
+	ALso we can pass the functions:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">test(
+	function() {return 1;}, // first parameter
+	function() {return 2;}  // second parameter
+);
+
+function test(func1, func2) {
+	console.log(func1); // shows 'function() {return 1;}'
+	console.log(func2); // shows 'function() {return 2;}'
+}</code>
+</div>
+<p>
+	As you can see, the source code of the 
+	functions is now printed to the console. 
+	Let's make it output their results. To do 
+	this, we write parentheses to the functions:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">test(
+	function() {return 1;},
+	function() {return 2;}
+);
+
+function test(func1, func2) {
+	console.log( func1() ); // shows 1
+	console.log( func2() ); // shows 2
+}</code>
+</div>
+<p>
+	Let's print the sum of the results of the 
+	first and second function to the console:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">test(
+	function() {return 1;},
+	function() {return 2;}
+);
+
+function test(func1, func2) {
+	console.log( func1() + func2() ); // shows 3
+}</code>
+</div>
+<div class="task">
+	<p>
+		Make the function <code class="code inline">test</code> that 
+		takes <code class="number inline">3</code> functions as parameters. 
+		Pass in the first parameter a function 
+		that returns <code class="number inline">1</code>, the second - a 
+		function that returns <code class="number inline">2</code>, the 
+		third - a function that returns <code class="number inline">3</code>. 
+		Print the sum of the results of the 
+		functions to the console.
+	</p>
+</div>
+
+<h2>Named functions</h2>
+<p>
+	Functions that are passed as parameters 
+	do not have to be anonymous.
+</p>
+<p>
+	Let's make them like a Function Declaration. 
+	Let's name the first function <code class="code inline">get1</code>, 
+	and the second - <code class="code inline">get2</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function get1() {
+	return 1;
+}
+function get2() {
+	return 2;
+}</code>
+</div>
+<p>
+	Let's pass the names of the functions 
+	<code class="code inline">get1</code> and <code class="code inline">get2</code> to the 
+	parameters of the function <code class="code inline">test</code> 
+	(that is, their source code, not 
+	the result):
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function get1() {
+	return 1;
+}
+function get2() {
+	return 2;
+}
+
+test(get1, get2); // shows 3
+
+function test(func1, func2) {
+	console.log( func1() + func2() );
+}</code>
+</div>
+<p>
+	Let's change it to Function Expression:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let get1 = function() {
+	return 1;
+}
+let get2 = function() {
+	return 2;
+}
+
+test(get1, get2); // shows 3
+
+function test(func1, func2) {
+	console.log( func1() + func2() );
+}</code>
+</div>
+<div class="task">
+	<p>
+		Make the function <code class="code inline">test</code> that 
+		takes <code class="number inline">3</code> functions as parameters 
+		and returns the sum of the results 
+		of the passed functions.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Make <code class="number inline">3</code> functions, declaring them 
+		as a Function Declaration and naming them 
+		<code class="code inline">func1</code>, <code class="code inline">func2</code> and <code class="code inline">func3</code>.
+		Let the first function return <code class="number inline">1</code>, 
+		the second return <code class="number inline">2</code>, and the third 
+		return <code class="number inline">3</code>. Pass these functions as 
+		a parameters to the <code class="code inline">test</code> function 
+		from the previous task.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Modify the previous task so that the 
+		functions are declared as Function 
+		Expressions with the same names.
+	</p>
+</div>
+
+<h2>Parameters of passed functions</h2>
+<p>
+	Suppose we have the function <code class="code inline">test</code> 
+	that takes another function as a parameter 
+	and print the result of this passed 
+	function to the console:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test(func) {
+	console.log( func() );
+}</code>
+</div>
+<p>
+	Let the passed function <code class="code inline">func</code> take 
+	a number as a parameter and do something 
+	with it. Let's give it, for example, the 
+	number <code class="number inline">3</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test(func) {
+	console.log( func(3) );
+}</code>
+</div>
+<p>
+	Let's now call the <code class="code inline">test</code> function, 
+	passing an anonymous function as a parameter 
+	to it. This anonymous function will take a 
+	number as a parameter and return the square 
+	of that number.
+</p>
+<p>
+	As a result of all this, our construction 
+	will display the square of the number 
+	<code class="number inline">3</code>, that is, <code class="number inline">9</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">// Shows 9:
+test(
+	function(num) {
+		return num * num;
+	}
+);
+
+function test(func) {
+	console.log(func(3));
+}</code>
+</div>
+<p>
+	Let's make the code more elegant:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">// Shows 9:
+test(function(num) {
+	return num * num;
+});
+
+function test(func) {
+	console.log(func(3));
+}</code>
+</div>
+<div class="task">
+	<p>
+		Copy my function <code class="code inline">test</code> code. 
+		Invoke this function, passing to it 
+		an anonymous function as a parameter, 
+		which will take a number as a 
+		parameter and return its cube.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Modify your code so that the passed 
+		function is not anonymous, but is 
+		defined as a Function Declaration 
+		with the name <code class="code inline">func</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Change the passed function to a Function 
+		Expression with the same name <code class="code inline">func</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Let the passed function now take two 
+		parameters and return their sum. When 
+		calling the passed function inside 
+		<code class="code inline">test</code>, pass the number <code class="number inline">2</code> 
+		and the number <code class="number inline">3</code> to the passed 
+		function. Print the result with alert.
+	</p>
+</div>
+
+<h2>Pass a number as a parameter</h2>
+<p>
+	Now let's not store the number that the 
+	passed function does something with inside 
+	<code class="code inline">test</code>, but pass it as the 
+	first parameter:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test(num, func) { // the first parameter is a number
+	console.log(func(num));
+}</code>
+</div>
+<p>
+	Let's use our function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test(num, func) {
+	console.log(func(num));
+}
+
+// Shows 4:
+test(2, function(num) {
+	return num * num;
+});</code>
+</div>
+<p>
+	For the convenience of our construction: 
+	we have one function <code class="code inline">test</code> that takes 
+	a number as a parameter. But what will 
+	happen to the number is not hardcoded in 
+	the <code class="code inline">test</code> function.
+</p>
+<p>
+	We can, for example, use the second 
+	parameter of the function <code class="code inline">test</code> 
+	to pass a squaring function, or we can, 
+	for example, cube function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test(num, func) {
+	console.log(func(num));
+}
+
+// Find the square of a number:
+test(2, function(num) {
+	return num * num; // returns a square
+});
+
+// Find the cube of a number:
+test(2, function(num) {
+	return num * num * num; // returns a cube
+});</code>
+</div>
+<div class="task">
+	<p>
+		Let the function <code class="code inline">test</code> take a 
+		number as the first parameter, and 
+		functions as the second and third 
+		parameters that also take numbers.
+	</p>
+	<p>
+		Let the function <code class="code inline">test</code> return 
+		the sum of the results of the 
+		passed functions:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function test(num, func1, func2) {
+	return func1(num) + func2(num);
+}</code>
+	</div>
+	<p>
+		Invoke the function <code class="code inline">test</code>, passing 
+		the number <code class="number inline">3</code> as the first parameter, 
+		the function that squares the number as 
+		the second parameter, and the function 
+		that raises the number to the cube as 
+		the third parameter. Output the result 
+		to the console.
+	</p>
+</div>
+
+<h2>Application</h2>
+<p>
+	Let's make a function that will take an array 
+	as a parameter, and a function as the second 
+	parameter. The passed function will need to 
+	be applied to each element of the array:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test(arr, func) {
+	// returns the modified array
+}</code>
+</div>
+<p>
+	An implementation:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test(arr, func) {
+	// Loop starts:
+	for (let i = 0; i &lt; arr.length; i++) {
+		arr[i] = func(arr[i]); // apply the function to each element
+	}
+	
+	return arr; // returns modified array
+}</code>
+</div>
+<p>
+	Let's apply our function to some array:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test(arr, func) {
+	for (let i = 0; i &lt; arr.length; i++) {
+		arr[i] = func(arr[i]);
+	}
+	
+	return arr;
+}
+
+// Let's convert an array of numbers into an array of their squares:
+let result = test(
+	[1, 2, 3],
+	function(num) {return num * num;}
+);
+
+console.log(result); // shows [1, 4, 9]</code>
+</div>
+<p>
+	Let's make our function call more elegant (it's more common way):
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test(arr, func) {
+	for (let i = 0; i &lt; arr.length; i++) {
+		arr[i] = func(arr[i]);
+	}
+	
+	return arr;
+}
+
+// Let's make the code more elegant:
+let result = test([1, 2, 3], function(num) {
+	return num * num;
+});
+
+console.log(result); // shows [1, 4, 9]</code>
+</div>
+<div class="task">
+	<p>
+		Without looking into my code, implement 
+		the same function <code class="code inline">test</code> 
+		on your own.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Call the function <code class="code inline">test</code> you created, 
+		passing it an array of numbers as a 
+		parameter. Make the function return 
+		an array with the cubes of 
+		these numbers.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="51" data-hash="jsPmFAPFAP" data-quantity="363" data-num="185"><a href="../../../../../en/javascript/book/prime/functions/functions-object.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/functions/named-functional-expressions.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/functions/passing-functions-as-parameters.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/functions/passing-functions-as-parameters.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

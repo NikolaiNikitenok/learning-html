@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Prediction site in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../js/location.js?v=3"></script>
+		<script src="../../../../js/locale.js?v=5"></script>
+		<script src="../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will study creating a prediction site in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Prediction site in JavaScript</h1>
+				<div class="content">
+<p>
+	Now we will make a website that will issue 
+	predictions. Let there be a button on this 
+	site, by clicking on which a timer will be 
+	launched, which will display a random number 
+	from <code class="number inline">1</code> to some maximum value every 
+	<code class="number inline">0.1</code> seconds into some div.
+</p>
+<p>
+	Let there be another button under the div, 
+	by clicking on which the user of our site 
+	can stop the timer and fix a certain number 
+	in the div. This number will be the prediction 
+	number. After that, show the user a prediction 
+	with this number, and remove all unnecessary 
+	buttons from the screen so that the user 
+	cannot get another prediction. That is, one 
+	visit to the site - one prediction.
+</p>
+<p>
+	Here is an example of what should be:
+</p>
+<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			#parent {
+			text-align: center;
+		}
+		#parent > * {
+			margin-bottom: 10px;
+		}
+		
+		#timer {
+			font-size: 18px;
+		}
+		#text {
+			font-size: 17px;
+			font-style: italic;
+		}
+		
+		button {
+			padding: 5px 10px;
+			font-size: 15px;
+			cursor: pointer;
+		}
+		button:not(.active) {
+			display: none;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;parent&quot;>
+			<div id=&quot;timer&quot;>?</div>
+			<div id=&quot;text&quot;></div>
+			<button id=&quot;start&quot; class=&quot;active&quot;>know your fate</button>
+			<button id=&quot;stop&quot;>get a prediction</button>
+		</div>
+		
+		<script>
+			
+			let predictions = [
+			'you will have a wonderful day today',
+			'it's better not to leave home today',
+			'today you'll find good luck and success in all your endeavors',
+			'today you will succeed in learning JavaScript',
+			'today you better lie down on the sofa all the day',
+			'today you can forget something when you leave home',
+			'take a day off today - let the whole world wait'
+		];
+		
+		let timer = document.querySelector('#timer');
+		let text  = document.querySelector('#text');
+		let start = document.querySelector('#start');
+		let stop  = document.querySelector('#stop');
+		
+		let random;
+		let timerId;
+		start.addEventListener('click', function() {
+			this.classList.remove('active');
+			stop.classList.add('active');
+			
+			timerId = setInterval(function() {
+				timer.textContent = random = getRandomInt(1, predictions.length);
+			}, 100);
+		});
+		
+		stop.addEventListener('click', function() {
+			this.classList.remove('active');
+			clearInterval(timerId);
+			
+			text.textContent = predictions[random - 1];
+		});
+		
+		function getRandomInt(min, max) {
+			return Math.floor(Math.random() * (max - min + 1)) + min;
+		}
+		</script>
+	</body>
+</html>"></iframe></div>
+<p>
+	Here is the layout that you can use when solving the problem:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="parent"&gt;
+	&lt;div id="timer"&gt;?&lt;/div&gt;
+	&lt;div id="text"&gt;&lt;/div&gt;
+	&lt;button id="start" class="active"&gt;know your fate&lt;/button&gt;
+	&lt;button id="stop"&gt;get a prediction&lt;/button&gt;
+&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">#parent {
+	text-align: center;
+}
+#parent &gt; * {
+	margin-bottom: 10px;
+}
+
+#timer {
+	font-size: 18px;
+}
+#text {
+	font-size: 17px;
+	font-style: italic;
+}
+
+button {
+	padding: 5px 10px;
+	font-size: 15px;
+	cursor: pointer;
+}
+button:not(.active) {
+	display: none;
+}</code>
+</div>
+<div class="task">
+	<p>
+		Consider how it is more convenient 
+		to store predictions.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Implement the described site.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Make it so that there are two kinds of 
+		predictions: good and bad. Make the 
+		bad ones red and the good ones green.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/practice/" data-persent="13" data-hash="jsPrStPrd" data-quantity="75" data-num="11"><a href="../../../../en/javascript/book/practice/horoscope.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../en/javascript/book/practice/autocompletion.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../en/javascript/book/practice/prediction.html" class="active">en</a><a href="../../../../ru/javascript/book/practice/prediction.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../js/metrika.js?v=1"></script>	</body>
+</html>

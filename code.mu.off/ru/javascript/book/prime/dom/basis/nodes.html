@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Работа с узлами в JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы рассмотрим работу с DOM узлами, а также отличие DOM элемента от узла.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Работа с узлами в JavaScript</h1>
+				<div class="content">
+<p>
+	Как вы знаете, теги могут содержать другие
+	теги или, говоря в терминах JavaScript, DOM
+	элементы могут содержать другие DOM элементы.
+	Кроме этого, однако, в них могут быть комментарии
+	и обычный текст. Комментарии, тексты и DOM
+	элементы объединяют одним названием - <dfn>узлы</dfn>.
+</p>
+<p>
+	Вам уже знакомы свойства <a href="../../../../../../ru/javascript/manual/dom/firstElementChild.html"><code class="code inline">firstElementChild</code></a>,
+	<a href="../../../../../../ru/javascript/manual/dom/lastElementChild.html"><code class="code inline">lastElementChild</code></a>,
+	<a href="../../../../../../ru/javascript/manual/dom/nextElementSibling.html"><code class="code inline">nextElementSibling</code></a>,
+	<a href="../../../../../../ru/javascript/manual/dom/previousElementSibling.html"><code class="code inline">previousElementSibling</code></a>.
+	Эти свойства работают именно с DOM элементами,
+	игнорируя остальные узлы. Как правило, именно
+	это нам и требуется.
+</p>
+<p>
+	Однако, существуют также свойства <code class="code inline">firstChild</code>,
+	<code class="code inline">lastChild</code>, <code class="code inline">nextSibling</code>, <code class="code inline">previousSibling</code>.
+	Эти свойства работают аналогичным образом,
+	однако, учитывая все узлы. Давайте посмотрим
+	разницу между этими свойствами на примере.
+	Пусть у нас есть див, содержащий в себе три узла:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem"&gt;&lt;!--сomm--&gt;text&lt;span&gt;tag&lt;/span&gt;&lt;/div&gt;</code>
+</div>
+<p>
+	Получим ссылку на этот див в переменную:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');</code>
+</div>
+<p>
+	А теперь давайте посмотрим, что содержится
+	в свойствах <code class="code inline">firstChild</code> и <code class="code inline">firstElementChild</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log(elem.firstChild);        // комментарий
+console.log(elem.firstElementChild); // тег span</code>
+</div>
+<div class="task">
+	<p>
+		Напишите код, который покажет разницу между
+		<code class="code inline">lastChild</code> и <code class="code inline">lastElementChild</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Напишите код, который покажет разницу между
+		<code class="code inline">nextSibling</code> и <code class="code inline">nextElementSibling</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Напишите код, который покажет разницу между
+		<code class="code inline">previousSibling</code> и <code class="code inline">previousElementSibling</code>.
+	</p>
+</div>
+
+<h2>Перебор циклом</h2>
+<p>
+	Как вы уже должны знать, в свойстве <a href="../../../../../../ru/javascript/manual/dom/children.html"><code class="code inline">children</code></a>
+	содержатся все DOM элементы, являющиеся непосредственными
+	потомками данного элемента. Существует аналогичное
+	свойство <code class="code inline">childNodes</code>, которое содержит
+	в себе все потомки-узлы элемента.
+</p>
+<p>
+	Давайте, например, с помощью этого свойства
+	выведем различные узлы из нашего элемента:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log(elem.childNodes[0]);
+console.log(elem.childNodes[1]);
+console.log(elem.childNodes[2]);</code>
+</div>
+<p>
+	А теперь давайте переберем узлы элемента циклом:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">for (let node of elem.childNodes) {
+	console.log(node);
+}</code>
+</div>
+<div class="task">
+	<p>
+		Дан див:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem"&gt;txt&lt;b&gt;tag&lt;/b&gt;&lt;!--com--&gt;txt&lt;b&gt;tag&lt;/b&gt;&lt;!--com--&gt;&lt;/div&gt;</code>
+	</div>
+	<p>
+		Переберите циклом все узлы этого дива и выведите
+		их в консоль.
+	</p>
+</div>
+
+<h2>Название узлов</h2>
+<p>
+	Все узлы имеют свойство <code class="code inline">nodeName</code>.
+	Для комментария оно содержит значение <code class="string inline">'comment'</code>,
+	для текстового узла - значение <code class="string inline">'text'</code>,
+	а для узла-элемента - имя тега в верхнем
+	регистре. Получается, что nodeName для элементов
+	аналогичен свойству <a href="../../../../../../ru/javascript/manual/dom/tagName.html"><code class="code inline">tagName</code></a>,
+	но работает также и для других типов узлов.
+</p>
+<div class="task">
+	<p>
+		Дан див:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem"&gt;txt&lt;b&gt;tag&lt;/b&gt;&lt;!--com--&gt;txt&lt;b&gt;tag&lt;/b&gt;&lt;!--com--&gt;&lt;/div&gt;</code>
+	</div>
+	<p>
+		Переберите циклом все узлы этого дива и выведите
+		в консоль их названия.
+	</p>
+</div>
+
+<h2>Тип узлов</h2>
+<p>
+	Все узлы имеют свойство <code class="code inline">nodeType</code>.
+	Его значение числовое: <code class="number inline">1</code> для элементов,
+	<code class="number inline">3</code> для текстовых узлов, <code class="number inline">8</code> для
+	комментариев. Остальные значения в настоящее
+	время или малоиспользуемы, или устарели.
+</p>
+<div class="task">
+	<p>
+		Дан див:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem"&gt;txt&lt;b&gt;tag&lt;/b&gt;&lt;!--com--&gt;txt&lt;b&gt;tag&lt;/b&gt;&lt;!--com--&gt;&lt;/div&gt;</code>
+	</div>
+	<p>
+		Переберите циклом все узлы этого дива и выведите
+		в консоль только узлы-элементы и текстовые узлы.
+	</p>
+</div>
+
+<h2>Текст узлов</h2>
+<p>
+	Давайте теперь разберемся, как прочитать
+	или изменить текст узлов. Для всех узлов
+	работает свойство <code class="code inline">textContent</code>. Для
+	текстовых узлов и комментариев есть свойства
+	<code class="code inline">nodeValue</code> и <code class="code inline">data</code> (они практически
+	одинаковые, второе - короче, лучше пользоваться
+	им). Для элементов есть свойство <code class="code inline">innerHTML</code>,
+	прочитывающее текст вместе с тегами.
+</p>
+<div class="task">
+	<p>
+		Дан див:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem"&gt;txt&lt;b&gt;tag&lt;/b&gt;&lt;!--com--&gt;txt&lt;b&gt;tag&lt;/b&gt;&lt;!--com--&gt;&lt;/div&gt;</code>
+	</div>
+	<p>
+		Переберите циклом все узлы этого дива и выведите
+		в консоль тексты всех узлов.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан див:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem"&gt;txt&lt;b&gt;tag&lt;/b&gt;&lt;!--com--&gt;txt&lt;b&gt;tag&lt;/b&gt;&lt;!--com--&gt;&lt;/div&gt;</code>
+	</div>
+	<p>
+		Переберите циклом все узлы этого дива и выведите
+		в консоль тексты всех комментариев и текстовых
+		узлов.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан див:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem"&gt;txt&lt;b&gt;tag&lt;/b&gt;&lt;!--com--&gt;txt&lt;b&gt;tag&lt;/b&gt;&lt;!--com--&gt;&lt;/div&gt;</code>
+	</div>
+	<p>
+		Переберите циклом все узлы этого дива и выведите
+		в консоль тексты текстовых узлов и элементов.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан див:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem"&gt;txt&lt;b&gt;tag&lt;/b&gt;&lt;!--com--&gt;txt&lt;b&gt;tag&lt;/b&gt;&lt;!--com--&gt;&lt;/div&gt;</code>
+	</div>
+	<p>
+		Переберите циклом все узлы этого дива и каждому
+		узлу в конец запишите его тип.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/prime/" data-persent="74" data-hash="jsPmDmNds" data-quantity="363" data-num="270"><a href="../../../../../../ru/javascript/book/prime/dom/basis/data-attrubutes.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../ru/javascript/book/prime/dom/basis/coding.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/basis/nodes.html">en</a><a href="../../../../../../ru/javascript/book/prime/dom/basis/nodes.html" class="active">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

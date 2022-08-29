@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Last string character in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to retreive the last character of a string in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Last string character in JavaScript</h1>
+				<div class="content">
+<p>
+	Let's output the last character of the string. 
+	At the same time, we will make sure that our 
+	script determines the number of the last 
+	character itself, regardless of the string length.
+</p>
+<p>
+	Let us have such a string:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = 'abcde';</code>
+</div>
+<p>
+	As you can see, the number of characters 
+	in this string is <code class="number inline">5</code>. If we think a little, 
+	it becomes obvious that since the numbering of 
+	characters starts from zero, hence the index 
+	of the last character of this string will be 
+	<code class="number inline">1</code> less than its length.
+</p>
+<p>
+	It turns out that knowing the length of 
+	the string, we can subtract <code class="number inline">1</code> from 
+	it and retreive the index of the last 
+	character, and then you can get the last 
+	character itself by this index.
+</p>
+<p>
+	As you already know, the length of a string 
+	can be found using the <code class="code inline">length</code> property. 
+	Based on this, we find the index of the last character:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = 'abcde';
+let last = str.length - 1; // last character index</code>
+</div>
+<p>
+	We use the found index to display 
+	the character on the screen:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = 'abcde';
+let last = str.length - 1; // last character index
+alert(str[last]); // shows 'e'</code>
+</div>
+<p>
+	The intermediate variable 
+	<code class="code inline">last</code> can be omitted:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = 'abcde';
+alert(str[str.length - 1]); // shows 'e'</code>
+</div>
+<div class="task">
+	<p>
+		Given a string. Display its 
+		last character on the screen.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given a string. Display its 
+		second-to-last character on the screen.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given a string. Display its 
+		third-to-last character on the screen.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="7" data-hash="jsPmBsLSCh" data-quantity="363" data-num="28"><a href="../../../../../en/javascript/book/prime/basis/string-characters.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/basis/digits-strings.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/basis/last-string-character.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/basis/last-string-character.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

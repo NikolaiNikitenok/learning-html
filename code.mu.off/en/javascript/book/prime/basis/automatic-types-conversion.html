@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Automatic type conversion in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will study how automatic data type conversion works in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Automatic type conversion</h1>
+				<div class="content">
+<p>
+	As you already know, strings in JavaScript 
+	must be quoted. It may occure that all 
+	characters of the string will be numbers:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = '123';</code>
+</div>
+<p>
+	In this case, the variable <code class="code inline">a</code> is 
+	also a string, but with some nuance.
+</p>
+<p>
+	The essence of the nuance is as follows: 
+	if you perform any mathematical operation 
+	on a string with numbers, this one will be 
+	performed as if we really had numbers, 
+	not strings:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">alert('2' * '3'); // shows 6</code>
+</div>
+<p>
+	In this case, JavaScript registers our 
+	try to perform an operation that is illegal 
+	for strings, but valid for numbers.
+</p>
+<p>
+	It also registers that our strings are 
+	actually quoted numbers. Therefore, JavaScript 
+	automatically converts these strings to 
+	numbers and performs the appropriate 
+	mathematical operation on them.
+</p>
+<p>
+	This works if our strings contain only 
+	numbers. If there is at least one letter - JavaScript 
+	will consider the operation incorrect and 
+	return value <code class="code inline">NaN</code> as the result of it:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">alert('2' * '3s'); // shows NaN</code>
+</div>
+<p>
+	Also, automatic conversion occurs 
+	if the operation is mathematically 
+	correct but invalid for strings.
+</p>
+<p>
+	For example, strings cannot (but numbers can) 
+	be multiplied, divided, subtracted, so in 
+	all such operations there will be an 
+	automatic conversion of strings with 
+	numbers into numbers.
+</p>
+<p>
+	However, strings, like numbers, are 
+	added using the <code class="code inline">+</code> operator. It 
+	means that in the case of addition, 
+	there will be no automatic transformation:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = '1' + '2';
+alert(a); // shows '12' - strings concatenation happened</code>
+</div>
+<p>
+	If one of the terms is a number and the 
+	other is a string, then the string always wins:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = 1 + '2';
+alert(a); // shows '12'</code>
+</div>
+<p>
+	In such cases, JavaScript, on the contrary, 
+	automatically converts numbers to strings 
+	and performs strings concatenation.
+</p>
+<p>
+	However, there are nuances when there are 
+	more than two terms: in this case, the 
+	conversion to a specific type depends 
+	on the order in which the operations 
+	are performed.
+</p>
+<p>
+	In the following example, first <code class="number inline">2</code> 
+	and <code class="number inline">3</code> will be added as numbers, 
+	and then the result will be added to the 
+	string <code class="string inline">'1'</code> already as the string 
+	<code class="string inline">'5'</code>, resulting in the string <code class="string inline">'15'</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = '1' + (2 + 3);
+alert(a); // shows '15'</code>
+</div>
+<p>
+	If you remove the parentheses, then 
+	everything will be added from left to right. 
+	That is, first the number <code class="number inline">2</code> will be 
+	added with the string <code class="string inline">'1'</code> and the 
+	result will be the string <code class="string inline">'12'</code>. 
+	Then the number <code class="number inline">3</code> will be added 
+	to this string and the result will be 
+	the string <code class="string inline">'123'</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = '1' + 2 + 3;
+alert(a); // shows '123'</code>
+</div>
+<p>
+	But in the next example, the numbers 
+	<code class="number inline">2</code> and <code class="number inline">3</code> are written at the 
+	beginning, so they will first be added as 
+	numbers, resulting in the number <code class="number inline">5</code>, 
+	and then to the string <code class="string inline">'1'</code> will be 
+	added to this number, resulting in the 
+	string <code class="string inline">'51'</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = 2 + 3 + '1';
+alert(a); // shows '51'</code>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let a = '5' + '2';
+alert(a);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let a = '5' + 2;
+alert(a);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let a = 5 + '2';
+alert(a);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let a = 5 + 2;
+alert(a);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let a = '5' * '2';
+alert(a);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let a = '5' - '2';
+alert(a);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let a = '5' / '2';
+alert(a);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let a = '5' % '2';
+alert(a);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let a = '5s' * '2';
+alert(a);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let a = '5s' + '2';
+alert(a);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let a = (-'5') + (-'2');
+alert(a);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let a = '5' * 1 + '2' * 1;
+alert(a);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let a = '5' * '1' + '2' * '1';
+alert(a);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let a = '' + 3 + 1;
+alert(a);</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="6" data-hash="jsPmBsATC" data-quantity="363" data-num="21"><a href="../../../../../en/javascript/book/prime/basis/constants.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/basis/conversion-to-number.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/basis/automatic-types-conversion.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/basis/automatic-types-conversion.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

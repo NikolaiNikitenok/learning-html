@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>String concatenation in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to concatenate strings in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>String concatenation in JavaScript</h1>
+				<div class="content">
+<p>
+	We use the operator <code class="code inline">+</code> to concatenate 
+	strings, as well as to add numbers:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = 'abc' + 'def'; // add two strings
+alert(str); // shows 'abcdef'</code>
+</div>
+<p>
+	Strings can also be stored in variables:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str1 = 'abc';
+let str2 = 'def';
+alert(str1 + str2); // shows 'abcdef'</code>
+</div>
+<p>
+	You can also add variables with strings:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str1 = 'abc';
+let str2 = 'def';
+alert(str1 + '!!!' + str2); // shows 'abc!!!def'</code>
+</div>
+<p>
+	Let two strings are stored in variables, and 
+	we want to insert a space between them when we add them. 
+	It's done like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str1 = 'abc';
+let str2 = 'def';
+alert(str1 + ' ' + str2); // shows 'abc def'</code>
+</div>
+<p>
+	Let there be only one variable:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = 'abc';
+alert(str + ' ' + 'def'); // shows 'abc def'</code>
+</div>
+<p>
+	In this case, it makes no sense to arrange 
+	the space in the separate string - we will insert 
+	it as part of the second term:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = 'abc';
+alert(str + ' def'); // shows 'abc def'</code>
+</div>
+<div class="task">
+	<p>
+		Create the variable <code class="code inline">str</code> and assign 
+		the string <code class="string inline">'!!!'</code> to it. Display the 
+		value of this variable on the screen.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Create the variable with the text <code class="string inline">'java'</code> 
+		and variable with the text <code class="string inline">'script'</code>. 
+		Using these variables and the string concatenation 
+		operation, display the string <code class="string inline">'javascript'</code> 
+		on the screen.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Create the variable with the text <code class="string inline">'hello'</code> 
+		and variable with the text <code class="string inline">'world'</code>. 
+		Display the string <code class="string inline">'hello world'</code>, using 
+		these variables and the string concatenation operation.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="4" data-hash="jsPmBsSC" data-quantity="363" data-num="15"><a href="../../../../../en/javascript/book/prime/basis/strings.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/basis/strings-length.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/basis/strings-concatenation.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/basis/strings-concatenation.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

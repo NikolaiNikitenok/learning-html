@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Shopping calculator in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will implement a shopping calculator in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Shopping calculator in JavaScript</h1>
+				<div class="content">
+<p>
+	In this section, we implement a shopping calculator. 
+	It will be a table in which the user of our site 
+	will input their purchases.
+</p>
+<p>
+	Let purchases be inserted using the form. In addition, 
+	for each product, we will provide a link to delete. 
+	We will also make it possible to edit the name, price 
+	and amount of the product. Let such editing take place 
+	by double-clicking on a table cell.
+</p>
+<p>
+	Let the total sum of products be displayed under the 
+	table. Let's make sure that this value is recalculated 
+	when deleting and editing purchases.
+</p>
+<p>
+	Here is an example of what should be:
+</p>
+<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			body {
+			height: 300px;
+		}
+		</style>
+		<style>
+			* {
+			box-sizing: border-box;
+		}
+		#parent {
+			margin: 0 auto;
+			width: 500px;
+		}
+		
+		#form {
+			display: flex;
+			margin-bottom: 15px;
+		}
+		#form input {
+			padding: 8px;
+			width: 24%;
+			margin: 0 0.5% 10px 0.5%;
+		}
+		
+		h2 {
+			margin-top: 0;
+			margin-bottom: 7px;
+		}
+		
+		#table {
+			width: 100%;
+			margin-bottom: 10px;
+		}
+		#table td, #table th {
+			padding: 8px;
+			text-align: center;
+			border: 1px solid black;
+		}
+		#table td.remove {
+			color: blue;
+			cursor: pointer;
+			text-decoration: underline;
+		}
+		#table td.remove:hover {
+			text-decoration: none;
+		}
+		
+		#result {
+			text-align: right;
+			margin-right: 10px;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;parent&quot;>
+			<div id=&quot;form&quot;>
+				<input id=&quot;name&quot; placeholder=&quot;name&quot;>
+				<input id=&quot;price&quot; placeholder=&quot;price&quot;>
+				<input id=&quot;amount&quot; placeholder=&quot;amount&quot;>
+				<input id=&quot;add&quot; type=&quot;button&quot; value=&quot;add&quot;>
+			</div>
+			
+			<h2>Products table:</h2>
+			<table id=&quot;table&quot;>
+				<tr>
+					<th>name</th>
+					<th>price</th>
+					<th>amount</th>
+					<th>cost</th>
+					<th>remove</th>
+				</tr>
+			</table>
+			<div id=&quot;result&quot;>
+				total: <span id=&quot;total&quot;>0</span>
+			</div>
+		</div>
+		
+		<script>
+			
+			let name   = document.querySelector('#name');
+		let price  = document.querySelector('#price');
+		let amount = document.querySelector('#amount');
+		let add    = document.querySelector('#add');
+		let table  = document.querySelector('#table');
+		let total  = document.querySelector('#total');
+		
+		add.addEventListener('click', function() {
+			let tr = document.createElement('tr');
+			
+			allowEdit(createCell(tr, name.value, 'name'));
+			allowEdit(createCell(tr, price.value, 'price'));
+			allowEdit(createCell(tr, amount.value, 'amount'));
+			
+			createCell(tr, price.value * amount.value, 'cost');
+			
+			createCell(tr, 'remove', 'remove').addEventListener('click', function() {
+				this.parentElement.parentElement.removeChild(this.parentElement);
+				recountTotal();
+			});
+			
+			table.appendChild(tr);
+			recountTotal();
+		});
+		
+		function createCell(tr, value, name) {
+			let td = document.createElement('td');
+			td.textContent = value;
+			td.classList.add(name);
+			tr.appendChild(td);
+			
+			return td;
+		}
+		
+		function allowEdit(td) {
+			td.addEventListener('dblclick', function() {
+				let text = td.textContent
+				td.textContent = '';
+				
+				let input = document.createElement('input');
+				input.value = text;
+				input.focus();
+				td.appendChild(input);
+				
+				input.addEventListener('keydown', function(event) {
+					if (event.key == 'Enter') {
+						td.textContent = this.value;
+						
+						if (td.classList.contains('price') || td.classList.contains('amount')) {
+							let tr = td.parentElement;
+							let price = tr.querySelector('.price');
+							let amount = tr.querySelector('.amount');
+							let cost = tr.querySelector('.cost');
+							
+							cost.textContent = price.textContent * amount.textContent;
+							recountTotal();
+						}
+					}
+				});
+			});
+		}
+		
+		function recountTotal() {
+			let costs = table.querySelectorAll('.cost');
+			
+			if (costs) {
+				let sum = 0;
+				
+				for (let cost of costs) {
+					sum += +cost.textContent;
+				}
+				
+				total.textContent = sum;
+			}
+		}
+		</script>
+	</body>
+</html>"></iframe></div>
+<p>
+	Here is the layout that you can use 
+	when solving the problem:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="parent"&gt;
+	&lt;div id="form"&gt;
+		&lt;input id="name" placeholder="name"&gt;
+		&lt;input id="price" placeholder="price"&gt;
+		&lt;input id="amount" placeholder="amount"&gt;
+		&lt;input id="add" type="button" value="add"&gt;
+	&lt;/div&gt;
+	
+	&lt;h2&gt;Product table:&lt;/h2&gt;
+	&lt;table id="table"&gt;
+		&lt;tr&gt;
+			&lt;th&gt;name&lt;/th&gt;
+			&lt;th&gt;price&lt;/th&gt;
+			&lt;th&gt;amount&lt;/th&gt;
+			&lt;th&gt;cost&lt;/th&gt;
+			&lt;th&gt;remove&lt;/th&gt;
+		&lt;/tr&gt;
+	&lt;/table&gt;
+	&lt;div id="result"&gt;
+		total: &lt;span id="total"&gt;0&lt;/span&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">* {
+	box-sizing: border-box;
+}
+#parent {
+	margin: 0 auto;
+	width: 500px;
+}
+
+#form {
+	display: flex;
+	margin-bottom: 15px;
+}
+#form input {
+	padding: 8px;
+	width: 24%;
+	margin: 0 0.5% 10px 0.5%;
+}
+
+h2 {
+	margin-top: 0;
+	margin-bottom: 7px;
+}
+
+#table {
+	width: 100%;
+	margin-bottom: 10px;
+}
+#table td, #table th {
+	padding: 8px;
+	text-align: center;
+	border: 1px solid black;
+}
+#table td.remove {
+	color: blue;
+	cursor: pointer;
+	text-decoration: underline;
+}
+#table td.remove:hover {
+	text-decoration: none;
+}
+
+#result {
+	text-align: right;
+	margin-right: 10px;
+}</code>
+</div>
+<p>
+	Immediately, let's get links to all the 
+	necessary tags in variables:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let name   = document.querySelector('#name');
+let price  = document.querySelector('#price');
+let amount = document.querySelector('#amount');
+let add    = document.querySelector('#add');
+let table  = document.querySelector('#table');
+let total  = document.querySelector('#total');</code>
+</div>
+<div class="task">
+	<p>
+		Copy the code blanks presented by me.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/practice/" data-persent="37" data-hash="jsPrPCTF" data-quantity="75" data-num="29"><a href="../../../../../en/javascript/book/practice/notepad/notes-removing.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/practice/products-calculator/purchase-adding.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/practice/products-calculator/task-formulation.html" class="active">en</a><a href="../../../../../ru/javascript/book/practice/products-calculator/task-formulation.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

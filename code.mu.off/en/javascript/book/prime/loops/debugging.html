@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Code debugging tips on the example for loops in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will look at a number of tips to help you properly debug loops code in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Code debugging tips on the example for loops in JavaScript</h1>
+				<div class="content">
+<p>
+	Now I will teach you a technique for finding 
+	errors in the code. Let's imagine that, due 
+	to some misunderstanding, you did not follow 
+	the advice from the previous lesson and have 
+	got a non-working code. Let's see how to find 
+	the errors and make it work.
+</p>
+<p>
+	Many beginners use the wrong search technique. 
+	They look at the code, in the hope that they 
+	will notice an error. And so for a couple of 
+	hours. It doesn't work like that.
+</p>
+<p>
+	The correct technique is to output variables 
+	to the console and determine whether there 
+	is what you need or not. In this case, you 
+	need to start from the alleged place of the 
+	problem and move up the code. 
+	Let's see in practice.
+</p>
+<p>
+	Let, for example, you were faced with the task 
+	of iterating over an array with two-digit 
+	numbers and finding numbers whose first 
+	digit is one greater than the second. Let 
+	the array store numbers as strings 
+	for simplicity.
+</p>
+<p>
+	Let you solve the problem and 
+	get the following code:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = ['21', '32', '34', '43', '45', '54', '55'];
+let sum = 0;
+
+for (let elem of arr) {
+	if (elem[0] === elem[1] + 1) {
+		sum += elem;
+	}
+}
+
+console.log(sum); // shows 0</code>
+</div>
+<p>
+	The code, however, outputs <code class="number inline">0</code>. In this 
+	case, the first thing to check is to see what 
+	is in the variable, whether the code execution 
+	falls into the if. Output something 
+	in it to the console:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = ['21', '32', '34', '43', '45', '54', '55'];
+let sum = 0;
+
+for (let elem of arr) {
+	if (elem[0] === elem[1] + 1) {
+		console.log('!'); // outputs nothing
+		sum += elem;
+	}
+}
+
+console.log(sum);</code>
+</div>
+<p>
+	Since nothing appeared in the console, this 
+	means that the code execution simply does 
+	not enter the condition. Let's see with 
+	our own eyes what we compare:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = ['21', '32', '34', '43', '45', '54', '55'];
+let sum = 0;
+
+for (let elem of arr) {
+	console.log(elem[0], elem[1] + 1); // '2' and '11', '3' and '21' ...
+	
+	if (elem[0] === elem[1] + 1) {
+		sum += elem;
+	}
+}
+
+console.log(sum);</code>
+</div>
+<p>
+	As a result, it immediately becomes clear 
+	that the second term is two-digit. It is 
+	easy to understand that this is because 
+	the unit is added as a string. Let's 
+	fix the problem:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = ['21', '32', '34', '43', '45', '54', '55'];
+let sum = 0;
+
+for (let elem of arr) {
+	if (+elem[0] === +elem[1] + 1) { // correction
+		sum += elem;
+	}
+}
+
+console.log(sum); // '021324354'</code>
+</div>
+<p>
+	After the correction, we can already see 
+	that something has appeared in the variable 
+	<code class="code inline">sum</code>, although it is incorrect. It 
+	can be seen, however, that what we need is 
+	there, but it is concatenated like strings, 
+	and not numbers. Let's fix the problem:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = ['21', '32', '34', '43', '45', '54', '55'];
+let sum = 0;
+
+for (let elem of arr) {
+	if (+elem[0] === +elem[1] + 1) {
+		sum += +elem; // correction
+	}
+}
+
+console.log(sum); // everything is working</code>
+</div>
+<div class="task">
+	<p>
+		Fix the errors in the following code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let obj = {a: 10, b: 20, c: 30, d: 40, e: 50};
+let sum = 0;
+
+for (let elem in obj) {
+	if (elem[0] === '1' && elem[0] === '2') {
+		sum += +elem;
+	}
+}
+
+console.log(sum);</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="37" data-hash="jsPmLpDbg" data-quantity="363" data-num="135"><a href="../../../../../en/javascript/book/prime/loops/coding.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/loops/mistakes.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/loops/debugging.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/loops/debugging.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

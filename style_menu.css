@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+}
+
+.menu1 {
+    display: flex;
+}
+
+a.first {
+    text-decoration: none;
+    margin: 10px;
+    color: white;
+    background-color: green;
+    font: 20px Arial;
+    padding: 10px 20px;
+    border: 1px green solid;
+    box-sizing: border-box;
+}
+a.first:hover {
+    
+    background-color: white;
+    color: green;
+    border: 1px green solid;
+}
+a.first.active {
+    background-color: white;
+    color: green;
+    border: 1px green solid;
+}
+
+/*Second*/
+
+.menu2 {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+a.second {
+    width: 350px;
+
+    padding: 15px;
+    margin: 5px;
+    text-decoration: none;
+    background-color: rgb(43, 137, 84);
+    color: white;
+    font: 20px Arial;
+    border: solid 1px rgb(43, 137, 84);
+}
+
+a.second:hover {
+    background-color: white;
+    color: green;
+    border: 1px solid   rgb(43, 137, 84);
+}
+
+a.second.active {
+    background-color: white;
+    color: green;
+    border: 1px rgb(43, 137, 84) solid;
+}
+
+.menu3 {
+    margin-top: 30px;
+    display: flex;
+}
+
+a.third {
+    padding: 15px 25px;
+    color: white;
+    text-decoration: none;
+    background-color: rgb(43, 137, 84);
+    font: 20px Arial;
+}
+
+a.third:hover {
+    background-color: darkgreen;
+}
+
+a.third.active {
+    background-color: darkgreen;
+}

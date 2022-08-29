@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Conversion to boolean type in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will analyze conversion of types to boolean in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Conversion to boolean type in JavaScript</h1>
+				<div class="content">
+<p>
+	Let's now study the conversion of other 
+	data types to boolean. Such a transformation 
+	is carried out using the function <code class="code inline">Boolean</code>. 
+	Here are the values that yield <code class="code inline">false</code> 
+	when cast to boolean:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log(Boolean(0));          // false
+console.log(Boolean(-0));         // false
+console.log(Boolean(+0));         // false
+console.log(Boolean(null));       // false
+console.log(Boolean(false));      // false
+console.log(Boolean(NaN));        // false
+console.log(Boolean(undefined));  // false
+console.log(Boolean(''));         // false</code>
+</div>
+<p>
+	All other values in JavaScript (other languages don't) 
+	yield <code class="code inline">true</code>. Here are the values 
+	that lead to <code class="code inline">true</code>, but which may 
+	cause you doubts:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log(Boolean(-1));          // true
+console.log(Boolean(Infinity));    // true
+console.log(Boolean(-Infinity));   // true</code>
+</div>
+<p>
+	The following values are strings because 
+	they are quoted and are also converted to <code class="code inline">true</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log(Boolean('0'));         // true
+console.log(Boolean('false'));     // true
+console.log(Boolean('NaN'));       // true
+console.log(Boolean('null'));      // true
+console.log(Boolean('undefined')); // true</code>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine what 
+		will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test = Boolean(3);
+alert(test);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine what 
+		will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test = Boolean(0);
+alert(test);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine what 
+		will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test = Boolean(-1);
+alert(test);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine what 
+		will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test = Boolean(-0);
+alert(test);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine what 
+		will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test = Boolean(+0);
+alert(test);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine what 
+		will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test = Boolean('abc');
+alert(test);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine what 
+		will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test = Boolean('');
+alert(test);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine what 
+		will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test = Boolean('0');
+alert(test);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine what 
+		will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test = Boolean(true);
+alert(test);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine what 
+		will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test = Boolean(false);
+alert(test);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine what 
+		will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test = Boolean('true');
+alert(test);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine what 
+		will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test = Boolean('false');
+alert(test);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine what 
+		will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test = Boolean(null);
+alert(test);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine what 
+		will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test = Boolean('null');
+alert(test);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine what 
+		will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test = Boolean(undefined);
+alert(test);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine what 
+		will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test = Boolean('undefined');
+alert(test);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine what 
+		will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test = Boolean(NaN);
+alert(test);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine what 
+		will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test = Boolean('NaN');
+alert(test);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine what 
+		will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test = Boolean(3 * 'abc');
+alert(test);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine what 
+		will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test = Boolean(Infinity);
+alert(test);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine what 
+		will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test = Boolean(1 / 0);
+alert(test);</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="7" data-hash="jsPmBsCLT" data-quantity="363" data-num="26"><a href="../../../../../en/javascript/book/prime/basis/logical-type-conversion.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/basis/string-characters.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/basis/conversion-to-logical-type.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/basis/conversion-to-logical-type.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

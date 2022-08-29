@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>this object in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to work with the this object in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>this object in JavaScript</h1>
+				<div class="content">
+<p>
+	Now we will work with a special object <code class="code inline">this</code> 
+	available in the event handler function. This object 
+	points to the element where the event occurred.
+</p>
+<p>
+	The <code class="code inline">this</code> object is useful when the element 
+	on which the event occurred and the element being 
+	acted upon as a result of the event are the same 
+	element.
+</p>
+<p>
+	For example, if we have an input, we can attach 
+	a focus loss handler to it and, upon the occurrence 
+	of this event, do something with the input text. 
+	Let's do the above. Let us have an input:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;input id="elem" value="text"&gt;</code>
+</div>
+<p>
+	Let's get a reference to it into the 
+	variable <code class="code inline">elem</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');</code>
+</div>
+<p>
+	Let's bind the <code class="code inline">blur</code> event handler 
+	function to it:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">elem.addEventListener('blur', func);</code>
+</div>
+<p>
+	Inside this function <code class="code inline">func</code>, an object 
+	<code class="code inline">this</code> will be available referring 
+	to our input:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	console.log(this); // contains a reference to our element
+}</code>
+</div>
+<p>
+	Let's output the content of the <code class="code inline">value</code> 
+	attribute of our input:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	console.log(this.value); // displays the content of the attribute
+}</code>
+</div>
+<p>
+	Well, now let's write some 
+	text to the input:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	this.value = '!!!';
+}</code>
+</div>
+<p>
+	You can also use an anonymous function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">elem.addEventListener('blur', function() {
+	this.value = '!!!';
+});</code>
+</div>
+<div class="task">
+	<p>
+		Input is given. When this input receives 
+		focus, write the number <code class="number inline">1</code> into it, 
+		and when it loses focus, write the number 
+		<code class="number inline">2</code>. To refer to an input inside a 
+		handler function, use the <code class="code inline">this</code> 
+		object.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given a button whose value is the number 
+		<code class="number inline">1</code>. Make it so that when you click 
+		on this button, its value increases by 
+		one each time.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="70" data-hash="jsPmDmThs" data-quantity="363" data-num="254"><a href="../../../../../../en/javascript/book/prime/dom/basis/chaining.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../en/javascript/book/prime/dom/basis/this-advantage.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/basis/this.html" class="active">en</a><a href="../../../../../../ru/javascript/book/prime/dom/basis/this.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

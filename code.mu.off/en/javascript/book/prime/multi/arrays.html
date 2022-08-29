@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Multidimensional arrays in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will study multidimensional arrays in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Multidimensional arrays in JavaScript</h1>
+				<div class="content">
+<p>
+	Array elements can be not only strings and 
+	numbers, but also arrays. In this case, we 
+	get an array of arrays, or a 
+	<dfn>multidimensional array</dfn>.
+</p>
+<p>
+	In the following example, the array <code class="code inline">arr</code> 
+	consists of three elements, which 
+	in turn are arrays:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [['a', 'b', 'c'], ['d', 'e', 'f'], ['g', 'h', 'i']];</code>
+</div>
+<p>
+	Let's rewrite in a more understandable way:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [
+	['a', 'b', 'c'],
+	['d', 'e', 'f'],
+	['g', 'h', 'i'],
+];</code>
+</div>
+<p>
+	Depending on the level of nesting, arrays 
+	can be two-dimensional - an array of arrays, 
+	three-dimensional - an array of arrays of 
+	arrays (and so on - four-dimensional, 
+	five-dimensional, etc.).
+</p>
+<p>
+	The above array is two-dimensional, since 
+	there are other sub-arrays inside one array, 
+	and there are no other arrays already in 
+	these sub-arrays.
+</p>
+<p>
+	To display any element from a two-dimensional 
+	array, you should write not one pair of 
+	square brackets, but two:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [
+	['a', 'b', 'c'],
+	['d', 'e', 'f'],
+	['g', 'h', 'i'],
+];
+
+console.log(arr[0][1]); // shows 'b'
+console.log(arr[1][2]); // shows 'f'</code>
+</div>
+<div class="task">
+	<p>
+		Given the following array:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [
+	['a', 'b', 'c'],
+	['d', 'e', 'f'],
+	['g', 'h', 'i'],
+	['j', 'k', 'l'],
+];</code>
+	</div>
+	<p>
+		Use it to output elements with the text 
+		<code class="string inline">'l'</code>, <code class="string inline">'e'</code>, <code class="string inline">'g'</code> 
+		and <code class="string inline">'a'</code>
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given the following array:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [[1, 2], [3, 4], [5, 6]];</code>
+	</div>
+	<p>
+		Referring to each array element, find 
+		the sum of all its elements.
+	</p>
+</div>
+
+<h2>Three-dimensional array</h2>
+<p>
+	Here is an example of a 3D array:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [
+	[
+		['a', 'b'],
+		['c', 'd'],
+	],
+	[
+		['e', 'f'],
+		['g', 'h'],
+	],
+	[
+		['i', 'j'],
+		['k', 'l'],
+	],
+];</code>
+</div>
+<p>
+	To display elements from such an array, 
+	you already need to write three square 
+	brackets pairs:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log(arr[0][0][0]); // shows 'a'
+console.log(arr[2][1][0]); // shows 'k'</code>
+</div>
+<div class="task">
+	<p>
+		Given the following array:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [
+	[
+		[1, 2],
+		[3, 4],
+	],
+	[
+		[5, 6],
+		[7, 8],
+	],
+];</code>
+	</div>
+	<p>
+		Referring to each element of the array, 
+		find the sum of all its elements.
+	</p>
+</div>
+
+<h2>Arbitrary arrays</h2>
+<p>
+	Multidimensional arrays do not have to be 
+	the same as we discussed above. Look at the 
+	following array for example:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [['a', 'b', [1, 2, 3], [4, 5]], ['d', ['e', 'f']]];</code>
+</div>
+<p>
+	As you can see, this array is "unusual". It 
+	contains arrays (<code class="code inline">[1, 2, 3]</code> and 
+	⁅ c⁆[4, 5]</code>) next to regular elements 
+	(for example, <code class="string inline">'a'</code>, <code class="string inline">'b'</code>). Let's 
+	rewrite our array in a more understandable way:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [
+	[
+		'a', 'b', [1, 2, 3], [4, 5],
+	],
+	[
+		'd', ['e', 'f'],
+	],
+];</code>
+</div>
+<div class="task">
+	<p>
+		Given the following array:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [[1, 2, 3, [4, 5, [6, 7]]], [8, [9, 10]]];</code>
+	</div>
+	<p>
+		Manually - without a loop, find the 
+		sum of this array elements.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="38" data-hash="jsPmMuAr" data-quantity="363" data-num="138"><a href="../../../../../en/javascript/book/prime/loops/practicum.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/multi/arrays-iteration.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/multi/arrays.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/multi/arrays.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

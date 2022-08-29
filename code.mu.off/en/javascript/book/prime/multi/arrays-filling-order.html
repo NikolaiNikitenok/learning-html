@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Filling multidimensional arrays in order in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to fill multidimensional arrays with numbers in order in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Filling multidimensional arrays in order in JavaScript</h1>
+				<div class="content">
+<p>
+	In the previous examples, all the numbers in 
+	the subarrays were the same. Let's make the 
+	numbers go up now, like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">[[1, 2, 3], [4, 5, 6], [7, 8, 9]]</code>
+</div>
+<p>
+	To do this, you need to make a special counter 
+	variable that will increase its value by <code class="number inline">1</code> 
+	with each iteration of the inner loop. We will 
+	write the value of this counter to the array, 
+	like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [];
+let k = 1; // the counter
+
+for (let i = 0; i &lt; 3; i++) {
+	arr[i] = [];
+	
+	for (let j = 0; j &lt; 3; j++) {
+		arr[i].push(k); // write down the counter
+		k++; // increment the counter
+	}
+}
+
+console.log(arr);</code>
+</div>
+<p>
+	You can simplify the code by incrementing the 
+	counter after the assignment:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [];
+
+for (let i = 0, k = 1; i &lt; 3; i++) {
+	arr[i] = [];
+	
+	for (let j = 0; j &lt; 3; j++) {
+		arr[i].push(k++);
+	}
+}
+
+console.log(arr);</code>
+</div>
+<p>
+	Please note that in this case, it must be 
+	<code class="code inline">k++</code>, and not <code class="code inline">++k</code>, since the 
+	second option will first increment the 
+	counter, and only then write to the array 
+	(that is, as a result, the array will start 
+	from two, and not from one), like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">[[2, 3, 4], [5, 6, 7], [8, 9, 10]])</code>
+</div>
+<div class="task">
+	<p>
+		Form the following array using two nested loops:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">[[1, 2], [3, 4], [5, 6], [7, 8]]</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Form the following array using two nested loops:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">[[2, 4, 6], [8, 10, 12], [14, 16, 18], [20, 22, 24]]</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Form the following 3D array using three nested loops:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">[[[1, 2], [3, 4]], [[5, 6], [7, 8]]]</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		The author of the following code 
+		wanted to make such an array:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">[[1, 2, 3], [4, 5, 6], [7, 8, 9]]</code>
+	</div>
+	<p>
+		The following code was written for this:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [];
+
+for (let i = 0; i &lt; 3; i++) {
+	arr[i] = [];
+	
+	for (let j = 0; j &lt; 3; j++) {
+		arr[i][j] = k;
+		k++;
+	}
+}
+
+console.log(arr);</code>
+	</div>
+	<p>
+		The written code, however, does not 
+		do what it was intended. Find and 
+		correct the author's mistake.
+	</p>
+</div>
+<div class="task">
+	<p>
+		The author of the following code 
+		wanted to make such an array:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">[[1, 2, 3], [4, 5, 6], [7, 8, 9]]</code>
+	</div>
+	<p>
+		The following code was written for this:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [];
+let k = 1;
+
+for (let i = 0; i &lt; 3; i++) {
+	arr[i] = [];
+	
+	for (let j = 0; j &lt; 3; j++) {
+		arr[i][j] = k;
+	}
+}
+
+console.log(arr);</code>
+	</div>
+	<p>
+		The written code, however, does not 
+		do what it was intended. Find and 
+		correct the author's mistake.
+	</p>
+</div>
+<div class="task">
+	<p>
+		The author of the following code 
+		wanted to make such an array:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">[[1, 2, 3], [4, 5, 6], [7, 8, 9]]</code>
+	</div>
+	<p>
+		The following code was written for this:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [];
+let k = 1;
+
+for (let i = 0; i &lt; 3; i++) {
+	arr[i] = [];
+	
+	for (let j = 0; j &lt; 3; j++) {
+		arr[i][j] = k;
+		k--;
+	}
+}
+
+console.log(arr);</code>
+	</div>
+	<p>
+		The written code, however, does not 
+		do what it was intended. Find and 
+		correct the author's mistake.
+	</p>
+</div>
+<div class="task">
+	<p>
+		The author of the following code 
+		wanted to make such an array:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">[[1, 2, 3], [4, 5, 6], [7, 8, 9]]</code>
+	</div>
+	<p>
+		The following code was written for this:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [];
+let k;
+
+for (let i = 0; i &lt; 3; i++) {
+	arr[i] = [];
+	
+	for (let j = 0; j &lt; 3; j++) {
+		arr[i][j] = k;
+		k++;
+	}
+}
+
+console.log(arr);</code>
+	</div>
+	<p>
+		The written code, however, does not 
+		do what it was intended. Find and 
+		correct the author's mistake.
+	</p>
+</div>
+<div class="task">
+	<p>
+		The author of the following code 
+		wanted to make such an array:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">[[1, 2, 3], [4, 5, 6], [7, 8, 9]]</code>
+	</div>
+	<p>
+		The following code was written for this:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [];
+
+for (let i = 0, k = 1; i &lt; 3; i++) {
+	arr[i] = [];
+	
+	for (let j = 0; j &lt; 3; j++) {
+		arr[i][j] = k;
+	}
+}
+
+console.log(arr);</code>
+	</div>
+	<p>
+		The written code, however, does not 
+		do what it was intended. Find and 
+		correct the author's mistake.
+	</p>
+</div>
+<div class="task">
+	<p>
+		The author of the following code 
+		wanted to make such an array:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">[[1, 2, 3], [4, 5, 6], [7, 8, 9]]</code>
+	</div>
+	<p>
+		The following code was written for this:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [];
+
+for (let i = 0, k = 1; i &lt; 3; i++) {
+	arr[i] = [];
+	
+	for (let j = 0, k++; j &lt; 3; j++) {
+		arr[i][j] = k;
+	}
+}
+
+console.log(arr);</code>
+	</div>
+	<p>
+		The written code, however, does not 
+		do what it was intended. Find and 
+		correct the author's mistake.
+	</p>
+</div>
+<div class="task">
+	<p>
+		The author of the following code 
+		wanted to make such an array:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">[[1, 2, 3], [4, 5, 6], [7, 8, 9]]</code>
+	</div>
+	<p>
+		The following code was written for this:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [];
+
+for (let i = 0, k = 1; i &lt; 3; i++) {
+	arr[i] = [];
+	
+	for (let j = 0; j &lt; 3; j++; k++) {
+		arr[i][j] = k;
+	}
+}
+
+console.log(arr);</code>
+	</div>
+	<p>
+		The written code, however, does not 
+		do what it was intended. Find and 
+		correct the author's mistake.
+	</p>
+</div>
+<div class="task">
+	<p>
+		The author of the following code 
+		wanted to make such an array:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">[[1, 2, 3], [4, 5, 6], [7, 8, 9]]</code>
+	</div>
+	<p>
+		The following code was written for this:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [];
+
+for (let i = 0, k = 1; i &lt; 3; i++) {
+	arr[i] = [];
+	
+	for (let j = 0; j &lt; 3; j++) {
+		arr[i][j] = ++k;
+	}
+}
+
+console.log(arr);</code>
+	</div>
+	<p>
+		The written code, however, does not 
+		do what it was intended. Find and 
+		correct the author's mistake.
+	</p>
+</div>
+<div class="task">
+	<p>
+		The author of the following code 
+		wanted to make such an array:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">[[1, 2, 3], [4, 5, 6], [7, 8, 9]]</code>
+	</div>
+	<p>
+		The following code was written for this:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [];
+let k = 1;
+
+for (let i = 0; i &lt; 3; i++) {
+	arr[k] = [];
+	
+	for (let j = 0; j &lt; 3; j++) {
+		arr[i][j] = k;
+		k++;
+	}
+}
+
+console.log(arr);</code>
+	</div>
+	<p>
+		The written code, however, does not 
+		do what it was intended. Find and 
+		correct the author's mistake.
+	</p>
+</div>
+<div class="task">
+	<p>
+		The author of the following code 
+		wanted to make such an array:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">[[1, 2, 3], [4, 5, 6], [7, 8, 9]]</code>
+	</div>
+	<p>
+		The following code was written for this:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [];
+
+for (let i = 0, k = 1; i &lt; 3; i++) {
+	arr[i] = [];
+	
+	for (let j = 0; j &lt; 3; k++) {
+		arr[i][j] = k;
+	}
+}
+
+console.log(arr);</code>
+	</div>
+	<p>
+		The written code, however, does not 
+		do what it was intended. Find and 
+		correct the author's mistake.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="39" data-hash="jsPmMuAFO" data-quantity="363" data-num="142"><a href="../../../../../en/javascript/book/prime/multi/arrays-filling-ploblems.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/multi/objects.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/multi/arrays-filling-order.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/multi/arrays-filling-order.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

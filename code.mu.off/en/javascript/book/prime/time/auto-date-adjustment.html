@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Automatic date adjustment in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will study automatic date adjustment in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Automatic date adjustment in JavaScript</h1>
+				<div class="content">
+<p>
+	JavaScript has a very interesting and useful 
+	feature: if an incorrect point in time was 
+	specified when creating the <code class="code inline">Date</code> 
+	object, it will automatically be recalculated 
+	to the correct one. Let's look at an example.
+</p>
+<p>
+	As you know, there is no date of January 
+	<code class="number inline">35</code>th. The maximum possible day in 
+	January is <code class="number inline">31</code>. It turns out that 
+	our date January <code class="number inline">35</code> has <code class="number inline">4</code> 
+	extra days. JavaScript in this case will 
+	simply add those extra <code class="number inline">4</code> days to 
+	the next month:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let date = new Date(2018, 0, 35);
+console.log(date); // will be February 4th</code>
+</div>
+<p>
+	You can specify not only extra days, but 
+	also months. It should be remembered that 
+	months start from zero, which means that 
+	the last valid month is <code class="number inline">11</code>th. If 
+	you specify <code class="number inline">12</code>th month, you get 
+	January of the next year:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let date = new Date(2018, 12, 1); // indicates the 12th month
+console.log(date); // shows January 1, 2019</code>
+</div>
+<p>
+	The described adjustment also works in a 
+	smaller direction. As you know, the smallest 
+	day of the month is the day numbered <code class="number inline">1</code>. 
+	Therefore, if you specify a day with the number 
+	<code class="number inline">0</code>, then you get the last day of the 
+	previous month:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let date = new Date(2018, 1, 0); // sets zero day
+console.log(date); // will be January 31st</code>
+</div>
+<p>
+	You can also specify negative days and months. 
+	It must be remembered that the minimum day has 
+	the number <code class="number inline">1</code>, and the minimum month has 
+	the number <code class="number inline">0</code>. This means that minus the 
+	first day falls on <code class="number inline">2</code>d day since the end 
+	of the previous month, and minus the first 
+	month just falls on the last month of the 
+	previous year:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let date = new Date(2018, 1, -1); // sets -1 day
+console.log(date); // will be January 30th</code>
+</div>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let date = new Date(2018, -1, 1); // sets -1 month
+console.log(date); // shows December 1, 2017</code>
+</div>
+<p>
+	All of the above works similarly with 
+	hours, minutes and seconds:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let date = new Date(2018, 0, 1, 24, 0, 0); // indicates the 24th hour
+console.log(date); // will be January 2nd, 0 hours</code>
+</div>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let date = new Date(2018, 0, 1, 25, 0, 0); // indicates the 25th hour
+console.log(date); // will be January 2nd, 1 hour</code>
+</div>
+<div class="task">
+	<p>
+		Determine what date JavaScript will 
+		convert the next point in time to:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let date = new Date(2018, 1, 35);
+console.log(date); // what will be the date?</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what date JavaScript will 
+		convert the next point in time to:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let date = new Date(2018, 15, 1);
+console.log(date); // what will be the date?</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what date JavaScript will 
+		convert the next point in time to:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let date = new Date(2018, 3, 31);
+console.log(date); // what will be the date?</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what date JavaScript will 
+		convert the next point in time to:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let date = new Date(2018, 1, 31);
+console.log(date); // what will be the date?</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what date JavaScript will 
+		convert the next point in time to:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let date = new Date(2018, 12, 33);
+console.log(date); // what will be the date?</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what date JavaScript will 
+		convert the next point in time to:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let date = new Date(2018, 33, 33);
+console.log(date); // what will be the date?</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what date JavaScript will 
+		convert the next point in time to:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let date = new Date(2018, 5, 0);
+console.log(date); // what will be the date?</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what date JavaScript will 
+		convert the next point in time to:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let date = new Date(2018, 0, 0);
+console.log(date); // what will be the date?</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what date JavaScript will 
+		convert the next point in time to:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let date = new Date(2018, -12, -33);
+console.log(date); // what will be the date?</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what date JavaScript will 
+		convert the next point in time to:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let date = new Date(2018, 0, 1, 23, 0, 60);
+console.log(date); // what will be the date?</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what date JavaScript will 
+		convert the next point in time to:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let date = new Date(2018, 0, 1, 23, 60, 0);
+console.log(date); // what will be the date?</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what date JavaScript will 
+		convert the next point in time to:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let date = new Date(2018, 0, 1, 100, 100, 100);
+console.log(date); // what will be the date?</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="63" data-hash="jsPmTmADA" data-quantity="363" data-num="231"><a href="../../../../../en/javascript/book/prime/time/dates-objects-difference.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/time/month-last-day.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/time/auto-date-adjustment.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/time/auto-date-adjustment.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

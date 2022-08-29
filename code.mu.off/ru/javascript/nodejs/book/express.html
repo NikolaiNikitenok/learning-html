@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Учебник Express для новичков по-русски | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../js/location.js?v=3"></script>
+		<script src="../../../../js/locale.js?v=5"></script>
+		<script src="../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="Простой учебник Express для новичков с задачником и примерами решения задач.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Учебник Express 5+</h1>
+				<div class="menu" data-module="menu" data-mode="hash" data-book="ndEx">
+<div data-section="Bs">
+	<a data-lesson="Inr" href="../../../../ru/javascript/nodejs/book/express/basis/intro.html">
+		Введение в Express
+	</a>
+	<a data-lesson="Rq" href="../../../../ru/javascript/nodejs/book/express/basis/request.html">
+		Объект запроса
+		<span class="__label__ __acceptable__">задачи</span>
+	</a>
+	<a data-lesson="Er" href="../../../../ru/javascript/nodejs/book/express/basis/error-404.html">
+		Выдача 404 ошибки
+	</a>
+	<a data-lesson="Rs" href="../../../../ru/javascript/nodejs/book/express/basis/response.html">
+		Объект ответа
+	</a>
+	<a data-lesson="Fl" href="../../../../ru/javascript/nodejs/book/express/basis/file.html">
+		Отправка файла в качестве ответа
+	</a>
+	<a data-lesson="St" href="../../../../ru/javascript/nodejs/book/express/basis/static.html">
+		Статические файлы
+	</a>
+	<a data-lesson="HF" href="../../../../ru/javascript/nodejs/book/express/basis/html-forming.html">
+		Формирование HTML по запросу
+	</a>
+</div>
+
+<h2>Роутинг</h2>
+<div data-section="Rt">
+	<a data-lesson="Pr" href="../../../../ru/javascript/nodejs/book/express/routing/params.html">
+		Параметры маршрутов
+	</a>
+	<a data-lesson="PR" href="../../../../ru/javascript/nodejs/book/express/routing/params-regular.html">
+		Регулярные выражения в маршрутах
+	</a>
+	<a data-lesson="Prt" href="../../../../ru/javascript/nodejs/book/express/routing/priority.html">
+		Приоритет маршрутов
+	</a>
+	<a data-lesson="OP" href="../../../../ru/javascript/nodejs/book/express/routing/optional-params.html">
+		Необязательные параметры
+	</a>
+	<a data-lesson="PE" href="../../../../ru/javascript/nodejs/book/express/routing/params-and-404-error.html">
+		Параметры маршрутов и 404 ошибка
+	</a>
+	<a data-lesson="Ar" href="../../../../ru/javascript/nodejs/book/express/routing/arrays.html">
+		Роутинг и массивы
+	</a>
+	<a data-lesson="Fl" href="../../../../ru/javascript/nodejs/book/express/routing/files.html">
+		Роутинг и файлы
+	</a>
+	<a data-lesson="Gr" href="../../../../ru/javascript/nodejs/book/express/routing/groups.html">
+		Группы маршрутов
+	</a>
+	
+</div>
+
+<h2>Шаблонизатор Handlebars</h2>
+<div data-section="Hb">
+	<a data-lesson="Inr" href="../../../../ru/javascript/nodejs/book/express/handlebars/intro.html">
+		Введение в Handlebars
+	</a>
+	<a data-lesson="Lt" href="../../../../ru/javascript/nodejs/book/express/handlebars/layout.html">
+		Общий макет сайта
+	</a>
+	<a data-lesson="Dt" href="../../../../ru/javascript/nodejs/book/express/handlebars/data.html">
+		Передача данных в представление
+	</a>
+	<a data-lesson="Tt" href="../../../../ru/javascript/nodejs/book/express/handlebars/title.html">
+		Передача тайтла в макет сайта
+	</a>
+	<a data-lesson="PW" href="../../../../ru/javascript/nodejs/book/express/handlebars/partials-widgets.html">
+		Частичные шаблоны
+	</a>
+	
+	<a data-lesson="OO" href="../../../../ru/javascript/nodejs/book/express/handlebars/objects-output.html">
+		Вывод объектов
+	</a>
+	<a data-lesson="AO" href="../../../../ru/javascript/nodejs/book/express/handlebars/arrays-output.html">
+		Вывод массивов
+	</a>
+	
+	<a data-lesson="Wth" href="../../../../ru/javascript/nodejs/book/express/handlebars/with.html">
+		Команда with
+	</a>
+	<a data-lesson="Ctx" href="../../../../ru/javascript/nodejs/book/express/handlebars/context.html">
+		Контекст
+	</a>
+	<a data-lesson="Lp" href="../../../../ru/javascript/nodejs/book/express/handlebars/loops.html">
+		Циклы
+	</a>
+	<a data-lesson="Cn" href="../../../../ru/javascript/nodejs/book/express/handlebars/conditions.html">
+		Условия
+		<span class="__label__ __acceptable__">задачи</span>
+	</a>
+	
+	<a data-lesson="LCh" href="../../../../ru/javascript/nodejs/book/express/handlebars/layout-changing.html">
+		Смена макета
+	</a>
+</div>
+
+<h2>Хелперы</h2>
+<div data-section="Hp">
+	<a data-lesson="Inr" href="../../../../ru/javascript/nodejs/book/express/handlebars/helpers/intro.html">
+		Введение в хелперы
+	</a>
+	<a data-lesson="Pr" href="../../../../ru/javascript/nodejs/book/express/handlebars/helpers/params.html">
+		Передача параметров в хелперы
+	</a>
+	<a data-lesson="PV" href="../../../../ru/javascript/nodejs/book/express/handlebars/helpers/params-variables.html">
+		Переменные в параметры хелперов
+	</a>
+	<a data-lesson="Ctx" href="../../../../ru/javascript/nodejs/book/express/handlebars/helpers/context.html">
+		Контекст хелперов
+	</a>
+	<a data-lesson="Cm" href="../../../../ru/javascript/nodejs/book/express/handlebars/helpers/combination.html">
+		Комбинации хелперов
+		<span class="__label__ __acceptable__">задача</span>
+	</a>
+	<a data-lesson="OP" href="../../../../ru/javascript/nodejs/book/express/handlebars/helpers/objects-passing.html">
+		Передача объектов в хелперы
+	</a>
+	<a data-lesson="AOP" href="../../../../ru/javascript/nodejs/book/express/handlebars/helpers/array-objects-passing.html">
+		Массив объектов и хелперы
+		<span class="__label__ __acceptable__">задачу получше</span>
+	</a>
+	<a data-lesson="HG" href="../../../../ru/javascript/nodejs/book/express/handlebars/helpers/html-generation.html">
+		Генерация HTML кода
+	</a>
+	<a data-lesson="Lc" href="../../../../ru/javascript/nodejs/book/express/handlebars/helpers/local.html">
+		Локальные хелперы
+	</a>
+	
+</div>
+
+<h2>Формы</h2>
+<div data-section="Fr">
+	<a data-lesson="GS" href="../../../../ru/javascript/nodejs/book/express/forms/get-submitting.html">
+		Отправка формы методом GET
+		<span class="__label__">ссылки на теорию форм: джс и верстка</span>
+	</a>
+	<a data-lesson="GCP" href="../../../../ru/javascript/nodejs/book/express/forms/get-current-page.html">
+		Отправка формы методом GET на текущую страницу
+	</a>
+	<a data-lesson="GVR" href="../../../../ru/javascript/nodejs/book/express/forms/get-values-remaining.html">
+		Сохранение значений формы после отправки
+	</a>
+	<a data-lesson="SRS" href="../../../../ru/javascript/nodejs/book/express/forms/separating-receiving-sending.html">
+		Разделяем получение и отправку
+	</a>
+	<a data-lesson="HAS" href="../../../../ru/javascript/nodejs/book/express/forms/hiding-after-submit.html">
+		Прячем форму после отправки
+	</a>
+	<a data-lesson="PS" href="../../../../ru/javascript/nodejs/book/express/forms/post-submitting.html">
+		Отправка формы методом POST
+	</a>
+	<a data-lesson="PCP" href="../../../../ru/javascript/nodejs/book/express/forms/post-current-page.html">
+		Отправка формы методом POST на текущую страницу
+	</a>
+	<a data-lesson="PVR" href="../../../../ru/javascript/nodejs/book/express/forms/post-values-remaining.html">
+		Сохранения значения формы после отправки методом POST
+	</a>
+	<a data-lesson="Tx" href="../../../../ru/javascript/nodejs/book/express/forms/textarea.html">
+		Элемент textarea
+	</a>
+	<a data-lesson="Chc" href="../../../../ru/javascript/nodejs/book/express/forms/checkbox.html">
+		Элемент checkbox
+		<span class="__label__ __acceptable__">сохран знач</span>
+	</a>
+	<a data-lesson="Rd" href="../../../../ru/javascript/nodejs/book/express/forms/radio.html">
+		Элемент radio
+		<span class="__label__ __acceptable__">сохран знач</span>
+	</a>
+	<a data-lesson="Sl" href="../../../../ru/javascript/nodejs/book/express/forms/select.html">
+		Элемент select
+		<span class="__label__ __acceptable__">сохран знач</span>
+	</a>
+	<a data-lesson="Prm" href="../../../../ru/javascript/nodejs/book/express/forms/practicum.html">
+		Практика на формы
+	</a>
+</div>
+
+<h2>Cookie</h2>
+<div data-section="Ck">
+	<a data-lesson="Inr" href="../../../../ru/javascript/nodejs/book/express/cookie/intro.html">
+		Работа с cookie
+	</a>
+	<a data-lesson="Opr" href="../../../../ru/javascript/nodejs/book/express/cookie/operations.html">
+		Операции с cookie
+	</a>
+	<a data-lesson="Opt" href="../../../../ru/javascript/nodejs/book/express/cookie/options.html">
+		Опции при установке cookie
+	</a>
+	<a data-lesson="Prm" href="../../../../ru/javascript/nodejs/book/express/cookie/practicum.html">
+		Практика на куки
+	</a>
+</div>
+
+<h2>Сессии</h2>
+<div data-section="Ss">
+	<a data-lesson="Inr" href="../../../../ru/javascript/nodejs/book/express/session/intro.html">
+		Работа с сессиями
+	</a> 
+	<a data-lesson="Op" href="../../../../ru/javascript/nodejs/book/express/session/operations.html">
+		Операции над сессиями
+	</a>
+	
+	<a data-lesson="Prm" href="../../../../ru/javascript/nodejs/book/express/session/practicum.html">
+		Практика на сессии
+	</a>
+	
+</div>
+</div>			</main>
+			<div class="bottom">
+	</div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../js/metrika.js?v=1"></script>	</body>
+</html>

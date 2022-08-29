@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Класс как набор методов в ООП на PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../js/location.js?v=3"></script>
+		<script src="../../../../js/locale.js?v=5"></script>
+		<script src="../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами разберем использование класса как набора методов в ООП на PHP.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Класс как набор методов в ООП на PHP</h1>
+				<div class="content">
+<p>
+	Часто классы используются просто как набор
+	некоторых методов, сгруппированных вместе.
+	В этом случае нам не нужно создавать много
+	объектов этого класса, а достаточно всего одного.
+</p>
+<p>
+	Для примера давайте сделаем класс <code class="code inline">ArraySumHelper</code>,
+	который предоставит нам набор методов для
+	работы с массивами. Каждый метод нашего класса
+	будет принимать массив, что-то с ним делать
+	и возвращать результат. Пусть у нас будет
+	следующий набор методов:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class ArraySumHelper
+	{
+		// Сумма элементов массива:
+		public function getSum1($arr)
+		{
+			
+		}
+		
+		// Сумма квадратов элементов массива:
+		public function getSum2($arr)
+		{
+			
+		}
+		
+		// Сумма кубов элементов массива:
+		public function getSum3($arr)
+		{
+			
+		}
+		
+		// Сумма четвертых степеней элементов массива:
+		public function getSum4($arr)
+		{
+			
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Давайте посмотрим, как мы будем пользоваться
+	нашим классом:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arraySumHelper = new ArraySumHelper;
+	
+	$arr = [1, 2, 3];
+	echo $arraySumHelper-&gt;getSum1($arr);
+	echo $arraySumHelper-&gt;getSum2($arr);
+	echo $arraySumHelper-&gt;getSum3($arr);
+	echo $arraySumHelper-&gt;getSum4($arr);
+?&gt;</code>
+</div>
+<p>
+	Вот еще пример - найдем сумму квадратов элементов
+	массива и сумму кубов и сложим результат вместе:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arraySumHelper = new ArraySumHelper;
+	
+	$arr = [1, 2, 3];
+	echo $arraySumHelper-&gt;getSum2($arr) + $arraySumHelper-&gt;getSum3($arr);
+?&gt;</code>
+</div>
+<p>
+	Фактически мы получаем набор функций, просто
+	сгруппированных в одном классе. Однако, в
+	отличие от обычного набора функций, мы можем
+	пользоваться преимуществами ООП - например,
+	делать вспомогательные методы приватными,
+	чтобы они не были доступны извне класса.
+</p>
+<p>
+	Давайте приступим к написанию кода нашего класса.
+</p>
+<p>
+	Если обдумать реализацию методов, то становится
+	очевидно, что они будут фактически одинаковыми,
+	отличие будет только в степени, в которую
+	будут возводится элементы нашего массива.
+	Вот код, иллюстрирующий это:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class ArraySumHelper
+	{
+		public function getSum1($arr)
+		{
+			$sum = 0;
+			
+			foreach ($arr as $elem) {
+				$sum += $elem; // первая степень элемента - это сам элемент
+			}
+			
+			return $sum;
+		}
+		
+		public function getSum2($arr)
+		{
+			$sum = 0;
+			
+			foreach ($arr as $elem) {
+				$sum += pow($elem, 2); // возведем во вторую степень
+			}
+			
+			return $sum;
+		}
+		
+		public function getSum3($arr)
+		{
+			$sum = 0;
+			
+			foreach ($arr as $elem) {
+				$sum += pow($elem, 3); // возведем в третью степень
+			}
+			
+			return $sum;
+		}
+		
+		public function getSum4($arr)
+		{
+			$sum = 0;
+			
+			foreach ($arr as $elem) {
+				$sum += pow($elem, 4); // возведем в четвертую степень
+			}
+			
+			return $sum;
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Вместо того, чтобы реализовывать каждый метод
+	заново, давайте лучше сделаем вспомогательный
+	приватный метод <code class="code inline">getSum</code>, который параметрами
+	будет принимать массив и степень и возвращать
+	сумму степеней элементов массива:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	private function getSum($arr, $power) {
+		$sum = 0;
+			
+		foreach ($arr as $elem) {
+			$sum += pow($elem, $power);
+		}
+		
+		return $sum;
+	}
+?&gt;</code>
+</div>
+<p>
+	Давайте поменяем методы нашего класса с использованием
+	нового метода <code class="code inline">getSum</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class ArraySumHelper
+	{
+		public function getSum1($arr)
+		{
+			return $this-&gt;getSum($arr, 1);
+		}
+		
+		public function getSum2($arr)
+		{
+			return $this-&gt;getSum($arr, 2);
+		}
+		
+		public function getSum3($arr)
+		{
+			return $this-&gt;getSum($arr, 3);
+		}
+		
+		public function getSum4($arr)
+		{
+			return $this-&gt;getSum($arr, 4);
+		}
+		
+		private function getSum($arr, $power) {
+			$sum = 0;
+			
+			foreach ($arr as $elem) {
+				$sum += pow($elem, $power);
+			}
+			
+			return $sum;
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Наш класс <code class="code inline">ArraySumHelper</code> больше учебный,
+	чем реальный, но тут вам важно понять принцип
+	- то, что часто некоторый класс может использоваться
+	просто как набор методов и при этом создается
+	только один объект класса. В дальнейшем мы
+	будем разбирать более жизненные (но и более
+	сложные) примеры.
+</p>
+<div class="task">
+	<p>
+		Напишите реализацию методов класса <code class="code inline">ArrayAvgHelper</code>,
+		заготовки методов которого расположены ниже:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class ArraySumHelper
+	{
+		/*
+			Находит сумму первых
+			степеней элементов массива:
+		*/
+		public function getAvg1($arr)
+		{
+		
+		}
+		
+		/*
+			Находит сумму вторых степеней
+			элементов массива и извлекает
+			из нее квадратный корень:
+		*/
+		public function getAvg2($arr)
+		{
+		
+		}
+		
+		/*
+			Находит сумму третьих степеней
+			элементов массива и извлекает
+			из нее кубический корень:
+		*/
+		public function getAvg3($arr)
+		{
+		
+		}
+		
+		/*
+			Находит сумму четвертых степеней
+			элементов массива и извлекает
+			из нее корень четвертой степени:
+		*/
+		public function getAvg4($arr)
+		{
+		
+		}
+		
+		/*
+			Вспомогательный метод, который параметром
+			принимает массив и степень и возвращает
+			сумму степеней элементов массива:
+		*/
+		private function getSum($arr, $power)
+		{
+		
+		}
+		
+		/*
+			Вспомогательный метод, который параметром
+			принимает целое число и степень и возвращает
+			корень заданной степени из числа:
+		*/
+		private function calcSqrt($num, $power)
+		{
+		
+		}
+	}
+?&gt;</code>
+	</div>
+	<p class="comment">
+		Математическая подсказка: корень первой степени - это само число.
+		То есть <code class="code inline">calcSqrt(число, 1)</code> должно просто вернуть само число.
+	</p>
+	<p class="comment">
+		А корень любой степени можно найти с помощью
+		функции <code class="code inline">pow</code>, просто параметром передав ей дробь.
+		Например, <code class="code inline">pow(число, 1/3)</code> - так найдем корень третьей степени.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/oop/" data-persent="16" data-hash="ppOpBsCAMS" data-quantity="107" data-num="18"><a href="../../../../ru/php/book/oop/methods-chains.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../ru/php/book/oop/classes-inheritance.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../js/metrika.js?v=1"></script>	</body>
+</html>

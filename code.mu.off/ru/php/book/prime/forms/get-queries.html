@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>GET запросы в PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы научимся отправлять GET запросы в PHP.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>GET запросы в PHP</h1>
+				<div class="content">
+<p>
+	Вы уже знаете, что при отправке формы методом
+	<code class="sql inline">GET</code> в адресной строке браузера после
+	знака <code class="string inline">?</code> появляются данные формы. Эти
+	данные в PHP коде будут доступны в массиве
+	<code class="code inline">$_GET</code>.
+</p>
+<p>
+	На самом деле наличие формы на страницы является
+	не обязательным - мы можем просто руками
+	написать в адресной строке знак вопроса,
+	после него перечислить параметры с их значениями
+	и нажать энтер.
+</p>
+<p>
+	В этом случае введенные нами данные также
+	будут доступны в массиве <code class="code inline">$_GET</code>. То
+	есть получится имитация отправки формы. Такая
+	имитация называется <dfn>отправить <code class="sql inline">GET</code>
+	запрос</dfn>. Такие слова означают, что мы
+	должны руками вбить в адресную строку вопросик
+	и параметры запроса.
+</p>
+<p>
+	Параметры запроса перечисляются в следующем
+	формате: имя, затем знак равно, затем значение
+	параметра. Если параметров несколько, то
+	они разделяются знаком амперсанд <code class="code inline">&</code>.
+</p>
+<p>
+	Давайте попробуем на примерах. Пусть у вас
+	есть некоторый PHP файл. Обратитесь к нему
+	в браузере, как вы обычно это делаете. А
+	затем добавьте в конец адресной строки <code class="path inline">?par1=1</code>
+	и нажмите энтер.
+</p>
+<p>
+	В результате наш параметр будет содержаться
+	в <code class="code inline">$_GET['par1']</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	echo $_GET['par1']; // выведет '1'
+?&gt;</code>
+</div>
+<p>
+	Давайте теперь отправим не один параметр,
+	а два. Для этого добавьте в конец адресной
+	строки это: <code class="path inline">?par1=1&par2=2</code> и нажмите
+	энтер. Вот, что получится в результате:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	var_dump($_GET); // ['par1' =&gt; '1', 'par2' =&gt; '2']
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Отправьте с помощью <code class="sql inline">GET</code>-запроса число.
+		Выведите его на экран.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Отправьте с помощью <code class="sql inline">GET</code>-запроса число.
+		Выведите его на экран квадрат этого числа.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Отправьте с помощью <code class="sql inline">GET</code>-запроса два
+		числа. Выведите его на экран сумму этих чисел.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Пусть с помощью <code class="sql inline">GET</code>-запроса отправляется
+		число. Сделайте так, чтобы если передано
+		число 1 - на экран вывелось слово <code class="string inline">'hello'</code>,
+		а если 2 - то слово <code class="string inline">'bye'</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$arr = ['a', 'b', 'c', 'd', 'e'];
+?&gt;</code>
+	</div>
+	<p>
+		Пусть с помощью <code class="sql inline">GET</code>-запроса можно
+		передать число. Сделайте так, чтобы на экран
+		вывелся элемент массива с переданным в запросе
+		номером.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/prime/" data-persent="64" data-hash="ppPmFmGQ" data-quantity="223" data-num="143"><a href="../../../../../ru/php/book/prime/forms/select.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/php/book/prime/forms/get-queries-links.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

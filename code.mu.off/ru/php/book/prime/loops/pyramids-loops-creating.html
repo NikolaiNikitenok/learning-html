@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Вывод пирамидок на PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами научимся выводить пирамидки на PHP.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Вывод пирамидок на PHP</h1>
+				<div class="content">
+<p>
+	Давайте теперь выведем на экран следующую
+	пирамидку:
+</p>
+<div class="monoblock">
+	x<br>
+	xx<br>
+	xxx<br>
+	xxxx<br>
+	xxxxx
+</div>
+<p>
+	Приступим к решению задачи.
+</p>
+<p>
+	Для начала давайте вспомним код из предыдущих
+	уроков, выводящий строку <code class="string inline">'xxxxxxxxxx'</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = '';
+	
+	for ($i = 0; $i &lt; 10; $i++) {
+		$str .= 'x';
+	}
+	
+	echo $str; // выведет 'xxxxxxxxxx'
+?&gt;</code>
+</div>
+<p>
+	Для решения поставленной задачи на пирамидку
+	просто модифицируем приведенный код: при
+	каждом проходе цикла будем выводить на экран
+	содержимое переменной <code class="code inline">$str</code> и тег <code class="code inline">&lt;br&gt;</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = '';
+	
+	for ($i = 0; $i &lt; 5; $i++) {
+		$str .= 'x';
+		echo $str . '&lt;br&gt;';
+	}
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Выведите на экран следующую пирамидку:
+	</p>
+	<div class="monoblock">
+		xx<br>
+		xxxx<br>
+		xxxxxx<br>
+		xxxxxxxx<br>
+		xxxxxxxxxx
+	</div>
+</div>
+
+<h2>Пирамидка с цифрами</h2>
+<p>
+	Давайте теперь выведем на экран следующую
+	пирамидку:
+</p>
+<div class="monoblock">
+	111<br>
+	222<br>
+	333<br>
+	444<br>
+	555<br>
+	666<br>
+	777<br>
+	888<br>
+	<code class="number inline">999</code>
+</div>
+<p>
+	Похожую задачу мы уже решали, когда выводили
+	строку <code class="string inline">'111222333444555666777888999'</code>.
+	Напомню этот код:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	for ($i = 1; $i &lt;= 9; $i++) {
+		for ($j = 1; $j &lt;= 3; $j++) {
+			echo $i; // выводит '111', потом '222', потом '333' и так далее
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	По сути нам нужна такая же строка, но с <code class="code inline">&lt;br&gt;</code>
+	в нужных местах. Добавим их:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	for ($i = 1; $i &lt;= 9; $i++) {
+		for ($j = 1; $j &lt;= 3; $j++) {
+			echo $i;
+		}
+		
+		echo '&lt;br&gt;'; // выводим &lt;br&gt;, чтобы было в столбик
+	}
+?&gt;</code>
+</div>
+
+<h2>Пирамидка с цифрами</h2>
+<p>
+	Выведем теперь следующую пирамидку:
+</p>
+<div class="monoblock">
+	1<br>
+	22<br>
+	333<br>
+	4444<br>
+	55555<br>
+	666666<br>
+	7777777<br>
+	88888888<br>
+	<code class="number inline">999999999</code>
+</div>
+<p>
+	Задача аналогична предыдущей, только внутренний
+	цикл должен крутиться не <code class="number inline">3</code> раза, а
+	в соответствии с числом: если у нас единица
+	- то повторяем цикл <code class="number inline">1</code> раз, если двойка
+	- два раза, если тройка - три раза.
+</p>
+<p>
+	Как этого достичь: нужно в условии внутреннего
+	цикла написать следующее: <code class="code inline">$j <= $i</code>.
+	В этом случае если $i равен <code class="number inline">1</code>, то
+	это все равно, что в условии написать <code class="code inline">$j
+	<= 1</code>, а если $i равен 2 - то <code class="code inline">$j <=
+	2</code> и так далее:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	for ($i = 1; $i &lt;= 9; $i++) {
+		for ($j = 1; $j &lt;= $i; $j++) {
+			echo $i;
+		}
+		
+		echo '&lt;br&gt;';
+	}
+?&gt;</code>
+</div>
+<p>
+	Я думаю, вы уже обратили внимание, что в
+	этой пирамидке мы не используем накопление
+	в строку, которое мы разбирали ранее. Можно
+	и с накоплением, но это получится чуть сложнее:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	for ($i = 1; $i &lt;= 9; $i++) {
+		$str = ''; // каждый раз зачищаем строку
+		
+		for ($j = 1; $j &lt;= $i; $j++) {
+			$str .= $i;
+		}
+		
+		echo $str . '&lt;br&gt;';
+	}
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Выведите на экран следующую пирамидку:
+	</p>
+	<div class="monoblock">
+		1<br>
+		333<br>
+		55555<br>
+		7777777<br>
+		<code class="number inline">999999999</code>
+	</div>
+</div>
+
+<h2>Перевернутые пирамидки</h2>
+<p>
+	Научимся теперь делать перевернутые пирамидки.
+	Сделаем, к примеру, вот такую:
+</p>
+<div class="monoblock">
+	xxxxx<br>
+	xxxx<br>
+	xxx<br>
+	xx<br>
+	x
+</div>
+<p>
+	Для решения задачи необходимо запустить два
+	вложенных цикла, вот так:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	for ($i = 5; $i &gt;= 1; $i--) {
+		$str = '';
+		
+		for ($j = 0; $j &lt; $i; $j++) {
+			$str .= 'x';
+		}
+		
+		echo $str . '&lt;br&gt;';
+	}
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Выведите на экран следующую пирамидку:
+	</p>
+	<div class="monoblock">
+		xxxxxxxxxx<br>
+		xxxxxxxx<br>
+		xxxxxx<br>
+		xxxx<br>
+		xx
+	</div>
+</div>
+<div class="task">
+	<p>
+		Выведите на экран следующую пирамидку:
+	</p>
+	<div class="monoblock">
+		999999999<br>
+		88888888<br>
+		7777777<br>
+		666666<br>
+		55555<br>
+		4444<br>
+		333<br>
+		22<br>
+		<code class="number inline">1</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/prime/" data-persent="29" data-hash="ppPmLpPLC" data-quantity="223" data-num="66"><a href="../../../../../ru/php/book/prime/loops/fibonacci-numbers.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/php/book/prime/loops/string-accumulation-array-filling.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

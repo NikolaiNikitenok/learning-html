@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Optionality of break in switch-case construct in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will consider the optional break in the switch-case construct in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Optionality of break in switch-case construct in JavaScript</h1>
+				<div class="content">
+<p>
+	The <code class="code inline">break</code> command in the <code class="code inline">switch-case</code> 
+	construct is optional. In the absence of <code class="code inline">break</code>, 
+	after the planned <code class="code inline">case</code> is executed, all 
+	<code class="code inline">case</code> below it will also be executed.
+</p>
+<p>
+	Let's look at an example:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 1; // let be here the number 1
+
+switch (num) {
+	case 1:
+		console.log(1); // it will work
+	case 2:
+		console.log(2); // and this too
+	case 3:
+		console.log(3); // and this too
+}</code>
+</div>
+<p>
+	Let's change the value of the variable:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 2; // let be here the number 2
+
+switch (num) {
+	case 1:
+		console.log(1);
+	case 2:
+		console.log(2); // it will work
+	case 3:
+		console.log(3); // and this too
+}</code>
+</div>
+<p>
+	Let's change the value of the variable:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 3; // let be here the number 3
+
+switch (num) {
+	case 1:
+		console.log(1);
+	case 2:
+		console.log(2);
+	case 3:
+		console.log(3); // it will work
+}</code>
+</div>
+<p>
+	Sometimes this feature is used when 
+	solving problems. See an example:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 1;
+let res;
+
+switch (num) {
+	case 1:
+	case 2:
+		res = 'a';
+	break;
+	case 3:
+		res = 'b';
+	break;
+}
+
+console.log(res);</code>
+</div>
+<p>
+	It's more obvious, however, to solve 
+	such a problem through <code class="code inline">if</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 1;
+let res;
+
+if (num == 1 || num == 2) {
+	res = 'a';
+}
+
+if (num == 3) {
+	res = 'b';
+}
+
+console.log(res);</code>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="26" data-hash="jsPmCdBNM" data-quantity="363" data-num="97"><a href="../../../../../en/javascript/book/prime/conditions/switch-case.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/conditions/ternary-operator.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/conditions/break-not-mandatory.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/conditions/break-not-mandatory.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

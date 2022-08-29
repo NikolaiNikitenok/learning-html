@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Getting dropdown list items in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to get an array of dropdown list items in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Getting dropdown list items in JavaScript</h1>
+				<div class="content">
+<p>
+	Let's say we have a dropdown list:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;select id="select"&gt;
+	&lt;option value="one"&gt;one&lt;/option&gt;
+	&lt;option value="two"&gt;two&lt;/option&gt;
+	&lt;option value="three"&gt;three&lt;/option&gt;
+&lt;/select&gt;</code>
+</div>
+<p>
+	Question: how do we get all the items in this 
+	list? The easiest way is to use the 
+	appropriate selector:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log(document.querySelectorAll('#select option'));</code>
+</div>
+
+<h2>Another way</h2>
+<p>
+	Suppose we have a variable that stores a 
+	reference to the select:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let select = document.querySelector('#select');</code>
+</div>
+<p>
+	In this case, the search for <code class="code inline">option</code> 
+	tags can be provided not in the entire document, 
+	but specifically in our select:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log(select.querySelectorAll('option'));</code>
+</div>
+
+<h2>Advanced method</h2>
+<p>
+	When working with selects, there is the following 
+	feature: the variable that stores the reference 
+	to the select is an array, the elements of which 
+	are the <code class="code inline">option</code> tags. This means that this 
+	variable can be looped over:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let select = document.querySelector('#select');
+
+for (let option of select) {
+	console.log(option);
+}</code>
+</div>
+<p>
+	Well, or just turn to the item with the desired number:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let select = document.querySelector('#select');
+console.log(select[0]);</code>
+</div>
+<div class="task">
+	<p>
+		Loop through all the items in the list and 
+		add the value of its <code class="code inline">value</code> attribute 
+		to the end of the text of each item.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="78" data-hash="jsPmFmDLIG" data-quantity="363" data-num="285"><a href="../../../../../../../en/javascript/book/prime/dom/form/select/selected-item-number.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../../en/javascript/book/prime/dom/form/select/dropdown-list-items-options.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../../en/javascript/book/prime/dom/form/select/dropdown-list-items-getting.html" class="active">en</a><a href="../../../../../../../ru/javascript/book/prime/dom/form/select/dropdown-list-items-getting.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

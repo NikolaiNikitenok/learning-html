@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Делегирование событий в JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы изучим специальный подход в JavaScript, который называется делегирование событий.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Делегирование событий в JavaScript</h1>
+				<div class="content">
+<p>
+	В предыдущем уроке была описана проблема,
+	возникающая при добавлении новых элементов,
+	и приведено ее решение. В данном уроке мы
+	рассмотрим более удачный способ обойти проблему
+	- <dfn>делегирование событий</dfn>. Давайте его
+	разберем.
+</p>
+<p>
+	Как вы уже знаете, кликая на <code class="code inline">li</code>, мы
+	одновременно кликаем и на <code class="code inline">ul</code>. Это
+	возможно благодаря всплытию событий. Мы можем
+	использовать это для решения нашей задачи:
+	навесим событие не на каждую <code class="code inline">li</code>, а
+	на их родителя <code class="code inline">ul</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">list.addEventListener('click', function() {
+	
+});</code>
+</div>
+<p>
+	Теперь в обработчике события <code class="code inline">this</code>
+	будет указывать на элемент, к которому привязан
+	обработчик, а <code class="code inline">event.target</code> - на элемент,
+	в котором случилось событие:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">list.addEventListener('click', function(event) {
+	console.log(this);         // наш список
+	console.log(event.target); // пункт списка
+});</code>
+</div>
+<p>
+	Сделаем так, чтобы <code class="code inline">li</code>, на которой
+	случился клик, в конец добавлялся восклицательный
+	знак:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">list.addEventListener('click', function(event) {
+	event.target.innerHTML = event.target.innerHTML + '!';
+});</code>
+</div>
+<div class="task">
+	<p>
+		Повторите приведенное решение. Убедитесь,
+		что новые <code class="code inline">li</code> также будут реагировать
+		на клик.
+	</p>
+</div>
+
+<h2>Универсальное делегирование событий</h2>
+<p>
+	Приведенный код рабочий, однако, не без недостатков.
+	Давайте разберем эти недостатки и напишем
+	более универсальное решение.
+</p>
+<p>
+	Недостаток нашего кода проявится в том случае,
+	когда внутри <code class="code inline">li</code> будут какие-то вложенные
+	теги. В нашем случае пусть это будут теги
+	<code class="code inline">i</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;ul&gt;
+	&lt;li&gt;item &lt;i&gt;italic&lt;/i&gt; item&lt;/li&gt;
+	&lt;li&gt;item &lt;i&gt;italic&lt;/i&gt; item&lt;/li&gt;
+	&lt;li&gt;item &lt;i&gt;italic&lt;/i&gt; item&lt;/li&gt;
+	&lt;li&gt;item &lt;i&gt;italic&lt;/i&gt; item&lt;/li&gt;
+	&lt;li&gt;item &lt;i&gt;italic&lt;/i&gt; item&lt;/li&gt;
+&lt;/ul&gt;</code>
+</div>
+<p>
+	В этом случае нажатие на тег <code class="code inline">i</code> приведет
+	к добавлению восклицательного знака в <i>конец
+	тега</i> <code class="code inline">i</code>, а не тега <code class="code inline">li</code>, как
+	мы хотели бы - ведь в <code class="code inline">event.target</code>
+	попадает именно тот тег, в котором случилось
+	событие.
+</p>
+<p>
+	Решить проблему можно с помощью метода <a href="../../../../../../ru/javascript/manual/dom/closest.html"><code class="code inline">closest</code></a>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">list.addEventListener('click', function(event) {
+	let li = event.target.closest('li');
+	
+	if (li) {
+		li.innerHTML = li.innerHTML + '!';
+	}
+});</code>
+</div>
+<div class="task">
+	<p>
+		Повторите приведенное решение.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/prime/" data-persent="82" data-hash="jsPmOEED" data-quantity="363" data-num="300"><a href="../../../../../../ru/javascript/book/prime/dom/object-Event/new-elements-handlers.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../ru/javascript/book/prime/context/intro.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/object-Event/events-delegation.html">en</a><a href="../../../../../../ru/javascript/book/prime/dom/object-Event/events-delegation.html" class="active">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

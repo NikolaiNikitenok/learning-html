@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>this object advantage in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this tutorial, we will look at the special advantage of this in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>this object advantage in JavaScript</h1>
+				<div class="content">
+<p>
+	From what has been said before, the special 
+	advantage of <code class="code inline">this</code> is not yet obvious. 
+	Indeed, inside the handler function, our 
+	element will be available anyway - after 
+	all, the variable <code class="code inline">elem</code> will be global 
+	for our function <code class="code inline">func</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+elem.addEventListener('click', func);
+
+function func() {
+	// elem variable with our element is available here 
+}</code>
+</div>
+<p>
+	And, it is easy to figure out that the content 
+	of <code class="code inline">this</code> and the content of the variable 
+	<code class="code inline">elem</code> in our case are equal:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+elem.addEventListener('click', func);
+
+function func() {
+	console.log(elem === this); // shows true
+}</code>
+</div>
+<p>
+	What is the special advantage of <code class="code inline">this</code>? 
+	It manifests itself when we have multiple 
+	elements, and the same function is attached 
+	to each.
+</p>
+<p>
+	Let's look at an example. Let's say we 
+	have <code class="number inline">3</code> buttons:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;input id="button1" type="submit" value="text1"&gt;
+&lt;input id="button2" type="submit" value="text2"&gt;
+&lt;input id="button3" type="submit" value="text3"&gt;</code>
+</div>
+<p>
+	Get references to them in variables:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let button1 = document.querySelector('#button1');
+let button2 = document.querySelector('#button2');
+let button3 = document.querySelector('#button3');</code>
+</div>
+<p>
+	Bind the same function to these buttons:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">button1.addEventListener('click', func);
+button2.addEventListener('click', func);
+button3.addEventListener('click', func);</code>
+</div>
+<p>
+	And inside the function we will 
+	display <code class="code inline">this.value</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	console.log(this.value);
+}</code>
+</div>
+<p>
+	It turns out that we have three buttons. 
+	Pressing each button will call the function 
+	<code class="code inline">func</code>. In this case, with each click, 
+	<code class="code inline">this</code> will contain a reference to the 
+	button in which the event occurred.
+</p>
+<p>
+	That is, each press will output to the console 
+	<code class="code inline">value</code> of the button that was pressed, 
+	but this will be done by the same function 
+	<code class="code inline">func</code>! That's the advantage of using 
+	<code class="code inline">this</code>.
+</p>
+<div class="task">
+	<p>
+		Given <code class="number inline">5</code> paragraphs with some texts. 
+		By clicking on any paragraph, write an 
+		exclamation mark at the end of its text.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given <code class="number inline">3</code> inputs, in which some numbers 
+		are written. On loss of focus in any of the 
+		inputs, square the number standing in it.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="70" data-hash="jsPmDmThsA" data-quantity="363" data-num="255"><a href="../../../../../../en/javascript/book/prime/dom/basis/this.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../en/javascript/book/prime/dom/basis/elements-group-getting.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/basis/this-advantage.html" class="active">en</a><a href="../../../../../../ru/javascript/book/prime/dom/basis/this-advantage.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

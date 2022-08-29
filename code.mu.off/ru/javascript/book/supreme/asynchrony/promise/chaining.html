@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Цепочки промисов в JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы научимся строить цепочки промисов в JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Цепочки промисов в JavaScript</h1>
+				<div class="content">
+<p>
+	Пусть у нас есть следующий промис:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let promise = new Promise(function(resolve, reject) {
+	setTimeout(function() {
+		resolve('string');
+	}, 3000);
+});</code>
+</div>
+<p>
+	По завершению промиса выведем его результат
+	в консоль:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">promise.then(
+	function(result) {
+		console.log(result); // выведет 'string'
+	}
+)</code>
+</div>
+<p>
+	Давайте теперь не будем сразу выводить результат,
+	а как-то изменим его и вернем через <code class="code inline">return</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">promise.then(
+	function(result) {
+		return result + '!';
+	}
+);</code>
+</div>
+<p>
+	В этом случае мы можем к результату нашего
+	then применить еще один then, создав тем
+	самым <dfn>цепочку</dfn> методов. При этом в
+	результат следующего метода будет попадать
+	то, что вернул через <code class="code inline">return</code> предыдущий:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">promise.then(
+	function(result) {
+		return result + '!';
+	}
+).then(
+	function(result) {
+		console.log(result); // выведет 'string!'
+	}
+);</code>
+</div>
+<p>
+	Таким образом можно построить цепочку какой-угодно
+	длины:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">promise.then(
+	function(result) {
+		return result + '1';
+	}
+).then(
+	function(result) {
+		return result + '2';
+	}
+).then(
+	function(result) {
+		return result + '3';
+	}
+).then(
+	function(result) {
+		console.log(result); // выведет 'string123'
+	}
+);</code>
+</div>
+
+<h2>Промисы внутри цепочки</h2>
+<p>
+	Функции цепочки могут также возвращать промисы.
+	В этом случае результат этого промиса попадет
+	в следующий <code class="code inline">then</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">promise.then(
+	function(result) {
+		return result + '1';
+	}
+).then(
+	function(result) {
+		return new Promise(function(resolve) {
+			resolve(result + '2'); // этот результат попадет в следующий then
+		});
+	}
+).then(
+	function(result) {
+		return result + '3';
+	}
+).then(
+	function(result) {
+		console.log(result); // выведет 'string123'
+	}
+);</code>
+</div>
+
+<h2>Исключительные ситуации</h2>
+<p>
+	Пусть по каким-то причинам наш промис завершится
+	с ошибкой:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let promise = new Promise(function(resolve, reject) {
+	setTimeout(function() {
+		reject('error');
+	}, 3000);
+});</code>
+</div>
+<p>
+	В этом случае выполнение кода сразу перейдет
+	к тому <code class="code inline">then</code>, в котором есть функция-обработчик
+	ошибки, либо в первому <code class="code inline">catch</code>, смотря
+	что встретится раньше.
+</p>
+<p>
+	Вот пример первой ситуации:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">promise.then(
+	function(result) {
+		return result + '1';
+	}
+).then(
+	function(result) {
+		return result + '2';
+	},
+	function(error) {
+		// выполнение сразу перейдет сюда
+	}
+).then(
+	function(result) {
+		console.log(result);
+	}
+);</code>
+</div>
+<p>
+	Вот пример второй ситуации:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">promise.then(
+	function(result) {
+		return result + '1';
+	}
+).then(
+	function(result) {
+		return result + '2';
+	}
+).catch(
+	function(error) {
+		// выполнение сразу перейдет сюда
+	}
+).then(
+	function(result) {
+		console.log(result);
+	}
+);</code>
+</div>
+<p>
+	Функция-обработчик имеет два варианта действий:
+	если она справилась с исключительной ситуацией,
+	то может вернуть результат через <code class="code inline">return</code>
+	и выполнение продолжится дальше по цепочке.
+	Если же она не справилась с ошибкой, то может
+	или ничего не возвращать, или выбросить исключение
+	через <code class="code inline">throw</code>. В этом случае выполнение
+	перейдет к следующему перехватчику ошибки
+	(в <code class="code inline">then</code> или <code class="code inline">catch</code> - что встретится
+	раньше).
+</p>
+<p>
+	Как правило, все ошибки цепочки перехватываются
+	в одном месте: в конце цепочки размещается
+	<code class="code inline">catch</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">promise.then(
+	function(result) {
+		return result + '1';
+	}
+).then(
+	function(result) {
+		return result + '2';
+	}
+).catch(
+	function(error) {
+		// попадем сюда в случае ошибки
+	}
+);</code>
+</div>
+<p>
+	При этом исключение может возникнуть в самом
+	промисе, либо выброшено через <code class="code inline">throw</code>
+	в любом звене цепочки:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">promise.then(
+	function(result) {
+		return result + '1';
+	}
+).then(
+	function(result) {
+		if (всеХорошо) {
+			return result + '2';
+		} else {
+			throw new Error('ошибка'); // переходим к ближайшему перехватчику
+		}
+	}
+)
+.then(
+	function(result) {
+		return result + '3';
+	}
+).catch(
+	function(error) {
+		// ближайший перехватчик
+	}
+);</code>
+</div>
+<p>
+	Учтите, что <code class="code inline">catch</code> нужен именно для
+	диагностики ошибки: она решаема или нет.
+	Если ошибка решаема, то <code class="code inline">catch</code> должен
+	передать ее решение следующему за собой <code class="code inline">then</code>.
+	А если не решаема (или данный <code class="code inline">catch</code>
+	просто не знает как ее решить), то мы должны
+	или ничего не вернуть или бросить исключение:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">promise.then(
+	function(result) {
+		return result + '1';
+	}
+).then(
+	function(result) {
+		return result + '2';
+	}
+).catch(
+	function(error) {
+		if (ошибкаРешаема) {
+			return 'данные'; // отправляем на следующий then
+		} else {
+			// ничего не возвращаем или бросаем исключение
+		}
+	}
+).then(
+	function(result) {
+		// тут решаем ошибку
+	}
+);</code>
+</div>
+
+<!--
+<h2>Практический пример</h2>
+<p>
+</p>
+<div class="task">
+	<p>
+	</p>
+</div>
+-->
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/supreme/" data-persent="84" data-hash="jsSpAsnPsChn" data-quantity="114" data-num="97"><a href="../../../../../../ru/javascript/book/supreme/asynchrony/promise/intro.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../ru/javascript/book/supreme/asynchrony/promise/arrays.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

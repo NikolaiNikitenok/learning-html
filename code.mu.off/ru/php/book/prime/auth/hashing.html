@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Хеширование пароля на PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В уроке рассказывается про хеширование паролей через функцию md5 при авторизации и регистрации на PHP.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Хеширование пароля на PHP</h1>
+				<div class="content">
+<p>
+	Хранить пароль в открытом виде - неправильно.
+	Хакер-злоумышленник может получить доступ
+	к вашей базе данных и украсть пароли.
+</p>
+<p>
+	Поэтому обычно логин хранится в открытом
+	виде, а пароль хешируется специальной функцией
+	<code class="code inline">md5</code>, которая параметром принимает
+	пароль, а возвращает его <dfn>хеш</dfn>, по которому
+	нельзя восстановить этот самый пароль.
+</p>
+<p>
+	Давайте, например, найдем хеш какой-нибудь строки:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;?php
+	echo md5('12345'); // выведет '827ccb0eea8a706c4c34a16891f84e7b'
+?&gt;</code>
+</div>
+<p>
+	Сейчас нам необходимо переделать нашу регистрацию
+	и нашу авторизацию. Для начала я бы советовал
+	очистить таблицу с юзерами, так как там сейчас
+	хранятся пароли в открытом виде, а должны
+	хранится их хеши. Затем при тестировании
+	регистрации таблица заполнится данными в
+	новом формате.
+</p>
+<p>
+	Давайте теперь поправим нашу регистрацию
+	так, чтобы при сохранении нового пользователя
+	в базу добавлялся не пароль, а его хеш.
+</p>
+<p>
+	Описанная правка будет представлять собой
+	что-то такое:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;?php
+	$login = $_POST['login'];
+	$password = md5($_POST['password']); // преобразуем пароль в его хеш
+	
+	$query = "INSERT INTO users SET login='$login', password='$password'";
+?&gt;</code>
+</div>
+<p>
+	Внесем аналогичные правки в авторизацию:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;?php
+	$login = $_POST['login'];
+	$password = md5($_POST['password']); // преобразуем пароль в его хеш
+		
+	$query = "SELECT * FROM users WHERE login='$login' AND password='$password'";
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Внесите изменения в регистрацию с учетом
+		хеширования, зарегистрируйте пару новых пользователей,
+		убедитесь, что в базу данных они добавились
+		с хешированными паролями.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Внесите изменения в авторизацию с учетом
+		хеширования, попробуйте авторизоваться под
+		зарегистрированными ранее пользователями.
+	</p>
+</div>
+
+<h2>Добавляем соль в регистрацию</h2>
+<p>
+	Итак, вы уже знаете, что хеширование через
+	<code class="code inline">md5</code> - необратимый процесс и хакер,
+	получивший доступ к хешу, не сможет получить
+	по этому хешу пароль.
+</p>
+<p>
+	На самом деле это утверждение не совсем верное
+	- в настоящее время злые хакеры составили
+	библиотеки хешей популярных и не очень паролей
+	и любой дурак может разгадать пароль, просто
+	загуглив его хеш.
+</p>
+<p>
+	Речь идет о достаточно простых, популярных
+	паролях.
+</p>
+<p>
+	Загуглите, например, хеш <i>827ccb0eea8a706c4c34a16891f84e7b</i>
+	и сразу в поиске гугла вы увидите, что это
+	пароль <code class="string inline">'12345'</code>.
+</p>
+<p>
+	Хеши достаточно сложных паролей таким образом
+	не разгадать (попробуйте).
+</p>
+<p>
+	Вы можете спросить, в чем тогда проблема
+	- давайте все мы будем регистрироваться со
+	сложными паролями. Есть, однако, проблема
+	- большинство пользователей не задумываются
+	о безопасности своих данных и могут вводить
+	достаточно простые пароли.
+</p>
+<p>
+	Мы можем при регистрации заставлять придумывать
+	более длинные пароли, ограничивая, к примеру,
+	минимальное количество символов <code class="number inline">6</code>-ю
+	или <code class="number inline">8</code>-ю, однако, все равно будут появляться
+	пароли вида <code class="string inline">'123456'</code> или <code class="string inline">'12345678'</code>.
+</p>
+<p>
+	Можно, конечно, придумать более умный алгоритм
+	проверки пароля на сложность, но есть другое
+	решение.
+</p>
+<p>
+	Суть этого решения такая: пароли надо <dfn>посолить</dfn>.
+	Соль - это специальная случайная строка,
+	которая будет добавляться к паролю при регистрации
+	и хеш уже будет вычисляться не от простого
+	пароля типа, а от строки соль+пароль, то
+	есть от соленого пароля.
+</p>
+<p>
+	То есть при регистрации вы будете делать
+	что-то типа такого:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;?php
+	$salt = '1sJg3hfdf'; // соль - сложная случайная строка
+	$password = md5($salt . $_POST['password']); // преобразуем пароль в соленый хеш
+?&gt;</code>
+</div>
+<p>
+	При этом соль будет разная для каждого пользователя,
+	ее нужно будет генерировать случайным образом
+	в момент регистрации.
+</p>
+<p>
+	Вот готовая функция, которая сделает это:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;?php
+	function generateSalt()
+	{
+		$salt = '';
+		$saltLength = 8; // длина соли
+		
+		for($i = 0; $i &lt; $saltLength; $i++) {
+			$salt .= chr(mt_rand(33, 126)); // символ из ASCII-table
+		}
+		
+		return $salt;
+	}
+?&gt;</code>
+</div>
+<p>
+	С помощью этой функции можно переписать наш
+	код вот так:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;?php
+	$salt = generateSalt(); // соль
+	$password = md5($salt . $_POST['password']); // соленый пароль
+?&gt;</code>
+</div>
+<p>
+	Еще раз повторю, что это были изменения при
+	регистрации - в БД сохраняем не просто хеш
+	пароля, а хеш соленого пароля.
+</p>
+<p>
+	Это еще не все: в таблице с юзерами кроме
+	поля <code class="string inline">login</code> и <code class="string inline">password</code> нужно
+	сделать еще и поле <code class="string inline">salt</code>, в котором
+	мы будем хранить соль каждого пользователя.
+</p>
+<div class="task">
+	<p>
+		Реализуйте описанную выше регистрацию с соленым
+		паролем.
+	</p>
+</div>
+
+<h2>Добавляем соль в авторизацию</h2>
+<p>
+	Теперь нам необходимо поменять авторизацию.
+	Здесь уже изменения будут более существенными.
+</p>
+<p>
+	Уже не получится проверить правильность пары
+	логин-пароль сразу же, одним запросом. Почему:
+	потому что, чтобы проверить пароль, надо
+	получить его соленый хеш, а соль хранится
+	в базе данных и уникальная для каждого логина.
+</p>
+<p>
+	Придется вначале получить запись только по
+	логину, прочитать соль, посолить введенный
+	пароль и сравнить с соленым паролем из базы
+	и только, если они совпадают, - авторизовывать
+	пользователя.
+</p>
+<p>
+	Учтите, что может такое быть, что логин вбит
+	неправильно, в этом случае проверку пароля
+	можно не осуществлять, а сразу вывести, что
+	авторизация не возможна - данные не верны:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;?php
+	$login = $_POST['login'];
+	
+	$query = "SELECT * FROM users WHERE login='$login'";
+	$result = mysqli_query($link, $query);
+	$user = mysqli_fetch_assoc($result);
+		
+	if (!empty($user)) {
+		// пользователь с таким логином есть, теперь надо проверять пароль...
+	} else {
+		// пользователя с таким логином нет, выведем сообщение
+	}
+?&gt;</code>
+</div>
+<p>
+	Давайте добавим проверку пароля:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;?php
+	$login = $_POST['login'];
+	
+	$query = "SELECT * FROM users WHERE login='$login'";
+	$result = mysqli_query($link, $query);
+	$user = mysqli_fetch_assoc($result);
+		
+	if (!empty($user)) {
+		$salt = $user['salt']; // соль из БД
+		$hash = $user['password']; // соленый пароль из БД
+		
+		$password = md5($salt . $_POST['password']); // соленый пароль от юзера
+		
+		// Сравниваем соленые хеши
+		if ($password == $hash) {
+			// все ок, авторизуем...
+		} else {
+			// пароль не подошел, выведем сообщение
+		}
+	} else {
+		// пользователя с таким логином нет, выведем сообщение
+	}
+?&gt;</code>
+</div>
+<div class="notice">
+	<p>
+		В целях безопасности пользователю обычно
+		не сообщают, что именно не подошло - логин
+		или пароль, чтобы усложнить подбор пар логин-пароль
+		хакерами. Просто выводят сообщение о том,
+		что пара логин-пароль неверна или что-то
+		в таком роде.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Реализуйте описанную выше авторизацию с соленым
+		паролем. Попробуйте зарегистрируйтесь, авторизуйтесь,
+		убедитесь, что все работает.
+	</p>
+</div>
+
+<h2>Используем функцию password_hash</h2>
+<p>
+	На самом деле функция <code class="code inline">md5</code> и соление
+	пароля с ее помощью считается устаревшим.
+	Мы изучали ее, чтобы вы поняли дальнейший
+	материал, а также потому, что вы можете столкнуться
+	с этим, работая с чужими проектами.
+</p>
+<p>
+	Существует более совершенный способ получить
+	соленый пароль. Для этого используется функция
+	<code class="code inline">password_hash</code>. Первым параметром она
+	принимает строку, а вторым - алгоритм шифрования
+	(о нем позднее), и возвращает хеш этой строки
+	вместе с солью.
+</p>
+<p>
+	Попробуйте несколько раз запустите этот код:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;?php
+	echo password_hash('12345', PASSWORD_DEFAULT);
+?&gt;</code>
+</div>
+<p>
+	Вы каждый раз будете получать разный результат
+	и в этом результате первая часть строки будет
+	являться солью, а вторая часть - соленым паролем.
+</p>
+<p>
+	Пусть у нас есть хеш, полученный из функции
+	<code class="code inline">password_hash</code> и какой-то пароль. Чтобы
+	проверить, это хеш этого пароля или нет,
+	следует использовать функцию <code class="code inline">password_verify</code>
+	- первым параметром она принимает пароль,
+	а вторым - хеш, и возвращает <code class="code inline">true</code>
+	или <code class="code inline">false</code>.
+</p>
+<p>
+	Давайте посмотрим на примере:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;?php
+	$password = '12345'; // пароль
+	$hash = '$2y$10$xoYFX1mFPxBSyxaRe3iIRutxkIWhxGShzEhjYUVd3qpCUKfJE1k7a'; // хеш
+	
+	if (password_verify($password, $hash)) {
+		// хеш от этого пароля
+	} else {
+		// хеш не от этого пароля
+	}
+?&gt;</code>
+</div>
+<p>
+	Что это дает нам на практике: мы можем не
+	создавать в базе данных отдельное поле для
+	хранения соли, не заморачиваться с генерированием
+	этой соли - PHP все сделает за нас!
+</p>
+<p>
+	То есть получится, что в базе данных в поле
+	<code class="string inline">password</code> мы будем хранить соленый
+	пароль вместе с его солью. При этом хешированный
+	пароль будет иметь большую длину. Поэтому
+	в базе данных нам нужно исправить размер
+	поля с паролем и установить ее в <code class="number inline">60</code>
+	символов.
+</p>
+<p>
+	Теперь давайте поправим код регистрации.
+	Вот то, что есть сейчас:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;?php
+	function generateSalt()
+	{
+		$salt = '';
+		$saltLength = 8; // длина соли
+		
+		for($i = 0; $i &lt; $saltLength; $i++) {
+			$salt .= chr(mt_rand(33, 126)); // символ из ASCII-table
+		}
+		
+		return $salt;
+	}
+	
+	$salt = generateSalt(); //  соль
+	$password = md5($salt . $_POST['password']); // преобразуем пароль в соленый хеш
+?&gt;</code>
+</div>
+<p>
+	С помощью <code class="code inline">password_hash</code> мы сократим это до:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;?php
+	$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+?&gt;</code>
+</div>
+<p>
+	Аналогичным образом подправится код авторизации:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;?php
+	$login = $_POST['login'];
+	
+	$query = "SELECT * FROM users WHERE login='$login'"; // получаем юзера по логину
+	$result = mysqli_query($link, $query);
+	$user = mysqli_fetch_assoc($result);
+	
+	if (!empty($user)) {
+		$hash = $user['password']; // соленый пароль из БД
+		
+		// Проверяем соответствие хеша из базы введенному паролю
+		if (password_verify($_POST['password'], $hash)) {
+			// все ок, авторизуем...
+		} else {
+			// пароль не подошел, выведем сообщение
+		}
+	} else {
+		// пользователя с таким логином нет, выведем сообщение
+	}
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Переделайте вашу авторизацию и регистрацию
+		на новые изученные функции.
+	</p>
+</div>
+
+<!--
+<h2>Второй параметр</h2>
+<p>
+	Давайте теперь разберемся со вторым параметром
+	функции <code class="code inline">password_hash</code> (<i>при первом
+	чтении можно пропустить</i>). В нем мы указываем
+	алгоритм шифрования. На самом деле, этот
+	параметр зарезервирован создателями PHP на
+	будущее.
+</p>
+<p>
+	В настоящее время алгоритмом по умолчанию
+	будет алгоритм <code class="code inline">BCrypt</code> (то есть аналог
+	md5, но мощнее), который своим результатом
+	возвращает строку соль+хеш размером <code class="number inline">60</code>
+	символов.
+</p>
+<p>
+	Это значит, <b>что поле password в базе данных
+	следует установить такого размера - <code class="number inline">60</code>
+	символов</b>, иначе ничего не будет работать
+	верно.
+</p>
+<p>
+	Алгоритм <code class="code inline">BCrypt</code> можно указать явно
+	во втором параметре функции <code class="code inline">password_hash</code>,
+	написав там <code class="sql inline">PASSWORD_BCRYPT</code>.
+</p>
+<p>
+	Если же оставить там <code class="sql inline">PASSWORD_DEFAULT</code>
+	- то PHP возьмет алгоритм по умолчанию, то
+	есть тот же <code class="code inline">BCrypt</code> - но это в настоящее
+	время. В будущем возможно <code class="code inline">BCrypt</code> устареет
+	также, как и md5 и будет заменен более мощным
+	алгоритмом.
+</p>
+<p>
+	В таком случае изменения в вашем коде произойдут
+	автоматически при переходе на новую версию PHP.
+</p>
+-->
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/prime/" data-persent="92" data-hash="ppPmAuHs" data-quantity="223" data-num="207"><a href="../../../../../ru/php/book/prime/auth/validation.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/php/book/prime/auth/profile.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

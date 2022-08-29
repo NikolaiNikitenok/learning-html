@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Displaying a month and year in a calendar in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will implement the display of month and year in a calendar in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Displaying a month and year in a calendar in JavaScript</h1>
+				<div class="content">
+<p>
+	In the previous lessons, we made the calendar 
+	that was the sample in the first lesson. 
+	Let's improve it now.
+</p>
+<p>
+	First, let's make the current month and year 
+	appear above the calendar. Let's make the 
+	appropriate changes to the HTML code:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="parent"&gt;
+	&lt;div id="calendar"&gt;
+		&lt;div class="info"&gt;Jan 2020&lt;/div&gt;
+		&lt;table&gt;
+			&lt;thead&gt;
+				&lt;tr&gt;
+					&lt;th&gt;Mon&lt;/th&gt;
+					&lt;th&gt;Tue&lt;/th&gt;
+					&lt;th&gt;Wed&lt;/th&gt;
+					&lt;th&gt;Thu&lt;/th&gt;
+					&lt;th&gt;Fri&lt;/th&gt;
+					&lt;th&gt;Sat&lt;/th&gt;
+					&lt;th&gt;Sun&lt;/th&gt;
+				&lt;/tr&gt;
+			&lt;/thead&gt;
+			&lt;tbody class="body"&gt;&lt;/tbody&gt;
+		&lt;/table&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code>
+</div>
+<p>
+	We will also make changes to the CSS code:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="css">#parent {
+	text-align: center;
+}
+#calendar {
+	display: inline-block;
+}
+#calendar td, #calendar th {
+	padding: 10px;
+	border: 1px solid black;
+	text-align: center;
+}
+
+#calendar .info {
+	text-align: center;
+}</code>
+</div>
+<div class="task">
+	<p>
+		Implement the described output of 
+		the current month and day.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/practice/" data-persent="97" data-hash="jsPrCndMYSh" data-quantity="75" data-num="74"><a href="../../../../../en/javascript/book/practice/calendar/final-code.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/practice/calendar/month-changing-arrows.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/practice/calendar/month-and-year-showing.html" class="active">en</a><a href="../../../../../ru/javascript/book/practice/calendar/month-and-year-showing.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

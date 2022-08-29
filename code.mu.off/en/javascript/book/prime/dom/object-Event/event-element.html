@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Event element in an Event object in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to retrieve an event element in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Event element in an Event object in JavaScript</h1>
+				<div class="content">
+<p>
+	The <code class="code inline">Event</code> object also allows you to get the 
+	element where the event occurred. This element is 
+	contained in the property <code class="code inline">target</code>. Why is 
+	this necessary if this element is contained in 
+	<code class="code inline">this</code>?
+</p>
+<p>
+	The fact is that in fact <code class="code inline">this</code> always contains 
+	the element <i>to which the event was attached</i>, 
+	and the <code class="code inline">target</code> property - the element that was 
+	actually clicked. This real element may or may not 
+	match <code class="code inline">this</code>.
+</p>
+<p>
+	Let's look at an example. Let's say we have a 
+	<code class="code inline">div</code> with a paragraph inside it:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem"&gt;
+	&lt;p&gt;text&lt;/p&gt;
+&lt;/div&gt;</code>
+</div>
+<p>
+	Bind the event to the div, but click on the 
+	paragraph. Obviously, clicking on a paragraph 
+	is also a click on a div, since the paragraph 
+	is contained in our div.
+</p>
+<p>
+	In the described case, it turns out that the 
+	<code class="code inline">target</code> property will contain the end 
+	tag in which the event happened - that is, 
+	a paragraph, not a div. Let's make sure 
+	of this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+
+elem.addEventListener('click', function(event) {
+	console.log(event.target); // will output our paragraph
+	console.log(this);         // will output our div
+});</code>
+</div>
+<div class="task">
+	<p>
+		Let's say you have the list <code class="code inline">ul</code> 
+		with <code class="code inline">li</code> tags:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="css">ul {
+	padding: 30px;
+	border: 1px solid red;
+}
+li {
+	list-style-type: none;
+	margin-bottom: 20px;
+	border: 1px dashed black;
+}</code>
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;ul id="elem"&gt;
+	&lt;li&gt;text&lt;/li&gt;
+	&lt;li&gt;text&lt;/li&gt;
+	&lt;li&gt;text&lt;/li&gt;
+	&lt;li&gt;text&lt;/li&gt;
+	&lt;li&gt;text&lt;/li&gt;
+&lt;/ul&gt;</code>
+	</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			ul {
+				padding: 30px;
+				border: 1px solid red;
+			}
+			li {
+				list-style-type: none;
+				margin-bottom: 20px;
+				border: 1px dashed black;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<ul id=&quot;elem&quot;>
+				<li>text</li>
+				<li>text</li>
+				<li>text</li>
+				<li>text</li>
+				<li>text</li>
+			</ul>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+	<p>
+		Attach a click handler to the <code class="code inline">ul</code> tag. In this 
+		handler, use the <a href="../../../../../../en/javascript/manual/dom/tagName.html"><code class="code inline">tagName</code></a> 
+		property to check which tag was clicked. If the click 
+		was on the <code class="code inline">li</code> tag, add an exclamation mark to 
+		the end of this tag text. And if the click was on the 
+		tag <code class="code inline">ul</code> - add one more item to the end of the list.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="80" data-hash="jsPmOEEE" data-quantity="363" data-num="291"><a href="../../../../../../en/javascript/book/prime/dom/object-Event/event-type.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../en/javascript/book/prime/dom/object-Event/pressed-keys-getting.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/object-Event/event-element.html" class="active">en</a><a href="../../../../../../ru/javascript/book/prime/dom/object-Event/event-element.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

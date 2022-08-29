@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Выравнивание текста на CSS | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами изучим выравнивание текста на CSS.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Выравнивание текста на CSS</h1>
+				<div class="content">
+<p>
+	Сейчас мы с вами научимся выравнивать текст.
+	Для этого используется свойство <code class="code inline">text-align</code>.
+	Текст можно выравнять по левому краю (значение
+	<code class="value inline">left</code>), по правому (значение <code class="value inline">right</code>),
+	по центру (значение <code class="value inline">center</code>) и одновременно
+	и по правому, и по левому краю (значение
+	<code class="value inline">justify</code>).
+</p>
+<p>
+	Давайте посмотрим на примерах.
+</p>
+
+<h2>Значение right</h2>
+<p>
+	Выровняем текст в абзацах по правому краю:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;p&gt;
+	абзац с текстом
+&lt;/p&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">p {
+	text-align: right;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			p {
+			text-align: right;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<p>
+			абзац с текстом
+		</p>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Значение center</h2>
+<p>
+	А теперь выровняем по центру:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;p&gt;
+	абзац с текстом
+&lt;/p&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">p {
+	text-align: center;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			p {
+			text-align: center;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<p>
+			абзац с текстом
+		</p>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Значение left</h2>
+<p>
+	А вот значение <code class="code inline">left</code> для абзацев можно
+	и не ставить - они по умолчанию и так выровнены
+	по левому краю. Однако есть элементы, которые
+	по умолчанию стоят по центру (это, например,
+	теги <code class="code inline">th</code>, которые делают ячейку-заголовок
+	таблицы). И вот для них как раз-таки и может
+	потребоваться выравнивание по левой стороне.
+	Сделаем это:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;table border="1"&gt;
+	&lt;tr&gt;
+		&lt;th&gt;Имя&lt;/th&gt;
+		&lt;th&gt;Фамилия&lt;/th&gt;
+		&lt;th&gt;Зарплата&lt;/th&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;Иван&lt;/td&gt;
+		&lt;td&gt;Иванов&lt;/td&gt;
+		&lt;td&gt;200$&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;Николай&lt;/td&gt;
+		&lt;td&gt;Петров&lt;/td&gt;
+		&lt;td&gt;300$&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">th {
+	text-align: left;
+}
+
+table {
+	width: 400px;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			th {
+			text-align: left;
+		}
+		
+		table {
+			width: 400px;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<table border=&quot;1&quot;>
+			<tr>
+				<th>Имя</th>
+				<th>Фамилия</th>
+				<th>Зарплата</th>
+			</tr>
+			<tr>
+				<td>Иван</td>
+				<td>Иванов</td>
+				<td>200$</td>
+			</tr>
+			<tr>
+				<td>Николай</td>
+				<td>Петров</td>
+				<td>300$</td>
+			</tr>
+		</table>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Значение justify</h2>
+<p>
+	Ну, и наконец выровняем текст одновременно
+	и по правому, и по левому краю. Этот эффект
+	можно увидеть только при наличии достаточно
+	длинного текста:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;p&gt;
+	длинный текст...
+&lt;/p&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">p {
+	text-align: justify;
+	width: 300px;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			p {
+			text-align: justify;
+			width: 300px;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<p>
+			
+				Lorem ipsum dolor sit amet, consectetur adipiscing elitorire
+				aenean a dapibus magna, ac interdum nisl. Suspendisse egetil
+				fringilla nibh, eu commodo arcu. Donec lacinia tempor velite
+				sed tincidunt. Aliquam porttitor nulla purus, vel vulputater
+				ipsum faucibus sed. Phasellus sodales, lorem vel cursus vehi
+				ante purus lacini dui, interdum fringilla massa eros ut duir.
+			
+		</p>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Практика</h2>
+<p>
+	Скопируйте себе следующий HTML код и решите
+	для него приведенные ниже задачи:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;h1&gt;Главный заголовок страницы&lt;/h1&gt;
+&lt;table border="1"&gt;
+	&lt;tr&gt;
+		&lt;th&gt;Продукт&lt;/th&gt;
+		&lt;th&gt;Цена&lt;/th&gt;
+		&lt;th&gt;Количество&lt;/th&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;Яблоки&lt;/td&gt;
+		&lt;td&gt;100&lt;/td&gt;
+		&lt;td&gt;5кг&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;Апельсины&lt;/td&gt;
+		&lt;td&gt;200&lt;/td&gt;
+		&lt;td&gt;6кг&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;Бананы&lt;/td&gt;
+		&lt;td&gt;300&lt;/td&gt;
+		&lt;td&gt;7кг&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;h2&gt;Второстепенный заголовок 1&lt;/h2&gt;
+&lt;p&gt;
+	Lorem ipsum dolor sit amet, consectetur adipiscing elitorire
+	aenean a dapibus magna, ac interdum nisl. Suspendisse egetil
+	fringilla nibh, eu commodo arcu. Donec lacinia tempor velite
+	sed tincidunt. Aliquam porttitor nulla purus, vel vulputater
+	ipsum faucibus sed. Phasellus sodales, lorem vel cursus vehi
+	ante purus lacini dui, interdum fringilla massa eros ut duir.
+&lt;/p&gt;
+&lt;p&gt;
+	Lorem ipsum dolor sit amet, consectetur adipiscing elitorire
+	aenean a dapibus magna, ac interdum nisl. Suspendisse egetil
+	fringilla nibh, eu commodo arcu. Donec lacinia tempor velite
+	sed tincidunt. Aliquam porttitor nulla purus, vel vulputater
+	ipsum faucibus sed. Phasellus sodales, lorem vel cursus vehi
+	ante purus lacini dui, interdum fringilla massa eros ut duir.
+&lt;/p&gt;
+
+&lt;h2&gt;Второстепенный заголовок 2&lt;/h2&gt;
+&lt;p&gt;
+	Lorem ipsum dolor sit amet, consectetur adipiscing elitorire
+	aenean a dapibus magna, ac interdum nisl. Suspendisse egetil
+	fringilla nibh, eu commodo arcu. Donec lacinia tempor velite
+	sed tincidunt. Aliquam porttitor nulla purus, vel vulputater
+	ipsum faucibus sed. Phasellus sodales, lorem vel cursus vehi
+	ante purus lacini dui, interdum fringilla massa eros ut duir.
+&lt;/p&gt;
+&lt;p&gt;
+	Lorem ipsum dolor sit amet, consectetur adipiscing elitorire
+	aenean a dapibus magna, ac interdum nisl. Suspendisse egetil
+	fringilla nibh, eu commodo arcu. Donec lacinia tempor velite
+	sed tincidunt. Aliquam porttitor nulla purus, vel vulputater
+	ipsum faucibus sed. Phasellus sodales, lorem vel cursus vehi
+	ante purus lacini dui, interdum fringilla massa eros ut duir.
+&lt;/p&gt;
+
+&lt;h2&gt;Второстепенный заголовок 3&lt;/h2&gt;
+&lt;table border="1"&gt;
+	&lt;tr&gt;
+		&lt;td&gt;ячейка 1&lt;/td&gt;
+		&lt;td&gt;ячейка 2&lt;/td&gt;
+		&lt;td&gt;ячейка 3&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;ячейка 4&lt;/td&gt;
+		&lt;td&gt;ячейка 5&lt;/td&gt;
+		&lt;td&gt;ячейка 6&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;ячейка 7&lt;/td&gt;
+		&lt;td&gt;ячейка 8&lt;/td&gt;
+		&lt;td&gt;ячейка 9&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Поставьте все заголовки <code class="code inline">h1</code> по правому краю.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Поставьте все заголовки <code class="code inline">h2</code> по центру.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Установите всем таблицам ширину в <code class="unit inline">500px</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Поставьте текст в ячейках <code class="code inline">th</code> по левому
+		краю.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Поставьте текст в ячейках <code class="code inline">td</code> по центру.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Установите всем абзацам ширину в <code class="unit inline">300px</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Выровняйте текст всех абзацев одновременно
+		по правому и по левому краю.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Установите заголовкам <code class="code inline">h2</code> ширину в
+		<code class="unit inline">300px</code>. Поставьте их по центру. Обратите
+		внимание на то, что центрирование будет происходить
+		внутри этих <code class="unit inline">300px</code>.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/markup/book/prime/" data-persent="10" data-hash="mkPmCLTA" data-quantity="115" data-num="12"><a href="../../../../../ru/markup/book/prime/css/width-height.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/markup/book/prime/css/text-boldness.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

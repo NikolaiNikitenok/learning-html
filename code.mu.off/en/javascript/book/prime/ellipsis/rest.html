@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>rest operator in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to work with the rest operator in JavaScript">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>rest operator in JavaScript</h1>
+				<div class="content">
+<p>
+	Let's start this lesson with some explanation. 
+	In all the previous lessons of this section, 
+	I did not tell you the whole truth about the 
+	operator <code class="code inline">...</code>
+</p>
+<p>
+	In fact, this operator, depending on the place 
+	in the code, can be called either the spread 
+	operator or the rest operator.
+</p>
+<p>
+	As you already know, when the spread operator 
+	is placed in front of an array or string, it 
+	separates them into individual values. The 
+	rest operator, although it has the same syntax 
+	in the form <code class="code inline">...</code>, is meant for something else.
+</p>
+<p>
+	Now let's figure out why. Let's say we 
+	have a function that takes two parameters:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(a, b) {
+	console.log(a);
+	console.log(b);
+}</code>
+</div>
+<p>
+	You should already know that if you pass 
+	extra parameters to a function, this 
+	will not lead to an error:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">func(1, 2, 3, 4, 5);</code>
+</div>
+<p>
+	The operator <code class="code inline">rest</code> allows you to 
+	get all the extra parameters as an array. 
+	To do this, one more parameter is added 
+	to the function (necessarily the last one), 
+	before which <code class="number inline">3</code> dots are written:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(a, b, ...rest) {
+	
+}</code>
+</div>
+<p>
+	These three dots are the rest operator, 
+	and the name of the variable can be any 
+	name, but it is also common way to call 
+	it <code class="code inline">rest</code>.
+</p>
+<p>
+	Let's call our function with an excess 
+	number of parameters and see what goes 
+	into the parameters <code class="code inline">a</code> and <code class="code inline">b</code>, 
+	and what goes into the remainder <code class="code inline">rest</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">func(1, 2, 3, 4, 5);
+
+function func(a, b, ...rest) {
+	console.log(a);    // shows 1
+	console.log(b);    // shows 2
+	console.log(rest); // shows [3, 4, 5]
+}</code>
+</div>
+<p>
+	If there are no extra parameters, then 
+	an empty array will be written to the 
+	variable <code class="code inline">rest</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">func(1, 2);
+
+function func(a, b, ...rest) {
+	console.log(a);    // shows 1
+	console.log(b);    // shows 2
+	console.log(rest); // shows []
+}</code>
+</div>
+<p>
+	A function may have no parameters at all, 
+	but you can add <code class="code inline">rest</code> to it. In 
+	this case, the function can be called 
+	with any number of parameters, and all 
+	of them will fall into the 
+	<code class="code inline">rest</code> array:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(...rest) {
+	console.log(rest);
+}</code>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="56" data-hash="jsPmOsrRs" data-quantity="363" data-num="206"><a href="../../../../../en/javascript/book/prime/ellipsis/spread-strings-numbers.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/ellipsis/spread-rest-applying.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/ellipsis/rest.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/ellipsis/rest.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

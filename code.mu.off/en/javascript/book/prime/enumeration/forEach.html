@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>forEach method to iterate over an array in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will study the forEach method, which allows you to iterate over the array elements in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>forEach method to iterate over an array in JavaScript</h1>
+				<div class="content">
+<p>
+	The next method we will learn is called 
+	<code class="code inline">forEach</code>. It works just like the 
+	map method, only it doesn't return the 
+	modified array, but simply calls the 
+	callback function for each element 
+	of the array.
+</p>
+<p>
+	Let's look at an example. Let's 
+	have an array like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = ['a', 'b', 'c', 'd', 'e'];</code>
+</div>
+<p>
+	Let's output a column of array elements:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = ['a', 'b', 'c', 'd', 'e'];
+
+arr.forEach(function(elem) {
+	document.write(elem + '&lt;br&gt;');
+});</code>
+</div>
+<p>
+	And now, in addition to the array elements, 
+	we will also display their indices. To do 
+	this, let's make a second variable <code class="code inline">index</code>, 
+	which will contain the indices of our elements:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = ['a', 'b', 'c', 'd', 'e'];
+
+arr.forEach(function(elem, index) {
+	document.write(index + '. ' + elem + '&lt;br&gt;');
+});</code>
+</div>
+
+<h2>forEach application</h2>
+<p>
+	At first glance, the <code class="code inline">forEach</code> method 
+	doesn't seem very useful, as it doesn't 
+	return anything. In fact, you can simply 
+	make a variable located outside the callback:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let result; // the external variable
+
+arr.forEach(function(elem) {
+	// the variable result is available here
+});</code>
+</div>
+<p>
+	Using this technique, we'll find, for 
+	example, the sum of the array elements:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3, 4, 5];
+let sum = 0;
+
+arr.forEach(function(elem) {
+	sum += elem;
+});
+
+console.log(sum);</code>
+</div>
+<div class="task">
+	<p>
+		Given an array of numbers. Use the 
+		<code class="code inline">forEach</code> method to find the 
+		sum of the squares of this array 
+		elements.
+	</p>
+</div>
+
+<h2>Comment</h2>
+<p>
+	The <code class="code inline">forEach</code> method appeared in 
+	JavaScript before the new <code class="code inline">for-of</code> 
+	loop. Basically, the two iteration methods 
+	are similar, but the <code class="code inline">for-of</code> loop 
+	has a simpler syntax, so it's likely that 
+	you'll use it more often.
+</p>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="55" data-hash="jsPmEnmFe" data-quantity="363" data-num="199"><a href="../../../../../en/javascript/book/prime/enumeration/map.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/enumeration/filter.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/enumeration/forEach.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/enumeration/forEach.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Особенности дефиса внутри квадратных скобок в регулярках JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами изучим особенности дефиса внутри [ ] в регулярных выражениях JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Особенности дефиса внутри квадратных скобок</h1>
+				<div class="content">
+<p>
+	Дефис - тоже спецсимвол внутри <code class="code inline">[ ]</code>
+	(а вот снаружи - нет). Если вам нужен сам
+	дефис как символ - то поставьте его там,
+	где он <i>не будет воспринят как разделитель
+	группы</i>.
+</p>
+<p>
+	Почему это важно: вы можете сделать группу
+	символов, сами не заметив этого. К примеру,
+	вот так - <code class="string inline">'[:-@]'</code> - вы думаете, что
+	выбираете двоеточие, дефис и собаку, а на
+	самом деле получается группа символов между
+	<code class="code inline">:</code> и <code class="code inline">@</code>. В эту группу входят
+	следующие символы: <code class="code inline">: ; ? < = ></code>
+</p>
+<p>
+	Откуда они взялись? Из таблицы <a href="http://www.asciitable.com/">ASCII</a>
+	- двоеточие имеет номер меньше, чем собака
+	- и получается группа. То есть все группы
+	получаются по таблице ASCII (при желании
+	этим можно пользоваться).
+</p>
+<p>
+	Как с этим бороться: поставьте символ дефиса
+	там, где он точно не будет воспринят как
+	символ группы, например, в начале или в конце
+	(то есть после <code class="code inline">[</code>или перед <code class="code inline">]</code>).
+</p>
+<p>
+	Можно также заэкранировать дефис - тогда
+	он будет обозначать сам себя независимо от
+	позиции. Например, вместо <code class="code inline">[:-@]</code> написать
+	<code class="code inline">[:\-@]</code> - и группы уже не будет, а
+	будут три символа - двоеточие, дефис и собака
+	<code class="code inline">@</code>.
+</p>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	В следующем примере шаблон поиска такой:
+	<i>цифра <code class="number inline">1</code>, затем буква от <code class="string inline">'a'</code>
+	до <code class="string inline">'z'</code>, затем цифра <code class="number inline">2</code></i>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = '1a2 1-2 1c2 1z2';
+let res = str.replace(/1[a-z]2/g, '!');</code>
+</div>
+<p>
+	В результате в переменную запишется следующее:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">'! 1-2 ! !'</code>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Давайте теперь заэкранируем дефис. В результате
+	шаблон поиска такой: <i>цифра <code class="number inline">1</code>, затем
+	буква <code class="string inline">'a'</code>, или дефис, или буква <code class="string inline">'z'</code>,
+	затем цифра <code class="number inline">2</code></i>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = '1a2 1-2 1c2 1z2';
+let res = str.replace(/1[a\-z]2/g, '!');</code>
+</div>
+<p>
+	В результате в переменную запишется следующее:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">'! ! 1c2 !'</code>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Можно просто переставить дефис, не экранируя его:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = '1a2 1-2 1c2 1z2';
+let res = str.replace(/1[az-]2/g, '!');</code>
+</div>
+<p>
+	В результате в переменную запишется следующее:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">'! ! 1c2 !'</code>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	В следующем примере шаблон поиска такой:
+	<i>первый символ - это маленькие буквы или
+	дефис <code class="string inline">'-'</code>, потом две буквы <code class="string inline">'x'</code></i>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = 'axx Axx -xx @xx';
+let res = str.replace(/[a-z-]xx/g, '!');</code>
+</div>
+<p>
+	В результате в переменную запишется следующее:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">'! Axx ! @xx'</code>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	В следующем примере шаблон поиска такой:
+	<i>первый символ - это маленькие, большие
+	буквы или дефис <code class="string inline">'-'</code>, потом две буквы
+	<code class="string inline">'x'</code></i>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = 'axx Axx -xx @xx';
+let res = str.replace(/[a-zA-Z-]xx/g, '!');</code>
+</div>
+<p>
+	В результате в переменную запишется следующее:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">'! ! ! @xx'</code>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Можно расположить дефис между двумя группами
+	- там он точно еще не сделает еще одну группу:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = 'axx 9xx -xx @xx';
+let res = str.replace(/[a-z-0-9]xx/g, '!');</code>
+</div>
+<p>
+	В результате в переменную запишется следующее:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">'! ! ! @xx'</code>
+</div>
+
+<h2>Практические задачи</h2>
+<div class="task">
+	<p>
+		Дана строка:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let str = 'xaz xBz xcz x-z x@z';</code>
+	</div>
+	<p>
+		Найдите все строки по следующему шаблону:
+		<i>буква <code class="string inline">'x'</code>, большая или маленькая
+		буква или дефис, буква <code class="string inline">'z'</code></i>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let str = 'xaz x$z x-z xcz x+z x%z x*z';</code>
+	</div>
+	<p>
+		Найдите все строки по следующему шаблону:
+		<i>буква <code class="string inline">'x'</code>, затем или доллар, или
+		дефис или плюс, потом буква <code class="string inline">'z'</code></i>.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/supreme/" data-persent="12" data-hash="jsSpREHISBF" data-quantity="114" data-num="15"><a href="../../../../../ru/javascript/book/supreme/regular/hat-symbol-inside-square-brackets.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/javascript/book/supreme/regular/line-beginning-and-end.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

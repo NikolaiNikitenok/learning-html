@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Класс Link в ООП на PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами разработаем ООП класс Link на PHP.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Класс Link</h1>
+				<div class="content">
+<p>
+	Давайте сделаем класс, который будет создавать
+	HTML ссылку. Назовем его <code class="code inline">Link</code>. Вот
+	так мы будем пользоваться нашим классом:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	// Выведет &lt;a href="/test.html"&gt;link&lt;/a&gt;:
+	echo (new Link())-&gt;setAttr('href', '/test.html')-&gt;setText('link')-&gt;show();
+?&gt;</code>
+</div>
+<p>
+	Реализация:
+</p>
+<div class="block" data-file="Link.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Link extends Tag
+	{
+		public function __construct()
+		{
+			parent::__construct('a');
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Сделаем так, чтобы даже если атрибут <code class="code inline">href</code>
+	не задан, то по умолчанию он становился пустыми
+	кавычками:
+</p>
+<div class="block" data-file="Link.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Link extends Tag
+	{
+		public function __construct()
+		{
+			parent::__construct('a');
+			$this-&gt;setAttr('href', '');
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Проверим:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	// Выведет &lt;a href=""&gt;index&lt;/a&gt;:
+	echo (new Link())-&gt;setText('index')-&gt;show();
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Самостоятельно реализуйте описанный класс
+		<code class="code inline">Link</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		С помощью этого класса создайте меню из <code class="number inline">5</code>
+		ссылок. Пусть первая ссылка ведет на страницу
+		<code class="code inline">/1.php</code>, вторая - на страницу <code class="code inline">/2.php</code>
+		и так далее.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Разместите созданную менюшку в отдельном
+		файле, например, в <code class="code inline">menu.php</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Создайте страницы, на которые ведут ссылки
+		вашей менюшки. Добавьте в ним какой-нибудь текст.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Подключите инклудом к тексту каждой страницы
+		вашу менюшку из файла. Убедитесь, что ссылки
+		из этой менюшки будут работать корректно.
+	</p>
+</div>
+
+<h2>Активация ссылок</h2>
+<p>
+	После выполнения задач у вас должна получится
+	менюшка. Давайте сделаем так, чтобы в этой
+	менюшке выделялась каким-то образом та ссылка,
+	на странице которой мы находимся.
+</p>
+<p>
+	Такая ссылка обычно называется <dfn>активной</dfn>
+	и ее выделение происходит путем добавления
+	ей CSS класса <code class="code inline">active</code> (общепринятое
+	название).
+</p>
+<p>
+	Добавленный к ссылке класс <code class="code inline">active</code>
+	каким-то образом выделяет ее - подчеркивает,
+	красит в красный цвет и тому подобное: все
+	это регулируется CSS стилями для этого класса.
+</p>
+<p>
+	Итак, давайте сделаем так, чтобы ссылки автоматически
+	активировались (добавляли себе CSS класс
+	<code class="code inline">active</code>), если их <code class="code inline">href</code> совпадает
+	с урлом сайта.
+</p>
+<p>
+	<code class="code inline">URL</code> сайта можно достать вот так:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	echo $_SERVER['REQUEST_URI'];
+?&gt;</code>
+</div>
+<p>
+	Чтобы прочитать <code class="code inline">href</code> нашей ссылки,
+	используем геттер <code class="code inline">getAttr</code>, унаследованный
+	от родительского класса <code class="code inline">Tag</code>. Вот так:
+</p>
+<div class="block" data-file="Link.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$href = $this-&gt;getAttr('href');
+?&gt;</code>
+</div>
+<p>
+	Чтобы добавить нашей ссылке CSS класс <code class="code inline">active</code>,
+	используем метод <code class="code inline">addClass</code>, также унаследованный
+	от родителя. Вот так:
+</p>
+<div class="block" data-file="Link.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$this-&gt;addClass('active')
+?&gt;</code>
+</div>
+<p>
+	Соберем все вместе и напишем вспомогательный
+	метод <code class="code inline">activateSelf</code>, который будет
+	проверять, совпадает ли <code class="code inline">href</code> ссылки
+	и <code class="code inline">URI</code>, и активировать ее, если это так:
+</p>
+<div class="block" data-file="Link.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	private function activateSelf()
+	{
+		if ($this-&gt;getAttr('href') === $_SERVER['REQUEST_URI']) {
+			$this-&gt;addClass('active');
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Осталось придумать в каком месте вызывать
+	созданный нами метод. В конструкторе класса
+	<code class="code inline">Link</code> этого делать нельзя, так как
+	в момент вызова конструктора <code class="code inline">href</code>
+	ссылки еще не задан (конструктор же вызывается
+	в самом начале, а потом методы цепочки, в
+	том числе <code class="code inline">setAttr</code>, который и задает
+	<code class="code inline">href</code> ссылки).
+</p>
+<p>
+	После таких рассуждений становится очевидным,
+	что метод <code class="code inline">activateSelf</code> следует вызвать
+	в момент вывода ссылки на экран, то есть
+	в методе <code class="code inline">show</code>, с помощью которого
+	скорее всего и будет формироваться ссылка.
+</p>
+<p>
+	Однако, представляется возможным то, что
+	при использовании нашего класса кто-то будет
+	применять метод <code class="code inline">open</code> и метод <code class="code inline">close</code>
+	отдельно.
+</p>
+<p>
+	Хотя описанное выше и маловероятно, тем не
+	менее вызовем метод <code class="code inline">activateSelf</code> в
+	методе <code class="code inline">open</code>, переопределив тем самым
+	метод родителя:
+</p>
+<div class="block" data-file="Link.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Link extends Tag
+	{
+		public function __construct()
+		{
+			$this-&gt;setAttr('href', '');
+			parent::__construct('a');
+		}
+		
+		// Переопределяем метод родителя:
+		public function open()
+		{
+			$this-&gt;activateSelf(); // вызываем активацию
+			return parent::open(); // вызываем метод родителя
+		}
+		
+		private function activateSelf()
+		{
+			if ($this-&gt;getAttr('href') === $_SERVER['REQUEST_URI']) {
+				$this-&gt;addClass('active');
+			}
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Так как метод <code class="code inline">show</code> использует внутри
+	себя метод <code class="code inline">open</code>, то изменения для
+	метода <code class="code inline">show</code> произойдут автоматически.
+	Можем теперь проверить работу нашего класса:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	echo (new Link)-&gt;setAttr('href', '/index.php')-&gt;setText('index')-&gt;show();
+	
+	/*
+		Если URL страницы не /index.php,
+		то результат выполнения кода выведет
+		&lt;a href="/index.php"&gt;index&lt;/a&gt;
+		
+		Если URL страницы /index.php,
+		то результат выполнения кода выведет
+		&lt;a href="/index.php" class="active"&gt;index&lt;/a&gt;
+	*/
+?&gt;</code>
+</div>
+<p>
+	Итак, теперь ссылки активируют сами себя.
+	Это реально круто! При этом нам понадобилось
+	совсем мало кода, чтобы реализовать такое
+	поведение. Все потому, что у нас есть базовый
+	класс <code class="code inline">Tag</code>, который прячет внутри себя
+	много универсального кода для манипуляций
+	с тегами.
+</p>
+<p>
+	Реализуя новые классы на основе класса <code class="code inline">Tag</code>
+	мы не держим в голове детали реализации этого
+	класса <code class="code inline">Tag</code>. И вообще не видим код
+	этого класса - он где-то в другом файле (если,
+	конечно же, вы его туда вынесли) и не мешает
+	нам работать. Мы просто знаем, какие методы
+	предоставляет этот класс своим потомкам -
+	и пользуемся ими.
+</p>
+<p>
+	Поэтому классы-потомки и получаются такими
+	маленькими и изящными.
+</p>
+<p>
+	На самом деле наш код класса <code class="code inline">Link</code>
+	еще более крут, чем кажется. Дело в том,
+	что наши ссылки могут иметь и другие - постоянные
+	- классы. При этом наша активация никак не
+	будет мешать этим классам - они будут оставаться,
+	просто к ним будет добавляться еще и класс
+	<code class="code inline">active</code>.
+</p>
+<p>
+	Все потому, что так работает метод <code class="code inline">addClass</code>
+	- он добавляет новый класс к уже существующим
+	классам.
+</p>
+<p>
+	Вот пример:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	echo (new Link)
+		-&gt;setAttr('href', '/index.php')
+		-&gt;setAttr('class', 'link1 link2') // добавляем ссылке классы
+		-&gt;setText('index')
+		-&gt;show();
+	
+	/*
+		Результат выполнения кода выведет
+		&lt;a href="/index.html" class="link1 link2 active"&gt;index&lt;/a&gt;
+	*/
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Добавьте в ваш класс <code class="code inline">Link</code> активацию ссылок.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Проверьте работу активации ссылок на менюшке,
+		которую вы создали в предыдущих задачах.
+		Характерно, что правки в саму менюшку вносить
+		не надо - создание ссылок никак не поменялось,
+		просто ссылки теперь активируют сами себя.
+		Попереходите по ссылкам меню и убедитесь
+		в том, что соответствующие ссылки активируются.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Не очень хорошо то, что название класса <code class="code inline">active</code>
+		жестко зашито в коде (вдруг мы захотим поменять
+		его на другое). Вынесите его в константу
+		класса (константу используем для того, чтобы
+		в процессе работы скрипта случайно не изменить
+		наш CSS класс).
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/oop/" data-persent="64" data-hash="ppOpClLnk" data-quantity="107" data-num="69"><a href="../../../../../ru/php/book/oop/class/Image.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/php/book/oop/class/HtmlList.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

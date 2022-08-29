@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Работа с инпутами в React | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы научимся привязывать стейты к инпутам в React.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Работа с инпутами в React</h1>
+				<div class="content">
+<p>
+	Работа с инпутами в React происходит с помощью
+	стейтов. Каждому инпуту назначается свой
+	стейт, содержащий в себе <code class="code inline">value</code> инпута.
+</p>
+<p>
+	Давайте посмотрим на примере. Пусть у нас
+	есть инпут:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function App() {
+	return &lt;div&gt;
+		&lt;input /&gt;
+	&lt;/div&gt;;
+}</code>
+</div>
+<p>
+	Пусть также у нас есть стейт:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function App() {
+	const [value, setValue] = useState('text');
+	
+	return &lt;div&gt;
+		&lt;input /&gt;
+	&lt;/div&gt;;
+}</code>
+</div>
+<p>
+	Давайте к атрибуту <code class="code inline">value</code> инпута привяжем
+	нас стейт:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function App() {
+	const [value, setValue] = useState('text');
+	
+	return &lt;div&gt;
+		&lt;input value={value} /&gt;
+	&lt;/div&gt;;
+}</code>
+</div>
+<p>
+	В таком случае получится, что <i>при изменении
+	стейта, реактивно поменяется и текст инпута</i>.
+</p>
+<p>
+	Это, однако, дает интересный побочный эффект:
+	теперь при запуске кода в браузере в инпуте
+	невозможно поменять текст! Почему: потому
+	что при вводе текста в инпут не меняется
+	стейт <code class="code inline">value</code>, соответственно, и текст
+	в инпуте не должен меняться.
+</p>
+<p>
+	Попробуйте сами. Скопируйте мой код и запустите
+	у себя. Попробуйте поизменять текст в инпуте
+	- у вас ничего не получится. Откройте консоль
+	браузера - вы увидите в ней предупреждение
+	React. Это предупреждение указывает нам,
+	что мы привязали стейт к инпуту, но тем самым
+	заблокировали инпут.
+</p>
+<p>
+	Давайте сделаем так, чтобы в наш инпут можно
+	было вводить текст. Для этого нужно сделать
+	так, чтобы при вводе изменялся наш стейт
+	на текущее значение инпута.
+</p>
+<p>
+	Для начала для этого нужно навесить на инпут
+	событие onChange:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function App() {
+	const [value, setValue] = useState('text');
+	
+	return &lt;div&gt;
+		&lt;input value={value} onChange={handleChange} /&gt;
+	&lt;/div&gt;;
+}</code>
+</div>
+<p>
+	Данное событие в React ведет себя по-другому
+	по сравнению с чистым JS. В React оно <i>срабатывает
+	сразу же по изменению инпута</i>. То есть
+	при вводе или удалении символа.
+</p>
+<p>
+	Давайте теперь добавим обработчик нашего события:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function App() {
+	const [value, setValue] = useState('text');
+	
+	function handleChange() {
+		
+	}
+	
+	return &lt;div&gt;
+		&lt;input value={value} onChange={handleChange} /&gt;
+	&lt;/div&gt;;
+}</code>
+</div>
+<p>
+	В этом обработчике мы должны прочитать текущий
+	текст инпута и установить его в стейт с помощью
+	функции <code class="code inline">setValue</code>.
+</p>
+<p>
+	Проблема в том, что <code class="code inline">this</code> данной функции
+	не будет указывать на наш инпут - такова
+	особенность React. Чтобы получить элемент,
+	в котором случилось событие, нам необходимо
+	использовать <a href="../../../../../../../ru/javascript/manual/dom/event/target.html"><code class="code inline">event.target</code></a>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function App() {
+	const [value, setValue] = useState('text');
+	
+	function handleChange(event) {
+		console.log(event.target); // ссылка на DOM элемент инпута
+	}
+	
+	return &lt;div&gt;
+		&lt;input value={value} onChange={handleChange} /&gt;
+	&lt;/div&gt;;
+}</code>
+</div>
+<p>
+	Выведем с помощью <code class="code inline">event.target</code> текущий
+	текст инпута:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function App() {
+	const [value, setValue] = useState('text');
+	
+	function handleChange(event) {
+		console.log(event.target.value); // текущий текст инпута
+	}
+	
+	return &lt;div&gt;
+		&lt;input value={value} onChange={handleChange} /&gt;
+	&lt;/div&gt;;
+}</code>
+</div>
+<p>
+	А теперь запишем текст инпута в наш стейт:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function App() {
+	const [value, setValue] = useState('text');
+	
+	function handleChange(event) {
+		setValue(event.target.value);
+	}
+	
+	return &lt;div&gt;
+		&lt;input value={value} onChange={handleChange} /&gt;
+	&lt;/div&gt;;
+}</code>
+</div>
+<p>
+	Теперь мы сможем вводить текст в инпут. При
+	этом стейт <code class="code inline">value</code> всегда будет содержать
+	текущий текст инпута.
+</p>
+<p>
+	Мы можем легко убедится в этом. Выведем содержимое
+	нашего текста в абзац. В этом случае при
+	вводе текста в инпут введенный текст будет
+	автоматически появляться в абзаце:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function App() {
+	const [value, setValue] = useState('');
+	
+	function handleChange(event) {
+		setValue(event.target.value);
+	}
+	
+	return &lt;div&gt;
+		&lt;input value={value} onChange={handleChange} /&gt;
+		&lt;p&gt;text: {value}&lt;/p&gt;
+	&lt;/div&gt;;
+}</code>
+</div>
+<p>
+	Можем переписать на более компактный вариант
+	с анонимной стрелочной функцией:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function App() {
+	const [value, setValue] = useState('');
+	
+	return &lt;div&gt;
+		&lt;input value={value} onChange={event =&gt; setValue(event.target.value)} /&gt;
+		&lt;p&gt;text: {value}&lt;/p&gt;
+	&lt;/div&gt;;
+}</code>
+</div>
+<p>
+	Таким образом, для работы любого инпута нам
+	нужно следующее: создать стейт для этого
+	инпута, привязать стейт к атрибуту value
+	инпута, навесить событие onChange на инпут,
+	в обработчике события менять стейт инпута
+	на его текст.
+</p>
+<p>
+	Данные операции нужно будет проводить с каждым
+	инпутом. То есть, если у вас два инпута,
+	то у вас будет два стейта и две функции-обработчика
+	события <code class="code inline">onChange</code>.
+</p>
+<div class="task">
+	<p>
+		Сделайте два инпута. Пусть текст первого
+		инпута выводится в первый абзац, а текст
+		второго инпута - во второй абзац.
+	</p>
+</div>
+
+<h2>Изменение данных при выводе</h2>
+<p>
+	Пусть мы будем вводить в инпут число. Давайте
+	сделаем так, чтобы по мере ввода числа в
+	инпут в абзац выводился квадрат вводимого числа:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function App() {
+	const [value, setValue] = useState(0);
+	
+	function handleChange(event) {
+		setValue(event.target.value);
+	}
+	
+	return &lt;div&gt;
+		&lt;input value={value} onChange={handleChange} /&gt;
+		&lt;p&gt;{value ** 2}&lt;/p&gt;
+	&lt;/div&gt;;
+}</code>
+</div>
+<div class="task">
+	<p>
+		Дан инпут. Дан абзац. Сделайте так, чтобы
+		при вводе текста в инпут, в абзаце выводилось
+		количество введенных в инпут символов.
+	</p>
+</div>
+
+<h2>Используем функцию</h2>
+<p>
+	Не обязательно совершать некие операции над
+	стейтом прямо на выводе. Можно воспользоваться
+	функцией:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function square(num) {
+	return num ** 2;
+}
+
+function App() {
+	const [value, setValue] = useState(0);
+	
+	function handleChange(event) {
+		setValue(event.target.value);
+	}
+	
+	return &lt;div&gt;
+		&lt;input value={value} onChange={handleChange} /&gt;
+		&lt;p&gt;{square(value)}&lt;/p&gt;
+	&lt;/div&gt;;
+}</code>
+</div>
+<div class="task">
+	<p>
+		Дан инпут и абзац. В инпут вводится возраст
+		пользователя. Сделайте так, чтобы при наборе
+		текста, в абзаце автоматически появлялся
+		год рождения пользователя.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан инпут и абзац. В инпут вводятся градусы
+		Фаренгейта. Сделайте так, чтобы при наборе
+		текста, в абзаце автоматически выполнялась
+		конвертация в градусы Цельсия.
+	</p>
+</div>
+
+<h2>Несколько инпутов</h2>
+<p>
+	Пусть у нас есть два инпута, в которые будут
+	вводится числа. Давайте сделаем так, чтобы
+	по мере ввода в абзац выводилась сумма двух
+	инпутов:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function App() {
+	const [value1, setValue1] = useState(0);
+	const [value2, setValue2] = useState(0);
+	
+	function handleChange1(event) {
+		setValue1(+event.target.value);
+	}
+	
+	function handleChange2(event) {
+		setValue2(+event.target.value);
+	}
+	
+	return &lt;div&gt;
+		&lt;input value={value1} onChange={handleChange1} /&gt;
+		&lt;input value={value2} onChange={handleChange2} /&gt;
+		&lt;p&gt;result: {value1 + value2}&lt;/p&gt;
+	&lt;/div&gt;
+}</code>
+</div>
+<div class="task">
+	<p>
+		Даны <code class="number inline">5</code> инпутов. Сделайте так, чтобы
+		при вводе чисел в наши инпуты в абзац выводилось
+		среднее арифметическое введенных чисел.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/framework/react/book/prime/" data-persent="33" data-hash="jsrtPmStInp" data-quantity="51" data-num="18"><a href="../../../../../../../ru/javascript/framework/react/book/prime/states/intro.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../../ru/javascript/framework/react/book/prime/states/handling-form-data.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

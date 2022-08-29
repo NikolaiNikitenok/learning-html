@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Передача стейтов в дочерние компоненты в React | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы научимся передавать стейты в дочерние компоненты в React.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Передача стейтов в дочерние компоненты в React</h1>
+				<div class="content">
+<p>
+	Пусть у нас дан массив с продуктами:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">const initProds = [
+	{id: id(), name: 'product1', cost: 100},
+	{id: id(), name: 'product2', cost: 200},
+	{id: id(), name: 'product3', cost: 300},
+];</code>
+</div>
+<p>
+	Пусть этот массив располагается в компоненте
+	<code class="code inline">Products</code>. Запишем эти продукты в состояние
+	компонента:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function Products() {
+	const [prods, setProds] = useState(initProds);
+}</code>
+</div>
+<p>
+	Теперь давайте переберем продукты циклом
+	и выведем их в какой-нибудь верстке:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function Products() {
+	const [prods, setProds] = useState(initProds);
+	
+	const items = prods.map(prod =&gt; {
+		return &lt;div key={prod.id}&gt;
+			name: &lt;span&gt;{prod.name}&lt;/span&gt;,
+			cost: &lt;span&gt;{prod.cost}&lt;/span&gt;
+		&lt;/div&gt;;
+	});
+	
+	return &lt;div&gt;
+		{items}
+	&lt;/div&gt;;
+}</code>
+</div>
+<p>
+	Как вы видите, содержимое нашего цикла map
+	достаточно сложное, особенное если верстка
+	продукта разрастется в дальнейшем. Такая
+	сложность затрудняет чтение, понимание и
+	поддержку кода.
+</p>
+<p>
+	Будет лучше вынести код, отвечающий за отображение
+	продукта в отдельный компонент. Назовем его
+	<code class="code inline">Product</code>. Вот код нашего компонента:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function Product({ name, cost }) {
+	return &lt;div&gt;
+		name: &lt;span&gt;{name}&lt;/span&gt;,
+		cost: &lt;span&gt;{cost}&lt;/span&gt;
+	&lt;/div&gt;;
+}</code>
+</div>
+<p>
+	Давайте теперь внутри компонента <code class="code inline">Products</code>
+	в цикле map будем использовать дочерние компоненты
+	<code class="code inline">Product</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function Products() {
+	const [prods, setProds] = useState(initProds);
+	
+	const items = prods.map(prod =&gt; {
+		return &lt;Product
+			key ={prod.id}
+			name={prod.name}
+			cost={prod.cost}
+		/&gt;;
+	});
+	
+	return &lt;div&gt;
+		{items}
+	&lt;/div&gt;;
+}</code>
+</div>
+<p>
+	Как вы видите, теперь код цикла упростился
+	и стал более понятым для понимания. Кроме
+	того, теперь за отображение продукта отвечает
+	отдельный компонент, в котором мы можем делать,
+	а потом редактировать верстку продуктов.
+</p>
+<p>
+	Технически у нас получается, что родительский
+	компонент имеет стейт с данными, а дочерние
+	компоненты получают эти данные в виде пропсов
+	и отображают их нужным нам образом.
+</p>
+<div class="task">
+	<p>
+		В стейте компонента Users дан следующий массив:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="jsx">const initUsers = [
+	{id: id(), name: 'user1', surname: 'surn1', age: 30},
+	{id: id(), name: 'user2', surname: 'surn2', age: 31},
+	{id: id(), name: 'user3', surname: 'surn3', age: 32},
+];</code>
+	</div>
+	<p>
+		Переберите этот массив циклом и выведите
+		всех юзеров на экран. Создайте для отображения
+		юзера отдельный компонент User.
+	</p>
+</div>
+
+<h2>Передача id в компонент</h2>
+<p>
+	Вы уже знаете, что атрибуты тега компонента
+	попадают в пропсы. Это касается всех атрибутов,
+	кроме атрибута <code class="code inline">key</code>, который нужен
+	для использования в циклах, вот так:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">const items = prods.map(prod =&gt; {
+	return &lt;Product
+		key ={prod.id}
+		name={prod.name}
+		cost={prod.cost}
+	/&gt;;
+});</code>
+</div>
+<p>
+	В данном случае в пропсы попадут атрибуты
+	<code class="code inline">name</code> и <code class="code inline">cost</code>, а <code class="code inline">key</code> -
+	не попадет. Нам, однако, может понадобится
+	передать <code class="string inline">id</code> в пропсы компонента. В
+	этом случае нам нужно будет ввести еще один
+	атрибут:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">const items = prods.map(prod =&gt; {
+	return &lt;Product
+		key ={prod.id}
+		id  ={prod.id}
+		name={prod.name}
+		cost={prod.cost}
+	/&gt;;
+});</code>
+</div>
+<div class="task">
+	<p>
+		Модифицируйте ваш компонент <code class="code inline">User</code> так,
+		чтобы в нем в абзаце выводился <code class="string inline">id</code> юзера.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/framework/react/book/prime/" data-persent="88" data-hash="jsrtPmCpChCPS" data-quantity="51" data-num="46"><a href="../../../../../../../ru/javascript/framework/react/book/prime/components/child-components.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../../ru/javascript/framework/react/book/prime/components/changing-parent-state.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

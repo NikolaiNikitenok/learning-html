@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Adding rows and columns to an HTML table in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this tutorial, we will learn how to add rows and columns to HTML tables in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Adding rows and columns to an HTML table</h1>
+				<div class="content">
+<p>
+	Let's say we have some HTML table - <code class="selector inline">#table</code>. 
+	Let's learn how to add new rows and columns to it.
+</p>
+
+<h2>Adding rows</h2>
+<p>
+	Adding rows is not difficult: you need to create <code class="code inline">tr</code>, 
+	and then run a loop that will add the desired number of 
+	cells to this row (let's say <code class="number inline">3</code>):
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let table = document.querySelector('#table');
+
+let tr = document.createElement('tr');
+
+for (let i = 1; i &lt;= 3; i++) {
+	let td = document.createElement('td');
+	tr.appendChild(td);
+}
+
+table.appendChild(tr);</code>
+</div>
+<div class="task">
+	<p>
+		Make a button, by clicking on which a new 
+		row will be added to the table.
+	</p>
+</div>
+
+<h2>Adding columns</h2>
+<p>
+	But with adding columns, it’s a little more complicated: 
+	you need to run a loop that will go through all the table 
+	rows and add a new cell to each row:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let trs = document.querySelectorAll('#table tr');
+
+for (let tr of trs) {
+	let td = document.createElement('td');
+	tr.appendChild(td);
+}</code>
+</div>
+<div class="task">
+	<p>
+		Given a <code class="number inline">2</code> by <code class="number inline">2</code> table:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;table id="table"&gt;
+	&lt;tr&gt;
+		&lt;td&gt;&lt;/td&gt;
+		&lt;td&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+		&lt;td&gt;&lt;/td&gt;
+		&lt;td&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+&lt;/table&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="css">td {
+	width: 50px;
+	height: 50px;
+	border: 1px solid black;
+}</code>
+	</div>
+	<p>
+		There is also a button. Make it so that when you 
+		click on the button, the table increases by one 
+		row and one column.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="91" data-hash="jsPmPrTRCA" data-quantity="363" data-num="333"><a href="../../../../../../en/javascript/book/prime/dom/practice/table-creating-via-objects-array.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../en/javascript/book/prime/dom/practice/tables-cells-modification.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/practice/table-rows-cols-adding.html" class="active">en</a><a href="../../../../../../ru/javascript/book/prime/dom/practice/table-rows-cols-adding.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

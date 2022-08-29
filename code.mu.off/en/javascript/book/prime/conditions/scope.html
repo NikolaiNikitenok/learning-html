@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Variable scope of if-else in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will consider the scope of variables in if-else constructs in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Variable scope of if-else in JavaScript</h1>
+				<div class="content">
+<p>
+	Let, for simplicity, we have an 
+	always satisfied condition:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">if (true) {
+	
+}</code>
+</div>
+<p>
+	Let's consider the following code:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">if (true) {
+	let res = '!';
+}
+
+console.log(res);</code>
+</div>
+<p>
+	As you can see, the value <code class="string inline">'!'</code> should 
+	be written to the variable <code class="code inline">res</code>. However, 
+	if you run this code, then an error will 
+	be displayed in the console!
+</p>
+<p>
+	The point is that variables <i>declared inside 
+	curly braces are only visible inside those 
+	braces, and not visible outside</i>. In a 
+	scientific way, here we are talking about 
+	<dfn>variable scope</dfn>.
+</p>
+<p>
+	We can say that the scope of variables declared 
+	inside curly braces is only those curly braces. 
+	However, if a variable is declared outside the 
+	curly braces, then it is visible both inside 
+	and outside of them:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let res; // the variable declared outside
+
+if (true) {
+	res = '!';
+}
+
+console.log(res); // shows '!'</code>
+</div>
+
+<h2>Example</h2>
+<p>
+	In the following example, the variable <code class="code inline">res</code> 
+	is assigned either the value <code class="number inline">1</code> or the 
+	value <code class="number inline">2</code> depending on the condition:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 5;
+
+if (num &gt;= 0) {
+	let res = 1;
+} else {
+	let res = 2;
+}
+
+console.log(res);</code>
+</div>
+<p>
+	However, if you run this code, an error will 
+	be displayed in the console. As you now 
+	understand, it's all about the visibility 
+	of variables. To solve the issue, declare 
+	a variable outside the condition:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let test = true;
+let res; // declare the variable outside the condition
+
+if (test) {
+	res = 1;
+} else {
+	res = 2;
+}
+
+console.log(res); // shows 1</code>
+</div>
+<div class="task">
+	<p>
+		The author of the code below wanted to 
+		perform an age validation for reaching 
+		of <code class="number inline">18</code> years. The code, however, 
+		doesn't work. Please fix the code author's 
+		mistake. Here is the problematic code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let age = 17;
+
+if (age &gt;= 18) {
+	let adult = true;
+} else {
+	let adult = false;
+}
+
+console.log(adult);</code>
+	</div>
+</div>
+
+<h2>Nuances</h2>
+<p>
+	The variable scope has some nuance. Let's 
+	look at it with an example. Let's declare 
+	the variable <code class="code inline">res</code> outside our condition 
+	with one value, and change this value to 
+	another inside the condition:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let res = 1;
+
+if (true) {
+	res = 2;
+}
+
+console.log(res); // shows 2</code>
+</div>
+<p>
+	As you can see, the variable <code class="code inline">res</code> has 
+	changed inside the condition. However, 
+	everything will change if the variable 
+	<code class="code inline">res</code> is also declared inside the 
+	condition through <code class="code inline">let</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let res = 1;
+
+if (true) {
+	let res = 2; // declare a variable with let
+}
+
+console.log(res); // shows 1, not 2!</code>
+</div>
+<p>
+	The point here is that the declaration of 
+	a variable through <code class="code inline">let</code> inside the 
+	condition created the local 
+	variable <code class="code inline">res</code>.
+</p>
+<p>
+	That is, there is one variable <code class="code inline">res</code> 
+	inside the condition, and another one outside 
+	it. You can verify this by printing the 
+	value of the variable to the console 
+	inside the condition:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let res = 1;
+
+if (true) {
+	let res = 2;
+	console.log(res); // shows 2
+}
+
+console.log(res); // shows 1</code>
+</div>
+<div class="task">
+	<p>
+		The author of the code below wanted to 
+		perform an age validation for reaching 
+		of <code class="number inline">18</code> years. The code, however, 
+		prints the value <code class="code inline">undefined</code> to the 
+		console for any age value. Please fix the 
+		code author's mistake. Here is the 
+		problematic code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let age = 17;
+let adult;
+
+if (age &gt;= 18) {
+	let adult = true;
+} else {
+	let adult = false;
+}
+
+console.log(adult);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		The author of the code below wanted to 
+		perform an age validation for reaching 
+		of <code class="number inline">18</code> years. After checking the 
+		code, it turned out that if the age is 
+		equal to or greater than <code class="number inline">18</code> years, 
+		then true is written to the variable 
+		<code class="code inline">adult</code>, as it should be, however, 
+		if the age is less than <code class="number inline">18</code>, then 
+		the variable <code class="code inline">adult</code> has the value 
+		<code class="code inline">undefined</code>. Please fix the code 
+		author's mistake.
+	</p>
+	<p>
+		Here is the problematic code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let age = 17;
+let adult;
+
+if (age &gt;= 18) {
+	adult = true;
+} else {
+	let adult = false;
+}
+
+console.log(adult);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		The author of the code below wanted to 
+		perform an age checking. The code, however, 
+		prints the value <code class="code inline">undefined</code> to the 
+		console for any age value. Please fix 
+		the code author's mistake.
+	</p>
+	<p>
+		Here is the problematic code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let age = 17;
+let res;
+
+if (age &gt;= 18) {
+	if (age &lt;= 23) {
+		let res = 'from 18 to 23';
+	} else {
+		let res = 'greater than 23';
+	}
+} else {
+	let res = 'less than 18';
+}
+
+console.log(res);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		The author of the code below wanted to 
+		perform an age checking. The code, however, 
+		when the age value is greater than <code class="number inline">18</code> 
+		years, prints the value <code class="code inline">undefined</code> 
+		to the console. Please fix the code 
+		author's mistake.
+	</p>
+	<p>
+		Here is the problematic code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let age = 19;
+let res;
+
+if (age &gt;= 18) {
+	let res;
+	
+	if (age &lt;= 23) {
+		res = 'from 18 to 23';
+	} else {
+		res = 'greater than 23';
+	}
+} else {
+	res = 'less than 18';
+}
+
+console.log(res);</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="28" data-hash="jsPmCdScp" data-quantity="363" data-num="101"><a href="../../../../../en/javascript/book/prime/conditions/confirm.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/conditions/scope-nuances.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/conditions/scope.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/conditions/scope.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

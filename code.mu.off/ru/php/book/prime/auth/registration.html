@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Регистрация на PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В уроке рассказывается про регистрацию пользователей через базы данных.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Регистрация на PHP</h1>
+				<div class="content">
+<p>
+	Давайте теперь реализуем регистрацию. Для
+	этого сделаем отдельную страницу <code class="path inline">register.php</code>.
+	По заходу на эту страницу, пользователь должен
+	увидеть форму, в которую он должен вбить
+	желаемый логин и пароль:
+</p>
+<div class="block" data-file="register.php">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;form action="" method="POST"&gt;
+	&lt;input name="login"&gt;
+	&lt;input name="password" type="password"&gt;
+	&lt;input type="submit"&gt;
+&lt;/form&gt;</code>
+</div>
+<p>
+	По нажатию на кнопку отправки форму логин
+	и пароль пользователя должны занестись в
+	базу данных с помощью <code class="sql inline">INSERT</code> запроса,
+	вот так:
+</p>
+<div class="block" data-file="register.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	if (!empty($_POST['login']) and !empty($_POST['password'])) {
+		$login = $_POST['login'];
+		$password = $_POST['password'];
+		
+		$query = "INSERT INTO users SET login='$login', password='$password'";
+		mysqli_query($link, $query);
+	}
+?&gt;</code>
+</div>
+<p>
+	Затем пользователь может зайти на страницу
+	авторизации, ввести логин и пароль, под которым
+	он зарегистрировался и авторизоваться.
+</p>
+<div class="task">
+	<p>
+		Реализуйте описанную выше регистрацию. После
+		этого зарегистрируйте нового пользователя
+		и авторизуйтесь под ним. Убедитесь, что все
+		работает, как надо.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Модифицируйте ваш код так, чтобы кроме логина
+		и пароля пользователю нужно было ввести еще
+		и дату своего рождения и email. Сохраните
+		эти данные в базу данных.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Модифицируйте ваш код так, чтобы в базу автоматически
+		сохранялась дата регистрации.
+	</p>
+</div>
+
+<h2>Авторизуем сразу при регистрации</h2>
+<p>
+	Сейчас наша регистрация сделана таким образом,
+	что пользователь первый раз вбивает логин-пароль
+	регистрируясь, а потом сразу же вбивает их
+	второй раз, желая зайти на сайт.
+</p>
+<p>
+	Это на самом деле не очень удобно и будет
+	раздражать пользователей. Лучше сделать так,
+	чтобы при успешной регистрации сразу же происходила
+	автоматическая авторизация. Для этого сразу
+	после успешной регистрации запишем в сессию
+	пометку об успешной авторизации:
+</p>
+<div class="block" data-file="register.php">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;?php
+	if (!empty($_POST['login']) and !empty($_POST['password'])) {
+		$login = $_POST['login'];
+		$password = $_POST['password'];
+		
+		$query = "INSERT INTO users SET login='$login', password='$password'";
+		mysqli_query($link, $query);
+		
+		$_SESSION['auth'] = true; // пометка об авторизации
+	}
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Модифицируйте ваш код так, чтобы после регистрации
+		пользователь автоматически становился авторизованным.
+	</p>
+</div>
+
+<h2>Добавляем id пользователя в сессию</h2>
+<p>
+	Пусть кроме пометки об авторизации мы бы
+	хотели записать в сессию еще и его <code class="string inline">id</code>.
+</p>
+<p>
+	В этом случае мы можем получить его с помощью
+	функции <code class="code inline">mysqli_insert_id</code>. Эта функция
+	получает <code class="string inline">id</code> последней вставленной
+	в данном скрипте записи, то есть как раз
+	то, что нам нужно.
+</p>
+<p>
+	Реализуем:
+</p>
+<div class="block" data-file="register.php">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;?php
+	if (!empty($_POST['login']) and !empty($_POST['password'])) {
+		$login = $_POST['login'];
+		$password = $_POST['password'];
+		
+		$query = "INSERT INTO users SET login='$login', password='$password'";
+		mysqli_query($link, $query);
+		
+		$_SESSION['auth'] = true;
+		
+		$id = mysqli_insert_id($link);
+		$_SESSION['id'] = $id; // пишем id в сессию
+	}
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Запишите при регистрации в сессию еще и <code class="string inline">id</code>
+		пользователя.
+	</p>
+</div>
+
+<h2>Скрываем пароль</h2>
+<p>
+	Поле ввода пароля обычно представляет собой
+	инпут с типом <code class="string inline">password</code>, в котором
+	введенные символы скрываются под звездочками.
+	Это сделано для того, чтобы злоумышленник
+	не мог подсмотреть пароль пользователя через
+	плечо в момент регистрации.
+</p>
+<p>
+	Сокрытие пароля таким образом конечно хорошо,
+	но есть, однако, проблема - пользователь
+	не видит, что вводит. Он может ошибиться
+	при вводе какого-либо символа и зарегистрироваться
+	не с тем паролем, с которым он хотел. Это
+	будет печально:(, так как он затем не сможет
+	авторизоваться на сайте.
+</p>
+<p>
+	Существует стандартное решение этой проблемы:
+	пользователю показываются два инпута для
+	ввода пароля - в первый инпут он вводит пароль,
+	а во второй инпут - его подтверждение, то
+	есть этот же пароль второй раз:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;form action="" method="POST"&gt;
+	&lt;input name="login"&gt;
+	&lt;input type="password" name="password"&gt;
+	&lt;input type="password" name="confirm"&gt;
+	&lt;input type="submit"&gt;
+&lt;/form&gt;</code>
+</div>
+<p>
+	Задача нашего сайта - проверить, что пароль
+	и его подтверждение совпадают, так как логично,
+	что в этом случае пользователь ввел именно
+	то, что хотел ввести:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	if (!empty($_POST['login']) and !empty($_POST['password']) and !empty($_POST['confirm'])) {
+		if ($_POST['password'] == $_POST['confirm']) {
+			// регистрируем
+		} else {
+			// выведем сообщение о несовпадении
+		}
+	}
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Модифицируйте ваш код так, чтобы при отправке
+		формы пароль сравнивался с его подтверждением.
+		Если они совпадают - то продолжаем регистрацию,
+		а если не совпадают - то выводим сообщение
+		об этом.
+	</p>
+</div>
+
+<h2>Проверка логина на занятость</h2>
+<p>
+	Сейчас наша регистрация имеет одну проблему
+	- новый пользователь нашего сайта может зарегистрироваться
+	под уже существующим логином, что, конечно
+	же, недопустимо.
+</p>
+<p>
+	Для решения проблемы необходимо перед запросом
+	на добавление нового пользователя в базу
+	данных, выполнить <code class="sql inline">SELECT</code> запрос, который
+	проверит, занят желаемый логин или нет. Если
+	не занят - регистрируем, если занят - не
+	регистрируем, а выводим сообщение об этом.
+</p>
+<p>
+	Давайте напишем этот код:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;?php
+	if (!empty($_POST['login']) and !empty($_POST['password'])) {
+		$login = $_POST['login'];
+		$password = $_POST['password'];
+		
+		$query = "SELECT * FROM users WHERE login='$login'";
+		$user = mysqli_fetch_assoc(mysqli_query($link, $query));
+		
+		if (empty($user)) {
+			$query = "INSERT INTO users SET login='$login', password='$password'";
+			mysqli_query($link, $query);
+			
+			$_SESSION['auth'] = true;
+			
+		} else {
+			// логин занят, выведем сообщение об этом
+		}
+	}
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Модифицируйте ваш код так, чтобы при попытке
+		регистрации выполнялась проверка на занятость
+		логина и, если он занят, - выводите сообщение
+		об этом и просите ввести другой логин.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/prime/" data-persent="91" data-hash="ppPmAuRg" data-quantity="223" data-num="205"><a href="../../../../../ru/php/book/prime/auth/session.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/php/book/prime/auth/validation.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

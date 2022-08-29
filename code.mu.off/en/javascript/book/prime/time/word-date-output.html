@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Printing parts of a date with words in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to display parts of a date with words in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Printing parts of a date with words in JavaScript</h1>
+				<div class="content">
+<p>
+	You already know how to print the day of 
+	the week as a number using the <code class="code inline">getDay</code> 
+	method. Often, however, we do not need the 
+	number of the day of the week, but its textual 
+	name. Let's write code that will convert the 
+	numbers returned by the <code class="code inline">getDay</code> method 
+	into the corresponding names of the days of 
+	the week.
+</p>
+<p>
+	First, let's write a code that will display 
+	the number of the current day of the week:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let date = new Date();
+let day = date.getDay();
+
+console.log(day);</code>
+</div>
+<p>
+	And now let's refine this code so that the 
+	screen displays not the number of the day 
+	of the week, but its name (for brevity, 
+	Sunday will be <code class="string inline">'Sun'</code>, Monday 
+	<code class="string inline">'Mon'</code> and so on)
+</p>
+<p>
+	To solve the problem, we will make an array 
+	of days of the week <code class="code inline">days</code> and start 
+	it from Sunday (since this is the zero day):
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];</code>
+</div>
+<p>
+	How to use this array to display, for example, 
+	<code class="string inline">'Tue'</code>? You need to pass the number of 
+	this day in square brackets (Tuesday has 
+	the number <code class="number inline">2</code>):
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+console.log(days[2]); // shows 'Tue'</code>
+</div>
+<p>
+	However, we don't want to pass the day of 
+	the week manually, but rather let JavaScript 
+	detect the current day and display its name. 
+	To do this, we need to combine what the 
+	<code class="code inline">getDay</code> method returns with our 
+	<code class="code inline">days</code> array:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let date = new Date();
+let day  = date.getDay();
+let days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+console.log(days[day]);</code>
+</div>
+<div class="task">
+	<p>
+		Let the following array be given:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let months = [
+	'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+	'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+];</code>
+	</div>
+	<p>
+		Use this array to output the 
+		name of the current month.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="62" data-hash="jsPmTmWDO" data-quantity="363" data-num="226"><a href="../../../../../en/javascript/book/prime/time/weekday-getting.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/time/time-setting.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/time/word-date-output.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/time/word-date-output.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Digits of a number when iterating through a loop in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to get the digits of a number when iterating through a loop in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Digits of a number when iterating through a loop in JavaScript</h1>
+				<div class="content">
+<p>
+	Suppose that when iterating over numbers, 
+	we want to get some digit from these numbers. 
+	For example, we want to make a number be 
+	displayed on the console if its first digit 
+	is <code class="number inline">1</code> or <code class="number inline">2</code>.
+</p>
+<p>
+	I remind you that you can’t refer to the 
+	characters of a number directly, that is, 
+	it won’t work like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">for (let i = 1; i &lt;= 100; i++) {
+	if (i[0] == 1 || i[0] == 2) { // that won't work
+		console.log(i);
+	}
+}</code>
+</div>
+<p>
+	First you need to convert the number to 
+	a string and then get a certain character 
+	of the returned string, like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">for (let i = 1; i &lt;= 100; i++) {
+	let str = String(i); // converting number to string
+	
+	if (str[0] === '1' || str[0] === '2') {
+		console.log(i);
+	}
+}</code>
+</div>
+<div class="task">
+	<p>
+		Loop through the numbers from <code class="number inline">10</code> 
+		to <code class="number inline">1000</code> and output the first 
+		digit of each number to the console.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Loop through the numbers from <code class="number inline">10</code> 
+		to <code class="number inline">1000</code> and output the sum of the 
+		first and second digits of each number 
+		to the console.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Loop through the numbers from <code class="number inline">10</code> 
+		to <code class="number inline">1000</code> and output those numbers 
+		whose first digit is equal to <code class="number inline">1</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Loop through the numbers from <code class="number inline">10</code> 
+		to <code class="number inline">1000</code> and display those numbers 
+		whose sum of the first two 
+		digits is <code class="number inline">5</code>.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="33" data-hash="jsPmLpND" data-quantity="363" data-num="120"><a href="../../../../../en/javascript/book/prime/loops/string-forming.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/loops/break.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/loops/numbers-digits.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/loops/numbers-digits.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

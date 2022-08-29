@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Коллбэк в методе replace в регулярках JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами изучим использование коллбэка в методе replace JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Коллбэк в методе replace в регулярках JavaScript</h1>
+				<div class="content">
+<p>
+	Метод replace вторым параметром может принимать
+	не только строку, но и <a href="../../../../../ru/javascript/book/prime/functions/callbacks.html">функцию-коллбэк</a>,
+	которая применится для каждого найденного
+	совпадения. Каждая подстрока, которую нашла
+	регулярка, заменится на то, что вернет эта
+	функция именно для этой подстроки.
+</p>
+<p>
+	В эту функцию можно передавать параметры:
+	в первый параметр положится найденная строка,
+	во второй параметр - первый карман, в третий
+	параметр - второй карман и так далее - можно
+	делать сколько параметров, сколько карманов
+	в регулярном выражении.
+</p>
+<p>
+	В предпоследний параметр положится позиция
+	найденного совпадения, а в последний - вся
+	строка, по которой делается поиск.
+</p>
+<p>
+	Как это все работает - разберем на практических
+	примерах.
+</p>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Пусть дана строка с числами:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = '2 3 4 5';</code>
+</div>
+<p>
+	Давайте заменим эти числа на их квадраты.
+	Для начала давайте просто выведем наши числа
+	по очереди в консоль в функции-коллбэке:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">str.replace(/\d+/g, function(match) {
+	console.log(match);
+});</code>
+</div>
+<p>
+	Наш код выведет сначала <code class="string inline">'2'</code>, потом
+	<code class="string inline">'3'</code>, <code class="string inline">'4'</code> и <code class="string inline">'5'</code>. То есть
+	в переменную match последовательно попадают
+	те строки, которые нашла регулярка.
+</p>
+<p>
+	Давайте решим задачу до конца - будем возводить
+	<code class="code inline">match</code> в квадрат и возвращать его с
+	помощью return. Получится, что для найденной
+	двойки вернется <code class="number inline">4</code> и двойка заменится
+	на эту четверку, для найденной тройки вернется
+	<code class="number inline">9</code> и тройка заменится на эту девятку
+	- и так далее:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let result = str.replace(/\d+/g, function (match) {
+	return match**2; 
+});
+
+console.log(result); // выведет '4 9 16 25'</code>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Пусть теперь в строке даны конструкции вида
+	<code class="string inline">'2+3='</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = '2+3= 4+5= 6+7=';</code>
+</div>
+<p>
+	Давайте сделаем так, чтобы после равно вставились
+	суммы соответствующих чисел. То есть наша
+	строка должна превратиться в следующую:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">'2+3=5 4+5=9 6+7=13'</code>
+</div>
+<p>
+	Для решения задачи давайте опять поэкспериментируем
+	- разложим первое и второе слагаемые по отдельным
+	карманам:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">str.replace(/(\d+)\+(\d+)=/g, function (match0, match1, match2) {
+	console.log(match0, match1, match2);
+});</code>
+</div>
+<p>
+	А теперь окончательно решим задачу: для каждой
+	найденной подстроки просуммируем первый и
+	второй карманы, возьмем нулевой карман (найденную
+	строку, например <code class="string inline">'2+3='</code>), добавим
+	к нему результат и вернем все это через <code class="code inline">return</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let result = str.replace(/(\d+)\+(\d+)=/g, function(match0, match1, match2) {
+	let sum = Number(match1) + Number(match2);
+	return match0 + sum;
+});
+
+console.log(result);</code>
+</div>
+
+<h2>Практические задачи</h2>
+<div class="task">
+	<p>
+		Дана строка:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let str = 'aaa [2] bbb [3] ccc [12] ddd';</code>
+	</div>
+	<p>
+		Найдите числа, стоящие в скобках и увеличьте
+		их в два раза. То есть из нашей строки должна
+		получится следующая:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">'aaa [4] bbb [6] ccc [24] ddd'</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Дана строка:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let str = '123 456 789';</code>
+	</div>
+	<p>
+		Найдите все числа и переверните их цифры
+		в обратном порядке. То есть из нашей строки
+		должна получится следующая:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">'321 654 987'</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Дана строка с датами:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let str = '31.12.2025 30.11.2024 29.10.2023';</code>
+	</div>
+	<p>
+		Найдите все даты и преобразуйте их в другой
+		формат так, чтобы получилась следующая строка:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">'2025-12-31 2024-11-30 2023-10-29'</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/supreme/" data-persent="22" data-hash="jsSpRERMC" data-quantity="114" data-num="26"><a href="../../../../../ru/javascript/book/supreme/regular/positive-and-negative-viewing.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/javascript/book/supreme/regular/method-search.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

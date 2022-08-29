@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Autocomplete in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../js/location.js?v=3"></script>
+		<script src="../../../../js/locale.js?v=5"></script>
+		<script src="../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will implement autocomplete in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Autocomplete in JavaScript</h1>
+				<div class="content">
+<p>
+	We are now implementing autocompletion. This term 
+	refers to a drop-down tooltip when entering text 
+	into an input. Let's look at an example. Below I 
+	made an input in which you can enter the name of 
+	the country. At the same time, if you enter some 
+	letters, then a list of countries that begin with 
+	the entered string will appear under the input.
+</p>
+<p>
+	If you wish, you can, in order not to enter the 
+	entire name of the country, click on any country 
+	and it will appear in the input. For this, in 
+	general, autocompletion is necessary. In the 
+	example, for simplicity, I made only three 
+	countries: Belarus, Belgium and Bulgaria. 
+	Enter the English character <code class="string inline">'B'</code> into 
+	the input below, and then <code class="string inline">'e'</code> and 
+	see what happens:
+</p>
+<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			body {
+			height: 150px;
+		}
+		</style>
+		<style>
+			#parent {
+			position: relative;
+		}
+		#elem {
+			padding: 5px;
+			font-size: 18px;
+		}
+		
+		#parent ul {
+			position: absolute;
+			margin: 0;
+			padding: 0;
+			list-style-type: none;
+			background-color: white;
+		}
+		#parent li {
+			border: 1px solid gray;
+			font-size: 18px;
+			padding: 5px;
+		}
+		#parent li:hover {
+			border: 1px solid black;
+			cursor: pointer;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;parent&quot;>
+			<input id=&quot;elem&quot;>
+			<ul id=&quot;list&quot;></ul>
+		</div>
+		text text text text text
+		
+		<script>
+			
+			let arr  = ['Belarus', 'Belgium', 'Bulgaria'];
+		let elem = document.querySelector('#elem');
+		let list = document.querySelector('#list');
+
+		elem.addEventListener('input', function() {
+			list.textContent = '';
+			
+			if (this.value !== '') {
+				let matches = arr.filter(item => item.startsWith(this.value));
+				
+				if (matches.length > 0) {
+					for (let match of matches) {
+						let li = document.createElement('li');
+						li.textContent = match;
+						list.appendChild(li);
+						
+						li.addEventListener('click', function() {
+							elem.value = this.textContent;
+							list.textContent = '';
+						});
+					}
+				}
+			}
+		});
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Discussion</h2>
+<p>
+	Let's discuss how to solve the problem. You need 
+	to make an array with the countries names. I 
+	have it like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr  = ['Belarus', 'Belgium', 'Bulgaria'];</code>
+</div>
+<p>
+	When entering text into the input, you need to 
+	run through the array with countries after each 
+	character entered and get the countries that 
+	start with the entered string.
+	It is convenient to do this using the methods 
+	<a href="../../../../en/javascript/manual/array/filter.html"><code class="code inline">filter</code></a> 
+	and <a href="../../../../en/javascript/manual/string/startsWith.html"><code class="code inline">startsWith</code></a>.
+</p>
+<p>
+	With <code class="code inline">filter</code> you can get an array of countries 
+	starting with the input string. Then you need to 
+	loop through this array and fill the list <code class="code inline">ul</code> 
+	with li-items with countries. And so you need to do 
+	for each character input, first removing the 
+	previously created li-items from ul-list.
+</p>
+<p>
+	For your convenience, here is 
+	the finished layout:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="parent"&gt;
+	&lt;input id="elem"&gt;
+	&lt;ul id="list"&gt;&lt;/ul&gt;
+&lt;/div&gt;
+text text text text text</code>
+	<code class="highlight" data-module="highlight" data-lang="css">#parent {
+	position: relative;
+}
+#elem {
+	padding: 5px;
+	font-size: 18px;
+}
+
+#parent ul {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	background-color: white;
+}
+#parent li {
+	border: 1px solid gray;
+	font-size: 18px;
+	padding: 5px;
+}
+#parent li:hover {
+	border: 1px solid black;
+	cursor: pointer;
+}</code>
+</div>
+<div class="task">
+	<p>
+		Copy the provided HTML and CSS codes. Implement 
+		auto-completion according to the 
+		described algorithm.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/practice/" data-persent="15" data-hash="jsPrStAuc" data-quantity="75" data-num="12"><a href="../../../../en/javascript/book/practice/prediction.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../en/javascript/book/practice/spoiler.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../en/javascript/book/practice/autocompletion.html" class="active">en</a><a href="../../../../ru/javascript/book/practice/autocompletion.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../js/metrika.js?v=1"></script>	</body>
+</html>

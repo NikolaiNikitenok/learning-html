@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Функция prompt в JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами изучим функцию prompt в JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Функция prompt в JavaScript</h1>
+				<div class="content">
+<p>
+	Вы уже знаете о существовании функции <code class="code inline">alert</code>,
+	выводящей заданное сообщение на экран. Существует
+	также похожая функция <code class="code inline">prompt</code>, которая
+	позволяет получить от пользователя какой-либо
+	текст.
+</p>
+<p>
+	Давайте для примера спросим имя пользователя:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">prompt('Ваше имя?');</code>
+</div>
+<p>
+	Запустите приведенный выше код, чтобы увидеть
+	окошко, выводимое функцией <code class="code inline">prompt</code>.
+	Вбейте ваше имя и нажмите на кнопку. Если
+	вы проделали все описанные выше манипуляции,
+	то введенное вами имя попадет в наш скрипт.
+</p>
+<p>
+	Для того, чтобы получить доступ к введенному
+	имени, результат работы функции <code class="code inline">prompt</code>
+	нужно присвоить в какую-нибудь переменную,
+	например, вот так:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let name = prompt('Ваше имя?');</code>
+</div>
+<p>
+	Давайте на следующей строке кода выведем
+	на экран введенное ранее имя, воспользовавшись
+	функцией <code class="code inline">alert</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let name = prompt('Ваше имя?');
+alert('Ваше имя: ' + name);</code>
+</div>
+<p>
+	Вы должны понимать, что при вызове функции
+	<code class="code inline">prompt</code> дальнейшее выполнение скрипта
+	блокируется, пока не будут введены соответствующие
+	данные. В общем-то, также работает и функция
+	<code class="code inline">alert</code>, только она ожидает нажатия
+	на соответствующую кнопку.
+</p>
+<p>
+	Кстати, использовать переменную не обязательно:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">alert('Ваше имя: ' + prompt('Ваше имя?'));</code>
+</div>
+<div class="task">
+	<p>
+		Спросите возраст пользователя с помощью функции
+		<code class="code inline">prompt</code>. Выведите с помощью <code class="code inline">alert</code>
+		введенный пользователем возраст.
+	</p>
+</div>
+
+<h2>Проблема с типами</h2>
+<p>
+	Учтите, что функция <code class="code inline">prompt</code> всегда
+	возвращает строку, даже если пользователь
+	вводил число. Для примера рассмотрите следующий
+	скрипт:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num1 = prompt('Введите первое число');
+let num2 = prompt('Введите второе число');
+
+alert(num1 + num2); // сложит числа как строки</code>
+</div>
+<div class="task">
+	<p>
+		Переделайте приведенный выше код так, чтобы
+		суммировались числа, а не строки.
+	</p>
+</div>
+<div class="task">
+	<p>
+		С помощью функции <code class="code inline">prompt</code> спросите
+		у пользователя сторону квадрата. Выведите
+		на экран площадь введенного квадрата.
+	</p>
+</div>
+<div class="task">
+	<p>
+		С помощью двух функций <code class="code inline">prompt</code> спросите
+		у пользователя стороны прямоугольника. Выведите
+		на экран периметр введенного прямоугольника.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/prime/" data-persent="9" data-hash="jsPmBsPmt" data-quantity="363" data-num="33"><a href="../../../../../ru/javascript/book/prime/basis/inaccurate-calculations.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/javascript/book/prime/basis/document-write.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/basis/prompt.html">en</a><a href="../../../../../ru/javascript/book/prime/basis/prompt.html" class="active">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

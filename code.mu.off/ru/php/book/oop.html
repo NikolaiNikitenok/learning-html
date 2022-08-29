@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Учебник по ООП и MVC на PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../js/location.js?v=3"></script>
+		<script src="../../../js/locale.js?v=5"></script>
+		<script src="../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="Простой учебник по объектно-ориентированному программированию и паттерну MVC на PHP для новичков.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Учебник по ООП и MVC на PHP</h1>
+				<div class="menu" data-module="menu" data-mode="hash" data-book="ppOp">
+<h2>Основы</h2>
+<div data-section="Bs">
+	<a data-lesson="Inr" href="../../../ru/php/book/oop/intro.html">
+		Введение
+	</a>
+	<a data-lesson="Pr" href="../../../ru/php/book/oop/properties.html">
+		Свойства
+	</a>
+	<a data-lesson="Mt" href="../../../ru/php/book/oop/methods.html">
+		Методы
+		<span class="__label__ __acceptable__">дать задачу на Product</span>
+	</a>
+	<a data-lesson="PTh" href="../../../ru/php/book/oop/properties-and-this.html">
+		Свойства и $this
+	</a>
+	<a data-lesson="MTh" href="../../../ru/php/book/oop/methods-and-this.html">
+		Методы и $this
+	</a>
+	<a data-lesson="AMPP" href="../../../ru/php/book/oop/access-modifiers-public-and-private.html">
+		public private
+	</a>
+	<a data-lesson="Cn" href="../../../ru/php/book/oop/constructor.html">
+		Конструктор
+	</a>
+	<a data-lesson="GS" href="../../../ru/php/book/oop/getters-and-setters.html">
+		Геттеры сеттеры
+	</a>
+	<a data-lesson="ROP" href="../../../ru/php/book/oop/read-only-properties.html">
+		Свойства только для чтения
+	</a>
+	<a data-lesson="OCOF" href="../../../ru/php/book/oop/one-class-one-file.html">
+		Один класс - один файл
+	</a>
+	<a data-lesson="OIA" href="../../../ru/php/book/oop/objects-in-array.html">
+		Объекты в массиве
+	</a>
+	<a data-lesson="CIPV" href="../../../ru/php/book/oop/constructor-initial-properties-values.html">
+		Начальные значения свойств в конструкторе
+	</a>
+	<a data-lesson="DIPV" href="../../../ru/php/book/oop/declaring-initial-properties-values.html">
+		Начальные значения свойств при объявлении
+	</a>
+	<a data-lesson="VPN" href="../../../ru/php/book/oop/variable-properties-names.html">
+		Свойство из переменной
+	</a>
+	<a data-lesson="VMN" href="../../../ru/php/book/oop/variable-methods-names.html">
+		Метод из переменной
+	</a>
+	<a data-lesson="MCAOC" href="../../../ru/php/book/oop/method-call-after-object-creation.html">
+		Метод сразу после создания
+	</a>
+	<a data-lesson="MCh" href="../../../ru/php/book/oop/methods-chains.html">
+		Цепочки методов в классе
+		<span class="__label__ __acceptable__">задачу норм дать</span>
+	</a>
+	<a data-lesson="CAMS" href="../../../ru/php/book/oop/class-as-methods-set.html">
+		Класс как набор методов
+	</a>
+	<a data-lesson="CI" href="../../../ru/php/book/oop/classes-inheritance.html">
+		Наследование классов
+	</a>
+	
+	<a data-lesson="AMP" href="../../../ru/php/book/oop/access-modifier-protected.html">
+		Модификатор protected
+	</a>
+	<a data-lesson="OOPM" href="../../../ru/php/book/oop/overriding-of-parent-methods.html">
+		Перезапись методов родителя
+	</a>
+	<a data-lesson="PCO" href="../../../ru/php/book/oop/parent-constructor-overriding.html">
+		Перезапись конструктора родителя
+	</a>
+	<a data-lesson="POBR" href="../../../ru/php/book/oop/passing-objects-by-reference.html">
+		Передача по ссылке
+	</a>
+	
+	<a data-lesson="UOIC" href="../../../ru/php/book/oop/using-objects-in-class.html">
+		Использование объектов в другом классе
+	</a>
+	<a data-lesson="POBP" href="../../../ru/php/book/oop/passing-objects-by-parameter.html">
+		Передача объектов параметрами
+	</a>
+	<a data-lesson="OC" href="../../../ru/php/book/oop/objects-comparison.html">
+		Сравнение объектов
+	</a>
+	<a data-lesson="OI" href="../../../ru/php/book/oop/operator-instanceof.html">
+		Оператор instanceof
+	</a>
+	<a data-lesson="TC" href="../../../ru/php/book/oop/types-control.html">
+		Контроль типов
+	</a>
+	<a data-lesson="SM" href="../../../ru/php/book/oop/static-methods.html">
+		Статические методы
+	</a>
+	<a data-lesson="SP" href="../../../ru/php/book/oop/static-properties.html">
+		Статические свойства
+	</a>
+	<a data-lesson="OWSPM" href="../../../ru/php/book/oop/object-with-static-properties-and-methods.html">
+		Объект со статическими свойствами и методами
+	</a>
+	<a data-lesson="CC" href="../../../ru/php/book/oop/class-constants.html">
+		Константы класса
+	</a>
+	
+	<a data-lesson="Fn" href="../../../ru/php/book/oop/functions.html">
+		Функции для ООП
+		<span class="__label__ __acceptable__">ссылки на чужой справочник</span>
+	</a>
+	<a data-lesson="Pl" href="../../../ru/php/book/oop/polymorphism.html">
+		Полиморфизм
+		<span class="__label__ __acceptable__">ссылка на чужой сайт</span>
+	</a>
+	<a data-lesson="AC" href="../../../ru/php/book/oop/abstract-classes.html">
+		Абстрактные классы
+	</a>
+</div>
+
+<h2>Интерфейсы</h2>
+<div data-section="If">
+	<a data-lesson="Inr" href="../../../ru/php/book/oop/interfaces/intro.html">
+		Введение в интерфейсы
+	</a>
+	<a data-lesson="Ap" href="../../../ru/php/book/oop/interfaces/applying.html">
+		Применение интерфейсов
+	</a>
+	<a data-lesson="Pr" href="../../../ru/php/book/oop/interfaces/parameters.html">
+		Параметры методов в интерфейсе
+	</a>
+	<a data-lesson="CD" href="../../../ru/php/book/oop/interfaces/constructor-declaring.html">
+		Объявление конструктора в интерфейсе
+	</a>
+	<a data-lesson="IFI" href="../../../ru/php/book/oop/interfaces/inheritance-from-interface.html">
+		Наследование интерфейсов друг от друга
+	</a>
+	<a data-lesson="Inf" href="../../../ru/php/book/oop/interfaces/instanceof.html">
+		Интерфейсы и instanceof
+	</a>
+	<a data-lesson="SII" href="../../../ru/php/book/oop/interfaces/several-interfaces-implementation.html">
+		Реализация нескольких интерфейсов
+	</a>
+	<a data-lesson="II" href="../../../ru/php/book/oop/interfaces/inheritance-and-implementation.html">
+		Наследование от класса и реализация интерфейса
+	</a>
+	<a data-lesson="Cn" href="../../../ru/php/book/oop/interfaces/constants.html">
+		Константы в интерфейсах
+	</a>
+	<a data-lesson="Fn" href="../../../ru/php/book/oop/interfaces/functions.html">
+		Функции для интерфейсов
+		<span class="__label__ __acceptable__">ссылки на чужой справочник</span>
+	</a>
+</div>
+
+<h2>Трейты</h2>
+<div data-section="Tr">
+	<a data-lesson="Inr" href="../../../ru/php/book/oop/traits/intro.html">
+		Введение в трейты
+		<span class="__label__ __acceptable__">пример на несколько трейтов</span>
+	</a>
+	<a data-lesson="MC" href="../../../ru/php/book/oop/traits/methods-conflicts.html">
+		Конфликты методов
+	</a>
+	<a data-lesson="AcM" href="../../../ru/php/book/oop/traits/access-modifiers.html">
+		Модификаторы доступа
+		<span class="__label__ __acceptable__">задачи</span>
+	</a>
+	<a data-lesson="MP" href="../../../ru/php/book/oop/traits/methods-priority.html">
+		Приоритет методов
+		<span class="__label__ __acceptable__">задачи</span>
+	</a>
+	
+	
+	<a data-lesson="AbM" href="../../../ru/php/book/oop/traits/abstract-methods.html">
+		Абстрактные методы
+	</a>
+	<a data-lesson="UTIT" href="../../../ru/php/book/oop/traits/using-traits-in-trait.html">
+		Трейты в трейтах
+	</a>
+	<a data-lesson="Fn" href="../../../ru/php/book/oop/traits/functions.html">
+		Функции для трейтов
+		<span class="__label__ __acceptable__">ссылки на чужой справочник</span>
+	</a>
+</div>
+
+<h2>Магия</h2>
+<div data-section="Mg">
+	<a data-lesson="TS" href="../../../ru/php/book/oop/magic/toString.html">
+		Метод __toString
+	</a>
+	<a data-lesson="Gt" href="../../../ru/php/book/oop/magic/get.html">
+		Метод __get
+	</a>
+	<a data-lesson="St" href="../../../ru/php/book/oop/magic/set.html">
+		Метод __set
+	</a>
+	
+	
+	
+</div>
+
+<h2>Классы</h2>
+<div data-section="Cl">
+	<a data-lesson="Dt" href="../../../ru/php/book/oop/class/Date.html">
+		Реализуем класс Date
+	</a>
+	<a data-lesson="Inv" href="../../../ru/php/book/oop/class/Interval.html">
+		Реализуем класс Interval
+	</a>
+	<a data-lesson="Fl" href="../../../ru/php/book/oop/class/File.html">
+		Реализуем класс File
+	</a>
+	<a data-lesson="Tg" href="../../../ru/php/book/oop/class/Tag.html">
+		Реализуем класс Tag
+	</a>
+	<a data-lesson="TgTA" href="../../../ru/php/book/oop/class/Tag/tag-attributes.html">
+		Атрибуты тегов в классе Tag
+	</a>
+	<a data-lesson="TgMCh" href="../../../ru/php/book/oop/class/Tag/method-chains.html">
+		Цепочки методов в классе Tag
+	</a>
+	<a data-lesson="TgAVA" href="../../../ru/php/book/oop/class/Tag/attributes-via-array.html">
+		Атрибуты через массив в классе Tag
+	</a>
+	<a data-lesson="TgAWV" href="../../../ru/php/book/oop/class/Tag/attributes-without-value.html">
+		Атрибуты без значений в классе Tag
+	</a>
+	<a data-lesson="TgMCAOC" href="../../../ru/php/book/oop/class/Tag/methods-call-after-object-creation.html">
+		Вызов методов сразу после создания объекта
+	</a>
+	<a data-lesson="TgCC" href="../../../ru/php/book/oop/class/Tag/css-classes.html">
+		CSS классы в классе Tag
+	</a>
+	<a data-lesson="TgAM" href="../../../ru/php/book/oop/class/Tag/additional-methods.html">
+		Дополнительные методы класса Tag
+	</a>
+	<a data-lesson="TgFC" href="../../../ru/php/book/oop/class/Tag/final-code.html">
+		Окончательный код класса Tag
+	</a>
+	<a data-lesson="Img" href="../../../ru/php/book/oop/class/Image.html">
+		Реализуем класс Image
+	</a>
+	<a data-lesson="Lnk" href="../../../ru/php/book/oop/class/Link.html">
+		Реализуем класс Link
+	</a>
+	<a data-lesson="HL" href="../../../ru/php/book/oop/class/HtmlList.html">
+		Реализуем класс HtmlList
+	</a>
+	<a data-lesson="Fr" href="../../../ru/php/book/oop/class/Form.html">
+		Реализуем класс Form
+	</a>
+	<a data-lesson="FrInp" href="../../../ru/php/book/oop/class/Form/Input.html">
+		Реализуем класс Input
+	</a>
+	<a data-lesson="FrSb" href="../../../ru/php/book/oop/class/Form/Submit.html">
+		Реализуем класс Submit
+	</a>
+	<a data-lesson="FrPs" href="../../../ru/php/book/oop/class/Form/Password.html">
+		Реализуем класс Password
+	</a>
+	<a data-lesson="FrHd" href="../../../ru/php/book/oop/class/Form/Hidden.html">
+		Реализуем класс Hidden
+	</a>
+	<a data-lesson="FrTx" href="../../../ru/php/book/oop/class/Form/Textarea.html">
+		Реализуем класс Textarea
+	</a>
+	<a data-lesson="FrCh" href="../../../ru/php/book/oop/class/Form/Checkbox.html">
+		Реализуем класс Checkbox
+	</a>
+	<a data-lesson="FrSl" href="../../../ru/php/book/oop/class/Form/Select.html">
+		Реализуем класс Select
+	</a>
+	<a data-lesson="TgH" href="../../../ru/php/book/oop/class/TagHelper.html">
+		Класс TagHelper
+	</a>
+	<a data-lesson="FrH" href="../../../ru/php/book/oop/class/FormHelper.html">
+		Класс FormHelper
+	</a>
+	<a data-lesson="CSh" href="../../../ru/php/book/oop/class/CookieShell.html">
+		Класс CookieShell
+		<span class="__label__ __acceptable__">ссылку на установку куки без обновл стран</span>
+	</a>
+	<a data-lesson="SSh" href="../../../ru/php/book/oop/class/SessionShell.html">
+		Класс SessionShell
+	</a>
+	<a data-lesson="FlM" href="../../../ru/php/book/oop/class/FileManipulator.html">
+		Класс FileManipulator
+	</a>
+	<a data-lesson="Vl" href="../../../ru/php/book/oop/class/Validator.html">
+		Класс Validator
+	</a>
+	<a data-lesson="DSh" href="../../../ru/php/book/oop/class/DatabaseShell.html">
+		Класс DatabaseShell
+	</a>
+</div>
+
+<h2>Пространства имен и автозагрузка</h2>
+<div data-section="Ns">
+	<a data-lesson="Inr" href="../../../ru/php/book/oop/namespaces/intro.html">
+		Введение в пространства имен
+	</a>
+	<a data-lesson="SCC" href="../../../ru/php/book/oop/namespaces/simplified-class-calling.html">
+		Упрощенное обращение
+	</a>
+	<a data-lesson="CU" href="../../../ru/php/book/oop/namespaces/command-use.html">
+		Команда use
+	</a>
+	<a data-lesson="CA" href="../../../ru/php/book/oop/namespaces/classes-aliases.html">
+		Псевдонимы классов
+	</a>
+	<a data-lesson="AlD" href="../../../ru/php/book/oop/autoloading/default.html">
+		Стандартная автозагрузка классов
+	</a>
+	<a data-lesson="AlOF" href="../../../ru/php/book/oop/autoloading/own-function">
+		Своя автозагрузка классов
+	</a>
+	<!--
+	<a href="../../../ru/php/book/oop/autoloading.html">
+		Несколько функций
+		<span class="__label__">текст, код</span>
+	</a>
+	<a href="../../../ru/php/book/oop/autoloading.html">
+		Функции для управления
+		<span class="__label__">текст, код</span>
+	</a>
+	-->
+</div>
+
+<h2>Использование MVC фреймворка</h2>
+<div data-section="UFm">
+	<a data-lesson="Inr" href="../../../ru/php/book/oop/mvc/using/intro.html">
+		Введение в MVC подход
+	</a>
+	<a data-lesson="CAR" href="../../../ru/php/book/oop/mvc/using/controllers-actions-routes.html">
+		Контроллеры, действия и роуты
+	</a>
+	<a data-lesson="RP" href="../../../ru/php/book/oop/mvc/using/routes-parameters.html">
+		Параметры в роутах
+	</a>
+	<a data-lesson="Vw" href="../../../ru/php/book/oop/mvc/using/views.html">
+		Представления
+	</a>
+	<a data-lesson="CVT" href="../../../ru/php/book/oop/mvc/using/controllers-and-views-training.html">
+		Практика на контроллеры и представления
+	</a>
+	<a data-lesson="Ly" href="../../../ru/php/book/oop/mvc/using/layouts.html">
+		Шаблоны
+	</a>
+	<a data-lesson="Rs" href="../../../ru/php/book/oop/mvc/using/resources.html">
+		Ресурсы
+	</a>
+	<a data-lesson="Md" href="../../../ru/php/book/oop/mvc/using/models.html">
+		Модели
+	</a>
+	<a data-lesson="AE" href="../../../ru/php/book/oop/mvc/using/application-example.html">
+		Пример применения
+	</a>
+</div>
+
+<h2>Разработка MVC фреймворка</h2>
+<div data-section="DFm">
+	<a data-lesson="Inr" href="../../../ru/php/book/oop/mvc/framework/intro.html">
+		Начало разработки
+	</a>
+	<a data-lesson="Rt" href="../../../ru/php/book/oop/mvc/framework/routes.html">
+		Работа с роутами
+	</a>
+	<a data-lesson="Rr" href="../../../ru/php/book/oop/mvc/framework/router.html">
+		Разработка роутера
+	</a>
+	<a data-lesson="Cn" href="../../../ru/php/book/oop/mvc/framework/controlles.html">
+		Контроллеры
+	</a>
+	<a data-lesson="Ds" href="../../../ru/php/book/oop/mvc/framework/dispatcher.html">
+		Диспетчер
+	</a>
+	<a data-lesson="Vw" href="../../../ru/php/book/oop/mvc/framework/view.html">
+		Представление
+	</a>
+	<a data-lesson="Md" href="../../../ru/php/book/oop/mvc/framework/models.html">
+		Модели
+	</a>
+</div>
+
+<!--
+
+-->
+<!--
+<h2>Встроенные функции PHP в ООП стиле</h2>
+<div>
+	даты
+	https://php-academy.kiev.ua/blog/dates-and-time-the-oop-way
+	https://sitear.ru/material/php-data-i-vremya
+	
+	
+	https://www.php.net/manual/ru/reserved.interfaces.php
+	
+	БД
+		mysqli ооп стайл
+		pdo
+
+	<a data-lesson="Nm" href="../../../ru/php/book/oop/namespace.html">
+		<span class="__label__">todo</span>
+	</a>
+</div>
+-->
+</div>			</main>
+			<div class="bottom">
+	</div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../js/metrika.js?v=1"></script>	</body>
+</html>

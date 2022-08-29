@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Редактирование записей в записной книжке на JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы реализуем редактирование записей в записной книжке на JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Редактирование записей в записной книжке на JavaScript</h1>
+				<div class="content">
+<p>
+	В предыдущем уроке мы сделали так, что можно
+	просматривать уже созданные записи. Давайте
+	теперь сделаем так, чтобы просматриваемую
+	запись можно было поредактировать.
+</p>
+<p>
+	Конечно, и сейчас можно поредактировать нашу
+	запись в текстареа - только вот в объекте
+	записей эти изменения не сохранятся. То есть
+	при следующем просмотре записи в ней по-прежнему
+	будет старый текст.
+</p>
+<p>
+	Что же у нас сейчас будет, если при просмотре
+	записи нажать на кнопку сохранения? Просто
+	создастся новая запись с этим текстом.
+</p>
+<p>
+	Итак, давайте поправим ситуацию так, чтобы
+	можно было как сохранять новые записи, так
+	и редактировать уже созданные.
+</p>
+
+<h2>Алгоритм решения</h2>
+<p>
+	Сделаем так, чтобы нажатие на кнопку в режиме
+	просмотра записи редактировало эту запись,
+	а нажатие на кнопку в режиме создания - создавало
+	новую запись.
+</p>
+<p>
+	Пусть режим задается атрибутом <code class="code inline">data-mode</code>
+	для нашей кнопки. Пусть, если этот атрибут
+	имеет значение <code class="value inline">'create'</code> - кнопка сохраняет
+	новую запись:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="text"&gt;
+	&lt;textarea&gt;&lt;/textarea&gt;
+	&lt;button data-mode="create"&gt;сохранить&lt;/button&gt;
+&lt;/div&gt;</code>
+</div>
+<p>
+	А если этот атрибут имеет значение <code class="value inline">'update'</code>
+	- пусть кнопка редактирует открытую запись.
+	При этом номер открытой записи будем хранить
+	в атрибуте <code class="code inline">data-key</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="text"&gt;
+	&lt;textarea&gt;&lt;/textarea&gt;
+	&lt;button data-mode="update" data-key="3"&gt;сохранить&lt;/button&gt;
+&lt;/div&gt;</code>
+</div>
+<p>
+	Проиллюстрирую ваш JavaScript код для обработчика
+	клика по кнопке:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">button.addEventListener('click', function() {
+	let mode = this.dataset.mode;
+	
+	if (mode == 'create') {
+		// ваш код для создания новой записи
+	}
+	
+	if (mode == 'update') {
+		let key = this.dataset.key;
+		
+		// ваш код для редактирования записи с номером key
+	}
+});</code>
+</div>
+
+<h2>Смена режимов</h2>
+<p>
+	Очевидно, что по заходу на страницу сохраненных
+	записей не будет. Это значит, что изначально
+	кнопка должна быть в режиме <code class="code inline">create</code>.
+</p>
+<p>
+	Затем при нажатии на просмотр любой записи
+	режим кнопки должен меняться на <code class="code inline">update</code>
+	и в <code class="code inline">data-key</code> должен записываться номер
+	открытой записи.
+</p>
+<p>
+	Как же режим будет меняться с редактирования
+	обратно на создание? Я бы предложил, что
+	нажатие на кнопку в режиме редактирования
+	должно обновлять запись и менять режим на
+	создание.
+</p>
+<p>
+	Этого, однако, не достаточно. Ведь мы можем
+	просто просматривать запись, не желая ее
+	редактировать. А потом можем захотеть вернутся
+	к созданию. В этом случае нам нужна еще одна
+	кнопка, которая будет возвращать нас в режим
+	создания.
+</p>
+<p>
+	Вставим эту кнопку в нашу верстку:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="wrapper"&gt;
+	&lt;div id="menu"&gt;
+		&lt;div id="notes"&gt;
+			&lt;ul id="notes"&gt;
+				&lt;li data-key="1"&gt;запись 1&lt;/li&gt;
+				&lt;li data-key="2"&gt;запись 2&lt;/li&gt;
+				&lt;li data-key="3"&gt;запись 3&lt;/li&gt;
+			&lt;/ul&gt;
+		&lt;/div&gt;
+		&lt;div id="create"&gt;
+			&lt;button&gt;новая запись&lt;/button&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div id="text"&gt;
+		&lt;textarea&gt;&lt;/textarea&gt;
+		&lt;button&gt;сохранить&lt;/button&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code>
+</div>
+
+<h2>Реализация</h2>
+<div class="task">
+	<p>
+		Реализуйте описанное редактирование записей.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Сделайте так, чтобы на экране отображался
+		режим, в котором мы сейчас находимся.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/practice/" data-persent="35" data-hash="jsPrNbNE" data-quantity="75" data-num="27"><a href="../../../../../ru/javascript/book/practice/notepad/notes-showing.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/javascript/book/practice/notepad/notes-removing.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/practice/notepad/notes-editing.html">en</a><a href="../../../../../ru/javascript/book/practice/notepad/notes-editing.html" class="active">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

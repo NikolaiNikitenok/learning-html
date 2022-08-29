@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Класс Image ООП на PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами разработаем ООП класс Image на PHP.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Класс Image</h1>
+				<div class="content">
+<p>
+	В предыдущих уроках мы с вами реализовали
+	класс <code class="code inline">Tag</code> для работы с тегами. Пусть
+	с помощью этого класса мы хотим сделать картинку:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$image = new Tag('img');
+	echo $image-&gt;setAttr('src', 'img.png')-&gt;open(); // &lt;img src="img.png"&gt;
+?&gt;</code>
+</div>
+<p>
+	Давайте сделаем работу с картинками более
+	удобной. Не будем использовать класс <code class="code inline">Tag</code>,
+	а создадим специальный класс для работы с
+	картинками, назвав его <code class="code inline">Image</code>.
+</p>
+<p>
+	С использованием нового класса мы могли бы
+	переписать код вот так:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$image = new Image();
+	echo $image-&gt;setAttr('src', 'img.png')-&gt;open(); // &lt;img src="img.png"&gt;
+?&gt;</code>
+</div>
+<p>
+	Пока особой разницы, как вы видите, нет.
+	У нового класса, однако, есть преимущество
+	- мы можем сделать вещи, характерные именно
+	для тега <code class="code inline">img</code>.
+</p>
+<p>
+	К примеру, в теге <code class="code inline">img</code> атрибут <code class="code inline">src</code>
+	является обязательным. Было бы удобно, чтобы
+	новый класс работал так: если атрибут <code class="code inline">src</code>
+	не задан через <code class="code inline">setAttr</code>, то он все
+	равно будет созданном теге, но с пустым значением:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$image = new Image();
+	echo $image-&gt;open(); // &lt;img src=""&gt;
+?&gt;</code>
+</div>
+<p>
+	Кроме того, было бы неплохо сделать то же
+	самое и для атрибута <code class="code inline">alt</code> (важен для
+	SEO, желательно, чтобы всегда был):
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$image = new Image();
+	echo $image-&gt;open(); // &lt;img src="" alt=""&gt; - alt тоже будет
+?&gt;</code>
+</div>
+
+<h2>Реализация класса Image</h2>
+<p>
+	Очевидно, что класс <code class="code inline">Image</code> - это тот
+	же класс <code class="code inline">Tag</code>, но с некоторыми дополнениями.
+	Логично в этом случае не создавать этот класс
+	с нуля, а унаследовать его от класса <code class="code inline">Tag</code>:
+</p>
+<div class="block" data-file="Image.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Image extends Tag
+	{
+		
+	}
+?&gt;</code>
+</div>
+<p>
+	Как мы описали выше, класс <code class="code inline">Image</code> отличается
+	от класса <code class="code inline">Tag</code> тем, что в <code class="code inline">Image</code>
+	по умолчанию задаются атрибуты <code class="code inline">src</code>
+	и <code class="code inline">alt</code>.
+</p>
+<p>
+	Кроме того, обратите внимание на то, как
+	мы вызываем конструкторы классов:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$image = new Tag('img');
+	$image = new Image();
+?&gt;</code>
+</div>
+<p>
+	Как вы видите, класс <code class="code inline">Tag</code> ожидает первым
+	параметром имя тега, а класс <code class="code inline">Image</code>
+	вызывается без параметра - имя тега в данном
+	случае нет необходимости задавать, так как
+	наш класс всегда делает один и тот же тег
+	<code class="code inline">img</code>.
+</p>
+<p>
+	Для того, чтобы реализовать такое поведение,
+	класс <code class="code inline">Image</code> должен переопределить
+	конструктор родителя:
+</p>
+<div class="block" data-file="Image.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Image extends Tag
+	{
+		public function __construct()
+		{
+			// Вызовем конструктор родителя, передав имя тега:
+			parent::__construct('img');
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Давайте в этом же конструкторе зададим атрибуты
+	<code class="code inline">src</code> и <code class="code inline">alt</code>:
+</p>
+<div class="block" data-file="Image.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Image extends Tag
+	{
+		public function __construct()
+		{
+			$this-&gt;setAttr('src', ''); // установим атрибут src
+			$this-&gt;setAttr('alt', ''); // установим атрибут alt
+			
+			parent::__construct('img'); // вызовем конструктор родителя
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Установку атрибутов можно упростить и выполнить
+	в виде цепочки:
+</p>
+<div class="block" data-file="Image.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Image extends Tag
+	{
+		public function __construct()
+		{
+			$this-&gt;setAttr('src', '')-&gt;setAttr('alt', '');
+			parent::__construct('img');
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	При использовании нашего класса в дальнейшем
+	мы можем затереть эти атрибуты с помощью
+	<code class="code inline">setAttr</code> на свое значение, а можем
+	не затереть - тогда они так и останутся со
+	значением '', смотрите пример:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	// Затрем src, но не alt:
+	echo (new Image())-&gt;setAttr('src', 'img.png')-&gt;open(); // &lt;img src="img.png" alt=""&gt;
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Самостоятельно напишите реализацию описанного
+		класса <code class="code inline">Image</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Используя созданный вами класс выведите на
+		экран какую-нибудь картинку.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Установите созданной вами картинке атрибут
+		<code class="code inline">width</code> в значение <code class="number inline">300</code>, а атрибут
+		<code class="code inline">height</code> - в значение <code class="number inline">200</code>.
+	</p>
+</div>
+
+<h2>Откажемся от open</h2>
+<p>
+	В классе <code class="code inline">Tag</code> у нас есть два метода,
+	которые используются для завершения цепочки
+	и вывода тега на экран: это метод <code class="code inline">open</code>
+	и метод <code class="code inline">show</code>.
+</p>
+<p>
+	Почему у нас два метода: потому что класс
+	<code class="code inline">Tag</code> универсальный и предполагает использование
+	как для тегов, не требующих закрытия, так
+	и для парных тегов.
+</p>
+<p>
+	Очевидно, что при использовании класса <code class="code inline">Image</code>
+	мы всегда будем завершать цепочку методом
+	<code class="code inline">open</code>. Раз так, то давайте сделаем
+	использование метода <code class="code inline">open</code> не обязательным.
+	То есть вместо этого:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	echo (new Image())-&gt;setAttr('src', 'img.png')-&gt;open();
+?&gt;</code>
+</div>
+<p>
+	Мы будем писать вот так:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	echo (new Image())-&gt;setAttr('src', 'img.png');
+?&gt;</code>
+</div>
+<p>
+	Используем для этого магический метод <code class="code inline">__toString</code>:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Image extends Tag
+	{
+		public function __construct()
+		{
+			$this-&gt;setAttr('src', '')-&gt;setAttr('alt', '');
+			parent::__construct('img');
+		}
+		
+		public function __toString()
+		{
+			return parent::open(); // вызываем метод родителя
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Теперь получается, что при попытке преобразования
+	объекта в строку, например, при выводе его
+	через <code class="code inline">echo</code>, автоматически будет вызываться
+	метод <code class="code inline">__toString</code>, внутри которого
+	будет вызываться метод <code class="code inline">open</code>.
+</p>
+<p>
+	Напоминаю, что если не выводить объект на
+	экран, а, например, записать в переменную,
+	то в эту переменную попадет объект, а не
+	его строковое представление:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	// В переменную $image запишется объект:
+	$image = (new Image())-&gt;setAttr('src', 'img.png');
+	
+	$image-&gt;setAttr('width', '200'); // вызовем еще метод
+	echo $image; // тут сработает __toString
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Самостоятельно напишите реализацию метода
+		<code class="code inline">__toString</code>.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/oop/" data-persent="63" data-hash="ppOpClImg" data-quantity="107" data-num="68"><a href="../../../../../ru/php/book/oop/class/Tag/final-code.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/php/book/oop/class/Link.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

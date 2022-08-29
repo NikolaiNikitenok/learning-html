@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Creating an HTML table from an array in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will practice creating HTML tables from two-dimensional arrays in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Creating an HTML table from an array in JavaScript</h1>
+				<div class="content">
+<p>
+	Suppose we have some empty table:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;table id="table"&gt;&lt;/table&gt;</code>
+</div>
+<p>
+	Suppose we also have some two-dimensional array, 
+	for example, this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]];</code>
+</div>
+<p>
+	Let's make an HTML table based on this array, 
+	filled with the elements of this array. That is, 
+	we will get a table with three rows, each row will 
+	have <code class="number inline">4</code> cells.
+</p>
+<p>
+	Solve the problem with two nested 
+	<code class="code inline">for-of</code> loops:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]];
+let table = document.querySelector('#table');
+
+for (let subArr of arr) {
+	let tr = document.createElement('tr');
+	
+	for (let elem of subArr) {
+		let td = document.createElement('td');
+		td.textContent = elem;
+		tr.appendChild(td);
+	}
+	
+	table.appendChild(tr);
+}</code>
+</div>
+<p>
+	As you can see, our solution turned out to be universal 
+	and does not depend on the number of subarrays and the 
+	number of elements in each subarray. The only condition 
+	is that the subarrays have the same number of elements.
+</p>
+<div class="task">
+	<p>
+		Given an array:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]];</code>
+	</div>
+	<p>
+		Without looking into the theoretical part of the 
+		lesson, output the elements of the given array as 
+		an HTML table <code class="code inline">table</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Modify the previous task so that the table doesn't 
+		contain elements, but the squares of these elements.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="91" data-hash="jsPmPrTCVA" data-quantity="363" data-num="331"><a href="../../../../../../en/javascript/book/prime/dom/practice/tables-consistent-filling.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../en/javascript/book/prime/dom/practice/table-creating-via-objects-array.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/practice/table-creating-via-array.html" class="active">en</a><a href="../../../../../../ru/javascript/book/prime/dom/practice/table-creating-via-array.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

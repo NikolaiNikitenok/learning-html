@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Many elements with show buttons in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to make show buttons for many elements in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Many elements with show buttons in JavaScript</h1>
+				<div class="content">
+<p>
+	Let now we have a lot of paragraphs and each has 
+	its own button to hide:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;p&gt;1&lt;/p&gt;&lt;button&gt;toggle&lt;/button&gt;
+&lt;p&gt;2&lt;/p&gt;&lt;button&gt;toggle&lt;/button&gt;
+&lt;p&gt;3&lt;/p&gt;&lt;button&gt;toggle&lt;/button&gt;</code>
+</div>
+<p>
+	Let's make it so that clicking on the button hides 
+	or shows the paragraph corresponding to it.
+</p>
+<p>
+	To do this, we somehow need to associate the buttons 
+	with our paragraphs. There are several ways to do this.
+</p>
+
+<h2>First way</h2>
+<p>
+	Let's link buttons and paragraphs as follows:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;p id="elem1"&gt;1&lt;/p&gt;&lt;button data-elem="elem1"&gt;toggle&lt;/button&gt;
+&lt;p id="elem2"&gt;2&lt;/p&gt;&lt;button data-elem="elem2"&gt;toggle&lt;/button&gt;
+&lt;p id="elem3"&gt;3&lt;/p&gt;&lt;button data-elem="elem3"&gt;toggle&lt;/button&gt;</code>
+</div>
+<p>
+	Now, by clicking on any button, we will read the 
+	contents of its data-elem attribute and look for 
+	a paragraph with that id. We'll toggle it. Let's 
+	implement the described:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let buttons = document.querySelectorAll('button');
+
+for (let button of buttons) {
+	button.addEventListener('click', function() {
+		let elem = document.querySelector('#' + this.dataset.elem);
+		elem.classList.toggle('hidden');
+	});
+}</code>
+</div>
+<div class="task">
+	<p>
+		Study my solution, and then independently, without 
+		looking at my code, solve this problem.
+	</p>
+</div>
+
+<h2>Second way</h2>
+<p>
+	It is not very convenient to arrange id and data 
+	attributes. Let's make it so that the relationship 
+	is by ordinal number: let the first button hide the 
+	first paragraph, the second button - the second 
+	and so on.
+</p>
+<p>
+	Let's implement the described:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let buttons = document.querySelectorAll('button');
+let elems   = document.querySelectorAll('p');
+
+for (let i = 0; i &lt; buttons.length; i++) {
+	buttons[i].addEventListener('click', function() {
+		elems[i].classList.toggle('hidden');
+	});
+}</code>
+</div>
+<div class="task">
+	<p>
+		Study my solution, and then independently, without 
+		looking at my code, solve this problem.
+	</p>
+</div>
+
+<h2>Third way</h2>
+<p>
+	As you can see, the paragraph associated with a button 
+	is its left neighbor. This can be used as a link:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let buttons = document.querySelectorAll('button');
+
+for (let button of buttons) {
+	button.addEventListener('click', function() {
+		this.previousElementSibling.classList.toggle('hidden');
+	});
+}</code>
+</div>
+<div class="task">
+	<p>
+		Study my solution, and then independently, without 
+		looking at my code, solve this problem.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="94" data-hash="jsPmPrMEWShB" data-quantity="363" data-num="344"><a href="../../../../../../en/javascript/book/prime/dom/practice/hide-show-button.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../en/javascript/book/prime/dom/practice/elements-activations.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/practice/many-elements-with-showing-buttons.html" class="active">en</a><a href="../../../../../../ru/javascript/book/prime/dom/practice/many-elements-with-showing-buttons.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

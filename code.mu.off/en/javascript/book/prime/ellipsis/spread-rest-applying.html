@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Using the rest and spread operators in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will study the practical usage of the rest and spread operators in JavaScript">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Using the rest and spread operators in JavaScript</h1>
+				<div class="content">
+<h2>A function that finds the sum of numbers</h2>
+<p>
+	Let's write a function that will take an 
+	arbitrary amount of numbers as parameters 
+	and return their sum.
+</p>
+<p>
+	Here are examples of how our function works:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log( func(1, 2, 3)       ); // shows 6
+console.log( func(1, 2, 3, 4)    ); // shows 10
+console.log( func(1, 2, 3, 4, 5) ); // shows 15</code>
+</div>
+<p>
+	First, let's make it so that all the numbers 
+	passed in the parameters fall into the array:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(...nums) {
+	console.log(nums);
+}
+
+func(1, 2, 3); // shows [1, 2, 3]</code>
+</div>
+<p>
+	And now let's run a loop over the passed 
+	array and find the sum of the 
+	passed numbers:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(...nums) {
+	let sum = 0;
+	
+	for (let num of nums) {
+		sum += num;
+	}
+	
+	return sum;
+}
+
+let result = func(1, 2, 3);
+console.log(result); // shows 6</code>
+</div>
+<div class="task">
+	<p>
+		Write a function that will take any number 
+		of numbers as parameters and return 
+		their arithmetic mean.
+	</p>
+</div>
+
+<h2>A function that merges arrays into two-dimensional array</h2>
+<p>
+	Let's make the function <code class="code inline">unite</code>, which 
+	will take an arbitrary number of arrays as 
+	parameters and merge them into one 
+	two-dimensional one.
+</p>
+<p>
+	Here is an example of the described function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let result = unite([1, 2, 3], [4, 5, 6], [7, 8, 9]);
+console.log(result); // shows [ [1, 2, 3,] [4, 5, 6], [7, 8, 9] ]</code>
+</div>
+<p>
+	Despite the sufficient complexity of the 
+	function, its implementation using the 
+	rest operator will be very concise:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function unite(...arrs) {
+	return arrs;
+}</code>
+</div>
+
+<h2>Function that merges arrays into one</h2>
+<p>
+	Let's now implement the <code class="code inline">merge</code> function, 
+	which takes an arbitrary number of arrays as 
+	parameters and merges their elements 
+	into one array.
+</p>
+<p>
+	Here is an example of how our function works:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let result = merge([1, 2, 3], [4, 5, 6], [7, 8, 9]);
+console.log(result); // shows [1, 2, 3, 4, 5, 6, 7, 8, 9]</code>
+</div>
+<p>
+	Let's get down to implementation. Let's 
+	first get the passed arrays as a single 
+	two-dimensional one:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">merge([1, 2, 3], [4, 5, 6], [7, 8, 9]);
+
+function merge(...arrs){
+	console.log(arrs); // shows  [ [1, 2, 3,] [4, 5, 6], [7, 8, 9] ]
+}</code>
+</div>
+<p>
+	Let's now merge this two-dimensional array 
+	into a one-dimensional one. We use the 
+	<code class="code inline">concat</code> method and the spread 
+	operator for this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arrs   = [ [1, 2, 3,] [4, 5, 6], [7, 8, 9] ];
+
+let result = [].concat(...arrs);
+console.log(result); // shows [1, 2, 3, 4, 5, 6, 7, 8, 9]</code>
+</div>
+<p>
+	Let's add this code to our <code class="code inline">merge</code> function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function merge(...arrs) {
+	return [].concat(...arrs);
+}
+
+let result = merge([1, 2, 3], [4, 5, 6], [7, 8, 9]);
+console.log(result); // shows [1, 2, 3, 4, 5, 6, 7, 8, 9]</code>
+</div>
+<p>
+	As you can see, this function also 
+	turned out to be very concise.
+</p>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="57" data-hash="jsPmOsrSRA" data-quantity="363" data-num="207"><a href="../../../../../en/javascript/book/prime/ellipsis/rest.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/destructuring/arrays/intro.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/ellipsis/spread-rest-applying.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/ellipsis/spread-rest-applying.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

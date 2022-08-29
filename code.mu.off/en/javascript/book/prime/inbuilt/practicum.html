@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Practice in using learned methods in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will work out the standard JavaScript methods in practice.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Practice in using learned methods</h1>
+				<div class="content">
+<h2>Character case</h2>
+<p>
+	Suppose we have some variable with text:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = 'london';</code>
+</div>
+<p>
+	Let's convert the first character 
+	of this string to uppercase:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = 'london';
+
+let result = str.slice(0, 1).toUpperCase() + str.slice(1);
+console.log(result); // shows 'London'</code>
+</div>
+<div class="task">
+	<p>
+		Convert the last character of 
+		the string to uppercase.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Convert the first <code class="number inline">2</code> characters 
+		of the string to uppercase.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Let there be a string whose first 
+		character is in uppercase, for 
+		example, like this:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let str = 'London';</code>
+	</div>
+	<p>
+		Convert the first character 
+		of the string to lowercase.
+	</p>
+</div>
+
+<h2>Words in a string</h2>
+<p>
+	Suppose we have some variable with 
+	text consisting of several words:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = 'word1 word2 word3';</code>
+</div>
+<p>
+	Let's write a code that converts the 
+	first letter of each word to uppercase. 
+	I will immediately give a solution 
+	with comments:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = 'word1 word2 word3';
+
+// Let's split the string into an array of words:
+let words = str.split(' ');
+
+for (let i = 0; i &lt; words.length; i++) {
+	// Convert each word to uppercase:
+	words[i] = words[i].slice(0, 1).toUpperCase() + words[i].slice(1);
+}
+
+// Merge the array back into a string:
+let result = words.join(' ');
+console.log(result); // shows 'Word1 Word2 Word3'</code>
+</div>
+<div class="task">
+	<p>
+		On your own, without looking into my code, 
+		repeat my solution to the described problem.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Convert the string <code class="string inline">'var_test_text'</code> 
+		to <code class="string inline">'VarTestText'</code>.
+	</p>
+	<p>
+		The code you write should work for any 
+		strings of this type (that is, strings 
+		where words are separated by underscores).
+	</p>
+</div>
+<div class="task">
+	<p>
+		Modify the previous problem so that 
+		the first letter of the new string 
+		is in lowercase.
+	</p>
+</div>
+
+<h2>Reverse a string</h2>
+<p>
+	Suppose we have some variable with a string:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = '12345';</code>
+</div>
+<p>
+	Let's reverse the characters of this string:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = '12345';
+let result = str.split('').reverse().join('');
+
+console.log(result); // shows '54321'</code>
+</div>
+<div class="task">
+	<p>
+		Given a string with words. Write a script that will 
+		rearrange the words in this string in reverse order.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="42" data-hash="jsPmSMPrm" data-quantity="363" data-num="154"><a href="../../../../../en/javascript/book/prime/inbuilt/array.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/inbuilt/mistakes.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/inbuilt/practicum.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/inbuilt/practicum.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

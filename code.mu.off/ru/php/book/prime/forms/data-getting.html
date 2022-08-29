@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Получение данных форм в PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы научимся получать данные форм в PHP.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Получение данных форм в PHP</h1>
+				<div class="content">
+<p>
+	Пусть у нас есть файл <code class="path inline">form.php</code>, а
+	в нем HTML форма, отправляющаяся на страницу
+	<code class="path inline">result.php</code>. На этой странице мы можем
+	получить данные формы с помощью специальных
+	переменных <code class="code inline">$_GET</code>, <code class="code inline">$_POST</code> и
+	<code class="code inline">$_REQUEST</code>.
+</p>
+<p>
+	Эти переменные содержат в себе массив данных
+	отправленной формы. При этом ключами этого
+	массива будут имена инпутов, а значениями
+	- те данные, которые были введены в эти инпуты.
+</p>
+<p>
+	При этом, если форма была отправлена методом
+	GET, то данные будут в массиве <code class="code inline">$_GET</code>,
+	а если методом POST, то данные будут соответственно
+	в массиве <code class="code inline">$_POST</code>. А в переменной <code class="code inline">$_REQUEST</code>
+	будут лежать данные формы, отправленные любым
+	из методов.
+</p>
+
+<h2>Пример на метод GET</h2>
+<p>
+	Давайте посмотрим на примере. Пусть файл
+	<code class="path inline">form.php</code> содержит форму, отправляющуюся
+	методом <code class="sql inline">GET</code> на страницу <code class="path inline">result.php</code>:
+</p>
+<div class="block" data-file="form.php">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;form action="/result.php" method="GET"&gt;
+	&lt;input name="test1"&gt;
+	&lt;input name="test2"&gt;
+	&lt;input type="submit"&gt;
+&lt;/form&gt;</code>
+</div>
+<p>
+	Если в нашу форму в браузере вбить какие-то
+	данные и нажать на кнопку, то форма отправится
+	на страницу <code class="path inline">result.php</code>:
+</p>
+<div class="block" data-file="result.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	var_dump($_GET);     // массив с ключами test1 и test2
+	var_dump($_POST);    // пустой массив
+	var_dump($_REQUEST); // массив с ключами test1 и test2
+?&gt;</code>
+</div>
+<p>
+	А можно вывести на экран содержимое определенного
+	инпута:
+</p>
+<div class="block" data-file="result.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	echo $_GET['test1'];
+?&gt;</code>
+</div>
+<p>
+	А можно взять содержимое и первого, и второго
+	инпутов, слить их в строку и вывести на экран:
+</p>
+<div class="block" data-file="result.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	echo $_GET['test1'] . $_GET['test2'];
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Сделайте форму с тремя инпутами. Пусть в
+		эти инпуты вводятся числа. После отправки
+		формы выведите на экран сумму этих чисел.
+	</p>
+</div>
+
+<h2>Пример на метод POST</h2>
+<p>
+	Пусть теперь наша форма отправляется методом POST:
+</p>
+<div class="block" data-file="form.php">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;form action="/result.php" method="POST"&gt;
+	&lt;input name="test1"&gt;
+	&lt;input name="test2"&gt;
+	&lt;input type="submit"&gt;
+&lt;/form&gt;</code>
+</div>
+<p>
+	В этом случае на странице результата данные
+	формы будут лежать в переменной <code class="code inline">$_POST</code>:
+</p>
+<div class="block" data-file="result.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	var_dump($_GET);     // пустой массив
+	var_dump($_POST);    // массив с ключами test1 и test2
+	var_dump($_REQUEST); // массив с ключами test1 и test2
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		С помощью формы спросите у пользователя его
+		имя и возраст. После отправки формы выведите
+		эти данные на экран.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Пусть с помощью формы у пользователя спрашивается
+		пароль:
+	</p>
+	<div class="block" data-file="form.php">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;form action="/result.php" method="POST"&gt;
+	&lt;input type="password" name="pass"&gt;
+	&lt;input type="submit"&gt;
+&lt;/form&gt;</code>
+	</div>
+	<p>
+		Пусть на странице с результатом в переменной
+		хранится правильный пароль:
+	</p>
+	<div class="block" data-file="result.php">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$pass = '12345';
+?&gt;</code>
+	</div>
+	<p>
+		Сделайте так, чтобы после отправки формы
+		на странице результата сравнивался пароль
+		из переменной и пароль из формы. После сравнения
+		сообщите пользователю, правильный он ввел
+		пароль или нет.
+	</p>
+</div>
+<div class="task">
+	<p>
+		С помощью трех инпутов спросите у пользователя
+		год, месяц и день рождения пользователя.
+		После отправки формы определите день недели,
+		в который родился пользователь.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/prime/" data-persent="60" data-hash="ppPmFmDG" data-quantity="223" data-num="135"><a href="../../../../../ru/php/book/prime/forms/intro.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/php/book/prime/forms/one-file-handling.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Programming style through constants in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will analyze the declaration of all JavaScript variables as constants.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Programming style through constants in JavaScript</h1>
+				<div class="content">
+<p>
+	Recently, a new approach to declare variables 
+	has come up in JavaScript. The essence of the 
+	approach is that instead of <code class="code inline">let</code> we use 
+	<code class="code inline">const</code> everywhere, except the cases when 
+	we know for sure that the value will be variable.
+</p>
+<p>
+	See an example:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">const a = 1;
+const b = 2;
+const c = a + b;
+
+console.log(c);</code>
+</div>
+<p>
+	This approach is very popular and you can 
+	find it in various third party sources.
+</p>
+<p>
+	However, I am against this fashionable approach. 
+	The fact is that constants were invented to store 
+	values like the number Pi. That is, for those 
+	values that are predefined in your program. 
+	Declaring all variables as constants contradicts this idea.
+</p>
+<p>
+	In addition, the behavior of arrays and objects 
+	is not very logical - we declare them constants, 
+	while we can easily change their properties. 
+	What are these constants if they can be changed?
+</p>
+<p>
+	Often declaring objects as constants is used 
+	to prevent us from changing the data type - to 
+	write a primitive instead of an object. 
+	But if we need type control, which is not 
+	available by default in JavaScript, then it 
+	is better to use its superset 
+	<a href="../../../../../ru/javascript/typescript/book/prime.html">TypeScript</a>.
+</p>
+<p>
+	In general, you can use this approach, since 
+	this is the fashion, but I am against it, and 
+	further in the tutorial, variables will still 
+	be declared through <code class="code inline">let</code>, as it was 
+	intended by the authors of the language.
+</p>
+<div class="task">
+	<p>
+		Rewrite the following code through 
+		the described approach:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3, 4, 5];
+let res = arr[1] + arr[2];
+
+console.log(res);</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="19" data-hash="jsPmObCPW" data-quantity="363" data-num="70"><a href="../../../../../en/javascript/book/prime/objects/constants.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/objects/mistakes.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/objects/constants-programming-way.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/objects/constants-programming-way.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

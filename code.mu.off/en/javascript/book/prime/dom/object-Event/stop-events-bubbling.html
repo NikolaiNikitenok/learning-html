@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Stopping event bubbling in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will study the event bubbling and capturing in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Stopping event bubbling in JavaScript</h1>
+				<div class="content">
+<p>
+	Event bubbling can be stopped on any element through 
+	which the event is bubbling. To do this, call the 
+	<code class="code inline">stopPropagation</code> method of the <code class="code inline">Event</code> 
+	object in the element code.
+</p>
+<p>
+	In the following example, clicking on the red block 
+	will work on itself, then on the blue block and 
+	that's it - the blue block stops further bubbling 
+	and the green block will not react in any way:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">elem1.addEventListener('click', function() {
+	console.log('green');
+});
+elem2.addEventListener('click', function(event) {
+	console.log('blue');
+	event.stopPropagation(); // stops the propagation
+});
+elem3.addEventListener('click', function() {
+	console.log('red');
+});</code>
+</div>
+<p>
+	You can check:
+</p>
+<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			#elem1 {
+			width: 200px;
+			height: 200px;
+			margin: 0 auto;
+			padding: 1px;
+			background: #97FF97;
+		}
+		#elem2 {
+			width: 140px;
+			height: 140px;
+			margin: 30px;
+			padding: 1px;
+			background: #7777FF;
+		}
+		#elem3 {
+			width: 80px;
+			height: 80px;
+			margin: 30px;
+			padding: 1px;
+			background: #FF7D7D;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;elem1&quot;>
+			<div id=&quot;elem2&quot;>
+				<div id=&quot;elem3&quot;></div>
+			</div>
+		</div>
+		
+		<script>
+			
+			let elem1 = document.querySelector('#elem1');
+		let elem2 = document.querySelector('#elem2');
+		let elem3 = document.querySelector('#elem3');
+		
+		elem1.addEventListener('click', function() {
+			console.log('green');
+		});
+		elem2.addEventListener('click', function(event) {
+			console.log('blue');
+			event.stopPropagation(); // stops the bubbling
+		});
+		elem3.addEventListener('click', function() {
+			console.log('red');
+		});
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Multiple handlers on an element</h2>
+<p>
+	If an element has several handlers for one event, 
+	then even if the bubbling stops, all of them will 
+	be executed. That is, <code class="code inline">stopPropagation</code> 
+	prevents the event from progressing further, but 
+	all handlers will work on the current element. 
+	See example:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">elem1.addEventListener('click', function() {
+	console.log('green');
+});
+elem2.addEventListener('click', function(event) {
+	console.log('blue - the first handler');
+	event.stopPropagation(); // stops the bubbling
+});
+elem2.addEventListener('click', function() {
+	console.log('blue - the second handler'); // still works
+});
+elem3.addEventListener('click', function() {
+	console.log('red');
+});</code>
+</div>
+<p>
+	You can check:
+</p>
+<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			#elem1 {
+			width: 200px;
+			height: 200px;
+			margin: 0 auto;
+			padding: 1px;
+			background: #97FF97;
+		}
+		#elem2 {
+			width: 140px;
+			height: 140px;
+			margin: 30px;
+			padding: 1px;
+			background: #7777FF;
+		}
+		#elem3 {
+			width: 80px;
+			height: 80px;
+			margin: 30px;
+			padding: 1px;
+			background: #FF7D7D;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;elem1&quot;>
+			<div id=&quot;elem2&quot;>
+				<div id=&quot;elem3&quot;></div>
+			</div>
+		</div>
+		
+		<script>
+			
+			let elem1 = document.querySelector('#elem1');
+		let elem2 = document.querySelector('#elem2');
+		let elem3 = document.querySelector('#elem3');
+		
+		elem1.addEventListener('click', function() {
+			console.log('green');
+		});
+		elem2.addEventListener('click', function(event) {
+			console.log('blue - the first handler');
+			event.stopPropagation();              // stops the bubbling
+		});
+		elem2.addEventListener('click', function() {
+			console.log('blue - the second handler'); // still works
+		});
+		elem3.addEventListener('click', function() {
+			console.log('red');
+		});
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Immediate termination of bubbling</h2>
+<p>
+	To completely stop processing, modern browsers 
+	support the <code class="code inline">stopImmediatePropagation</code> method. 
+	It not only prevents bubbling, but also stops event 
+	processing on the current element. Let's apply it:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">elem1.addEventListener('click', function() {
+	console.log('green');
+});
+elem2.addEventListener('click', function(event) {
+	console.log('blue - the first handler');
+	event.stopImmediatePropagation();     // stops the bubbling
+});
+elem2.addEventListener('click', function() {
+	console.log('blue - the second handler'); // won't work anymore
+});
+elem3.addEventListener('click', function() {
+	console.log('red');
+});</code>
+</div>
+<p>
+	You can check:
+</p>
+<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			#elem1 {
+			width: 200px;
+			height: 200px;
+			margin: 0 auto;
+			padding: 1px;
+			background: #97FF97;
+		}
+		#elem2 {
+			width: 140px;
+			height: 140px;
+			margin: 30px;
+			padding: 1px;
+			background: #7777FF;
+		}
+		#elem3 {
+			width: 80px;
+			height: 80px;
+			margin: 30px;
+			padding: 1px;
+			background: #FF7D7D;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;elem1&quot;>
+			<div id=&quot;elem2&quot;>
+				<div id=&quot;elem3&quot;></div>
+			</div>
+		</div>
+		
+		<script>
+			
+			let elem1 = document.querySelector('#elem1');
+		let elem2 = document.querySelector('#elem2');
+		let elem3 = document.querySelector('#elem3');
+		
+		elem1.addEventListener('click', function() {
+			console.log('green');
+		});
+		elem2.addEventListener('click', function(event) {
+			console.log('blue - the first handler');
+			event.stopImmediatePropagation();     // stops the bubbling
+		});
+		elem2.addEventListener('click', function() {
+			console.log('blue - the second handler'); // won't work anymore
+		});
+		elem3.addEventListener('click', function() {
+			console.log('red');
+		});
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Practical usage</h2>
+<p>
+	Let inside one parent we have a 
+	button and some block:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="parent"&gt;
+	&lt;button&gt;click me&lt;/button&gt;
+	&lt;div id="block"&gt;
+		text
+	&lt;/div&gt;
+&lt;/div&gt;</code>
+</div>
+<p>
+	Get references to our elements 
+	into variables:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let parent = document.querySelector('#parent');
+let button = document.querySelector('button');
+let block  = document.querySelector('#block');</code>
+</div>
+<p>
+	Let our block be initially hidden:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="css">#block:not(.active) {
+	display: none;
+}</code>
+</div>
+<p>
+	Let's make it so that by clicking on the 
+	button our block appears:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">button.addEventListener('click', function() {
+	block.classList.add('active');
+});</code>
+</div>
+<p>
+	And now we will make it so that by clicking 
+	on any place of the parent, our 
+	block is hidden:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">parent.addEventListener('click', function() {
+	block.classList.remove('active');
+});</code>
+</div>
+<p>
+	However, we are in for an unexpected surprise: since 
+	the button is inside the parent, then <i>clicking on 
+	the button simultaneously means also clicking on the 
+	parent</i>. This means that at first our block will 
+	appear, and then, due to the bubbling of the event, 
+	the handler in the parent will work and our block 
+	will be hidden.
+</p>
+<p>
+	This is where the ability to cancel the bubbling comes 
+	in handy: we can make it so that when you click on the 
+	button to cancel the bubbling, the parent does not 
+	react to this click.
+</p>
+<div class="task">
+	<p>
+		Implement the correct performance of the 
+		described task on your own.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="82" data-hash="jsPmOESEB" data-quantity="363" data-num="297"><a href="../../../../../../en/javascript/book/prime/dom/object-Event/bubbling-target-element.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../en/javascript/book/prime/dom/object-Event/events-capturing.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/object-Event/stop-events-bubbling.html" class="active">en</a><a href="../../../../../../ru/javascript/book/prime/dom/object-Event/stop-events-bubbling.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Checking for win in the tic-tac-toe game in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this tutorial, we will implement a checking for win in the tic-tac-toe game in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Checking for win in the tic-tac-toe game in JavaScript</h1>
+				<div class="content">
+<p>
+	Now it's time to write the code that will determine 
+	the win and display the name of the winner.
+</p>
+<p>
+	Thinking about the problem, you can realize that 
+	the check for win should be performed in each turn:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function init(selector) {
+	let cells = document.querySelectorAll('#field td');
+	let i = 0;
+	
+	for (let cell of cells) {
+		cell.addEventListener('click', function step() {
+			this.textContent = ['X', 'O'][i % 2];
+			this.removeEventListener('click', step);
+			
+			// here we have to check for win or draw
+			
+			i++;
+		});
+	}
+}</code>
+</div>
+<p>
+	Let's make the <code class="code inline">isVictory</code> function that 
+	accepts an array of cells as a parameter and 
+	returns <code class="code inline">true</code> if there is a victory on 
+	the field, and <code class="code inline">false</code> if not. We will 
+	use this function as follows:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function start(cells) {
+	let i = 0;
+	
+	for (let cell of cells) {
+		cell.addEventListener('click', function step() {
+			this.textContent = ['X', 'O'][i % 2];
+			this.removeEventListener('click', step);
+			
+			if (isVictory(cells)) {
+				alert('winner name');
+			}
+			
+			i++;
+		});
+	}
+}</code>
+</div>
+<p>
+	How do we know the name of the winner? Obviously, 
+	his name is stored in each of the winning cells. 
+	Let me explain: if we have a win, then this means 
+	that some <code class="number inline">3</code> cells horizontally, vertically 
+	or diagonally contain the same value: either an 
+	X or an O mark.
+</p>
+<p>
+	Obviously, the value of any of these cells is the 
+	name of the winner. But we can go in another, less 
+	obvious way: since we determine the presence of a 
+	win every move, it is logical that the winner will 
+	be the player who made the last move. The name of 
+	this player is contained in the text of the 
+	clicked cell:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function start(cells) {
+	let i = 0;
+	
+	for (let cell of cells) {
+		cell.addEventListener('click', function step() {
+			this.textContent = ['X', 'O'][i % 2];
+			this.removeEventListener('click', step);
+			
+			if (isVictory(cells)) {
+				alert(this.textContent); // displays the winner name  
+			}
+			
+			i++;
+		});
+	}
+}</code>
+</div>
+
+<h2>Implementation of isVictory</h2>
+<p>
+	How can we technically determine the presence of a 
+	victory on the field? If you think it over well, 
+	then you can come to the conclusion that there is 
+	a limited number of cell triplets on the field.
+</p>
+<p>
+	That is, to check for a victory, you can simply 
+	check all these triplets. It is necessary to check 
+	that the triples have the same non-empty values 
+	(that is, there is either a cross or a zero).
+</p>
+<p>
+	Let's make a two-dimensional array, in each subarray 
+	of which there will be cell numbers of one of the triples:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let combs = [
+	[0, 1, 2],
+	[3, 4, 5],
+	[6, 7, 8],
+	[0, 3, 6],
+	[1, 4, 7],
+	[2, 5, 8],
+	[0, 4, 8],
+	[2, 4, 6],
+];</code>
+</div>
+<p>
+	Let's write the definition of victory using this array:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function isVictory(cells) {
+	let combs = [
+		[0, 1, 2],
+		[3, 4, 5],
+		[6, 7, 8],
+		[0, 3, 6],
+		[1, 4, 7],
+		[2, 5, 8],
+		[0, 4, 8],
+		[2, 4, 6],
+	];
+
+	for (let comb of combs) {
+		if (
+			cells[comb[0]].textContent == cells[comb[1]].textContent &&
+			cells[comb[1]].textContent == cells[comb[2]].textContent &&
+			cells[comb[0]].textContent != ''
+		) {
+			return true;
+		}
+	}
+	
+	return false;
+}</code>
+</div>
+<div class="task">
+	<p>
+		On your own, without looking into my code, 
+		implement the described. Check how the 
+		gameplay works.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Try to implement a draw check. The next lesson 
+		will analyze this issue.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/practice/" data-persent="65" data-hash="jsPrTTTVCh" data-quantity="75" data-num="50"><a href="../../../../../en/javascript/book/practice/tick-tack-toe/cross-and-toe-alternation-analysis.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/practice/tick-tack-toe/draw-checking-analysis.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/practice/tick-tack-toe/victory-checking.html" class="active">en</a><a href="../../../../../ru/javascript/book/practice/tick-tack-toe/victory-checking.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

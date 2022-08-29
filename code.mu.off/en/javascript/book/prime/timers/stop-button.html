@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Buttons to start and stop a timer in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to make buttons that start and stop the timer in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Buttons to start and stop a timer in JavaScript</h1>
+				<div class="content">
+<p>
+	Let's now make two buttons: by clicking on the first one, 
+	let the timer start, and by clicking on the second one, 
+	it will stop. Here everything will not be so simple and 
+	a trap awaits us. In order to understand the essence of 
+	this trick, I will describe the creation of the 
+	code in steps.
+</p>
+<p>
+	So, we make two buttons:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;button id="start"&gt;start&lt;/button&gt;
+&lt;button id="stop"&gt;stop&lt;/button&gt;</code>
+</div>
+<p>
+	We get references to these buttons into variables:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let start = document.querySelector('#start');
+let stop  = document.querySelector('#stop');</code>
+</div>
+<p>
+	By pressing the first button, we start the timer 
+	by writing its number to a variable:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">start.addEventListener('click', function() {
+	let i = 0;
+	
+	let timerId = setInterval(function() {
+		console.log('!')
+	}, 1000);
+});</code>
+</div>
+<p>
+	And now we'll stop the timer by 
+	pressing the second button:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">start.addEventListener('click', function() {
+	let i = 0;
+	
+	let timerId = setInterval(function() {
+		console.log('!')
+	}, 1000);
+});
+
+// Stopping the timer:
+stop.addEventListener('click', function() {
+	clearInterval(timerId);
+});</code>
+</div>
+<p>
+	However, if we try to run the above code, we are in 
+	for a surprise: when we try to stop the timer, we 
+	find that the variable <code class="code inline">timerId</code> is equal to 
+	<code class="code inline">undefined</code>! Why did it happen? Therefore, 
+	when starting the timer, we made our variable 
+	<code class="code inline">timerId</code> local inside the function bound 
+	to the <code class="code inline">start</code> button.
+</p>
+<p>
+	To solve the problem, let's make the <code class="code inline">timerId</code> 
+	variable global - in this case, it will be available 
+	both in the timer start function and in the stop function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let timerId; // makes the variable global
+
+start.addEventListener('click', function() {
+	let i = 0;
+	
+	timerId = setInterval(function() {
+		console.log('!')
+	}, 1000);
+});
+
+stop.addEventListener('click', function() {
+	clearInterval(timerId);
+});</code>
+</div>
+<div class="task">
+	<p>
+		Let a variable be given that initially stores the 
+		number <code class="number inline">100</code>. There are also two buttons. By 
+		pressing the first button, start the timer, which 
+		every second will decrease the value of the variable 
+		by <code class="number inline">1</code> and output the new value to the console. 
+		As soon as the value of the variable reaches zero, 
+		stop the timer.
+	</p>
+	<p>
+		Stop the timer by pressing the second button. Also 
+		stop the timer if the second button was not pressed, 
+		but the value of the variable reached zero.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Some programmer wrote a code that, when a button is 
+		pressed, starts a timer that prints the current time 
+		to the console:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;input type="submit" id="start" value="start"&gt;
+&lt;input type="submit" id="stop"  value="stop"&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let start = document.querySelector('#start');
+let stop  = document.querySelector('#stop');
+
+start.addEventListener('click', function() {
+	let timerId = setInterval(function() {
+		let date = new Date;
+		console.log(date.getMinutes() + ' ' + date.getSeconds());
+	}, 1000);
+});
+
+stop.addEventListener('click', function() {
+	clearInterval(timerId);
+});</code>
+	</div>
+	<p>
+		After running the code, however, it turned out that 
+		the stop button didn't work. Please fix the code 
+		author's mistake.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Another programmer also wrote code to 
+		solve the previous problem:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;input type="submit" id="start" value="start"&gt;
+&lt;input type="submit" id="stop"  value="stop"&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let start = document.querySelector('#start');
+let stop  = document.querySelector('#stop');
+
+let timerId;
+
+start.addEventListener('click', function() {
+	let timerId = setInterval(function() {
+		let date = new Date;
+		console.log(date.getMinutes() + ' ' + date.getSeconds());
+	}, 1000);
+});
+
+stop.addEventListener('click', function() {
+	clearInterval(timerId);
+});</code>
+	</div>
+	<p>
+		After running the code, however, again it turned 
+		out that the stop button did not work. Fix the 
+		code author's mistake.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Another programmer also wrote code to 
+		solve the previous problem:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;input type="submit" id="start" value="start"&gt;
+&lt;input type="submit" id="stop"  value="stop"&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let start = document.querySelector('start');
+let stop  = document.querySelector('stop');
+
+let timerId;
+
+start.addEventListener('click', function() {
+	setInterval(function() {
+		let date = new Date;
+		console.log(date.getMinutes() + ' ' + date.getSeconds());
+	}, 1000);
+});
+
+stop.addEventListener('click', function() {
+	clearInterval(timerId);
+});</code>
+	</div>
+	<p>
+		After running the code, however, again it turned 
+		out that the stop button did not work. Fix the 
+		code author's mistake.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Another programmer also wrote code to 
+		solve the previous problem:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;input type="submit" id="start" value="start"&gt;
+&lt;input type="submit" id="stop"  value="stop"&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let start = document.querySelector('start');
+let stop  = document.querySelector('stop');
+
+let timerId;
+
+start.addEventListener('click', function() {
+	let timerId = setInterval(function() {
+		let date = new Date;
+		console.log(date.getMinutes() + ' ' + date.getSeconds());
+	}, 1000);
+});
+
+stop.addEventListener('click', function() {
+	clearInterval();
+});</code>
+	</div>
+	<p>
+		After running the code, however, again it turned 
+		out that the stop button did not work. Fix the 
+		code author's mistake.
+	</p>
+</div>
+<div class="task">
+	<p>
+		The code I gave in the theoretical part does not 
+		take into account the fact that several clicks 
+		can be made on the start button. To fix this 
+		problem, you can unbind the event from this 
+		button by pressing the start button, and bind 
+		it back by pressing the stop button. 
+		Fix the problem.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="86" data-hash="jsPmTmrSB" data-quantity="363" data-num="312"><a href="../../../../../en/javascript/book/prime/timers/launch-button.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/timers/dom.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/timers/stop-button.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/timers/stop-button.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Callback functions in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will analyze the concept of a callback function in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Callback functions in JavaScript</h1>
+				<div class="content">
+<p>
+	Functions can be passed as parameters to 
+	other functions. Such function-parameter 
+	is called <dfn>callback</dfn>. Let's see how 
+	they work with an example.
+</p>
+<p>
+	Suppose we want to make a function that 
+	will take an array as the first parameter, 
+	and a callback as the second, which will 
+	be applied to each element of the array:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function each(arr, callback) {
+	// here is some code
+}</code>
+</div>
+<p>
+	Let's write the implementation of our function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function each(arr, callback) {
+	let result = [];
+	
+	for (let elem of arr) {
+		result.push( callback(elem) ); // invokes the callback function
+	}
+	
+	return result;
+}</code>
+</div>
+<p>
+	Our function <code class="code inline">each</code> is universal. 
+	This means that we can pass different 
+	callbacks to it, performing different 
+	operations on arrays. In this case, 
+	the code of our function will remain 
+	unchanged - only the passed callbacks 
+	will change.
+</p>
+<p>
+	For example, let's use our function to 
+	square each element of an array. To do 
+	this, we will pass the corresponding 
+	callback as a parameter:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let result = each([1, 2, 3, 4, 5], function(num) {
+	return num ** 2;
+});
+
+console.log(result);</code>
+</div>
+<p>
+	And now let's raise the elements of the 
+	array to a cube. To do this, we will 
+	pass another callback that performs 
+	this operation as a parameter:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let result = each([1, 2, 3, 4, 5], function(num) {
+	return num ** 3;
+});
+
+console.log(result);</code>
+</div>
+<div class="task">
+	<p>
+		Given an array of numbers. Use the 
+		<code class="code inline">each</code> function we created to 
+		double each element.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given an array with strings. Use 
+		the <code class="code inline">each</code> function we created 
+		to flip the characters of each 
+		string in reverse order.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given an array with strings. Use 
+		the <code class="code inline">each</code> function we created 
+		to capitalize the first character 
+		of each string.
+	</p>
+</div>
+
+<h2>Nuances</h2>
+<p>
+	Callbacks don't have to be anonymous 
+	functions. For example, let's say we 
+	have the following function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function square(num) {
+	return num ** 2;
+}</code>
+</div>
+<p>
+	Let's use it to square each 
+	element of the array:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function square(num) {
+	return num * num;
+}
+
+let result = each([1, 2, 3, 4, 5], square);
+console.log(result);</code>
+</div>
+<div class="task">
+	<p>
+		Use the following function to 
+		cube all the elements of an array:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function cube(num) {
+	return num ** 3;
+}</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="53" data-hash="jsPmFAClb" data-quantity="363" data-num="194"><a href="../../../../../en/javascript/book/prime/functions/closures-and-IIEF.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/functions/arrow-functions.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/functions/callbacks.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/functions/callbacks.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

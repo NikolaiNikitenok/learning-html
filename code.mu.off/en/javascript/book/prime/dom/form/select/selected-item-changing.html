@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Changing the selected list item in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will change the selected item of the select list in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Changing the selected list item in JavaScript</h1>
+				<div class="content">
+<p>
+	In the previous lesson, we learned how to get 
+	the selected list item. Let's now change the 
+	selected item using JavaScript.
+</p>
+<p>
+	To do this, in the property <code class="code inline">value</code> of the 
+	select, we write the value of the <code class="code inline">value</code> 
+	attribute of the <code class="code inline">option</code> that we want 
+	to select.
+</p>
+<p>
+	Suppose we have the following select:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;select id="select"&gt;
+	&lt;option value="one"&gt;one&lt;/option&gt;
+	&lt;option value="two" selected&gt;two&lt;/option&gt;
+	&lt;option value="three"&gt;three&lt;/option&gt;
+&lt;/select&gt;</code>
+</div>
+<p>
+	Let's also have a button:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;input type="submit" id="button"&gt;</code>
+</div>
+<p>
+	Get references to the select and the button 
+	into variables:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let select = document.querySelector('#select');
+let button = document.querySelector('#button');</code>
+</div>
+<p>
+	And now let's make it so that when the button 
+	is clicked, our select changes the selection:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">button.addEventListener('click', function() {
+	select.value = 'one';
+});</code>
+</div>
+<div class="notice">
+	<p>
+		If our list does not have <code class="code inline">value</code> attributes, 
+		then we need to write the text of the <code class="code inline">option</code> 
+		tag that we want to select into the <code class="code inline">value</code> 
+		property of the select.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Make a dropdown list with the names of the months. 
+		Make JavaScript select the current month from 
+		this list by default.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="78" data-hash="jsPmFmSICh" data-quantity="363" data-num="283"><a href="../../../../../../../en/javascript/book/prime/dom/form/select/dropdown-lists.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../../en/javascript/book/prime/dom/form/select/selected-item-number.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../../en/javascript/book/prime/dom/form/select/selected-item-changing.html" class="active">en</a><a href="../../../../../../../ru/javascript/book/prime/dom/form/select/selected-item-changing.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

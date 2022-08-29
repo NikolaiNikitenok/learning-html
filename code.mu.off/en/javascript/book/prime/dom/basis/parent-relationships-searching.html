@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Finding elements by relationships in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will study the getting of elements by family relationships in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Finding elements by relationships in JavaScript</h1>
+				<div class="content">
+<h2>Descendants of elements</h2>
+<div class="ref">
+	<a href="../../../../../../en/javascript/manual/dom/firstElementChild.html"><code class="code inline">firstElementChild</code></a>
+	<a href="../../../../../../en/javascript/manual/dom/lastElementChild.html"><code class="code inline">lastElementChild</code></a>
+	<a href="../../../../../../en/javascript/manual/dom/children.html"><code class="code inline">children</code></a>
+</div>
+<div class="task">
+	<p>
+		Given the element <code class="selector inline">#elem</code>:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;ul id="elem"&gt;
+	&lt;li&gt;text&lt;/li&gt;
+	&lt;li&gt;text&lt;/li&gt;
+	&lt;li&gt;text&lt;/li&gt;
+	&lt;li&gt;text&lt;/li&gt;
+	&lt;li&gt;text&lt;/li&gt;
+&lt;/ul&gt;</code>
+	</div>
+	<p>
+		Find the first child of this element 
+		and make its text red.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given the element <code class="selector inline">#elem</code>:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;ul id="elem"&gt;
+	&lt;li&gt;text&lt;/li&gt;
+	&lt;li&gt;text&lt;/li&gt;
+	&lt;li&gt;text&lt;/li&gt;
+	&lt;li&gt;text&lt;/li&gt;
+	&lt;li&gt;text&lt;/li&gt;
+&lt;/ul&gt;</code>
+	</div>
+	<p>
+		Find the last child of this element 
+		and make its text red.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given the element <code class="selector inline">#elem</code>:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;ul id="elem"&gt;
+	&lt;li&gt;text&lt;/li&gt;
+	&lt;li&gt;text&lt;/li&gt;
+	&lt;li&gt;text&lt;/li&gt;
+	&lt;li&gt;text&lt;/li&gt;
+	&lt;li&gt;text&lt;/li&gt;
+&lt;/ul&gt;</code>
+	</div>
+	<p>
+		Find all the children of this element 
+		and append the text <code class="string inline">'!'</code> 
+		to the end of them.
+	</p>
+</div>
+
+<h2>Parents of elements</h2>
+<div class="ref">
+	<a href="../../../../../../en/javascript/manual/dom/parentElement.html"><code class="code inline">parentElement</code></a>
+</div>
+<div class="task">
+	<p>
+		Given the element <code class="selector inline">#elem</code>:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;div&gt;
+	&lt;ul&gt;
+		&lt;li&gt;text&lt;/li&gt;
+		&lt;li&gt;text&lt;/li&gt;
+		&lt;li id="elem"&gt;text&lt;/li&gt;
+		&lt;li&gt;text&lt;/li&gt;
+		&lt;li&gt;text&lt;/li&gt;
+	&lt;/ul&gt;
+&lt;/div&gt;</code>
+	</div>
+	<p>
+		Find its parent and give it a red border.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given the element <code class="selector inline">#elem</code>:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;div&gt;
+	&lt;ul&gt;
+		&lt;li&gt;text&lt;/li&gt;
+		&lt;li&gt;text&lt;/li&gt;
+		&lt;li id="elem"&gt;text&lt;/li&gt;
+		&lt;li&gt;text&lt;/li&gt;
+		&lt;li&gt;text&lt;/li&gt;
+	&lt;/ul&gt;
+&lt;/div&gt;</code>
+	</div>
+	<p>
+		Find its parent's parent and give it a red border.
+	</p>
+</div>
+
+<h2>Search for all parents</h2>
+<div class="ref">
+	<a href="../../../../../../en/javascript/manual/dom/closest.html"><code class="code inline">closest</code></a>
+</div>
+<div class="task">
+	<p>
+		Given an element:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;header&gt;
+	&lt;div&gt;
+		&lt;p&gt;
+			&lt;span id="elem"&gt;&lt;/span&gt;
+		&lt;/p&gt;
+	&lt;/div&gt;
+&lt;/header&gt;</code>
+	</div>
+	<p>
+		Find the closest parent of this element, 
+		which is the <code class="code inline">div</code> tag.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given an element:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;header&gt;
+	&lt;div class="www"&gt;
+		&lt;p class="www"&gt;
+			&lt;span id="elem"&gt;&lt;/span&gt;
+		&lt;/p&gt;
+	&lt;/div&gt;
+&lt;/header&gt;</code>
+	</div>
+	<p>
+		Find the closest parent of this element, 
+		which is an element with the 
+		class <code class="selector inline">www</code>.
+	</p>
+</div>
+
+<h2>Search for siblings</h2>
+<div class="ref">
+	<a href="../../../../../../en/javascript/manual/dom/previousElementSibling.html"><code class="code inline">previousElementSibling</code></a>
+	<a href="../../../../../../en/javascript/manual/dom/nextElementSibling.html"><code class="code inline">nextElementSibling</code></a>
+</div>
+<div class="task">
+	<p>
+		Given the element <code class="selector inline">#elem</code>:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;ul&gt;
+	&lt;li&gt;text&lt;/li&gt;
+	&lt;li&gt;text&lt;/li&gt;
+	&lt;li id="elem"&gt;text&lt;/li&gt;
+	&lt;li&gt;text&lt;/li&gt;
+	&lt;li&gt;text&lt;/li&gt;
+&lt;/ul&gt;</code>
+	</div>
+	<p>
+		Find its upper sibling element and 
+		add the text <code class="string inline">'!'</code> to the end 
+		of it.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given the element <code class="selector inline">#elem</code>:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;ul&gt;
+	&lt;li&gt;text&lt;/li&gt;
+	&lt;li&gt;text&lt;/li&gt;
+	&lt;li id="elem"&gt;text&lt;/li&gt;
+	&lt;li&gt;text&lt;/li&gt;
+	&lt;li&gt;text&lt;/li&gt;
+&lt;/ul&gt;</code>
+	</div>
+	<p>
+		Find its bottom sibling element and 
+		add the text <code class="string inline">'!'</code> to the end 
+		of it.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given the element <code class="selector inline">#elem</code>:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;ul&gt;
+	&lt;li&gt;text&lt;/li&gt;
+	&lt;li&gt;text&lt;/li&gt;
+	&lt;li id="elem"&gt;text&lt;/li&gt;
+	&lt;li&gt;text&lt;/li&gt;
+	&lt;li&gt;text&lt;/li&gt;
+&lt;/ul&gt;</code>
+	</div>
+	<p>
+		Find its bottom sibling of its bottom 
+		sibling (the next element after the 
+		next one) and add the text <code class="string inline">'!'</code> 
+		to the end of it.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given the element <code class="selector inline">#elem</code>:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;ul&gt;
+	&lt;li&gt;text1&lt;/li&gt;
+	&lt;li&gt;text2&lt;/li&gt;
+	&lt;li id="elem"&gt;text3&lt;/li&gt;
+	&lt;li&gt;text4&lt;/li&gt;
+	&lt;li&gt;text5&lt;/li&gt;
+&lt;/ul&gt;</code>
+	</div>
+	<p>
+		Swap the text of its upper sibling and 
+		the text of its bottom sibling.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="73" data-hash="jsPmDmPRS" data-quantity="363" data-num="266"><a href="../../../../../../en/javascript/book/prime/dom/basis/css-classes-stylization.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../en/javascript/book/prime/dom/basis/other-search-methods.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/basis/parent-relationships-searching.html" class="active">en</a><a href="../../../../../../ru/javascript/book/prime/dom/basis/parent-relationships-searching.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

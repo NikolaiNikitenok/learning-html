@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Working methods with return in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn a useful technique for working with the return statement in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Working methods with return in JavaScript</h1>
+				<div class="content">
+<p>
+	There are some tricks for working with 
+	<code class="code inline">return</code> that simplify the code. 
+	Consider, for example, the following 
+	code:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(num) {
+	let res;
+	
+	if (num &gt;= 0) {
+		res = Math.sqrt(num);
+	} else {
+		res = 0;
+	}
+	
+	return res;
+}
+
+console.log(func(3));</code>
+</div>
+<p>
+	As you can see, in this code, depending on 
+	the condition, either one or the other value 
+	will fall into the variable <code class="code inline">res</code>. 
+	And in the last line of the function, the 
+	content of the variable <code class="code inline">res</code> is 
+	returned through <code class="code inline">return</code>.
+</p>
+<p>
+	Let's rewrite this code in a shortened form, 
+	getting rid of the variable <code class="code inline">res</code> 
+	that is unnecessary here:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(num) {
+	if (num &gt;= 0) {
+		return Math.sqrt(num);
+	} else {
+		return 0;
+	}
+}
+
+console.log(func(3));</code>
+</div>
+<div class="task">
+	<p>
+		Given the following function:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function func(num1, num2) {
+	let res;
+	
+	if (num1 &gt; 0 && num2 &gt; 0) {
+		res = num1 * num2;
+	} else {
+		res = num1 - num2;
+	}
+	
+	return res;
+}
+
+console.log(func(3, 4));</code>
+	</div>
+	<p>
+		Rewrite it in a shortened form 
+		according to the theory studied.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="45" data-hash="jsPmUFRD" data-quantity="363" data-num="166"><a href="../../../../../en/javascript/book/prime/functions/return-loop-applying.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/functions/flags.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/functions/return-dodge.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/functions/return-dodge.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

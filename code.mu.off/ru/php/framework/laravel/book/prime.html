@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Учебник Laravel 9 для новичков по-русски | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="Учебник по PHP фреймворку Laravel 9 от Трепачёва Дмитрия.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Учебник Laravel 9</h1>
+				<div class="menu" data-module="menu" data-mode="hash" data-book="pplrPm">
+<div data-section="Bs">
+	<a data-lesson="Inr" href="../../../../../ru/php/framework/laravel/book/prime/basis/intro.html">
+		Введение
+	</a>
+	<a data-lesson="Dc" href="../../../../../ru/php/framework/laravel/book/prime/basis/docs.html">
+		Документация
+	</a>
+	<a data-lesson="In" href="../../../../../ru/php/framework/laravel/book/prime/basis/install.html">
+		Установка
+	</a>
+	<a data-lesson="FS" href="../../../../../ru/php/framework/laravel/book/prime/basis/file-structure.html">
+		Файловая структура
+		<span class="__label__ __acceptable__">ссылка на доку</span>
+	</a>
+	<a data-lesson="Cn" href="../../../../../ru/php/framework/laravel/book/prime/basis/configuration.html">
+		Конфигурирование
+		<span class="__label__ __acceptable__">ссылка на доку</span>
+	</a>
+	<a data-lesson="Dt" href="../../../../../ru/php/framework/laravel/book/prime/basis/database.html">
+		Конфигурация базы данных
+	</a>
+	<a data-lesson="DF" href="../../../../../ru/php/framework/laravel/book/prime/basis/dump-functions.html">
+		Отладочные функции
+	</a>
+	<a data-lesson="Db" href="../../../../../ru/php/framework/laravel/book/prime/basis/debugbar.html">
+		Панель debugbar
+	</a>
+</div>
+
+<h2>Маршруты</h2>
+<div data-section="Rt">
+	<a data-lesson="Inr" href="../../../../../ru/php/framework/laravel/book/prime/routing/intro.html">
+		Введение в маршруты
+	</a>
+	<a data-lesson="Pr" href="../../../../../ru/php/framework/laravel/book/prime/routing/parameters.html">
+		Параметры маршрутов
+	</a>
+	<a data-lesson="SP" href="../../../../../ru/php/framework/laravel/book/prime/routing/several-parameters.html">
+		Несколько параметров
+	</a>
+	<a data-lesson="OP" href="../../../../../ru/php/framework/laravel/book/prime/routing/optional-parameters.html">
+		Необязательные параметры
+	</a>
+	<a data-lesson="PC" href="../../../../../ru/php/framework/laravel/book/prime/routing/parameter-constraints.html">
+		Ограничения параметра
+	</a>
+	<a data-lesson="SPC" href="../../../../../ru/php/framework/laravel/book/prime/routing/several-parameters-constraints.html">
+		Ограничения нескольких параметров
+	</a>
+	<a data-lesson="PPC" href="../../../../../ru/php/framework/laravel/book/prime/routing/pattern-parameters-constraints.html">
+		Шаблонные ограничения параметров
+	</a>
+	<a data-lesson="GPC" href="../../../../../ru/php/framework/laravel/book/prime/routing/global-parameters-constraints.html">
+		Глобальные ограничения параметров
+	</a>
+	<a data-lesson="RC" href="../../../../../ru/php/framework/laravel/book/prime/routing/resolving-conflicts.html">
+		Разрешение конфликтов маршрутов
+	</a>
+	<a data-lesson="RG" href="../../../../../ru/php/framework/laravel/book/prime/routing/route-groups.html">
+		Группировка маршрутов
+	</a>
+	<a data-lesson="NR" href="../../../../../ru/php/framework/laravel/book/prime/routing/named-routes.html">
+		Именованные маршруты
+	</a>
+</div>
+
+<h2>Контроллеры</h2>
+<div data-section="Cn">
+	<a data-lesson="Inr" href="../../../../../ru/php/framework/laravel/book/prime/controllers/intro.html">
+		Введение в контроллеры
+	</a>
+	<a data-lesson="Rt" href="../../../../../ru/php/framework/laravel/book/prime/controllers/routes.html">
+		Маршруты для контроллеров
+	</a>
+	<a data-lesson="Gn" href="../../../../../ru/php/framework/laravel/book/prime/controllers/generation.html">
+		Генерация контроллеров
+	</a>
+	<a data-lesson="Pr" href="../../../../../ru/php/framework/laravel/book/prime/controllers/parameters.html">
+		Параметры маршрутов
+	</a>
+	<a data-lesson="AP" href="../../../../../ru/php/framework/laravel/book/prime/controllers/applying-parameters.html">
+		Применение параметров маршрутов
+	</a>
+</div>
+
+<h2>Представления</h2>
+<div data-section="Vw">
+	<a data-lesson="Inr" href="../../../../../ru/php/framework/laravel/book/prime/views/intro.html">
+		Введение в представления
+	</a>
+	<a data-lesson="DP" href="../../../../../ru/php/framework/laravel/book/prime/views/data-passing.html">
+		Передача данных
+	</a>
+	<a data-lesson="FS" href="../../../../../ru/php/framework/laravel/book/prime/views/files-structure.html">
+		Структура файлов
+	</a>
+	<a data-lesson="SL" href="../../../../../ru/php/framework/laravel/book/prime/views/site-layout.html">
+		Макет сайта
+	</a>
+	<a data-lesson="SLC" href="../../../../../ru/php/framework/laravel/book/prime/views/site-layout-content.html">
+		Контент в макете сайта
+	</a>
+	<a data-lesson="SLT" href="../../../../../ru/php/framework/laravel/book/prime/views/site-layout-title.html">
+		Тайтл в макете сайта
+	</a>
+	<a data-lesson="CV" href="../../../../../ru/php/framework/laravel/book/prime/views/content-variable.html">
+		Контент из переменной
+	</a>
+	<a data-lesson="TV" href="../../../../../ru/php/framework/laravel/book/prime/views/title-variable.html">
+		Тайтл из переменной
+	</a>
+</div>
+
+<h2>Blade</h2>
+<div data-section="Bl">
+	<a data-lesson="Inr" href="../../../../../ru/php/framework/laravel/book/prime/blade/intro.html">
+		Введение
+	</a>
+	<a data-lesson="VT" href="../../../../../ru/php/framework/laravel/book/prime/blade/variables-tags.html">
+		Вывод переменных в тегах
+	</a>
+	<a data-lesson="VA" href="../../../../../ru/php/framework/laravel/book/prime/blade/variables-attributes.html">
+		Вывод переменных в атрибуты
+	</a>
+	<a data-lesson="AC" href="../../../../../ru/php/framework/laravel/book/prime/blade/arbitrary-code.html">
+		Произвольный код
+	</a>
+	<a data-lesson="Ar" href="../../../../../ru/php/framework/laravel/book/prime/blade/arrays.html">
+		Работа с массивами
+	</a>
+	<a data-lesson="VCh" href="../../../../../ru/php/framework/laravel/book/prime/blade/variables-checking.html">
+		Проверка переменных
+	</a>
+	<a data-lesson="UDO" href="../../../../../ru/php/framework/laravel/book/prime/blade/unescaped-data-output.html">
+		Вывод неэкранированных данных
+	</a>
+	<a data-lesson="Cm" href="../../../../../ru/php/framework/laravel/book/prime/blade/comments.html">
+		Комментарии
+	</a>
+	<a data-lesson="Cn" href="../../../../../ru/php/framework/laravel/book/prime/blade/conditions.html">
+		Условия
+	</a>
+	<a data-lesson="ED" href="../../../../../ru/php/framework/laravel/book/prime/blade/else-directive.html">
+		Директива @else
+	</a>
+	<a data-lesson="EiD" href="../../../../../ru/php/framework/laravel/book/prime/blade/elseif-directive.html">
+		Директива @elseif
+	</a>
+	<a data-lesson="UD" href="../../../../../ru/php/framework/laravel/book/prime/blade/unless-directive.html">
+		Директива @unless
+	</a>
+	<a data-lesson="CC" href="../../../../../ru/php/framework/laravel/book/prime/blade/complex-conditions.html">
+		Сложные условия
+	</a>
+	<a data-lesson="FeD" href="../../../../../ru/php/framework/laravel/book/prime/blade/foreach-directive.html">
+		Директива @foreach
+	</a>
+	<a data-lesson="FeK" href="../../../../../ru/php/framework/laravel/book/prime/blade/foreach-keys.html">
+		Ключи массива в цикле @foreach
+	</a>
+	<a data-lesson="FeC" href="../../../../../ru/php/framework/laravel/book/prime/blade/foreach-conditions.html">
+		Условия и циклы @foreach
+	</a>
+	<a data-lesson="FeN" href="../../../../../ru/php/framework/laravel/book/prime/blade/foreach-nested.html">
+		Вложенные циклы @foreach
+	</a>
+	<a data-lesson="FeMA" href="../../../../../ru/php/framework/laravel/book/prime/blade/foreach-multi-arrays.html">
+		Перебор многомерных массивов
+	</a>
+	<a data-lesson="FsD" href="../../../../../ru/php/framework/laravel/book/prime/blade/forelse-directive.html">
+		Цикл @forelse
+	</a>
+	<a data-lesson="VL" href="../../../../../ru/php/framework/laravel/book/prime/blade/variable-loop.html">
+		Переменная $loop
+	</a>
+	<a data-lesson="BD" href="../../../../../ru/php/framework/laravel/book/prime/blade/break-directive.html">
+		Директива @break
+	</a>
+	<a data-lesson="CD" href="../../../../../ru/php/framework/laravel/book/prime/blade/continue-directive.html">
+		Директива @continue
+	</a>
+	<a data-lesson="FrD" href="../../../../../ru/php/framework/laravel/book/prime/blade/for-directive.html">
+		Цикл @for
+	</a>
+	<a data-lesson="PCB" href="../../../../../ru/php/framework/laravel/book/prime/blade/php-code-block.html">
+		Блок PHP кода
+	</a>
+	<a data-lesson="Prm" href="../../../../../ru/php/framework/laravel/book/prime/blade/practicum.html">
+		Практика по шаблонизатору Blade
+	</a>
+</div>
+
+<h2>Коллекции</h2>
+<div data-section="Cl">
+	<a data-lesson="Cl" href="../../../../../ru/php/framework/laravel/book/prime/collections.html">
+		Работа с коллекциями
+		<span class="__label__ __acceptable__">ссылка на доку</span>
+	</a>
+</div>
+
+<h2>Миграции</h2>
+<div data-section="Mg">
+	<a data-lesson="Inr" href="../../../../../ru/php/framework/laravel/book/prime/database/migrations/intro.html">
+		Введение в миграции
+	</a>
+	<a data-lesson="FS" href="../../../../../ru/php/framework/laravel/book/prime/database/migrations/file-structure.html">
+		Структура файлов миграций
+	</a>
+	<a data-lesson="Rn" href="../../../../../ru/php/framework/laravel/book/prime/database/migrations/running.html">
+		Запуск миграций
+	</a>
+	<a data-lesson="TF" href="../../../../../ru/php/framework/laravel/book/prime/database/migrations/tables-fields.html">
+		Поля таблиц
+	</a>
+	<a data-lesson="FA" href="../../../../../ru/php/framework/laravel/book/prime/database/migrations/fields-adding.html">
+		Добавление полей
+	</a>
+	<a data-lesson="PFCh" href="../../../../../ru/php/framework/laravel/book/prime/database/migrations/preparing-fields-changing.html">
+		Подготовка к изменению полей
+	</a>
+	<a data-lesson="UFA" href="../../../../../ru/php/framework/laravel/book/prime/database/migrations/updating-fields-attributes.html">
+		Изменение атрибутов полей
+	</a>
+	<a data-lesson="FRm" href="../../../../../ru/php/framework/laravel/book/prime/database/migrations/fields-removing.html">
+		Удаление полей
+	</a>
+	<a data-lesson="FRn" href="../../../../../ru/php/framework/laravel/book/prime/database/migrations/fields-renaming.html">
+		Переименование полей
+	</a>
+	<a data-lesson="FM" href="../../../../../ru/php/framework/laravel/book/prime/database/migrations/fields-modifiers.html">
+		Модификаторы полей
+	</a>
+	<a data-lesson="FO" href="../../../../../ru/php/framework/laravel/book/prime/database/migrations/fields-order.html">
+		Порядок полей
+	</a>
+	<a data-lesson="TRm" href="../../../../../ru/php/framework/laravel/book/prime/database/migrations/tables-removing.html">
+		Удаление таблиц
+	</a>
+	<a data-lesson="TRn" href="../../../../../ru/php/framework/laravel/book/prime/database/migrations/tables-renaming.html">
+		Переименование таблиц
+	</a>
+	<a data-lesson="RBP" href="../../../../../ru/php/framework/laravel/book/prime/database/migrations/rolling-back-preparing.html">
+		Подготовка к откату миграций
+	</a>
+	<a data-lesson="RB" href="../../../../../ru/php/framework/laravel/book/prime/database/migrations/rolling-back.html">
+		Откат миграций
+	</a>
+	<a data-lesson="IC" href="../../../../../ru/php/framework/laravel/book/prime/database/migrations/indexes-creating.html">
+		Создание индексов
+		<span class="__label__ __acceptable__">ссылка на доку</span>
+	</a>
+	<!--
+	<a data-lesson="1" href="../../../../../ru/php/framework/laravel/book/prime/database/migrations/12.html"> 
+		Ограничения внешнего ключа
+		<span class="">когда индексы будем делать, загот в #</span>
+	</a>
+	-->
+	<a data-lesson="PF" href="../../../../../ru/php/framework/laravel/book/prime/database/migrations/production-force.html">
+		Принудительные миграции в продакшне
+	</a>
+</div>
+
+<h2>Сидеры</h2>
+<div data-section="Sd">
+	<a data-lesson="Inr" href="../../../../../ru/php/framework/laravel/book/prime/database/seeders/intro.html">
+		Введение
+	</a>
+	<a data-lesson="TF" href="../../../../../ru/php/framework/laravel/book/prime/database/seeders/tables-filling.html">
+		Заполнение таблиц
+	</a>
+	<a data-lesson="RSG" href="../../../../../ru/php/framework/laravel/book/prime/database/seeders/random-strings-generation.html">
+		Генерация случайных строк
+	</a>
+	<a data-lesson="SPG" href="../../../../../ru/php/framework/laravel/book/prime/database/seeders/string-part-generation.html">
+		Генерация части строки
+	</a>
+	<a data-lesson="PH" href="../../../../../ru/php/framework/laravel/book/prime/database/seeders/passwords-hashes.html">
+		Хеширование паролей
+	</a>
+	<a data-lesson="DC" href="../../../../../ru/php/framework/laravel/book/prime/database/seeders/distinct-classes.html">
+		Отдельные классы сидеров
+	</a>
+	<a data-lesson="CC" href="../../../../../ru/php/framework/laravel/book/prime/database/seeders/common-calling.html">
+		Общий вызов отдельных сидеров
+	</a>
+	<a data-lesson="FR" href="../../../../../ru/php/framework/laravel/book/prime/database/seeders/full-rebuilding.html">
+		Полное перестроение БД
+	</a>
+	<a data-lesson="TT" href="../../../../../ru/php/framework/laravel/book/prime/database/seeders/test-tables.html">
+		Тестовые таблицы
+	</a>
+</div>
+
+<h2>Построитель запросов</h2>
+<div data-section="QB">
+	<a data-lesson="Inr" href="../../../../../ru/php/framework/laravel/book/prime/database/builder/intro.html">
+		Введение
+	</a>
+	<a data-lesson="GAN" href="../../../../../ru/php/framework/laravel/book/prime/database/builder/getting-all-notes.html">
+		Получение всех записей
+	</a>
+	<a data-lesson="RVO" href="../../../../../ru/php/framework/laravel/book/prime/database/builder/records-view-output.html">
+		Вывод полученных записей в представлении
+	</a>
+	<a data-lesson="VSQ" href="../../../../../ru/php/framework/laravel/book/prime/database/builder/viewing-sql-queries.html">
+		Просмотр SQL запросов
+	</a>
+	<a data-lesson="SF" href="../../../../../ru/php/framework/laravel/book/prime/database/builder/selection-fields.html">
+		Поля выборки
+	</a>
+	<a data-lesson="CW" href="../../../../../ru/php/framework/laravel/book/prime/database/builder/condition-where.html">
+		Условия where при выборке
+	</a>
+	<a data-lesson="SCW" href="../../../../../ru/php/framework/laravel/book/prime/database/builder/several-conditions-where.html">
+		Несколько условий where при выборке
+	</a>
+	<a data-lesson="CO" href="../../../../../ru/php/framework/laravel/book/prime/database/builder/condition-orWhere.html">
+		Условия orWhere при выборке
+	</a>
+	<a data-lesson="CC" href="../../../../../ru/php/framework/laravel/book/prime/database/builder/complex-conditions.html">
+		Сложные условия при выборке
+	</a>
+	<a data-lesson="GOR" href="../../../../../ru/php/framework/laravel/book/prime/database/builder/getting-one-row.html">
+		Получение одной строки
+	</a>
+	<a data-lesson="GCV" href="../../../../../ru/php/framework/laravel/book/prime/database/builder/getting-column-value.html">
+		Получение значения столбца
+	</a>
+	<a data-lesson="GCC" href="../../../../../ru/php/framework/laravel/book/prime/database/builder/getting-column-collection.html">
+		Получение коллекции значений столбца
+		<span class="__label__ __acceptable__">пример на коллекцию</span>
+	</a>
+	<a data-lesson="CWB" href="../../../../../ru/php/framework/laravel/book/prime/database/builder/condition-whereBetween.html">
+		Условие whereBetween
+	</a>
+	<a data-lesson="CWI" href="../../../../../ru/php/framework/laravel/book/prime/database/builder/condition-whereIn.html">
+		Условие whereIn
+	</a>
+	<a data-lesson="NCh" href="../../../../../ru/php/framework/laravel/book/prime/database/builder/null-checking.html">
+		Проверка на NULL
+	</a>
+	<a data-lesson="DC" href="../../../../../ru/php/framework/laravel/book/prime/database/builder/dynamic-conditions.html">
+		Динамические условия
+	</a>
+	<a data-lesson="DCC" href="../../../../../ru/php/framework/laravel/book/prime/database/builder/dynamic-conditions-combinations.html">
+		Комбинации динамических условий
+	</a>
+	<a data-lesson="DS" href="../../../../../ru/php/framework/laravel/book/prime/database/builder/data-sorting.html">
+		Сортировка данных
+	</a>
+	<a data-lesson="SBD" href="../../../../../ru/php/framework/laravel/book/prime/database/builder/sorting-by-date.html">
+		Сортировка по дате
+	</a>
+	<a data-lesson="RS" href="../../../../../ru/php/framework/laravel/book/prime/database/builder/random-sorting.html">
+		Случайная сортировка
+	</a>
+	<a data-lesson="RA" href="../../../../../ru/php/framework/laravel/book/prime/database/builder/rows-amount.html">
+		Количество записей в выборке
+	</a>
+	<a data-lesson="SO" href="../../../../../ru/php/framework/laravel/book/prime/database/builder/selection-offset.html">
+		Сдвиг при выборке
+	</a>
+	<a data-lesson="DI" href="../../../../../ru/php/framework/laravel/book/prime/database/builder/data-inserting.html">
+		Вставка данных
+	</a>
+	<a data-lesson="DU" href="../../../../../ru/php/framework/laravel/book/prime/database/builder/data-updating.html">
+		Обновление данных
+	</a>
+	<a data-lesson="ID" href="../../../../../ru/php/framework/laravel/book/prime/database/builder/increment-decrement.html">
+		Инкремент и декремент данных
+	</a>
+	<a data-lesson="DR" href="../../../../../ru/php/framework/laravel/book/prime/database/builder/data-removing.html">
+		Удаление данных
+	</a>
+	<a data-lesson="TJ" href="../../../../../ru/php/framework/laravel/book/prime/database/builder/tables-joining.html">
+		Соединение таблиц
+	</a>
+</div>
+
+<h2>Eloquent</h2>
+<div data-section="Eq">
+	<a data-lesson="Inr" href="../../../../../ru/php/framework/laravel/book/prime/database/eloquent/intro.html">
+		Введение в Eloquent
+	</a>
+	<a data-lesson="MG" href="../../../../../ru/php/framework/laravel/book/prime/database/eloquent/models-generation.html">
+		Генерация моделей
+	</a>
+	<a data-lesson="CUM" href="../../../../../ru/php/framework/laravel/book/prime/database/eloquent/controller-use-models.html">
+		Подключение модели к контроллеру
+	</a>
+	<a data-lesson="MGD" href="../../../../../ru/php/framework/laravel/book/prime/database/eloquent/models-getting-data.html">
+		Получение данных из моделей
+	</a>
+	<a data-lesson="MQB" href="../../../../../ru/php/framework/laravel/book/prime/database/eloquent/models-query-builder.html">
+		Конструктор запросов в моделях
+	</a>
+	<a data-lesson="GOR" href="../../../../../ru/php/framework/laravel/book/prime/database/eloquent/getting-one-record.html">
+		Получение одной записи в моделях
+	</a>
+	<a data-lesson="GORBI" href="../../../../../ru/php/framework/laravel/book/prime/database/eloquent/getting-one-record-by-id.html">
+		Получение одной записи по id
+	</a>
+	<a data-lesson="RC" href="../../../../../ru/php/framework/laravel/book/prime/database/eloquent/records-creating.html">
+		Создание новой записи
+	</a>
+	<a data-lesson="RCh" href="../../../../../ru/php/framework/laravel/book/prime/database/eloquent/records-changing.html">
+		Изменение записи
+	</a>
+	<a data-lesson="RR" href="../../../../../ru/php/framework/laravel/book/prime/database/eloquent/records-removing.html">
+		Удаление записей
+	</a>
+	<a data-lesson="RRBI" href="../../../../../ru/php/framework/laravel/book/prime/database/eloquent/records-removing-by-id.html">
+		Удаление записей по id
+	</a>
+	<a data-lesson="SR" href="../../../../../ru/php/framework/laravel/book/prime/database/eloquent/soft-removing.html">
+		Мягкое удаление
+		<span class="__label__ __acceptable__">стоит ссылка на доку</span>
+	</a>
+</div>
+
+<h2>Связывание моделей</h2>
+<div data-section="MR">
+	<a data-lesson="Inr" href="../../../../../ru/php/framework/laravel/book/prime/database/eloquent/relationships/intro.html">
+		Введение
+	</a>
+	<a data-lesson="OTO" href="../../../../../ru/php/framework/laravel/book/prime/database/eloquent/relationships/one-to-one.html">
+		Связь один к одному
+	</a>
+	<a data-lesson="GDOTO" href="../../../../../ru/php/framework/laravel/book/prime/database/eloquent/relationships/getting-data-one-to-one.html">
+		Получение данных связь один к одному
+	</a>
+	<a data-lesson="OTOL" href="../../../../../ru/php/framework/laravel/book/prime/database/eloquent/relationships/one-to-one-loop.html">
+		Перебор записей со связью один к одному
+	</a>
+	<a data-lesson="IOTO" href="../../../../../ru/php/framework/laravel/book/prime/database/eloquent/relationships/inverse-one-to-one.html">
+		Обратная связь один к одному
+	</a>
+	<a data-lesson="OTM" href="../../../../../ru/php/framework/laravel/book/prime/database/eloquent/relationships/one-to-many.html">
+		Связь один ко многим
+	</a>
+	<a data-lesson="GDOTM" href="../../../../../ru/php/framework/laravel/book/prime/database/eloquent/relationships/getting-data-one-to-many.html">
+		Получение данных связь один ко многим
+	</a>
+	<a data-lesson="COTM" href="../../../../../ru/php/framework/laravel/book/prime/database/eloquent/relationships/conditions-one-to-many.html">
+		Условия в связи один ко многим
+	</a>
+	<a data-lesson="IOTM" href="../../../../../ru/php/framework/laravel/book/prime/database/eloquent/relationships/inverse-one-to-many.html">
+		Обратная связь один ко многим
+	</a>
+	<a data-lesson="SIOTM" href="../../../../../ru/php/framework/laravel/book/prime/database/eloquent/relationships/several-inverse-one-to-many.html">
+		Несколько обратных связей один ко многим
+	</a>
+	<a data-lesson="MTM" href="../../../../../ru/php/framework/laravel/book/prime/database/eloquent/relationships/many-to-many.html">
+		Связь многие ко многим
+	</a>
+	<a data-lesson="EL" href="../../../../../ru/php/framework/laravel/book/prime/database/eloquent/relationships/eager-loading.html">
+		Ленивая и жадная загрузка
+		<span class="__label__ __acceptable__">задачу лучше</span>
+	</a>
+	<a data-lesson="ELM" href="../../../../../ru/php/framework/laravel/book/prime/database/eloquent/relationships/eager-loading-many.html">
+		Жадная загрузка множественных отношений
+		<span class="__label__ __acceptable__">задачу лучше</span>
+	</a>
+	<a data-lesson="DEL" href="../../../../../ru/php/framework/laravel/book/prime/database/eloquent/relationships/default-eager-loading.html">
+		Жадная загрузка по умолчанию
+		<span class="__label__ __acceptable__">задача</span>
+	</a>
+	<a data-lesson="Dc" href="../../../../../ru/php/framework/laravel/book/prime/database/eloquent/relationships/docs.html">
+		Документация
+		<span class="__label__ __acceptable__">добавить еще уроков потом</span>
+	</a>
+	
+	<!--
+	
+	
+	
+	
+	-->
+	
+	<!--
+	
+	
+	-->
+</div>
+
+<h2>Формы</h2>
+<div data-section="Fr">
+	<a data-lesson="OR" href="../../../../../ru/php/framework/laravel/book/prime/forms/object-request.html">
+		Объект Request
+	</a>
+	<a data-lesson="SMG" href="../../../../../ru/php/framework/laravel/book/prime/forms/submitting-method-get.html">
+		Отправка форм методом GET
+	</a>
+	<a data-lesson="SMP" href="../../../../../ru/php/framework/laravel/book/prime/forms/submitting-method-post.html">
+		Отправка форм методом POST
+	</a>
+	<a data-lesson="HOA" href="../../../../../ru/php/framework/laravel/book/prime/forms/handling-one-action.html">
+		Форма и ее обработка в одном действии
+	</a>
+	<a data-lesson="DA" href="../../../../../ru/php/framework/laravel/book/prime/forms/data-array.html">
+		Данные формы в виде массива
+	</a>
+	<a data-lesson="GPD" href="../../../../../ru/php/framework/laravel/book/prime/forms/getting-part-data.html">
+		Получение части данных формы
+	</a>
+	<a data-lesson="EPD" href="../../../../../ru/php/framework/laravel/book/prime/forms/excluding-part-data.html">
+		Исключение части данных формы
+	</a>
+	<a data-lesson="CFN" href="../../../../../ru/php/framework/laravel/book/prime/forms/complex-fileds-names.html">
+		Сложные имена полей в формах
+		<span class="__label__ __acceptable__">нет задачи и пока не делать</span>
+	</a>
+	<a data-lesson="DIRP" href="../../../../../ru/php/framework/laravel/book/prime/forms/dependency-injection-route-parameters.html">
+		Внедрение зависимости и параметры маршрута
+	</a>
+	<a data-lesson="ORM" href="../../../../../ru/php/framework/laravel/book/prime/forms/object-request-methods.html">
+		Методы объекта Request
+	</a>
+	
+</div>
+
+<h2>Пагинация</h2>
+<div data-section="Pg">
+	<a data-lesson="Pg" href="../../../../../ru/php/framework/laravel/book/prime/pagination.html">
+		Пагинация
+		<span class="__label__ __acceptable__">ссылка на доку</span>
+	</a>
+</div>
+
+<h2>CRUD операции</h2>
+<div data-section="CO">
+	<a data-lesson="Cr" href="../../../../../ru/php/framework/laravel/book/prime/crud.html">
+		Практика на CRUD
+		<span class="__label__ __acceptable__">разбить на уроки, теория</span>
+	</a>
+</div>
+
+<h2>URL</h2>
+<div data-section="Url">
+	<a data-lesson="Ur" href="../../../../../ru/php/framework/laravel/book/prime/url.html">
+		Генерация URL
+		<span class="__label__ __acceptable__">ссылка на доку</span>
+	</a>
+</div>
+
+<h2>Компоненты</h2>
+<div data-section="Cm">
+	<a data-lesson="SLD" href="../../../../../ru/php/framework/laravel/book/prime/components/site-layout-division.html">
+		Компоненты в макете сайта
+	</a>
+	<a data-lesson="Fl" href="../../../../../ru/php/framework/laravel/book/prime/components/files.html">
+		Вынесение компонентов в файлы
+	</a>
+	<a data-lesson="Sb" href="../../../../../ru/php/framework/laravel/book/prime/components/subdirs.html">
+		Размещение компонентов в подпапках
+	</a>
+	<a data-lesson="SWN" href="../../../../../ru/php/framework/laravel/book/prime/components/several-words-names.html">
+		Имена компонентов из нескольких слов
+	</a>
+	<a data-lesson="Ns" href="../../../../../ru/php/framework/laravel/book/prime/components/nested.html">
+		Подключение компонентов к компонентам
+	</a>
+	<a data-lesson="BS" href="../../../../../ru/php/framework/laravel/book/prime/components/basic-slots.html">
+		Слоты компонентов
+	</a>
+	<a data-lesson="AS" href="../../../../../ru/php/framework/laravel/book/prime/components/additional-slots.html">
+		Дополнительные слоты компонентов
+	</a>
+	<a data-lesson="SLC" href="../../../../../ru/php/framework/laravel/book/prime/components/site-layout-component.html">
+		Макет сайта как компонент
+	</a>
+	<a data-lesson="Cl" href="../../../../../ru/php/framework/laravel/book/prime/components/classes.html">
+		Класс компонента
+	</a>
+	<a data-lesson="PVD" href="../../../../../ru/php/framework/laravel/book/prime/components/passing-view-data.html">
+		Передача данных в представление компонента
+	</a>
+	<a data-lesson="GDD" href="../../../../../ru/php/framework/laravel/book/prime/components/getting-db-data.html">
+		Получение данных из БД в компоненте
+	</a>
+	<a data-lesson="Gn" href="../../../../../ru/php/framework/laravel/book/prime/components/generation.html">
+		Генерация компонентов
+	</a>
+	<a data-lesson="PCD" href="../../../../../ru/php/framework/laravel/book/prime/components/passing-class-data.html">
+		Передача данных в классы компонентов
+	</a>
+	<a data-lesson="PCV" href="../../../../../ru/php/framework/laravel/book/prime/components/passing-class-variables.html">
+		Передача значений переменных в классы компонентов
+	</a>
+	<a data-lesson="PCA" href="../../../../../ru/php/framework/laravel/book/prime/components/passing-class-attributes.html">
+		Передача обычных атрибутов в компоненты
+	</a>
+</div>
+
+<h2>Сессии</h2>
+<div data-section="Ss">
+	<a data-lesson="Inr" href="../../../../../ru/php/framework/laravel/book/prime/sessions/intro.html">
+		Введение в сессии
+	</a>
+	<a data-lesson="Vr" href="../../../../../ru/php/framework/laravel/book/prime/sessions/variables.html">
+		Установка и получение переменных сессии
+	</a>
+	<a data-lesson="DV" href="../../../../../ru/php/framework/laravel/book/prime/sessions/default-values.html">
+		Значения по умолчанию переменных сессии
+	</a>
+	<a data-lesson="DR" href="../../../../../ru/php/framework/laravel/book/prime/sessions/data-removing.html">
+		Удаление данных из сессии
+	</a>
+	<a data-lesson="GAD" href="../../../../../ru/php/framework/laravel/book/prime/sessions/getting-all-data.html">
+		Получение всех данных сессии
+	</a>
+	<a data-lesson="ChV" href="../../../../../ru/php/framework/laravel/book/prime/sessions/checking-variables.html">
+		Существование переменной сессии
+	</a>
+	<a data-lesson="WA" href="../../../../../ru/php/framework/laravel/book/prime/sessions/writing-arrays.html">
+		Запись массивов в сессии
+	</a>
+	<a data-lesson="GF" href="../../../../../ru/php/framework/laravel/book/prime/sessions/global-function.html">
+		Работа с сессиями через глобальную функцию
+	</a>
+</div>
+
+<h2>Редиректы</h2>
+<div data-section="Rd">
+	<a data-lesson="Inr" href="../../../../../ru/php/framework/laravel/book/prime/redirect/intro.html">
+		Введение в редиректы
+	</a>
+	<!--
+	<a data-lesson="2" href="../../../../../ru/php/framework/laravel/book/prime/redirect/2.html"> 
+		Редирект на предыдущую страницу
+		<span class="__label__">нужно ли тут? попробовать на практике, дописать</span>
+	</a>-->
+	<a data-lesson="CA" href="../../../../../ru/php/framework/laravel/book/prime/redirect/controller-action.html">
+		Редирект на заданное действие контроллера
+	</a>
+	<a data-lesson="NR" href="../../../../../ru/php/framework/laravel/book/prime/redirect/named-routes.html">
+		Редирект на именованные маршруты
+	</a>
+	<a data-lesson="NRP" href="../../../../../ru/php/framework/laravel/book/prime/redirect/named-routes-parameters.html">
+		Редирект на именованные маршруты с параметрами
+	</a>
+</div>
+
+<h2>Объект ответа</h2>
+<div data-section="ORs">
+	<a data-lesson="Inr" href="../../../../../ru/php/framework/laravel/book/prime/response/intro.html">
+		Введение в объект ответа
+	</a>
+	<a data-lesson="HF" href="../../../../../ru/php/framework/laravel/book/prime/response/helper-function.html">
+		Вспомогательная функция для ответа
+	</a>
+	<a data-lesson="HH" href="../../../../../ru/php/framework/laravel/book/prime/response/http-headers.html">
+		Заголовки ответа
+		<span class="__label__ __acceptable__">задача нужна</span>
+	</a>
+	<a data-lesson="RV" href="../../../../../ru/php/framework/laravel/book/prime/response/returning-view.html">
+		Отдача представления в качестве отклика
+	</a>
+	
+	
+</div>
+
+<h2>Куки</h2>
+<div data-section="Ck">
+	<a data-lesson="Inr" href="../../../../../ru/php/framework/laravel/book/prime/cookies/intro.html">
+		Работа с куками
+	</a>
+	<a data-lesson="Q" href="../../../../../ru/php/framework/laravel/book/prime/cookies/queue.html">
+		Добавление куки в очередь
+	</a>
+	<a data-lesson="VH" href="../../../../../ru/php/framework/laravel/book/prime/cookies/view-headers.html">
+		Куки, представления и заголовки
+		<span class="__label__ __acceptable__">задача нужна</span>
+	</a>
+</div>
+
+<h2>Flash</h2>
+<div data-section="Fl">
+	<a data-lesson="Ms" href="../../../../../ru/php/framework/laravel/book/prime/flash/messages.html">
+		Флеш сообщения
+		<span class="__label__ __acceptable__">ссылка на доку</span>
+	</a>
+	<a data-lesson="OR" href="../../../../../ru/php/framework/laravel/book/prime/flash/old-request.html">
+		Данные предыдущего запроса
+		<span class="__label__ __acceptable__">ссылка на доку</span>
+	</a>
+</div>
+
+<h2>Валидация</h2>
+<div data-section="Vd">
+	<a data-lesson="Vl" href="../../../../../ru/php/framework/laravel/book/prime/validation.html">
+		Валидация форм
+		<span class="__label__ __acceptable__">ссылка на доку</span>
+	</a>
+</div>
+
+<h2>Посредники</h2>
+<div data-section="Md">
+	<a data-lesson="Md" href="../../../../../ru/php/framework/laravel/book/prime/middlewares.html">
+		Посредники
+	</a>
+</div>
+
+<h2>Локализация</h2>
+<div data-section="Lc">
+	<a data-lesson="Lc" href="../../../../../ru/php/framework/laravel/book/prime/localization.html">
+		Локализация
+		<span class="__label__ __acceptable__">ссылка на доку</span>
+	</a>
+</div>
+
+<h2>Авторизация</h2>
+<div data-section="Au">
+	<a data-lesson="At" href="../../../../../ru/php/framework/laravel/book/prime/auth.html">
+		Авторизация
+		<span class="__label__ __acceptable__">ссылка на доку</span>
+	</a>
+</div>
+
+<!--
+	todo: после проекториума
+<h2>Практика</h2>
+<div>
+	
+	<a data-lesson="Dc" href="../../../../../ru/php/framework/laravel/book/prime/docs.html">
+		Практика
+		тут неск уроков, каждый урок
+		свой проект
+	</a>
+</div>
+-->
+</div>			</main>
+			<div class="bottom">
+	</div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

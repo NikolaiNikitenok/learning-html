@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Test with questions and answers in HTML code in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will implement a test with questions and answers in HTML code in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Test with questions and answers in HTML code in JavaScript</h1>
+				<div class="content">
+<p>
+	In this and in the next few lessons, we will 
+	create tests with questions and answers. We 
+	start with the simplest options and gradually 
+	will complicate them.
+</p>
+<p>
+	Let's start by making a set of questions, each 
+	of them can have only one answer. Let the answers 
+	be entered by the user into the inputs under 
+	the questions themselves.
+</p>
+<p>
+	I'll illustrate it with HTML code:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="test"&gt;
+	&lt;div&gt;
+		&lt;p&gt;question 1?&lt;/p&gt;
+		&lt;input&gt;
+	&lt;/div&gt;
+	&lt;div&gt;
+		&lt;p&gt;question 2?&lt;/p&gt;
+		&lt;input&gt;
+	&lt;/div&gt;
+	&lt;div&gt;
+		&lt;p&gt;question 3?&lt;/p&gt;
+		&lt;input&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code>
+</div>
+<p>
+	As you can see, we have questions and inputs for 
+	answers. It remains to figure out where we will 
+	store the correct answers.
+</p>
+<p>
+	The simplest thing you can think of is to store 
+	the answers directly in the HTML code of the 
+	inputs, in some <code class="code inline">data-</code> attribute:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="test"&gt;
+	&lt;div&gt;
+		&lt;p&gt;question 1?&lt;/p&gt;
+		&lt;input data-right="answer 1"&gt;
+	&lt;/div&gt;
+	&lt;div&gt;
+		&lt;p&gt;question 2?&lt;/p&gt;
+		&lt;input data-right="answer 2"&gt;
+	&lt;/div&gt;
+	&lt;div&gt;
+		&lt;p&gt;question 3?&lt;/p&gt;
+		&lt;input data-right="answer 3"&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code>
+</div>
+<p>
+	The next nuance to think about is: at what point will 
+	we check the answers for correctness? Two options 
+	could be suggested here: either let each input check 
+	whether this answer is correct immediately after 
+	entering the answer into it, or let there be a 
+	button, by clicking on which the answers to all 
+	questions will be checked at once.
+</p>
+<p>
+	Whichever option we choose, let's, if the answer is 
+	correct, then we will paint the input border in 
+	green, and if it is wrong - in red. Let's make 
+	appropriate CSS classes for this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="css">.right {
+	border: 1px solid green;
+}
+.wrong {
+	border: 1px solid red;
+}</code>
+</div>
+<div class="task">
+	<p>
+		Make it so that entering the answer into the 
+		input is completed by pressing the <code class="key inline">Enter</code> 
+		key. Let in this case, the input immediately 
+		checks the answer for correctness.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Modify your code so that the answers are 
+		checked when the button is clicked.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/practice/" data-persent="45" data-hash="jsPrTstHQA" data-quantity="75" data-num="35"><a href="../../../../../en/javascript/book/practice/products-calculator/recounting-editing.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/practice/test/questions-in-array.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/practice/test/html-questions-answers.html" class="active">en</a><a href="../../../../../ru/javascript/book/practice/test/html-questions-answers.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

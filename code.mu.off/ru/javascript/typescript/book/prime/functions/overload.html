@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Перегрузки функций в TypeScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы научимся делать перегрузки функций в TypeScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Перегрузки функций в TypeScript</h1>
+				<div class="content">
+<p>
+	Иногда встречаются функции, которые возвращают
+	значения, тип которых зависит от переданных
+	параметров. Для этого в TypeScript
+	используют <dfn>перегрузку</dfn> функций.
+	Она позволяет указать разные варианты
+	сигнатур функции.
+</p>
+<p>
+	Давайте посмотрим на примере. Пусть
+	у нас есть функция, которая разбивает
+	символы строки в массив букв:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="typescript">function splitStr(str: string): string[] {
+	return str.split('');
+}</code>
+</div>
+<p>
+	Пусть у нас также есть функция, которая
+	разбивает символы числа в массив цифр:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="typescript">function splitNum(num: number): number[] {
+	let str: string = String(num);
+	let arr: string[] = str.split('');
+	
+	return arr.map(elem =&gt; +elem);
+}</code>
+</div>
+<p>
+	Давайте объединим обе функции в одну.
+	Новая функция в зависимости от типа
+	параметра должна возвращать или массив
+	чисел или массив строк.
+</p>
+<p>
+	Используем перегрузку, чтобы объявить
+	различные сигнатуры нашей функции:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="typescript">function splitVal(val: number): number[];
+function splitVal(val: string): string[] {
+	// реализация обоих сигнатур
+}</code>
+</div>
+<p>
+	Напишем теперь реализацию функции.
+	В ее коде мы должны условием определить,
+	какая из сигнатур функции сработала,
+	и в зависимости от этого запустить
+	нужный код с результатом нужного типа:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="typescript">function splitVal(val: number): number[];
+function splitVal(val: string): string[] {
+	if (typeof val === 'string') {
+		return val.split('');
+	} else {
+		let str: string = String(val);
+		let arr: string[] = str.split('');
+		
+		return arr.map((elem: string): number =&gt; +elem);
+	}
+}</code>
+</div>
+<div class="task">
+	<p>
+		Напишите функцию, которая будет
+		возвращать или изменять текст
+		DOM элемента. Она должна работать
+		следующим образом
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="typescript">text('#elem', 'text'); // установит текст
+text('#elem');         // вернет текущий текст</code>
+	</div>
+</div>
+
+<h2>Замечание</h2>
+<div class="notice">
+	<p>
+		В отличие от других языков, в TypeScript
+		в перегрузке создается одна функция.
+		Нельзя сделать несколько функций с одним
+		именем, но разными сигнатурами.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	</div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

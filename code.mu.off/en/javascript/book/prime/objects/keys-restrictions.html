@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Object key restrictions in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will look at restrictions on string keys in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Object key restrictions in JavaScript</h1>
+				<div class="content">
+<p>
+	We can write without quotes not all 
+	object keys, but only those that 
+	satisfy the following restrictions: 
+	they cannot start with a number and 
+	cannot contain a hyphen, a space, 
+	or something like that.
+</p>
+<p>
+	If a string violates a constraint, 
+	then it must be enclosed in quotation 
+	marks. In the following example, 
+	part of the keys does not satisfy 
+	the conditions, and therefore they
+	are in quotes:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let obj = {'1key': 'a', 'key-2': 'b', key3: 'c'};</code>
+</div>
+<p>
+	Such keys can only be accessed 
+	through square brackets:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log(obj['1key']);
+console.log(obj['key-2']);</code>
+</div>
+<p>
+	Also, accessing such a name 
+	through an object property 
+	will result in an error:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log(obj.1key);
+console.log(obj.key-2);</code>
+</div>
+<p>
+	But the third key is valid, 
+	and we can access it in both ways:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log(obj['key3']);
+console.log(obj.key3);</code>
+</div>
+<div class="task">
+	<p>
+		Given an object:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let obj = {
+	'1a': 1,
+	'b2': 2,
+	'с-с': 3,
+	'd 4': 4,
+	'e5': 5
+};</code>
+	</div>
+	<p>
+		Which keys of this object require 
+		quotes, and which don't?
+	</p>
+</div>
+<div class="task">
+	<p>
+		Fix the errors in the following code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let obj = {
+	'1a': 1,
+	'b2': 2,
+	'с-с': 3,
+	'd 4': 4,
+	'e5': 5
+};
+
+console.log(obj.1a);
+console.log(obj.b2);
+console.log(obj.c-c);
+console.log(obj.d 4);
+console.log(obj.e5);</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="14" data-hash="jsPmObKR" data-quantity="363" data-num="52"><a href="../../../../../en/javascript/book/prime/objects/properties.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/objects/elements-changing.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/objects/keys-restrictions.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/objects/keys-restrictions.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

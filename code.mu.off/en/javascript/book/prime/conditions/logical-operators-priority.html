@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Precedence of logical operators in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will study the precedence of the logical operators AND and OR in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Precedence of logical operators in JavaScript</h1>
+				<div class="content">
+<p>
+	The operation <code class="code inline">&&</code> takes precedence 
+	over <code class="code inline">||</code>. In the following example, 
+	the condition will be true if the variable 
+	<code class="code inline">num</code> is between <code class="number inline">0</code> and <code class="number inline">5</code> 
+	OR between <code class="number inline">10</code> and <code class="number inline">20</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 3;
+
+if (num &gt; 0 && num &lt; 5 || num &gt; 10 && num &lt; 20) {
+	console.log('+++');
+} else {
+	console.log('---');
+}</code>
+</div>
+<div class="task">
+	<p>
+		Explain how the comparison is performed 
+		under the following condition:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">if (num == 0 || num &gt; 1 && num &lt; 5 ) {
+	console.log('+++');
+} else {
+	console.log('---');
+}</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="23" data-hash="jsPmCdLOP" data-quantity="363" data-num="83"><a href="../../../../../en/javascript/book/prime/conditions/logical-or.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/conditions/conditions-grouping.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/conditions/logical-operators-priority.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/conditions/logical-operators-priority.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

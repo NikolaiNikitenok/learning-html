@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Объект с ошибкой при обработке исключительных ситуаций в JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами изучим объект с ошибкой при исключительной ситуации в JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Объект с ошибкой</h1>
+				<div class="content">
+<p>
+	Если возникает исключительная ситуация, то
+	в первый параметр блока <code class="code inline">catch</code> попадет
+	объект со случившейся ошибкой. Свойство <code class="code inline">name</code>
+	этого объекта содержит имя ошибки (фактически
+	ее тип), а свойство <code class="code inline">message</code> - текст
+	этой ошибки:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">try {
+	
+} catch (error) {
+	console.log(error.name); // имя ошибки
+	console.log(error.message); // текст ошибки
+}</code>
+</div>
+<div class="task">
+	<p>
+		Специально создайте исключительную ситуацию,
+		связанную с попыткой разбора некорректного
+		JSON. Выведите в консоль имя и текст этой ошибки.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Специально создайте исключительную ситуацию,
+		связанную с переполнением локального хранилища.
+		Выведите в консоль имя и текст этой ошибки.
+	</p>
+</div>
+
+<h2>Основные типы исключений</h2>
+<p>
+	Давайте разберем <code class="number inline">3</code> основных типа исключения,
+	возникающих в JavaScript.
+</p>
+<p>
+	Исключение типа <code class="code inline">TypeError</code> представляет
+	собой ошибку, возникающую при недопустимом
+	типе для переменной или параметра. Исключение
+	типа <code class="code inline">SyntaxError</code> представляет собой
+	ошибку, возникающую при разборе исходного
+	кода или JSON.
+</p>
+<p>
+	Исключение типа <code class="code inline">RangeError</code> представляет
+	собой ошибку, возникающую при попытке передать
+	параметров в функцию число, которое не входит
+	в допустимый диапазон значений параметра
+	этой функции. Оно может возникать при создании
+	массива с неправильной длиной через конструктор
+	<code class="code inline">Array</code>, или при передаче плохих значений
+	в методы числа <code class="code inline">Number.toExponential()</code>,
+	<code class="code inline">Number.toFixed()</code> или <code class="code inline">Number.toPrecision()</code>.
+</p>
+<p>
+	Существуют и другие типы исключений.
+</p>
+
+<h2>Применение типа исключения</h2>
+<p>
+	Пусть у нас есть функция, параметром принимающая
+	JSON с массивом данных и записывающая каждый
+	элемент этого массива в локальное хранилище:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function saveData(json) {
+	let arr = JSON.parse(json);
+	
+	for (let i = 0; i &lt; arr.length; i++) {
+		localStorage.setItem(i, arr[i]);
+	}
+}</code>
+</div>
+<p>
+	В данной функции исключительная ситуация
+	может возникнуть в двух местах: при разборе
+	JSON и при попытке сохранения данных в локальное
+	хранилище.
+</p>
+<p>
+	Пусть, к примеру, в качестве обработки ошибок
+	мы решили выводить некоторое сообщение о
+	проблемах:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">try {
+	saveData('[1,2,3,4,5]');
+} catch (error) {
+	alert('какие-то проблемы');
+}</code>
+</div>
+<p>
+	Наше сообщение, это, конечно, хорошо, но
+	оно никак не дифференцирует возникшие проблемы.
+	Более логично было бы вывести сообщение о
+	том, какая именно проблема возникла.
+</p>
+<p>
+	Для этого отличим возникшие ошибки по имени:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">try {
+	saveData('[1,2,3,4,5]');
+} catch (error) {
+	if (error.name == 'QuotaExceededError') {
+		alert('закончилось место в хранилище');
+	}
+	
+	if (error.name == 'SyntaxError') {
+		alert('некорректный JSON');
+	}
+}</code>
+</div>
+<div class="task">
+	<p>
+		Скопируйте код моей функции <code class="code inline">saveData</code>,
+		а затем не подсматривая в мой код реализуйте
+		описанную мною обработку ошибок.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Специально по очереди создайте исключительные
+		ситуации, которые могут возникнуть в функции
+		<code class="code inline">saveData</code>.
+	</p>
+</div>
+
+<h2>Замечание</h2>
+<p>
+	Можно обработку ошибок сделать внутри функции
+	<code class="code inline">saveData</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function saveData(json) {
+	try {
+		let arr = JSON.parse(json);
+		
+		for (let i = 0; i &lt; arr.length; i++) {
+			try {
+				localStorage.setItem(i, arr[i]);
+			} catch (error) {
+				alert('закончилось место в хранилище');
+			}
+		}
+	} catch (error) {
+		alert('некорректный JSON');
+	}
+}</code>
+</div>
+<p>
+	Так, в общем, часто и делают. Однако, есть
+	два недостатка. Во-первых, код нашей функции
+	сильно усложнился. А во-вторых, наша функция
+	может не знать, что делать с ошибками - это
+	просто не в ее компетенции.
+</p>
+<p>
+	Например, если возникнет ошибка переполнения
+	хранилища, мы можем, к примеру, вывести пользователю
+	красивое сообщение об этом и попросить удалить
+	что-нибудь не нужное с перечнем этого ненужного
+	и ссылками на удаление.
+</p>
+<p>
+	Для этого понадобится кода больше, чем наша
+	функция. Кроме того, мы можем писать в хранилище
+	не только в данном месте, но и в каких-то
+	других. Очевидно, что в таком случае, нам
+	лучше иметь некое централизованное место
+	обработки этой ошибки, чтобы не дублировать себя.
+</p>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/supreme/" data-persent="45" data-hash="jsSpExcEO" data-quantity="114" data-num="52"><a href="../../../../../ru/javascript/book/supreme/exceptions/try-catch.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/javascript/book/supreme/exceptions/throwing.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

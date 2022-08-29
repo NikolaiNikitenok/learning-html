@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Проверка победы в игре крестики-нолики на JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы реализуем проверку победы в игре крестики-нолики на JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Проверка победы в игре крестики-нолики на JavaScript</h1>
+				<div class="content">
+<p>
+	Теперь пришла пора написать код, который
+	будет определять победу и выводить имя победителя.
+</p>
+<p>
+	Обдумав задачу, можно сообразить, что проверку
+	на наличие победы следует выполнять в каждом ходу:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function init(selector) {
+	let cells = document.querySelectorAll('#field td');
+	let i = 0;
+	
+	for (let cell of cells) {
+		cell.addEventListener('click', function step() {
+			this.textContent = ['X', 'O'][i % 2];
+			this.removeEventListener('click', step);
+			
+			// здесь мы должны проверять победу или ничью
+			
+			i++;
+		});
+	}
+}</code>
+</div>
+<p>
+	Давайте сделаем функцию <code class="code inline">isVictory</code>,
+	которая параметром будет принимать массив
+	ячеек и возвращать <code class="code inline">true</code>, если на поле
+	есть победа, и <code class="code inline">false</code>, если нет. Мы
+	будем пользоваться этой функцией следующим
+	образом:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function start(cells) {
+	let i = 0;
+	
+	for (let cell of cells) {
+		cell.addEventListener('click', function step() {
+			this.textContent = ['X', 'O'][i % 2];
+			this.removeEventListener('click', step);
+			
+			if (isVictory(cells)) {
+				alert('имя победителя');
+			}
+			
+			i++;
+		});
+	}
+}</code>
+</div>
+<p>
+	Как же нам узнать имя победителя? Очевидно,
+	что его имя хранится в каждой из победивших
+	ячеек. Поясню: если у нас есть победа, то
+	это значит что некоторые <code class="number inline">3</code> ячейки
+	по горизонтали, вертикали или диагонали содержат
+	одинаковое значение: либо крестик, либо нолик.
+</p>
+<p>
+	Очевидно, что значение любой из эти ячеек
+	и есть имя победителя. Но можно пойти и другим,
+	менее очевидным путем: так как мы определяем
+	наличие победы каждый ход, то логично, что
+	победителем будет игрок, совершивший последний
+	ход. Имя этого игрока содержится в тексте
+	кликнутой ячейки:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function start(cells) {
+	let i = 0;
+	
+	for (let cell of cells) {
+		cell.addEventListener('click', function step() {
+			this.textContent = ['X', 'O'][i % 2];
+			this.removeEventListener('click', step);
+			
+			if (isVictory(cells)) {
+				alert(this.textContent); // выводим имя победителя
+			}
+			
+			i++;
+		});
+	}
+}</code>
+</div>
+
+<h2>Реализация isVictory</h2>
+<p>
+	Как же нам технически определить наличие
+	победы на поле? Если хорошо все обдумать,
+	то можно прийти к выводу, что на поле ограниченное
+	количество троек ячеек.
+</p>
+<p>
+	То есть для проверки победы можно просто
+	проверить все эти тройки. Нужно проверять
+	на то, что тройки имеют одинаковые не пустые
+	значения (то есть там либо крестик, либо нолик).
+</p>
+<p>
+	Сделаем двухмерный массив, в каждом подмассиве
+	которого будут номера ячеек одной из троек:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let combs = [
+	[0, 1, 2],
+	[3, 4, 5],
+	[6, 7, 8],
+	[0, 3, 6],
+	[1, 4, 7],
+	[2, 5, 8],
+	[0, 4, 8],
+	[2, 4, 6],
+];</code>
+</div>
+<p>
+	Напишем с помощью этого массива определение
+	победы:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function isVictory(cells) {
+	let combs = [
+		[0, 1, 2],
+		[3, 4, 5],
+		[6, 7, 8],
+		[0, 3, 6],
+		[1, 4, 7],
+		[2, 5, 8],
+		[0, 4, 8],
+		[2, 4, 6],
+	];
+
+	for (let comb of combs) {
+		if (
+			cells[comb[0]].textContent == cells[comb[1]].textContent &&
+			cells[comb[1]].textContent == cells[comb[2]].textContent &&
+			cells[comb[0]].textContent != ''
+		) {
+			return true;
+		}
+	}
+	
+	return false;
+}</code>
+</div>
+<div class="task">
+	<p>
+		Самостоятельно, не подсматривая в мой код,
+		реализуйте описанное. Проверьте, как функционирует
+		игровой процесс.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Попробуйте реализовать проверку ничьей. В
+		следующем уроке будет разбор этого места.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/practice/" data-persent="65" data-hash="jsPrTTTVCh" data-quantity="75" data-num="50"><a href="../../../../../ru/javascript/book/practice/tick-tack-toe/cross-and-toe-alternation-analysis.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/javascript/book/practice/tick-tack-toe/draw-checking-analysis.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/practice/tick-tack-toe/victory-checking.html">en</a><a href="../../../../../ru/javascript/book/practice/tick-tack-toe/victory-checking.html" class="active">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

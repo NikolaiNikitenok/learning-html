@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Учебник ООП в JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../js/location.js?v=3"></script>
+		<script src="../../../js/locale.js?v=5"></script>
+		<script src="../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="Простой учебник ООП в JavaScript с теорий и задачником.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Учебник ООП в JavaScript</h1>
+				<div class="menu" data-module="menu" data-mode="hash" data-book="jsOp">
+<h2>ООП на классах</h2>
+<div data-section="Bs">
+	<a data-lesson="Inr" href="../../../ru/javascript/book/oop/intro.html">
+		Введение
+	</a>
+	<a data-lesson="CO" href="../../../ru/javascript/book/oop/classes-objects.html">
+		Классы и объекты
+	</a>
+	<a data-lesson="OP" href="../../../ru/javascript/book/oop/objects-properties.html">
+		Свойства объектов
+	</a>
+	<a data-lesson="MO" href="../../../ru/javascript/book/oop/many-objects.html">
+		Несколько объектов одного класса
+	</a>
+	<a data-lesson="CM" href="../../../ru/javascript/book/oop/class-methods.html">
+		Методы классов
+	</a>
+	<a data-lesson="MP" href="../../../ru/javascript/book/oop/methods-parameters.html">
+		Параметры методов
+	</a>
+	<a data-lesson="PIC" href="../../../ru/javascript/book/oop/properties-inside-class.html">
+		Свойства внутри классов
+	</a>
+	<a data-lesson="MIC" href="../../../ru/javascript/book/oop/methods-inside-class.html">
+		Методы внутри классов
+	</a>
+	<a data-lesson="PD" href="../../../ru/javascript/book/oop/properties-declaration.html">
+		Объявление свойств
+	</a>
+	<a data-lesson="CC" href="../../../ru/javascript/book/oop/class-constructor.html">
+		Конструктор
+	</a>
+	<a data-lesson="CP" href="../../../ru/javascript/book/oop/constructor-parameters.html">
+		Параметры в конструкторе
+	</a>
+	<a data-lesson="CPP" href="../../../ru/javascript/book/oop/constructor-parameters-properties.html">
+		Свойства через параметры конструктора
+	</a>
+	<a data-lesson="PP" href="../../../ru/javascript/book/oop/private-properties.html">
+		Приватные свойства
+	</a>
+	<a data-lesson="PM" href="../../../ru/javascript/book/oop/private-methods.html">
+		Приватные методы
+	</a>
+	<a data-lesson="POS" href="../../../ru/javascript/book/oop/privacy-old-style.html">
+		Приватность в старом стиле
+	</a>
+	<a data-lesson="PG" href="../../../ru/javascript/book/oop/properties-getters.html">
+		Геттеры свойств
+	</a>
+	<a data-lesson="PS" href="../../../ru/javascript/book/oop/properties-setters.html">
+		Сеттеры свойств
+	</a>
+	<a data-lesson="GSA" href="../../../ru/javascript/book/oop/getters-setters-advantages.html">
+		Преимущества сеттеров и геттеров
+	</a>
+	<a data-lesson="MCh" href="../../../ru/javascript/book/oop/methods-chains.html">
+		Цепочки методов
+	</a>
+	<a data-lesson="OC" href="../../../ru/javascript/book/oop/objects-comparison.html">
+		Сравнение объектов
+	</a>
+	<a data-lesson="OI" href="../../../ru/javascript/book/oop/operator-instanceof.html">
+		Оператор instanceof
+	</a>
+	<a data-lesson="CMS" href="../../../ru/javascript/book/oop/class-methods-set.html">
+		Класс как набор методов
+	</a>
+	<a data-lesson="OIC" href="../../../ru/javascript/book/oop/objects-inside-classes.html">
+		Объекты внутри классов
+	</a>
+	<a data-lesson="AOO" href="../../../ru/javascript/book/oop/array-of-objects.html">
+		Массив объектов
+	</a>
+	<a data-lesson="COM" href="../../../ru/javascript/book/oop/class-objects-manipulation.html">
+		Манипуляция объектами в классах
+	</a>
+	<a data-lesson="IC" href="../../../ru/javascript/book/oop/inbuild-classes.html">
+		Встроенные классы
+	</a>
+	<a data-lesson="ICD" href="../../../ru/javascript/book/oop/inbuild-classes-dom.html">
+		Встроенные классы DOM
+	</a>
+</div>
+
+<h2>Наследование</h2>
+<div data-section="Ih">
+	<a data-lesson="Inr" href="../../../ru/javascript/book/oop/inheritance/intro.html">
+		Наследование классов
+	</a>
+	<a data-lesson="PbM" href="../../../ru/javascript/book/oop/inheritance/public-methods.html">
+		Наследование публичных методов
+	</a>
+	<a data-lesson="OChM" href="../../../ru/javascript/book/oop/inheritance/own-child-methods.html">
+		Методы потомка
+	</a>
+	<a data-lesson="OPM" href="../../../ru/javascript/book/oop/inheritance/overriding-parent-methods.html">
+		Переопределение методов родителя
+	</a>
+	<a data-lesson="COM" href="../../../ru/javascript/book/oop/inheritance/calling-overriding-method.html">
+		Вызов переопределенного метода
+	</a>
+	<a data-lesson="Cn" href="../../../ru/javascript/book/oop/inheritance/constructor.html">
+		Конструктор при наследовании
+	</a>
+	<a data-lesson="PrM" href="../../../ru/javascript/book/oop/inheritance/private-methods.html">
+		Приватные методы при наследовании
+	</a>
+	<a data-lesson="PrP" href="../../../ru/javascript/book/oop/inheritance/private-properties.html">
+		Приватные свойства при наследовании
+	</a>
+	<a data-lesson="PPP" href="../../../ru/javascript/book/oop/inheritance/private-properties-problem.html">
+		Проблема приватных свойств при наследовании
+	</a>
+	<a data-lesson="PtM" href="../../../ru/javascript/book/oop/inheritance/protected-methods.html">
+		Защищенные методы
+	</a>
+	<a data-lesson="PtP" href="../../../ru/javascript/book/oop/inheritance/protected-properties.html">
+		Защищенные свойства
+	</a>
+	<a data-lesson="Hr" href="../../../ru/javascript/book/oop/inheritance/hierarchy.html">
+		Иерархия наследования классов
+	</a>
+	<a data-lesson="ICH" href="../../../ru/javascript/book/oop/inheritance/inbuild-classes-hierarchy.html">
+		Иерархия встроенных классов
+	</a>
+</div>
+
+<h2>Продвинутое</h2>
+<div data-section="Ad">
+	<a data-lesson="CL" href="../../../ru/javascript/book/oop/context-losing.html">
+		Потеря контекста
+	</a>
+	<a data-lesson="MC" href="../../../ru/javascript/book/oop/method-code.html">
+		Код метода
+	</a>
+	<a data-lesson="MCL" href="../../../ru/javascript/book/oop/method-context-losing.html">
+		Потеря контекста в коде метода
+		<span class="__label__ __acceptable__">задача</span>
+	</a>
+	<a data-lesson="NC" href="../../../ru/javascript/book/oop/names-conflicts.html">
+		Конфликты имен
+	</a>
+	<a data-lesson="AC" href="../../../ru/javascript/book/oop/anonymous-classes.html">
+		Анонимные классы
+		<span class="__label__ __acceptable__">задача</span>
+	</a>
+	<a data-lesson="CM" href="../../../ru/javascript/book/oop/classes-modules.html">
+		Классы и модули
+	</a>
+	<a data-lesson="CMI" href="../../../ru/javascript/book/oop/classes-modules-inheritance.html">
+		Классы, модули и наследование
+	</a>
+	<a data-lesson="PT" href="../../../ru/javascript/book/oop/properties-types.html">
+		Типы свойств объектов
+	</a>
+	<a data-lesson="AG" href="../../../ru/javascript/book/oop/accessors-getters.html">
+		Геттеры аксессоров
+	</a>
+	<a data-lesson="AS" href="../../../ru/javascript/book/oop/accessors-setters.html">
+		Сеттеры аксессоров
+	</a>
+	<a data-lesson="VPG" href="../../../ru/javascript/book/oop/virtual-properties-getters.html">
+		Геттеры мнимых свойств
+		<span class="__label__ __acceptable__">задача</span>
+	</a>
+	<a data-lesson="VPS" href="../../../ru/javascript/book/oop/virtual-properties-setters.html">
+		Сеттеры мнимых свойств
+		<span class="__label__ __acceptable__">задача</span>
+	</a>
+	
+	<!--
+	
+	
+	-->
+</div>
+
+<h2>Практикум</h2>
+<div data-section="Pr">
+	<a data-lesson="Cr" href="../../../ru/javascript/book/oop/class/Circle.html">
+		Класс Circle
+	</a>
+	<a data-lesson="Rc" href="../../../ru/javascript/book/oop/class/Rectangle.html">
+		Класс Rectangle
+	</a>
+	<a data-lesson="Tx" href="../../../ru/javascript/book/oop/class/Text.html">
+		Класс Text
+	</a>
+	<a data-lesson="Pr" href="../../../ru/javascript/book/oop/class/Period.html">
+		Класс Period
+	</a>
+	<a data-lesson="Zt" href="../../../ru/javascript/book/oop/class/Zate.html">
+		Класс Zate
+	</a>
+	<a data-lesson="ZtE" href="../../../ru/javascript/book/oop/class/ZateExt.html">
+		Класс ZateExt
+	</a>
+	<a data-lesson="Mn" href="../../../ru/javascript/book/oop/class/Month.html">
+		Класс Month
+	</a>
+	<a data-lesson="St" href="../../../ru/javascript/book/oop/class/Store.html">
+		Класс Store
+	</a>
+</div>
+
+<!--
+<h2>ООП и DOM</h2>
+<div>
+	
+</div>
+-->
+
+<!--
+<h2>ООП в функциональном стиле</h2>
+<div>
+	
+</div>
+
+<h2>ООП на прототипах</h2>
+<div>
+	
+</div>
+-->
+</div>			</main>
+			<div class="bottom">
+	</div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../js/metrika.js?v=1"></script>	</body>
+</html>

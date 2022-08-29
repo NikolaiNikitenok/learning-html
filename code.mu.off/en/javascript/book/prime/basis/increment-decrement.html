@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Increment and decrement operations in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will look at increment and decrement operations in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Increment and decrement operations in JavaScript</h1>
+				<div class="content">
+<p>
+	Consider the following code:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 0;
+num = num + 1; // add the number 1 to the variable num
+alert(num);    // shows 1</code>
+</div>
+<p>
+	As you already know, this code can be 
+	rewritten in an shortened form through 
+	the operator <code class="code inline">+=</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 0;
+num += 1;     // add the number 1 to the variable num
+alert(num);   // shows 1</code>
+</div>
+<p>
+	In fact, adding one in programming is so 
+	common that an even more shortend syntax 
+	has been invented for this operation - 
+	the special operator <dfn>increment</dfn> <code class="code inline">++</code>, 
+	which increases the value of a variable by <code class="number inline">1</code>.
+</p>
+<p>
+	Let's rewrite our code with it:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 0;
+num++;        // add the number 1 to the variable num
+alert(num);   // shows 1</code>
+</div>
+<p>
+	There is also the operation <dfn>decrement</dfn> 
+	<code class="code inline">--</code>, which decreases the value 
+	of a variable by <code class="number inline">1</code>. 
+	See an example:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 0;
+num--;        // subtract the number 1 from the variable num
+alert(num);   // shows -1</code>
+</div>
+<div class="task">
+	<p>
+		Modify this code such a way that 
+		it contains increment and decrement operations:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let num = 10;
+num = num + 1;
+num = num + 1;
+num = num - 1;
+alert(num);</code>
+	</div>
+</div>
+
+<h2>Prefix and postfix type</h2>
+<p>
+	In fact, the increment and decrement 
+	operations can be written in two ways. 
+	Let's look at these methods using the 
+	example <code class="code inline">++</code>, and for <code class="code inline">--</code> 
+	everything will be similar.
+</p>
+<p>
+	In the first method, the operation is 
+	written after the variable name, like this: 
+	<code class="code inline">a++</code>, and in the second method, 
+	before the variable name, 
+	like this: <code class="code inline">++a</code>.
+</p>
+<p>
+	The first form is called <dfn>postfix</dfn>, 
+	and the second is called <dfn>prefix</dfn>. 
+	Let's see in what cases the difference 
+	between these two forms manifests itself.
+</p>
+<p>
+	Suppose we have the code <code class="code inline">alert(a++)</code> 
+	and the code <code class="code inline">alert(++a)</code>.
+</p>
+<p>
+	In the case of <code class="code inline">alert(a++)</code> the variable 
+	will first be displayed and then incremented by one, 
+	while in the case of <code class="code inline">alert(++a)</code> the 
+	variable will first be incremented 
+	by one and then displayed.
+</p>
+<p>
+	In the following example, the first <code class="code inline">alert</code> 
+	will output <code class="number inline">0</code>, as the screen output will 
+	work first and then the variable will be incremented:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 0;
+alert(num++); // shows 0
+alert(num);   // shows 1</code>
+</div>
+<p>
+	And now the variable will first increase, 
+	and only then there will be an output to the screen:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 0;
+alert(++num); // shows 1 - variable increased immediately</code>
+</div>
+<p>
+	This behavior acts not only for 
+	displaying, but also for assigning:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num1 = 0;
+let num2 = num1++; // 0 will be written to the variable num2
+alert(num2); // shows 0
+alert(num1); // shows 1 - variable num1 changed after being written to num2</code>
+</div>
+<p>
+	Now let's change the postfix form to the prefix form:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num1 = 0;
+let num2 = ++num1; // 1 will be written to the variable num2
+alert(num2); // shows 1</code>
+</div>
+<p>
+	If our operation is performed on a 
+	separate line, then there is no difference 
+	between the prefix and postfix forms:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 0;
+++num;
+num++;
+alert(num); // shows 2</code>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let num = 3;
+alert(++num);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let num = 3;
+alert(num++);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let num = 3;
+alert(--num);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let num = 3;
+alert(num--);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let num1 = 3;
+let num2 = ++num1;
+alert(num1);
+alert(num2);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let num1 = 3;
+let num2 = num1++;
+alert(num1);
+alert(num2);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let num1 = 3;
+let num2 = --num1;
+alert(num1);
+alert(num2);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let num1 = 3;
+let num2 = num1--;
+alert(num1);
+alert(num2);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Without running the code, determine 
+		what will be displayed on the screen:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let num1 = 3;
+num1++;
+let num2 = num1--;
+alert(num1++);
+alert(--num2);</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="8" data-hash="jsPmBsID" data-quantity="363" data-num="31"><a href="../../../../../en/javascript/book/prime/basis/short-operations.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/basis/inaccurate-calculations.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/basis/increment-decrement.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/basis/increment-decrement.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

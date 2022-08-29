@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Тег input - поле ввода | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="Тег input задает поле ввода и другие элементы формы.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Тег input</h1>
+				<div class="content">
+<p>
+	Тег <code class="code inline">input</code> создает различные элементы
+	HTML формы: обычное поле ввода, поле для
+	ввода пароля, флажок checkbox (чекбокс),
+	радио кнопочки (radio), кнопку.
+</p>
+<p>
+	Тег <code class="code inline">input</code> должен лежать внутри тега
+	<a href="../../../../../ru/markup/manual/html/tag/form.html"><code class="code inline">form</code></a>.
+	Это не обязательно, необходимо для отправки
+	данных на сервер и последующей их обработки
+	через PHP.
+</p>
+<p>
+	Не требует закрывающего тега.
+</p>
+
+<h2>Атрибуты</h2>
+<table class="description">
+	<tr>
+		<th>Атрибут</th>
+		<th>Описание</th>
+	</tr>
+	<tr>
+		<th><code class="code inline">type</code></th>
+		<td>Задает тип поля ввода. Варианты см. ниже.</td>
+	</tr>
+	<tr>
+		<th><code class="code inline">value</code></th>
+		<td>
+			Значение по умолчанию в поле ввода. В случае с кнопкой задает ее текст.
+			Подробнее см. атрибут <a href="../../../../../ru/markup/manual/html/attr/value.html"><code class="code inline">value</code></a>.
+		</td>
+	</tr>
+	<tr>
+		<th><code class="code inline">placeholder</code></th>
+		<td>
+			Подсказка в поле ввода, подробнее см.
+			атрибут <a href="../../../../../ru/markup/manual/html/attr/placeholder.html"><code class="code inline">placeholder</code></a>.
+		</td>
+	</tr>
+	<tr>
+		<th><code class="code inline">name</code></th>
+		<td>
+			Имя поля ввода. Нужно для того, чтобы достать данные поля ввода в PHP.
+			Для корректной работы формы имена полей ввода не должны совпадать друг
+			с другом (в одной форме). Если они совпадают - в PHP придут данные
+			того поля ввода, которое ниже в HTML коде.
+		</td>
+	</tr>
+	<tr>
+		<th><code class="code inline">disabled</code></th>
+		<td>
+			Блокирует элемент формы (не только input, а практически любой),
+			подробнее см. атрибут <a href="../../../../../ru/markup/manual/html/attr/disabled.html"><code class="code inline">disabled</code></a>.
+		</td>
+	</tr>
+</table>
+
+<h2>Значения атрибута type</h2>
+<table class="description">
+	<tr>
+		<th>Значение</th>
+		<th>Описание</th>
+	</tr>
+	<tr>
+		<th><code class="code inline">text</code></th>
+		<td><input type="text"> Создает обычное текстовое поле ввода.</td>
+	</tr>
+	<tr>
+		<th><code class="code inline">password</code></th>
+		<td>
+			<input type="password"> Создает текстовое поле ввода для пароля.
+			Попробуйте вбить в него текст - он отобразится звездочками.
+		</td>
+	</tr>
+	<tr>
+		<th><code class="code inline">checkbox</code></th>
+		<td>
+			<input type="checkbox"> Создает флажок чекбокс.
+			Подробнее см. <a href="../../../../../ru/markup/manual/html/tag/input/checkbox.html"><code class="code inline">checkbox</code></a>.
+		</td>
+	</tr>
+	<tr>
+		<th><code class="code inline">radio</code></th>
+		<td>
+			<input type="radio"> Создает радио переключатель.
+			Подробнее см. <a href="../../../../../ru/markup/manual/html/tag/input/radio.html"><code class="code inline">radio</code></a>.
+		</td>
+	</tr>
+	<tr>
+		<th><code class="code inline">hidden</code></th>
+		<td>
+			Создает скрытый инпут, который не будет виден на экране, но будет отправлять содержащиеся
+			в атрибуте <a href="../../../../../ru/markup/manual/html/attr/value.html"><code class="code inline">value</code></a> данные на сервер.
+		</td>
+	</tr>
+	<tr>
+		<th><code class="code inline">button</code></th>
+		<td>
+			<input type="button" value="Текст кнопки"> Создает кнопку. Нажатие на эту кнопку
+			не будет отправлять форму на сервер. Она может быть использована внутри
+			<a href="../../../../../ru/markup/manual/html/tag/a.html">ссылки</a> или через <code class="code inline">JavaScript</code>.
+			По умолчанию кнопка не имеет текста (пример кнопки без текста: <input type="button">),
+			он задается с помощью <a href="../../../../../ru/markup/manual/html/attr/value.html"><code class="code inline">value</code></a>.
+			См. также тег <a href="../../../../../ru/markup/manual/html/tag/button.html"><code class="code inline">button</code></a>,
+			который также делает кнопку.
+		</td>
+	</tr>
+	<tr>
+		<th><code class="code inline">submit</code></th>
+		<td>
+			<input type="submit"> Создает кнопку, которая будет отправлять данные на сервер.
+			Текст кнопки зависит от браузера, его можно сменить
+			с помощью <a href="../../../../../ru/markup/manual/html/attr/value.html"><code class="code inline">value</code></a>.
+			См. также тег <a href="../../../../../ru/markup/manual/html/tag/button.html"> button</a>,
+			который также делает кнопку.
+		</td>
+	</tr>
+	<tr>
+		<th><code class="code inline">reset</code></th>
+		<td>
+			<input type="reset"> Создает кнопку, которая очищает заполненную форму.
+			Текст кнопки зависит от браузера, его можно сменить
+			с помощью <a href="../../../../../ru/markup/manual/html/attr/value.html"><code class="code inline">value</code></a>.
+		</td>
+	</tr>
+	<tr>
+		<th><code class="code inline">file</code></th>
+		<td>
+			<input type="file"> Создает кнопку выбора файла. Дизайн этой кнопки запрещено менять
+			через CSS (однако есть хитрые способы). Если вам требуется такое поле в форме, то
+			тег <a href="../../../../../ru/markup/manual/html/tag/form.html"><code class="code inline">form</code></a> должен иметь атрибут
+			<a href="../../../../../ru/markup/manual/html/attr/enctype.html"><code class="code inline">enctype</code></a> в значении <b>multipart/form-data</b>.
+		</td>
+	</tr>
+</table>
+
+<h2>Новые в HTML5 значения атрибута type</h2>
+<p>
+	Данные значения атрибута новые, появились
+	только в HTML5, поэтому в некоторых браузерах
+	они могут не работать или работать по-разному
+	в разных браузерах.
+</p>
+<p>
+	В случае, если браузер не может понять содержимое
+	атрибута <code class="code inline">type</code> (например, если оно
+	не поддерживается или ошибочно введено),
+	он будет считать элемент обычным текстовым
+	инпутом, как будто в в type стоит значение
+	<code class="code inline">text</code>.
+</p>
+<p>
+	<i>Посмотрите приведенные ниже примеры в
+	разных браузерах</i>. Попробуйте вводить
+	в инпуты текст и нажать на кнопку отправки.
+	Если текст некорректный или поле пустое -
+	браузер выдаст ошибку. К примеру, если в
+	поле с типом <code class="code inline">email</code> вбить некорректный
+	email - браузер не даст отправить форму и
+	выдаст сообщение об ошибке (текст ошибки
+	и ее внешний вид на html css менять нельзя).
+	Если поле пустое - браузер тоже выдаст ошибку,
+	это достигается с помощью атрибута <a href="../../../../../ru/markup/manual/html/attr/required.html"><code class="code inline">required</code></a>:
+</p>
+<table class="description">
+	<tr>
+		<th>Значение</th>
+		<th>Описание</th>
+	</tr>
+	<tr>
+		<th><code class="code inline">email</code></th>
+		<td><form><input type="email" name="test" required> <input type="submit"></form></td>
+	</tr>
+	<tr>
+		<th><code class="code inline">number</code></th>
+		<td><form><input type="number" name="test" required> <input type="submit"></form></td>
+	</tr>
+	<tr>
+		<th><code class="code inline">url</code></th>
+		<td><form><input type="url" name="test" required> <input type="submit"></form></td>
+	</tr>
+	<tr>
+		<th><code class="code inline">tel</code></th>
+		<td><form><input type="tel" name="test" required> <input type="submit"></form></td>
+	</tr>
+	<tr>
+		<th><code class="code inline">search</code></th>
+		<td><form><input type="search" name="test" required> <input type="submit"></form></td>
+	</tr>
+	<tr>
+		<th><code class="code inline">color</code></th>
+		<td><form><input type="color" name="test" required> <input type="submit"></form></td>
+	</tr>
+	<tr>
+		<th><code class="code inline">date</code></th>
+		<td><form><input type="date" name="test" required> <input type="submit"></form></td>
+	</tr>
+	<tr>
+		<th><code class="code inline">month</code></th>
+		<td><form><input type="month" name="test" required> <input type="submit"></form></td>
+	</tr>
+	<tr>
+		<th><code class="code inline">week</code></th>
+		<td><form><input type="week" name="test" required> <input type="submit"></form></td>
+	</tr>
+	<tr>
+		<th><code class="code inline">datetime</code></th>
+		<td><form><input type="datetime" name="test" required> <input type="submit"></form></td>
+	</tr>
+	<tr>
+		<th><code class="code inline">datetime-local</code></th>
+		<td><form><input type="datetime-local" name="test" required> <input type="submit"></form></td>
+	</tr>
+	<tr>
+		<th><code class="code inline">range</code></th>
+		<td><form name="test"><input type="range" required> <input type="submit"></form></td>
+	</tr>
+</table>
+
+<h2>Смотрите также</h2>
+<ul class="ref">
+	<li>
+		тег <a href="../../../../../ru/markup/manual/html/tag/textarea.html"><code class="code inline">textarea</code></a>, <br>
+		который создает многострочное поле ввода
+	</li>
+	<li>
+		атрибут <a href="../../../../../ru/markup/manual/html/attr/pattern.html"><code class="code inline">pattern</code></a>, <br>
+		который осуществляет валидацию полей
+	</li>
+</ul>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/markup/manual/html/" data-persent="36" data-hash="" data-quantity="126" data-num="46"><a href="../../../../../ru/markup/manual/html/tag/form.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/markup/manual/html/tag/button.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

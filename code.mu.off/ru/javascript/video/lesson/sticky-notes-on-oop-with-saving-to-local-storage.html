@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Стикеры на ООП с сохранением в локальное хранилище на JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../js/location.js?v=3"></script>
+		<script src="../../../../js/locale.js?v=5"></script>
+		<script src="../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном видео я покажу вам реализацию стикеров на ООП с сохранением в локальное хранилище.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Стикеры на ООП с сохранением в локальное хранилище</h1>
+				<div class="content">
+<p>
+	В данном уроке я расскажу вам реализацию
+	стикеров на ООП. Стикеры представляют собой
+	записочки с текстом, которые можно произвольно
+	размещать в окне браузера. Можно также менять
+	размер стикеров, перемещать их мышкой по
+	экрану, удалять их. И, самое главное, любые
+	изменения будут сохранятся в локальное хранилище
+	браузера и после обновления страницы все
+	ваши стикеры останутся такими же и в том
+	же положении!
+</p>
+<div class="video">
+	<iframe src="https://www.youtube.com/embed/066UMYfXDaA" allowfullscreen></iframe>
+</div>
+
+<h2>Исходники кода</h2>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="css">.sticker {
+	box-sizing: border-box;
+	position: absolute;
+	padding: 10px;
+	font: italic 15px Arial;
+}</code>
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;body&gt;&lt;/body&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="javascript">class Sticker {
+	constructor(parent, key, id, zIndexer) {
+		this._elem = document.createElement('textarea');
+		this._elem.className = 'sticker';
+		
+		this._parent = parent;
+		this._parent.appendChild(this._elem);
+		
+		this._zIndexer = zIndexer;
+		
+		this._initRelocation();
+		this._initRemove();
+		this._initAtopState();
+		
+		this._watchSize();
+		this._watchText();
+		
+		this._stock = new Stock(key, id);
+	}
+	
+	create(w, h, x, y) {
+		this._setW(w);
+		this._setH(h);
+		this._setX(x);
+		this._setY(y);
+		this._setText('');
+		
+		this._setMaxZ();
+	}
+	
+	restore(data) {
+		this._setW(data.w);
+		this._setH(data.h);
+		this._setX(data.x);
+		this._setY(data.y);
+		this._setZ(data.z);
+		
+		this._setText(data.text);
+	}
+	
+	_save() {
+		let data = {
+			x: this._getX(),
+			y: this._getY(),
+			z: this.getZ(),
+			w: this._getW(),
+			h: this._getH(),
+			text: this._getText(),
+		};
+		
+		this._stock.save(data);
+	}
+	
+	_setW(value) {
+		this._w = value;
+		this._elem.style.width = value + 'px';
+		
+		this._save();
+	}
+	_getW() {
+		return this._w;
+	}
+	
+	_setH(value) {
+		this._h = value;
+		this._elem.style.height = value + 'px';
+		
+		this._save();
+	}
+	_getH() {
+		return this._h;
+	}
+	
+	_setX(value) {
+		this._x = value;
+		this._elem.style.left = value + 'px';
+		
+		this._save();
+	}
+	_getX() {
+		return this._x;
+	}
+	
+	_setY(value) {
+		this._y = value;
+		this._elem.style.top = value + 'px';
+		
+		this._save();
+	}
+	_getY() {
+		return this._y;
+	}
+	
+	_setZ(value) {
+		this._z = value;
+		this._elem.style.zIndex = value;
+		
+		this._save();
+	}
+	getZ() {
+		return this._z;
+		//return parseInt(this._elem.style.zIndex);
+	}
+	
+	_setText(text) {
+		this._text = text;
+		this._elem.value = text;
+		
+		this._save();
+	}
+	_getText() {
+		return this._text;
+	}
+	
+	_setMaxZ() {
+		let maxZ = this._zIndexer.getMaxZ();
+		
+		if (maxZ !== this.getZ() || maxZ === 0) {
+			this._setZ(maxZ + 1);
+		}
+	}
+	
+	_watchSize() {
+		// resize event does not work
+		this._elem.addEventListener('mouseup', () =&gt; {
+			let newWidth = parseInt(this._elem.clientWidth);
+			let newHeight = parseInt(this._elem.clientHeight);
+			
+			if (newWidth !== this._getW()) {
+				this._setW(newWidth);
+			}
+			if (newHeight !== this._getH()) {
+				this._setH(newHeight);
+			}
+		});
+	}
+	_watchText() {
+		this._elem.addEventListener('blur', () =&gt; {
+			let newText = this._elem.value;
+			
+			if (newText !== this._getText()) {
+				this._setText(newText);
+			}
+		});
+	}
+	
+	_initAtopState() {
+		this._elem.addEventListener('click', () =&gt; {
+			this._setMaxZ();
+		});
+		this._elem.addEventListener('dragstart', () =&gt; {
+			this._setMaxZ();
+		});
+	}
+	
+	_initRemove() {
+		this._elem.addEventListener('mousedown', event =&gt; {
+			if (event.which == 2) {
+				this._parent.removeChild(this._elem);
+				event.preventDefault();
+				
+				this._stock.remove();
+			}
+		});
+	}
+	
+	_initRelocation() {
+		this._elem.draggable = true;
+		
+		let correctionX = 0;
+		let correctionY = 0;
+		
+		this._elem.addEventListener('dragstart', event =&gt; {
+			correctionX = this._getX() - event.pageX;
+			correctionY = this._getY() - event.pageY;
+		});
+		this._elem.addEventListener('dragend', event =&gt; {
+			this._setX(event.pageX + correctionX);
+			this._setY(event.pageY + correctionY);
+			
+			this._elem.blur();
+		});
+	}
+}
+
+class ZIndexer {
+	constructor() {
+		this._stickers = [];
+	}
+	
+	add(sticker) {
+		this._stickers.push(sticker);
+	}
+	
+	getMaxZ() {
+		if (this._stickers.length !== 0) {
+			let zindexes = [];
+			
+			this._stickers.forEach(sticker =&gt; {
+				zindexes.push(sticker.getZ());
+			});
+			
+			return Math.max.apply(null, zindexes);
+		} else {
+			return 0;
+		}
+	}
+}
+
+class Stock {
+	constructor(key, id = null) {
+		this._storage = new Storage(key);
+		this._id = id;
+	}
+	
+	save(value) {
+		let data = this._extract();
+		data[this._id] = value;
+		this._compact(data);
+	}
+	
+	remove() {
+		let data = this._extract();
+		delete data[this._id];
+		this._compact(data);
+	}
+	
+	get() {
+		let data = this._extract();
+		if (data[this._id] !== undefined) {
+			return data[this._id];
+		} else {
+			return undefined;
+		}
+	}
+	
+	getAll() {
+		return this._extract();
+	}
+	
+	_compact(data) {
+		this._storage.save(JSON.stringify(data));
+	}
+	
+	_extract() {
+		let data = this._storage.get();
+		
+		if (data === null) {
+			return {};
+		} else {
+			return JSON.parse(data);
+		}
+	}
+}
+
+class Storage {
+	constructor(key) {
+		this._key = key;
+	}
+	
+	save(data) {
+		localStorage.setItem(this._key, data);
+	}
+	
+	get() {
+		return localStorage.getItem(this._key);
+	}
+}
+
+let key = 'stickers';
+let zIndexer = new ZIndexer;
+
+let stock = new Stock(key);
+let globalData = stock.getAll();
+
+var id = 0;
+for (id in globalData) {
+	let sticker = new Sticker(document.body, key, id, zIndexer);
+	sticker.restore(globalData[id]);
+	
+	zIndexer.add(sticker);
+};
+
+window.addEventListener('dblclick', (event) =&gt; {
+	id++;
+	
+	let sticker = new Sticker(document.body, key, id, zIndexer);
+	sticker.create(150, 200, event.pageX, event.pageY);
+	
+	zIndexer.add(sticker);
+});</code>
+</div>
+
+<h2>Смотрите также</h2>
+<ul class="ref">
+	<li>
+		видео <br>
+		<a href="../../../../ru/javascript/video/lesson/intro-in-drag-and-drop-native.html">
+			введение в Drag-and-Drop native JavaScript
+		</a>
+	</li>
+	<li>
+		видео <br>
+		<a href="../../../../ru/javascript/video/lesson/array-storing-in-local-storage.html">
+			массив в локальном хранилище JavaScript
+		</a>
+	</li>
+</ul>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/video/lesson/" data-persent="75" data-hash="" data-quantity="73" data-num="56"><a href="../../../../ru/javascript/video/lesson/implementation-of-square-calendar.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../ru/javascript/video/lesson/game-guess-number.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../js/metrika.js?v=1"></script>	</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Conversion to string in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to convert to strings in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Conversion to string in JavaScript</h1>
+				<div class="content">
+<p>
+	Sometimes you need to perform the reverse 
+	conversion - from a number to a string. 
+	The <code class="code inline">String</code> function performs this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let str = String(123); // now there is the string '123' in the variable</code>
+</div>
+<p>
+	Another example:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num1 = 1;
+let num2 = 2;
+
+alert(String(num1) + String(num2)); // shows '12'</code>
+</div>
+<div class="task">
+	<p>
+		Given two variables with numbers. 
+		Add the values of these variables as 
+		strings and print the result to the screen.
+	</p>
+</div>
+
+<h2>Application</h2>
+<p>
+	Suppose we have the variable <code class="code inline">num</code> with some number:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 12345;</code>
+</div>
+<p>
+	Let's find the number of digits in this number. 
+	As you already know, to find the length of a 
+	string, you can use the property <code class="code inline">length</code>.
+</p>
+<p>
+	However, it only works on strings, 
+	and when applied to a number, it won't work:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 12345;
+alert(num.length); // shows undefined</code>
+</div>
+<p>
+	To solve the problem, we convert our 
+	number to a string and find the length 
+	of this string:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 12345;
+let str = String(num); // convert our number to a string
+alert(str.length);     // find the length of the string</code>
+</div>
+<p>
+	You can not involve the intermediate 
+	variable <code class="code inline">str</code>, but apply the property 
+	<code class="code inline">length</code> immediately to the result 
+	of the function <code class="code inline">String</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 12345;
+alert(String(num).length); // find the length of the string</code>
+</div>
+<div class="task">
+	<p>
+		Given a variable with a number. 
+		Find the number of digits in this number.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given two variables with numbers. 
+		Find the number of digits in one and the 
+		second number, add the results and 
+		display it on the screen.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="6" data-hash="jsPmBsCTC" data-quantity="363" data-num="24"><a href="../../../../../en/javascript/book/prime/basis/numbers-extraction.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/basis/logical-type-conversion.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/basis/conversion-to-string.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/basis/conversion-to-string.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

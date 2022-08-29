@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Working with console in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will look at working with the console in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Working with console in JavaScript</h1>
+				<div class="content">
+<p>
+	For the convenience of programmers, each 
+	browser has a special <dfn>developer panel</dfn>. 
+	You need to right-click anywhere on the current 
+	site page to open this panel. In the menu appeared, 
+	you need to select the lowest item 
+	(it will be called Inspect or something like that).
+</p>
+<p>
+	In the panel that opens, you will mainly 
+	use two tabs: Elements and Console. 
+	In the first tab you can get information about 
+	page tags and in the second one JavaScript 
+	debug information.
+</p>
+<p>
+	Let's understand the possibilities of the console.
+</p>
+<p>
+	 With your scripts you can output 
+	 data to the console, using the special command 
+	 <code class="code inline">console.log</code>. This is used to <dfn>debug</dfn> programs.
+</p>
+<p>
+	As an example, let's output something to the console:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log(123);</code>
+</div>
+<p>
+	Now let's output the variable value:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 123;
+console.log(num);</code>
+</div>
+<p>
+	You can output multiple variables in turn:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num1 = 123;
+let num2 = 456;
+
+console.log(num1);
+console.log(num2);</code>
+</div>
+<p>
+	You can display multiple variables 
+	with single command by writing these 
+	variables separated by commas:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num1 = 123;
+let num2 = 456;
+console.log(num1, num2);</code>
+</div>
+<div class="task">
+	<p>
+		Given a variable. Output its value to the console .
+	</p>
+</div>
+<div class="task">
+	<p>
+		Three variables are given. 
+		Output their values to the console.
+	</p>
+</div>
+
+<h2>Data type in the console</h2>
+<p>
+	The console displays strings and numbers 
+	in different colors. This often helps to 
+	find errors in programs.
+</p>
+<p>
+	Let's print a number and a string 
+	side by side so we can see the difference in color:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log(123);
+console.log('123');</code>
+</div>
+<div class="task">
+	<p>
+		Print all the data types you 
+		know to the console. See how 
+		their colors differ.
+	</p>
+</div>
+
+<h2>Errors in the console</h2>
+<p>
+	When you make a syntax error in your 
+	code, JavaScript will print information 
+	about it to the console. Such an error 
+	will be displayed in red, and to the 
+	right of it the line number, on which 
+	this error occurred, will be indicated. 
+	This number is a link you can click on, 
+	and your code will be opened in 
+	the console on the line with the error.
+</p>
+<p>
+	Let's try it in practice. Let's output a 
+	non-existent variable. In this case, 
+	JavaScript will throw an error:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">alert(eee); // Uncaught ReferenceError: eee is not defined</code>
+</div>
+<div class="task">
+	<p>
+		Make a mistake on purpose in your code. 
+		Verify that the error appears in the console. 
+		Determine the line of code where the error occurred on.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="5" data-hash="jsPmBsCns" data-quantity="363" data-num="19"><a href="../../../../../en/javascript/book/prime/basis/special-values.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/basis/constants.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/basis/console.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/basis/console.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

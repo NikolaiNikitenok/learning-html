@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Arrow functions in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to work with arrow functions in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Arrow functions in JavaScript</h1>
+				<div class="content">
+<p>
+	Let's now look at <dfn>arrow functions</dfn>, 
+	which simplify the function syntax.
+</p>
+<p>
+	In the following code example, an ordinary 
+	function is written first, and the 
+	corresponding arrow function is written 
+	second (both functions do the same thing):
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let func1 = function(num1, num2) {
+	let result = num1 * num2;
+	return result;
+}
+
+let func2 = (num1, num2) =&gt; {
+	let result = num1 * num2;
+	return result;
+}</code>
+</div>
+<p>
+	If the function has one line of code, 
+	then in arrow functions you can not 
+	write <code class="code inline">return</code> and curly braces:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let func1 = function(num1, num2) {
+	return num1 * num2
+}
+
+let func2 = (num1, num2) =&gt; num1 * num2;</code>
+</div>
+<p>
+	If there is only one parameter of the 
+	arrow function, parentheses can be omitted:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let func1 = function(num) {
+	return num * num;
+}
+
+let func2 = num =&gt; num * num</code>
+</div>
+<p>
+	If the function has no parameters at all, 
+	you need to write empty parentheses:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let func1 = function() {
+	console.log('!!!');
+}
+
+let func2 = () =&gt; console.log('!!!')</code>
+</div>
+
+<h2>Application example</h2>
+<p>
+	Arrow functions have a particular advantage 
+	as callbacks. Let's look at an example of 
+	how much the code is simplified in this 
+	case. Let's take the function <code class="code inline">filter</code> 
+	from the previous lesson:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let result = filter([1, 2, 3, 4, 5], function(elem) {
+	if (elem % 2 === 0) {
+		return true;
+	} else {
+		return false;
+	}
+});</code>
+</div>
+<p>
+	First, let's get rid of the construction 
+	<code class="code inline">if</code> and write the condition simply 
+	through the operator <code class="code inline">===</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let result = filter([1, 2, 3, 4, 5], function(elem) {
+	return elem % 2 == 0;
+});</code>
+</div>
+<p>
+	Let us now replace the ordinary 
+	function with an arrow one:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let result = filter([1, 2, 3, 4, 5], elem =&gt; elem % 2 == 0);</code>
+</div>
+<div class="task">
+	<p>
+		Given the following function with a callback:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let result = every([1, 2, 3, 4, 5], function(elem) {
+	if (elem &gt; 0) {
+		return true;
+	} else {
+		return false;
+	}
+});</code>
+	</div>
+	<p>
+		Simplify the callback with an arrow function.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given the following function with a callback:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let result = every([1, 2, 3, 4, 5], function(elem, index) {
+	if (elem * index &gt; 10) {
+		return true;
+	} else {
+		return false;
+	}
+});</code>
+	</div>
+	<p>
+		Simplify the callback with an arrow function.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given the following function with a callback:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+
+let result = each(arr, function(elem, index) {
+	if (elem * index &gt; 10) {
+		return true;
+	} else {
+		return false;
+	}
+});</code>
+	</div>
+	<p>
+		Simplify the callback with an arrow function.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="53" data-hash="jsPmFAAF" data-quantity="363" data-num="195"><a href="../../../../../en/javascript/book/prime/functions/callbacks.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/functions/recursion.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/functions/arrow-functions.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/functions/arrow-functions.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Working with radio buttons in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to work with radio buttons through JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Working with radio buttons in JavaScript</h1>
+				<div class="content">
+<p>
+	Let's now work with 
+	<a href="../../../../../../en/markup/manual/html/tag/input/radio.html">radio buttons</a>. 
+	They are a group of radio buttons, in which only one 
+	can be selected. For multiple radio buttons to be a 
+	group, they must have the same <code class="code inline">name</code> 
+	attribute value:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;input type="radio" name="elem"&gt;
+&lt;input type="radio" name="elem"&gt;
+&lt;input type="radio" name="elem"&gt;</code>
+</div>
+<p>
+	And in order to distinguish in JavaScript which 
+	button was selected, one adds value attributes 
+	with a different value to each radio button 
+	in the group:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;input type="radio" name="elem" value="1"&gt;
+&lt;input type="radio" name="elem" value="2"&gt;
+&lt;input type="radio" name="elem" value="3"&gt;</code>
+</div>
+<p>
+	To make a radio button selected by default, 
+	it needs to set the <code class="code inline">checked</code> attribute:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;input type="radio" name="elem" value="1" checked&gt;
+&lt;input type="radio" name="elem" value="2"&gt;
+&lt;input type="radio" name="elem" value="3"&gt;</code>
+</div>
+<p>
+	Let's see in practice how to work with such 
+	buttons in JavaScript. Suppose we have the 
+	group of radio buttons presented above, as 
+	well as a regular button:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;input type="submit" id="button"&gt;</code>
+</div>
+<p>
+	Let's make it so that when the button is pressed, 
+	the <code class="code inline">value</code> of the radio button that is 
+	currently checked is displayed on the screen.
+</p>
+<p>
+	To solve the problem, it is necessary to go 
+	through all our radio buttons in a loop and 
+	determine which one is selected. To do this, 
+	you need to read the value of the property 
+	<code class="code inline">checked</code> of each iterated radio button. 
+	If this property is equal to <code class="code inline">true</code>, 
+	then this radio button is selected.
+</p>
+<p>
+	Let's implement the described:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let radios = document.querySelectorAll('input[type="radio"]');
+let button = document.querySelector('#button');
+
+button.addEventListener('click', function() {
+	for (let radio of radios) {
+		if (radio.checked) {
+			console.log(radio.value);
+		}
+	}
+});</code>
+</div>
+<div class="task">
+	<p>
+		Given <code class="number inline">3</code> radio buttons, a paragraph, 
+		and a button. On click on the button, 
+		display <code class="code inline">value</code> of the checked 
+		radio button in the paragraph.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="76" data-hash="jsPmFmRd" data-quantity="363" data-num="278"><a href="../../../../../../en/javascript/book/prime/dom/form/attributes-without-values-alternation.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../en/javascript/book/prime/dom/form/onchange.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/form/radio.html" class="active">en</a><a href="../../../../../../ru/javascript/book/prime/dom/form/radio.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Object with anonymous functions in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will consider an object with anonymous functions in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Object with anonymous functions in JavaScript</h1>
+				<div class="content">
+<p>
+	In the previous lesson, we made an array 
+	consisting of functions. Let's now instead 
+	of an array make an object with keys whose 
+	values will be functions:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let obj = {
+	func1: function() {console.log(1)},
+	func2: function() {console.log(2)},
+	func3: function() {console.log(3)},
+};</code>
+</div>
+<p>
+	Let's use our object:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let obj = {
+	func1: function() {console.log(1)},
+	func2: function() {console.log(2)},
+	func3: function() {console.log(3)},
+};
+
+obj.func1(); // shows 1</code>
+</div>
+<div class="task">
+	<p>
+		Make an object with three functions. 
+		Let the first return through <code class="code inline">return</code> 
+		the number <code class="number inline">1</code>, the second - the 
+		number <code class="number inline">2</code>, the third - the number 
+		<code class="number inline">3</code>. Using the created functions, 
+		print the sum of the returned numbers 
+		to the console.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Loop through the created object and 
+		output the results of the functions 
+		work to the console.
+	</p>
+</div>
+
+<h2>Application</h2>
+<p>
+	Let's make an object with two functions, 
+	each of them will take a number as a 
+	parameter. Let the first function square 
+	the passed number, and the second function 
+	cube. An implementation:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let math = {
+	square: function(num) {return num * num},
+	cube: function(num) {return num * num * num},
+};</code>
+</div>
+<p>
+	Let's use our functions:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let math = {
+	square: function(num) {return num * num},
+	cube: function(num) {return num * num * num},
+};
+
+console.log( math.square(2) ); // shows 4
+console.log( math.cube(2) ); // shows 8</code>
+</div>
+<div class="task">
+	<p>
+		Make an object with three functions, 
+		each of them will take an array of 
+		numbers as a parameter. Make the 
+		first function return the sum of 
+		the array elements, the second 
+		function return the sum of squares, 
+		and the third return the sum of cubes.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="50" data-hash="jsPmFAFO" data-quantity="363" data-num="184"><a href="../../../../../en/javascript/book/prime/functions/functions-array.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/functions/passing-functions-as-parameters.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/functions/functions-object.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/functions/functions-object.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

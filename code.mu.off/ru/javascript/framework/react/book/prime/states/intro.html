@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Введение в стейты в React | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы изучим работу с состояниями state в React.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Введение в стейты в React</h1>
+				<div class="content">
+<p>
+	Следующая концепция, которую мы с вами разберем,
+	называется <dfn>стейты</dfn>. Стейты представляют
+	собой <dfn>реактивные</dfn> переменные компонентов.
+</p>
+<p>
+	Реактивность означает, что при изменении
+	стейта изменения произойдут во всех местах,
+	где этот стейт используется. Технически это
+	достигается путем перендерования всего компонента
+	при изменении какого-либо стейта.
+</p>
+<p>
+	Для использования стейтов для начала необходимо
+	импортировать функцию <code class="code inline">useState</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">import React, { useState } from 'react';</code>
+</div>
+<p>
+	Функция <code class="code inline">useState</code> параметром принимает
+	начальное значение стейта, а своим результатом
+	возвращает специальный массив из двух элементов.
+	В первом элементе массива будет хранится
+	текущее значение стейта, а во втором - функция
+	для изменения стейта.
+</p>
+<p>
+	Для корректной работы стейтов их нельзя менять
+	напрямую, а следует пользоваться функцией
+	для их изменения - только тогда будет работать
+	реактивность.
+</p>
+
+<h2>Пример</h2>
+<p>
+	Воспользуемся функцией <code class="code inline">useState</code> для
+	создания стейта, содержащего название продукта:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">const state = useState('prod');</code>
+</div>
+<p>
+	В результате константа <code class="code inline">state</code> будет
+	представлять собой массив, в первом элементе
+	которого будет хранится название продукта,
+	а во втором - функция для изменения названия:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">const state   = useState('prod');
+const name    = state[0];
+const setName = state[1];</code>
+</div>
+<p>
+	Для краткости обычно не используют промежуточную
+	константу для массива, а используют <a href="../../../../../../../ru/javascript/book/prime/destructuring/array.html">деструктуризацию</a>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">const [name, setName] = useState('prod');</code>
+</div>
+<p>
+	Давайте теперь выведем наш стейт с именем
+	продукта в какой-нибудь верстке:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">return &lt;p&gt;
+	&lt;span&gt;{name}&lt;/span&gt;
+&lt;/p&gt;;</code>
+</div>
+<p>
+	Соберем все вместе и получим следующий код:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">import React, { useState } from 'react';
+
+function App() {
+	const [name, setName] = useState('prod');
+	
+	return &lt;div&gt;
+		&lt;span&gt;{name}&lt;/span&gt;
+	&lt;/div&gt;;
+}
+
+export default App;</code>
+</div>
+<p>
+	Если запустить этот код, то изначально в
+	диве выведется начальное значение стейта,
+	в нашем случае <code class="string inline">'prod'</code>. При изменение
+	стейта через функцию <code class="code inline">setName</code> и верстке
+	автоматически появится новое значение стейта.
+</p>
+
+<h2>Попробуем реактивность</h2>
+<p>
+	Сделаем кнопку, по нажатию на которую будет
+	изменяться наш стейт:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">&lt;div&gt;
+	&lt;span&gt;{name}&lt;/span&gt;
+	&lt;button onClick={clickHandler}&gt;btn&lt;/button&gt;
+&lt;/div&gt;;</code>
+</div>
+<p>
+	В обработчике клика используем функцию <code class="code inline">setName</code>,
+	чтобы установить продукту новое название:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function clickHandler() {
+	setName('xxxx');
+}</code>
+</div>
+<p>
+	Соберем весь наш код вместе. Получится, что
+	после нажатия на кнопку текст в спене мгновенно
+	поменяется на новое значение:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function App() {
+	let [name, setName] = useState('prod');
+	
+	function clickHandler() {
+		setName('xxxx');
+	}
+	
+	return &lt;div&gt;
+		&lt;span&gt;{name}&lt;/span&gt;
+		&lt;button onClick={clickHandler}&gt;btn&lt;/button&gt;
+	&lt;/div&gt;;
+}</code>
+</div>
+<p>
+	Использование отдельных функций-обработчиков
+	не обязательно. Можно использовать анонимную
+	стрелочную функцию:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function App() {
+	let [name, setName] = useState('prod');
+	
+	return &lt;div&gt;
+		&lt;span&gt;{name}&lt;/span&gt;
+		&lt;button onClick={() =&gt; setName('xxxx')}&gt;btn&lt;/button&gt;
+	&lt;/div&gt;;
+}</code>
+</div>
+
+<h2>Сделаем два стейта</h2>
+<p>
+	Давайте сделаем один стейт для названия продукта,
+	а второй - для цены:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function App() {
+	let [name, setName] = useState('prod');
+	let [cost, setCost] = useState('1000');
+	
+	return &lt;div&gt;
+		&lt;span&gt;{name}&lt;/span&gt;
+		&lt;span&gt;{cost}&lt;/span&gt;
+	&lt;/div&gt;;
+}</code>
+</div>
+<p>
+	Сделаем кнопки для изменения наших стейтов:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function App() {
+	let [name, setName] = useState('prod');
+	let [cost, setCost] = useState('1000');
+	
+	function clickHandler1() {
+		setName('xxxx');
+	}
+	function clickHandler2() {
+		setCost('2000');
+	}
+	
+	return &lt;div&gt;
+		&lt;span&gt;{name}&lt;/span&gt;
+		&lt;span&gt;{cost}&lt;/span&gt;
+		
+		&lt;button onClick={clickHandler1}&gt;btn1&lt;/button&gt;
+		&lt;button onClick={clickHandler2}&gt;btn2&lt;/button&gt;
+	&lt;/div&gt;;
+}</code>
+</div>
+<p>
+	Перепишем на сокращенный вариант:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function App() {
+	let [name, setName] = useState('prod');
+	let [cost, setCost] = useState('1000');
+	
+	return &lt;div&gt;
+		&lt;span&gt;{name}&lt;/span&gt;
+		&lt;span&gt;{cost}&lt;/span&gt;
+		
+		&lt;button onClick={() =&gt; setName('xxxx')}&gt;btn1&lt;/button&gt;
+		&lt;button onClick={() =&gt; setCost('2000')}&gt;btn2&lt;/button&gt;
+	&lt;/div&gt;;
+}</code>
+</div>
+
+<h2>Логическое значение в стейте</h2>
+<p>
+	Давайте сделаем стейт <code class="code inline">inCart</code>, который
+	будет показывать, в корзине продукт или нет:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function App() {
+	let [inCart, setInCart] = useState(false);
+	
+	return &lt;div&gt;
+		
+	&lt;/div&gt;;
+}</code>
+</div>
+<p>
+	Пусть значение <code class="code inline">false</code> значит, что продукт
+	не в корзине, а значение <code class="code inline">true</code> - что
+	в корзине. Выведем информацию об этом с помощью
+	тернарного оператора:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function App() {
+	let [inCart, setInCart] = useState(false);
+	
+	return &lt;div&gt;
+		&lt;span&gt;{inCart ? 'в корзине' : 'не в корзине'}&lt;/span&gt;
+	&lt;/div&gt;;
+}</code>
+</div>
+<p>
+	А теперь сделаем кнопку, по нажатию на которую
+	продукт добавится в корзину:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function App() {
+	let [inCart, setInCart] = useState(false);
+	
+	return &lt;div&gt;
+		&lt;span&gt;{inCart ? 'в корзине' : 'не в корзине'}&lt;/span&gt;
+		&lt;button onClick={() =&gt; setInCart(true)}&gt;btn&lt;/button&gt;
+	&lt;/div&gt;;
+}</code>
+</div>
+<p>
+	Модифицируем наш код так, чтобы первое нажатие
+	на кнопку добавляло в корзину, а второе -
+	удаляло из нее:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function App() {
+	let [inCart, setInCart] = useState(false);
+	
+	return &lt;div&gt;
+		&lt;span&gt;{inCart ? 'в корзине' : 'не в корзине'}&lt;/span&gt;
+		&lt;button onClick={() =&gt; setInCart(!inCart)}&gt;btn&lt;/button&gt;
+	&lt;/div&gt;;
+}</code>
+</div>
+
+<h2>Счетчик</h2>
+<p>
+	Давайте сделаем счетчик кликов по кнопке:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function App() {
+	let [count, setCount] = useState(0);
+	
+	function clickHandler() {
+		setCount(count + 1);
+	}
+	
+	return &lt;div&gt;
+		&lt;span&gt;{count}&lt;/span&gt;
+		&lt;button onClick={clickHandler}&gt;+&lt;/button&gt;
+	&lt;/div&gt;;
+}</code>
+</div>
+<p>
+	Можно избавится от функции-обработчика, заменив
+	ее анонимной стрелочной функцией:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="jsx">function App() {
+	let [count, setCount] = useState(0);
+	
+	return &lt;div&gt;
+		&lt;span&gt;{count}&lt;/span&gt;
+		&lt;button onClick={() =&gt; setCount(count + 1)}&gt;+&lt;/button&gt;
+	&lt;/div&gt;;
+}</code>
+</div>
+
+<h2>Практические задачи</h2>
+<div class="task">
+	<p>
+		Пусть вы хотите отображать на экране данные
+		юзера: его имя, фамилию, возраст. Сделайте
+		для этого соответствующие стейты с начальными
+		значениями.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Сделайте кнопки для изменения имени и фамилии.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Добавьте еще один стейт, который будет показывать,
+		забанен пользователь или нет. Выведите информацию
+		об этом в каком-нибудь теге.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Сделайте кнопку, нажатие на которую будет
+		банить пользователя и кнопку, нажатие на
+		которую будет разбанивать пользователя.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Модифицируйте предыдущую задачу так, чтобы
+		из двух кнопок всегда была видна только соответствующая.
+		То есть, если пользователь забанен, то видна
+		кнопка для разбанивания, а если не забанен
+		- для забанивания.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Сделайте еще две кнопки. Пусть первая кнопка
+		увеличивает возраст на единицу, а вторая
+		- уменьшает его.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/framework/react/book/prime/" data-persent="31" data-hash="jsrtPmStInr" data-quantity="51" data-num="17"><a href="../../../../../../../ru/javascript/framework/react/book/prime/basis/objects-array-id.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../../ru/javascript/framework/react/book/prime/states/input.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

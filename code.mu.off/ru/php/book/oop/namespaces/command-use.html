@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Команда use и пространства имен в ООП на PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами разберем использование команды use вместе с пространствами имен в ООП на PHP.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Команда use и пространства имен</h1>
+				<div class="content">
+<p>
+	Пусть у нас есть следующий класс <code class="code inline">Data</code>:
+</p>
+<div class="block" data-file="/core/admin/data.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	namespace \Core\Admin;
+	
+	class Data
+	{
+		public function __construct($num)
+		{
+			
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Пусть также есть класс <code class="code inline">Page</code>, создающий
+	внутри себя объекты класса <code class="code inline">Data</code>:
+</p>
+<div class="block" data-file="/users/page.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	namespace Users;
+	
+	class Page
+	{
+		public function __construct()
+		{
+			$data1 = new \Core\Admin\Data('1');
+			$data2 = new \Core\Admin\Data('2');
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Как вы видите, оба наших класса находятся
+	в совсем разных пространствах имен, поэтому
+	вызовы класса <code class="code inline">Data</code> упростить нельзя,
+	подобно тому, как мы это делали в предыдущем
+	уроке. Эти вызовы, однако, очень длинные
+	и неудобные, так как в каждом вызове класса
+	<code class="code inline">Data</code> приходится указывать его длинное
+	пространство имен.
+</p>
+<p>
+	Для решения подобной проблемы существует
+	специальная команда <code class="code inline">use</code>. С помощью
+	этой команды достаточно один раз подключить
+	класс по его полному имени, и после этого
+	можно будет обращаться к этому классу просто
+	по имени класса. Смотрите пример:
+</p>
+<div class="block" data-file="/users/page.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	namespace Users;
+	use \Core\Admin\Data; // подключаем класс
+	
+	class Page extends Controller
+	{
+		public function __construct()
+		{
+			$data1 = new Data('1'); // вызываем просто по имени
+			$data2 = new Data('2'); // вызываем просто по имени
+		}
+	}
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Упростите следующий код с использованием
+		<code class="code inline">use</code>:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	namespace Project;
+	
+	class Test
+	{
+		public function __construct()
+		{
+			// Создаем 3 объекта одного класса:
+			$data1  = new \Core\Users\Data('user1');
+			$data2  = new \Core\Users\Data('user3');
+			$data3  = new \Core\Users\Data('user3');
+		}
+	}
+?&gt;</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Даны следующие классы:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	namespace Core\Admin;
+	
+	class Controller
+	{
+		
+	}
+?&gt;</code>
+	</div>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	namespace Users;
+	
+	class Page extends \Core\Admin\Controller
+	{
+		
+	}
+?&gt;</code>
+	</div>
+	<p>
+		Упростите код наследования класса, применив
+		команду <code class="code inline">use</code>.
+	</p>
+</div>
+
+<h2>Подключение нескольких классов</h2>
+<p>
+	Если нужно подключить несколько классов,
+	то каждый из них подключается своей командой
+	<code class="code inline">use</code>:
+</p>
+<div class="block" data-file="/users/page.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	namespace Users;
+	use \Core\Admin\Data1; // подключаем класс
+	use \Core\Admin\Data2; // подключаем класс
+	
+	class Page extends Controller
+	{
+		public function __construct()
+		{
+			$data1 = new Data1; // вызываем просто по имени
+			$data2 = new Data2; // вызываем просто по имени
+		}
+	}
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Упростите следующий код с использованием
+		<code class="code inline">use</code>:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	namespace Project;
+	
+	class Test
+	{
+		public function __construct()
+		{
+			$model = new \Core\Admin\Model;
+			$data  = new \Core\Users\Storage\Data;
+		}
+	}
+?&gt;</code>
+	</div>
+</div>
+
+<h2>Команда use и относительные пути</h2>
+<p>
+	При использовании команды <code class="code inline">use</code> можно
+	указывать относительные пути, подобно тому,
+	как мы это делали в предыдущем уроке. Давайте
+	посмотрим на примере. Пусть мы подключаем
+	некоторый класс:
+</p>
+<div class="block" data-file="/core/admin/controller.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	namespace Core\Admin;
+	use \Core\Admin\Path\Router; // подключаем класс
+	
+	class Controller extends Router
+	{
+		
+	}
+?&gt;</code>
+</div>
+<p>
+	Как вы видите, начало пространства имен подключаемого
+	класса совпадает с текущим пространством.
+	Это значит, что мы можем эту часть при подключении
+	нашего класса, убрав при этом начальный обратный
+	слеш:
+</p>
+<div class="block" data-file="/core/admin/controller.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	namespace Core\Admin;
+	use Path\Router; // делаем относительный путь
+	
+	class Controller extends Router
+	{
+		
+	}
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Упростите следующий код с использованием
+		<code class="code inline">use</code>:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	namespace Core\Storage;
+	
+	class Model
+	{
+		public function __construct()
+		{
+			$database  = new \Core\Storage\DataBase;
+		}
+	}
+?&gt;</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/oop/" data-persent="81" data-hash="ppOpNsCU" data-quantity="107" data-num="88"><a href="../../../../../ru/php/book/oop/namespaces/simplified-class-calling.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/php/book/oop/namespaces/classes-aliases.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

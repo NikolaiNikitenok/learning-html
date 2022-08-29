@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Objects and primitives in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will analyze the difference between objects and primitives in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Objects and primitives in JavaScript</h1>
+				<div class="content">
+<p>
+	Objects (including arrays, as you already know) 
+	are considered to be complex data types. 
+	Strings, numbers, booleans are considered 
+	to be simple, or <dfn>primitive</dfn> data types. 
+	They are often called so - <dfn>primitives</dfn>, 
+	meaning everything that is not an object.
+</p>
+<p>
+	JavaScript has seven primitive data types: 
+	<span class="state">string</span>, <span class="state">number</span>, <span class="state">boolean</span>, 
+	<span class="state">null</span>, <span class="state">undefined⁅/y ⁆, <span class="state">symbol</span>, 
+	<span class="state">bigint</span>. Remember their number and names 
+	are often asked in interviews.
+</p>
+<div class="task">
+	<p>
+		Given the following code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test = {x: 1, y: 2, z: 3};
+console.log(test);</code>
+	</div>
+	<p>
+		What type of data will be output to the 
+		console? Is it a primitive or an object?
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given the following code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test = {x: 1, y: 2, z: 3};
+console.log(test.x);</code>
+	</div>
+	<p>
+		What type of data will be output to the 
+		console? Is it a primitive or an object?
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given the following code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test = [1, 2, 3];
+console.log(test);</code>
+	</div>
+	<p>
+		What type of data will be output to the 
+		console? Is it a primitive or an object?
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given the following code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test = [1, 2, 3];
+console.log(test[1]);</code>
+	</div>
+	<p>
+		What type of data will be output to the 
+		console? Is it a primitive or an object?
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given the following code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test1 = [1, 2, 3];
+let test2 = 1;
+
+console.log(test1);</code>
+	</div>
+	<p>
+		What type of data will be output to the 
+		console? Is it a primitive or an object?
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given the following code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let test1 = [1, 2, 3];
+let test2 = 1;
+
+console.log(test1[test2]);</code>
+	</div>
+	<p>
+		What type of data will be output to the 
+		console? Is it a primitive or an object?
+	</p>
+</div>
+<div class="task">
+	<p>
+		List all primitive data types in JavaScript 
+		without looking into the tutorial.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="18" data-hash="jsPmObOp" data-quantity="363" data-num="67"><a href="../../../../../en/javascript/book/prime/objects/differ-arrays-objects.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/objects/passing-by-reference.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/objects/objects-primitives.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/objects/objects-primitives.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

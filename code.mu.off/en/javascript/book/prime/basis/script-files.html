@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>JavaScript files inclusion | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to write JavaScript code in separate files.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>JavaScript files inclusion</h1>
+				<div class="content">
+<p>
+	You can write JavaScript code in a separate 
+	file, which will be included then in 
+	the HTML file. Let's see how it's done.
+</p>
+<p>
+	First, let's create a file with our script. 
+	This file needs the extension <code class="path inline">.js</code>. 
+	For example, let's name this file <code class="path inline">script.js</code>. 
+	Let's put some code in it:
+</p>
+<div class="block" data-file="script.js">
+	<code class="highlight" data-module="highlight" data-lang="javascript">alert('text');</code>
+</div>
+<p>
+	Now, let's include our script in the HTML file. 
+	To do this, in the tag <code class="code inline">script</code> in the 
+	attribute <code class="code inline">src</code> you need to put the path 
+	to the script file:
+</p>
+<div class="block" data-file="index.html">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset="utf-8"&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;script src="script.js"&gt;&lt;/script&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		
+	&lt;/body&gt;
+&lt;/html&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Make a script file. Include it in your 
+		HTML file. Check out its work.
+	</p>
+</div>
+
+<h2>Multiple files</h2>
+<p>
+	You can include not only single, 
+	but also multiple files using several 
+	<code class="code inline">script</code> tags:
+</p>
+<div class="block" data-file="index.html">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset="utf-8"&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;script src="script1.js"&gt;&lt;/script&gt;
+		&lt;script src="script2.js"&gt;&lt;/script&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		
+	&lt;/body&gt;
+&lt;/html&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Make three scripts files. Include 
+		them in your HTML file. Check out 
+		their work.
+	</p>
+</div>
+
+<h2>Note</h2>
+<p>
+	Please note that in the <code class="code inline">script</code> tag, 
+	you can either write code or include a file. 
+	Trying to do both at the same time won't work. 
+	So the following code doesn't work:
+</p>
+<div class="block" data-file="index.html">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset="utf-8"&gt;
+		&lt;title&gt;&lt;/title&gt;
+		&lt;script src="script.js"&gt;
+			alert('text');
+		&lt;/script&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		
+	&lt;/body&gt;
+&lt;/html&gt;</code>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="0" data-hash="jsPmBsSF" data-quantity="363" data-num="2"><a href="../../../../../en/javascript/book/prime/basis/intro.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/basis/files-caching.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/basis/script-files.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/basis/script-files.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

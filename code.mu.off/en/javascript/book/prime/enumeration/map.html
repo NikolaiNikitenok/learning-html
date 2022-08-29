@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>map method to iterate over an array in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will study the map method, which allows you to apply a given function for each element of an array in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>map method to iterate over an array in JavaScript</h1>
+				<div class="content">
+<p>
+	In this lesson, we will analyze the special 
+	method <code class="code inline">map</code>, designed to transform 
+	arrays. This method works like this: it 
+	takes a callback function as a parameter 
+	and applies it to each array element, and 
+	then returns the modified array.
+</p>
+<p>
+	Here is a scheme of how the method 
+	works on a code example:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3, 4, 5];
+
+let result = arr.map(function() {
+	// the function will be applied for each array element 
+});</code>
+</div>
+<p>
+	If you specify the first parameter in the 
+	callback (the name of the parameter does 
+	not matter), then the values of the array 
+	elements will automatically fall into it:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3, 4, 5];
+
+let result = arr.map(function(elem) {
+	console.log(elem); // prints 1, 2, 3, 4, 5 sequentially
+});</code>
+</div>
+<p>
+	Let's now see how the <code class="code inline">map</code> method 
+	transforms an array. In our case, the 
+	transformed array will be written to 
+	the variable <code class="code inline">result</code>. This array 
+	will have the same number of elements 
+	as the original one, but the values of 
+	the elements will be different. For each 
+	element, instead of the original value, 
+	there will be the value that the callback 
+	call returned for it.
+</p>
+<p>
+	I believe that it is not very clear yet, 
+	let's look at this with an example. Let's 
+	make the callback call return the square 
+	of the element for which it was called:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function(elem) {
+	return elem * elem;
+}</code>
+</div>
+<p>
+	Let's apply our callback for each 
+	element of the array:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3, 4, 5];
+
+let result = arr.map(function(elem) {
+	return elem * elem;
+});
+
+console.log(result); // shows [1, 4, 9, 16, 25]</code>
+</div>
+<p>
+	For example, let's see what happens if the 
+	callback for each element returns the same 
+	(let, for example, the number 0):
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [1, 2, 3, 4, 5];
+
+let result = arr.map(function(elem) {
+	return 0;
+});
+
+console.log(result); // shows [0, 0, 0, 0, 0]</code>
+</div>
+<div class="task">
+	<p>
+		Given an array of numbers. Using the 
+		<code class="code inline">map</code> method, extract the square 
+		root of each array element and write 
+		the result to a new array.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given an array with strings. Using the 
+		<code class="code inline">map</code> method, add the character 
+		<code class="string inline">'!'</code> to the end of the value of 
+		each array element.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given an array with strings. Using the 
+		<code class="code inline">map</code> method, reverse the 
+		characters of each string.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Given the following array:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let arr = ['123', '456', '789'];</code>
+	</div>
+	<p>
+		Using the <code class="code inline">map</code> method, transform 
+		this array into the following:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [
+	[1, 2, 3],
+	[4, 5, 6],
+	[7, 8, 9]
+];</code>
+	</div>
+</div>
+
+<h2>Element key</h2>
+<p>
+	The callback function can also take a second 
+	parameter - JavaScript will place the key 
+	of the array element into it.
+</p>
+<p>
+	Let's look at an example. Let's have 
+	an array like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = ['a', 'b', 'c', 'd', 'e'];</code>
+</div>
+<p>
+	Let's write at the end of each element 
+	its index number in the array:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = ['a', 'b', 'c', 'd', 'e'];
+
+let result = arr.map(function(elem, index) {
+	return elem + index;
+});
+
+console.log(result); // shows ['a0', 'b1', 'c2', 'd3', 'e4']</code>
+</div>
+<div class="task">
+	<p>
+		Given an array of numbers. Using the 
+		<code class="code inline">map</code> method, write to each element 
+		of the array the value of this element 
+		multiplied by its index number in the array.
+	</p>
+</div>
+
+<h2>Iterating over multidimensional arrays</h2>
+<p>
+	The <code class="code inline">map</code> method can also be used to 
+	iterate over multidimensional arrays. Let, 
+	for example, given an array like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];</code>
+</div>
+<p>
+	Let's iterate over this array through 
+	<code class="code inline">map</code> and output its elements to 
+	the console:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+
+let result = arr.map(function(elem) {
+	console.log(elem);
+});</code>
+</div>
+<p>
+	As a result, <code class="code inline">console.log</code> will 
+	output <code class="code inline">[1, 2, 3]</code>, then <code class="code inline">[4, 5, 6]</code>, 
+	then <code class="code inline">[7, 8, 9]</code>.
+</p>
+<p>
+	As you can see, subarrays get into the 
+	variable <code class="code inline">elem</code>. Let's now apply 
+	the <code class="code inline">map</code> method to each subarray 
+	and square each of its elements:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let arr = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+
+let result = arr.map(function(elem) {
+	return elem.map(function(num) {
+		return num * num;
+	});
+});
+
+console.log(result);</code>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="54" data-hash="jsPmEnmMp" data-quantity="363" data-num="198"><a href="../../../../../en/javascript/book/prime/functions/recursion-structures.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/enumeration/forEach.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/enumeration/map.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/enumeration/map.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

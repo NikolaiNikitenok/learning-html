@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Simultaneous editing and removal of elements in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will implement the ability to remove and edit page elements in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Simultaneous editing and removal of elements</h1>
+				<div class="content">
+<p>
+	Suppose we have some set of paragraphs:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="parent"&gt;
+	&lt;p&gt;text1&lt;/p&gt;
+	&lt;p&gt;text2&lt;/p&gt;
+	&lt;p&gt;text3&lt;/p&gt;
+&lt;/div&gt;</code>
+</div>
+<p>
+	Let's make these paragraphs so that you can edit 
+	the text of each paragraph and at the same time at 
+	the end of each paragraph there was a link to remove.
+</p>
+<p>
+	When implementing the described task, we are faced 
+	with a certain problem.
+</p>
+<p>
+	In order to understand the essence of the problem, 
+	let's look at the HTML code that will result when 
+	links to remove are added to the end of 
+	each paragraph:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="parent"&gt;
+	&lt;p&gt;text1&lt;a href=""&gt;remove&lt;/a&gt;&lt;/p&gt;
+	&lt;p&gt;text2&lt;a href=""&gt;remove&lt;/a&gt;&lt;/p&gt;
+	&lt;p&gt;text3&lt;a href=""&gt;remove&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;</code>
+</div>
+<p>
+	Imagine now that by clicking on any paragraph, 
+	an input for editing the text will appear in it. 
+	In this case, the entire text of the paragraph 
+	will be included in the input - along with a 
+	link to remove!
+</p>
+<p>
+	This is of course not correct.
+</p>
+<p>
+	A better solution would be to wrap paragraph 
+	texts in <code class="code inline">span</code> tags, like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="parent"&gt;
+	&lt;p&gt;&lt;span&gt;text1&lt;/span&gt;&lt;a href=""&gt;remove&lt;/a&gt;&lt;/p&gt;
+	&lt;p&gt;&lt;span&gt;text2&lt;/span&gt;&lt;a href=""&gt;remove&lt;/a&gt;&lt;/p&gt;
+	&lt;p&gt;&lt;span&gt;text3&lt;/span&gt;&lt;a href=""&gt;remove&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;</code>
+</div>
+<p>
+	For such code, you can simply hang an editing 
+	event not on the paragraph itself, but on 
+	<code class="code inline">span</code> with text. In this case, the edit 
+	input will appear in the <code class="code inline">span</code> tag, and 
+	our removal link will remain intact.
+</p>
+<div class="task">
+	<p>
+		Given the following HTML code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="parent"&gt;
+	&lt;p&gt;&lt;span&gt;text1&lt;/span&gt;&lt;/p&gt;
+	&lt;p&gt;&lt;span&gt;text2&lt;/span&gt;&lt;/p&gt;
+	&lt;p&gt;&lt;span&gt;text3&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;</code>
+	</div>
+	<p>
+		Add a removal link at the end 
+		of each paragraph.
+	</p>
+	<p>
+		Make it so that by clicking on <code class="code inline">span</code> 
+		an input for editing appears in it.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Now let there be no <code class="code inline">span</code> tags initially:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="parent"&gt;
+	&lt;p&gt;text1&lt;/p&gt;
+	&lt;p&gt;text2&lt;/p&gt;
+	&lt;p&gt;text3&lt;/p&gt;
+&lt;/div&gt;</code>
+	</div>
+	<p>
+		First wrap the text of the paragraph in <code class="code inline">span</code> 
+		tags, add editability to these tags, and then add 
+		a removal link at the end of each paragraph.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="94" data-hash="jsPmPrRET" data-quantity="363" data-num="341"><a href="../../../../../../en/javascript/book/prime/dom/practice/elements-group-editing.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../en/javascript/book/prime/dom/practice/elements-stylization.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/practice/removing-and-editing-together.html" class="active">en</a><a href="../../../../../../ru/javascript/book/prime/dom/practice/removing-and-editing-together.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

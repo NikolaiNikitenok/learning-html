@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Передача функций параметрами в JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами рассмотрим передачу функций параметрами в языке JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Передача функций параметрами в JavaScript</h1>
+				<div class="content">
+<p>
+	Функции, подобно числам, строкам и массивам,
+	могут передаваться параметрами в другие функции.
+</p>
+<p>
+	Рассмотрим подробнее на практическом примере.
+	Пусть у нас есть функция <code class="code inline">test</code>, принимающая
+	два параметра:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">test(параметр1, параметр2);</code>
+</div>
+<p>
+	Давайте в первый параметр функции <code class="code inline">test</code>
+	передадим анонимную функцию, возвращающую
+	<code class="number inline">1</code>, а во второй параметр - анонимную
+	функцию, возвращающую <code class="number inline">2</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">test(
+	function() {return 1;},
+	function() {return 2;}
+);</code>
+</div>
+<p>
+	Код, приведенный выше, пока не рабочий, так
+	как мы не создали саму функцию. Сделаем это:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test(func1, func2) {
+	
+}</code>
+</div>
+<p>
+	При определении функции мы указали два параметра
+	- <code class="code inline">func1</code> и <code class="code inline">func2</code>. Эти параметры
+	ничего не знают про то, что в них будет передаваться.
+	Можем, например, передать числа:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">test(1, 2); // вызываем функцию
+
+function test(func1, func2) {
+	console.log(func1); // выведет 1
+	console.log(func2); // выведет 2
+}</code>
+</div>
+<p>
+	А можем передать функции:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">test(
+	function() {return 1;}, // первый параметр
+	function() {return 2;}  // второй параметр
+);
+
+function test(func1, func2) {
+	console.log(func1); // выведет 'function() {return 1;}'
+	console.log(func2); // выведет 'function() {return 2;}'
+}</code>
+</div>
+<p>
+	Как вы видите, теперь в консоль выводится исходный
+	код функций. Давайте сделаем так, чтобы он
+	выводил их результаты. Для этого напишем
+	функциям круглые скобки:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">test(
+	function() {return 1;},
+	function() {return 2;}
+);
+
+function test(func1, func2) {
+	console.log( func1() ); // выведет 1
+	console.log( func2() ); // выведет 2
+}</code>
+</div>
+<p>
+	Давайте выведем в консоль сумму результатов
+	первой и второй функции:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">test(
+	function() {return 1;},
+	function() {return 2;}
+);
+
+function test(func1, func2) {
+	console.log( func1() + func2() ); // выведет 3
+}</code>
+</div>
+<div class="task">
+	<p>
+		Сделайте функцию <code class="code inline">test</code>, параметрами
+		принимающую <code class="number inline">3</code> функции. Передайте в
+		нее первым параметром функцию, возвращающую
+		<code class="number inline">1</code>, вторым - функцию, возвращающую
+		<code class="number inline">2</code>, третьим - функцию, возвращающую
+		<code class="number inline">3</code>. Выведите в консоль сумму результатов
+		функций.
+	</p>
+</div>
+
+<h2>Именованные функции</h2>
+<p>
+	Функции, которые передаются параметрами,
+	не обязательно должны быть анонимными.
+</p>
+<p>
+	Давайте сделаем их как Function Declaration.
+	Первую функцию назовем <code class="code inline">get1</code>, а вторую
+	- <code class="code inline">get2</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function get1() {
+	return 1;
+}
+function get2() {
+	return 2;
+}</code>
+</div>
+<p>
+	Передадим в параметры функции <code class="code inline">test</code>
+	имена функций <code class="code inline">get1</code> и <code class="code inline">get2</code> (то
+	есть их исходный код, а не результат):
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function get1() {
+	return 1;
+}
+function get2() {
+	return 2;
+}
+
+test(get1, get2); // выведет 3
+
+function test(func1, func2) {
+	console.log( func1() + func2() );
+}</code>
+</div>
+<p>
+	Переделаем на Function Expression:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let get1 = function() {
+	return 1;
+}
+let get2 = function() {
+	return 2;
+}
+
+test(get1, get2); // выведет 3
+
+function test(func1, func2) {
+	console.log( func1() + func2() );
+}</code>
+</div>
+<div class="task">
+	<p>
+		Сделайте функцию <code class="code inline">test</code>, параметрами
+		принимающую <code class="number inline">3</code> функции и возвращающую
+		сумму результатов переданных функций.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Сделайте <code class="number inline">3</code> функции, объявив их как
+		Function Declaration и дав им имена <code class="code inline">func1</code>,
+		<code class="code inline">func2</code> и <code class="code inline">func3</code>. Пусть первая
+		функция возвращает <code class="number inline">1</code>, вторая - <code class="number inline">2</code>,
+		а третья - <code class="number inline">3</code>. Передайте эти функции
+		параметром в функцию <code class="code inline">test</code> из предыдущей
+		задачи.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Модифицируйте предыдущую задачу так, чтобы
+		функции были объявлены как Function Expression
+		с теми же именами.
+	</p>
+</div>
+
+<h2>Параметры передаваемых функций</h2>
+<p>
+	Пусть у нас есть функция <code class="code inline">test</code>, которая
+	параметром принимает другую функцию и в консоль
+	выводит результат работы этой переданной функции:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test(func) {
+	console.log( func() );
+}</code>
+</div>
+<p>
+	Пусть переданная функция <code class="code inline">func</code> параметром
+	принимает число и что-то с ним делает. Передадим
+	ей, например, число <code class="number inline">3</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test(func) {
+	console.log( func(3) );
+}</code>
+</div>
+<p>
+	Давайте теперь вызовем функцию <code class="code inline">test</code>,
+	передав в нее параметром анонимную функцию.
+	Эта анонимная функции параметром будет принимать
+	число и возвращать квадрат этого числа.
+</p>
+<p>
+	В результате всего этого наша конструкция
+	выведет квадрат числа <code class="number inline">3</code>, то есть <code class="number inline">9</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">// Выведет 9:
+test(
+	function(num) {
+		return num * num;
+	}
+);
+
+function test(func) {
+	console.log(func(3));
+}</code>
+</div>
+<p>
+	Оформим код более изящно:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">// Выведет 9:
+test(function(num) {
+	return num * num;
+});
+
+function test(func) {
+	console.log(func(3));
+}</code>
+</div>
+<div class="task">
+	<p>
+		Скопируйте код моей функции <code class="code inline">test</code>.
+		Вызовите эту функцию, передав ей параметром
+		анонимную функцию, которая параметром будет
+		принимать число и возвращать его куб.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Переделайте ваш код так, чтобы передаваемая
+		функция была не анонимной, а была определена
+		как Function Declaration с именем <code class="code inline">func</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Переделайте передаваемую функцию на Function
+		Expression с тем же именем <code class="code inline">func</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Пусть передаваемая функция теперь принимает
+		два параметра и возвращает их сумму. При
+		вызове передаваемой функции внутри <code class="code inline">test</code>
+		передайте в передаваемую функцию число <code class="number inline">2</code>
+		и число <code class="number inline">3</code>. Выведите алертом результат.
+	</p>
+</div>
+
+<h2>Передадим и число параметром</h2>
+<p>
+	Давайте теперь число, с которым что-то делает
+	передаваемая функция, не будем жестко хранить
+	внутри <code class="code inline">test</code>, а передадим первым параметром:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test(num, func) { // первым параметром приходит число
+	console.log(func(num));
+}</code>
+</div>
+<p>
+	Воспользуемся нашей функцией:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test(num, func) {
+	console.log(func(num));
+}
+
+// Выведет 4:
+test(2, function(num) {
+	return num * num;
+});</code>
+</div>
+<p>
+	В удобство нашей конструкции: у нас есть
+	одна функция <code class="code inline">test</code>, параметром принимающая
+	число. Но то, что будет происходить с числом
+	не зашито жестко в функции <code class="code inline">test</code>.
+</p>
+<p>
+	Мы можем, к примеру, вторым параметром функции
+	<code class="code inline">test</code> передать функцию, возводящую
+	в квадрат, а можем, к примеру, возводящую в куб:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test(num, func) {
+	console.log(func(num));
+}
+
+// Найдем квадрат числа:
+test(2, function(num) {
+	return num * num; // возвращает квадрат
+});
+
+// Найдем куб числа:
+test(2, function(num) {
+	return num * num * num; // возвращает куб
+});</code>
+</div>
+<div class="task">
+	<p>
+		Пусть функция <code class="code inline">test</code> первым параметром
+		принимает число, а вторым и третьим параметрами
+		- функции, также параметром принимающие числа.
+	</p>
+	<p>
+		Пусть функция <code class="code inline">test</code> возвращает сумму
+		результатов переданных функций:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function test(num, func1, func2) {
+	return func1(num) + func2(num);
+}</code>
+	</div>
+	<p>
+		Вызовите функцию <code class="code inline">test</code>, первым параметром
+		передав число <code class="number inline">3</code>, вторым параметром
+		функцию, возводящую число в квадрат, а третьим
+		- функцию, возводящую число в куб. Выведите
+		результат работы в консоль.
+	</p>
+</div>
+
+<h2>Применение</h2>
+<p>
+	Давайте сделаем функцию, которая параметром
+	будет принимать массив, а вторым параметром
+	- функцию. Переданная функция должна будет
+	применится к каждому элементу массива:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test(arr, func) {
+	// вернем измененный массив
+}</code>
+</div>
+<p>
+	Реализуем:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test(arr, func) {
+	// Запускаем цикл:
+	for (let i = 0; i &lt; arr.length; i++) {
+		arr[i] = func(arr[i]); // применяем функцию к каждому элементу
+	}
+	
+	return arr; // возвращаем измененный массив
+}</code>
+</div>
+<p>
+	Применим нашу функцию к какому-нибудь массиву:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test(arr, func) {
+	for (let i = 0; i &lt; arr.length; i++) {
+		arr[i] = func(arr[i]);
+	}
+	
+	return arr;
+}
+
+// Преобразуем массив чисел в массив их квадратов:
+let result = test(
+	[1, 2, 3],
+	function(num) {return num * num;}
+);
+
+console.log(result); // выведет [1, 4, 9]</code>
+</div>
+<p>
+	Оформим вызов нашей функции изящнее (так
+	более принято):
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function test(arr, func) {
+	for (let i = 0; i &lt; arr.length; i++) {
+		arr[i] = func(arr[i]);
+	}
+	
+	return arr;
+}
+
+// Оформим код изящнее:
+let result = test([1, 2, 3], function(num) {
+	return num * num;
+});
+
+console.log(result); // выведет [1, 4, 9]</code>
+</div>
+<div class="task">
+	<p>
+		Не подсматривая в мой код реализуйте такую
+		же функцию <code class="code inline">test</code> самостоятельно.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Вызовите созданную вами функцию <code class="code inline">test</code>,
+		передав ей параметром массив с числами. Сделайте
+		так, чтобы функция вернула массив с кубами
+		этих чисел.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/prime/" data-persent="51" data-hash="jsPmFAPFAP" data-quantity="363" data-num="185"><a href="../../../../../ru/javascript/book/prime/functions/functions-object.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/javascript/book/prime/functions/named-functional-expressions.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/functions/passing-functions-as-parameters.html">en</a><a href="../../../../../ru/javascript/book/prime/functions/passing-functions-as-parameters.html" class="active">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

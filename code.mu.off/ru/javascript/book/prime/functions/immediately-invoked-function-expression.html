@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Вызов функции на месте в JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами разберем вызов функции на месте в JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Вызов функции на месте в JavaScript</h1>
+				<div class="content">
+<p>
+	Сейчас мы разберем прием, который позволяет
+	вызвать функцию прямо на месте ее объявления.
+	Такая конструкция называется <dfn>Immediately
+	Invoked Function Expression (IIFE)</dfn>.
+</p>
+<p>
+	Давайте посмотрим на примере. Пусть у нас
+	есть вот такое функциональное выражение:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let func = function() {
+	console.log('!');
+};
+
+func(); // выведет '!'</code>
+</div>
+<p>
+	Давайте теперь не будем присваивать нашу
+	функцию в переменную, а вызовем ее сразу
+	же, "на месте". Для этого после функции поставим
+	круглые скобки:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">+function() {
+	console.log('!'); // выведет '!'
+}();</code>
+</div>
+<p>
+	Наличие плюса в данном случае является обязательным
+	условием, так как без него функция станет
+	Function Declaration, а их на месте (да еще
+	без имени) вызывать нельзя. Конечно же, вместо
+	плюса может быть все, что угодно, - главное,
+	чтобы наша функция была функциональным выражением.
+</p>
+<div class="task">
+	<p>
+		Определите, не запуская код, что выведется
+		в консоль:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">!function() {
+	console.log('!');
+}();</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Определите, не запуская код, что выведется
+		в консоль:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">function() {
+	console.log('!');
+}();</code>
+	</div>
+</div>
+
+<h2>Присваивание в переменную</h2>
+<p>
+	Пусть теперь наша вызываемая на месте функция
+	не выводит что-то алертом в консоль, а возвращает
+	через <code class="code inline">return</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">+function() {
+	return '!';
+}();</code>
+</div>
+<p>
+	Давайте присвоим результат работы нашей функции
+	в переменную и выведем его в консоль:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let result = function() {
+	return '!';
+}();
+
+console.log(result); // выведет '!'</code>
+</div>
+<p class="comment">
+	Так как в данном случае идет присваивание
+	в переменную, то плюс уже не нужен.
+</p>
+<div class="task">
+	<p>
+		Определите, не запуская код, что выведется
+		в консоль:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let result = function() {
+	return '!';
+}();
+		
+console.log(result);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Определите, не запуская код, что выведется
+		в консоль:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let result = function() {
+	return '!';
+};
+		
+console.log(result);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Определите, не запуская код, что выведется
+		в консоль:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let result = function() {
+	return '!';
+};
+		
+console.log(result());</code>
+	</div>
+</div>
+
+<h2>Применение вызова на месте</h2>
+<p>
+	Давайте применим вызов функции на месте в
+	качестве одного из слагаемых:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let sum = 1 + function() {
+	return 2;
+}();
+
+console.log(sum); // выведет 3</code>
+</div>
+<div class="task">
+	<p>
+		Определите, не запуская код, что выведется
+		в консоль:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let result = function() {return 1;}() + function() {return 2;}();
+console.log(result);</code>
+	</div>
+</div>
+
+<h2>Круглые скобки</h2>
+<p>
+	Обычно при вызове функции на месте вместо
+	плюса используются круглые скобки, так как
+	такой способ оформления считается более очевидным:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">(function() {
+	console.log('!');
+}());</code>
+</div>
+<p>
+	Чаще всего круглые скобки вызова функции
+	ставят снаружи, вот так:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">(function() {
+	console.log('!');
+})();</code>
+</div>
+<div class="task">
+	<p>
+		Определите, не запуская код, что выведется
+		в консоль:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let result = (function() {
+	return '!';
+}());
+
+console.log(result);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Определите, не запуская код, что выведется
+		в консоль:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let result = (function() {
+	return '!';
+})();
+
+console.log(result);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Определите, не запуская код, что выведется
+		в консоль:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let result = (function() {
+	return '!';
+});
+
+console.log(result);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Определите, не запуская код, что выведется
+		в консоль:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let result = (function() {
+	return '!';
+});
+
+console.log(result());</code>
+	</div>
+</div>
+
+<h2>Параметры</h2>
+<p>
+	Пусть наша функция, которую мы собираемся
+	вызывать на месте, параметром принимает строку
+	для вывода алертом:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function(str) {
+	console.log(str);
+}</code>
+</div>
+<p>
+	Давайте вызовем нашу функцию на месте, передав
+	ей строку для вывода в консоль:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">(function(str) {
+	console.log(str); // выведет '!!!'
+})('!!!');</code>
+</div>
+<div class="task">
+	<p>
+		Определите, не запуская код, что выведется
+		в консоль:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">(function(num1, num2) {
+	console.log(num1 + num2);
+})(1, 2);</code>
+	</div>
+</div>
+
+<h2>Несколько скобок</h2>
+<p>
+	Пусть вам предложат хитрую задачу: сделать
+	несколько вызывающих скобок, вот так:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">(function() {
+	// какой-то код
+})()(); // несколько вызывающих скобок</code>
+</div>
+<p>
+	Если поразмыслить, то становится очевидно,
+	что в данном случае вызов функции на месте
+	должен возвращать анонимную функцию, вот так:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">(function() {
+	return function() {
+		console.log('!');
+	};
+})()(); // выведет '!'</code>
+</div>
+<div class="task">
+	<p>
+		Допишите следующий код так, чтобы его запуск
+		алертом выводил <code class="string inline">'!'</code>:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">(function() {
+	// какой-то код
+})()()();</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Допишите следующий код так, чтобы его запуск
+		выводил сумму переданных параметрами чисел:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">(function() {
+	// какой-то код
+})(1)(2);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Допишите следующий код так, чтобы его запуск
+		выводил сумму переданных параметрами чисел:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">(function() {
+	// какой-то код
+})(1)(2)(3);</code>
+	</div>
+</div>
+
+<h2>Подводные камни</h2>
+<p>
+	Давайте рассмотрим два кусочка кода.
+</p>
+<p>
+	Первый:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let result = 1
++function() {
+	return 2;
+}();
+
+console.log(result);</code>
+</div>
+<p>
+	Второй:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let result = 1;
++function() {
+	return 2;
+}();
+
+console.log(result);</code>
+</div>
+<p>
+	Эти два кусочка кода практически одинаковы,
+	но если их запустить - результат будет отличаться.
+	Первый код выведет в консоль число <code class="number inline">3</code>,
+	а второй - число <code class="number inline">1</code>.
+</p>
+<p>
+	Почему получилась такая разница: все дело
+	в том, что в одном случае в первой строке
+	кода в конце отсутствует точка с запятой,
+	а во втором случае - присутствует.
+</p>
+<p>
+	Вы можете спросить: как же так, ведь в JavaScript
+	точка с запятой в конце команды не является
+	обязательной! На самом деле это не совсем
+	так. Давайте разберемся, что у нас на самом
+	деле происходит.
+</p>
+<p>
+	Первый код можно переписать вот так:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let result = 1 + function() {
+	return 2;
+}();
+
+console.log(result); // выведет 3</code>
+</div>
+<p>
+	Теперь сразу становится очевидным, что к
+	единице прибавляется результат вызова функции
+	на месте, то есть <code class="number inline">2</code>. Поэтому итоговый
+	результат будет <code class="number inline">3</code>.
+</p>
+<p>
+	Если же после единицы поставить точку с запятой,
+	то код будет воспринят интерпретатором по-другому:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">// Первая команда:
+let result = 1;
+
+// Вторая команда:
++function() {
+	return 2;
+}();
+
+// Третья команда:
+console.log(result); // выведет 1</code>
+</div>
+<p>
+	То есть присваивание в переменную и вызов
+	функции на месте станут разными командами.
+	И все из-за наличия точки с запятой!
+</p>
+<p>
+	Получается, что в данном случае вызов функции
+	на месте вообще ничего не делает - просто
+	вникуда возвращает число <code class="number inline">2</code>, которое
+	никак не влияет на переменную <code class="code inline">result</code>.
+</p>
+<p>
+	Давайте тогда разберемся, а почему мы вообще
+	можем не писать точку с запятой в JavaScript.
+	Пусть у нас есть такой код без точек с запятыми:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let result = 1 // в result запишется 1
+let test = 2   // в test запишется 2</code>
+</div>
+<p>
+	Он работает корректно, так как интерпретатор
+	сам расставил в конце каждой строки точку
+	с запятой.
+</p>
+<p>
+	Но посмотрите на такой код:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let result = 1
++ 2; // в result запишется 3</code>
+</div>
+<p>
+	Теперь точка с запятой в конце первой строки
+	не поставится автоматически, так как интерпретатор
+	понимает, что команда второй строки - это
+	часть команды первой строки.
+</p>
+<p>
+	Но если мы сами поставим точку с запятой
+	- результат будет совсем другим:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let result = 1; // в result запишется 1
++ 2; // команда ничего не делает, но и ошибки не будет</code>
+</div>
+<p>
+	Получается, что интерпретатор сам ставит
+	точку с запятой, только если следующая команда
+	не является частью предыдущей.
+</p>
+<p>
+	А теперь посмотрите на этот код:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let result = 1
++function() {
+	return 2;
+}();
+
+console.log(result);</code>
+</div>
+<p>
+	Действительно, вторая строка - просто продолжение
+	команды первой строки и интерпретатор не
+	ставит точку с запятой автоматически.
+</p>
+<p>
+	Именно поэтому, если мы сами напишем точку
+	с запятой в конце первой строки - результат
+	будет совсем другим.
+</p>
+<p>
+	Это говорит о том, что <i>лучше всего всегда
+	ставить точку с запятой в нужных местах,
+	во избежание проблем</i>.
+</p>
+
+<h2>Точка с запятой для безопасности</h2>
+<p>
+	Пусть теперь наша вызывающаяся на месте функция
+	будет не с плюсом в начале, а обернута круглыми
+	скобками, вот так:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">(function() {
+	console.log(1); // выведет 1
+})();</code>
+</div>
+<p>
+	Пусть переменная <code class="code inline">num</code> задается снаружи
+	функции:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 1; // точка с запятой стоит
+
+(function() {
+	console.log(num); // выведет 1
+})();</code>
+</div>
+<p>
+	Пусть теперь мы забыли поставить точку с запятой:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 1
+
+(function() {
+	console.log(num); //!! выдаст ошибку
+})();</code>
+</div>
+<p>
+	Получается, что такой код выдаст ошибку,
+	так как JavaScript воспринимает нашу функцию
+	как продолжение команды первой строки.
+</p>
+<p>
+	Чтобы избежать таких проблем, перед вызовом
+	функции на месте всегда необходимо ставить
+	точку с запятой, вот так:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let num = 1
+
+;(function() {
+	console.log(num); // выведет 1
+})();</code>
+</div>
+<p>
+	Кажется, что проблема несколько надуманна.
+	На самом деле, это не так. Может быть такая
+	ситуация, что у вас на странице подключаются
+	несколько скриптов из отдельный файлов. В
+	этом случае в конце одного файла может быть
+	опущена точка с запятой и это автоматически
+	приведет к проблеме, если второй файл начинается
+	с вызова функции на месте.
+</p>
+<p>
+	Поэтому, всегда-всегда ставьте точку с запятой
+	перед вызовом функции на месте, даже если
+	вы на данный момент уверены, что проблем
+	не будет. Они могут возникнуть потом.
+</p>
+<p>
+	Применим сказанное выше и вызовем функцию
+	на месте, поставив в начале точку с запятой:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">;(function() {
+	console.log(1); // выведет 1
+})();</code>
+</div>
+<div class="task">
+	<p>
+		Определите, не запуская код, что выведется
+		в консоль:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let str = 'str';
+
+(function() {
+	console.log(1);
+})();</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Определите, не запуская код, что выведется
+		в консоль:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let str = 'str'
+
+(function() {
+	console.log(1);
+})();</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/prime/" data-persent="53" data-hash="jsPmFAIIFE" data-quantity="363" data-num="192"><a href="../../../../../ru/javascript/book/prime/functions/closures.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/javascript/book/prime/functions/closures-and-IIEF.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/functions/immediately-invoked-function-expression.html">en</a><a href="../../../../../ru/javascript/book/prime/functions/immediately-invoked-function-expression.html" class="active">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

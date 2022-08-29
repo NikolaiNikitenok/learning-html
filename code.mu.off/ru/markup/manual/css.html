@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Справочник по CSS | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../js/location.js?v=3"></script>
+		<script src="../../../js/locale.js?v=5"></script>
+		<script src="../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="Удобный справочник CSS, написанный простым языком, с примерами.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Справочник по CSS</h1>
+				<div class="menu" data-module="menu" data-mode="tabs">
+<section data-name="текст">
+	<h2>Самое нужное</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/property/font-size.html">
+			размер текста
+		</a>
+		<a href="../../../ru/markup/manual/css/property/font-style.html">
+			курсивный текст
+		</a>
+		<a href="../../../ru/markup/manual/css/property/font-weight.html">
+			жирный текст
+		</a>
+		<a href="../../../ru/markup/manual/css/property/line-height.html">
+			межстрочный интервал
+		</a>
+		<a href="../../../ru/markup/manual/css/property/font-family.html">
+			семейство (тип) шрифта
+			<span class="__label__ __acceptable__">ссылку на веб безоп</span>
+		</a>
+		<a href="../../../ru/markup/manual/css/property/font.html">
+			сокращение для шрифта
+		</a>
+		<a href="../../../ru/markup/manual/css/property/text-indent.html">
+			красная строка
+		</a>
+		<a href="../../../ru/markup/manual/css/property/text-align.html">
+			выравнивание текста
+		</a>
+	</div>
+	
+	<h2>Редкое</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/property/text-decoration.html">
+			под- над- пере- черкивание
+		</a>
+		<a href="../../../ru/markup/manual/css/property/text-decoration-line.html">
+			расположение линии у текста
+		</a>
+		<a href="../../../ru/markup/manual/css/property/text-decoration-style.html">
+			тип линии у текста
+		</a>
+		<a href="../../../ru/markup/manual/css/property/text-decoration-color.html">
+			цвет линии у текста
+		</a>
+		<a href="../../../ru/markup/manual/css/property/text-transform.html">
+			смена регистра
+		</a>
+		<a href="../../../ru/markup/manual/css/property/font-variant.html">
+			маленькие заглавные буквы
+		</a>
+		
+		<a href="../../../ru/markup/manual/css/property/font-size-adjust.html">
+			контроль размера шрифта
+			<span class="__label__ __acceptable__">че то не работает</span>
+		</a>
+		
+		<a href="../../../ru/markup/manual/css/property/letter-spacing.html">
+			промежуток между буквами
+		</a>
+		<a href="../../../ru/markup/manual/css/property/word-spacing.html">
+			промежуток между словами
+		</a>
+		<a href="../../../ru/markup/manual/css/property/text-align-last.html">
+			выравнивание последней строки
+		</a>
+		<a href="../../../ru/markup/manual/css/property/vertical-align.html">
+			выравнивание по вертикали
+			<span class="__label__ __acceptable__">доработать статью, примеры сделать</span>
+		</a>
+		<a href="../../../ru/markup/manual/css/property/quotes.html">
+			вид кавычек
+			<span class="__label__ __acceptable__">ссылка на htmlbook</span>
+		</a>
+	</div>
+	
+	<h2>Переносы</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/property/white-space.html">
+			пробелы и переносы
+		</a>
+		<a href="../../../ru/markup/manual/css/property/word-break.html">
+			переносы длинных слов
+		</a>
+		<a href="../../../ru/markup/manual/css/property/overflow-wrap.html">
+			переносы длинных слов
+		</a>
+		<a href="../../../ru/markup/manual/css/property/overflow.html">
+			обрезание, полосы прокрутки
+		</a>
+		<a href="../../../ru/markup/manual/css/property/overflow-x.html">
+			overflow по горизонтали
+		</a>
+		<a href="../../../ru/markup/manual/css/property/overflow-y.html">
+			overflow по вертикали
+		</a>
+		<a href="../../../ru/markup/manual/css/property/tab-size.html">
+			размер табуляции
+		</a>
+		<a href="../../../ru/markup/manual/css/property/text-overflow.html">
+			добавление троеточия
+		</a>
+		<a href="../../../ru/markup/manual/css/property/hyphens.html">
+			расстановка переносов
+		</a>
+	</div>
+</section>
+<section data-name="оформление">
+	<h2>Цвет</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/property/color.html">
+			цвет текста
+		</a>
+	</div>
+	
+	<h2>Границы</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/property/border.html">
+			сокращение для границы
+		</a>
+		<a href="../../../ru/markup/manual/css/property/border-left.html">
+			левая граница
+		</a>
+		<a href="../../../ru/markup/manual/css/property/border-right.html">
+			правая граница
+		</a>
+		<a href="../../../ru/markup/manual/css/property/border-top.html">
+			верхняя граница
+		</a>
+		<a href="../../../ru/markup/manual/css/property/border-bottom.html">
+			нижняя граница
+		</a>
+		<a href="../../../ru/markup/manual/css/property/border-width.html">
+			толщина границы
+		</a>
+		<a href="../../../ru/markup/manual/css/property/border-style.html">
+			тип границы
+		</a>
+		<a href="../../../ru/markup/manual/css/property/border-color.html">
+			цвет границы
+		</a>
+		<a href="../../../ru/markup/manual/css/property/border-left-width.html">
+			толщина левой границы
+		</a>
+		<a href="../../../ru/markup/manual/css/property/border-right-width.html">
+			толщина правой границы
+		</a>
+		<a href="../../../ru/markup/manual/css/property/border-top-width.html">
+			толщина верхней границы
+		</a>
+		<a href="../../../ru/markup/manual/css/property/border-bottom-width.html">
+			толщина нижней границы
+		</a>
+		<a href="../../../ru/markup/manual/css/property/border-left-style.html">
+			тип левой границы
+		</a>
+		<a href="../../../ru/markup/manual/css/property/border-right-style.html">
+			тип правой границы
+		</a>
+		<a href="../../../ru/markup/manual/css/property/border-top-style.html">
+			тип верхней границы
+		</a>
+		<a href="../../../ru/markup/manual/css/property/border-bottom-style.html">
+			тип нижней границы
+		</a>
+		<a href="../../../ru/markup/manual/css/property/border-left-color.html">
+			цвет левой границы
+		</a>
+		<a href="../../../ru/markup/manual/css/property/border-right-color.html">
+			цвет правой границы
+		</a>
+		<a href="../../../ru/markup/manual/css/property/border-top-color.html">
+			цвет верхней границы
+		</a>
+		<a href="../../../ru/markup/manual/css/property/border-bottom-color.html">
+			цвет нижней границы
+		</a>
+	</div>
+	
+	<h2>Скругление</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/property/border-radius.html">
+			скругленные уголки
+			<span class="__label__ __acceptable__">эл скругл отдел статью</span>
+		</a>
+		<a href="../../../ru/markup/manual/css/property/border-top-left-radius.html">
+			верхний левый угол
+		</a>
+		<a href="../../../ru/markup/manual/css/property/border-top-right-radius.html">
+			верхний правый угол
+		</a>
+		<a href="../../../ru/markup/manual/css/property/border-bottom-left-radius.html">
+			нижний левый угол
+		</a>
+		<a href="../../../ru/markup/manual/css/property/border-bottom-right-radius.html">
+			нижний правый угол
+		</a>
+	</div>
+	
+	<h2>Рамка</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/property/outline.html">
+			сокращение для рамки
+		</a>
+		<a href="../../../ru/markup/manual/css/property/outline-width.html">
+			толщина рамки
+		</a>
+		<a href="../../../ru/markup/manual/css/property/outline-style.html">
+			тип рамки
+		</a>
+		<a href="../../../ru/markup/manual/css/property/outline-color.html">
+			цвет рамки
+		</a>
+		<a href="../../../ru/markup/manual/css/property/outline-offset.html">
+			смещение рамки
+		</a>
+	</div>
+	
+	<h2>Фон</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/property/background.html">
+			свойство-сокращение для фона
+			<span class="__label__ __acceptable__">несколько фонов, примеры тут</span>
+		</a>
+		<a href="../../../ru/markup/manual/css/property/background-color.html">
+			цвет фона
+		</a>
+		<a href="../../../ru/markup/manual/css/property/background-image.html">
+			картинка фона
+			<span class="__label__ __acceptable__">последний пример - цвет правильно</span>
+		</a>
+		<a href="../../../ru/markup/manual/css/property/background-attachment.html">
+			поведение фона при прокрутке
+		</a>
+		<a href="../../../ru/markup/manual/css/property/background-position.html">
+			позиция фоновой картинки
+			<span class="__label__ __acceptable__">отсчет справа - отдел статью</span>
+		</a>
+		<a href="../../../ru/markup/manual/css/property/background-repeat.html">
+			способ повторения фона
+		</a>
+		<a href="../../../ru/markup/manual/css/property/background-origin.html">
+			позиция картинки фона
+		</a>
+		<a href="../../../ru/markup/manual/css/property/background-clip.html">
+			позиция фона
+		</a>
+		<a href="../../../ru/markup/manual/css/property/background-size.html">
+			размер картинки фона
+		</a>
+	</div>
+	
+	<h2>Тени</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/property/text-shadow.html">
+			тень текста
+		</a>
+		<a href="../../../ru/markup/manual/css/property/box-shadow.html">
+			тень контейнера
+		</a>
+	</div>
+	
+	<h2>Прозрачность</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/property/opacity.html">
+			прозрачность
+			<span class="__label__ __acceptable__">ссылку на rgba</span>
+		</a>
+		<a href="../../../ru/markup/manual/css/property/visibility.html">
+			видимость элементов
+			<span class="__label__ __acceptable__">примеры</span>
+		</a>
+	</div>
+	
+	<h2>Градиенты</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/function/linear-gradient.html">
+			линейный
+		</a>
+		<a href="../../../ru/markup/manual/css/function/radial-gradient.html">
+			радиальный
+		</a>
+		<a href="../../../ru/markup/manual/css/function/repeating-linear-gradient.html">
+			повторяющийся линейный
+		</a>
+		<a href="../../../ru/markup/manual/css/function/repeating-radial-gradient.html">
+			повторяющийся радиальный
+		</a>
+	</div>
+	
+	<h2>Картинка границы</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/property/border-image.html">
+			граница в виде картинки
+		</a>
+		<a href="../../../ru/markup/manual/css/property/border-image-source.html">
+			путь к картинке границы
+		</a>
+		<a href="../../../ru/markup/manual/css/property/border-image-slice.html">
+			разбиение картинки для границы на части
+		</a>
+		<a href="../../../ru/markup/manual/css/property/border-image-repeat.html">
+			способ повторения картинки границы
+		</a>
+		<a href="../../../ru/markup/manual/css/property/border-image-outset.html">
+			сдвиг картинки границы
+		</a>
+		<a href="../../../ru/markup/manual/css/property/border-image-width.html">
+			масштабирование картинки границы
+		</a>
+	</div>
+	
+	<h2>Работа с мышкой</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/pseudoelement/selection.html" data-prefix="::">
+			выделение текста
+		</a>
+		<a href="../../../ru/markup/manual/css/property/user-select.html">
+			запрет выделения текста
+			<span class="__label__ __acceptable__">поддержка</span>
+		</a>
+		<a href="../../../ru/markup/manual/css/property/pointer-events.html">
+			реакция на мышь
+		</a>
+		<a href="../../../ru/markup/manual/css/property/cursor.html">
+			вид курсора
+			<span class="__label__ __acceptable__">допилить попозже</span>
+		</a>
+	</div>
+</section>
+<section data-name="теги">
+	<h2>Списки</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/property/list-style-type.html">
+			тип маркеров списка
+		</a>
+		<a href="../../../ru/markup/manual/css/property/list-style-position.html">
+			позиция маркеров
+		</a>
+		<a href="../../../ru/markup/manual/css/property/list-style-image.html">
+			картинка для маркеров
+		</a>
+		<a href="../../../ru/markup/manual/css/property/list-style.html">
+			сокращение для списков
+			<span class="__label__ __acceptable__">примеры</span>
+		</a>
+	</div>
+	
+	<h2>Таблицы</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/property/border-collapse.html">
+			схлопывание границ
+		</a>
+		<a href="../../../ru/markup/manual/css/property/border-spacing.html">
+			расстояние между ячейками
+		</a>
+		<a href="../../../ru/markup/manual/css/property/empty-cells.html">
+			отображение пустых ячеек
+		</a>
+		<a href="../../../ru/markup/manual/css/property/table-layout.html">
+			расчет ячеек таблицы
+			<span class="__label__ __acceptable__">надо более полно расписать</span>
+		</a>
+	</div>
+	
+	<h2>Ссылки</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/pseudoclass/link.html" data-prefix=":">
+			ссылка до посещения
+		</a>
+		<a href="../../../ru/markup/manual/css/pseudoclass/visited.html" data-prefix=":">
+			посещенная ссылка
+		</a>
+		<a href="../../../ru/markup/manual/css/pseudoclass/hover.html" data-prefix=":">
+			наведение на ссылку
+		</a>
+		<a href="../../../ru/markup/manual/css/pseudoclass/active.html" data-prefix=":">
+			нажатие на ссылку
+		</a>
+	</div>
+	
+	<h2>Формы</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/pseudoclass/focus.html" data-prefix=":">
+			инпут в фокусе
+		</a>
+		<a href="../../../ru/markup/manual/css/pseudoelement/placeholder.html" data-prefix="::">
+			подсказка в инпуте
+		</a>
+		<a href="../../../ru/markup/manual/css/pseudoclass/checked.html" data-prefix=":">
+			отмеченный флажок или радио
+		</a>
+		<a href="../../../ru/markup/manual/css/pseudoclass/disabled.html" data-prefix=":">
+			неактивный инпут
+		</a>
+		<a href="../../../ru/markup/manual/css/pseudoclass/enabled.html" data-prefix=":">
+			активный инпут
+		</a>
+
+		<!--
+		<a href="../../../ru/markup/manual/css/required-optional.html">
+			обязательность заполнения инпута
+		</a>
+		<a href="../../../ru/markup/manual/css/valid-invalid.html">
+			корректно или нет <br> заполненный инпут
+		</a>
+		-->
+		<!--
+		<a href="../../../ru/markup/manual/css/indeterminate.html">
+			неопределенное <br> состояние флажка
+		</a>
+		<a href="../../../ru/markup/manual/css/read-only.html">
+			с атрибутом readonly
+		</a>
+		<a href="../../../ru/markup/manual/css/default.html">
+			инпут в фокусе
+		</a>
+
+		-->
+	</div>
+</section>
+<section data-name="размеры">
+	<h2>Размеры</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/property/width.html">
+			ширина блока
+		</a>
+		<a href="../../../ru/markup/manual/css/property/height.html">
+			высота блока
+			<span class="__label__ __acceptable__">ссылку на высоту в %</span>
+		</a>
+		<a href="../../../ru/markup/manual/css/property/min-width.html">
+			минимальная ширина
+		</a>
+		<a href="../../../ru/markup/manual/css/property/max-width.html">
+			максимальная ширина
+		</a>
+		<a href="../../../ru/markup/manual/css/property/min-height.html">
+			минимальная высота
+		</a>
+		<a href="../../../ru/markup/manual/css/property/max-height.html">
+			максимальная высота
+			<span class="__label__ __acceptable__">пример нужен</span>
+		</a>
+	</div>
+	
+	<h2>Отступы</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/property/margin.html">
+			внешний отступ
+			<span class="__label__ __acceptable__">ссылку выравнивание по центру, на схлоп, ссылку на отриц марджин</span>
+		</a>
+		<a href="../../../ru/markup/manual/css/property/margin-top.html">
+			внешний отступ сверху
+		</a>
+		<a href="../../../ru/markup/manual/css/property/margin-bottom.html">
+			внешний отступ снизу
+		</a>
+		<a href="../../../ru/markup/manual/css/property/margin-left.html">
+			внешний отступ слева
+		</a>
+		<a href="../../../ru/markup/manual/css/property/margin-right.html">
+			внешний отступ справа
+		</a>
+		<a href="../../../ru/markup/manual/css/property/padding.html">
+			внутренний отступ
+			<span class="__label__ __acceptable__">расширение элементов</span>
+		</a>
+		<a href="../../../ru/markup/manual/css/property/padding-top.html">
+			внутренний отступ сверху
+		</a>
+		<a href="../../../ru/markup/manual/css/property/padding-bottom.html">
+			внутренний отступ снизу
+		</a>
+		<a href="../../../ru/markup/manual/css/property/padding-left.html">
+			внутренний отступ слева
+		</a>
+		<a href="../../../ru/markup/manual/css/property/padding-right.html">
+			внутренний отступ справа
+		</a>
+	</div>
+	
+	<h2>Разное</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/property/box-sizing.html">
+			способ рассчета padding, border и width
+		</a>
+		<a href="../../../ru/markup/manual/css/property/display.html">
+			способ отображение элементов
+			<span class="__label__ __acceptable__">допилить</span>
+		</a>
+		<a href="../../../ru/markup/manual/css/property/resize.html">
+			изменение размера
+		</a>
+	</div>
+	
+	<h2>Вычисления</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/function/calc.html" data-postfix="()">
+			математические операции
+			<span class="__label__ __acceptable__">больше примеров</span>
+		</a>
+		<a href="../../../ru/markup/manual/css/function/min.html" data-postfix="()">
+			минимальное из значений
+			<span class="__label__ __acceptable__">поддержка</span>
+		</a>
+		<a href="../../../ru/markup/manual/css/function/max.html" data-postfix="()">
+			максимальное из значений
+			<span class="__label__ __acceptable__">поддержка</span>
+		</a>
+	</div>
+</section>
+<section data-name="размещение">
+	<h2>Флексбоксы</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/property/flex-direction.html">
+			направление осей
+		</a>
+		<a href="../../../ru/markup/manual/css/property/justify-content.html">
+			выравнивание по главной оси
+		</a>
+		<a href="../../../ru/markup/manual/css/property/align-items.html">
+			выравнивание по поперечной оси
+		</a>
+		<a href="../../../ru/markup/manual/css/property/flex-wrap.html">
+			многострочная расстановка блоков
+		</a>
+		<a href="../../../ru/markup/manual/css/property/flex-flow.html">
+			сокращение для flex-direction и flex-wrap
+		</a>
+		<a href="../../../ru/markup/manual/css/property/align-self.html">
+			выравнивание блока по поперечной оси
+		</a>
+		<a href="../../../ru/markup/manual/css/property/order.html">
+			порядок следования
+			<span class="__label__ __acceptable__">точно отриц можно?</span>
+		</a>
+		<a href="../../../ru/markup/manual/css/property/flex-basis.html">
+			базовый размер блока
+			<span class="__label__ __acceptable__">todo</span>
+		</a>
+		<a href="../../../ru/markup/manual/css/property/flex-grow.html">
+			"жадность" блока
+			<span class="__label__ __acceptable__">todo</span>
+		</a>
+		<a href="../../../ru/markup/manual/css/property/flex-shrink.html">
+			фактор "сжимаемости" блока
+			<span class="__label__ __acceptable__">todo</span>
+		</a>
+		<a href="../../../ru/markup/manual/css/property/flex.html">
+			сокращение для flex-grow, flex-shrink и flex-basis
+			<span class="__label__ __acceptable__">todo</span>
+		</a>
+	</div>
+	
+	<h2>Позиционирование</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/property/position.html">
+			позиционирование
+			<span class="__label__ __acceptable__">примеры и лучше распис</span>
+		</a>
+		<a href="../../../ru/markup/manual/css/property/float.html">
+			плавающие элементы
+			<span class="__label__ __acceptable__">поработать еще, clear вынести</span>
+		</a>
+		<a href="../../../ru/markup/manual/css/property/z-index.html">
+			позиция по оси Z
+			<span class="__label__ __acceptable__">поработать еще</span>
+		</a>
+		
+	</div>
+	
+	<h2>Колонки</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/property/column-count.html">
+			количество колонок
+		</a>
+		<a href="../../../ru/markup/manual/css/property/column-gap.html">
+			расстояние между колонками
+		</a>
+		<a href="../../../ru/markup/manual/css/property/column-rule.html">
+			граница между колонками
+		</a>
+		<a href="../../../ru/markup/manual/css/property/column-width.html">
+			ширина колонок
+		</a>
+		<a href="../../../ru/markup/manual/css/property/column-span.html">
+			растяжение элемента на колонки
+		</a>
+		<a href="../../../ru/markup/manual/css/property/columns.html">
+			ширина и количество колонок
+			<span class="__label__ __acceptable__">примеры</span>
+		</a>
+	</div>
+</section>
+<section data-name="выборка">
+	<h2>Отрицание</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/pseudoclass/not.html" data-prefix=":">
+			отрицание
+			<span class="__label__ __acceptable__">больше текста</span>
+		</a>
+	</div>
+	
+	<h2>По позиции</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/pseudoclass/first-child.html" data-prefix=":">
+			первый потомок родителя
+		</a>
+		<a href="../../../ru/markup/manual/css/pseudoclass/last-child.html" data-prefix=":">
+			последний потомок родителя
+		</a>
+		<a href="../../../ru/markup/manual/css/pseudoclass/nth-child.html" data-prefix=":">
+			n-ный потомок родителя
+			<span class="__label__ __acceptable__">параметры вынести отдельно</span>
+		</a>
+		<a href="../../../ru/markup/manual/css/pseudoclass/nth-last-child.html" data-prefix=":">
+			n-ный потомок родителя с конца
+		</a>
+		<a href="../../../ru/markup/manual/css/pseudoclass/only-child.html" data-prefix=":">
+			единственный потомок родителя
+		</a>
+	</div>
+	
+	<h2>По типу и позиции</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/pseudoclass/first-of-type.html" data-prefix=":">
+			первый потомок родителя заданного типа
+		</a>
+		<a href="../../../ru/markup/manual/css/pseudoclass/last-of-type.html" data-prefix=":">
+			последний потомок родителя заданного типа
+		</a>
+		<a href="../../../ru/markup/manual/css/pseudoclass/nth-of-type.html" data-prefix=":">
+			n-ный потомок родителя заданного типа
+		</a>
+		<a href="../../../ru/markup/manual/css/pseudoclass/nth-last-of-type.html" data-prefix=":">
+			n-ный потомок родителя заданного типа с конца
+		</a>
+		<a href="../../../ru/markup/manual/css/pseudoclass/only-of-type.html" data-prefix=":">
+			единственный потомок родителя заданного типа
+		</a>
+	</div>
+	
+	<h2>Разное</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/pseudoclass/empty.html" data-prefix=":">
+			пустой элемент
+		</a>
+		<a href="../../../ru/markup/manual/css/pseudoclass/lang.html" data-prefix=":">
+			по языку текста
+		</a>
+		<a href="../../../ru/markup/manual/css/pseudoclass/target.html" data-prefix=":">
+			целевой элемент
+			<span class="__label__ __acceptable__">примеры, больше описания</span>
+		</a>
+	</div>
+	
+	<h2>Часть текста</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/pseudoelement/first-letter.html" data-prefix="::">
+			первая буква
+		</a>
+		<a href="../../../ru/markup/manual/css/pseudoelement/first-line.html" data-prefix="::">
+			первая строка текста
+		</a>
+	</div>
+</section>
+<section data-name="анимация">
+	<h2>Плавные переходы</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/property/transition-duration.html">
+			время выполнения
+		</a>
+		<a href="../../../ru/markup/manual/css/property/transition-delay.html">
+			задержка перед выполнением
+		</a>
+		<a href="../../../ru/markup/manual/css/property/transition-property.html">
+			анимируемое свойство
+		</a>
+		<a href="../../../ru/markup/manual/css/property/transition-timing-function.html">
+			скорость анимации
+		</a>
+		<a href="../../../ru/markup/manual/css/property/transition.html">
+			свойство-сокращение
+		</a>
+	</div>
+	
+	<h2>Анимация</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/command/keyframes.html" data-prefix="@">
+			ключевые кадры анимации
+			<span class="__label__ __acceptable__">расписать</span>
+		</a>
+		<a href="../../../ru/markup/manual/css/property/animation-name.html">
+			название анимации
+		</a>
+		<a href="../../../ru/markup/manual/css/property/animation-duration.html">
+			время выполнения
+		</a>
+		<a href="../../../ru/markup/manual/css/property/animation-delay.html">
+			задержка перед выполнением
+		</a>
+		<a href="../../../ru/markup/manual/css/property/animation-timing-function.html">
+			скорость анимации
+		</a>
+		<a href="../../../ru/markup/manual/css/property/animation-iteration-count.html">
+			количество повторов
+		</a>
+		<a href="../../../ru/markup/manual/css/property/animation-direction.html">
+			направление анимации
+		</a>
+		<a href="../../../ru/markup/manual/css/property/animation-fill-mode.html">
+			состояние анимации
+		</a>
+		<a href="../../../ru/markup/manual/css/property/animation-play-state.html">
+			пауза
+		</a>
+		<a href="../../../ru/markup/manual/css/property/animation.html">
+			свойство-сокращение
+		</a>
+	</div>
+</section>
+<section data-name="трансформации">
+	<h2>Трансформации</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/property/transform.html">
+			трансформация
+		</a>
+		<a href="../../../ru/markup/manual/css/property/transform-origin.html">
+			точка преобразования
+		</a>
+	</div>
+	
+	<h2>Поворот</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/function/rotate.html" data-postfix="()">
+			поворот
+		</a>
+		<a href="../../../ru/markup/manual/css/function/rotateX.html" data-postfix="()">
+			поворот по оси X
+		</a>
+		<a href="../../../ru/markup/manual/css/function/rotateY.html" data-postfix="()">
+			поворот по оси Y
+		</a>
+		<a href="../../../ru/markup/manual/css/function/rotateZ.html" data-postfix="()">
+			поворот по оси Z
+		</a>
+		<a href="../../../ru/markup/manual/css/function/rotate3d.html" data-postfix="()">
+			поворот по всем осям
+			<span class="__label__ __acceptable__">разобраться с вектором</span>
+		</a>
+	</div>
+	
+	<h2>Масштабирование</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/function/scale.html" data-postfix="()">
+			масштабирование
+			<span class="__label__ __acceptable__">отриц значения</span>
+		</a>
+		<a href="../../../ru/markup/manual/css/function/scaleX.html" data-postfix="()">
+			масштабирование по оси X
+		</a>
+		<a href="../../../ru/markup/manual/css/function/scaleY.html" data-postfix="()">
+			масштабирование по оси Y
+		</a>
+		
+		
+	</div>
+	
+	<h2>Скос</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/function/skew.html" data-postfix="()">
+			скос
+		</a>
+		<a href="../../../ru/markup/manual/css/function/skewX.html" data-postfix="()">
+			скос по оси X
+		</a>
+		<a href="../../../ru/markup/manual/css/function/skewY.html" data-postfix="()">
+			скос по оси Y
+		</a>
+		
+		
+	</div>
+	
+	<h2>Сдвиг</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/function/translate.html" data-postfix="()">
+			сдвиг
+		</a>
+		<a href="../../../ru/markup/manual/css/function/translateX.html" data-postfix="()">
+			сдвиг по оси X
+		</a>
+		<a href="../../../ru/markup/manual/css/function/translateY.html" data-postfix="()">
+			сдвиг по оси Y
+		</a>
+		
+		
+	</div>
+	
+	<!--
+	<h2>Трехмерные трансформации</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/property/transform-style.html">
+			обработка в 3d пространстве
+		</a>
+		<a href="../../../ru/markup/manual/css/property/perspective-origin.html">
+			точка расположения наблюдателя
+		</a>
+		<a href="../../../ru/markup/manual/css/property/perspective.html">
+			перспектива для родителя
+		</a>
+		<a href="../../../ru/markup/manual/css/function/perspective.html" data-postfix="()">
+			перспектива для элемента
+			<span class="__label__">надо более полно расписать</span>
+		</a>
+		<a href="../../../ru/markup/manual/css/property/backface-visibility.html">
+			видимость обратной стороны
+		</a>
+	</div>
+	-->
+	<!--
+	<h2>Матрица преобразования</h2>
+	<div>
+		
+		
+	</div>
+	-->
+</section>
+<section data-name="вставки">
+	<h2>Вставка текста</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/pseudoelement/after.html" data-prefix="::">
+			текст после элемента
+		</a>
+		<a href="../../../ru/markup/manual/css/pseudoelement/before.html" data-prefix="::">
+			текст до элемента
+		</a>
+		<a href="../../../ru/markup/manual/css/property/content.html">
+			текст для after и before
+		</a>
+		<a href="../../../ru/markup/manual/css/function/attr.html" data-postfix="()">
+			содержимое атрибута
+			<span class="__label__ __acceptable__">допилить</span>
+		</a>
+	</div>
+	
+	<h2>Счетчики</h2>
+	<div>
+		<a href="../../../ru/markup/manual/css/property/counter-increment.html">
+			автоматическая нумерация элементов
+		</a>
+		<a href="../../../ru/markup/manual/css/property/counter-reset.html">
+			сброс счетчика
+		</a>
+	</div>
+</section>
+
+<!--
+<section data-name="команды">
+	<div>
+		<h2>Команды с @</h2>
+		<a href="../../../ru/markup/manual/css/important.html">
+			приоритет селекторов
+		</a>
+		<a href="../../../ru/markup/manual/css/import.html">
+			импорт
+		</a>
+		<a href="../../../ru/markup/manual/css/media.html">
+			медиа запросы
+		</a>
+	</div>
+</section>
+-->
+
+</div>			</main>
+			<div class="bottom">
+	</div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../js/metrika.js?v=1"></script>	</body>
+</html>

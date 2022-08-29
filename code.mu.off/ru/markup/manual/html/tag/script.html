@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Тег script - подключение скриптов | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="Тег script подключает JavaScript к HTML странице.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Тег script</h1>
+				<div class="content">
+<p>
+	Тег <code class="code inline">script</code> подключает <code class="code inline">JavaScript</code>
+	к HTML странице (а также, намного реже, и
+	другие скрипты).
+</p>
+<p>
+	Можно подключать <b>отдельный JavaScript
+	файл</b> (в этом случае должен быть указан
+	атрибут <code class="code inline">src</code>) или же писать JavaScript
+	<b>прямо на HTML странице</b>. По сути <code class="code inline">script</code>
+	ведет себя как тег <a href="../../../../../ru/markup/manual/html/tag/link.html"><code class="code inline">link</code></a>
+	и тег <a href="../../../../../ru/markup/manual/html/tag/style.html"><code class="code inline">style</code></a>
+	одновременно, только не для CSS, а для JavaScript.
+</p>
+<p>
+	Работа тега зависит от того, есть атрибут
+	<code class="code inline">src</code> или нет. Например, так <b>&lt;script
+	src="test.js"&gt;&lt;/script&gt;</b> подключится
+	отдельный JavaScript файл, а так <b>&lt;script&gt;var
+	test = <code class="string inline">'123'</code>;&lt;/script&gt;</b> мы напишем
+	JavaScript код прямо на странице.
+</p>
+<p>
+	Данный тег должен размещаться внутри тега
+	<a href="../../../../../ru/markup/manual/html/tag/head.html"><code class="code inline">head</code></a>,
+	однако это не обязательно - тег <code class="code inline">script</code>
+	можно разместить и внутри тега <a href="../../../../../ru/markup/manual/html/tag/body.html"><code class="code inline">body</code></a>
+	и это будет работать.
+</p>
+
+<h2>Атрибуты и свойства</h2>	<table class="description">
+	<tr>
+		<th>Атрибут/свойство</th>
+		<th>Описание</th>
+	</tr>
+	<tr>
+		<th><code class="code inline">src</code></th>
+		<td>Путь к подключаемому файлу.
+		</td>
+	</tr>
+	<tr>
+		<th><code class="code inline">type</code></th>
+		<td>
+			Тип данных подключаемого файла. Для JavaScript следует использовать <b>text/javascript</b>.
+			В HTML5 это не обязательно.
+		</td>
+	</tr>
+	<tr>
+		<th><code class="code inline">language</code></th>
+		<td>Задает язык скрипта. Данный атрибут осуждается, а вместо него следует применять атрибут type.</td>
+	</tr>
+	<tr>
+		<th><code class="code inline">defer</code></th>
+		<td>
+			Атрибут defer откладывает выполнение скрипта до тех пор, пока вся страница не
+			будет загружена полностью.
+			<b>Пользоваться так:</b> <span class="strong">&lt;script defer="defer"&gt;</span>
+			или так <span class="strong">&lt;script defer&gt;</span>.
+		</td>
+	</tr>
+</table>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/markup/manual/html/" data-persent="98" data-hash="" data-quantity="126" data-num="125"><a href="../../../../../ru/markup/manual/html/tag/style.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/markup/manual/html/tag/meta.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

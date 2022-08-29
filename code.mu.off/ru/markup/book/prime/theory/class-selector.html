@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Классы элементов на CSS | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами изучим обращения к элементам через CSS классы.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Классы элементов на CSS</h1>
+				<div class="content">
+<p>
+	В предыдущих уроках мы с вами выбирали элементы
+	страницы по имени тега, задавая стили, к
+	примеру, одновременно всем абзацам. На странице,
+	однако, могут быть абзацы разных типов, к
+	которым нужно применять разные стили. Для
+	решения такой проблемы можно разные абзацы
+	отнести к разным CSS <dfn>классам</dfn>.
+</p>
+<p>
+	Чтобы отнести тег какому-нибудь классу, нужно
+	этому тегу написать атрибут <code class="code inline">class</code>,
+	а в нем - придуманное вами название класса,
+	состоящее из букв, цифр, символов подчеркивания
+	и дефиса.
+</p>
+<p>
+	Давайте посмотрим на примере. Сделаем абзацы
+	с двумя типами классов - <code class="selector inline">eee</code> и <code class="selector inline">zzz</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;p class="eee"&gt;
+	абзац с классом eee
+&lt;/p&gt;
+&lt;p class="eee"&gt;
+	абзац с классом eee
+&lt;/p&gt;
+&lt;p class="zzz"&gt;
+	абзац с классом zzz
+&lt;/p&gt;
+&lt;p class="zzz"&gt;
+	абзац с классом zzz
+&lt;/p&gt;</code>
+</div>
+<p>
+	Давайте теперь обратимся в CSS к абзацам
+	с различными классами и зададим им какие-нибудь
+	стили. К примеру, покрасим абзацы с классом
+	<code class="selector inline">zzz</code> в красный цвет, а абзацы с классом
+	<code class="selector inline">eee</code> - в зеленый.
+</p>
+<p>
+	Для этого в CSS файле нужно обратиться к
+	нашим классам. Обращение имеет следующий
+	синтаксис: сначала идет символ точка, а затем
+	придуманное нами имя класса. То есть для
+	обращения к классу <code class="selector inline">eee</code> нужно написать
+	<code class="selector inline">.eee</code>, а для класса <code class="selector inline">zzz</code> - написать
+	<code class="selector inline">.zzz</code>.
+</p>
+<p>
+	Итак, сделаем описанное. Добавим к нашему
+	HTML еще и CSS стили для введенных нами классов:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="css">.eee {
+	color: green;
+}
+.zzz {
+	color: red;
+}</code>
+</div>
+<p>
+	Если запустить наш код, то в результате получится
+	следующее:
+</p>
+<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			.eee {
+			color: green;
+		}
+		.zzz {
+			color: red;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<p class=&quot;eee&quot;>
+			абзац с классом eee
+		</p>
+		<p class=&quot;eee&quot;>
+			абзац с классом eee
+		</p>
+		<p class=&quot;zzz&quot;>
+			абзац с классом zzz
+		</p>
+		<p class=&quot;zzz&quot;>
+			абзац с классом zzz
+		</p>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+<div class="task">
+	<p>
+		Дан следующий код:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;ul&gt;
+	&lt;li class="odd"&gt;пункт&lt;/li&gt;
+	&lt;li class="eve"&gt;пункт&lt;/li&gt;
+	&lt;li class="odd"&gt;пункт&lt;/li&gt;
+	&lt;li class="eve"&gt;пункт&lt;/li&gt;
+	&lt;li class="odd"&gt;пункт&lt;/li&gt;
+	&lt;li class="eve"&gt;пункт&lt;/li&gt;
+&lt;/ul&gt;</code>
+	</div>
+	<p>
+		Покрасьте в красный цвет элементы с классом
+		<code class="selector inline">odd</code> и в зеленый цвет - элементы с
+		классом <code class="selector inline">eve</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дан следующий код:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;h2 class="eee"&gt;заголовок&lt;/h2&gt;
+&lt;p class="eee"&gt;
+	абзац
+&lt;/p&gt;
+&lt;p class="eee"&gt;
+	абзац
+&lt;/p&gt;
+&lt;p&gt;
+	абзац без класса
+&lt;/p&gt;
+
+&lt;ul class="eee"&gt;
+	&lt;li&gt;пункт&lt;/li&gt;
+	&lt;li&gt;пункт&lt;/li&gt;
+	&lt;li&gt;пункт&lt;/li&gt;
+	&lt;li&gt;пункт&lt;/li&gt;
+	&lt;li&gt;пункт&lt;/li&gt;
+&lt;/ul&gt;</code>
+	</div>
+	<p>
+		Покрасьте в красный цвет все элементы с классом
+		<code class="selector inline">eee</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Объясните, почему в предыдущей задаче в красный
+		цвет красятся теги <code class="code inline">li</code>, хотя класс,
+		задающий цвет, назначен тегу <code class="code inline">ul</code>.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/markup/book/prime/" data-persent="23" data-hash="mkPmSlCS" data-quantity="115" data-num="27"><a href="../../../../../ru/markup/book/prime/theory/child-selector.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/markup/book/prime/theory/tag-span.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

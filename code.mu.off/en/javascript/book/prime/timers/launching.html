@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>SetInterval function basics in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to work with the setInterval function in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>SetInterval function basics in JavaScript</h1>
+				<div class="content">
+<p>
+	In this tutorial, we will learn how to work with 
+	timers in JavaScript. Having dealt with the timers, 
+	you can automatically perform any operations on the 
+	page after a specified period of time. For example, 
+	it will be possible to make an image slider in which 
+	the images will change every second.
+</p>
+<p>
+	To work with timers in JavaScript, the <code class="code inline">setInterval</code> 
+	function is used, which runs the given 
+	code at certain intervals.
+</p>
+<p>
+	This function works as follows: as the first parameter, it takes 
+	<a href="../../../../../en/javascript/book/prime/functions/function-code-result.html">function 
+	source code</a>, and as the second parameter, the interval after 
+	which this function will be automatically called. The second 
+	parameter is in milliseconds (1000 milliseconds = 1 second).
+</p>
+<p>
+	Let's learn how the function works with an example. 
+	For example, let's write a code that every second will 
+	output something to the console.
+</p>
+<p>
+	First, let's make a function that outputs something to the console:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function timer() {
+	console.log('!');
+}</code>
+</div>
+<p>
+	And now with the help of <code class="code inline">setInterval</code> we will make 
+	the function we created will be executed every second:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">setInterval(timer, 1000);
+
+function timer() {
+	console.log('!');
+}</code>
+</div>
+<p>
+	It is not necessary to create a separate function - you 
+	can simply pass an anonymous function to the first 
+	parameter of <code class="code inline">setInterval</code>, like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">setInterval(function() {
+	console.log('!');
+}, 1000);</code>
+</div>
+<div class="task">
+	<p>
+		Start a timer that every <code class="number inline">3</code> seconds 
+		will print something to the console.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="85" data-hash="jsPmTmrLn" data-quantity="363" data-num="308"><a href="../../../../../en/javascript/book/prime/context/bind-method.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/timers/counter.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/timers/launching.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/timers/launching.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

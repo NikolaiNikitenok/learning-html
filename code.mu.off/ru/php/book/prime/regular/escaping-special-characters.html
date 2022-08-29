@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Экранировка спецсимволов в регулярках PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами научимся экранировать спецсимволы в регулярных выражениях PHP.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Экранировка спецсимволов в регулярках PHP</h1>
+				<div class="content">
+<p>
+	Предположим, что мы хотим сделать так, чтобы
+	спецсимвол обозначал сам себя. Для этого
+	его нужно экранировать с помощью обратного
+	слеша. Давайте посмотрим на примерах.
+</p>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	В следующем примере автор регулярки хотел,
+	чтобы шаблон поиска выглядел так: <i>буква
+	<code class="string inline">'a'</code>, затем плюс <code class="string inline">'+'</code>, затем
+	буква <code class="string inline">'x'</code></i>. Однако, автор кода
+	не заэкранировал символ <code class="string inline">'+'</code> и поэтому
+	шаблон поиска самом деле он выглядит так:
+	<i>буква <code class="string inline">'a'</code> один или более раз, потом
+	буква <code class="string inline">'x'</code></i>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = 'a+x ax aax aaax';
+	$res = preg_replace('#a+x#', '!', $str);
+?&gt;</code>
+</div>
+<p>
+	В результате в переменную запишется следующее:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">'a+x ! ! !'</code>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	А сейчас автор заэкранировал плюс обратным
+	слешем. Теперь шаблон поиска выглядит так,
+	как надо: <i>буква <code class="string inline">'a'</code>, затем плюс
+	<code class="string inline">'+'</code>, затем буква <code class="string inline">'x'</code></i>.
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = 'a+x ax aax aaax';
+	$res = preg_replace('#a\+x#', '!', $str);
+?&gt;</code>
+</div>
+<p>
+	В результате в переменную запишется следующее:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">'! ax aax aaax'</code>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	В данном примере шаблон выглядит так: <i>буква
+	<code class="string inline">'a'</code>, затем точка <code class="string inline">'.'</code>, затем
+	буква <code class="string inline">'x'</code></i>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = 'a.x abx azx';
+	$res = preg_replace('#a\.x#', '!', $str);
+?&gt;</code>
+</div>
+<p>
+	В результате в переменную запишется следующее:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">'! abx azx'</code>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	А следующем примере автор забыл заэкранировать
+	слеш и под регулярку попали все подстроки,
+	так как незаэкранированная точка обозначает
+	любой символ:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = 'a.x abx azx';
+	$res = preg_replace('#a.x#', '!', $str);
+?&gt;</code>
+</div>
+<p>
+	В результате в переменную запишется следующее:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">'! ! !'</code>
+</div>
+
+<h2>Замечание</h2>
+<p>
+	Обратите внимание на то, что если вы забудете
+	обратный слеш для точки (когда она должна
+	обозначать сама себя) - этого можно даже
+	не заметить:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	preg_replace('#a.x#', '!', 'a.x'); // вернет '!', как мы и хотели
+?&gt;</code>
+</div>
+<p>
+	Визуально работает правильно (так как точка
+	обозначает любой символ, в том числе и обычную
+	точку <code class="string inline">'.'</code>). Но если поменять строку,
+	в которой происходят замены - мы увидим нашу
+	ошибку:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	preg_replace('#a.x#', '!', 'a.x abx azx'); // вернет '! ! !', а ожидалось '! abx azx'
+?&gt;</code>
+</div>
+
+<h2>Список специальных символов и обычных</h2>
+<p>
+	Если экранировать обычный символ - ничего
+	страшного не случится - он все равно будет
+	обозначать сам себя. Исключение - цифры,
+	их нельзя экранировать.
+</p>
+<p>
+	Часто возникает сомнение, является ли данный
+	символ специальным. Некоторые доходят до
+	того, что экранируют все подозрительные символы
+	подряд. Однако, это плохая практика (захламляет
+	регулярку обратными слешами).
+</p>
+<p>
+	Являются спецсимволами: <code class="code inline">$ ^ . * + ? \
+	/ {} [] () |</code>
+</p>
+<p>
+	Не являются спецсимволами: <code class="code inline">@ : , ' " ;
+	- _ = < > % # ~ ` & !</code>
+</p>
+
+<h2>Практические задачи</h2>
+<div class="task">
+	<p>
+		Дана строка:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = 'a.a aba aea';
+?&gt;</code>
+	</div>
+	<p>
+		Напишите регулярку, которая найдет строку
+		<code class="string inline">'a.a'</code>, не захватив остальные.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = '2+3 223 2223';
+?&gt;</code>
+	</div>
+	<p>
+		Напишите регулярку, которая найдет строку
+		<code class="string inline">'2+3'</code>, не захватив остальные.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = '23 2+3 2++3 2+++3 345 567';
+?&gt;</code>
+	</div>
+	<p>
+		Напишите регулярку, которая найдет строки
+		<code class="string inline">'2+3'</code>, <code class="string inline">'2++3'</code>, <code class="string inline">'2+++3'</code>,
+		не захватив остальные (+ может быть любое
+		количество).
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = '23 2+3 2++3 2+++3 445 677';
+?&gt;</code>
+	</div>
+	<p>
+		Напишите регулярку, которая найдет строки
+		<code class="string inline">'23'</code>, <code class="string inline">'2+3'</code>, <code class="string inline">'2++3'</code>,
+		<code class="string inline">'2+++3'</code>, не захватив остальные.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = '*+ *q+ *qq+ *qqq+ *qqq qqq+';
+?&gt;</code>
+	</div>
+	<p>
+		Напишите регулярку, которая найдет строки
+		<code class="string inline">'*q+'</code>, <code class="string inline">'*qq+'</code>, <code class="string inline">'*qqq+'</code>,
+		не захватив остальные.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана строка:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$str = '[abc] {abc} abc (abc) [abc]';
+?&gt;</code>
+	</div>
+	<p>
+		Напишите регулярку, которая найдет строки
+		в квадратных скобках и заменят их на <code class="string inline">'!'</code>.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/prime/" data-persent="42" data-hash="ppPmRgESCh" data-quantity="223" data-num="94"><a href="../../../../../ru/php/book/prime/regular/grouping-brackets.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/php/book/prime/regular/curly-braces.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Класс Input ООП на PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами разработаем ООП класс Input на PHP.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Класс Input</h1>
+				<div class="content">
+<p>
+	Давайте теперь сделаем класс <code class="code inline">Input</code>
+	для работы с инпутами. Вот готовая реализация
+	этого класса:
+</p>
+<div class="block" data-file="Input.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Input extends Tag
+	{
+		public function __construct()
+		{
+			parent::__construct('input');
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Давайте используем новый класс <code class="code inline">Input</code>
+	вместе с уже созданным нами классом <code class="code inline">Form</code>:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$form = (new Form)-&gt;setAttrs(['action' =&gt; '', 'method' =&gt; 'GET']);
+	
+	echo $form-&gt;open();
+		echo (new Input)-&gt;setAttr('name', 'year')-&gt;open();
+		echo (new Input)-&gt;setAttr('type', 'submit')-&gt;open();
+	echo $form-&gt;close();
+?&gt;</code>
+</div>
+<p>
+	В результате получится следующая форма:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;form action="" method="GET"&gt;
+	&lt;input name="year"&gt;
+	&lt;input type="submit"&gt;
+&lt;/form&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Скопируйте себе мой код класса <code class="code inline">Input</code>.
+		Скопируйте пример формы. Запустите его в
+		браузере, убедитесь, что форма действительно
+		появляется. Вбейте какие-нибудь данные в
+		инпут и нажмите на кнопку отправки. Убедитесь,
+		что форма действительно рабочая.
+	</p>
+</div>
+
+<h2>Убираем open</h2>
+<p>
+	Давайте уберем метод <code class="code inline">open</code>, добавив
+	магию метода <code class="code inline">__toString</code>:
+</p>
+<div class="block" data-file="Input.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Input extends Tag
+	{
+		public function __construct()
+		{
+			parent::__construct('input');
+		}
+		
+		public function __toString()
+		{
+			return parent::open();
+		}
+	}
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Перепишите приведенный ниже код с учетом
+		нашей правки:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$form = (new Form)-&gt;setAttrs(['action' =&gt; '', 'method' =&gt; 'GET']);
+	
+	echo $form-&gt;open();
+		echo (new Input)-&gt;setAttr('name', 'year')-&gt;open();
+		echo (new Input)-&gt;setAttr('type', 'submit')-&gt;open();
+	echo $form-&gt;close();
+?&gt;</code>
+	</div>
+</div>
+
+<h2>Некоторые замечания</h2>
+<p>
+	Пока наш PHP код формы получается длиннее
+	соответствующего HTML кода. Возникает вопрос:
+	зачем нам PHP вариант, если все намного короче
+	можно написать на HTML?
+</p>
+<p>
+	Все дело в том, что наша PHP реализация дает
+	нам дополнительные возможности. Например,
+	мы можем сделать так, чтобы данные из инпутов
+	не исчезали после отправки формы.
+</p>
+<p>
+	И теперь преимущество в длине кода будет
+	уже на стороне PHP варианта - длина HTML
+	варианта существенно вырастет, а длина PHP
+	варианта останется неизменной.
+</p>
+
+<!--
+<h2>Сохранение значений после отправки</h2>
+<p>
+	Пока наш PHP код формы получается длиннее
+	соответствующего HTML кода. Возникает вопрос:
+	зачем нам PHP вариант, если все намного короче
+	можно написать на HTML?
+</p>
+<p>
+	Все дело в том, что наша PHP реализация дает
+	нам дополнительные возможности. Например,
+	мы можем сделать так, чтобы данные из инпутов
+	не исчезали после отправки формы.
+</p>
+<p>
+	И теперь преимущество в длине кода будет
+	уже на стороне PHP варианта - длина HTML
+	варианта существенно вырастет, а длина PHP
+	варианта останется неизменной.
+</p>
+<p>
+	Посмотрим на примере. Сделаем сохранение
+	значения одного инпута в HTML варианте формы:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;form action="" method="GET"&gt;
+	&lt;input name="year" value="&lt;?php if (isset($_REQUEST['year'])) echo $_REQUEST['year']; ?&gt;"&gt;
+	&lt;input type="submit"&gt;
+&lt;/form&gt;</code>
+</div>
+<p>
+	Соответствующий PHP:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$form = (new Form)-&gt;setAttrs(['action' =&gt; '', 'method' =&gt; 'GET']);
+	
+	echo $form-&gt;open();
+		echo (new Input)-&gt;setAttr('name', 'year');
+		echo (new Input)-&gt;setAttr('type', 'submit');
+	echo $form-&gt;close();
+?&gt;</code>
+</div>
+<p>
+	Пусть у нас несколько инпутов:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;form action="" method="GET"&gt;
+	&lt;input name="field1" value="&lt;?php if (isset($_REQUEST['field1'])) echo $_REQUEST['field1']; ?&gt;"&gt;
+	&lt;input name="field2" value="&lt;?php if (isset($_REQUEST['field2'])) echo $_REQUEST['field2']; ?&gt;"&gt;
+	&lt;input type="submit"&gt;
+&lt;/form&gt;</code>
+</div>
+<p>
+	Соответствующий PHP:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$form = (new Form)-&gt;setAttrs(['action' =&gt; '', 'method' =&gt; 'GET']);
+	
+	echo $form-&gt;open();
+		echo (new Input)-&gt;setAttr('field1', 'year');
+		echo (new Input)-&gt;setAttr('field2', 'year');
+		echo (new Input)-&gt;setAttr('name', 'submit');
+	echo $form-&gt;close();
+?&gt;</code>
+</div>
+<p>
+	Как вы видите, длина инпутов PHP варианта
+	теперь существенно короче.
+</p>
+<p>
+	Кроме того, HTML вариант имеет еще один существенный
+	недостаток - для корректной работы имя инпута
+	нужно повторить аж <code class="number inline">3</code> раза: тут <i>name="field1"</i>,
+	тут <i>isset($_REQUEST['field1'])</i> и тут
+	<i>echo $_REQUEST['field1']</i>.
+</p>
+<p>
+	Представьте, каким кошмаром будет изменения
+	имен нескольких инпутов. Это не говоря о
+	возможность в одном из мест просто забыть
+	изменить имя - и инпут будет работать некорректно.
+</p>
+<p>
+	В PHP варианте имя инпута задает в одном месте.
+</p>
+<p>
+	Убедившись в преимуществах нашего варианта
+	формы, приступим к его реализации.
+</p>
+-->
+
+<h2>Реализация сохранения значений после отправки</h2>
+<p>
+	Как вы должны знать, значение инпута задается
+	в атрибуте <code class="code inline">value</code>. Нам необходимо сделать
+	следующее: если форма была отправлена, то
+	в <code class="code inline">value</code> инпута следует записать то
+	значение, которое было в нем в момент отправки.
+</p>
+<p>
+	Каким образом получить это значение? Пусть
+	имя инпута было <code class="code inline">year</code>. В этом случае
+	после отправки формы в <code class="code inline">$_REQUEST['year']</code>
+	и будет находится нужное нам значение.
+</p>
+<p>
+	В нашем случае имя инпута хранится в родительском
+	классе <code class="code inline">Tag</code> в приватном свойстве <code class="code inline">$attrs</code>.
+	Наш класс <code class="code inline">Input</code> как потомок класса
+	<code class="code inline">Tag</code> может получить доступ к любому
+	атрибуту с помощью геттера, вот так: <i>$inputName
+	= $this->getAttr('name')</i>.
+</p>
+<p>
+	Давайте получим имя нашего инпута, достанем
+	значение из <code class="code inline">$_REQUEST</code> по этому имени
+	и запишем в <code class="code inline">value</code> инпута:
+</p>
+<div class="block" data-file="Input.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Input extends Tag
+	{
+		public function __construct()
+		{
+			parent:__construct('input');
+		}
+		
+		// Переопределяем метод родителя:
+		public function open()
+		{
+			$inputName = $this-&gt;getAttr('name'); // имя инпута
+			$value = $_REQUEST[$inputName]; // получаем значение инпута по его имени
+			
+			$this-&gt;setAttr('value', $value); // записываем в value инпута
+			
+			return parent::open(); // вызываем метод open родителя
+		}
+		
+		public function __toString()
+		{
+			return $this-&gt;open(); // здесь теперь не метод родителя, а наш
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Приведенный выше код пока не очень корректный:
+	он не учитывает того, что отправки формы
+	могло еще и не быть. Давайте учтем:
+</p>
+<div class="block" data-file="Input.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	// Пока не запускайте этот код, есть нюансы...
+	
+	class Input extends Tag
+	{
+		public function __construct()
+		{
+			parent:__construct('input');
+		}
+		
+		// Переопределяем метод родителя:
+		public function open()
+		{
+			$inputName = $this-&gt;getAttr('name'); // имя инпута
+			
+			// Если форма была отправлена и есть данные с именем нашего инпута:
+			if (isset($_REQUEST[$inputName])) {
+				$value = $_REQUEST[$inputName]; // получаем значение из $_REQUEST
+				$this-&gt;setAttr('value', $value); // записываем в value инпута
+			}
+			
+			return parent::open(); // вызываем метод open родителя
+		}
+		
+		public function __toString()
+		{
+			return $this-&gt;open();
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Вот теперь наш код уже достаточно рабочий,
+	но есть пару нюансов.
+</p>
+<p>
+	Что будет, если у нашего инпута по умолчанию
+	уже есть какое-то значение (например, текущий
+	год), например, вот так:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	echo (new Input)
+		-&gt;setAttr('name', 'year')
+		-&gt;setAttr('value', date('Y')); // значение по умолчанию
+?&gt;</code>
+</div>
+<p>
+	В этом случае <code class="code inline">в теории</code> по заходу на
+	страницу мы должны увидеть текущий год, но
+	при желании можем его поменять, нажать на
+	кнопку отправки - и после обновления страницы
+	в инпуте будет тот год, который и был отправлен.
+</p>
+<p>
+	На самом деле наш код так и работает! Если
+	была отправка формы, то мы попадем в условие
+	и там изменим <code class="code inline">value</code> инпута, но если
+	отправки не было - <code class="code inline">value</code> инпута останется
+	таким, как и было задано.
+</p>
+<p>
+	Второй нюанс: есть инпуты, у которых нет
+	атрибута <code class="code inline">name</code>. Например, кнопка отправки
+	формы. В этом случае с такими инпутами ничего
+	и не надо делать. Учтем это дополнительным
+	условием:
+</p>
+<div class="block" data-file="Input.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	class Input extends Tag
+	{
+		public function __construct()
+		{
+			parent:__construct('input');
+		}
+		
+		public function open()
+		{
+			$inputName = $this-&gt;getAttr('name');
+			
+			// Если атрибут name задан у инпута:
+			if ($inputName) {
+				if (isset($_REQUEST[$inputName])) {
+					$value = $_REQUEST[$inputName];
+					$this-&gt;setAttr('value', $value);
+				}
+			}
+			
+			return parent::open();
+		}
+		
+		public function __toString()
+		{
+			return $this-&gt;open();
+		}
+	}
+?&gt;</code>
+</div>
+<p>
+	Ну вот теперь можно пробовать. Можете запустить
+	приведенный ниже код формы, вбить что-то
+	в инпут и нажать на кнопку отправки - после
+	обновления страницы данные из инпута не исчезнут:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$form = (new Form)-&gt;setAttrs(['action' =&gt; '', 'method' =&gt; 'GET']);
+	
+	echo $form-&gt;open();
+		echo (new Input)-&gt;setAttr('name', 'year');
+		echo (new Input)-&gt;setAttr('type', 'submit');
+	echo $form-&gt;close();
+?&gt;</code>
+</div>
+<p>
+	А вот пример, когда в инпуте уже есть какое-то
+	значение по умолчанию:
+</p>
+<div class="block" data-file="index.php">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$form = (new Form)-&gt;setAttrs(['action' =&gt; '', 'method' =&gt; 'GET']);
+	
+	echo $form-&gt;open();
+		echo (new Input)-&gt;setAttr('name', 'year')-&gt;setAttr('value', date('Y'));
+		echo (new Input)-&gt;setAttr('type', 'submit');
+	echo $form-&gt;close();
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Реализуйте самостоятельно сохранение значений
+		инпутов после отправки. Проверьте работу
+		данного механизма.
+	</p>
+</div>
+<div class="task">
+	<p>
+		С помощью созданного класса сделайте форму
+		с <code class="number inline">5</code>-ю инпутами. Пусть в каждый инпут
+		можно ввести число. Сделайте так, чтобы после
+		отправки на экран выводилась сумма этих чисел,
+		а введенные значения не пропадали из инпутов.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/oop/" data-persent="66" data-hash="ppOpClFrInp" data-quantity="107" data-num="72"><a href="../../../../../../ru/php/book/oop/class/Form.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../ru/php/book/oop/class/Form/Submit.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

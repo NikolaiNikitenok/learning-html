@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Оператор rest в JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами изучим работу с оператором rest в JavaScript">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Оператор rest в JavaScript</h1>
+				<div class="content">
+<p>
+	Данный урок начнем с некоторого пояснения.
+	Все предыдущие уроки данного раздела я не
+	говорил вам всей правды про оператор <code class="code inline">...</code>
+</p>
+<p>
+	На самом деле этот оператор в зависимости
+	от места в коде может называться либо оператором
+	spread, либо оператором rest.
+</p>
+<p>
+	Как вы уже знаете, когда оператор spread
+	стоит перед массивом или строкой, он разделяет
+	их на отдельные значения. Оператор rest,
+	хотя и имеет такой же синтаксис в виде <code class="code inline">...</code>,
+	но предназначен для другого.
+</p>
+<p>
+	Сейчас будем разбираться, для чего. Пусть
+	у нас есть функция, принимающая два параметра:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(a, b) {
+	console.log(a);
+	console.log(b);
+}</code>
+</div>
+<p>
+	Вы должны уже знать, что если в функцию передать
+	лишние параметры, это не приведет к ошибке:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">func(1, 2, 3, 4, 5);</code>
+</div>
+<p>
+	Оператор <code class="code inline">rest</code> позволяет получить все
+	лишние параметры в виде массива. Для этого
+	в функцию добавляется еще один параметр (обязательно
+	последним), перед которым пишутся <code class="number inline">3</code> точки:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(a, b, ...rest) {
+	
+}</code>
+</div>
+<p>
+	Эти три точки и есть оператор rest, а имя
+	переменной может иметь любое название, но
+	обычно также принято называть его <code class="code inline">rest</code>.
+</p>
+<p>
+	Давайте вызовем нашу функцию с избыточным
+	количеством параметров и посмотрим, что попадает
+	в параметры <code class="code inline">a</code> и <code class="code inline">b</code>, а что -
+	в остаток <code class="code inline">rest</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">func(1, 2, 3, 4, 5);
+
+function func(a, b, ...rest) {
+	console.log(a);    // выведет 1
+	console.log(b);    // выведет 2
+	console.log(rest); // выведет [3, 4, 5]
+}</code>
+</div>
+<p>
+	Если лишних параметров не будет, то в переменную
+	<code class="code inline">rest</code> запишется пустой массив:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">func(1, 2);
+
+function func(a, b, ...rest) {
+	console.log(a);    // выведет 1
+	console.log(b);    // выведет 2
+	console.log(rest); // выведет []
+}</code>
+</div>
+<p>
+	В функции вообще может не быть параметров,
+	но при этом в нее можно добавить <code class="code inline">rest</code>.
+	В этом случае функцию можно будет вызвать
+	с любым количеством параметров и все они
+	будут попадать в массив <code class="code inline">rest</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(...rest) {
+	console.log(rest);
+}</code>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/book/prime/" data-persent="56" data-hash="jsPmOsrRs" data-quantity="363" data-num="206"><a href="../../../../../ru/javascript/book/prime/ellipsis/spread-strings-numbers.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/javascript/book/prime/ellipsis/spread-rest-applying.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/ellipsis/rest.html">en</a><a href="../../../../../ru/javascript/book/prime/ellipsis/rest.html" class="active">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

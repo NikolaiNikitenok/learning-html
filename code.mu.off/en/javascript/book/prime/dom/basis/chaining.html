@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Methods and properties chaining in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to build chains of methods and properties in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Methods and properties chaining in JavaScript</h1>
+				<div class="content">
+<p>
+	Let us have an input:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;input id="elem" value="text"&gt;</code>
+</div>
+<p>
+	Let's display the input text:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+console.log(elem.value); // shows 'text'</code>
+</div>
+<p>
+	As you can see, we first get an element 
+	by its <code class="code inline">id</code>, write this element to 
+	the variable <code class="code inline">elem</code>, and then display 
+	the property <code class="code inline">value</code> from this variable
+</p>
+<p>
+	In fact, you can not enter the variable 
+	<code class="code inline">elem</code>, but build a chain of dots 
+	in this way:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log( document.querySelector('#elem').value ); // shows 'text'</code>
+</div>
+<p>
+	In the same way - in a chain - you 
+	can overwrite attributes:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">document.querySelector('#elem').value = 'www';</code>
+</div>
+<div class="task">
+	<p>
+		Given the following code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;img id="image" src="avatar.png"&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">let image = document.querySelector('#image');
+console.log(image.src);</code>
+	</div>
+	<p>
+		Modify the code above to use a chain 
+		instead of introducing the variable 
+		<code class="code inline">image</code>.
+	</p>
+</div>
+
+<h2>Advantages and disadvantages of chains</h2>
+<p>
+	Despite the fact that the chains reduce the 
+	code, in most cases the introduction of a 
+	variable is still more convenient. Compare 
+	the two examples - now I have entered the 
+	variable <code class="code inline">elem</code> and I can write any 
+	number of attributes, while <code class="code inline">querySelector</code> 
+	is called only once:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');
+elem.value = 'www';
+elem.type  = 'submit';</code>
+</div>
+<p>
+	And now I'm not introducing a new variable 
+	and so I have to call <code class="code inline">querySelector</code> 
+	twice:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">document.querySelector('#elem').value = 'www';
+document.querySelector('#elem').type  = 'submit';</code>
+</div>
+<p>
+	In my opinion, this code has become more 
+	complicated, although it takes one line 
+	less. Also, if I want to change the value 
+	of <code class="code inline">id</code> from <code class="string inline">'elem'</code> to something 
+	else, I have to do it in many places, which 
+	is not very convenient.
+</p>
+<p>
+	There is also another problem - the load on 
+	the browser. Searching for elements on the 
+	page, which is done by the <code class="code inline">querySelector</code> 
+	method, is a rather slow operation (<i>and in 
+	general, any work with page elements is a 
+	slow operation</i> - remember this).
+</p>
+<p>
+	In our case, if we use <code class="code inline">querySelector</code> 
+	every time, then the browser will process 
+	the HTML page each time and look for an 
+	element with a given <code class="code inline">id</code> several 
+	times (it doesn’t matter that <code class="code inline">id </code> 
+	are the same - the browser will do all the 
+	actions several times), performing useless 
+	operations that can slow down the browser.
+</p>
+<p>
+	If we use the variable <code class="code inline">elem</code> - no search 
+	occurs on the page (the element has already 
+	been found and the reference to it lies in 
+	the variable).
+</p>
+<div class="task">
+	<p>
+		Given the following code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="html">&lt;img id="image" src="avatar.png" width="300" height="500"&gt;</code>
+		<code class="highlight" data-module="highlight" data-lang="javascript">console.log(document.querySelector('#image').src);
+console.log(document.querySelector('#image').width);
+console.log(document.querySelector('#image').height);</code>
+	</div>
+	<p>
+		Point out the disadvantages of this code. Remove them.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="69" data-hash="jsPmDmChn" data-quantity="363" data-num="253"><a href="../../../../../../en/javascript/book/prime/dom/basis/exception-attributes.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../en/javascript/book/prime/dom/basis/this.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/basis/chaining.html" class="active">en</a><a href="../../../../../../ru/javascript/book/prime/dom/basis/chaining.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

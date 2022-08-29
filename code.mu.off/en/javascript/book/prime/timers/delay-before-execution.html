@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Delay before execution in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to work with the setTimeout function in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Delay before execution in JavaScript</h1>
+				<div class="content">
+<p>
+	Let's now look at the <code class="code inline">setTimeout</code> function, which 
+	allows you to make a delay before running the code. This 
+	delay, unlike the setInterval function, will 
+	happen only once.
+</p>
+<p>
+	The first parameter of <code class="code inline">setTimeout</code> takes the 
+	source code of the function, and the second parameter 
+	is the delay in milliseconds before starting this function.
+</p>
+<p>
+	Let's see how the function works on some example. 
+	Let's say we have a button like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;input type="submit" id="elem"&gt;</code>
+</div>
+<p>
+	Get a reference to our button into a variable:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let elem = document.querySelector('#elem');</code>
+</div>
+<p>
+	Let's now make it so that when the button is pressed, 
+	<code class="code inline">alert</code> is displayed on the screen, but not 
+	immediately, but after <code class="number inline">3</code> seconds after pressing:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">elem.addEventListener('click', function() {
+	setTimeout(function() {
+		alert('!');
+	}, 3000);
+});</code>
+</div>
+<div class="task">
+	<p>
+		Given a paragraph. Write code that will display a 
+		message in this paragraph <code class="number inline">10</code> seconds after 
+		the page loads.
+	</p>
+</div>
+
+<h2>Timer start</h2>
+<p>
+	Although the <code class="code inline">setTimeout</code> function is not designed to 
+	create timers, you can still make them with it if you use 
+	<a href="../../../../../en/javascript/book/prime/functions/recursion.html">recursion</a>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let i = 0;
+
+function timer() {
+	setTimeout(function() {
+		console.log(++i);
+		
+		timer(); // let's call ourselves
+	}, 1000);
+}
+timer();</code>
+</div>
+<p>
+	You can stop such a timer simply without 
+	letting the recursion happen:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let i = 0;
+
+function timer() {
+	setTimeout(function() {
+		console.log(++i);
+		
+		if (i &lt; 10) { // runs only if counter is less than 10
+			timer();
+		}
+	}, 1000);
+}
+timer();</code>
+</div>
+<div class="task">
+	<p>
+		Print the number <code class="number inline">0</code> to the console. After 
+		one second - print the number <code class="number inline">1</code>, after 
+		two seconds - print the number <code class="number inline">2</code>, after 
+		<code class="number inline">3</code> seconds - print the number <code class="number inline">3</code>. 
+		And so on ad infinitum.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="87" data-hash="jsPmTmrDBE" data-quantity="363" data-num="317"><a href="../../../../../en/javascript/book/prime/timers/practicum.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/dom/manipulation/creating-and-inserting-elements.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/timers/delay-before-execution.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/timers/delay-before-execution.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

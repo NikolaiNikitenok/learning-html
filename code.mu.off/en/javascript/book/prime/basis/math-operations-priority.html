@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Math operations precedence in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will study the priority of mathematical operations in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Math operations precedence in JavaScript</h1>
+				<div class="content">
+<p>
+	JavaScript math operations have the same 
+	precedence as normal math operations. 
+	That is, multiplication and division are done 
+	first, addition and subtraction then.
+</p>
+<p>
+	In the following example, <code class="number inline">2</code> is first 
+	multiplied by <code class="number inline">2</code>, and then <code class="number inline">3</code> 
+	is added to the result:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = 2 * 2 + 3;
+alert(a); // shows 7 (the result of 4 + 3)</code>
+</div>
+<div class="task">
+	<p>
+		Determine what will be displayed on 
+		the screen without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let a = 5 + 5 * 3;
+alert(a);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be displayed on 
+		the screen without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let a = 5 + 5 * 3 + 3;
+alert(a);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be displayed on 
+		the screen without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let a = 8 / 2 + 2;
+alert(a);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be displayed on 
+		the screen without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let a = 8 + 2 / 2;
+alert(a);</code>
+	</div>
+</div>
+
+<h2>Equal precedence</h2>
+<p>
+	Multiplication and division have the same 
+	precedence and are computed in turn from left 
+	to right. Let's look at an example to understand 
+	what is meant. The following code will first 
+	perform division and then multiplication:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = 8 / 2 * 4;
+alert(a); // shows 16 (the result of 4 * 4)</code>
+</div>
+<p>
+	If you rearrange operations, then 
+	multiplication will be performed first, 
+	and then division:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = 8 * 2 / 4;
+alert(a); // shows 4 (the result of 16 / 4)</code>
+</div>
+<p>
+	In the below example, each new division 
+	operation will be applied to the previous one:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = 16 / 2 / 2 / 2;
+alert(a); // shows 2</code>
+</div>
+<div class="task">
+	<p>
+		Determine what will be displayed on 
+		the screen without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let a = 8 / 2 * 2;
+alert(a);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be displayed on 
+		the screen without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let a = 8 * 4 / 2 / 2;
+alert(a);</code>
+	</div>
+</div>
+
+<h2>Grouping parentheses</h2>
+<p>
+	Optionally, you can specify the precedence 
+	of operations using parentheses. Let's, for example, 
+	rewrite our code so that addition is performed 
+	first, and only then multiplication:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = 2 * (2 + 3);
+alert(a); // shows 10 (the result of 2 * 5)</code>
+</div>
+<p>
+	Note: there can be any number of brackets, 
+	including nested ones:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = 2 * (2 + 4 * (3 + 1));
+alert(a);</code>
+</div>
+<p>
+	You can enclose in parentheses operations 
+	that have higher precedence - it will not be 
+	an error. For example, we enclose the product 
+	of numbers in the parentheses:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = (2 * 2) + 3;
+alert(a); // shows 7 (the result of 4 + 3)</code>
+</div>
+<p>
+	In this case, the parentheses are 
+	excessive (after all, multiplication has 
+	higher precedence anyway), but the code is valid.
+</p>
+<p>
+	Sometimes such a grouping is used when 
+	the priority of operations is not obvious. 
+	For example, consider the following code:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = 8 / 2 * 4;
+alert(a);</code>
+</div>
+<p>
+	As you already know, division will be 
+	performed in first here, and then multiplication. 
+	But at first glance it may not be too obvious.
+</p>
+<p>
+	You can use grouping parentheses to explicitly show precedence:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let a = (8 / 2) * 4;
+alert(a);</code>
+</div>
+<div class="task">
+	<p>
+		Determine what will be displayed on 
+		the screen without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let a = (2 + 3) * (2 + 3);
+alert(a);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be displayed on 
+		the screen without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let a = (2 + 3) * 2 + 3;
+alert(a);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be displayed on 
+		the screen without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let a = 2 * (2 + 4 * (3 + 1));
+alert(a);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be displayed on 
+		the screen without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let a = 2 * 8 / 4;
+alert(a);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be displayed on 
+		the screen without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let a = (2 * 8) / 4;
+alert(a);</code>
+	</div>
+</div>
+<div class="task">
+	<p>
+		Determine what will be displayed on 
+		the screen without running the code:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="javascript">let a = 2 * (8 / 4);
+alert(a);</code>
+	</div>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="2" data-hash="jsPmBsMOP" data-quantity="363" data-num="9"><a href="../../../../../en/javascript/book/prime/basis/math-operations-variables.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/basis/fractions.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/basis/math-operations-priority.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/basis/math-operations-priority.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

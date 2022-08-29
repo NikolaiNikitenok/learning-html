@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Создание тестов с вопросами и ответами на JavaScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../js/location.js?v=3"></script>
+		<script src="../../../../js/locale.js?v=5"></script>
+		<script src="../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном видео я расскажу JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Создание тестов с вопросами и ответами на JavaScript</h1>
+				<div class="content">
+<p>
+	В данном видео я научу вас создавать тесты
+	на JavaScript. Подобная задача зачастую вызывает
+	сложности у моих учеников, поэтому я специально
+	заснял это видео, чтобы показать возможные
+	подходы к реализации задачи.
+</p>
+<div class="video">
+	<iframe src="https://www.youtube.com/embed/fBoQ-ihIYEA" allowfullscreen></iframe>
+</div>
+
+<h2>Исходники кода</h2>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="css">#test div {
+	margin-bottom: 30px;
+}
+
+.correct {
+	border: 1px solid green;
+}
+.incorrect {
+	border: 1px solid red;
+}</code>
+</div>
+
+<h3>1</h3>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="test"&gt;
+	&lt;div&gt;
+		&lt;p&gt;Question 1?&lt;/p&gt;
+		&lt;input&gt;
+	&lt;/div&gt;
+	&lt;div&gt;
+		&lt;p&gt;Question 2?&lt;/p&gt;
+		&lt;input&gt;
+	&lt;/div&gt;
+	&lt;div&gt;
+		&lt;p&gt;Question 3?&lt;/p&gt;
+		&lt;input&gt;
+	&lt;/div&gt;
+	&lt;button id="button"&gt;check&lt;/button&gt;
+&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="javascript">let button = document.querySelector('#button');
+
+let rightAnswers = [1, 2, 3];
+
+button.addEventListener('click', function() {
+	let inputs = document.querySelectorAll('#test input');
+	
+	let i = 0;
+	for (let input of inputs) {
+		if (input.value == rightAnswers[i]) {
+			input.classList.add('correct');
+		} else {
+			input.classList.add('incorrect');
+		}
+		
+		i++;
+	}
+});</code>
+</div>
+
+<h3>2</h3>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="test"&gt;
+	&lt;div&gt;
+		&lt;p&gt;Question 1?&lt;/p&gt;
+		&lt;input data-right="1"&gt;
+	&lt;/div&gt;
+	&lt;div&gt;
+		&lt;p&gt;Question 2?&lt;/p&gt;
+		&lt;input data-right="2"&gt;
+	&lt;/div&gt;
+	&lt;div&gt;
+		&lt;p&gt;Question 3?&lt;/p&gt;
+		&lt;input data-right="3"&gt;
+	&lt;/div&gt;
+	&lt;button id="button"&gt;check&lt;/button&gt;
+&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="javascript">let button = document.querySelector('#button');
+
+button.addEventListener('click', function() {
+	let inputs = document.querySelectorAll('#test input');
+	
+	for (let input of inputs) {
+		if (input.value == input.dataset.right) {
+			input.classList.add('correct');
+		} else {
+			input.classList.add('incorrect');
+		}
+	}
+});</code>
+</div>
+
+<h3>3</h3>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="test"&gt;
+	&lt;div&gt;
+		&lt;p&gt;Question 1?&lt;/p&gt;
+		&lt;input data-right="1"&gt;
+	&lt;/div&gt;
+	&lt;div&gt;
+		&lt;p&gt;Question 2?&lt;/p&gt;
+		&lt;input data-right="2"&gt;
+	&lt;/div&gt;
+	&lt;div&gt;
+		&lt;p&gt;Question 3?&lt;/p&gt;
+		&lt;input data-right="3"&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="javascript">let inputs = document.querySelectorAll('#test input');
+
+for (let input of inputs) {
+	input.addEventListener('blur', function() {
+		this.classList.remove('correct');
+		this.classList.remove('incorrect');
+		
+		if (this.value == this.dataset.right) {
+			this.classList.add('correct');
+		} else {
+			this.classList.add('incorrect');
+		}
+	});
+}</code>
+</div>
+
+<h3>4</h3>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="test"&gt;&lt;/div&gt;
+&lt;button id="button"&gt;check&lt;/button&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="javascript">let test = document.querySelector('#test');
+
+let questions = ['Question 1?', 'Question 2?', 'Question 3?'];
+let answers = ['1', '2', '3'];
+
+for (let question of questions) {
+	let div = document.createElement('div');
+	test.appendChild(div);
+	
+	let p = document.createElement('p');
+	p.innerHTML = question;
+	div.appendChild(p);
+	
+	let input = document.createElement('input');
+	div.appendChild(input);
+}
+
+let button = document.querySelector('#button');
+button.addEventListener('click', function() {
+	let inputs = document.querySelectorAll('#test input');
+	
+	let i = 0;
+	for (let input of inputs) {
+		input.classList.remove('correct');
+		input.classList.remove('incorrect');
+		
+		if (input.value == answers[i]) {
+			input.classList.add('correct');
+		} else {
+			input.classList.add('incorrect');
+		}
+		
+		i++;
+	}
+});</code>
+</div>
+
+<h3>5</h3>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="test"&gt;&lt;/div&gt;
+&lt;button id="button"&gt;check&lt;/button&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="javascript">let test = document.querySelector('#test');
+
+let questions = {
+	'Question 1?': 1,
+	'Question 2?': 2,
+	'Question 3?': 3,
+	'Question 4?': 4,
+}
+
+for (let question in questions) {
+	let div = document.createElement('div');
+	test.appendChild(div);
+	
+	let p = document.createElement('p');
+	p.innerHTML = question;
+	div.appendChild(p);
+	
+	let input = document.createElement('input');
+	input.dataset.right = questions[question];
+	div.appendChild(input);
+}
+
+let button = document.querySelector('#button');
+button.addEventListener('click', function() {
+	let inputs = document.querySelectorAll('#test input');
+	
+	for (let input of inputs) {
+		input.classList.remove('correct');
+		input.classList.remove('incorrect');
+		
+		if (input.value == input.dataset.right) {
+			input.classList.add('correct');
+		} else {
+			input.classList.add('incorrect');
+		}
+	}
+});</code>
+</div>
+
+<h3>6</h3>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="test"&gt;&lt;/div&gt;
+&lt;button id="button"&gt;check&lt;/button&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="javascript">let test = document.querySelector('#test');
+
+let questions = [
+	{
+		text: 'Question 1?',
+		right: 1,
+	},
+	{
+		text: 'Question 2?',
+		right: 2,
+	},
+	{
+		text: 'Question 3?',
+		right: 3,
+	},
+];
+
+
+for (let question of questions) {
+	let div = document.createElement('div');
+	test.appendChild(div);
+	
+	let p = document.createElement('p');
+	p.innerHTML = question.text;
+	div.appendChild(p);
+	
+	let input = document.createElement('input');
+	input.dataset.right = question.right;
+	div.appendChild(input);
+}
+
+let button = document.querySelector('#button');
+button.addEventListener('click', function() {
+	let inputs = document.querySelectorAll('#test input');
+	
+	for (let input of inputs) {
+		input.classList.remove('correct');
+		input.classList.remove('incorrect');
+		
+		if (input.value == input.dataset.right) {
+			input.classList.add('correct');
+		} else {
+			input.classList.add('incorrect');
+		}
+	}
+});</code>
+</div>
+
+<h3>7</h3>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="test"&gt;&lt;/div&gt;
+&lt;button id="button"&gt;check&lt;/button&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="javascript">let test = document.querySelector('#test');
+
+let questions = [
+	{
+		text: 'Question 1?',
+		right: 0,
+		answers: ['answer1', 'answer2', 'answer3',]
+	},
+	{
+		text: 'Question 2?',
+		right: 1,
+		answers: ['answer1', 'answer2', 'answer3',]
+	},
+	{
+		text: 'Question 3?',
+		right: 2,
+		answers: ['answer1', 'answer2', 'answer3',]
+	},
+];
+
+let i = 1;
+for (let question of questions) {
+	let div = document.createElement('div');
+	test.appendChild(div);
+	
+	let p = document.createElement('p');
+	p.innerHTML = question.text;
+	div.appendChild(p);
+	
+	let form = document.createElement('form');
+	test.appendChild(form);
+	form.dataset.right = question.right;
+	
+	let j = 0;
+	for (let answer of question.answers) {
+		let input = document.createElement('input');
+		input.type = 'radio';
+		input.name = i;
+		input.dataset.answerNum = j++;
+		form.appendChild(input);
+	}
+	
+	i++;
+}
+
+let button = document.querySelector('#button');
+button.addEventListener('click', function() {
+	let forms = document.querySelectorAll('#test form');
+	
+	for (let form of forms) {
+		form.classList.remove('correct');
+		form.classList.remove('incorrect');
+		
+		let inputs = form.querySelectorAll('input');
+		
+		for (let input of inputs) {
+			if (input.checked) {
+				if (input.dataset.answerNum == form.dataset.right) {
+					form.classList.add('correct');
+				} else {
+					form.classList.add('incorrect');
+				}
+				
+				break;
+			}
+		}
+	}
+});</code>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/javascript/video/lesson/" data-persent="5" data-hash="" data-quantity="73" data-num="5"><a href="../../../../ru/javascript/video/lesson/creating-checklist-in-javascript.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../ru/javascript/video/lesson/implementation-of-notepad-to-save-entries.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../js/metrika.js?v=1"></script>	</body>
+</html>

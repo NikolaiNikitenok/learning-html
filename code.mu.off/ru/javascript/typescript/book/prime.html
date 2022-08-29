@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Учебник TypeScript | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../js/location.js?v=3"></script>
+		<script src="../../../../js/locale.js?v=5"></script>
+		<script src="../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="Учебник по языку TypeScript на русском с теорией и задачником, а также лучшими практиками использования.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Учебник TypeScript</h1>
+				<div class="menu" data-module="menu" data-mode="hash" data-book="jstsPm">
+<h2>Основы</h2>
+<div data-section="Bs">
+	<a data-lesson="Inr" href="../../../../ru/javascript/typescript/book/prime/basis/intro.html">
+		Введение в TypeScript
+	</a>
+	<a data-lesson="DT" href="../../../../ru/javascript/typescript/book/prime/basis/data-types.html">
+		Типы данных
+	</a>
+	<a data-lesson="Op" href="../../../../ru/javascript/typescript/book/prime/basis/operations.html">
+		Операции
+	</a>
+	<a data-lesson="Ar" href="../../../../ru/javascript/typescript/book/prime/basis/arrays.html">
+		Массивы
+	</a>
+	<a data-lesson="Ob" href="../../../../ru/javascript/typescript/book/prime/basis/objects.html">
+		Объекты
+	</a>
+	<a data-lesson="Lp" href="../../../../ru/javascript/typescript/book/prime/basis/loops.html">
+		Циклы
+	</a>
+	<a data-lesson="Fn" href="../../../../ru/javascript/typescript/book/prime/basis/functions.html">
+		Функции
+	</a>
+	<a data-lesson="Tp" href="../../../../ru/javascript/typescript/book/prime/basis/tupels.html">
+		Кортежи
+	</a>
+	<a data-lesson="En" href="../../../../ru/javascript/typescript/book/prime/basis/enums.html">
+		Перечисления
+	</a>
+	<a data-lesson="TA" href="../../../../ru/javascript/typescript/book/prime/basis/type-any.html">
+		Тип any
+	</a>
+	<a data-lesson="Un" href="../../../../ru/javascript/typescript/book/prime/basis/union.html">
+		Объединение типов
+	</a>
+	<a data-lesson="Al" href="../../../../ru/javascript/typescript/book/prime/basis/aliases.html">
+		Псевдонимы типов
+	</a>
+	<a data-lesson="SL" href="../../../../ru/javascript/typescript/book/prime/basis/string-literals.html">
+		Тип строкового литерала
+	</a>
+	<a data-lesson="IOT" href="../../../../ru/javascript/typescript/book/prime/basis/inbuild-object-types.html">
+		Встроенные типы
+	</a>
+</div>
+
+<h2>Структуры данных</h2>
+<div data-section="DS">
+	<a data-lesson="OS" href="../../../../ru/javascript/typescript/book/prime/structures/object-structure.html">
+		Структура объекта
+	</a>
+	<a data-lesson="In" href="../../../../ru/javascript/typescript/book/prime/structures/interfaces.html">
+		Интерфейсы
+		<span class="__label__ __acceptable__">поработать еще</span>
+	</a>
+	<a data-lesson="AIO" href="../../../../ru/javascript/typescript/book/prime/structures/arrays-in-objects.html">
+		Массивы в объектах
+	</a>
+	<a data-lesson="CO" href="../../../../ru/javascript/typescript/book/prime/structures/complex-objects.html">
+		Сложные объекты
+	</a>
+	<a data-lesson="OIO" href="../../../../ru/javascript/typescript/book/prime/structures/objects-in-objects.html">
+		Объекты в объектах
+	</a>
+	<a data-lesson="AOO" href="../../../../ru/javascript/typescript/book/prime/structures/arrays-of-objects.html">
+		Массивы объектов
+	</a>
+</div>
+
+<h2>Функции</h2>
+<div data-section="Fn">
+	<a data-lesson="PQ" href="../../../../ru/javascript/typescript/book/prime/functions/parameters-quantity.html">
+		Количество параметров
+	</a>
+	<a data-lesson="OP" href="../../../../ru/javascript/typescript/book/prime/functions/optional-parameters.html">
+		Необязательные параметры
+	</a>
+	<a data-lesson="DPV" href="../../../../ru/javascript/typescript/book/prime/functions/default-parameters-values.html">
+		Значения параметров по умолчанию
+	</a>
+	<a data-lesson="RP" href="../../../../ru/javascript/typescript/book/prime/functions/rest-parameters.html">
+		Rest параметры
+	</a>
+	<a data-lesson="FT" href="../../../../ru/javascript/typescript/book/prime/functions/function-type.html">
+		Тип функций
+	</a>
+	<a data-lesson="Clb" href="../../../../ru/javascript/typescript/book/prime/functions/callbacks.html">
+		Функции-коллбэки
+		<span class="__label__ __acceptable__">задачи</span>
+	</a>
+	<a data-lesson="AF" href="../../../../ru/javascript/typescript/book/prime/functions/arrow-functions.html">
+		Стрелочные функции
+	</a>
+	
+</div>
+
+<!--
+<h2>Практика</h2>
+<div data-section="Pr">
+	
+	
+</div>
+-->
+</div>			</main>
+			<div class="bottom">
+	</div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../js/metrika.js?v=1"></script>	</body>
+</html>

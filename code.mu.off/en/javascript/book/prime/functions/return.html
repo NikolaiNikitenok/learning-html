@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>return statement in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will work with the return statement in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>return statement in JavaScript</h1>
+				<div class="content">
+<p>
+	Suppose we have a function that prints 
+	the square of the passed number 
+	to the console:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(num) {
+	console.log(num ** 2);
+}</code>
+</div>
+<p>
+	Suppose we do not want to display the value 
+	to the console, but write it to some 
+	variable, like this:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let res = func(3); // now there is 9 in the res variable  </code>
+</div>
+<p>
+	To do this, JavaScript has a special instruction 
+	<code class="code inline">return</code>, which allows you to specify the 
+	value that the function <dfn>returns</dfn>. The word 
+	"returns" means the value that will be written 
+	to the variable if the called function 
+	is assigned to it.
+</p>
+<p>
+	So, let's rewrite our function so that it does 
+	not print the result to the console, 
+	but returns it to a variable:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(num) {
+	return num ** 2;
+}</code>
+</div>
+<p>
+	Let's call our function now, writing its 
+	response to a variable:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let res = func(3); // 9 will be written to the variable</code>
+</div>
+<p>
+	After the data is written to a variable, 
+	they can, for example, be output 
+	to the console:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let res = func(3);
+console.log(res); // shows 9</code>
+</div>
+<p>
+	Or you can first somehow change this 
+	data, and then print it to the console:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let res = func(3);
+res = res + 1;
+console.log(res); // shows 10</code>
+</div>
+<p>
+	You can immediately perform some actions 
+	with the result of the function before 
+	writing to a variable:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let res = func(3) + 1;
+console.log(res); // shows 10</code>
+</div>
+<p>
+	Or you can not write the result to a 
+	variable, but immediately print it to 
+	the console:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">console.log(func(3)); // shows 9</code>
+</div>
+<p>
+	You can invoke a function in one 
+	expression with different parameters:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">let res = func(2) + func(3);
+console.log(res); // shows 13</code>
+</div>
+<div class="task">
+	<p>
+		Make a function that takes a number as 
+		a parameter and returns the cube of 
+		that number. Use this function to find 
+		the cube of the number <code class="number inline">3</code> and 
+		store it in the variable <code class="code inline">res</code>.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Make such a function that takes a number 
+		as a parameter and returns the square 
+		root of that number. Use this function 
+		to find the root of <code class="number inline">3</code>, then find 
+		the root of <code class="number inline">4</code>. Sum the results 
+		and print them to the console.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="44" data-hash="jsPmUFRt" data-quantity="363" data-num="161"><a href="../../../../../en/javascript/book/prime/functions/optional-parameters.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/functions/sequential-calling.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/functions/return.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/functions/return.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

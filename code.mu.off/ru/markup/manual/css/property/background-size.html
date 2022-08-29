@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Свойство background-size - размер картинки фона | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="Свойство background-size задает размер картинки фона.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Свойство background-size</h1>
+				<div class="content">
+<p>
+	Свойство <code class="code inline">background-size</code> задает размер
+	картинки фона. Значением свойства служат
+	любые <a href="../../../../../ru/markup/manual/css/reference/units/sizes.html">единицы
+	для размеров</a>, либо ключевые слова auto,
+	cover или contain.
+</p>
+
+<h2>Синтаксис</h2>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="css">селектор {
+	background-size: значение;
+}</code>
+</div>
+
+<h2>Ключевые слова</h2>
+<table class="description">
+	<tr>
+		<th>Значение</th>
+		<th>Описание</th>
+	</tr>
+	<tr>
+		<th><code class="code inline">auto</code></th>
+		<td>
+			Фон будет иметь натуральный размер, такой,
+			как реальный размер картинки фона.
+			Если же <code class="code inline">auto</code> задано только для одной стороны,
+			то по этой стороне фон будет масштабироваться так,
+			чтобы иметь неискаженные пропорции.
+		</td>
+	</tr>
+	<tr>
+		<th><code class="code inline">cover</code></th>
+		<td>
+			Масштабирует картинку так, чтобы она накрыла собой весь блок
+			с сохранением пропорций. Картинка будет стараться поместиться
+			целиком, но это не всегда будет получаться, поэтому какая-то
+			ее часть будет обрезаться. Блок всегда будет покрыт картинкой
+			целиком.
+		</td>
+	</tr>
+	<tr>
+		<th><code class="code inline">contain</code></th>
+		<td>
+			Масштабирует картинку так, чтобы она целиком влезла в блок с
+			сохранением пропорций. При этом она может занять или всю ширину,
+			или всю высоту (зависит от пропорций картинки и от
+			размеров элемента). Блок в общем случае будет покрыт картинкой не
+			целиком (зато картинка всегда будет видна вся, хоть и в уменьшенном
+			варианте).
+		</td>
+	</tr>
+</table>
+<p>
+	Значение по умолчанию: <code class="code inline">auto</code>.
+</p>
+
+<h2>Использование</h2>
+<p>
+	Единицы для размеров и auto могут быть использованы
+	в различных комбинациях, например, так: <b>auto
+	20px</b>, или <b>30% 20px</b>, или <b>auto
+	30%</b> и так далее. В этом случае первый
+	параметр задает размер фона по ширине, а
+	второй параметр - размер фона по высоте.
+	Если указан один параметр - то он будет задавать
+	размер фона и по ширине, и по высоте одновременно.
+</p>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Сейчас фоновая картинка будет иметь свой
+	натуральный размер:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem"&gt;&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">#elem {
+	background-repeat: no-repeat;
+	background-image: url("bg.png");
+	border: 1px solid black;
+	width: 550px;
+	height: 400px;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			#elem {
+			background-repeat: no-repeat;
+			background-image: url(&quot;/content/markup/manual/css/property/background-size/&/image/bg.png?v=3&quot;);
+			border: 1px solid black;
+			width: 550px;
+			height: 400px;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;elem&quot;></div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Сейчас фоновая картинка будет размер <code class="unit inline">300px</code>
+	на <code class="unit inline">400px</code> (в нашем случае пропорции
+	картинки исказятся):
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem"&gt;&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">#elem {
+	background-size: 300px 400px;
+	background-repeat: no-repeat;
+	background-image: url("bg.png");
+	border: 1px solid black;
+	width: 400px;
+	height: 400px;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			#elem {
+			background-size: 300px 400px;
+			background-repeat: no-repeat;
+			background-image: url(&quot;/content/markup/manual/css/property/background-size/&/image/bg.png?v=3&quot;);
+			border: 1px solid black;
+			width: 400px;
+			height: 400px;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;elem&quot;></div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Сейчас фоновая картинка будет размер <code class="unit inline">400px</code>
+	на <code class="unit inline">400px</code> (в нашем случае пропорции
+	картинки исказятся):
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem"&gt;&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">#elem {
+	background-size: 400px;
+	background-repeat: no-repeat;
+	background-image: url("bg.png");
+	border: 1px solid black;
+	width: 400px;
+	height: 400px;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			#elem {
+			background-size: 400px;
+			background-repeat: no-repeat;
+			background-image: url(&quot;/content/markup/manual/css/property/background-size/&/image/bg.png?v=3&quot;);
+			border: 1px solid black;
+			width: 400px;
+			height: 400px;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;elem&quot;></div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Сейчас фоновая картинка будет размер <code class="unit inline">400px</code>
+	по горизонтали, а по вертикали ее размер
+	подстроится так, чтобы пропорции не исказились:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem"&gt;&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">#elem {
+	background-size: 400px auto;
+	background-repeat: no-repeat;
+	background-image: url("bg.png");
+	border: 1px solid black;
+	width: 400px;
+	height: 400px;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			#elem {
+			background-size: 400px auto;
+			background-repeat: no-repeat;
+			background-image: url(&quot;/content/markup/manual/css/property/background-size/&/image/bg.png?v=3&quot;);
+			border: 1px solid black;
+			width: 400px;
+			height: 400px;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;elem&quot;></div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	Сейчас фоновая картинка будет размер <code class="unit inline">400px</code>
+	по вертикали, а по горизонтали ее размер
+	подстроится так, чтобы пропорции не исказились:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem"&gt;&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">#elem {
+	background-size: auto 400px;
+	background-repeat: no-repeat;
+	background-image: url("bg.png");
+	border: 1px solid black;
+	width: 400px;
+	height: 400px;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			#elem {
+			background-size: auto 400px;
+			background-repeat: no-repeat;
+			background-image: url(&quot;/content/markup/manual/css/property/background-size/&/image/bg.png?v=3&quot;);
+			border: 1px solid black;
+			width: 400px;
+			height: 400px;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;elem&quot;></div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Пример <span class="-page-"></span>. Значение contain</h2>
+<p>
+	Посмотрите на работу значения <code class="code inline">contain</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem1" class="elem"&gt;&lt;/div&gt;
+&lt;div id="elem2" class="elem"&gt;&lt;/div&gt;
+&lt;div id="elem3" class="elem"&gt;&lt;/div&gt;
+&lt;div id="elem4" class="elem"&gt;&lt;/div&gt;
+&lt;div id="elem5" class="elem"&gt;&lt;/div&gt;
+&lt;div id="elem6" class="elem"&gt;&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">.elem {
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-image: url("bg.png");
+	border: 1px solid black;
+	margin-bottom: 20px;
+}
+
+#elem1 {
+	width: 600px;
+	height: 500px;
+}
+
+#elem2 {
+	width: 500px;
+	height: 600px;
+}
+
+#elem3 {
+	width: 400px;
+	height: 400px;
+}
+
+#elem4 {
+	width: 300px;
+	height: 400px;
+}
+
+#elem5 {
+	width: 200px;
+	height: 400px;
+}
+
+#elem6 {
+	width: 300px;
+	height: 100px;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			.elem {
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-image: url(&quot;/content/markup/manual/css/property/background-size/&/image/bg.png?v=3&quot;);
+			border: 1px solid black;
+			margin-bottom: 20px;
+		}
+		
+		#elem1 {
+			width: 600px;
+			height: 500px;
+		}
+		
+		#elem2 {
+			width: 500px;
+			height: 600px;
+		}
+		
+		#elem3 {
+			width: 400px;
+			height: 400px;
+		}
+		
+		#elem4 {
+			width: 300px;
+			height: 400px;
+		}
+		
+		#elem5 {
+			width: 200px;
+			height: 400px;
+		}
+		
+		#elem6 {
+			width: 300px;
+			height: 100px;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;elem1&quot; class=&quot;elem&quot;></div>
+		<div id=&quot;elem2&quot; class=&quot;elem&quot;></div>
+		<div id=&quot;elem3&quot; class=&quot;elem&quot;></div>
+		<div id=&quot;elem4&quot; class=&quot;elem&quot;></div>
+		<div id=&quot;elem5&quot; class=&quot;elem&quot;></div>
+		<div id=&quot;elem6&quot; class=&quot;elem&quot;></div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Пример <span class="-page-"></span>. Значение cover</h2>
+<p>
+	Посмотрите на работу значения <code class="code inline">cover</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem1" class="elem"&gt;&lt;/div&gt;
+&lt;div id="elem2" class="elem"&gt;&lt;/div&gt;
+&lt;div id="elem3" class="elem"&gt;&lt;/div&gt;
+&lt;div id="elem4" class="elem"&gt;&lt;/div&gt;
+&lt;div id="elem5" class="elem"&gt;&lt;/div&gt;
+&lt;div id="elem6" class="elem"&gt;&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">.elem {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-image: url("bg.png");
+	border: 1px solid black;
+	margin-bottom: 20px;
+}
+
+#elem1 {
+	width: 600px;
+	height: 500px;
+}
+
+#elem2 {
+	width: 500px;
+	height: 600px;
+}
+
+#elem3 {
+	width: 400px;
+	height: 400px;
+}
+
+#elem4 {
+	width: 300px;
+	height: 400px;
+}
+
+#elem5 {
+	width: 200px;
+	height: 400px;
+}
+
+#elem6 {
+	width: 300px;
+	height: 100px;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			.elem {
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-image: url(&quot;/content/markup/manual/css/property/background-size/&/image/bg.png?v=3&quot;);
+			border: 1px solid black;
+			margin-bottom: 20px;
+		}
+		
+		#elem1 {
+			width: 600px;
+			height: 500px;
+		}
+		
+		#elem2 {
+			width: 500px;
+			height: 600px;
+		}
+		
+		#elem3 {
+			width: 400px;
+			height: 400px;
+		}
+		
+		#elem4 {
+			width: 300px;
+			height: 400px;
+		}
+		
+		#elem5 {
+			width: 200px;
+			height: 400px;
+		}
+		
+		#elem6 {
+			width: 300px;
+			height: 100px;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;elem1&quot; class=&quot;elem&quot;></div>
+		<div id=&quot;elem2&quot; class=&quot;elem&quot;></div>
+		<div id=&quot;elem3&quot; class=&quot;elem&quot;></div>
+		<div id=&quot;elem4&quot; class=&quot;elem&quot;></div>
+		<div id=&quot;elem5&quot; class=&quot;elem&quot;></div>
+		<div id=&quot;elem6&quot; class=&quot;elem&quot;></div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Пример <span class="-page-"></span>. Улучшим работу cover</h2>
+<p>
+	Работу значения <code class="code inline">cover</code> можно улучшить,
+	если отцентрировать картинку с помощью свойства
+	<a href="../../../../../ru/markup/manual/css/property/background-position.html"><code class="code inline">background-position</code></a>
+	(в нашем случае на видимые части начнут попадать
+	головы лошадей, а не их задницы):
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;div id="elem1" class="elem"&gt;&lt;/div&gt;
+&lt;div id="elem2" class="elem"&gt;&lt;/div&gt;
+&lt;div id="elem3" class="elem"&gt;&lt;/div&gt;
+&lt;div id="elem4" class="elem"&gt;&lt;/div&gt;
+&lt;div id="elem5" class="elem"&gt;&lt;/div&gt;
+&lt;div id="elem6" class="elem"&gt;&lt;/div&gt;</code>
+	<code class="highlight" data-module="highlight" data-lang="css">.elem {
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-image: url("bg.png");
+	border: 1px solid black;
+	margin-bottom: 20px;
+}
+
+#elem1 {
+	width: 600px;
+	height: 500px;
+}
+
+#elem2 {
+	width: 500px;
+	height: 600px;
+}
+
+#elem3 {
+	width: 400px;
+	height: 400px;
+}
+
+#elem4 {
+	width: 300px;
+	height: 400px;
+}
+
+#elem5 {
+	width: 200px;
+	height: 400px;
+}
+
+#elem6 {
+	width: 300px;
+	height: 100px;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			.elem {
+			background-position: center;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-image: url(&quot;/content/markup/manual/css/property/background-size/&/image/bg.png?v=3&quot;);
+			border: 1px solid black;
+			margin-bottom: 20px;
+		}
+		
+		#elem1 {
+			width: 600px;
+			height: 500px;
+		}
+		
+		#elem2 {
+			width: 500px;
+			height: 600px;
+		}
+		
+		#elem3 {
+			width: 400px;
+			height: 400px;
+		}
+		
+		#elem4 {
+			width: 300px;
+			height: 400px;
+		}
+		
+		#elem5 {
+			width: 200px;
+			height: 400px;
+		}
+		
+		#elem6 {
+			width: 300px;
+			height: 100px;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id=&quot;elem1&quot; class=&quot;elem&quot;></div>
+		<div id=&quot;elem2&quot; class=&quot;elem&quot;></div>
+		<div id=&quot;elem3&quot; class=&quot;elem&quot;></div>
+		<div id=&quot;elem4&quot; class=&quot;elem&quot;></div>
+		<div id=&quot;elem5&quot; class=&quot;elem&quot;></div>
+		<div id=&quot;elem6&quot; class=&quot;elem&quot;></div>
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<!--
+<h2>Пример <span class="-page-"></span>. Значения в процентах</h2>
+<p>
+	В данном примере фоновая картинка занимает
+	<code class="unit inline">50%</code> ширины и <code class="unit inline">30%</code> высоты окна
+	браузера (при этом картинка будет иметь искаженные
+	пропорции):
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="css">body {
+	background: url("bg.jpg") no-repeat;
+	background-size: 50% 30%;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			body {
+			background: url(&quot;bg.jpg&quot;) no-repeat;
+			background-size: 50% 30%;
+		}
+		</style>
+	</head>
+	<body>
+		
+		
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Пример <span class="-page-"></span>. Значения в пикселях и процентах</h2>
+<p>
+	В данном примере фоновая картинка занимает
+	<code class="unit inline">50%</code> ширины окна браузера и <code class="unit inline">400px</code>
+	по высоте (при этом картинка будет иметь
+	искаженные пропорции):
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="css">body {
+	background: url("bg.jpg") no-repeat;
+	background-size: 50% 400px;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			body {
+			background: url(&quot;bg.jpg&quot;) no-repeat;
+			background-size: 50% 400px;
+		}
+		</style>
+	</head>
+	<body>
+		
+		
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Пример <span class="-page-"></span>. Значение auto для одной из сторон + проценты</h2>
+<p>
+	В данном примере фоновая картинка занимает
+	<code class="unit inline">50%</code> ширины окна браузера, а по высоте
+	подстроится так, чтобы сохранить пропорции
+	(поуменьшайте окно браузера, чтобы убедиться,
+	что этой действительно так - картинка будут
+	оставаться неискаженной):
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="css">body {
+	background: url("bg.jpg") no-repeat;
+	background-size: 50% auto;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			body {
+			background: url(&quot;bg.jpg&quot;) no-repeat;
+			background-size: 50% auto;
+		}
+		</style>
+	</head>
+	<body>
+		
+		
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Пример <span class="-page-"></span>. Значение auto для одной из сторон + пиксели</h2>
+<p>
+	В данном примере фоновая картинка занимает
+	<code class="unit inline">300px</code> по высоте, а по ширине подстроится
+	так, чтобы сохранить пропорции:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="css">body {
+	background: url("bg.jpg") no-repeat;
+	background-size: auto 300px;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			body {
+			background: url(&quot;bg.jpg&quot;) no-repeat;
+			background-size: auto 300px;
+		}
+		</style>
+	</head>
+	<body>
+		
+		
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Пример <span class="-page-"></span>. Значение <code class="unit inline">100%</code> для обеих сторон</h2>
+<p>
+	Сейчас картинка будет всегда на весь экран
+	с искаженными пропорциями (так как и по ширине
+	и по высоте мы берем <code class="unit inline">100%</code>, можно было
+	просто написать <b>background-size: 100%</b>
+	- одно значение):
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="css">body {
+	background: url("bg.jpg") no-repeat;
+	background-size: 100% 100%;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			body {
+			background: url(&quot;bg.jpg&quot;) no-repeat;
+			background-size: 100% 100%;
+		}
+		</style>
+	</head>
+	<body>
+		
+		
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Пример <span class="-page-"></span>. Значение contain</h2>
+<p>
+	Сейчас картинка будет занимать всю ширину
+	или всю высоту с сохранением пропорций. Поуменьшайте
+	окно браузера, чтобы увидеть, что картинка
+	в различных состояниях будет занимать или
+	всю ширину или всю высоту:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="css">body {
+	background: url("bg.jpg") no-repeat;
+	background-size: contain;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			body {
+			background: url(&quot;bg.jpg&quot;) no-repeat;
+			background-size: contain;
+		}
+		</style>
+	</head>
+	<body>
+		
+		
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+
+<h2>Пример <span class="-page-"></span>. Значение cover</h2>
+<p>
+	Сейчас картинка будет целиком накрывать собой
+	в блок с сохранением пропорций: Картинка
+	будет стараться поместиться целиком, но это
+	не всегда будет получаться, поэтому какая-то
+	ее часть будет обрезаться:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="css">body {
+	background: url("bg.jpg") no-repeat;
+	background-size: cover;
+}</code>
+</div>
+	<p>
+		<span data-x="code-result"></span>:
+	</p>
+	<div class="block"><iframe srcdoc="<!DOCTYPE html>
+	<head>
+		<base target=&quot;_blank&quot;>
+		<meta charset=&quot;utf-8&quot;>
+		<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+		
+		<style>
+			
+		</style>
+		<style>
+			body {
+			background: url(&quot;bg.jpg&quot;) no-repeat;
+			background-size: cover;
+		}
+		</style>
+	</head>
+	<body>
+		
+		
+		
+		<script>
+			
+			
+		</script>
+	</body>
+</html>"></iframe></div>
+<p>
+	Сравните с тем, как будет выглядеть картинка
+	по умолчанию (при значении auto). Поуменьшайте
+	окно браузера, чтобы увидеть отличия:
+</p>
+-->
+
+
+<h2>Смотрите также</h2>
+<ul class="ref">
+	<li>
+		свойство <a href="../../../../../ru/markup/manual/css/property/background.html"><code class="code inline">background</code></a>, <br>
+		представляющее собой свойство-сокращение для фона
+	</li>
+</ul>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/markup/manual/css/" data-persent="34" data-hash="" data-quantity="199" data-num="69"><a href="../../../../../ru/markup/manual/css/property/background-clip.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/markup/manual/css/property/text-shadow.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

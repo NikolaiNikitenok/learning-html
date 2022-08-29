@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Параметры функций в PHP | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="В данном уроке мы с вами рассмотрим работу с параметрами функций в PHP.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Параметры функций в PHP</h1>
+				<div class="content">
+<p>
+	При вызове функции мы пишем ее имя и пустые
+	круглые скобки:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	func();
+?&gt;</code>
+</div>
+<p>
+	На самом деле скобки не обязательно должны
+	быть пустыми - в них мы можем передавать
+	параметры.
+</p>
+<p>
+	Пусть, к примеру, мы хотим сделать функцию,
+	которая параметром будет принимать число
+	и выводить на экран квадрат этого числа.
+</p>
+<p>
+	Как мы теперь будем вызывать нашу функцию:
+	мы будем писать имя функции, круглые скобки,
+	а в них - какое-то число, квадрат которого
+	мы хотим получить.
+</p>
+<p>
+	К примеру, вот так мы получим квадрат числа
+	<code class="number inline">2</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	func(2); // выведет 4
+?&gt;</code>
+</div>
+<p>
+	А вот так - квадрат числа <code class="number inline">3</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	func(3); // выведет 9
+?&gt;</code>
+</div>
+<p>
+	Давайте теперь напишем реализацию нашей функции.
+</p>
+<p>
+	Мы знаем, что функция параметром должна принимать
+	число. Значит, при определении функции в
+	круглых скобках мы должны написать какую-то
+	переменную, в которую будет попадать переданное
+	число.
+</p>
+<p>
+	Название переменной может быть любым, давайте,
+	например, назовем ее <code class="code inline">$num</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function func($num) {
+		
+	}
+?&gt;</code>
+</div>
+<p>
+	В эту переменную <code class="code inline">$num</code> при вызове функции
+	будет попадать указанное в круглых скобках число:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	func(2); // в переменную $num попадет число 2
+	func(3); // в переменную $num попадет число 3
+?&gt;</code>
+</div>
+<p>
+	Давайте теперь сделаем так, чтобы наша функция
+	выводила квадрат переданного числа. Для этого
+	перемножим переменную <code class="code inline">$num</code> саму на
+	себя и выведем на экран:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function func($num) {
+		echo $num * $num;
+	}
+?&gt;</code>
+</div>
+<p>
+	Проверим работу функции, вызвав ее с различными
+	числами:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function func($num) {
+		echo $num * $num;
+	}
+	
+	func(2); // выведет 4
+	func(3); // выведет 9
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Сделайте функцию, которая параметром принимает
+		число и выводит на экран куб этого числа.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Сделайте функцию, которая параметром принимает
+		число и проверяет, положительное это число
+		или отрицательное. В первом случае пусть
+		функция выводит на экран текст <code class="string inline">'+++'</code>,
+		а во втором <code class="string inline">'---'</code>.
+	</p>
+</div>
+
+<h2>Несколько параметров</h2>
+<p>
+	Функция может принимать не один параметр,
+	а несколько. В этом случае их нужно перечислить
+	через запятую. Давайте для примера сделаем
+	функцию, параметром принимающую два числа
+	и выводящую на экран их сумму:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function func($num1, $num2) {
+		echo $num1 + $num2;
+	}
+	
+	func(1, 2); // выведет 3
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Сделайте функцию, которая параметрами принимает
+		<code class="number inline">3</code> числа и выводит на экран сумму этих
+		чисел.
+	</p>
+</div>
+
+<h2>Параметры-переменные</h2>
+<p>
+	Давайте рассмотрим следующий код:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function func($num) {
+		echo $num * $num;
+	}
+	
+	func(2);
+?&gt;</code>
+</div>
+<p>
+	Как вы видите, в при вызове функции в нее
+	передается число <code class="number inline">2</code>.
+</p>
+<p>
+	Не обязательно параметром функции передавать
+	именно число - можно передать и переменную,
+	содержащую нужное нам число:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function func($num) {
+		echo $num * $num;
+	}
+	
+	$param = 2;
+	func($param);
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Сделайте функцию <code class="code inline">func</code>, которая параметром
+		будет принимать <code class="number inline">3</code> числа и выводить
+		на экран их сумму. С помощью этой функции
+		выведите на экран сумму значений следующих
+		переменных:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	$param1 = 1;
+	$param2 = 2;
+	$param3 = 3;
+?&gt;</code>
+	</div>
+</div>
+
+<h2>Необязательные параметры</h2>
+<p>
+	Пусть у нас есть функция, которая параметром
+	принимает имя и выводит его на экран:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function func($name) {
+		echo 'ваше имя: ' . $name;
+	}
+?&gt;</code>
+</div>
+<p>
+	Проверим работу нашей функции:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	func('Вася'); // выведет 'ваше имя: Вася'
+?&gt;</code>
+</div>
+<p>
+	Давайте теперь сделаем так, чтобы имя было
+	не обязательным: если оно будет введено,
+	то выведется на экран, а если не введено
+	- то пусть принимает значение <code class="string inline">'Аноним'</code>.
+</p>
+<p>
+	Для того, чтобы сделать параметр необязательным,
+	для него нужно определить <i>значение по
+	умолчанию</i>. Для этого при определении
+	параметра нужно поставить знак <code class="code inline">=</code> и
+	желаемое значение, вот так:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function func($name = 'Аноним') {
+		echo 'ваше имя: ' . $name;
+	}
+?&gt;</code>
+</div>
+<p>
+	Проверим теперь работу нашей функции:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	// Без параметра:
+	func(); // выведет 'ваше имя: Аноним'
+	
+	// С параметром:
+	func('Вася'); // выведет 'ваше имя: Вася'
+?&gt;</code>
+</div>
+<p>
+	Пусть теперь наша функция принимает два параметра:
+	имя и возраст:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function func($name, $age) {
+		echo 'ваше имя: ' . $name . ' возраст: ' . $age;
+	}
+?&gt;</code>
+</div>
+<p>
+	Давайте сделаем так, чтобы возраст был необязателен:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function func($name, $age = 'неизвестен') {
+		echo 'ваше имя: ' . $name . ' возраст: ' . $age;
+	}
+?&gt;</code>
+</div>
+<p>
+	А теперь сделаем так, чтобы и имя, и возраст
+	были необязательны:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function func($name = 'Аноним', $age = 'неизвестен') {
+		echo 'ваше имя: ' . $name . ' возраст: ' . $age;
+	}
+?&gt;</code>
+</div>
+<p>
+	А вот сделать так, чтобы имя было необязательным,
+	а возраст - нет, нельзя. Дело в том, что
+	все необязательные параметры следует писать
+	в конце. Смотрите пример:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	// так не будет работать
+	function func($name = 'Аноним', $age) {
+		echo 'ваше имя: ' . $name . ' возраст: ' . $age;
+	}
+?&gt;</code>
+</div>
+<div class="task">
+	<p>
+		Дана функция:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function func($num = 5) {
+		echo $num * $num;
+	}
+?&gt;</code>
+	</div>
+	<p>
+		Эта функция вызывается следующим образом:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	func(2);
+	func(3);
+	func();
+?&gt;</code>
+	</div>
+	<p>
+		Расскажите, каким будет результат каждого
+		из вызовов функции.
+	</p>
+</div>
+<div class="task">
+	<p>
+		Дана функция:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	function func($num1 = 0, $num2 = 0) {
+		echo $num1 + $num2;
+	}
+?&gt;</code>
+	</div>
+	<p>
+		Эта функция вызывается следующим образом:
+	</p>
+	<div class="block">
+		<code class="highlight" data-module="highlight" data-lang="php">&lt;?php
+	func(2, 3);
+	func(3);
+	func();
+?&gt;</code>
+	</div>
+	<p>
+		Расскажите, каким будет результат каждого
+		из вызовов функции.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/php/book/prime/" data-persent="35" data-hash="ppPmUFPr" data-quantity="223" data-num="80"><a href="../../../../../ru/php/book/prime/functions/creation-and-call.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../ru/php/book/prime/functions/return.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

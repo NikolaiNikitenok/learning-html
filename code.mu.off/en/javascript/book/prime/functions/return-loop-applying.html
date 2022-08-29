@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Usage of return in loops in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we'll explore the useful application of the return statement in loops in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Usage of return in loops in JavaScript</h1>
+				<div class="content">
+<p>
+	The fact that <code class="code inline">return</code> is located inside 
+	the loop may not always be a mistake. In the 
+	following example, a function is made that 
+	determines how many first elements of an array 
+	must be added so that the sum becomes greater 
+	than or equal to <code class="number inline">10</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func(arr) {
+	let sum = 0;
+	
+	for (let i = 0; i &lt; arr.length; i++) {
+		sum += arr[i];
+		
+		// If the sum is greater than or equal to 10:
+		if (sum &gt;= 10) {
+			return i + 1; // exits the loop and the function
+		}
+	}
+}
+
+let res = func([1, 2, 3, 4, 5]);
+console.log(res);</code>
+</div>
+<p>
+	And in the following example, a function is made 
+	that calculates how many integers, starting from 
+	<code class="number inline">1</code>, must be added so that the result is 
+	greater than <code class="number inline">100</code>:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function func() {
+	let sum = 0;
+	let i = 1;
+	
+	while (true) { // an infinite loop
+		sum += i;
+		
+		if (sum &gt;= 100) {
+			return i; // the loop runs until it exits here
+		}
+		
+		i++;
+	}
+}
+
+console.log( func() );</code>
+</div>
+<div class="task">
+	<p>
+		Write a function that takes a number as a parameter 
+		and divides it by <code class="number inline">2</code> as many times until the 
+		result is less than <code class="number inline">10</code>. Let the function 
+		return the number of iterations it took to achieve 
+		the result.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="45" data-hash="jsPmUFRLA" data-quantity="363" data-num="165"><a href="../../../../../en/javascript/book/prime/functions/return-loop.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../en/javascript/book/prime/functions/return-dodge.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../en/javascript/book/prime/functions/return-loop-applying.html" class="active">en</a><a href="../../../../../ru/javascript/book/prime/functions/return-loop-applying.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

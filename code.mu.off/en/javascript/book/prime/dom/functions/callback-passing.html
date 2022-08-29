@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Passing a callback to work with the DOM in JavaScript | Trepachev Dmitry</title>
+		
+		<link rel="stylesheet" href="../../../../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../../../../js/location.js?v=3"></script>
+		<script src="../../../../../../js/locale.js?v=5"></script>
+		<script src="../../../../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="In this lesson, we will learn how to pass a callback function as a parameter to work with the DOM in JavaScript.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+		<br><br>	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/en/javascript/" data-open="javascript">JavaScript</span>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../../../../en/javascript/book/prime.html">Prime book</a>
+		<a href="../../../../../../en/javascript/book/practice.html">Practice book</a>
+	</section>
+</nav>							</header>
+			<main>
+				<h1>Passing a callback to work with the DOM in JavaScript</h1>
+				<div class="content">
+<p>
+	Suppose we have some group of DOM elements:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="html">&lt;p class="elem"&gt;1&lt;/p&gt;
+&lt;p class="elem"&gt;2&lt;/p&gt;
+&lt;p class="elem"&gt;3&lt;/p&gt;
+&lt;p class="elem"&gt;4&lt;/p&gt;
+&lt;p class="elem"&gt;5&lt;/p&gt;</code>
+</div>
+<p>
+	Let's make the function <code class="code inline">forEach</code>, which will take 
+	the elements group selector as the first parameter, 
+	and the second parameter - a 
+	<a href="../../../../../../en/javascript/book/prime/functions/callbacks.html">callback function</a> , 
+	which will be applied to each of the found elements in turn:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">forEach('.elem', function() {
+	// the function will be applied to each element
+});</code>
+</div>
+<p>
+	Let the elements that fall under the selector, in turn, 
+	fall into the first parameter of the callback:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">forEach('.elem', function(elem) {
+	console.log(elem); // outputs the found elements one by one
+});</code>
+</div>
+<p>
+	Let's use our function to find all elements with the 
+	class <code class="selector inline">elem</code> and apply a callback for each element 
+	found, which will square the text of each element:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">forEach('.elem', function(elem) {
+	elem.textContent = elem.textContent ** 2;
+});</code>
+</div>
+<p>
+	Let's now write the implementation of the 
+	<code class="code inline">forEach</code> function:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="javascript">function forEach(selector, func) {
+	let elems = document.querySelectorAll(selector);
+	
+	for (let elem of elems) {
+		func(elem);
+	}
+}</code>
+</div>
+<div class="task">
+	<p>
+		Given paragraphs. Add an exclamation mark to the 
+		end of each paragraph text using the forEach 
+		function we created.
+	</p>
+</div>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/en/javascript/book/prime/" data-persent="96" data-hash="jsPmFDCP" data-quantity="363" data-num="350"><a href="../../../../../../en/javascript/book/prime/dom/functions/elements-group-functions.html" class="prev"><span class="arrow">&larr;</span></a><a href="../../../../../../en/javascript/book/prime/dom/functions/callback-sequence-number-passing.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Trepachev Dmitry &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	<a href="../../../../../../en/javascript/book/prime/dom/functions/callback-passing.html" class="active">en</a><a href="../../../../../../ru/javascript/book/prime/dom/functions/callback-passing.html">ru</a></div>			</div>
+		</div>
+		
+		<script src="../../../../../../js/metrika.js?v=1"></script>	</body>
+</html>

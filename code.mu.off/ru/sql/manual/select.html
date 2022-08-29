@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Команда SELECT - получение записей из базы данных | Трепачёв Дмитрий</title>
+		
+		<link rel="stylesheet" href="../../../css/fonts/list.css?v=8">
+		<link rel="stylesheet" href="../../../css/styles.css?v=321">
+		<link rel="stylesheet" href="../../../js/highlighter/highlighter.css?v=77">
+		
+		<script src="../../../js/highlighter/highlighter.js?v=112"></script>
+		
+		<script src="../../../js/location.js?v=3"></script>
+		<script src="../../../js/locale.js?v=5"></script>
+		<script src="../../../js/main.js?v=129"></script>
+		
+		<meta name="yandex-verification" content="00eb45b7559e5c68">
+		<meta name="google-site-verification" content="Af0TM2OrwIEtjoQXxYz2-1C-21E1m7DB23_kWpE9sLg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<meta name="description" content="Команда SELECT получает записи из базы данных по определенному условию.">
+		<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico">
+	</head>
+	<body id="top">
+		<div class="wrapper">
+			<header>
+				<div class="top">
+	<div class="left"><img data-module="coder" src="" alt=""></div>
+	<div class="right">
+		offline version 0.0.1	</div>
+	<div class="center">
+			<a href="http://mentor.code.mu">
+		Запись на курсы по HTML, CSS, JavaScript, PHP, фреймворкам и CMS,<br>
+		<b>а также</b>: помощь в поиске работы и заказов, стажировка
+		на реальных проектах&rarr;
+	</a>
+	</div>
+</div>								<nav data-module="mainmenu">
+	<section class="main active">
+		<span data-href="/ru/markup/" data-open="markup">Верстка</span>
+		<span data-href="/ru/javascript/" data-open="javascript">JavaScript</span>
+		<span data-href="/ru/php/" data-open="php">PHP</span>
+		<span data-href="/ru/javascript/typescript/" data-open="typescript">TypeScript</span>
+		<span data-href="/ru/javascript/nodejs/" data-open="nodejs">NodeJS</span>
+		<span data-href="/ru/sql/" data-open="sql">SQL</span>
+		<span data-href="/ru/javascript/framework/vue/" data-open="vue">Vue</span>
+		<span data-href="/ru/javascript/framework/react/" data-open="react">React</span>
+		<span data-href="/ru/php/framework/laravel/" data-open="laravel">Laravel</span>
+	</section>
+
+	<section class="sub" data-name="markup">
+		<a href="../../../ru/markup/book/prime.html">Основной учебник</a>
+		<a href="../../../ru/markup/book/supreme.html">Высший учебник</a>
+		<a href="../../../ru/markup/book/prep/less.html">Учебник LESS</a>
+		<a href="../../../ru/markup/manual/html.html">Справочник HTML</a>
+		<a href="../../../ru/markup/manual/css.html">Справочник CSS</a>
+	</section>
+
+	<section class="sub" data-name="php">
+		<a href="../../../ru/php/book/prime.html">Основной учебник</a>
+		<a href="../../../ru/php/book/oop.html">Учебник ООП и MVC</a>
+		<a href="../../../ru/php/manual.html">Справочник</a>
+		<a href="../../../ru/php/video/lesson.html">Видеоуроки</a>
+	</section>
+
+	<section class="sub" data-name="javascript">
+		<a href="../../../ru/javascript/book/prime.html">Основной учебник</a>
+		<a href="../../../ru/javascript/book/practice.html">Учебник практики</a>
+		<a href="../../../ru/javascript/book/supreme.html">Высший учебник</a>
+		<a href="../../../ru/javascript/book/oop.html">Учебник ООП</a>
+		<a href="../../../ru/javascript/manual.html">Справочник</a>
+		<a href="../../../ru/javascript/video/lesson.html">Видеоуроки</a>
+		<a href="../../../ru/javascript/mistake.html">Ошибки</a>
+		<a href="../../../ru/javascript/faq.html">FAQ</a>
+	</section>
+
+	<section class="sub" data-name="nodejs">
+		<a href="../../../ru/javascript/nodejs/book/prime.html">Основной учебник</a>
+		<a href="../../../ru/javascript/nodejs/book/express.html">Express</a>
+		<a href="../../../ru/javascript/nodejs/book/mongo.html">Mongo</a>
+	</section>
+	<section class="sub" data-name="sql">
+		<a href="../../../ru/sql/manual.html">Справочник</a>
+	</section>
+
+	<section class="sub" data-name="typescript">
+		<a href="../../../ru/javascript/typescript/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="vue">
+		<a href="../../../ru/javascript/framework/vue/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="react">
+		<a href="../../../ru/javascript/framework/react/book/prime.html">Основной учебник</a>
+	</section>
+
+	<section class="sub" data-name="laravel">
+		<a href="../../../ru/php/framework/laravel/book/prime.html">Основной учебник</a>
+	</section>
+	<!--
+	<section class="sub" data-name="wordpress">
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/administration/">Учебник администратора</a>
+		<a href="http://dep.code.mu/ru/cms/wordpress/book/prime/development/">Учебник разработчика</a>
+		<!--
+		<a href="../../../ru/cms/wordpress/book/prime/administration.html">Учебник администратора</a>
+		<a href="../../../ru/cms/wordpress/book/prime/development.html">Учебник разработчика</a>
+		
+	</section>
+	-->
+</nav>							</header>
+			<main>
+				<h1>Команда SELECT</h1>
+				<div class="content">
+<p>
+	Команда <code class="sql inline">SELECT</code> получает записи из
+	базы данных по определенному условию, которое
+	задается с помощью команды <a href="../../../ru/sql/manual/where.html"><code class="code inline">WHERE</code></a>.
+</p>
+<p>
+	Эти записи можно отсортировать с помощью
+	команды <a class="sql" href="../../../ru/sql/manual/order-by.html">ORDER
+	BY</a>, а также можно ограничить их количество
+	с помощью <a href="../../../ru/sql/manual/limit.html"><code class="sql inline">LIMIT</code></a>.
+</p>
+
+<h2>Синтаксис</h2>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="sql">SELECT * FROM имя_таблицы</code>
+</div>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="sql">SELECT * FROM имя_таблицы WHERE условие</code>
+</div>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="sql">SELECT поле1, поле2... FROM имя_таблицы WHERE условие</code>
+</div>
+<p>
+	Полный синтаксис:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="sql">SELECT
+	    [STRAIGHT_JOIN] [SQL_SMALL_RESULT] [SQL_BIG_RESULT] [SQL_BUFFER_RESULT]
+	    [SQL_CACHE | SQL_NO_CACHE] [SQL_CALC_FOUND_ROWS] [HIGH_PRIORITY]
+	    [DISTINCT | DISTINCTROW | ALL]
+select_expression,...
+[INTO {OUTFILE | DUMPFILE} 'file_name' export_options]
+[FROM table_references
+[WHERE where_definition]
+[GROUP BY {unsigned_integer | col_name | formula} [ASC | DESC], ...]
+[HAVING where_definition]
+[ORDER BY {unsigned_integer | col_name | formula} [ASC | DESC], ...]
+[LIMIT [offset,] rows | rows OFFSET offset]
+[PROCEDURE procedure_name(argument_list)]
+[FOR UPDATE | LOCK IN SHARE MODE]]</code>
+</div>
+
+<h2>Таблицы для примеров</h2>
+<div class="block">
+	<table>
+		<caption>таблица employees</caption>
+		<tr>
+			<th>id <br> <span>айди</span></th>
+			<th>name <br> <span>имя</span></th>
+			<th>age <br> <span>возраст</span></th>
+			<th>salary <br> <span>зарплата</span></th>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>user1</td>
+			<td>23</td>
+			<td>400</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>user2</td>
+			<td>25</td>
+			<td>500</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>user3</td>
+			<td>23</td>
+			<td>500</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>user4</td>
+			<td>30</td>
+			<td>900</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>user5</td>
+			<td>27</td>
+			<td>500</td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>user6</td>
+			<td>28</td>
+			<td>900</td>
+		</tr>
+	</table>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	В данном примере из таблицы выбираются записи,
+	у которых поле id больше <code class="number inline">3</code>-х:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="sql">SELECT * FROM employees WHERE id&gt;3</code>
+</div>
+<p>
+	Результат выполнения кода:
+</p>
+<div class="block">
+	<table>
+		<tr>
+			<th>id <br> <span>айди</span></th>
+			<th>name <br> <span>имя</span></th>
+			<th>age <br> <span>возраст</span></th>
+			<th>salary <br> <span>зарплата</span></th>
+		</tr>
+		<tr>
+			<td class="red">4</td>
+			<td>user4</td>
+			<td>30</td>
+			<td>900</td>
+		</tr>
+		<tr>
+			<td class="red">5</td>
+			<td>user5</td>
+			<td>27</td>
+			<td>500</td>
+		</tr>
+		<tr>
+			<td class="red">6</td>
+			<td>user6</td>
+			<td>28</td>
+			<td>900</td>
+		</tr>
+	</table>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	В данном примере выбираются записи, у которых
+	поле id меньше <code class="number inline">3</code>-х:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="sql">SELECT * FROM employees WHERE id&lt;=3</code>
+</div>
+<p>
+	Результат выполнения кода:
+</p>
+<div class="block">
+	<table>
+		<tr>
+			<th>id <br> <span>айди</span></th>
+			<th>name <br> <span>имя</span></th>
+			<th>age <br> <span>возраст</span></th>
+			<th>salary <br> <span>зарплата</span></th>
+		</tr>
+		<tr>
+			<td class="red">1</td>
+			<td>user1</td>
+			<td>23</td>
+			<td>400</td>
+		</tr>
+		<tr>
+			<td class="red">2</td>
+			<td>user2</td>
+			<td>25</td>
+			<td>500</td>
+		</tr>
+		<tr>
+			<td class="red">3</td>
+			<td>user3</td>
+			<td>23</td>
+			<td>500</td>
+		</tr>
+	</table>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	В данном примере выбираются записи, у которых
+	поле id равно <code class="number inline">3</code>-м:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="sql">SELECT * FROM employees WHERE id=3</code>
+</div>
+<p>
+	Результат выполнения кода:
+</p>
+<div class="block">
+	<table>
+		<tr>
+			<th>id <br> <span>айди</span></th>
+			<th>name <br> <span>имя</span></th>
+			<th>age <br> <span>возраст</span></th>
+			<th>salary <br> <span>зарплата</span></th>
+		</tr>
+		<tr>
+			<td class="red">3</td>
+			<td>user3</td>
+			<td>23</td>
+			<td>500</td>
+		</tr>
+	</table>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	В данном примере выбираются записи,у которых
+	поле id НЕ равно <code class="number inline">3</code>-м:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="sql">SELECT * FROM employees WHERE id!=3</code>
+</div>
+<p>
+	Результат выполнения кода:
+</p>
+<div class="block">
+	<table>
+		<tr>
+			<th>id <br> <span>айди</span></th>
+			<th>name <br> <span>имя</span></th>
+			<th>age <br> <span>возраст</span></th>
+			<th>salary <br> <span>зарплата</span></th>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>user1</td>
+			<td>23</td>
+			<td>400</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>user2</td>
+			<td>25</td>
+			<td>500</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>user4</td>
+			<td>30</td>
+			<td>900</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>user5</td>
+			<td>27</td>
+			<td>500</td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>user6</td>
+			<td>28</td>
+			<td>900</td>
+		</tr>
+	</table>
+</div>
+<p>
+	Запрос можно переписать следующим образом:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="sql">SELECT * FROM employees WHERE id&lt;&gt;3</code>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	В данном примере отсутствует <code class="code inline">WHERE</code>
+	- поэтому выберутся все записи в таблице:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="sql">SELECT * FROM employees</code>
+</div>
+<p>
+	Результат выполнения кода:
+</p>
+<div class="block">
+	<table>
+		<tr>
+			<th>id <br> <span>айди</span></th>
+			<th>name <br> <span>имя</span></th>
+			<th>age <br> <span>возраст</span></th>
+			<th>salary <br> <span>зарплата</span></th>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>user1</td>
+			<td>23</td>
+			<td>400</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>user2</td>
+			<td>25</td>
+			<td>500</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>user3</td>
+			<td>23</td>
+			<td>500</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>user4</td>
+			<td>30</td>
+			<td>900</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>user5</td>
+			<td>27</td>
+			<td>500</td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>user6</td>
+			<td>28</td>
+			<td>900</td>
+		</tr>
+	</table>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	В данном примере вместо * указаны конкретные
+	поля (id, name, age):
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="sql">SELECT id, name, age FROM employees</code>
+</div>
+<p>
+	Результат выполнения кода:
+</p>
+<div class="block">
+	<table>
+		<tr>
+			<th>id <br> <span>айди</span></th>
+			<th>name <br> <span>имя</span></th>
+			<th>age <br> <span>возраст</span></th>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>user1</td>
+			<td>23</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>user2</td>
+			<td>25</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>user3</td>
+			<td>23</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>user4</td>
+			<td>30</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>user5</td>
+			<td>27</td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>user6</td>
+			<td>28</td>
+		</tr>
+	</table>
+</div>
+
+<h2>Пример <span class="-page-"></span></h2>
+<p>
+	В данном примере выбирается только одно поле
+	- name:
+</p>
+<div class="block">
+	<code class="highlight" data-module="highlight" data-lang="sql">SELECT name FROM employees</code>
+</div>
+<p>
+	Результат выполнения кода:
+</p>
+<div class="block">
+	<table style="width: 200px;" class="table table-bordered table-colored">
+		<tr>
+			<th>name <br> <span>имя</span></th>
+		</tr>
+		<tr>
+			<td>user1</td>
+		</tr>
+		<tr>
+			<td>user2</td>
+		</tr>
+		<tr>
+			<td>user3</td>
+		</tr>
+		<tr>
+			<td>user4</td>
+		</tr>
+		<tr>
+			<td>user5</td>
+		</tr>
+		<tr>
+			<td>user6</td>
+		</tr>
+	</table>
+</div>
+
+<h2>Смотрите также</h2>
+<ul class="ref">
+	<li>
+		команду <a href="../../../ru/sql/manual/insert.html"><code class="sql inline">INSERT</code></a>, <br>
+		которая вставляет данные в таблицу
+	</li>
+	<li>
+		команду <a href="../../../ru/sql/manual/update.html"><code class="sql inline">UPDATE</code></a>, <br>
+		которая обновляет данные в таблице
+	</li>
+	<li>
+		команду <a href="../../../ru/sql/manual/delete.html"><code class="sql inline">DELETE</code></a>, <br>
+		которая удаляет данные из таблицы
+	</li>
+	<li>
+		функцию  <a href="../../../ru/sql/manual/count.html"><code class="sql inline">COUNT</code></a>, <br>
+		которая подсчитывает количество записей
+	</li>
+	<li>
+		команду <a class="sql" href="../../../ru/sql/manual/select-into.html">SELECT INTO</a>, <br>
+		которая копирует данные из одной таблицы в другую
+	</li>
+</ul>
+</div>			</main>
+			<div class="bottom">
+	<section class="pages" data-url="/ru/sql/manual/" data-persent="0" data-hash="" data-quantity="99" data-num="1"><a href="../../../ru/sql/manual/insert.html" class="next"><span class="arrow">&rarr;</span></a></section></div>			<footer>
+	<div class="contacts">
+	Трепачёв Дмитрий &copy; 2012-2022 <br>
+	<a href="https://t.me/trepachev_dmitry">t.me/trepachev_dmitry</a>
+</div>		
+</footer>			<div class="jump">
+	<a href="#top" class="to-top">&uarr;</a>
+</div>			<div class="langer">
+	</div>			</div>
+		</div>
+		
+		<script src="../../../js/metrika.js?v=1"></script>	</body>
+</html>
