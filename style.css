@@ -116,6 +116,28 @@ ol {
     width: 200px;
 
     border: 1px red solid;
+
+    /* letter-spacing: 3px; */
+
+    word-spacing: 3px;
+
+    /* text-transform: uppercase; */
+
+    text-align-last: right;
+}
+
+.text_botikov span {
+    text-transform: uppercase;
+}
+
+.FIO {
+    text-transform: capitalize;
+}
+
+.red__letter p::first-line {
+    font-size: 37px;
+    color: red;
+    font-weight: bold;
 }
 
 .shirokii {
@@ -128,6 +150,10 @@ ol {
     border: 1px black solid;
 
     text-align: justify;
+
+    /* letter-spacing: -1px; */
+
+    word-spacing: 0px;
 }
 
 .korotkii {
@@ -142,7 +168,7 @@ ol {
 
     text-align: justify;
 }
-span {
+/* span {
     margin-top: 30px;
 
     border: 1px solid red;
@@ -150,7 +176,7 @@ span {
     height: 100px;
 
     display: block;
-}
+} */
 
 .kvadrat {
 margin-top: 30px;
